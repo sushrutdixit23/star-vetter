@@ -55,6 +55,19 @@ diag_scan10.py
 /site/.env*.local
 """
 
+GITATTRIBUTES = """* text=auto eol=lf
+
+*.parquet binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+"""
+
 REQUIREMENTS = """# star-vetter pipeline dependencies.
 # Left unpinned on purpose: pip resolves the latest mutually
 # compatible versions at the time each GitHub Actions run installs
@@ -103,6 +116,7 @@ def main():
 
     site_git = root / "site" / ".git"
     outer_git = root / ".git"
+    outer_git_existed_before = outer_git.exists()
 
     # 1. Strip the embedded repo under site/, if present. Without this,
     # a git init at the root would record "site" as an empty gitlink
@@ -125,6 +139,8 @@ def main():
     # so re-running this script after editing the lists above is safe).
     (root / ".gitignore").write_text(GITIGNORE, encoding="utf-8", newline="\n")
     print("Wrote .gitignore")
+    (root / ".gitattributes").write_text(GITATTRIBUTES, encoding="utf-8", newline="\n")
+    print("Wrote .gitattributes")
     (root / "requirements.txt").write_text(REQUIREMENTS, encoding="utf-8", newline="\n")
     print("Wrote requirements.txt")
 
@@ -147,13 +163,22 @@ def main():
         sys.exit(1)
 
     # 5. Stage everything (the .gitignore above keeps the big/regenerable
-    # stuff out) and commit if there is anything new to commit.
+    # stuff out), then renormalize line endings against .gitattributes.
+    # Git on Windows often ends up with a mismatch between what got
+    # committed and what sits on disk (LF in the repo, CRLF in the
+    # working copy, or the reverse) - that shows up as permanent
+    # phantom "modified" entries in every future git status. Setting
+    # eol=lf and renormalizing clears that up in the same commit.
     run(["git", "add", "."], cwd=root)
+    run(["git", "add", "--renormalize", "."], cwd=root)
     status = run(["git", "status", "--porcelain"], cwd=root)
     if not status.stdout.strip():
         print("\nNothing new to commit (working tree already matches the last commit).")
     else:
-        commit_msg = "Initial commit: star-vetter pipeline + site"
+        if outer_git_existed_before:
+            commit_msg = "Add .gitattributes, normalize line endings"
+        else:
+            commit_msg = "Initial commit: star-vetter pipeline + site"
         r = run(["git", "commit", "-m", commit_msg], cwd=root)
         print(r.stdout.strip())
 
@@ -175,10 +200,20 @@ def main():
         print(f"  {f}")
     size = run(["git", "count-objects", "-v"], cwd=root).stdout
     print(f"\n{size.strip()}")
+    final_status = run(["git", "status", "--porcelain"], cwd=root).stdout
+    print(f"Working tree clean: {'yes' if not final_status.strip() else 'NO - see below'}")
+    if final_status.strip():
+        print(final_status)
     print(f"{'=' * 70}")
-    print("\nNext steps (after you create the empty GitHub repo):")
-    print("  git remote add origin <YOUR_REPO_URL>")
-    print("  git push -u origin main")
+    has_remote = run(["git", "remote"], cwd=root).stdout.strip()
+    if has_remote:
+        print(f"\nRemote(s) already set: {has_remote}")
+        print("Push this with:")
+        print("  git push")
+    else:
+        print("\nNext steps (after you create the empty GitHub repo):")
+        print("  git remote add origin <YOUR_REPO_URL>")
+        print("  git push -u origin main")
 
 
 if __name__ == "__main__":
