@@ -1,0 +1,84 @@
+{
+  "funnel": [
+    {
+      "label": "Targets sampled and fetch attempted",
+      "count": 1045
+    },
+    {
+      "label": "Usable light curve obtained",
+      "count": 694
+    },
+    {
+      "label": "Passed statistical vetting gates",
+      "count": 187
+    },
+    {
+      "label": "Flagged novel (no catalog match)",
+      "count": 151
+    },
+    {
+      "label": "Survived contamination check, pixel-checked",
+      "count": 151
+    },
+    {
+      "label": "Confirmed on-target",
+      "count": 23
+    }
+  ],
+  "catalogs": [
+    "VSX",
+    "ASAS-SN",
+    "Gaia eclipsing-binary table",
+    "Gaia variable classification",
+    "TESS EB catalog (Prsa+2022)",
+    "ExoFOP TOI list"
+  ],
+  "vetting_gates": [
+    {
+      "name": "Eclipse count",
+      "text": "At least the minimum number of eclipses required to trust a period, so a single noisy dip can never pass on its own."
+    },
+    {
+      "name": "Odd/even depth consistency",
+      "text": "Alternating eclipses must be statistically consistent in depth. A significant odd/even split is often the signature of an undetected period alias rather than two different eclipse depths."
+    },
+    {
+      "name": "Robust detection significance",
+      "text": "The in-eclipse dip must clear a signal-to-noise threshold computed with an outlier-robust noise estimate, not a plain standard deviation that outliers could inflate."
+    },
+    {
+      "name": "Secondary eclipse search",
+      "text": "The phase-folded curve is searched for a secondary eclipse independent of the primary detection, informing the tier and caveats even when none is required to pass."
+    },
+    {
+      "name": "BLS signal-to-noise",
+      "text": "The Box Least Squares periodogram signal-to-noise ratio must clear a minimum threshold for the detected period to be trusted."
+    }
+  ],
+  "pixel_gates": [
+    {
+      "name": "In-eclipse light curve dip",
+      "text": "The dip must independently reappear at the same phase in this sector's own light curve, at significance."
+    },
+    {
+      "name": "Difference-image peak SNR",
+      "text": "The out-of-eclipse minus in-eclipse pixel difference image must show a significant, spatially compact source, not scattered noise."
+    },
+    {
+      "name": "Epoch-shift consistency",
+      "text": "The eclipse timing recovered independently at the pixel level must line up with the light-curve ephemeris, ruling out an unrelated nearby variable aligning by chance."
+    },
+    {
+      "name": "Source compactness",
+      "text": "The difference-image source must be consistent with a single point spread function, not a diffuse or multi-peaked pattern that would suggest blended light."
+    },
+    {
+      "name": "Centroid offset",
+      "text": "The photometric centroid shift between in- and out-of-eclipse images must stay within the target's own pixel, or the signal is charged to a neighbour instead."
+    },
+    {
+      "name": "Nearest-neighbour contamination",
+      "text": "Catalog neighbours within the aperture are checked by brightness and distance, so a bright nearby star cannot masquerade as the target dimming."
+    }
+  ]
+}

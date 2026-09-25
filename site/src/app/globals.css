@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+/* dark: variant keyed off data-theme on <html>, so a later light/dark toggle
+   only has to flip one attribute. Dark is the default. */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+:root,
+[data-theme="dark"] {
+  --canvas: #05070c;
+  --panel: #0a0e16;
+  --panel-2: #0e131d;
+  --line: #1a2130;
+  --fg: #e8eaf0;
+  --muted: #9aa3b2;
+  --faint: #5b6475;
+  --accent: #7dd3fc;
+}
+
+[data-theme="light"] {
+  --canvas: #f4f5f8;
+  --panel: #ffffff;
+  --panel-2: #f7f8fa;
+  --line: #e1e5ec;
+  --fg: #0b0f17;
+  --muted: #4b5565;
+  --faint: #8a93a3;
+  --accent: #0369a1;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display-serif);
+}
+
+body {
+  background: var(--canvas);
+  color: var(--fg);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Wide-tracked serif used for the wordmark and panel titles. */
+.display-caps {
+  font-family: var(--font-display-serif), ui-serif, Georgia, serif;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-variant-numeric: lining-nums;
+}

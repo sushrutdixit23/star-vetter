@@ -1,0 +1,48 @@
+# --- Python ---
+__pycache__/
+*.pyc
+
+# --- Superseded/scratch pipeline scripts, not part of the live pipeline ---
+# (see f6_orchestrator.py for the scripts that actually run)
+w[0-9]*.py
+deliver*.py
+diag[0-9]*.py
+patch_*.py
+fix_*.py
+make_*.py
+write_*.py
+f2_fetch_lightcurves.py
+f2b_fetch_lightcurves.py
+f3_vet.py
+f3b_vet.py
+f3c_vet.py
+f3d_vet.py
+f3e_vet.py
+f3f_vet.py
+f3g_vet.py
+f3h_vet.py
+f4b_novelty.py
+f4c_novelty.py
+f4d_novelty.py
+f4e_novelty.py
+diag_check.py
+diag_depth.py
+diag_epoch.py
+diag_epochs.py
+diag_recheck2.py
+diag_robust.py
+diag_scan10.py
+
+# --- Pipeline working data: regenerated fresh by each run, never needs to
+# persist between runs. What must persist (sample history, vetting result
+# CSVs, catalogs, dossiers, the deployed site data) is NOT listed here. ---
+/data/raw/
+/data/lightcurves/
+/data/pixel_check/
+/data/logs/
+
+# --- Next.js site ---
+/site/node_modules/
+/site/.next/
+/site/out/
+/site/.env*.local

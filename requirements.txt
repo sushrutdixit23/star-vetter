@@ -1,0 +1,10 @@
+# star-vetter pipeline dependencies.
+# Left unpinned on purpose: pip resolves the latest mutually
+# compatible versions at the time each GitHub Actions run installs
+# them, which is simpler to maintain than hand-pinning versions.
+numpy
+pandas
+astropy
+astroquery
+lightkurve
+matplotlib
