@@ -4,6 +4,7 @@
 # them, which is simpler to maintain than hand-pinning versions.
 numpy
 pandas
+pyarrow
 astropy
 astroquery
 lightkurve
