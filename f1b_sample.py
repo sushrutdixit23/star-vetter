@@ -1,3 +1,4 @@
+import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -11,7 +12,12 @@ import pandas as pd
 # editing f1_ingest.py in place) so it can read the already-parsed
 # table2_unvetted.parquet directly instead of re-parsing the 872,720-row
 # raw VizieR TSV every time we want a new batch.
-N_NEW_TARGETS = 500
+#
+# Overridable via STAR_VETTER_BATCH_SIZE so the GitHub Actions schedule
+# can run a smaller batch (fetch is the slow, network-bound stage, so a
+# smaller batch keeps each scheduled run safely under the job time
+# limit) without changing the default for a manual local run.
+N_NEW_TARGETS = int(os.environ.get("STAR_VETTER_BATCH_SIZE", "500"))
 N_BINS = 5
 
 
@@ -116,10 +122,10 @@ def main():
     archive_path = history_dir / f"sample_{N_NEW_TARGETS}_{stamp}.csv"
     sample.to_csv(archive_path, index=False, encoding="utf-8", lineterminator="\n")
 
-    # hand-off file f2c_fetch_lightcurves.py reads - name and location are
-    # unchanged, so that script needs no changes; it always reflects only
-    # this round's draw
-    out_path = processed_dir / f"sample_{N_NEW_TARGETS}.csv"
+    # hand-off file f2c_fetch_lightcurves.py and f6_orchestrator.py read.
+    # Fixed name, independent of the batch size, so it stays correct
+    # whatever STAR_VETTER_BATCH_SIZE is set to for a given run.
+    out_path = processed_dir / "sample_batch.csv"
     sample.to_csv(out_path, index=False, encoding="utf-8", lineterminator="\n")
 
     print(f"\n{'=' * 70}")

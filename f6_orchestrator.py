@@ -158,7 +158,7 @@ def main():
         # ---- F1b: draw a new stratified sample, excluding every prior batch ----
         if not run_stage("F1b sample new targets", "f1b_sample.py", project_root, log, logf):
             sys.exit(1)
-        sample = read_csv_safe(proc / "sample_500.csv")
+        sample = read_csv_safe(proc / "sample_batch.csv")
         if sample is None:
             decision("f1b_sample.py did not produce a sample file. Stopping.")
             sys.exit(1)

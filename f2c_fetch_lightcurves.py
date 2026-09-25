@@ -149,7 +149,7 @@ def main():
         sys.exit(1)
 
     project_root = Path(sys.argv[1]).resolve()
-    sample_path = project_root / "data" / "processed" / "sample_500.csv"
+    sample_path = project_root / "data" / "processed" / "sample_batch.csv"
     lc_dir = project_root / "data" / "lightcurves"
     plot_dir = lc_dir / "plots"
     lc_dir.mkdir(parents=True, exist_ok=True)
