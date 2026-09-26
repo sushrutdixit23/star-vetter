@@ -143,13 +143,27 @@ def main():
         v, n, p = vet.loc[tic], nov.loc[tic], pix.loc[tic]
         tier, flags = get_all_flags(tic, v, p)
 
+        # data/lightcurves/ is regenerated fresh by each pipeline run and is
+        # not committed to git (see .gitignore) - only stars fetched THIS
+        # run have their raw light curve on disk. A confirmed candidate from
+        # an earlier run has no light curve here, but the phase-folded chart
+        # data this same script exported for it back then is still sitting
+        # in the committed site/public/data/candidates/TIC{tic}.json - reuse
+        # that instead of dropping the candidate from the site every run it
+        # isn't re-fetched (this is the same class of fix export_dashboard.py
+        # and f5_dossier.py already apply for the same underlying reason).
         lc_path = lc_dir / f"TIC{tic}.csv"
-        if not lc_path.exists():
-            print(f"  TIC {tic}: SKIPPED, no light curve file")
+        existing_path = site_data_dir / f"TIC{tic}.json"
+        if lc_path.exists():
+            lc = pd.read_csv(lc_path)
+            folded = phase_fold_for_web(lc["time"].values, lc["flux"].values, v["bls_period"], v["bls_t0"])
+        elif existing_path.exists():
+            folded = json.loads(existing_path.read_text(encoding="utf-8"))["light_curve"]
+            print(f"  TIC {tic}: light curve not present this run - reusing previously exported chart data")
+        else:
+            print(f"  TIC {tic}: SKIPPED, no light curve file and no prior export to reuse")
             n_missing_lc += 1
             continue
-        lc = pd.read_csv(lc_path)
-        folded = phase_fold_for_web(lc["time"].values, lc["flux"].values, v["bls_period"], v["bls_t0"])
 
         alias_active = any(t == "PERIOD ALIAS" for t, _ in flags)
 
