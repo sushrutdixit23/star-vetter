@@ -190,3 +190,5 @@ TIC,bls_period,bls_depth,bls_snr,n_eclipses_observed,gap_edge_suspect,verdict,ex
 230907580,9.400124276763387,0.0469284918313638,141.82993616344297,3.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
 379653933,14.192600763486334,0.1001386488483784,116.66379331613356,3.0,True,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
 42256493,1.1570285483814955,0.0166288003081468,1057.4645308998647,127.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+230376393,38.416173835260345,0.0286212209306009,22.00666889078472,19.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+330569407,3.602843082491972,0.0304795861923836,97.30692061841158,6.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period

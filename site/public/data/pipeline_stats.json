@@ -2,23 +2,23 @@
   "funnel": [
     {
       "label": "Targets sampled and fetch attempted",
-      "count": 1055
+      "count": 1060
     },
     {
       "label": "Usable light curve obtained",
-      "count": 702
+      "count": 707
     },
     {
       "label": "Passed statistical vetting gates",
-      "count": 191
+      "count": 193
     },
     {
       "label": "Flagged novel (no catalog match)",
-      "count": 155
+      "count": 157
     },
     {
       "label": "Survived contamination check, pixel-checked",
-      "count": 155
+      "count": 157
     },
     {
       "label": "Confirmed on-target",
