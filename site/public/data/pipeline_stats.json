@@ -25,6 +25,11 @@
       "count": 23
     }
   ],
+  "catalog_progress": {
+    "total_catalog": 872720,
+    "sampled_to_date": 1045,
+    "fraction": 0.0011974058117150976
+  },
   "catalogs": [
     "VSX",
     "ASAS-SN",

@@ -16,6 +16,22 @@ def read_csv_safe(path):
         return None
 
 
+def read_parquet_rowcount_safe(path):
+    """Row count of the full unvetted catalog, without loading its data -
+    this is the fixed denominator for the "how far through the catalog are
+    we" progress figure. Reads only the parquet file's own metadata (a
+    committed ~20MB file), so this stays cheap even though the file itself
+    is never loaded into memory here."""
+    if not path.exists():
+        return None
+    try:
+        import pyarrow.parquet as pq
+        return int(pq.ParquetFile(path).metadata.num_rows)
+    except Exception as e:
+        print(f"WARNING: could not read row count from {path}: {e}")
+        return None
+
+
 def main():
     if len(sys.argv) < 2:
         print("Usage: py export_pipeline_stats.py <project_root>")
@@ -48,14 +64,35 @@ def main():
     pix = read_csv_safe(proc / "diag_pixel_results_v2.csv")
 
     funnel = []
+    sampled_to_date = 0
 
     if manifest is not None and "status" in manifest.columns:
-        sampled = int(len(manifest))
+        sampled_to_date = int(len(manifest))
         fetched_ok = int((manifest["status"] == "OK").sum())
-        funnel.append({"label": "Targets sampled and fetch attempted", "count": sampled})
+        funnel.append({"label": "Targets sampled and fetch attempted", "count": sampled_to_date})
         funnel.append({"label": "Usable light curve obtained", "count": fetched_ok})
     else:
         print("WARNING: f2c_manifest.csv missing or malformed - skipping sample/fetch funnel steps.")
+
+    # How far through the whole unvetted catalog the pipeline has gotten -
+    # the fixed denominator is the full table2_unvetted.parquet row count
+    # (a committed, static reference table: not something the CI checkout
+    # regenerates or trims, so this stays the real remaining-work figure
+    # even though data/logs/ and data/lightcurves/ do not persist between
+    # runs). Left out of the JSON entirely if either number isn't available,
+    # rather than shipping a zero or a guess.
+    total_catalog = read_parquet_rowcount_safe(proc / "table2_unvetted.parquet")
+    catalog_progress = None
+    if total_catalog:
+        catalog_progress = {
+            "total_catalog": total_catalog,
+            "sampled_to_date": sampled_to_date,
+            "fraction": sampled_to_date / total_catalog,
+        }
+        print(f"Catalog progress: {sampled_to_date:,} / {total_catalog:,} "
+              f"({100 * sampled_to_date / total_catalog:.3f}%) targets screened so far")
+    else:
+        print("WARNING: could not read table2_unvetted.parquet - catalog progress left blank.")
 
     if novelty is not None and "verdict" in novelty.columns:
         vetted = int(len(novelty))
@@ -82,6 +119,7 @@ def main():
 
     stats = {
         "funnel": funnel,
+        "catalog_progress": catalog_progress,
         "catalogs": [
             "VSX",
             "ASAS-SN",

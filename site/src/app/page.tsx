@@ -65,6 +65,33 @@ export default function Home() {
                 catalogs and pixel-level confirmation - and writes every survivor up as a dossier.
                 Every number on this site comes from the pipeline itself.
               </p>
+              {stats?.catalog_progress && (
+                <div className="mt-5 max-w-md">
+                  <div className="flex items-baseline justify-between gap-3 text-xs text-white/70">
+                    <span>
+                      <span className="font-mono text-white">
+                        {stats.catalog_progress.sampled_to_date.toLocaleString("en-US")}
+                      </span>{" "}
+                      of{" "}
+                      <span className="font-mono text-white">
+                        {stats.catalog_progress.total_catalog.toLocaleString("en-US")}
+                      </span>{" "}
+                      TESS targets screened
+                    </span>
+                    <span className="font-mono text-white/85">
+                      {(stats.catalog_progress.fraction * 100).toFixed(2)}%
+                    </span>
+                  </div>
+                  <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+                    <div
+                      className="h-full rounded-full bg-white/70"
+                      style={{
+                        width: `${Math.max(0.4, Math.min(100, stats.catalog_progress.fraction * 100))}%`,
+                      }}
+                    />
+                  </div>
+                </div>
+              )}
               <div className="mt-5 flex flex-wrap gap-3">
                 <Link
                   href="/candidates"

@@ -92,8 +92,15 @@ export interface GateInfo {
   text: string;
 }
 
+export interface CatalogProgress {
+  total_catalog: number;
+  sampled_to_date: number;
+  fraction: number;
+}
+
 export interface PipelineStats {
   funnel: FunnelStep[];
+  catalog_progress: CatalogProgress | null;
   catalogs: string[];
   vetting_gates: GateInfo[];
   pixel_gates: GateInfo[];
