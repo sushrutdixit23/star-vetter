@@ -438,7 +438,28 @@ def main():
         cj = json.loads((cand_dir / f"TIC{tic}.json").read_text(encoding="utf-8"))
         eph = cj["ephemeris"]
         v = vet.loc[tic]
-        lc = pd.read_csv(lc_dir / f"TIC{tic}.csv")
+        info = cat.get(tic, {})
+
+        # data/lightcurves/ is regenerated fresh by each pipeline run and is
+        # not committed to git (see .gitignore) - only stars fetched THIS run
+        # have their raw light curve on disk. index.json is cumulative across
+        # every run, so most candidates here were exported earlier and their
+        # light curve is long gone from this fresh checkout. f5_dossier.py
+        # already skips this case the same way; this mirrors that fix.
+        lc_path = lc_dir / f"TIC{tic}.csv"
+        detail_path = detail_dir / f"TIC{tic}.json"
+        if not lc_path.exists():
+            if detail_path.exists():
+                existing = json.loads(detail_path.read_text(encoding="utf-8"))
+                sky.append({"tic": tic, "tier": cj["tier"], "ra": info.get("ra"), "dec": info.get("dec"),
+                            "period_days": existing["period_true_days"], "bls_snr": eph["bls_snr"]})
+                print(f"  TIC {tic}: light curve not present this run - reusing existing detail export")
+            else:
+                print(f"  WARNING: TIC {tic} has no light curve and no prior detail export - skipped "
+                      f"(its dashboard page will 404 until this star is re-fetched)")
+            continue
+
+        lc = pd.read_csv(lc_path)
         good = np.isfinite(lc["time"].values) & np.isfinite(lc["flux"].values)
         t = lc["time"].values[good]
         f = lc["flux"].values[good]
@@ -532,7 +553,6 @@ def main():
         if mp.exists():
             maps = json.loads(mp.read_text(encoding="utf-8"))
 
-        info = cat.get(tic, {})
         detail = {
             "tic": tic,
             "period_true_days": P_true,
