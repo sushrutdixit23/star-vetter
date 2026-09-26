@@ -24,13 +24,13 @@ TIC,bls_period,bls_depth,bls_snr,n_eclipses_observed,gap_edge_suspect,verdict,ex
 230275619,3.1561343130066786,0.0004485323326751,11.45843335931336,25.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
 231260455,1.1126977080058151,0.0884634213696254,109.0356776339106,23.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
 23259249,3.9740155961235786,0.0391535931649554,59.74630065357756,5.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
-233415701,5.271641732651179,0.0100988652846398,63.155952515957104,43.0,False,KNOWN_TOI,True,False,,,,False,True,,,,False,,False,,,False,,,True,3555.01,,PC,5.271813,toi,agrees_1x
+233415701,5.271641732651179,0.0100988652846398,63.155952515957104,43.0,False,KNOWN_TOI,True,False,,,,False,True,,,,False,,False,,,False,,,True,3555.01,PC,PC,5.271813,toi,agrees_1x
 237115819,14.79205908513923,0.088832292054031,506.9717837496276,75.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
 250630820,1.132055270127599,0.0242731388705002,321.75923440785914,19.0,False,KNOWN_OTHER_TYPE,False,True,Gaia DR3 358196458556224640,DSCT|GDOR|SXPHE,,False,True,,,,False,,True,DSCT|GDOR|SXPHE,0.18921366,False,,,False,,,,,,no_catalog_period
 253168781,3.7402726304851774,0.0081922718239505,54.98500105540781,7.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
 273158289,1.151882938585293,0.0125462734332341,41.26919130495207,19.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
 278233128,33.59348122668497,0.2504616924293998,156.38205599887652,3.0,False,KNOWN_OTHER_TYPE,False,True,Gaia DR3 1820622828503613824,SR|M,46.23,False,True,,,,False,,True,LPV,0.8698307,False,,,False,,,,,vsx,disagrees(ratio=0.7267)
-281286325,17.01801073242722,0.0066087982330431,12.934877501170693,4.0,False,KNOWN_TOI,True,False,,,,False,True,,,,False,,False,,,False,,,True,6485.01,,PC,17.0180939,toi,agrees_1x
+281286325,17.01801073242722,0.0066087982330431,12.934877501170693,4.0,False,KNOWN_TOI,True,False,,,,False,True,,,,False,,False,,,False,,,True,6485.01,PC,PC,17.0180939,toi,agrees_1x
 282345650,27.09254689624314,0.3511603424632393,1235.8258851333342,3.0,False,KNOWN_OTHER_TYPE,False,True,ASASSN-V J190138.92+183820.8,SR,71.09,True,True,J190138.83+183821.7,SR,71.094,False,,True,LPV,0.95210844,False,,,False,,,,,vsx,disagrees(ratio=0.3811)
 287846593,1.7622511272952033,0.0846077443033173,3076.457002581413,11.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
 29216744,1.108326864407436,0.0451810713037801,141.48774443607496,39.0,False,KNOWN_OTHER_TYPE,False,True,Gaia DR3 5331550029333155584,VAR,0.015124,False,True,,,,False,,False,,,False,,,False,,,,,vsx,disagrees(ratio=73.2827)
@@ -65,7 +65,7 @@ TIC,bls_period,bls_depth,bls_snr,n_eclipses_observed,gap_edge_suspect,verdict,ex
 417861102,2.514278332071979,0.0194097209347311,27.07948562962417,19.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
 421566477,1.110034236550112,0.0441018363772221,541.5146106696648,22.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
 426236217,3.7338081468256674,0.3589824217873917,894.8374121331576,5.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
-427332229,2.7184029339124,0.0086033562781794,80.869982689952,5.0,False,KNOWN_TOI,True,True,WASP-32,EP,2.718659,False,True,,,,False,,False,,,False,,,True,4523.01,,KP,2.7186256,toi,agrees_1x
+427332229,2.7184029339124,0.0086033562781794,80.869982689952,5.0,False,KNOWN_TOI,True,True,WASP-32,EP,2.718659,False,True,,,,False,,False,,,False,,,True,4523.01,KP,KP,2.7186256,toi,agrees_1x
 43333100,0.8084676331326976,0.0002380657932495,12.213604720524106,24.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
 433770378,10.436249073720782,0.0016108858075791,27.13193207553424,3.0,True,KNOWN_OTHER_TYPE,False,True,GDS_J1836425-152947,VAR,,True,True,J183642.55-152946.5,SR,5.8246,False,,False,,,False,,,False,,,,,asassn,disagrees(ratio=1.7918)
 437150434,5.285343164440589,0.1500325939135055,1081.0130168195617,4.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
@@ -186,3 +186,4 @@ TIC,bls_period,bls_depth,bls_snr,n_eclipses_observed,gap_edge_suspect,verdict,ex
 139850283,1.2958316643057688,0.6186081745466384,659.6974002303643,59.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
 231200465,3.885901600055567,0.0901982240846761,26.058132036084988,6.0,False,KNOWN_OTHER_TYPE,False,False,,,,True,True,J064350.15+090946.4,ROT,3.889,False,,False,,,False,,,False,,,,,asassn,agrees_1x
 349702481,27.09998016748735,0.2509319710238842,28.35142797095017,3.0,True,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+42256323,1.153858841587889,0.000462194840594,27.59639385423237,98.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
