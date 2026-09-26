@@ -187,3 +187,6 @@ TIC,bls_period,bls_depth,bls_snr,n_eclipses_observed,gap_edge_suspect,verdict,ex
 231200465,3.885901600055567,0.0901982240846761,26.058132036084988,6.0,False,KNOWN_OTHER_TYPE,False,False,,,,True,True,J064350.15+090946.4,ROT,3.889,False,,False,,,False,,,False,,,,,asassn,agrees_1x
 349702481,27.09998016748735,0.2509319710238842,28.35142797095017,3.0,True,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
 42256323,1.153858841587889,0.000462194840594,27.59639385423237,98.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+230907580,9.400124276763387,0.0469284918313638,141.82993616344297,3.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+379653933,14.192600763486334,0.1001386488483784,116.66379331613356,3.0,True,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+42256493,1.1570285483814955,0.0166288003081468,1057.4645308998647,127.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
