@@ -1,6 +1,7 @@
 ﻿import sys
 import csv
 import time
+import threading
 import warnings
 from pathlib import Path
 
@@ -47,6 +48,45 @@ TESS_PIXEL_ARCSEC = 21.0
 BAD_DISPOSITIONS = {"ARTIFACT", "DUPLICATE", "SPLIT"}
 CACHE_COLUMNS = ["target_TIC", "nbr_TIC", "nbr_Tmag", "sep_arcsec", "nbr_disposition"]
 
+# A remote catalog query can stall forever with no exception at all if the
+# server just stops responding - invisible on a machine someone is watching
+# (they notice and interrupt), but it hangs an unattended GitHub Actions job
+# for its entire time budget. These wrap every such call in a hard
+# wall-clock deadline so a stall becomes a normal, logged failure instead of
+# blocking the whole run.
+CATALOG_TIMEOUT_SEC = 120
+
+
+def call_with_timeout(fn, args=(), kwargs=None, timeout=60):
+    """
+    Run fn(*args, **kwargs) with a hard wall-clock deadline. Raises
+    TimeoutError if it does not finish in time.
+
+    Uses a plain threading.Thread with daemon=True rather than
+    concurrent.futures.ThreadPoolExecutor: ThreadPoolExecutor registers an
+    atexit hook that joins every worker thread it ever created before the
+    interpreter exits, so a genuinely stuck call would still stall the
+    whole script at shutdown even after "timing out". A daemon thread
+    carries no such obligation - Python exits without waiting for it.
+    """
+    kwargs = kwargs or {}
+    box = {"value": None, "error": None}
+
+    def runner():
+        try:
+            box["value"] = fn(*args, **kwargs)
+        except Exception as e:
+            box["error"] = e
+
+    t = threading.Thread(target=runner, daemon=True)
+    t.start()
+    t.join(timeout)
+    if t.is_alive():
+        raise TimeoutError(f"call did not finish within {timeout}s")
+    if box["error"] is not None:
+        raise box["error"]
+    return box["value"]
+
 
 def append_rows(path: Path, rows, write_header):
     with open(path, "a", newline="", encoding="utf-8") as f:
@@ -63,7 +103,11 @@ def query_neighbours(ra, dec, target_tic, retries=2, delay=3):
     last = None
     for attempt in range(retries + 1):
         try:
-            r = Catalogs.query_region(coord, radius=SEARCH_RADIUS_ARCSEC * u.arcsec, catalog="TIC")
+            r = call_with_timeout(
+                Catalogs.query_region, args=(coord,),
+                kwargs={"radius": SEARCH_RADIUS_ARCSEC * u.arcsec, "catalog": "TIC"},
+                timeout=CATALOG_TIMEOUT_SEC,
+            )
             rows = []
             for rec in r:
                 nid = int(rec["ID"])
@@ -103,7 +147,17 @@ def main():
     print("=" * 72)
 
     print(f"\nFetching target brightness + TIC contamination ratio for {len(nov)} stars...")
-    tinfo = Catalogs.query_criteria(catalog="Tic", ID=nov["TIC"].tolist())
+    try:
+        tinfo = call_with_timeout(Catalogs.query_criteria, kwargs={"catalog": "Tic", "ID": nov["TIC"].tolist()},
+                                   timeout=CATALOG_TIMEOUT_SEC)
+    except TimeoutError:
+        print(f"\nMAST TIC catalog did not respond within {CATALOG_TIMEOUT_SEC}s.")
+        print("Check your connection (and firewall/proxy settings if any) and try again.")
+        sys.exit(1)
+    except Exception as exc:
+        print(f"\nCould not reach the MAST TIC catalog: {exc}")
+        print("This needs outbound internet access to mast.stsci.edu. Check your connection and try again.")
+        sys.exit(1)
     tinfo = tinfo[["ID", "ra", "dec", "Tmag", "contratio"]].to_pandas()
     tinfo = tinfo.rename(columns={"ID": "TIC", "Tmag": "target_Tmag"})
     tinfo["TIC"] = tinfo["TIC"].astype(int)

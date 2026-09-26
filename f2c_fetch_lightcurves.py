@@ -1,6 +1,7 @@
 ﻿import sys
 import csv
 import time
+import threading
 import warnings
 from pathlib import Path
 
@@ -19,6 +20,51 @@ AUTHOR_PRIORITY = ["SPOC", "TESS-SPOC", "GSFC-ELEANOR-LITE", "QLP", "TGLC", "DIA
 
 MANIFEST_COLUMNS = ["TIC", "Tmag", "status", "author_used", "n_sectors",
                      "n_points", "authors_tried", "error"]
+
+# Neither MAST search nor a light curve download raises a clean error when
+# the remote server just stalls - the call can hang forever with no
+# exception at all. That is invisible on a machine someone is watching
+# (you notice and Ctrl+C), but it hangs an unattended GitHub Actions job
+# for its entire time budget with nothing to show for it. These wrap every
+# such call in a hard wall-clock deadline so a stall becomes a normal,
+# logged failure for that one star instead of blocking every star after it.
+SEARCH_TIMEOUT_SEC = 90
+DOWNLOAD_TIMEOUT_SEC = 300
+
+
+def call_with_timeout(fn, args=(), kwargs=None, timeout=60):
+    """
+    Run fn(*args, **kwargs) with a hard wall-clock deadline. Raises
+    TimeoutError if it does not finish in time.
+
+    Deliberately uses a plain threading.Thread with daemon=True instead of
+    concurrent.futures.ThreadPoolExecutor. ThreadPoolExecutor registers an
+    atexit hook (concurrent.futures.thread._python_exit) that joins every
+    worker thread it ever created before the interpreter is allowed to
+    exit - so if a call actually hung, the *script* would return a clean
+    timeout for that one star, but the whole process would then stall at
+    shutdown waiting for that abandoned thread anyway, defeating the point
+    of adding a timeout in the first place. A daemon thread carries no such
+    obligation: if it is still stuck when everything else finishes, Python
+    exits without waiting for it.
+    """
+    kwargs = kwargs or {}
+    box = {"value": None, "error": None}
+
+    def runner():
+        try:
+            box["value"] = fn(*args, **kwargs)
+        except Exception as e:
+            box["error"] = e
+
+    t = threading.Thread(target=runner, daemon=True)
+    t.start()
+    t.join(timeout)
+    if t.is_alive():
+        raise TimeoutError(f"call did not finish within {timeout}s")
+    if box["error"] is not None:
+        raise box["error"]
+    return box["value"]
 
 
 def ordered_available_authors(search_result):
@@ -43,11 +89,15 @@ def try_search_with_retry(tic, retries=2, delay=5):
     last_err = None
     for attempt in range(retries + 1):
         try:
-            return lk.search_lightcurve(f"TIC {tic}"), None
+            return call_with_timeout(lk.search_lightcurve, args=(f"TIC {tic}",),
+                                      timeout=SEARCH_TIMEOUT_SEC), None
+        except TimeoutError:
+            last_err = TimeoutError(f"search_lightcurve did not respond within "
+                                     f"{SEARCH_TIMEOUT_SEC}s")
         except Exception as e:
             last_err = e
-            if attempt < retries:
-                time.sleep(delay)
+        if attempt < retries:
+            time.sleep(delay)
     return None, last_err
 
 
@@ -78,7 +128,11 @@ def process_one_target(tic: int, tmag: float, lc_dir: Path, plot_dir: Path) -> d
         sr_author = sr[sr.author == author]
 
         try:
-            lcc = sr_author.download_all()
+            lcc = call_with_timeout(sr_author.download_all, timeout=DOWNLOAD_TIMEOUT_SEC)
+        except TimeoutError:
+            last_status = "DOWNLOAD_ERROR"
+            last_error = f"download_all did not finish within {DOWNLOAD_TIMEOUT_SEC}s"
+            continue
         except Exception as e:
             last_status, last_error = "DOWNLOAD_ERROR", str(e)[:200]
             continue

@@ -1,6 +1,7 @@
 ﻿import sys
 import csv
 import time
+import threading
 import warnings
 from pathlib import Path
 
@@ -53,6 +54,49 @@ from f4_novelty import (
 ASASSN_CACHE_COLUMNS = ["TIC", "asassn_queried_ok", "asassn_match", "asassn_name",
                          "asassn_type", "asassn_period", "asassn_error"]
 
+# A remote catalog query can stall forever with no exception at all if the
+# server just stops responding - invisible on a machine someone is watching
+# (they notice and interrupt), but it hangs an unattended GitHub Actions job
+# for its entire time budget. These wrap every such call in a hard
+# wall-clock deadline so a stall becomes a normal, logged failure instead of
+# blocking the whole run. (The two requests.get() calls below already pass
+# their own timeout= and do not need this wrapper.)
+CATALOG_TIMEOUT_SEC = 120
+XMATCH_TIMEOUT_SEC = 120
+VIZIER_QUERY_TIMEOUT_SEC = 60
+CACHED_FETCH_TIMEOUT_SEC = 120
+
+
+def call_with_timeout(fn, args=(), kwargs=None, timeout=60):
+    """
+    Run fn(*args, **kwargs) with a hard wall-clock deadline. Raises
+    TimeoutError if it does not finish in time.
+
+    Uses a plain threading.Thread with daemon=True rather than
+    concurrent.futures.ThreadPoolExecutor: ThreadPoolExecutor registers an
+    atexit hook that joins every worker thread it ever created before the
+    interpreter exits, so a genuinely stuck call would still stall the
+    whole script at shutdown even after "timing out". A daemon thread
+    carries no such obligation - Python exits without waiting for it.
+    """
+    kwargs = kwargs or {}
+    box = {"value": None, "error": None}
+
+    def runner():
+        try:
+            box["value"] = fn(*args, **kwargs)
+        except Exception as e:
+            box["error"] = e
+
+    t = threading.Thread(target=runner, daemon=True)
+    t.start()
+    t.join(timeout)
+    if t.is_alive():
+        raise TimeoutError(f"call did not finish within {timeout}s")
+    if box["error"] is not None:
+        raise box["error"]
+    return box["value"]
+
 
 def query_asassn_with_retry(v, coord, tic, retries=2, delay=3):
     """Query ASAS-SN (II/366/catv2021) for one star, retrying transient
@@ -61,8 +105,11 @@ def query_asassn_with_retry(v, coord, tic, retries=2, delay=3):
     last_err = None
     for attempt in range(retries + 1):
         try:
-            r = v.query_region(coord, radius=MATCH_RADIUS_ARCSEC * u.arcsec,
-                                catalog="II/366/catv2021")
+            r = call_with_timeout(
+                v.query_region, args=(coord,),
+                kwargs={"radius": MATCH_RADIUS_ARCSEC * u.arcsec, "catalog": "II/366/catv2021"},
+                timeout=VIZIER_QUERY_TIMEOUT_SEC,
+            )
             if len(r) > 0 and len(r[0]) > 0:
                 best = r[0][np.argmin(r[0]["_r"])] if "_r" in r[0].colnames else r[0][0]
                 name = best["ASASSN-V"] if "ASASSN-V" in r[0].colnames else None
@@ -104,7 +151,7 @@ def _cached_fetch(label, cache_path, fetch_fn):
     """Fetch a catalog fresh; on failure fall back to the cached copy.
     Returns a DataFrame, or None if neither works."""
     try:
-        df = fetch_fn()
+        df = call_with_timeout(fetch_fn, timeout=CACHED_FETCH_TIMEOUT_SEC)
         df.to_csv(cache_path, index=False)
         print(f"  {label}: downloaded {len(df)} rows (cached to {cache_path.name})")
         return df
@@ -236,7 +283,12 @@ def main():
     tic_ids = trustworthy["TIC"].tolist()
     print(f"\nQuerying MAST TIC catalog for {len(tic_ids)} stars' coordinates...")
     try:
-        tic_info = Catalogs.query_criteria(catalog="Tic", ID=tic_ids)
+        tic_info = call_with_timeout(Catalogs.query_criteria, kwargs={"catalog": "Tic", "ID": tic_ids},
+                                      timeout=CATALOG_TIMEOUT_SEC)
+    except TimeoutError:
+        print(f"\nMAST TIC catalog did not respond within {CATALOG_TIMEOUT_SEC}s.")
+        print("Check your connection (and firewall/proxy settings if any) and try again.")
+        sys.exit(1)
     except Exception as exc:
         print(f"\nCould not reach the MAST TIC catalog: {exc}")
         print("This needs outbound internet access to mast.stsci.edu. Check your connection and try again.")
@@ -263,13 +315,21 @@ def main():
     for key, cat2 in xmatch_catalogs.items():
         print(f"\nCross-matching against {cat2} (radius={MATCH_RADIUS_ARCSEC} arcsec)...")
         try:
-            xm = XMatch.query(cat1=cat1, cat2=cat2, max_distance=MATCH_RADIUS_ARCSEC * u.arcsec,
-                               colRA1="ra", colDec1="dec")
+            xm = call_with_timeout(
+                XMatch.query,
+                kwargs={"cat1": cat1, "cat2": cat2, "max_distance": MATCH_RADIUS_ARCSEC * u.arcsec,
+                        "colRA1": "ra", "colDec1": "dec"},
+                timeout=XMATCH_TIMEOUT_SEC,
+            )
             xm_df = xm.to_pandas()
             if len(xm_df) > 0:
                 xm_df = xm_df.sort_values("angDist").drop_duplicates(subset="TIC", keep="first")
             xmatch_results[key] = xm_df
             print(f"  {len(xm_df)} / {len(merged)} stars matched.")
+        except TimeoutError:
+            print(f"  FAILED (did not respond within {XMATCH_TIMEOUT_SEC}s). "
+                  f"Treating as zero matches for this catalog and continuing.")
+            xmatch_results[key] = pd.DataFrame()
         except Exception as exc:
             print(f"  FAILED ({exc}). Treating as zero matches for this catalog and continuing.")
             xmatch_results[key] = pd.DataFrame()

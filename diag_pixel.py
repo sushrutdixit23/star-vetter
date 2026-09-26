@@ -3,6 +3,7 @@ import csv
 import json
 import re
 import time
+import threading
 import warnings
 from pathlib import Path
 
@@ -96,6 +97,47 @@ RESULT_COLUMNS = ["TIC", "role", "verdict", "sector", "lc_pts_in_sector", "t0_sh
                   "nearest_capable_TIC", "nearest_capable_dist_px", "nearest_capable_dTmag",
                   "n_capable_in_cutout", "note"]
 
+# A remote query or download can stall forever with no exception at all if
+# the server just stops responding - invisible on a machine someone is
+# watching (they notice and interrupt), but it hangs an unattended GitHub
+# Actions job for its entire time budget. These wrap every such call in a
+# hard wall-clock deadline so a stall becomes a normal, logged failure
+# instead of blocking the whole run.
+TESSCUT_SEARCH_TIMEOUT_SEC = 90
+TESSCUT_DOWNLOAD_TIMEOUT_SEC = 180
+CATALOG_TIMEOUT_SEC = 120
+
+
+def call_with_timeout(fn, args=(), kwargs=None, timeout=60):
+    """
+    Run fn(*args, **kwargs) with a hard wall-clock deadline. Raises
+    TimeoutError if it does not finish in time.
+
+    Uses a plain threading.Thread with daemon=True rather than
+    concurrent.futures.ThreadPoolExecutor: ThreadPoolExecutor registers an
+    atexit hook that joins every worker thread it ever created before the
+    interpreter exits, so a genuinely stuck call would still stall the
+    whole script at shutdown even after "timing out". A daemon thread
+    carries no such obligation - Python exits without waiting for it.
+    """
+    kwargs = kwargs or {}
+    box = {"value": None, "error": None}
+
+    def runner():
+        try:
+            box["value"] = fn(*args, **kwargs)
+        except Exception as e:
+            box["error"] = e
+
+    t = threading.Thread(target=runner, daemon=True)
+    t.start()
+    t.join(timeout)
+    if t.is_alive():
+        raise TimeoutError(f"call did not finish within {timeout}s")
+    if box["error"] is not None:
+        raise box["error"]
+    return box["value"]
+
 
 def sector_of(mission_str):
     m = re.search(r"Sector (\d+)", str(mission_str))
@@ -113,7 +155,13 @@ def approx_sector_range(sector):
 def pick_cutout(tic, lc_times):
     """Download the cutout for the sector where the light curve has the MOST
     data points - the sector that anchors the BLS ephemeris (fix (a))."""
-    sr = lk.search_tesscut(f"TIC {tic}")
+    try:
+        sr = call_with_timeout(lk.search_tesscut, args=(f"TIC {tic}",),
+                                timeout=TESSCUT_SEARCH_TIMEOUT_SEC)
+    except TimeoutError:
+        return None, f"search_tesscut did not respond within {TESSCUT_SEARCH_TIMEOUT_SEC}s"
+    except Exception as exc:
+        return None, f"search_tesscut failed: {repr(exc)[:120]}"
     if len(sr) == 0:
         return None, "no TESScut data"
     cands = []
@@ -130,7 +178,11 @@ def pick_cutout(tic, lc_times):
         if n_lc < MIN_LC_PTS_IN_SECTOR:
             break
         try:
-            tpf = sr[i].download(cutout_size=CUTOUT_SIZE, quality_bitmask="default")
+            tpf = call_with_timeout(sr[i].download, kwargs={"cutout_size": CUTOUT_SIZE, "quality_bitmask": "default"},
+                                     timeout=TESSCUT_DOWNLOAD_TIMEOUT_SEC)
+        except TimeoutError:
+            last_note = f"download did not finish within {TESSCUT_DOWNLOAD_TIMEOUT_SEC}s (sector {s})"
+            continue
         except Exception as exc:
             last_note = f"download failed sector {s}: {repr(exc)[:120]}"
             continue
@@ -209,8 +261,11 @@ def refine_t0(lc, a, b, period, t0, duration):
 
 
 def neighbours_in_pixels(tpf, ra, dec, tic, target_tmag, depth):
-    r = Catalogs.query_region(SkyCoord(ra * u.deg, dec * u.deg),
-                              radius=NBR_RADIUS_ARCSEC * u.arcsec, catalog="TIC")
+    r = call_with_timeout(
+        Catalogs.query_region, args=(SkyCoord(ra * u.deg, dec * u.deg),),
+        kwargs={"radius": NBR_RADIUS_ARCSEC * u.arcsec, "catalog": "TIC"},
+        timeout=CATALOG_TIMEOUT_SEC,
+    )
     df = r[["ID", "ra", "dec", "Tmag"]].to_pandas().dropna(subset=["Tmag"])
     df["ID"] = df["ID"].astype(int)
     # capable = bright enough to produce the observed dip (same test as diag_blend)
@@ -415,7 +470,17 @@ def main():
            .sort_values("bls_snr", ascending=False).head(N_TOP)["TIC"].astype(int).tolist())
     targets = [(t, "control") for t in CONTROLS if t in vet.index] + [(t, "candidate") for t in top]
 
-    info = Catalogs.query_criteria(catalog="Tic", ID=[t for t, _ in targets])
+    try:
+        info = call_with_timeout(Catalogs.query_criteria, kwargs={"catalog": "Tic", "ID": [t for t, _ in targets]},
+                                  timeout=CATALOG_TIMEOUT_SEC)
+    except TimeoutError:
+        print(f"\nMAST TIC catalog did not respond within {CATALOG_TIMEOUT_SEC}s.")
+        print("Check your connection (and firewall/proxy settings if any) and try again.")
+        sys.exit(1)
+    except Exception as exc:
+        print(f"\nCould not reach the MAST TIC catalog: {exc}")
+        print("This needs outbound internet access to mast.stsci.edu. Check your connection and try again.")
+        sys.exit(1)
     info = info[["ID", "ra", "dec", "Tmag"]].to_pandas()
     info["ID"] = info["ID"].astype(int)
     info = info.set_index("ID")
