@@ -2,12 +2,12 @@ import Link from "next/link";
 import HeaderSearch from "./HeaderSearch";
 import { LogoMark } from "./icons";
 
-// "Sky" joins this list once /sky exists - not linking to a page that
-// does not exist yet. Standouts and Glossary moved to the footer: still
-// one click away, without crowding the four sections this nav represents.
+// Standouts and Glossary moved to the footer: still one click away,
+// without crowding the four sections this nav represents.
 const NAV = [
   { href: "/", label: "Journal" },
   { href: "/candidates", label: "Candidates" },
+  { href: "/sky", label: "Sky" },
   { href: "/about", label: "Instrument" },
 ];
 
