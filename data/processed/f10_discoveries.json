@@ -1,62 +1,46 @@
 {
   "discoveries": [
     {
-      "blurb": "This binary star system sets the record for deepest eclipse at 33.08% dimming. With an orbital period of 30.3 days, the primary eclipse is detected with exceptional clarity at signal-to-noise 343.5. A secondary eclipse at 114.8 sigma provides additional confirmation that this is a genuine eclipsing binary system.",
+      "blurb": "This candidate plunges to a remarkable 33% dimming at primary eclipse, the deepest in this sample. Its 30-day orbital period and strong detection signal (343.5 sigma) make the eclipse pattern unmistakable in TESS data. A secondary eclipse is also clearly visible, adding to the candidate's robust light-curve signature.",
       "category": "deepest_eclipse",
       "category_label": "Deepest eclipse",
-      "headline": "Star dims by one-third during eclipse",
+      "headline": "Deepest eclipse dims star by one-third",
       "stat_text": "33.1% dimming",
       "tic": 349701853
     },
     {
-      "blurb": "At 70.8 days, this system has the longest orbital period in our showcase. The two stars take more than two months to complete one orbit around each other. Despite the extended period, the primary eclipse is clearly detected at signal-to-noise 225.5, with a secondary eclipse at 113.7 sigma providing strong confirmation.",
+      "blurb": "At 28.9 days, this candidate has one of the longest orbital periods detected in the sample. Despite a subtle primary eclipse of just 0.11%, the signal stands out sharply in automated analysis. The secondary eclipse is also detected, suggesting a well-behaved binary system with an extended orbit.",
       "category": "longest_period",
       "category_label": "Longest orbital period",
-      "headline": "Binary stars in slowest cosmic waltz",
-      "stat_text": "70.8 day orbit",
-      "tic": 86956236
+      "headline": "Longest orbital period stretches nearly a month",
+      "stat_text": "28.9 day orbit",
+      "tic": 309656476
     },
     {
-      "blurb": "This binary star system completes a full orbit in just 0.721 days, the shortest orbital period in our collection. The two stars race around each other so quickly they would complete 506 orbits in a single year. The primary eclipse reaches 7.88% depth, clearly detectable despite the brief orbital period.",
+      "blurb": "This candidate orbits its partner in just 0.72 days, ranking among the shortest orbital periods found by this pipeline. The 7.88% eclipse depth and strong 101-sigma detection reveal a close binary system where the stars are in rapid orbital motion, creating periodic dimming visible across many TESS observations.",
       "category": "shortest_period",
       "category_label": "Shortest orbital period",
-      "headline": "Rapidly orbiting pair complete lap daily",
+      "headline": "Ultra-tight orbit completes in less than a day",
       "stat_text": "0.721 day orbit",
       "tic": 380943251
     },
     {
-      "blurb": "This system achieves a machine learning screening score of 0.989, the highest in our showcase. Its characteristics are unmistakably clear: a 33.05% eclipse depth, extraordinary detection significance of 5534.5 signal-to-noise, and a secondary eclipse at 1106.6 sigma. Three precisely timed eclipses confirm the orbital period of 54.6 days.",
+      "blurb": "With an ML screening score of 0.957 out of 1.0, this candidate represents the highest confidence ranking in automated vetting. Its 5.3-day orbit shows a dramatic 29.8% eclipse depth backed by an exceptional 1081-sigma detection signal, suggesting a stellar pair with minimal noise or interference in the light curve.",
       "category": "highest_ml_score",
       "category_label": "Highest ML screening score",
-      "headline": "Machine learning algorithm's top-rated candidate",
-      "stat_text": "ML score 0.989",
-      "tic": 251898081
+      "headline": "Machine learning score reaches near-perfect confidence",
+      "stat_text": "ML score 0.957",
+      "tic": 437150434
     },
     {
-      "blurb": "This system stands out as our most novel find - it does not appear in any of six checked catalogs of known variable stars. Despite its shallow 1.63% eclipse depth, it was identified through 140 individually timed eclipses with a strong detection signal of 2133.7 signal-to-noise over its 1.52-day orbit.",
-      "category": "most_novel",
-      "category_label": "Most novel find",
-      "headline": "Newly discovered binary hiding in plain sight",
-      "stat_text": "not in any of the checked catalogs",
-      "tic": 467214801
-    },
-    {
-      "blurb": "The secondary eclipse of this system reaches 418.3 sigma, the clearest detection of a secondary eclipse in our showcase. This occurs when the smaller star passes behind the primary over a 14.8-day orbit. Fifty-two individually timed eclipses track the system with precision, while the primary eclipse reaches 13.17% depth.",
+      "blurb": "The secondary eclipse of this candidate stands out at an extraordinary 418.3 sigma, the most significant in this sample. Occurring at orbital phase 0.50, it indicates a perfectly symmetric binary and reveals substantial heat or reflected light from the eclipsed star. The strong primary eclipse (507-sigma detection) completes a exceptionally clean photometric signature.",
       "category": "clearest_secondary",
       "category_label": "Clearest secondary eclipse",
-      "headline": "Secondary eclipse shines with clarity",
+      "headline": "Secondary eclipse shines with crystalline clarity",
       "stat_text": "secondary eclipse at 418.3 sigma",
       "tic": 237115819
-    },
-    {
-      "blurb": "Three precisely timed eclipses of this 6.7-day binary reveal timing predictions matched almost perfectly to observations. The reduced chi-square value of 0.07 is the tightest fit in our showcase, indicating the orbital period and eclipse times follow mathematical predictions with remarkable precision. The 17.56% primary eclipse depth is clearly detected.",
-      "category": "tightest_timing",
-      "category_label": "Most tightly timed orbit",
-      "headline": "Orbital rhythm matches predictions perfectly",
-      "stat_text": "3 eclipses timed, reduced chi-square 0.07",
-      "tic": 348884775
     }
   ],
-  "generated_at": "2026-09-27T11:37:40.208874+00:00",
+  "generated_at": "2026-09-27T14:25:05.004519+00:00",
   "model": "claude-haiku-4-5-20251001"
 }

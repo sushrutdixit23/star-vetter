@@ -2,17 +2,22 @@
 f10_generate_discoveries.py
 
 Picks a handful of standout candidates by real, objective criteria already
-computed by the pipeline (deepest eclipse, most novel, highest ML score,
-longest/shortest period, clearest secondary eclipse, most tightly timed
-orbit), one candidate per category, then calls the Claude API ONCE for all
-of them together to write a short "why this is remarkable" paragraph per
-pick - grounded strictly in that candidate's own numbers, never invented.
+computed by the pipeline (deepest eclipse, highest ML score, longest/
+shortest period, clearest secondary eclipse), one candidate per category,
+then calls the Claude API ONCE for all of them together to write a short
+"why this stands out" paragraph per pick - grounded strictly in that
+candidate's own numbers, never invented.
 
-Cost control: like f9_generate_about_content.py, this is a one-time batch
-call, not per-visitor. If data/processed/f10_discoveries.json already
-exists, no API call is made at all. Delete that file (or pass --force) to
-re-pick and regenerate, for example after a run adds a lot of new confirmed
-candidates that might unseat the current picks.
+Only CLEAN-tier candidates are eligible picks: a candidate with any open
+caveat should never be framed as a standout, since there is nothing to
+reconcile a write-up against if the pipeline itself has already flagged a
+doubt about it.
+
+Cost control: this is a one-time batch call, not per-visitor. If
+data/processed/f10_discoveries.json already exists, no API call is made at
+all. Delete that file (or pass --force) to re-pick and regenerate, for
+example after a run adds a lot of new confirmed candidates that might
+unseat the current picks.
 
 Requires:
   ANTHROPIC_API_KEY environment variable
@@ -56,21 +61,8 @@ def score_ml(rec):
     return rec["ml_score"] if rec["ml_score"] is not None else -1
 
 
-def score_novel(rec):
-    # Fewest catalog matches wins; break ties with BLS signal-to-noise.
-    return (-rec["catalog_matches"], rec["bls_snr"])
-
-
 def score_secondary(rec):
     return rec["secondary_sigma"] if rec["secondary_sigma"] is not None else -1
-
-
-def score_timing(rec):
-    # Lowest reduced chi-square with a real timing solution (at least 3
-    # eclipses timed) wins - the tightest confirmation the period holds up.
-    if rec["timing_n"] is None or rec["timing_n"] < 3 or rec["timing_chi2"] is None:
-        return None
-    return -rec["timing_chi2"]
 
 
 CATEGORIES = [
@@ -82,16 +74,18 @@ CATEGORIES = [
      lambda r: f"{r['period_days']:.3f} day orbit"),
     ("highest_ml_score", "Highest ML screening score", score_ml,
      lambda r: f"ML score {r['ml_score']:.3f}"),
-    ("most_novel", "Most novel find", score_novel,
-     lambda r: "not in any of the checked catalogs" if r["catalog_matches"] == 0
-     else f"matched in {r['catalog_matches']} catalog(s)"),
     ("clearest_secondary", "Clearest secondary eclipse", score_secondary,
      lambda r: f"secondary eclipse at {r['secondary_sigma']:.1f} sigma"),
-    ("tightest_timing", "Most tightly timed orbit", score_timing,
-     lambda r: f"{r['timing_n']} eclipses timed, reduced chi-square {r['timing_chi2']:.2f}"),
 ]
 
-PROMPT_TEMPLATE = """You are writing short showcase blurbs for a "Discoveries" page on Star Vetter, a public science website that automatically vets candidate eclipsing binary stars found in TESS satellite data. For each candidate below, write a headline (5-8 words) and a blurb (60-90 words) explaining why THIS candidate is a standout example of its named category. Use ONLY the facts given for that candidate - do not invent, estimate, or add any number, fact, or claim not explicitly stated. Use only standard ASCII characters - no em dashes, no smart quotes (use a hyphen or comma instead, straight quotes only). Plain, accurate, engaging language for a curious non-expert. Avoid the word "exciting".
+PROMPT_TEMPLATE = """You are writing short showcase blurbs for a "Standouts" page on Star Vetter, a public science website that automatically vets candidate eclipsing binary stars found in TESS satellite data. For each candidate below, write a headline (5-8 words) and a blurb (60-90 words) explaining why THIS candidate is a standout example of its named category. Use ONLY the facts given for that candidate - do not invent, estimate, or add any number, fact, or claim not explicitly stated.
+
+Hard rules:
+- Do not use the words "discovery", "genuine", "confirmed", "confirms", "follow-up", "ground-based", or "astronomers".
+- Do not claim or imply any verification beyond what the facts state. This pipeline uses only automated TESS photometry and pixel-level image analysis - nothing else, no other telescopes, no human review.
+- Call it a "candidate", never a confirmed discovery or a confirmed eclipsing binary.
+- Use only standard ASCII characters - no em dashes, no smart quotes (use a hyphen or comma instead, straight quotes only).
+- Plain, accurate, engaging language for a curious non-expert. Avoid the word "exciting".
 
 Candidates:
 {candidates_block}
@@ -107,7 +101,6 @@ def build_record(tic, cand, detail):
     eph = cand["ephemeris"]
     gates = cand["gates"]
     novelty = cand["novelty"]
-    timing = detail.get("timing") if detail else None
     secondary = detail.get("secondary") if detail else None
     return {
         "tic": tic,
@@ -119,8 +112,6 @@ def build_record(tic, cand, detail):
         "n_catalogs": len(novelty["catalogs"]),
         "secondary_sigma": secondary["sigma"] if secondary and secondary.get("detected") else None,
         "secondary_phase": secondary["phase"] if secondary and secondary.get("detected") else None,
-        "timing_n": timing["n"] if timing else None,
-        "timing_chi2": timing.get("chi2_red") if timing else None,
         "odd_even_z": gates["odd_even_z"],
     }
 
@@ -141,9 +132,7 @@ def facts_for_prompt(label, stat_text, rec):
     lines.append(f"- Catalog check: matched in {rec['catalog_matches']} of {rec['n_catalogs']} known variable-star catalogs")
     if rec["secondary_sigma"] is not None:
         lines.append(f"- Secondary eclipse: detected at {rec['secondary_sigma']:.1f} sigma, phase {rec['secondary_phase']:.2f}")
-    if rec["timing_n"]:
-        extra = f", reduced chi-square {rec['timing_chi2']:.2f}" if rec["timing_chi2"] is not None else ""
-        lines.append(f"- Eclipse timing: {rec['timing_n']} eclipses individually timed{extra}")
+    lines.append("- Vetting tier: CLEAN (no open caveats on this candidate)")
     return "\n".join(lines)
 
 
@@ -180,17 +169,23 @@ def main():
     tics = [int(c["tic"]) for c in index["candidates"]]
 
     records = {}
+    skipped_non_clean = 0
     for tic in tics:
         cand_path = cand_dir / f"TIC{tic}.json"
         if not cand_path.exists():
             continue
         cand = json.loads(cand_path.read_text(encoding="utf-8"))
+        if cand.get("tier") != "CLEAN":
+            skipped_non_clean += 1
+            continue
         detail_path = detail_dir / f"TIC{tic}.json"
         detail = json.loads(detail_path.read_text(encoding="utf-8")) if detail_path.exists() else None
         records[tic] = build_record(tic, cand, detail)
 
+    print(f"{len(records)} CLEAN-tier candidate(s) eligible ({skipped_non_clean} excluded for having open caveats).")
+
     if not records:
-        print("No candidates found - nothing to pick from. Run export_site_data.py first.")
+        print("No CLEAN-tier candidates found - nothing to pick from.")
         return
 
     used_tics = set()
@@ -229,7 +224,7 @@ def main():
     candidates_block = "\n\n".join(p["facts"] for p in picks)
     prompt = PROMPT_TEMPLATE.format(candidates_block=candidates_block)
 
-    print(f"Calling Claude API once to write {len(picks)} discovery blurb(s)...")
+    print(f"Calling Claude API once to write {len(picks)} standout blurb(s)...")
     client = anthropic.Anthropic()
     resp = client.messages.create(
         model=MODEL,
@@ -271,7 +266,7 @@ def main():
     cache_path.parent.mkdir(parents=True, exist_ok=True)
     cache_path.write_text(json.dumps(out, indent=2, ensure_ascii=True, sort_keys=True), encoding="utf-8", newline="\n")
     site_out_path.write_text(json.dumps(out, indent=2, ensure_ascii=True), encoding="utf-8", newline="\n")
-    print(f"Wrote {len(discoveries)} discoveries to {cache_path}")
+    print(f"Wrote {len(discoveries)} standouts to {cache_path}")
     print(f"Wrote {site_out_path}")
 
 

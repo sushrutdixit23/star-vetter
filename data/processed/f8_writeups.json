@@ -1,8 +1,8 @@
 {
   "111149941": {
-    "generated_at": "2026-09-27T10:29:35.386656+00:00",
-    "model": "claude-haiku-4-5-20251001",
-    "writeup": "TIC 111149941 is a newly discovered eclipsing binary star with an orbital period of 5.2401 days. The system shows a primary eclipse that dims the star by 0.05 percent, detected with a signal-to-noise ratio of 10.2. A secondary eclipse was not detected. While the difference-imaging analysis confirms the eclipse with a peak signal-to-noise of 9.7, the star's simple aperture photometry did not independently detect the dimming, and sensitivity tests showed inconsistent results. This object does not appear in any of six major variable-star catalogs, making it a genuine discovery. The machine-learning pipeline rated it as likely to be a real target with a score of 0.69 out of 1.0."
+    "generated_at": "2026-09-27T14:23:42.399283+00:00",
+    "model": "template-only (manual correction, see patch_bad_writeups.py)",
+    "writeup": "TIC 111149941 shows a 0.081% dip in TESS photometry, repeating every 5.2401 days (BLS signal-to-noise 10.2). No statistically significant secondary dip was detected. This pipeline's own automated cross-checks flag open questions about this candidate: The difference-image detection is strong (peak SNR 9.7, compactness 0.75) but the star's own simple-aperture photometry shows no dip, and aperture/quality-mask sensitivity tests were inconsistent. Confirmed by pixel imaging; not independently confirmed by simple photometry. Because of that, this should be read as an unverified candidate, not a confirmed eclipsing binary."
   },
   "119459681": {
     "generated_at": "2026-09-27T10:29:22.156986+00:00",
@@ -130,9 +130,9 @@
     "writeup": "TIC 330901906 is a newly discovered eclipsing binary star with an orbital period of 3.7321 days. The system shows a primary eclipse causing a 0.50% dimming of light, though no secondary eclipse has been detected. Ground-based observations confirmed the discovery with strong statistical significance. However, the star's location on the TESS detector presents challenges: it sits only 0.066 pixels away from a nearby bright star, within the instrument's known centroid measurement uncertainty. This proximity makes it difficult to definitively separate TIC 330901906's signal from its neighbor using TESS data alone. Despite this limitation, the system represents a genuine addition to our catalog of known eclipsing binaries, having been absent from six major variable-star databases."
   },
   "348884775": {
-    "generated_at": "2026-09-27T10:30:29.878368+00:00",
-    "model": "claude-haiku-4-5-20251001",
-    "writeup": "TIC 348884775 is a newly discovered eclipsing binary star with an orbital period of 6.7316 days. When the primary star passes in front of its companion, the system dims by 14.75 percent. Astronomers also detected a secondary eclipse at orbital phase 0.43, where the companion star crosses in front of the primary. The detection is highly significant, with a signal-to-noise ratio of 111.3 from automated scanning algorithms. Ground-based follow-up observations confirmed the signal at difference imaging peak signal-to-noise of 17.8. This system does not appear in any of six major variable-star catalogs, making it a genuine new discovery. The candidate passed all data quality checks without flags, confirming the reliability of this find."
+    "generated_at": "2026-09-27T14:23:42.389531+00:00",
+    "model": "template-only (manual correction, see patch_bad_writeups.py)",
+    "writeup": "TIC 348884775 shows a 17.557% dip in TESS photometry, repeating every 6.7316 days (BLS signal-to-noise 111.3). A secondary dip was also detected, at 73.5 sigma and phase 0.44. This is an automated result from TESS photometry and pixel-level image analysis only - no other observations have been made of this target."
   },
   "349701853": {
     "generated_at": "2026-09-27T10:29:45.511112+00:00",
@@ -225,9 +225,9 @@
     "writeup": "Astronomers have discovered a previously unknown eclipsing binary star system called TIC 446746441, where two stars orbit each other every 2.3 days. When the primary star passes in front of its companion, the system dims by 14.28 percent - a dip large enough to be reliably detected. The discovery emerged from careful analysis of telescope data, with exceptionally strong statistical confidence and verification through multiple independent methods. Notably, no secondary eclipse was observed, suggesting the companion star either does not cross in front of the primary or does so without causing a detectable dimming. This system represents a genuine addition to our catalog of known binary stars, having escaped detection in all previous surveys."
   },
   "467214801": {
-    "generated_at": "2026-09-27T10:29:40.126579+00:00",
-    "model": "claude-haiku-4-5-20251001",
-    "writeup": "TIC 467214801 is a newly discovered eclipsing binary star system with an orbital period of 1.521701 days. The primary eclipse causes the system to dim by 0.95 percent, while no secondary eclipse was detected. This candidate was identified through automated analysis of survey data and does not appear in any existing variable-star catalog, making it a genuine new discovery. The detection has extremely high statistical confidence, with a signal-to-noise ratio of 2133.7. Follow-up observations using difference imaging further confirmed the signal's authenticity, pinpointing it precisely at the target's location. The system's characteristics suggest it represents a real binary star worthy of additional study."
+    "generated_at": "2026-09-27T14:23:42.395156+00:00",
+    "model": "template-only (manual correction, see patch_bad_writeups.py)",
+    "writeup": "TIC 467214801 shows a 1.626% dip in TESS photometry, repeating every 1.5217 days (BLS signal-to-noise 2133.7). A secondary dip was also detected, at 69.2 sigma and phase 0.66. This pipeline's own automated cross-checks flag open questions about this candidate: Odd/even eclipse-depth z-score is 5.40 (gate > 3.0): alternating eclipses differ significantly in depth, the signature of a true period double what BLS found. Pixel-check confirmation and eclipse timing are unaffected - report the corrected period, 1.521701 d, in any write-up. No eclipse at 15 of 162 covered epochs where the 1.52170 d period predicts one (each under half the typical depth, > 5 sigma below it). The period is probably wrong - the dips seen may be separate eclipses of a longer-period system. The light curve is dominated by a smooth sinusoid with period 0.25361 d (Lomb-Scargle power 0.78); the adopted 1.52170 d is 6.00 x that. The true period is more likely 0.25361 d (pulsation or spots) or 0.50722 d (contact binary), and the 'eclipses' may not be eclipses. Because of that, this should be read as an unverified candidate, not a confirmed eclipsing binary."
   },
   "66716482": {
     "generated_at": "2026-09-27T10:30:01.629290+00:00",

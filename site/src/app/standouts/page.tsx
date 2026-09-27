@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { getDiscoveries } from "@/lib/data";
 
-export default function DiscoveriesPage() {
+export default function StandoutsPage() {
   const data = getDiscoveries();
-  const discoveries = data?.discoveries ?? [];
+  const standouts = data?.discoveries ?? [];
 
   return (
     <main className="mx-auto w-full max-w-4xl flex-1 px-6 py-12 sm:py-16">
@@ -11,21 +11,23 @@ export default function DiscoveriesPage() {
         Showcase
       </p>
       <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-        Discoveries
+        Standouts
       </h1>
       <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/60">
-        A handful of standouts from the confirmed candidates, picked by real
-        objective measurements the pipeline already computed for every
-        star - not curated by hand. Each one below leads its category.
+        A handful of standout candidates, picked by real objective
+        measurements the pipeline already computed - not curated by hand.
+        Only candidates with no open caveats are eligible, and each one
+        below leads its category. These are candidates, not confirmed
+        eclipsing binaries.
       </p>
 
-      {discoveries.length === 0 ? (
+      {standouts.length === 0 ? (
         <p className="mt-12 text-sm text-white/50">
           Run f10_generate_discoveries.py to populate this page.
         </p>
       ) : (
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
-          {discoveries.map((d) => (
+          {standouts.map((d) => (
             <Link
               key={d.tic}
               href={`/candidates/${d.tic}`}

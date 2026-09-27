@@ -37,7 +37,15 @@ except ImportError:
 MODEL = "claude-haiku-4-5-20251001"
 MAX_TOKENS = 220
 
-PROMPT_TEMPLATE = """You are writing one short paragraph (80-120 words) for a public science website, explaining a candidate eclipsing binary star to a curious non-expert reader. Use ONLY the facts given below - do not invent, estimate, or add any number, fact, or claim that is not explicitly stated here. Do not use the word "exciting" or "amazing". Use only standard ASCII characters - no em dashes, no smart quotes (use a hyphen or comma instead, and straight quotes only). Plain, accurate, engaging language. No headings, no bullet points, just the paragraph.
+PROMPT_TEMPLATE = """You are writing one short paragraph (80-120 words) for a public science website, explaining a candidate eclipsing binary star to a curious non-expert reader. Use ONLY the facts given below - do not invent, estimate, or add any number, fact, or claim that is not explicitly stated here.
+
+Hard rules:
+- Do not use the words "discovery", "genuine", "confirmed", "confirms", "follow-up", "ground-based", or "astronomers".
+- Do not claim or imply any verification beyond what the facts state. This pipeline uses only automated TESS photometry and pixel-level image analysis - nothing else, no other telescopes, no human review.
+- Call it a "candidate", never a confirmed discovery or a confirmed eclipsing binary.
+- If "Data quality flags" below lists anything, your paragraph MUST mention that open question in plain words, and must not describe the result as clean, genuine, or settled.
+- Do not use the word "exciting" or "amazing". Use only standard ASCII characters - no em dashes, no smart quotes (use a hyphen or comma instead, and straight quotes only).
+- Plain, accurate, engaging language. No headings, no bullet points, just the paragraph.
 
 Facts about TIC {tic}:
 - Orbital period: {period_days:.4f} days
@@ -49,7 +57,6 @@ Facts about TIC {tic}:
 {ml_line}- Data quality flags: {flags_text}
 
 Write the paragraph now."""
-
 
 def build_prompt(tic, cand, ml_score):
     eph = cand["ephemeris"]
@@ -88,7 +95,6 @@ def build_prompt(tic, cand, ml_score):
         secondary_text=secondary_text, bls_snr=eph["bls_snr"], pixel_text=pixel_text,
         novelty_text=novelty_text, ml_line=ml_line, flags_text=flags_text,
     )
-
 
 def main():
     if len(sys.argv) != 2:
@@ -152,7 +158,6 @@ def main():
     out_path.write_text(json.dumps(cache, indent=2, ensure_ascii=True, sort_keys=True),
                          encoding="utf-8", newline="\n")
     print(f"Generated {done} new write-up(s). Wrote {out_path}")
-
 
 if __name__ == "__main__":
     main()
