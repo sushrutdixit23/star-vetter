@@ -6,14 +6,17 @@
 
 :root,
 [data-theme="dark"] {
-  --canvas: #05070c;
-  --panel: #0a0e16;
-  --panel-2: #0e131d;
-  --line: #1a2130;
-  --fg: #e8eaf0;
-  --muted: #9aa3b2;
-  --faint: #5b6475;
-  --accent: #7dd3fc;
+  --canvas: #07090f;
+  --panel: #0d1220;
+  --panel-2: #11172a;
+  --line: #232a3d;
+  --fg: #f2eee6;
+  --muted: #9a9fb0;
+  --faint: #5f6579;
+  --accent: #93b9ff;
+  --accent-cool: #ffb061;
+  --accent-kill: #ff7262;
+  --grain: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyNDAnIGhlaWdodD0nMjQwJz48ZmlsdGVyIGlkPSduJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nMC45JyBudW1PY3RhdmVzPScyJyBzdGl0Y2hUaWxlcz0nc3RpdGNoJy8+PGZlQ29sb3JNYXRyaXggdmFsdWVzPScwIDAgMCAwIDEgIDAgMCAwIDAgMSAgMCAwIDAgMCAxICAwIDAgMCAwLjA1IDAnLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyBmaWx0ZXI9J3VybCgjbiknLz48L3N2Zz4=");
 }
 
 [data-theme="light"] {
@@ -36,6 +39,8 @@
   --color-muted: var(--muted);
   --color-faint: var(--faint);
   --color-accent: var(--accent);
+  --color-accent-cool: var(--accent-cool);
+  --color-accent-kill: var(--accent-kill);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-display: var(--font-display-serif);
@@ -53,4 +58,24 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.28em;
   font-variant-numeric: lining-nums;
+}
+
+/* Tracked small caps used for nav links and section kickers. */
+.nav-caps {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 500;
+}
+
+/* Faint film-grain overlay, fixed over the whole page. Matches the grain
+   used in the LinkedIn carousel and technical overview exports. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: var(--grain);
 }

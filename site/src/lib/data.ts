@@ -10,6 +10,7 @@ import type {
   PipelineStats,
   SiteIndex,
   SiteMeta,
+  Timeseries,
 } from "./types";
 import type { Summary } from "@/components/dash/DetailPanels";
 
@@ -103,6 +104,15 @@ export function getDetail(tic: number): Detail | null {
   const p = path.join(DATA_DIR, "detail", `TIC${tic}.json`);
   if (!fs.existsSync(p)) return null;
   return JSON.parse(fs.readFileSync(p, "utf-8")) as Detail;
+}
+
+// timeseries/TIC{n}.json does not exist yet - see the comment on the
+// Timeseries type. Optional, same defensive pattern as every other getter
+// in this file: callers get null and show a placeholder until it ships.
+export function getTimeseries(tic: number): Timeseries | null {
+  const p = path.join(DATA_DIR, "timeseries", `TIC${tic}.json`);
+  if (!fs.existsSync(p)) return null;
+  return JSON.parse(fs.readFileSync(p, "utf-8")) as Timeseries;
 }
 
 // The one place a Candidate (export_site_data.py's shape) becomes a Summary

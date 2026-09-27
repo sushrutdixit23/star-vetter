@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Cormorant_Garamond } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import { getAllTics } from "@/lib/data";
 import "./globals.css";
@@ -14,10 +14,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const displaySerif = Cormorant_Garamond({
+const displaySerif = Instrument_Serif({
   variable: "--font-display-serif",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {

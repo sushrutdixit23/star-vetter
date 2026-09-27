@@ -1,19 +1,19 @@
-// Colour maps for the pixel images. INFERNO is sampled from matplotlib's
-// "inferno" at 11 evenly spaced points and linearly interpolated between them.
+// Colour maps for the pixel images. RAMP runs from near-black through blue
+// to white, matching the site's night palette (it replaces the old
+// matplotlib "inferno" ramp, whose purple/orange did not fit the theme).
 type RGB = [number, number, number];
 
-const INFERNO: RGB[] = [
-  [0, 0, 4], [22, 11, 57], [66, 10, 104], [106, 23, 110], [147, 38, 103],
-  [188, 55, 84], [221, 81, 58], [243, 120, 25], [252, 165, 10],
-  [246, 215, 70], [252, 255, 164],
+const RAMP: RGB[] = [
+  [7, 11, 24], [17, 22, 46], [28, 34, 64], [58, 67, 99], [90, 99, 144],
+  [140, 154, 199], [180, 191, 222], [201, 207, 230], [255, 255, 255],
 ];
 
 export function inferno(t: number): string {
-  const x = Math.max(0, Math.min(1, t)) * (INFERNO.length - 1);
-  const i = Math.min(INFERNO.length - 2, Math.floor(x));
+  const x = Math.max(0, Math.min(1, t)) * (RAMP.length - 1);
+  const i = Math.min(RAMP.length - 2, Math.floor(x));
   const f = x - i;
-  const a = INFERNO[i];
-  const b = INFERNO[i + 1];
+  const a = RAMP[i];
+  const b = RAMP[i + 1];
   const c = [0, 1, 2].map((k) => Math.round(a[k] + (b[k] - a[k]) * f));
   return `rgb(${c[0]},${c[1]},${c[2]})`;
 }

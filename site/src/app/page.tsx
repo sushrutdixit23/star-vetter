@@ -14,6 +14,8 @@ import SkyMap from "@/components/dash/SkyMap";
 import PipelineStages from "@/components/dash/PipelineStages";
 import { ActivityFeed, LatestRun, RunsTable } from "@/components/dash/RunPanels";
 import Explorer from "@/components/dash/Explorer";
+import Gauntlet from "@/components/journal/Gauntlet";
+import EclipseExplainer from "@/components/journal/EclipseExplainer";
 import type { Summary } from "@/components/dash/DetailPanels";
 import { IconArrow } from "@/components/icons";
 import WhatIsThis from "@/components/WhatIsThis";
@@ -151,6 +153,10 @@ export default function Home() {
           )}
         </div>
       </div>
+
+      <Gauntlet funnel={funnel} short={SHORT} />
+
+      <EclipseExplainer />
 
       <Explorer
         summaries={summaries}

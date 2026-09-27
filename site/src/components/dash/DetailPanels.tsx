@@ -4,6 +4,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import type { Detail, Tier } from "@/lib/types";
+import { summaryLine } from "@/lib/summary";
 import { TIER_STYLE } from "@/lib/tiers";
 import { percentile } from "@/lib/colormap";
 import { fmtDec, fmtRA } from "@/lib/sky";
@@ -82,22 +83,6 @@ function StatRow({ k, v, sub, term }: { k: string; v: string; sub?: string; term
   );
 }
 
-function summaryLine(s: Summary, d: Detail | null) {
-  const P = d ? d.period_true_days : s.corrected_period_days ?? s.period_days;
-  const parts = [`${P.toFixed(4)}-day period`];
-  if (d?.aliased || s.aliased) parts[0] += " (twice the BLS period)";
-  if (d?.primary) parts.push(`a ${pct(d.primary.depth, 2)} primary eclipse`);
-  if (d?.secondary) {
-    parts.push(
-      d.secondary.detected
-        ? `a ${pct(d.secondary.depth, 2)} secondary eclipse at phase ${d.secondary.phase.toFixed(3)}`
-        : "no significant secondary eclipse"
-    );
-  }
-  const base = `Eclipsing-binary candidate: ${parts.join(", ")}.`;
-  return d && d.checks.length > 0 ? `${base} Automated cross-checks question this period - see below.` : base;
-}
-
 export function DetailHeader({
   s,
   d,
@@ -121,6 +106,10 @@ export function DetailHeader({
   const url = `${origin}/candidates/${s.tic}`;
   const P = d ? d.period_true_days : s.corrected_period_days ?? s.period_days;
   const cite = `TIC ${s.tic}, eclipsing-binary candidate, P = ${P.toFixed(5)} d. Star Vetter automated vetting of TESS data (${new Date().getFullYear()}). ${url}`;
+  // Disabled until f8_writeups.json's overclaim validator is confirmed running.
+  // Flip to true to re-enable once the other side confirms the fix.
+  const SHOW_WRITEUP = false;
+  const writeup = SHOW_WRITEUP ? d?.writeup ?? null : null;
   const btn =
     "inline-flex items-center gap-1.5 rounded-md border border-line bg-panel-2 px-2.5 py-1.5 text-xs text-fg hover:border-accent/60";
   return (
@@ -130,9 +119,9 @@ export function DetailHeader({
         <TierBadge tier={s.tier} />
       </div>
       <p className="mt-1 text-sm text-muted">{summaryLine(s, d)}</p>
-      {d?.writeup && (
+      {writeup && (
         <p className="mt-3 rounded-md border border-line bg-panel-2 px-3 py-2.5 text-sm leading-relaxed text-fg/90">
-          {d.writeup}
+          {writeup}
         </p>
       )}
       <div className="mt-3 flex flex-wrap gap-2">
@@ -164,19 +153,26 @@ export function DetailHeader({
           ))}
         </ul>
       )}
-      {s.caveats.some((c) => c.tier !== "CLEAN") && (
-        <ul className="mt-3 space-y-1.5">
-          {s.caveats
-            .filter((c) => c.tier !== "CLEAN")
-            .map((c, i) => (
-              <li key={i} className={`rounded-md border px-2.5 py-1.5 text-[11px] leading-snug ${TIER_STYLE[c.tier].border} ${TIER_STYLE[c.tier].bg} text-fg/85`}>
-                <span className={`mr-1 font-medium ${TIER_STYLE[c.tier].text}`}>{TIER_STYLE[c.tier].label}:</span>
-                {c.text}
-              </li>
-            ))}
-        </ul>
-      )}
+      <CaveatsList caveats={s.caveats} />
     </div>
+  );
+}
+
+// Shared by DetailHeader above and the candidate plate page's own
+// "V. Caveats" section, so the two surfaces never drift to two different
+// lists for the same star.
+export function CaveatsList({ caveats }: { caveats: Summary["caveats"] }) {
+  const flagged = caveats.filter((c) => c.tier !== "CLEAN");
+  if (flagged.length === 0) return null;
+  return (
+    <ul className="mt-3 space-y-1.5">
+      {flagged.map((c, i) => (
+        <li key={i} className={`rounded-md border px-2.5 py-1.5 text-[11px] leading-snug ${TIER_STYLE[c.tier].border} ${TIER_STYLE[c.tier].bg} text-fg/85`}>
+          <span className={`mr-1 font-medium ${TIER_STYLE[c.tier].text}`}>{TIER_STYLE[c.tier].label}:</span>
+          {c.text}
+        </li>
+      ))}
+    </ul>
   );
 }
 

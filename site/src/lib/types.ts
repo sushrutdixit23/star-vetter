@@ -353,6 +353,19 @@ export interface Detail {
   writeup: string | null;
 }
 
+// ---------- raw per-candidate time series (optional; written by a
+// timeseries export script that does not exist yet). This is the un-folded
+// BJD/flux data "fold it yourself" needs to re-fold at an arbitrary trial
+// period - Detail.fold.raw is already folded at the true period, so it
+// cannot be reused for that. getTimeseries() returns null until this file
+// exists; the UI shows a placeholder until then. ----------
+
+export interface Timeseries {
+  tic: number;
+  bjd: number[];
+  flux: number[];
+}
+
 export interface SkyPoint {
   tic: number;
   tier: Tier;

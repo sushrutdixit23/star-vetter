@@ -20,9 +20,13 @@ export default function SiteHeader({ tics }: { tics: number[] }) {
             Star Vetter
           </span>
         </Link>
-        <nav className="flex gap-4 text-sm text-muted sm:gap-6">
+        <nav className="flex gap-5 text-xs text-muted sm:gap-8">
           {NAV.map((n) => (
-            <Link key={n.href} href={n.href} className="hover:text-fg">
+            <Link
+              key={n.href}
+              href={n.href}
+              className="nav-caps transition-colors hover:text-fg"
+            >
               {n.label}
             </Link>
           ))}
