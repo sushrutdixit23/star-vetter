@@ -12,6 +12,17 @@ Cost control: if the cache file already exists, no API call is made at all.
 Delete data/processed/f9_about_content.json (or pass --force) to regenerate,
 for example after a big new run changes the pipeline's headline numbers.
 
+v2: hardened PROMPT_TEMPLATE with an explicit hard-rules list. The original
+prompt had no guard against overclaiming, and its first real output made
+several false statements (manual/visual pixel check that is actually
+automated, ML described as gating candidates when it is a second opinion,
+"no caveats" claims, "joined the scientific literature" claims, stellar
+masses this pipeline cannot measure, and the odd/even alias test mislabeled
+as "period fitting"). Those were hand-corrected once via patch_about_content.py,
+but this script's own prompt was never fixed - so a future --force run could
+reproduce the same class of bugs. This version closes that gap the same way
+f8_generate_writeups.py and f10_generate_discoveries.py were hardened.
+
 Requires:
   ANTHROPIC_API_KEY environment variable
   pip install anthropic (already installed if you ran f8_generate_writeups.py)
@@ -37,10 +48,20 @@ except ImportError:
 MODEL = "claude-haiku-4-5-20251001"
 MAX_TOKENS = 1400
 
-PROMPT_TEMPLATE = """You are writing content for the About page of a public science website called Star Vetter, which automatically vets candidate eclipsing binary stars found in TESS satellite data. Use ONLY the facts given below - do not invent, estimate, or add any number, fact, or claim that is not explicitly stated here or common, uncontroversial background knowledge about how eclipsing binaries and transit surveys work in general (never invent a number that looks like it came from this specific project). Use only standard ASCII characters - no em dashes, no smart quotes (use a hyphen or comma instead, and straight quotes only). Plain, accurate, engaging language, aimed at a curious non-expert.
+PROMPT_TEMPLATE = """You are writing content for the About page of a public science website called Star Vetter, which automatically vets candidate eclipsing binary stars found in TESS satellite data. Use ONLY the facts given below - do not invent, estimate, or add any number, fact, or claim that is not explicitly stated here or common, uncontroversial background knowledge about how eclipsing binaries and transit surveys work in general (never invent a number that looks like it came from this specific project). Plain, accurate, engaging language, aimed at a curious non-expert.
 
 Project facts:
 {facts_block}
+
+HARD RULES (follow all of these - the previous version of this page broke every one of them and had to be hand-corrected):
+- Do not use the words "discovery", "discovered", "genuine", "verified", "published", "literature", "peer-reviewed", or "proven" anywhere. "Confirmed" may only be used as this project's own defined term for "passed the pixel-level check" - always distinct from being scientifically verified.
+- The pixel-level check is fully automated. Never describe it as manual, visual, or done by a human.
+- The machine learning score is a second opinion only. Never say it decides, prioritizes, filters, screens, or gates which candidates get checked - nothing currently uses it to make that decision.
+- Never claim all candidates are free of caveats or that the process has no open questions. Some candidates carry open caveats on their individual pages; the narrative and FAQs must leave room for that rather than imply universal cleanliness.
+- Never say a candidate has joined the scientific literature, been added to an official catalog, or received professional or human follow-up. Being listed on this site is the end of what this pipeline itself does.
+- This pipeline measures orbital period and relative eclipse depths from the light curve only. Never say it measures, derives, or determines stellar masses - that would require radial-velocity spectroscopy this project does not perform.
+- Describe the period-alias check accurately if you mention it at all: it compares the depth of odd-numbered eclipses against even-numbered eclipses (an odd/even eclipse-depth test). Never call this "period fitting" or describe it as a period-search technique.
+- Use only standard ASCII characters - no em dashes, no smart quotes (use a hyphen or comma instead, and straight quotes only).
 
 Return ONLY valid JSON (no markdown code fences, no commentary before or after), matching exactly this shape:
 {{
