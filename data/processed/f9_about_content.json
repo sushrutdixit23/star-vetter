@@ -1,5 +1,5 @@
 {
-  "narrative": "Star Vetter automatically identifies candidate eclipsing binary stars in data from NASA's TESS satellite. We start with thousands of target stars, extract their brightness measurements over time, and search for the characteristic dips that occur when one star passes in front of another. Our pipeline applies statistical tests to distinguish likely eclipsing binaries from noise and instrumental artifacts, then cross-checks against six major variable-star catalogs to avoid re-listing already-known objects. Candidates that survive these checks go through an automated pixel-level image analysis - checking where in the TESS image the signal actually originates - to rule out a nearby star as the real source. We also score each candidate with a machine learning model, trained on the pipeline's own vetting history, as a second opinion alongside the rule-based checks; it does not currently decide which candidates get checked, and a high score is not a guarantee. So far we have identified 51 candidate eclipsing binaries this way, from a systematic search of about 0.4 percent of TESS's target list. Some of these still have open caveats noted on their individual pages - this pipeline flags doubts rather than hiding them.",
+  "narrative": "Star Vetter automatically identifies candidate eclipsing binary stars in data from NASA's TESS satellite. We start with thousands of target stars, extract their brightness measurements over time, and search for the characteristic dips that occur when one star passes in front of another. Our pipeline applies statistical tests to distinguish likely eclipsing binaries from noise and instrumental artifacts, then cross-checks against six major variable-star catalogs to avoid re-listing already-known objects. Candidates that survive these checks go through an automated pixel-level image analysis - checking where in the TESS image the signal actually originates - to rule out a nearby star as the real source. We also score each candidate with a machine learning model, trained on the pipeline's own vetting history, as a second opinion alongside the rule-based checks; it does not currently decide which candidates get checked, and a high score is not a guarantee. So far we have identified 59 candidate eclipsing binaries this way, from a systematic search of the TESS target list. Some of these still have open caveats noted on their individual pages - this pipeline flags doubts rather than hiding them.",
   "faqs": [
     {
       "question": "What is an eclipsing binary star?",
@@ -31,5 +31,5 @@
     }
   ],
   "model": "template-only (manual correction, see patch_about_content.py)",
-  "generated_at": "2026-09-27T17:49:06.583741+00:00"
+  "generated_at": "2026-09-27T19:01:53.371986+00:00"
 }
