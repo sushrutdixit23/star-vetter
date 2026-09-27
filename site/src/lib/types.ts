@@ -205,6 +205,32 @@ export interface AboutContent {
   generated_at: string;
 }
 
+// ---------- Discoveries showcase (written by
+// f10_generate_discoveries.py) ----------
+//
+// A handful of standout candidates picked by real, objective criteria the
+// pipeline already computed (deepest eclipse, highest ML score, and so
+// on), with a short AI-written blurb per pick explaining why it stands out
+// - grounded strictly in that candidate's own numbers. One batch call, not
+// per-visitor, cached to discoveries.json. Optional, same pattern as
+// AboutContent - the Discoveries page just says there is nothing yet
+// without it.
+
+export interface Discovery {
+  tic: number;
+  category: string;
+  category_label: string;
+  stat_text: string;
+  headline: string;
+  blurb: string;
+}
+
+export interface DiscoveriesData {
+  discoveries: Discovery[];
+  model: string;
+  generated_at: string;
+}
+
 // ---------- dashboard data (written by export_dashboard.py) ----------
 
 export type XY = [number, number];

@@ -5,6 +5,7 @@ import type {
   Candidate,
   Dashboard,
   Detail,
+  DiscoveriesData,
   ModelMetrics,
   PipelineStats,
   SiteIndex,
@@ -65,6 +66,16 @@ export function getAboutContent(): AboutContent | null {
   if (!fs.existsSync(p)) return null;
   const raw = fs.readFileSync(p, "utf-8");
   return JSON.parse(raw) as AboutContent;
+}
+
+// discoveries.json is written by f10_generate_discoveries.py - a handful of
+// standout candidates picked by real objective criteria, with a short
+// AI-written blurb per pick. Optional, same pattern as about_content.json.
+export function getDiscoveries(): DiscoveriesData | null {
+  const p = path.join(DATA_DIR, "discoveries.json");
+  if (!fs.existsSync(p)) return null;
+  const raw = fs.readFileSync(p, "utf-8");
+  return JSON.parse(raw) as DiscoveriesData;
 }
 
 // site_meta.json is written by export_extras.py (last orchestrator run time,

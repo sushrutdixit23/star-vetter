@@ -5,6 +5,7 @@ import { LogoMark } from "./icons";
 const NAV = [
   { href: "/", label: "Home" },
   { href: "/candidates", label: "Candidates" },
+  { href: "/discoveries", label: "Discoveries" },
   { href: "/about", label: "Methods" },
   { href: "/glossary", label: "Glossary" },
 ];
