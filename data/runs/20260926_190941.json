@@ -1,0 +1,50 @@
+{
+  "run_id": "20260926_190941",
+  "commit_sha": "1632d39",
+  "log_file": "orchestrator_20260926_190941.log",
+  "started_at": "2026-09-26T13:39:41+00:00",
+  "finished_at": "2026-09-26T14:31:56+00:00",
+  "duration_seconds": 3134.4,
+  "status": "failed",
+  "stages": [
+    {
+      "name": "F1b sample new targets",
+      "script": "f1b_sample.py",
+      "status": "ok",
+      "ok": true,
+      "elapsed_seconds": 0.8,
+      "attempts": 1
+    },
+    {
+      "name": "F2c fetch light curves",
+      "script": "f2c_fetch_lightcurves.py",
+      "status": "failed",
+      "ok": false,
+      "elapsed_seconds": 3093.6,
+      "attempts": 3
+    }
+  ],
+  "this_run": {
+    "new_sampled": 134,
+    "new_usable_light_curves": 121,
+    "new_confirmed": 0
+  },
+  "cumulative_before": {
+    "targets_sampled": 2208,
+    "usable_light_curves": 1457,
+    "statistically_passing": 369,
+    "novel_candidates": 318,
+    "pixel_checked": 318,
+    "confirmed": 33
+  },
+  "cumulative_after": {
+    "targets_sampled": 2342,
+    "usable_light_curves": 1578,
+    "statistically_passing": 369,
+    "novel_candidates": 318,
+    "pixel_checked": 318,
+    "confirmed": 33
+  },
+  "timeouts": [],
+  "skipped": []
+}

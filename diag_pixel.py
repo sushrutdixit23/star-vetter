@@ -66,7 +66,7 @@ except ImportError as exc:
 #      a difference image whose significant pixels are not concentrated
 #      around one spot (compactness < 0.5) is INCONCLUSIVE, not OFF_TARGET.
 
-N_TOP = 20
+N_TOP = 10000   # all NOVEL candidates (was 20)
 CONTROLS = {427332229: "ON_TARGET expected (WASP-32, published planet)",
             158329671: "OFF_TARGET expected (known TESS EB 40 arcsec away)"}
 

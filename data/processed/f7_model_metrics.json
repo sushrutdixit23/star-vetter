@@ -1,0 +1,131 @@
+{
+  "trained_at": "2026-09-27T00:37:51.011062+00:00",
+  "n_samples": 417,
+  "n_positive": 47,
+  "n_negative": 370,
+  "n_folds": 5,
+  "baseline": {
+    "description": "current pipeline behavior: every candidate that passes statistical vetting and novelty cross-match goes to the pixel check",
+    "recall": 1.0,
+    "precision": 0.1127
+  },
+  "models": {
+    "logistic_regression": {
+      "precision_mean": 0.2575824175824176,
+      "precision_std": 0.046784688110046144,
+      "recall_mean": 0.5977777777777777,
+      "recall_std": 0.0645592846503731,
+      "roc_auc_mean": 0.6946246246246246,
+      "roc_auc_std": 0.07240952032799018,
+      "average_precision_mean": 0.29804459835089203,
+      "average_precision_std": 0.12211501165074452
+    },
+    "hist_gradient_boosting": {
+      "precision_mean": 0.45,
+      "precision_std": 0.14529663145135577,
+      "recall_mean": 0.1488888888888889,
+      "recall_std": 0.051448164012401,
+      "roc_auc_mean": 0.7191291291291291,
+      "roc_auc_std": 0.048789659573846,
+      "average_precision_mean": 0.31552857480985347,
+      "average_precision_std": 0.06318251028810865
+    }
+  },
+  "chosen_model": "hist_gradient_boosting",
+  "beats_baseline": true,
+  "screening_value": [
+    {
+      "target_recall": 0.95,
+      "threshold": 0.0,
+      "recall": 1.0,
+      "fraction_screened_out": 0.0
+    },
+    {
+      "target_recall": 0.9,
+      "threshold": 0.0,
+      "recall": 1.0,
+      "fraction_screened_out": 0.0
+    },
+    {
+      "target_recall": 0.8,
+      "threshold": 0.0,
+      "recall": 1.0,
+      "fraction_screened_out": 0.0
+    }
+  ],
+  "feature_importance": [
+    {
+      "feature": "Tmag",
+      "importance_mean": 0.0759
+    },
+    {
+      "feature": "depth_ratio",
+      "importance_mean": 0.0354
+    },
+    {
+      "feature": "bls_period",
+      "importance_mean": 0.0131
+    },
+    {
+      "feature": "secondary_sigma",
+      "importance_mean": 0.0023
+    },
+    {
+      "feature": "robust_sigma",
+      "importance_mean": 0.0022
+    },
+    {
+      "feature": "n_points",
+      "importance_mean": 0.0014
+    },
+    {
+      "feature": "odd_even_z",
+      "importance_mean": 0.0014
+    },
+    {
+      "feature": "bls_duration",
+      "importance_mean": 0.0006
+    },
+    {
+      "feature": "depth_odd",
+      "importance_mean": 0.0004
+    },
+    {
+      "feature": "bls_snr",
+      "importance_mean": 0.0002
+    },
+    {
+      "feature": "secondary_phase",
+      "importance_mean": 0.0001
+    },
+    {
+      "feature": "author_used",
+      "importance_mean": 0.0001
+    },
+    {
+      "feature": "robust_depth",
+      "importance_mean": 0.0001
+    },
+    {
+      "feature": "n_eclipses_observed",
+      "importance_mean": 0.0001
+    },
+    {
+      "feature": "depth_even",
+      "importance_mean": 0.0
+    },
+    {
+      "feature": "bls_depth",
+      "importance_mean": 0.0
+    },
+    {
+      "feature": "secondary_detected",
+      "importance_mean": 0.0
+    },
+    {
+      "feature": "n_sectors",
+      "importance_mean": 0.0
+    }
+  ],
+  "note": "n_positive is small; treat these numbers as directional until more runs accumulate. Cross-validated (out-of-fold) throughout - not in-sample."
+}

@@ -1,4 +1,5 @@
-﻿import sys
+import sys
+import os
 import csv
 import time
 import threading
@@ -28,8 +29,48 @@ MANIFEST_COLUMNS = ["TIC", "Tmag", "status", "author_used", "n_sectors",
 # for its entire time budget with nothing to show for it. These wrap every
 # such call in a hard wall-clock deadline so a stall becomes a normal,
 # logged failure for that one star instead of blocking every star after it.
+#
+# DOWNLOAD_TIMEOUT_SEC bounds a single author's download attempt. It does
+# NOT bound how many authors get tried for one target - a target with
+# several available authors that all stall would previously wait out the
+# full download timeout for each one in turn, with no visible progress in
+# between. PER_TARGET_BUDGET_SEC fixes that: it is a hard ceiling on total
+# time (search + every download attempt combined) spent on one target
+# before giving up on it entirely and moving to the next star, so a single
+# bad target can never again eat many minutes with nothing to show for it.
 SEARCH_TIMEOUT_SEC = 90
-DOWNLOAD_TIMEOUT_SEC = 300
+DOWNLOAD_TIMEOUT_SEC = 120
+PER_TARGET_BUDGET_SEC = 360
+
+# lightkurve/astropy's own download-progress reporting has been observed to
+# close the real stdout stream as a side effect of finishing a multi-file
+# download batch - it only shows up for a target that needs several fresh
+# (not yet cached) FITS files in one go, which is why it can run for hours
+# before it ever surfaces. Once stdout is closed, every later print() call
+# raises "ValueError: I/O operation on closed file" and kills the whole
+# script, throwing away everything already fetched this run. This keeps a
+# separate duplicate of the original stdout file descriptor from before
+# anything else has touched it, and transparently reopens a fresh stream
+# from that duplicate if the live one has been closed out from under us -
+# so one bad multi-file download can no longer take down the whole run.
+try:
+    _STDOUT_FD_BACKUP = os.dup(sys.stdout.fileno())
+except (AttributeError, OSError, ValueError):
+    _STDOUT_FD_BACKUP = None
+
+
+def safe_print(*args, **kwargs):
+    global _STDOUT_FD_BACKUP
+    if sys.stdout is None or sys.stdout.closed:
+        if _STDOUT_FD_BACKUP is not None:
+            sys.stdout = os.fdopen(os.dup(_STDOUT_FD_BACKUP), "w",
+                                    encoding="utf-8", errors="replace", buffering=1)
+        else:
+            return
+    try:
+        print(*args, **kwargs)
+    except ValueError:
+        pass
 
 
 def call_with_timeout(fn, args=(), kwargs=None, timeout=60):
@@ -107,6 +148,7 @@ def process_one_target(tic: int, tmag: float, lc_dir: Path, plot_dir: Path) -> d
         "author_used": None, "n_sectors": 0, "n_points": 0,
         "authors_tried": "", "error": "",
     }
+    target_start = time.time()
 
     sr, search_err = try_search_with_retry(tic)
     if sr is None:
@@ -124,7 +166,15 @@ def process_one_target(tic: int, tmag: float, lc_dir: Path, plot_dir: Path) -> d
     last_status = "NO_DATA"
 
     for author in authors_to_try:
+        elapsed_so_far = time.time() - target_start
+        if elapsed_so_far > PER_TARGET_BUDGET_SEC:
+            last_status = "BUDGET_EXCEEDED"
+            last_error = (f"gave up after {elapsed_so_far:.0f}s across "
+                           f"{len(tried)} author(s) - moving to next target")
+            break
+
         tried.append(author)
+        safe_print(f"trying {author}... ", end="", flush=True)
         sr_author = sr[sr.author == author]
 
         try:
@@ -199,7 +249,7 @@ def append_manifest_row(manifest_path: Path, row: dict, write_header: bool):
 
 def main():
     if len(sys.argv) != 2:
-        print("Usage: py f2c_fetch_lightcurves.py <project_root>")
+        safe_print("Usage: py f2c_fetch_lightcurves.py <project_root>")
         sys.exit(1)
 
     project_root = Path(sys.argv[1]).resolve()
@@ -210,12 +260,12 @@ def main():
     plot_dir.mkdir(parents=True, exist_ok=True)
 
     if not sample_path.exists():
-        print(f"ERROR: sample file not found at {sample_path}")
-        print("Run f1b_sample.py first.")
+        safe_print(f"ERROR: sample file not found at {sample_path}")
+        safe_print("Run f1b_sample.py first.")
         sys.exit(1)
 
     sample = pd.read_csv(sample_path)
-    print(f"Loaded {len(sample)} targets from {sample_path}")
+    safe_print(f"Loaded {len(sample)} targets from {sample_path}")
 
     manifest_path = project_root / "data" / "processed" / "f2c_manifest.csv"
     already_done = {}
@@ -224,13 +274,13 @@ def main():
         for _, r in prior.iterrows():
             already_done[int(r["TIC"])] = r.to_dict()
         n_ok = sum(1 for r in already_done.values() if r["status"] == "OK")
-        print(f"Found existing manifest with {len(already_done)} target(s) already attempted "
-              f"({n_ok} OK) - resuming, these will be skipped.")
+        safe_print(f"Found existing manifest with {len(already_done)} target(s) already attempted "
+                   f"({n_ok} OK) - resuming, these will be skipped.")
 
     write_header = not manifest_path.exists()
 
     n_remaining = len(sample) - len(already_done.keys() & set(sample["TIC"].astype(int)))
-    print(f"{n_remaining} target(s) remaining to fetch this run.\n")
+    safe_print(f"{n_remaining} target(s) remaining to fetch this run.\n")
 
     start_time = time.time()
     n_done_this_run = 0
@@ -242,7 +292,7 @@ def main():
         if tic in already_done:
             continue
 
-        print(f"[{i + 1}/{len(sample)}] TIC {tic} (Tmag={tmag:.2f}) ... ", end="", flush=True)
+        safe_print(f"[{i + 1}/{len(sample)}] TIC {tic} (Tmag={tmag:.2f}) ... ", end="", flush=True)
         res = process_one_target(tic, tmag, lc_dir, plot_dir)
 
         append_manifest_row(manifest_path, res, write_header)
@@ -250,45 +300,45 @@ def main():
         n_done_this_run += 1
 
         if res["status"] == "OK":
-            print(f"OK  author={res['author_used']}  sectors={res['n_sectors']}  points={res['n_points']}  (tried: {res['authors_tried']})")
+            safe_print(f"OK  author={res['author_used']}  sectors={res['n_sectors']}  points={res['n_points']}  (tried: {res['authors_tried']})")
         else:
-            print(f"{res['status']}  tried={res['authors_tried']}  {res['error']}")
+            safe_print(f"{res['status']}  tried={res['authors_tried']}  {res['error']}")
 
         if n_done_this_run % 10 == 0:
             elapsed = time.time() - start_time
             rate = elapsed / n_done_this_run
             eta_remaining = rate * (n_remaining - n_done_this_run)
-            print(f"    ... {n_done_this_run}/{n_remaining} done this run, "
-                  f"{elapsed/60:.1f} min elapsed, ~{eta_remaining/60:.0f} min remaining "
-                  f"at this rate (safe to stop anytime - resume by re-running this script)")
+            safe_print(f"    ... {n_done_this_run}/{n_remaining} done this run, "
+                       f"{elapsed/60:.1f} min elapsed, ~{eta_remaining/60:.0f} min remaining "
+                       f"at this rate (safe to stop anytime - resume by re-running this script)")
 
     elapsed = time.time() - start_time
 
     manifest = pd.read_csv(manifest_path)
-    print(f"\n{'=' * 70}")
-    print("F2c FETCH SUMMARY (incremental, resumable)")
-    print(f"{'=' * 70}")
-    print(f"Targets fetched this run: {n_done_this_run}")
-    print(f"Time this run:            {elapsed / 60:.1f} min")
-    print(f"Total in manifest so far: {len(manifest)} / {len(sample)}")
-    print(f"\nStatus breakdown (all time):")
-    print(manifest["status"].value_counts().to_string())
+    safe_print(f"\n{'=' * 70}")
+    safe_print("F2c FETCH SUMMARY (incremental, resumable)")
+    safe_print(f"{'=' * 70}")
+    safe_print(f"Targets fetched this run: {n_done_this_run}")
+    safe_print(f"Time this run:            {elapsed / 60:.1f} min")
+    safe_print(f"Total in manifest so far: {len(manifest)} / {len(sample)}")
+    safe_print(f"\nStatus breakdown (all time):")
+    safe_print(manifest["status"].value_counts().to_string())
 
     ok = manifest[manifest["status"] == "OK"]
-    print(f"\nSuccessful fetches: {len(ok)}/{len(manifest)} ({100 * len(ok) / len(manifest):.1f}%)")
+    safe_print(f"\nSuccessful fetches: {len(ok)}/{len(manifest)} ({100 * len(ok) / len(manifest):.1f}%)")
 
     failed = manifest[manifest["status"] != "OK"]
     if len(failed) > 0:
-        print(f"\nFailed targets ({len(failed)}):")
-        print(failed[["TIC", "Tmag", "status", "authors_tried", "error"]].to_string(index=False))
+        safe_print(f"\nFailed targets ({len(failed)}):")
+        safe_print(failed[["TIC", "Tmag", "status", "authors_tried", "error"]].to_string(index=False))
 
     if len(manifest) < len(sample):
-        print(f"\n{len(sample) - len(manifest)} target(s) not yet attempted - "
-              f"re-run this script to continue.")
+        safe_print(f"\n{len(sample) - len(manifest)} target(s) not yet attempted - "
+                   f"re-run this script to continue.")
     else:
-        print(f"\nAll {len(sample)} targets attempted. Fetch stage complete.")
+        safe_print(f"\nAll {len(sample)} targets attempted. Fetch stage complete.")
 
-    print(f"\nManifest saved: {manifest_path}")
+    safe_print(f"\nManifest saved: {manifest_path}")
 
 
 if __name__ == "__main__":

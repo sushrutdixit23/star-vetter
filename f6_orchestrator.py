@@ -33,12 +33,26 @@ import pandas as pd
 # re-invoking the same script; it picks up wherever the failed attempt left
 # off instead of redoing completed work.
 #
-# RUN RECORDS (new): this run's story - what changed versus everything on
-# disk before it started, per-stage timing, and any timeout/skip events - is
+# RUN RECORDS: this run's story - what changed versus everything on disk
+# before it started, per-stage timing, and any timeout/skip events - is
 # written to data/runs/<run_id>.json regardless of how the run ends (clean
 # finish, "nothing new to sample", or a stage failing after all retries).
 # That file is the single source of truth the website's run history and
 # "last run" panel read from; nothing there is parsed back out of this log.
+#
+# ML STAGES (new): three extra, strictly OPTIONAL stages around diag_pixel -
+# scoring novel candidates with the trained pixel-outcome model before the
+# pixel check runs (so the score is a genuine prediction, not the model
+# grading data it has already seen), retraining on this run's real results
+# right after, and publishing the updated metrics to the site. None of these
+# ever filters or skips a candidate, and none of them can fail the run: if
+# f7a/f7b/f7c are missing, or there isn't yet enough labeled data, the stage
+# is skipped and logged, and the core F1->F5 pipeline proceeds exactly as it
+# always has. f7a and f7b exit with code 2 (not 1) when there is nothing to
+# do yet - not enough labeled examples, a missing prerequisite file, or a
+# missing dependency - specifically so this orchestrator does not waste three
+# retries on a condition retrying cannot fix; exit code 1 is reserved for a
+# genuine crash, which DOES still get retried like any other stage.
 
 MAX_RETRIES = 3
 RETRY_DELAY_SEC = 20
@@ -107,12 +121,26 @@ def ensure_patches(project_root, log):
 
 def run_stage(name, script_name, project_root, log, logf):
     """Runs one stage script, retrying whole-script failures up to
-    MAX_RETRIES times. Returns (ok, elapsed_seconds, attempts) - the run
-    record needs the timing and retry count, not just pass/fail."""
+    MAX_RETRIES times. Returns (status, elapsed_seconds, attempts), where
+    status is one of:
+      "ok"      - the script ran and did real work (exit code 0)
+      "skipped" - the script decided there is nothing to do yet - missing
+                  prerequisite data, not enough labeled examples, a missing
+                  optional dependency (exit code 2) - which is not a
+                  failure, but is NOT the same as having done real work
+                  either. Retrying cannot change this outcome, so it is not
+                  retried. Callers that print a message claiming the stage
+                  did something (e.g. "retrained the model") must check for
+                  "ok" specifically, not just "not failed", or that message
+                  becomes false on every run where the stage was skipped.
+      "failed"  - every attempt exited with a real, non-2 error code.
+    This mirrors how f1b_sample.py drawing 0 new targets is already treated
+    elsewhere in this file: a legitimate "nothing to do" outcome, distinct
+    from both success-with-output and failure."""
     script_path = project_root / script_name
     if not script_path.exists():
         log(f"  ERROR: {script_path} not found. Stopping.")
-        return False, 0.0, 0
+        return "failed", 0.0, 0
 
     args = [sys.executable, str(script_path), str(project_root)]
     total_elapsed = 0.0
@@ -134,7 +162,13 @@ def run_stage(name, script_name, project_root, log, logf):
 
         if proc.returncode == 0:
             log(f"  -> {name} finished OK in {elapsed / 60:.1f} min")
-            return True, total_elapsed, attempt
+            return "ok", total_elapsed, attempt
+
+        if proc.returncode == 2:
+            log(f"  -> {name} has nothing to do yet (exit code 2 - e.g. not enough labeled "
+                f"data, or a missing optional dependency). Not a failure - skipping retries, "
+                f"since retrying cannot change this.")
+            return "skipped", total_elapsed, attempt
 
         log(f"  -> {name} FAILED (exit code {proc.returncode}) after {elapsed / 60:.1f} min")
         if attempt < MAX_RETRIES:
@@ -144,7 +178,7 @@ def run_stage(name, script_name, project_root, log, logf):
 
     log(f"  {name} failed {MAX_RETRIES} times in a row. Stopping the pipeline here - the "
         f"remaining stages all depend on this one's output.")
-    return False, total_elapsed, MAX_RETRIES
+    return "failed", total_elapsed, MAX_RETRIES
 
 
 def read_csv_safe(path):
@@ -281,14 +315,33 @@ def main():
             raise
 
         def do_stage(name, script_name):
-            ok, elapsed, attempts = run_stage(name, script_name, project_root, log, logf)
+            status, elapsed, attempts = run_stage(name, script_name, project_root, log, logf)
             record["stages"].append({
-                "name": name, "script": script_name, "ok": ok,
+                "name": name, "script": script_name, "status": status, "ok": status != "failed",
                 "elapsed_seconds": round(elapsed, 1), "attempts": attempts,
             })
-            if not ok:
+            if status == "failed":
                 finalize("failed", log)
                 sys.exit(1)
+
+        def do_optional_stage(name, script_name):
+            """Same as do_stage, but failure never stops the run. Used only
+            for the ML stages, which are informational/predictive and must
+            never be able to block real vetting results from shipping.
+
+            Returns the actual status string ("ok"/"skipped"/"failed"), not
+            just a boolean - a caller that wants to report what the stage
+            DID (e.g. "retrained the model") must check for "ok" specifically,
+            since "skipped" also isn't a failure but means nothing happened."""
+            status, elapsed, attempts = run_stage(name, script_name, project_root, log, logf)
+            record["stages"].append({
+                "name": name, "script": script_name, "status": status, "ok": status != "failed",
+                "elapsed_seconds": round(elapsed, 1), "attempts": attempts, "optional": True,
+            })
+            if status == "failed":
+                log(f"  NOTE: '{name}' did not complete, but it is an optional stage - "
+                    f"continuing the run. The core pipeline result is unaffected.")
+            return status
 
         # ---- F1b: draw a new stratified sample, excluding every prior batch ----
         do_stage("F1b sample new targets", "f1b_sample.py")
@@ -370,6 +423,25 @@ def main():
                  f"difference-image check can confirm the dimming is actually centred on this "
                  f"star, so every survivor gets checked.")
 
+        # ---- ML: score this batch's novel candidates BEFORE the pixel check runs,
+        # using whatever model was trained on prior runs' results. This is a genuine
+        # held-out prediction - the model has never seen this run's own outcomes -
+        # and it never filters anything; diag_pixel below still checks every one of
+        # the n_novel_2 candidates regardless of what the model predicts.
+        score_status = do_optional_stage("Score novel candidates (ML pixel-outcome model)",
+                                          "f7c_score_candidates.py")
+        if score_status == "ok":
+            decision("Scored this batch's novel candidates with the current pixel-outcome "
+                     "model (trained on prior runs only, so this is a genuine held-out "
+                     "prediction, not the model grading its own homework). Nothing is "
+                     "filtered by this - proceeding to pixel-check every candidate regardless "
+                     "of what the model predicted.")
+        elif score_status == "skipped":
+            decision("No trained pixel-outcome model exists yet (or there was nothing new to "
+                     "score) - skipping the ML scoring stage this run. This starts producing "
+                     "real predictions once a model has been trained from a prior run's "
+                     "results. Proceeding to pixel-check every candidate as usual.")
+
         # ---- diag_pixel: pixel-level difference-imaging check (ground truth) ----
         do_stage("Pixel-level source check", "diag_pixel.py")
         pix = read_csv_safe(proc / "diag_pixel_results_v2.csv")
@@ -384,6 +456,31 @@ def main():
             decision("No pixel-check results file was produced. Stopping before F5.")
             finalize("failed", log)
             sys.exit(1)
+
+        # ---- ML: retrain on every real result to date, including this run's, so the
+        # model used to score NEXT run's candidates reflects today's pixel-check
+        # outcomes too. Runs regardless of on_target - OFF_TARGET/INCONCLUSIVE results
+        # are just as valuable as training labels as ON_TARGET ones.
+        training_set_status = do_optional_stage("Rebuild ML training set",
+                                                 "f7a_build_training_set.py")
+        retrain_status = "skipped"
+        if training_set_status == "ok":
+            retrain_status = do_optional_stage("Retrain ML pixel-outcome model",
+                                                "f7b_train_classifier.py")
+        if retrain_status == "ok":
+            decision("Retrained the pixel-outcome model on every real pixel-check result to "
+                     "date, including this run's. It will be used to score next run's new "
+                     "novel candidates before their pixel check.")
+        elif training_set_status == "skipped":
+            decision("Not enough real pixel-check results exist yet to build a training set - "
+                     "skipping ML retraining this run. The pixel-outcome model starts training "
+                     "once enough runs have real ON_TARGET/OFF_TARGET labels.")
+        elif retrain_status == "skipped":
+            decision("A training set was built, but there are still too few labeled examples "
+                     "to cross-validate honestly - skipping ML retraining this run. This is "
+                     "expected in the pipeline's early runs and resolves itself as more "
+                     "batches go through the pixel check.")
+        do_optional_stage("Export ML model metrics to site", "export_model_metrics.py")
 
         if on_target == 0:
             decision("No ON_TARGET candidates yet - skipping F5, there is nothing to build a "
