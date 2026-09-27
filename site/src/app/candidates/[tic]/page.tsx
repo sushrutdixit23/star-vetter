@@ -11,6 +11,8 @@ import {
   toSummary,
 } from "@/lib/data";
 import { TIER_STYLE } from "@/lib/tiers";
+import type { Detail } from "@/lib/types";
+import type { Summary } from "@/components/dash/DetailPanels";
 import TierBadge from "@/components/TierBadge";
 import {
   AliasPanel,
@@ -49,29 +51,89 @@ export async function generateMetadata({
   return { title: `TIC ${ticParam} - Star Vetter` };
 }
 
+interface SectionStatus {
+  kind: "pass" | "warn";
+  label: string;
+  note?: string;
+}
+
+function StatusBadge({ kind, label, note }: SectionStatus) {
+  const isPass = kind === "pass";
+  return (
+    <div className="flex items-start gap-3 rounded-lg border border-line bg-panel-2 p-3 lg:w-64">
+      <span
+        aria-hidden="true"
+        className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold ${
+          isPass ? "bg-accent/20 text-accent" : "bg-accent-cool/20 text-accent-cool"
+        }`}
+      >
+        {isPass ? "\u2713" : "!"}
+      </span>
+      <div>
+        <div className={`nav-caps text-xs ${isPass ? "text-accent" : "text-accent-cool"}`}>{label}</div>
+        {note && <p className="mt-1 text-[11px] leading-snug text-muted">{note}</p>}
+      </div>
+    </div>
+  );
+}
+
+// Facts promoted out of the collapsed Instrument section for a first pass
+// through the evidence - the same underlying numbers, just surfaced where
+// a first-time reader sees them without expanding anything.
+function SignalFacts({ s, d }: { s: Summary; d: Detail | null }) {
+  const period = d ? d.period_true_days : s.corrected_period_days ?? s.period_days;
+  const primaryDepth = d?.primary?.depth ?? s.depth_frac;
+  const rows: [string, string][] = [
+    ["Period", `${period.toFixed(5)} d`],
+    ["Primary depth", `${(primaryDepth * 100).toFixed(2)}%`],
+  ];
+  if (d?.secondary?.detected) {
+    rows.push(["Secondary depth", `${(d.secondary.depth * 100).toFixed(2)}%`]);
+  }
+  if (d) {
+    rows.push(["Epoch (T0)", `${d.t0_btjd.toFixed(3)} BTJD`]);
+  }
+  rows.push(["Duration (primary)", `${(s.duration_days * 24).toFixed(2)} h`]);
+  return (
+    <dl className="w-full shrink-0 space-y-1.5 text-xs sm:w-52">
+      {rows.map(([k, v]) => (
+        <div key={k} className="flex justify-between gap-2 border-b border-line pb-1">
+          <dt className="text-muted">{k}</dt>
+          <dd className="font-mono text-fg">{v}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
 function Section({
   num,
   title,
   lede,
   aside,
+  status,
   children,
 }: {
   num: string;
   title: string;
   lede?: string;
   aside?: ReactNode;
+  status?: SectionStatus;
   children: ReactNode;
 }) {
   return (
     <section className="min-w-0 rounded-xl border border-line bg-panel p-4 sm:p-6">
-      <div className="flex flex-wrap items-baseline justify-between gap-3">
-        <div className="flex items-baseline gap-3">
-          <span className="font-display text-2xl italic text-faint">{num}</span>
-          <h2 className="nav-caps text-sm text-fg">{title}</h2>
+      <div className="grid gap-4 lg:grid-cols-[1fr_auto]">
+        <div>
+          <div className="flex flex-wrap items-baseline gap-3">
+            <span className="font-display text-2xl italic text-faint">{num}</span>
+            <h2 className="nav-caps text-sm text-fg">{title}</h2>
+            {aside && <span className="text-[11px] text-muted">{aside}</span>}
+          </div>
+          {lede && <p className="mt-2 max-w-2xl text-sm text-muted">{lede}</p>}
         </div>
-        {aside && <div className="text-[11px] text-muted">{aside}</div>}
+        {status && <StatusBadge {...status} />}
       </div>
-      {lede && <p className="mt-2 max-w-2xl text-sm text-muted">{lede}</p>}
       <div className="mt-4">{children}</div>
     </section>
   );
@@ -159,8 +221,36 @@ export default async function CandidatePage({
       </section>
 
       {/* ---------- I. the signal ---------- */}
-      <Section num="I" title="The signal" lede="A repeating, consistent dip in brightness.">
-        <LightCurvePanel s={s} d={d} />
+      <Section
+        num="I"
+        title="The signal"
+        lede="A repeating, consistent dip in brightness."
+        status={
+          (d?.checks.length ?? 0) > 0
+            ? {
+                kind: "warn",
+                label: "Flagged",
+                note: "Automated cross-checks question this period - see Caveats below.",
+              }
+            : s.aliased
+              ? {
+                  kind: "warn",
+                  label: "Period alias",
+                  note: "Odd/even eclipses differ in depth. True period is twice the BLS period.",
+                }
+              : {
+                  kind: "pass",
+                  label: "Pass",
+                  note: "Clear, repeating eclipses with a consistent period and depth.",
+                }
+        }
+      >
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+          <div className="min-w-0 flex-1">
+            <LightCurvePanel s={s} d={d} />
+          </div>
+          <SignalFacts s={s} d={d} />
+        </div>
         <div className="mt-4">
           <div className="mb-2 text-xs text-muted">Close-up of each eclipse</div>
           <EclipseProfiles s={s} d={d} />
@@ -172,6 +262,11 @@ export default async function CandidatePage({
         num="II"
         title="The catalog check"
         lede="Cross-matched against known variable-star catalogs to rule out anything already listed."
+        status={{
+          kind: "pass",
+          label: "Pass",
+          note: "No known variable star or catalogued match at this position.",
+        }}
       >
         <CatalogPanel s={s} />
       </Section>
@@ -182,6 +277,15 @@ export default async function CandidatePage({
         title="The pixel check"
         lede="Confirms the dimming is on the target star, not a nearby source."
         aside={`TESS sector ${s.pixel.sector}`}
+        status={
+          s.tier === "THIN MARGIN" || s.tier === "MARGINAL" || s.tier === "AMBIGUOUS PHOTOMETRY"
+            ? { kind: "warn", label: TIER_STYLE[s.tier].label, note: TIER_STYLE[s.tier].blurb }
+            : {
+                kind: "pass",
+                label: "Pass",
+                note: "The dimming is centred on the target star. No nearby contaminant detected.",
+              }
+        }
       >
         <PixelEvidence s={s} d={d} />
       </Section>

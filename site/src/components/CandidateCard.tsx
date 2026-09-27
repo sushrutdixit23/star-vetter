@@ -43,7 +43,12 @@ export default function CandidateCard({ c }: { c: CardData }) {
           <dd className="font-mono text-fg/80">{fmtNum(period, 3)}d</dd>
         </div>
         <div className="flex justify-between border-b border-line pb-1">
-          <dt className="text-faint">Depth</dt>
+          <dt
+            className="text-faint"
+            title="Box Least Squares box-search depth. For Period alias candidates this differs from the fitted primary/secondary depths shown on the candidate page."
+          >
+            BLS depth
+          </dt>
           <dd className="font-mono text-fg/80">{fmtDepth(c.depth_frac)}</dd>
         </div>
         <div className="flex justify-between border-b border-line pb-1">

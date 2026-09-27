@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import { getAllTics } from "@/lib/data";
@@ -39,11 +40,19 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteHeader tics={tics} />
         {children}
         <footer className="mt-auto border-t border-line">
-          <div className="mx-auto flex max-w-[1920px] flex-wrap items-center justify-between gap-2 px-3 py-6 text-xs text-faint sm:px-6">
+          <div className="mx-auto flex max-w-[1920px] flex-wrap items-center justify-between gap-3 px-3 py-6 text-xs text-faint sm:px-6">
             <span>
               Star Vetter - built on public TESS data from MAST. Every number
               shown is produced by the pipeline itself.
             </span>
+            <nav className="flex gap-4">
+              <Link href="/standouts" className="nav-caps hover:text-muted">
+                Standouts
+              </Link>
+              <Link href="/glossary" className="nav-caps hover:text-muted">
+                Glossary
+              </Link>
+            </nav>
             <span className="font-mono">TESS / MAST / Gaia</span>
           </div>
         </footer>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 
 function flux(phase: number): number {
   let v = 1;
@@ -23,10 +23,15 @@ const CURVE = Array.from({ length: 400 }, (_, i) => {
 });
 
 export default function EclipseExplainer() {
+  const uid = useId();
   const reducedMotion = useMemo(
     () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches,
     []
   );
+  // Phase lives directly in the same domain the chart is drawn in
+  // (-0.5 to 0.5, primary eclipse at 0), so the slider thumb, the marker
+  // line, and the orbit diagram always agree - no separate transform, and
+  // no jump when dragging across the old 0/1 wrap point.
   const [phase, setPhase] = useState(0);
   const [playing, setPlaying] = useState(!reducedMotion);
   const rafRef = useRef<number | null>(null);
@@ -40,7 +45,10 @@ export default function EclipseExplainer() {
     function tick(t: number) {
       if (lastRef.current !== null) {
         const dt = (t - lastRef.current) / 1000;
-        setPhase((p) => (p + dt / 8) % 1);
+        setPhase((p) => {
+          const next = p + dt / 8;
+          return next >= 0.5 ? next - 1 : next;
+        });
       }
       lastRef.current = t;
       rafRef.current = requestAnimationFrame(tick);
@@ -53,9 +61,9 @@ export default function EclipseExplainer() {
 
   const f = flux(phase);
   const label =
-    phase < 0.06 || phase > 0.94
+    Math.abs(phase) < 0.06
       ? "Primary eclipse"
-      : phase > 0.44 && phase < 0.56
+      : Math.abs(phase) > 0.44
         ? "Secondary eclipse"
         : "Both visible";
 
@@ -64,14 +72,12 @@ export default function EclipseExplainer() {
   const orbitRy = 32;
   const secX = 160 + orbitRx * Math.sin(angle);
   const secY = 80 + orbitRy * Math.cos(angle);
-  const inFront = Math.sin(angle) > 0 ? phase < 0.5 : phase >= 0.5;
+  const secondaryInFront = Math.cos(angle) > 0;
 
   function onScrub(v: number) {
     setPlaying(false);
-    setPhase(((v % 1) + 1) % 1);
+    setPhase(v);
   }
-
-  const shownPhase = phase > 0.5 ? phase - 1 : phase;
 
   return (
     <section className="rounded-xl border border-line bg-panel p-4 sm:p-6">
@@ -86,6 +92,18 @@ export default function EclipseExplainer() {
       <div className="mt-5 grid gap-6 lg:grid-cols-2">
         <div>
           <svg viewBox="0 0 320 160" className="w-full text-fg">
+            <defs>
+              <radialGradient id={`ecl-primary-${uid}`} cx="35%" cy="32%" r="70%">
+                <stop offset="0%" stopColor="#ffffff" />
+                <stop offset="45%" style={{ stopColor: "var(--accent)" }} />
+                <stop offset="100%" style={{ stopColor: "var(--accent)" }} stopOpacity="0.85" />
+              </radialGradient>
+              <radialGradient id={`ecl-secondary-${uid}`} cx="35%" cy="32%" r="70%">
+                <stop offset="0%" stopColor="#ffffff" />
+                <stop offset="50%" style={{ stopColor: "var(--accent-cool)" }} />
+                <stop offset="100%" style={{ stopColor: "var(--accent-cool)" }} stopOpacity="0.85" />
+              </radialGradient>
+            </defs>
             <ellipse
               cx="160"
               cy="80"
@@ -96,15 +114,15 @@ export default function EclipseExplainer() {
               strokeOpacity="0.25"
               strokeDasharray="2 6"
             />
-            {inFront ? (
+            {secondaryInFront ? (
               <>
-                <circle cx="160" cy="80" r="26" className="fill-accent" />
-                <circle cx={secX} cy={secY} r="13" className="fill-accent-cool" />
+                <circle cx="160" cy="80" r="26" fill={`url(#ecl-primary-${uid})`} />
+                <circle cx={secX} cy={secY} r="13" fill={`url(#ecl-secondary-${uid})`} />
               </>
             ) : (
               <>
-                <circle cx={secX} cy={secY} r="13" className="fill-accent-cool" />
-                <circle cx="160" cy="80" r="26" className="fill-accent" />
+                <circle cx={secX} cy={secY} r="13" fill={`url(#ecl-secondary-${uid})`} />
+                <circle cx="160" cy="80" r="26" fill={`url(#ecl-primary-${uid})`} />
               </>
             )}
           </svg>
@@ -132,8 +150,8 @@ export default function EclipseExplainer() {
               strokeWidth={1.5}
             />
             <line
-              x1={(shownPhase + 0.5) * 320}
-              x2={(shownPhase + 0.5) * 320}
+              x1={(phase + 0.5) * 320}
+              x2={(phase + 0.5) * 320}
               y1={0}
               y2={120}
               className="stroke-accent"
@@ -154,8 +172,8 @@ export default function EclipseExplainer() {
             </button>
             <input
               type="range"
-              min={0}
-              max={0.999}
+              min={-0.5}
+              max={0.4995}
               step={0.001}
               value={phase}
               onChange={(e) => onScrub(Number(e.target.value))}

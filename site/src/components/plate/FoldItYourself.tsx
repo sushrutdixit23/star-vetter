@@ -59,7 +59,7 @@ export default function FoldItYourself({
         xLabel="phase"
         yLabel="relative flux"
       />
-      <div className="mt-3 flex items-center gap-3">
+      <div className="mt-3 flex flex-wrap items-center gap-3">
         <label className="text-xs text-muted" htmlFor="fold-period">
           Period (days)
         </label>
@@ -75,6 +75,13 @@ export default function FoldItYourself({
           className="flex-1 accent-accent disabled:opacity-40"
         />
         <span className="w-20 text-right font-mono text-xs text-fg">{period.toFixed(5)}</span>
+        <button
+          type="button"
+          onClick={() => setPeriod(truePeriod)}
+          className="rounded-md border border-line px-2.5 py-1 text-xs text-muted hover:text-fg"
+        >
+          Reset to best fit
+        </button>
       </div>
       {!interactive && (
         <p className="mt-2 text-[11px] text-faint">
