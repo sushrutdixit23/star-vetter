@@ -1,173 +1,173 @@
 {
-  "trained_at": "2026-09-27T22:09:03.771651+00:00",
-  "n_samples": 673,
-  "n_positive": 78,
-  "n_negative": 595,
+  "trained_at": "2026-09-27T23:56:21.573200+00:00",
+  "n_samples": 730,
+  "n_positive": 85,
+  "n_negative": 645,
   "n_folds": 5,
   "baseline": {
     "description": "current pipeline behavior: every candidate that passes statistical vetting and novelty cross-match goes to the pixel check",
     "recall": 1.0,
-    "precision": 0.1159
+    "precision": 0.1164
   },
   "models": {
     "logistic_regression": {
-      "precision_mean": 0.23161927352284697,
-      "precision_std": 0.040355590099360614,
-      "recall_mean": 0.5733333333333334,
-      "recall_std": 0.13098451986568657,
-      "roc_auc_mean": 0.7412885154061625,
-      "roc_auc_std": 0.027264553393746827,
-      "average_precision_mean": 0.3205664359952921,
-      "average_precision_std": 0.059918350826224265
+      "precision_mean": 0.26696283391405345,
+      "precision_std": 0.039441268932578884,
+      "recall_mean": 0.6117647058823529,
+      "recall_std": 0.04705882352941178,
+      "roc_auc_mean": 0.7504787961696306,
+      "roc_auc_std": 0.03211121001172445,
+      "average_precision_mean": 0.346780005343532,
+      "average_precision_std": 0.049018484745279374
     },
     "hist_gradient_boosting": {
-      "precision_mean": 0.5190476190476191,
-      "precision_std": 0.07882354932022308,
-      "recall_mean": 0.15333333333333332,
-      "recall_std": 0.02806243040080456,
-      "roc_auc_mean": 0.7690056022408964,
-      "roc_auc_std": 0.050663116825210505,
-      "average_precision_mean": 0.3688982519089808,
-      "average_precision_std": 0.09052967069148712
+      "precision_mean": 0.5444444444444445,
+      "precision_std": 0.06478835438717,
+      "recall_mean": 0.2235294117647059,
+      "recall_std": 0.04401949866792872,
+      "roc_auc_mean": 0.7792065663474693,
+      "roc_auc_std": 0.037950733009227244,
+      "average_precision_mean": 0.3987079471002696,
+      "average_precision_std": 0.029360278089335466
     }
   },
-  "chosen_model": "logistic_regression",
+  "chosen_model": "hist_gradient_boosting",
   "chosen_model_selection": "best fraction_screened_out at recall >= 0.80, tie-broken by roc_auc_mean",
   "beats_baseline": true,
   "screening_value": [
     {
       "target_recall": 0.95,
-      "threshold": 0.06,
-      "recall": 0.974,
-      "fraction_screened_out": 0.071
+      "threshold": 0.0,
+      "recall": 1.0,
+      "fraction_screened_out": 0.0
     },
     {
       "target_recall": 0.9,
-      "threshold": 0.24,
-      "recall": 0.91,
-      "fraction_screened_out": 0.288
+      "threshold": 0.01,
+      "recall": 0.941,
+      "fraction_screened_out": 0.347
     },
     {
       "target_recall": 0.8,
-      "threshold": 0.38,
-      "recall": 0.833,
-      "fraction_screened_out": 0.539
+      "threshold": 0.03,
+      "recall": 0.8,
+      "fraction_screened_out": 0.537
     }
   ],
   "models_screening_value": {
     "logistic_regression": [
       {
         "target_recall": 0.95,
-        "threshold": 0.06,
-        "recall": 0.974,
-        "fraction_screened_out": 0.071
+        "threshold": 0.2,
+        "recall": 0.953,
+        "fraction_screened_out": 0.26
       },
       {
         "target_recall": 0.9,
-        "threshold": 0.24,
-        "recall": 0.91,
-        "fraction_screened_out": 0.288
+        "threshold": 0.27,
+        "recall": 0.906,
+        "fraction_screened_out": 0.362
       },
       {
         "target_recall": 0.8,
-        "threshold": 0.38,
-        "recall": 0.833,
-        "fraction_screened_out": 0.539
+        "threshold": 0.34,
+        "recall": 0.812,
+        "fraction_screened_out": 0.488
       }
     ],
     "hist_gradient_boosting": [
       {
         "target_recall": 0.95,
-        "threshold": 0.01,
-        "recall": 0.962,
-        "fraction_screened_out": 0.322
+        "threshold": 0.0,
+        "recall": 1.0,
+        "fraction_screened_out": 0.0
       },
       {
         "target_recall": 0.9,
         "threshold": 0.01,
-        "recall": 0.962,
-        "fraction_screened_out": 0.322
+        "recall": 0.941,
+        "fraction_screened_out": 0.347
       },
       {
         "target_recall": 0.8,
-        "threshold": 0.02,
-        "recall": 0.872,
-        "fraction_screened_out": 0.434
+        "threshold": 0.03,
+        "recall": 0.8,
+        "fraction_screened_out": 0.537
       }
     ]
   },
   "feature_importance": [
     {
-      "feature": "bls_duration",
-      "importance_mean": 0.0709
-    },
-    {
-      "feature": "depth_ratio",
-      "importance_mean": 0.0614
-    },
-    {
-      "feature": "bls_depth",
-      "importance_mean": 0.0601
-    },
-    {
-      "feature": "n_eclipses_observed",
-      "importance_mean": 0.0452
-    },
-    {
       "feature": "Tmag",
-      "importance_mean": 0.0441
-    },
-    {
-      "feature": "secondary_detected",
-      "importance_mean": 0.0408
-    },
-    {
-      "feature": "robust_depth",
-      "importance_mean": 0.0339
-    },
-    {
-      "feature": "secondary_sigma",
-      "importance_mean": 0.0309
-    },
-    {
-      "feature": "author_used",
-      "importance_mean": 0.0283
+      "importance_mean": 0.0606
     },
     {
       "feature": "robust_sigma",
-      "importance_mean": 0.0228
+      "importance_mean": 0.0352
     },
     {
-      "feature": "n_points",
-      "importance_mean": 0.0045
+      "feature": "depth_ratio",
+      "importance_mean": 0.0265
     },
     {
-      "feature": "bls_snr",
-      "importance_mean": 0.0039
+      "feature": "bls_duration",
+      "importance_mean": 0.0252
     },
     {
-      "feature": "n_sectors",
-      "importance_mean": 0.0011
-    },
-    {
-      "feature": "depth_odd",
-      "importance_mean": 0.0007
-    },
-    {
-      "feature": "secondary_phase",
-      "importance_mean": 0.0007
-    },
-    {
-      "feature": "odd_even_z",
-      "importance_mean": 0.0001
-    },
-    {
-      "feature": "depth_even",
-      "importance_mean": -0.0003
+      "feature": "secondary_sigma",
+      "importance_mean": 0.0075
     },
     {
       "feature": "bls_period",
-      "importance_mean": -0.0003
+      "importance_mean": 0.0071
+    },
+    {
+      "feature": "n_eclipses_observed",
+      "importance_mean": 0.005
+    },
+    {
+      "feature": "n_points",
+      "importance_mean": 0.0043
+    },
+    {
+      "feature": "bls_snr",
+      "importance_mean": 0.0043
+    },
+    {
+      "feature": "odd_even_z",
+      "importance_mean": 0.0023
+    },
+    {
+      "feature": "secondary_phase",
+      "importance_mean": 0.001
+    },
+    {
+      "feature": "depth_odd",
+      "importance_mean": 0.0008
+    },
+    {
+      "feature": "robust_depth",
+      "importance_mean": 0.0004
+    },
+    {
+      "feature": "bls_depth",
+      "importance_mean": 0.0004
+    },
+    {
+      "feature": "depth_even",
+      "importance_mean": 0.0003
+    },
+    {
+      "feature": "n_sectors",
+      "importance_mean": 0.0003
+    },
+    {
+      "feature": "author_used",
+      "importance_mean": 0.0002
+    },
+    {
+      "feature": "secondary_detected",
+      "importance_mean": 0.0
     }
   ],
   "note": "n_positive is small; treat these numbers as directional until more runs accumulate. Cross-validated (out-of-fold) throughout - not in-sample."
