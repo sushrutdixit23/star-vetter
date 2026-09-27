@@ -64,6 +64,16 @@ NUMERIC_FEATURES = [
 CATEGORICAL_FEATURES = ["author_used"]
 TARGET = "on_target"
 
+# The recall level we actually operate at. Model selection picks whichever
+# model screens out the most work while still hitting this recall, not
+# whichever has the best ROC AUC - a model can rank well overall yet still
+# be unusable at a specific high-recall operating point. (2026-09-27:
+# hist_gradient_boosting had the better AUC but a recall_mean of just
+# 0.149, so it could not hit 0.80 recall at any threshold above 0, while
+# logistic_regression's recall_mean of 0.598 made it the only one with any
+# real screening value - but the old AUC-only selection never checked.)
+PRIMARY_TARGET_RECALL = 0.80
+
 
 def build_pipeline(numeric_cols, categorical_cols, model):
     transformers = []
@@ -126,6 +136,13 @@ def screening_value(pipeline, X, y, n_splits):
     return results
 
 
+def skip_fraction_at(screening_rows, target_recall):
+    for row in screening_rows:
+        if row["target_recall"] == target_recall:
+            return row["fraction_screened_out"]
+    return 0.0
+
+
 def main():
     if len(sys.argv) < 2:
         print("Usage: py f7b_train_classifier.py <project_root>")
@@ -179,6 +196,7 @@ def main():
 
     model_metrics = {}
     pipelines = {}
+    model_screening = {}
     print(f"\nCross-validated ({n_splits}-fold) metrics:")
     for name, model in model_defs.items():
         pipe = build_pipeline(numeric_cols, categorical_cols, model)
@@ -189,13 +207,27 @@ def main():
         print(f"    precision {metrics['precision_mean']:.3f} (+/- {metrics['precision_std']:.3f})"
               f"  recall {metrics['recall_mean']:.3f} (+/- {metrics['recall_std']:.3f})"
               f"  roc_auc {metrics['roc_auc_mean']:.3f}")
+        model_screening[name] = screening_value(pipe, X, y, n_splits)
+        skip_80 = skip_fraction_at(model_screening[name], PRIMARY_TARGET_RECALL)
+        print(f"    screening value at recall >= {PRIMARY_TARGET_RECALL:.2f}: "
+              f"{skip_80*100:.1f}% of downloads skippable")
 
-    chosen_name = max(model_metrics, key=lambda k: model_metrics[k]["roc_auc_mean"])
+    # Pick whichever model screens out the most work at our real operating
+    # recall, tie-broken by roc_auc_mean (see PRIMARY_TARGET_RECALL comment
+    # above for why AUC alone picked a worse model on 2026-09-27).
+    chosen_name = max(
+        model_metrics,
+        key=lambda k: (
+            skip_fraction_at(model_screening[k], PRIMARY_TARGET_RECALL),
+            model_metrics[k]["roc_auc_mean"],
+        ),
+    )
     chosen_auc = model_metrics[chosen_name]["roc_auc_mean"]
     baseline_auc_equivalent = 0.5  # a coin flip / "send everyone" has no discriminative power
     beats_baseline = chosen_auc > baseline_auc_equivalent + 0.05
 
-    print(f"\nBest model by ROC AUC: {chosen_name} ({chosen_auc:.3f})")
+    print(f"\nBest model by screening value at recall >= {PRIMARY_TARGET_RECALL:.2f}: "
+          f"{chosen_name} (roc_auc {chosen_auc:.3f})")
     if not beats_baseline:
         print("  This does not clearly beat random guessing yet. Recommendation: "
               "do NOT use this to skip pixel checks. Keep collecting labeled runs.")
@@ -203,7 +235,7 @@ def main():
         print("  This shows real discriminative signal over the current no-filter baseline.")
 
     chosen_pipe = pipelines[chosen_name]
-    screening = screening_value(chosen_pipe, X, y, n_splits)
+    screening = model_screening[chosen_name]
     print("\nScreening value (out-of-fold, honest estimate):")
     for row in screening:
         print(f"  at recall >= {row['target_recall']:.2f}: could skip "
@@ -258,8 +290,11 @@ def main():
         },
         "models": model_metrics,
         "chosen_model": chosen_name,
+        "chosen_model_selection": f"best fraction_screened_out at recall >= "
+                                   f"{PRIMARY_TARGET_RECALL:.2f}, tie-broken by roc_auc_mean",
         "beats_baseline": bool(beats_baseline),
         "screening_value": screening,
+        "models_screening_value": model_screening,
         "feature_importance": feature_importance,
         "note": "n_positive is small; treat these numbers as directional until more "
                 "runs accumulate. Cross-validated (out-of-fold) throughout - not in-sample.",
