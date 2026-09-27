@@ -1,10 +1,10 @@
 {
   "last_run": {
-    "iso": "2026-09-27T02:19:06+05:30",
-    "display": "27 Sep 2026, 02:19 (UTC+05:30)",
-    "log_file": "orchestrator_20260927_021906.log"
+    "iso": "2026-09-27T13:54:32+00:00",
+    "display": "27 Sep 2026, 13:54 (UTC+00:00)",
+    "log_file": "orchestrator_20260927_135432.log"
   },
-  "runs_logged": 8,
+  "runs_logged": 1,
   "dossiers_available": [
     437150434,
     237115819,

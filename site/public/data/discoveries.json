@@ -1,62 +1,62 @@
 {
   "discoveries": [
     {
-      "tic": 349701853,
+      "blurb": "This binary star system sets the record for deepest eclipse at 33.08% dimming. With an orbital period of 30.3 days, the primary eclipse is detected with exceptional clarity at signal-to-noise 343.5. A secondary eclipse at 114.8 sigma provides additional confirmation that this is a genuine eclipsing binary system.",
       "category": "deepest_eclipse",
       "category_label": "Deepest eclipse",
-      "stat_text": "33.1% dimming",
       "headline": "Star dims by one-third during eclipse",
-      "blurb": "This binary star system sets the record for deepest eclipse at 33.08% dimming. With an orbital period of 30.3 days, the primary eclipse is detected with exceptional clarity at signal-to-noise 343.5. A secondary eclipse at 114.8 sigma provides additional confirmation that this is a genuine eclipsing binary system."
+      "stat_text": "33.1% dimming",
+      "tic": 349701853
     },
     {
-      "tic": 86956236,
+      "blurb": "At 70.8 days, this system has the longest orbital period in our showcase. The two stars take more than two months to complete one orbit around each other. Despite the extended period, the primary eclipse is clearly detected at signal-to-noise 225.5, with a secondary eclipse at 113.7 sigma providing strong confirmation.",
       "category": "longest_period",
       "category_label": "Longest orbital period",
-      "stat_text": "70.8 day orbit",
       "headline": "Binary stars in slowest cosmic waltz",
-      "blurb": "At 70.8 days, this system has the longest orbital period in our showcase. The two stars take more than two months to complete one orbit around each other. Despite the extended period, the primary eclipse is clearly detected at signal-to-noise 225.5, with a secondary eclipse at 113.7 sigma providing strong confirmation."
+      "stat_text": "70.8 day orbit",
+      "tic": 86956236
     },
     {
-      "tic": 380943251,
+      "blurb": "This binary star system completes a full orbit in just 0.721 days, the shortest orbital period in our collection. The two stars race around each other so quickly they would complete 506 orbits in a single year. The primary eclipse reaches 7.88% depth, clearly detectable despite the brief orbital period.",
       "category": "shortest_period",
       "category_label": "Shortest orbital period",
-      "stat_text": "0.721 day orbit",
       "headline": "Rapidly orbiting pair complete lap daily",
-      "blurb": "This binary star system completes a full orbit in just 0.721 days, the shortest orbital period in our collection. The two stars race around each other so quickly they would complete 506 orbits in a single year. The primary eclipse reaches 7.88% depth, clearly detectable despite the brief orbital period."
+      "stat_text": "0.721 day orbit",
+      "tic": 380943251
     },
     {
-      "tic": 251898081,
+      "blurb": "This system achieves a machine learning screening score of 0.989, the highest in our showcase. Its characteristics are unmistakably clear: a 33.05% eclipse depth, extraordinary detection significance of 5534.5 signal-to-noise, and a secondary eclipse at 1106.6 sigma. Three precisely timed eclipses confirm the orbital period of 54.6 days.",
       "category": "highest_ml_score",
       "category_label": "Highest ML screening score",
-      "stat_text": "ML score 0.989",
       "headline": "Machine learning algorithm's top-rated candidate",
-      "blurb": "This system achieves a machine learning screening score of 0.989, the highest in our showcase. Its characteristics are unmistakably clear: a 33.05% eclipse depth, extraordinary detection significance of 5534.5 signal-to-noise, and a secondary eclipse at 1106.6 sigma. Three precisely timed eclipses confirm the orbital period of 54.6 days."
+      "stat_text": "ML score 0.989",
+      "tic": 251898081
     },
     {
-      "tic": 467214801,
+      "blurb": "This system stands out as our most novel find - it does not appear in any of six checked catalogs of known variable stars. Despite its shallow 1.63% eclipse depth, it was identified through 140 individually timed eclipses with a strong detection signal of 2133.7 signal-to-noise over its 1.52-day orbit.",
       "category": "most_novel",
       "category_label": "Most novel find",
-      "stat_text": "not in any of the checked catalogs",
       "headline": "Newly discovered binary hiding in plain sight",
-      "blurb": "This system stands out as our most novel find - it does not appear in any of six checked catalogs of known variable stars. Despite its shallow 1.63% eclipse depth, it was identified through 140 individually timed eclipses with a strong detection signal of 2133.7 signal-to-noise over its 1.52-day orbit."
+      "stat_text": "not in any of the checked catalogs",
+      "tic": 467214801
     },
     {
-      "tic": 237115819,
+      "blurb": "The secondary eclipse of this system reaches 418.3 sigma, the clearest detection of a secondary eclipse in our showcase. This occurs when the smaller star passes behind the primary over a 14.8-day orbit. Fifty-two individually timed eclipses track the system with precision, while the primary eclipse reaches 13.17% depth.",
       "category": "clearest_secondary",
       "category_label": "Clearest secondary eclipse",
-      "stat_text": "secondary eclipse at 418.3 sigma",
       "headline": "Secondary eclipse shines with clarity",
-      "blurb": "The secondary eclipse of this system reaches 418.3 sigma, the clearest detection of a secondary eclipse in our showcase. This occurs when the smaller star passes behind the primary over a 14.8-day orbit. Fifty-two individually timed eclipses track the system with precision, while the primary eclipse reaches 13.17% depth."
+      "stat_text": "secondary eclipse at 418.3 sigma",
+      "tic": 237115819
     },
     {
-      "tic": 348884775,
+      "blurb": "Three precisely timed eclipses of this 6.7-day binary reveal timing predictions matched almost perfectly to observations. The reduced chi-square value of 0.07 is the tightest fit in our showcase, indicating the orbital period and eclipse times follow mathematical predictions with remarkable precision. The 17.56% primary eclipse depth is clearly detected.",
       "category": "tightest_timing",
       "category_label": "Most tightly timed orbit",
-      "stat_text": "3 eclipses timed, reduced chi-square 0.07",
       "headline": "Orbital rhythm matches predictions perfectly",
-      "blurb": "Three precisely timed eclipses of this 6.7-day binary reveal timing predictions matched almost perfectly to observations. The reduced chi-square value of 0.07 is the tightest fit in our showcase, indicating the orbital period and eclipse times follow mathematical predictions with remarkable precision. The 17.56% primary eclipse depth is clearly detected."
+      "stat_text": "3 eclipses timed, reduced chi-square 0.07",
+      "tic": 348884775
     }
   ],
-  "model": "claude-haiku-4-5-20251001",
-  "generated_at": "2026-09-27T11:37:40.208874+00:00"
+  "generated_at": "2026-09-27T11:37:40.208874+00:00",
+  "model": "claude-haiku-4-5-20251001"
 }

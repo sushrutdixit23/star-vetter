@@ -99,6 +99,11 @@
     "model": "claude-haiku-4-5-20251001",
     "writeup": "TIC 29495157 is a newly discovered eclipsing binary star with an orbital period of 10.29 days. The primary eclipse causes the star's brightness to dim by 8.58 percent, while a secondary eclipse has not been detected. This system was identified through analysis of survey data and does not appear in existing variable-star catalogs, making it a genuine new discovery. The detection shows strong statistical confidence, with a signal-to-noise ratio of 333.2, and has been confirmed through independent imaging analysis. The alternating depths of successive eclipses indicate the star's actual orbital period is double the initial measurement, revealing the complex nature of this binary system."
   },
+  "294976780": {
+    "generated_at": "2026-09-27T14:16:45.743673+00:00",
+    "model": "claude-haiku-4-5-20251001",
+    "writeup": "Astronomers have identified a new eclipsing binary star system called TIC 294976780, never before cataloged in any major variable-star database. The two stars orbit each other in just 0.9586 days, and when the primary star passes in front of its companion, the system dims by 4.90 percent. A secondary eclipse was not detected. The discovery was confirmed through multiple independent methods: a strong signal-to-noise detection of 133.1 using automated analysis, followed by pixel-level verification showing a peak signal-to-noise of 17.0 with the predicted offset of 2.0 arcseconds from the target location. The system passed all data quality checks, making this a clean, genuine addition to known binary star systems."
+  },
   "295373509": {
     "generated_at": "2026-09-27T10:30:25.109185+00:00",
     "model": "claude-haiku-4-5-20251001",
@@ -118,6 +123,11 @@
     "generated_at": "2026-09-27T10:29:53.963717+00:00",
     "model": "claude-haiku-4-5-20251001",
     "writeup": "TIC 318887646 is a newly discovered eclipsing binary star with an orbital period of 14.2817 days. When the primary star passes in front of its companion, the system dims by 3.60 percent - a dip detected with high confidence by automated analysis. Researchers found no evidence of a secondary eclipse, suggesting one star is much brighter than the other. The signal was confirmed through difference-imaging techniques and has not appeared in any existing variable-star catalogs, making this a genuine new discovery. The candidate passed all data quality checks and scored 0.91 on the machine-learning pipeline used to validate real astronomical sources, indicating it is highly likely to be legitimate."
+  },
+  "318907244": {
+    "generated_at": "2026-09-27T14:16:43.411421+00:00",
+    "model": "claude-haiku-4-5-20251001",
+    "writeup": "TIC 318907244 is a newly discovered eclipsing binary star that completes its orbit every 1.0233 days. When the primary star passes in front of its companion, the system dims by 1.95 percent - a signal detected with high confidence by automated search methods. Astronomers have not yet observed a secondary eclipse, which would occur when the companion star crosses in front of the primary. This candidate passed all data quality checks and does not appear in any of six major variable-star catalogs, making it a genuine discovery. The detection represents the kind of new binary system that patient automated surveys can uncover, adding to our catalog of these stellar pairs."
   },
   "326225355": {
     "generated_at": "2026-09-27T10:30:37.585366+00:00",
