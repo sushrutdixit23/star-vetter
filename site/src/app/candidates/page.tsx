@@ -1,5 +1,5 @@
 import { Suspense, createElement } from "react";
-import { getAllCandidates, getSiteMeta } from "@/lib/data";
+import { getAllCandidates, getDashboard, getSiteMeta } from "@/lib/data";
 import { toCardData } from "@/lib/cards";
 import CandidateBrowser from "@/components/CandidateBrowser";
 
@@ -10,6 +10,7 @@ export const metadata = {
 export default function CandidatesPage() {
   const cards = getAllCandidates().map(toCardData);
   const meta = getSiteMeta();
+  const skyPoints = getDashboard()?.sky ?? [];
 
   return (
     <main className="mx-auto w-full max-w-[1920px] flex-1 px-3 py-8 sm:px-6 sm:py-10">
@@ -40,7 +41,7 @@ export default function CandidatesPage() {
 
       <div className="mt-8">
         <Suspense fallback={null}>
-          <CandidateBrowser cards={cards} />
+          <CandidateBrowser cards={cards} skyPoints={skyPoints} />
         </Suspense>
       </div>
     </main>
