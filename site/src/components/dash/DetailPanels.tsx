@@ -130,6 +130,11 @@ export function DetailHeader({
         <TierBadge tier={s.tier} />
       </div>
       <p className="mt-1 text-sm text-muted">{summaryLine(s, d)}</p>
+      {d?.writeup && (
+        <p className="mt-3 rounded-md border border-line bg-panel-2 px-3 py-2.5 text-sm leading-relaxed text-fg/90">
+          {d.writeup}
+        </p>
+      )}
       <div className="mt-3 flex flex-wrap gap-2">
         <button type="button" className={btn} onClick={() => copy("cite", cite)}>
           <IconQuote className="h-3.5 w-3.5" /> {copied === "cite" ? "Copied" : "Cite"}

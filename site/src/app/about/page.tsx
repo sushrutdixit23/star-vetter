@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getModelMetrics, getPipelineStats } from "@/lib/data";
+import { getAboutContent, getModelMetrics, getPipelineStats } from "@/lib/data";
 
 const STAGES = [
   {
@@ -35,6 +35,7 @@ const STAGES = [
 export default function AboutPage() {
   const stats = getPipelineStats();
   const metrics = getModelMetrics();
+  const aboutContent = getAboutContent();
   const maxCount = stats && stats.funnel.length > 0 ? stats.funnel[0].count : 1;
   const chosen = metrics ? metrics.models[metrics.chosen_model] : null;
 
@@ -318,7 +319,34 @@ export default function AboutPage() {
         </section>
       )}
 
-      <div className="mb-16">
+      {aboutContent && (
+        <section className="mt-12">
+          <h2 className="mb-4 text-sm font-medium uppercase tracking-wide text-white/50">
+            In plain English
+          </h2>
+          <p className="max-w-2xl text-base leading-relaxed text-white/70">
+            {aboutContent.narrative}
+          </p>
+        </section>
+      )}
+
+      {aboutContent && aboutContent.faqs.length > 0 && (
+        <section className="mt-12">
+          <h2 className="mb-4 text-sm font-medium uppercase tracking-wide text-white/50">
+            Frequently asked questions
+          </h2>
+          <div className="space-y-5">
+            {aboutContent.faqs.map((qa, i) => (
+              <div key={i}>
+                <h3 className="text-sm font-semibold text-white">{qa.question}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-white/60">{qa.answer}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <div className="mt-12 mb-16">
         <Link
           href="/"
           className="font-mono text-xs uppercase tracking-wide text-sky-400/80 hover:text-sky-300"

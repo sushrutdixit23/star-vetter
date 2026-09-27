@@ -1,0 +1,35 @@
+{
+  "faqs": [
+    {
+      "answer": "An eclipsing binary is a system of two stars orbiting each other in such a way that, from Earth's perspective, one periodically passes in front of the other. When this happens, the total brightness of the system drops noticeably. By measuring these brightness dips we can infer properties like the stars' sizes, masses, and orbital period.",
+      "question": "What is an eclipsing binary star?"
+    },
+    {
+      "answer": "A 'candidate' is a star whose light curve shows a statistical signature consistent with an eclipsing binary and passes our automated checks. A 'confirmed' candidate is one that has passed additional visual inspection (pixel-level checking) to rule out false signals caused by nearby stars or instrumental artifacts.",
+      "question": "What does 'candidate' mean here, versus 'confirmed'?"
+    },
+    {
+      "answer": "Our machine learning model, trained on 417 labeled examples, assigns a probability to each candidate based on features of its light curve. A higher score indicates the model thinks the candidate is more likely to be a real eclipsing binary. However, this score is not a guarantee\u2014it is one input to our vetting process, not a final verdict.",
+      "question": "What is the ML screening score, and what does it tell me?"
+    },
+    {
+      "answer": "TESS observes many stars in a single image. Sometimes the brightness dip we measure actually comes from a nearby star, not our target. In a pixel-level check, we examine where in the image the signal originates to confirm it comes from the intended target star. This step catches contaminants that statistical tests alone might miss.",
+      "question": "What is the 'pixel-level check,' and why do you do it?"
+    },
+    {
+      "answer": "Period aliases are a real risk in any transit survey. We handle this by fitting multiple periods to each candidate light curve and considering the physical plausibility of the results. Ambiguities may require follow-up observations to resolve, and we flag such cases in our output.",
+      "question": "What if the signal looks like it could be an alias--a false period caused by the observation schedule?"
+    },
+    {
+      "answer": "Yes. Each confirmed candidate on our site links to the underlying TESS light curve data and our analysis results. You can download the data and examine it yourself using standard astronomy tools, and you can check our cross-match results against the public catalogs we use.",
+      "question": "Can I verify one of these discoveries myself?"
+    },
+    {
+      "answer": "Once confirmed and published by Star Vetter, these eclipsing binaries become part of the scientific literature and public record. Professional astronomers may choose to conduct follow-up observations, measure precise masses and radii, or include them in surveys of binary star populations. Some may also be added to public catalogs over time.",
+      "question": "What happens to a candidate after you list it on this site?"
+    }
+  ],
+  "generated_at": "2026-09-27T10:45:10.759151+00:00",
+  "model": "claude-haiku-4-5-20251001",
+  "narrative": "Star Vetter automatically identifies eclipsing binary stars in data from NASA's TESS satellite. We start with thousands of target stars, extract their brightness measurements over time, and search for the characteristic dips that occur when one star passes in front of another. Our pipeline applies statistical tests to distinguish real eclipsing binaries from noise and instrumental artifacts, then cross-checks against six major variable-star catalogs to avoid re-discovering known objects. Candidates that survive these checks are visually inspected at the pixel level to confirm the signal comes from the target star itself, not a nearby contaminant. We use machine learning trained on hundreds of labeled examples to prioritize which candidates are most likely to be genuine eclipsing binaries, improving on our initial rule-based approach. So far we have confirmed 51 new eclipsing binaries from a systematic search of about 0.4 percent of TESS's target list."
+}

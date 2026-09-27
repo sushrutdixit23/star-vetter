@@ -432,6 +432,17 @@ def main():
     else:
         print(f"  NOTE: {scores_path.name} not found - ml_score will be null for every candidate")
 
+    # ---- plain-English write-ups (written by f8_generate_writeups.py) ----
+    # Same optional, joined-in pattern as ml_score above: a candidate that
+    # has not been through f8 yet just gets a null writeup.
+    writeups_path = proc / "f8_writeups.json"
+    writeups = {}
+    if writeups_path.exists():
+        writeups = json.loads(writeups_path.read_text(encoding="utf-8"))
+        print(f"  Write-ups: {len(writeups)} row(s) from {writeups_path.name}")
+    else:
+        print(f"  NOTE: {writeups_path.name} not found - writeup will be null for every candidate")
+
     # ---- TIC catalog: sky position, Gaia G, distance, Teff, radius ----
     cat = {}
     try:
@@ -472,12 +483,13 @@ def main():
                 ml = ml_scores.get(tic, {"ml_score": None, "ml_model_name": None})
                 existing["ml_score"] = ml["ml_score"]
                 existing["ml_model_name"] = ml["ml_model_name"]
+                existing["writeup"] = writeups.get(str(tic), {}).get("writeup")
                 detail_path.write_text(json.dumps(existing, separators=(",", ":")),
                                        encoding="utf-8", newline="\n")
                 sky.append({"tic": tic, "tier": cj["tier"], "ra": info.get("ra"), "dec": info.get("dec"),
                             "period_days": existing["period_true_days"], "bls_snr": eph["bls_snr"]})
                 print(f"  TIC {tic}: light curve not present this run - reusing existing detail export "
-                      f"(refreshed ml_score)")
+                      f"(refreshed ml_score, writeup)")
             else:
                 print(f"  WARNING: TIC {tic} has no light curve and no prior detail export - skipped "
                       f"(its dashboard page will 404 until this star is re-fetched)")
@@ -606,6 +618,7 @@ def main():
             "pixel_maps": maps,
             "ml_score": ml["ml_score"],
             "ml_model_name": ml["ml_model_name"],
+            "writeup": writeups.get(str(tic), {}).get("writeup"),
         }
         (detail_dir / f"TIC{tic}.json").write_text(json.dumps(detail, separators=(",", ":")),
                                                    encoding="utf-8", newline="\n")
@@ -615,7 +628,8 @@ def main():
               f"{(a['depth'] * 100 if a else float('nan')):.3f}% (seen in {n_seen}/{n_cov} covered eclipses), "
               f"secondary {(b['sigma'] if b else float('nan')):.1f} sigma at phase "
               f"{(b['phase'] if b else float('nan')):.3f}, {oc['n']} timed, pixel maps {'yes' if maps else 'no'}, "
-              f"ml_score {ml['ml_score'] if ml['ml_score'] is not None else 'n/a'}")
+              f"ml_score {ml['ml_score'] if ml['ml_score'] is not None else 'n/a'}, "
+              f"writeup {'yes' if writeups.get(str(tic), {}).get('writeup') else 'no'}")
         for c in checks:
             print("    CHECK: " + c)
 

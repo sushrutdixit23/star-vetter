@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import type {
+  AboutContent,
   Candidate,
   Dashboard,
   Detail,
@@ -53,6 +54,17 @@ export function getModelMetrics(): ModelMetrics | null {
   if (!fs.existsSync(p)) return null;
   const raw = fs.readFileSync(p, "utf-8");
   return JSON.parse(raw) as ModelMetrics;
+}
+
+// about_content.json is written by f9_generate_about_content.py - a batch-
+// generated (not per-visitor) narrative paragraph and FAQ list for the
+// About page, grounded in the pipeline's own numbers. Optional, same
+// pattern as pipeline_stats.json and model_metrics.json.
+export function getAboutContent(): AboutContent | null {
+  const p = path.join(DATA_DIR, "about_content.json");
+  if (!fs.existsSync(p)) return null;
+  const raw = fs.readFileSync(p, "utf-8");
+  return JSON.parse(raw) as AboutContent;
 }
 
 // site_meta.json is written by export_extras.py (last orchestrator run time,

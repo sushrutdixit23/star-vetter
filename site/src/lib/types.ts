@@ -184,6 +184,27 @@ export interface ModelMetrics {
   note?: string;
 }
 
+// ---------- About page narrative + FAQ (written by
+// f9_generate_about_content.py) ----------
+//
+// A one-time batch generation, not per-visitor: grounded in the pipeline's
+// own numbers (index.json / model_metrics.json / pipeline_stats.json) and
+// cached to about_content.json. Optional, same pattern as ModelMetrics -
+// the About page's plain-English and FAQ sections just don't render
+// without it.
+
+export interface AboutFaq {
+  question: string;
+  answer: string;
+}
+
+export interface AboutContent {
+  narrative: string;
+  faqs: AboutFaq[];
+  model: string;
+  generated_at: string;
+}
+
 // ---------- dashboard data (written by export_dashboard.py) ----------
 
 export type XY = [number, number];
@@ -303,6 +324,7 @@ export interface Detail {
   pixel_maps: PixelMaps | null;
   ml_score: number | null;
   ml_model_name: string | null;
+  writeup: string | null;
 }
 
 export interface SkyPoint {
