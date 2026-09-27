@@ -1,46 +1,46 @@
 {
   "discoveries": [
     {
-      "tic": 349701853,
+      "blurb": "This candidate stands out for its remarkably deep primary eclipse, with the star dimming by 33.08 percent - the deepest in this sample. The eclipse repeats every 30.3 days with extraordinary clarity in TESS data, producing a detection signal 343.5 times above background noise. A secondary eclipse is also visible, suggesting both stars contribute meaningfully to the light we observe.",
       "category": "deepest_eclipse",
       "category_label": "Deepest eclipse",
-      "stat_text": "33.1% dimming",
       "headline": "Star system dims by one-third each orbit",
-      "blurb": "This candidate stands out for its remarkably deep primary eclipse, with the star dimming by 33.08 percent - the deepest in this sample. The eclipse repeats every 30.3 days with extraordinary clarity in TESS data, producing a detection signal 343.5 times above background noise. A secondary eclipse is also visible, suggesting both stars contribute meaningfully to the light we observe."
+      "stat_text": "33.1% dimming",
+      "tic": 349701853
     },
     {
-      "tic": 309656476,
+      "blurb": "With an orbital period of 28.9 days, this candidate ranks among the longest-period eclipsing binary systems detected in TESS data. Despite the shallow primary eclipse of just 0.11 percent, the signal stands out clearly over background noise. A secondary eclipse is also detected, confirming the binary nature of this wide, slowly-orbiting pair.",
       "category": "longest_period",
       "category_label": "Longest orbital period",
-      "stat_text": "28.9 day orbit",
       "headline": "Widest orbital dance among the candidates",
-      "blurb": "With an orbital period of 28.9 days, this candidate ranks among the longest-period eclipsing binary systems detected in TESS data. Despite the shallow primary eclipse of just 0.11 percent, the signal stands out clearly over background noise. A secondary eclipse is also detected, confirming the binary nature of this wide, slowly-orbiting pair."
+      "stat_text": "28.9 day orbit",
+      "tic": 309656476
     },
     {
-      "tic": 380943251,
+      "blurb": "This candidate completes a full orbit in just 0.72 days - among the shortest orbital periods observed. The two stars are locked in a tight cosmic dance, dimming to 7.88 percent of their combined light at primary eclipse. The rapid cadence of eclipses provides excellent opportunities to map these closely-packed stellar systems.",
       "category": "shortest_period",
       "category_label": "Shortest orbital period",
-      "stat_text": "0.721 day orbit",
       "headline": "Stars race around each other rapidly",
-      "blurb": "This candidate completes a full orbit in just 0.72 days - among the shortest orbital periods observed. The two stars are locked in a tight cosmic dance, dimming to 7.88 percent of their combined light at primary eclipse. The rapid cadence of eclipses provides excellent opportunities to map these closely-packed stellar systems."
+      "stat_text": "0.721 day orbit",
+      "tic": 380943251
     },
     {
-      "tic": 437150434,
+      "blurb": "Scoring 0.957 on the automated vetting pipeline, this candidate represents nearly ideal data quality and eclipse characteristics. The primary eclipse dims the system by nearly 30 percent every 5.3 days, and the signal towers above background noise with a detection strength of 1081 sigma. No flags or caveats mar this candidate's vetting profile.",
       "category": "highest_ml_score",
       "category_label": "Highest ML screening score",
-      "stat_text": "ML score 0.957",
       "headline": "Machine learning marks this as pristine",
-      "blurb": "Scoring 0.957 on the automated vetting pipeline, this candidate represents nearly ideal data quality and eclipse characteristics. The primary eclipse dims the system by nearly 30 percent every 5.3 days, and the signal towers above background noise with a detection strength of 1081 sigma. No flags or caveats mar this candidate's vetting profile."
+      "stat_text": "ML score 0.957",
+      "tic": 437150434
     },
     {
-      "tic": 237115819,
+      "blurb": "The secondary eclipse in this system stands out with unprecedented clarity, detected at 418.3 sigma - far exceeding typical detection thresholds. This exceptionally clean signal reveals the companion star's light as it passes behind the primary every 14.8 days. The high-confidence secondary eclipse provides rare insight into both members of this binary pair.",
       "category": "clearest_secondary",
       "category_label": "Clearest secondary eclipse",
-      "stat_text": "secondary eclipse at 418.3 sigma",
       "headline": "Companion star shines brilliantly clear",
-      "blurb": "The secondary eclipse in this system stands out with unprecedented clarity, detected at 418.3 sigma - far exceeding typical detection thresholds. This exceptionally clean signal reveals the companion star's light as it passes behind the primary every 14.8 days. The high-confidence secondary eclipse provides rare insight into both members of this binary pair."
+      "stat_text": "secondary eclipse at 418.3 sigma",
+      "tic": 237115819
     }
   ],
-  "model": "claude-haiku-4-5-20251001",
-  "generated_at": "2026-09-27T17:49:17.603035+00:00"
+  "generated_at": "2026-09-27T17:49:17.603035+00:00",
+  "model": "claude-haiku-4-5-20251001"
 }
