@@ -63,10 +63,27 @@ jobs:
           git config user.name "star-vetter-bot"
           git config user.email "actions@users.noreply.github.com"
           git add data/processed data/dossiers site/public
+
           if git diff --cached --quiet; then
             echo "Nothing new to commit this run."
           else
             git commit -m "Automated pipeline run: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+
+            # A local run may have pushed since this job checked out. Pull it
+            # in now rather than letting a plain push get rejected and fail
+            # the whole run. A conflict here is expected when both sides
+            # touched the same processed CSVs - resolve_merge_conflicts.py
+            # unions those by TIC instead of picking a side (same script,
+            # same fix, as the 2026-09-27 local/CI merge).
+            git fetch origin main
+            if git merge origin/main --no-edit; then
+              echo "Merged cleanly with origin/main, no conflicts."
+            else
+              echo "Merge conflicts against origin/main - auto-resolving with resolve_merge_conflicts.py..."
+              python resolve_merge_conflicts.py "$GITHUB_WORKSPACE"
+              git commit --no-edit
+            fi
+
             git push
           fi
 
