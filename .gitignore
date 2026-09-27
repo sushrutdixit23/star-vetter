@@ -46,3 +46,6 @@ diag_scan10.py
 /site/.next/
 /site/out/
 /site/.env*.local
+
+.vercel
+.env*

@@ -45,6 +45,16 @@ jobs:
           python export_extras.py "$GITHUB_WORKSPACE"
           python export_site_data.py "$GITHUB_WORKSPACE"
 
+      - name: Generate AI content (write-ups, about page, discoveries)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          pip install anthropic
+          python f8_generate_writeups.py "$GITHUB_WORKSPACE"
+          python export_dashboard.py "$GITHUB_WORKSPACE"
+          python f9_generate_about_content.py "$GITHUB_WORKSPACE"
+          python f10_generate_discoveries.py "$GITHUB_WORKSPACE"
+
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
