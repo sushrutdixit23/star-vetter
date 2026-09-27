@@ -4,6 +4,7 @@ import type {
   Candidate,
   Dashboard,
   Detail,
+  ModelMetrics,
   PipelineStats,
   SiteIndex,
   SiteMeta,
@@ -41,6 +42,17 @@ export function getPipelineStats(): PipelineStats | null {
   if (!fs.existsSync(p)) return null;
   const raw = fs.readFileSync(p, "utf-8");
   return JSON.parse(raw) as PipelineStats;
+}
+
+// model_metrics.json is written by f7b_train_classifier.py / export_model_
+// metrics.py - the ML screening model's cross-validated metrics against the
+// rule baseline. Optional: the About page's ML section just doesn't render
+// without it, same pattern as pipeline_stats.json.
+export function getModelMetrics(): ModelMetrics | null {
+  const p = path.join(DATA_DIR, "model_metrics.json");
+  if (!fs.existsSync(p)) return null;
+  const raw = fs.readFileSync(p, "utf-8");
+  return JSON.parse(raw) as ModelMetrics;
 }
 
 // site_meta.json is written by export_extras.py (last orchestrator run time,

@@ -130,6 +130,60 @@ export interface Candidate {
   light_curve: LightCurve;
 }
 
+// ---------- ML screening model (written by f7b_train_classifier.py /
+// export_model_metrics.py, scored per-candidate by f7c_score_candidates.py,
+// joined into detail/TIC{n}.json by export_dashboard.py) ----------
+//
+// This is a second opinion, not a gate: nothing in the pipeline currently
+// uses ml_score to skip a pixel check. It is cross-validated on the
+// pipeline's own labeled history and reported honestly either way, win or
+// lose against the rule baseline - see model_metrics.json / the About page.
+
+export interface ModelMetricEntry {
+  precision_mean: number;
+  precision_std: number;
+  recall_mean: number;
+  recall_std: number;
+  roc_auc_mean: number;
+  roc_auc_std: number;
+  average_precision_mean: number;
+  average_precision_std: number;
+}
+
+export interface ScreeningValueRow {
+  target_recall: number;
+  threshold: number;
+  recall: number;
+  fraction_screened_out: number;
+}
+
+export interface FeatureImportanceRow {
+  feature: string;
+  importance_mean: number;
+}
+
+export interface ModelMetrics {
+  generated_at: string;
+  trained_at: string;
+  n_training_samples: number;
+  n_training_positive: number;
+  n_training_negative: number;
+  n_cv_folds: number;
+  baseline: {
+    description: string;
+    recall: number;
+    precision: number;
+  };
+  models: Record<string, ModelMetricEntry>;
+  chosen_model: string;
+  beats_baseline: boolean;
+  screening_value: ScreeningValueRow[];
+  feature_importance: FeatureImportanceRow[];
+  total_scored_this_run?: number;
+  pending_pixel_check?: number;
+  note?: string;
+}
+
 // ---------- dashboard data (written by export_dashboard.py) ----------
 
 export type XY = [number, number];
@@ -247,6 +301,8 @@ export interface Detail {
   zoom: { primary: ZoomData | null; secondary: ZoomData | null };
   timing: Timing;
   pixel_maps: PixelMaps | null;
+  ml_score: number | null;
+  ml_model_name: string | null;
 }
 
 export interface SkyPoint {

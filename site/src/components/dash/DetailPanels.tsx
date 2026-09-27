@@ -188,6 +188,7 @@ export function StatsTable({ s, d }: { s: Summary; d: Detail | null }) {
     : sec.detected
       ? `phase ${sec.phase.toFixed(3)}, ${f(sec.sigma, 0)} sigma`
       : "none at 5 sigma";
+  const hasMl = d && d.ml_score !== null && d.ml_score !== undefined;
   return (
     <dl className="text-[12px]">
       <StatRow k="Period (true)" v={`${(d ? d.period_true_days : s.corrected_period_days ?? s.period_days).toFixed(5)} d`} term="period_true" />
@@ -203,6 +204,13 @@ export function StatsTable({ s, d }: { s: Summary; d: Detail | null }) {
         sub={d ? `seen ${d.epochs.seen}/${d.epochs.covered}` : "BLS"}
         term="depth"
       />
+      {hasMl && (
+        <StatRow
+          k="ML screening score"
+          v={f(d!.ml_score, 3)}
+          sub={d!.ml_model_name ?? undefined}
+        />
+      )}
       <StatRow k="Secondary eclipse depth" v={secText} sub={secSub} term="secondary_eclipse" />
       <StatRow k="Odd/even depth z" v={f(s.odd_even_z, 2)} sub={s.aliased ? "> 3: alias" : "< 3"} term="odd_even" />
       <StatRow

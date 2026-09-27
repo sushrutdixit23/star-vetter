@@ -414,6 +414,24 @@ def main():
     vet = pd.read_csv(proc / "f3i_vetting_results.csv").set_index("TIC")
     print(f"Dashboard export for {len(tics)} candidate(s)")
 
+    # ---- ML screening scores (written by f7c_score_candidates.py) ----
+    # Joined in here rather than read separately by the site, so the
+    # per-candidate detail JSON stays the single source of truth for a
+    # candidate's page. Optional: a candidate that was never scored (not
+    # novel yet, or predates this feature) just gets a null ml_score.
+    scores_path = proc / "f7_scores.csv"
+    ml_scores = {}
+    if scores_path.exists():
+        sdf = pd.read_csv(scores_path)
+        for _, r in sdf.iterrows():
+            ml_scores[int(r["TIC"])] = {
+                "ml_score": clean(r.get("ml_score"), 4),
+                "ml_model_name": str(r["ml_model_name"]) if pd.notna(r.get("ml_model_name")) else None,
+            }
+        print(f"  ML scores: {len(ml_scores)} row(s) from {scores_path.name}")
+    else:
+        print(f"  NOTE: {scores_path.name} not found - ml_score will be null for every candidate")
+
     # ---- TIC catalog: sky position, Gaia G, distance, Teff, radius ----
     cat = {}
     try:
@@ -451,9 +469,15 @@ def main():
         if not lc_path.exists():
             if detail_path.exists():
                 existing = json.loads(detail_path.read_text(encoding="utf-8"))
+                ml = ml_scores.get(tic, {"ml_score": None, "ml_model_name": None})
+                existing["ml_score"] = ml["ml_score"]
+                existing["ml_model_name"] = ml["ml_model_name"]
+                detail_path.write_text(json.dumps(existing, separators=(",", ":")),
+                                       encoding="utf-8", newline="\n")
                 sky.append({"tic": tic, "tier": cj["tier"], "ra": info.get("ra"), "dec": info.get("dec"),
                             "period_days": existing["period_true_days"], "bls_snr": eph["bls_snr"]})
-                print(f"  TIC {tic}: light curve not present this run - reusing existing detail export")
+                print(f"  TIC {tic}: light curve not present this run - reusing existing detail export "
+                      f"(refreshed ml_score)")
             else:
                 print(f"  WARNING: TIC {tic} has no light curve and no prior detail export - skipped "
                       f"(its dashboard page will 404 until this star is re-fetched)")
@@ -553,6 +577,8 @@ def main():
         if mp.exists():
             maps = json.loads(mp.read_text(encoding="utf-8"))
 
+        ml = ml_scores.get(tic, {"ml_score": None, "ml_model_name": None})
+
         detail = {
             "tic": tic,
             "period_true_days": P_true,
@@ -578,6 +604,8 @@ def main():
                      "secondary": zoom(t, f, P_true, t0 + sec_phase * P_true, dur, 5)},
             "timing": oc,
             "pixel_maps": maps,
+            "ml_score": ml["ml_score"],
+            "ml_model_name": ml["ml_model_name"],
         }
         (detail_dir / f"TIC{tic}.json").write_text(json.dumps(detail, separators=(",", ":")),
                                                    encoding="utf-8", newline="\n")
@@ -586,7 +614,8 @@ def main():
         print(f"  TIC {tic}: P={P_true:.5f} d, primary "
               f"{(a['depth'] * 100 if a else float('nan')):.3f}% (seen in {n_seen}/{n_cov} covered eclipses), "
               f"secondary {(b['sigma'] if b else float('nan')):.1f} sigma at phase "
-              f"{(b['phase'] if b else float('nan')):.3f}, {oc['n']} timed, pixel maps {'yes' if maps else 'no'}")
+              f"{(b['phase'] if b else float('nan')):.3f}, {oc['n']} timed, pixel maps {'yes' if maps else 'no'}, "
+              f"ml_score {ml['ml_score'] if ml['ml_score'] is not None else 'n/a'}")
         for c in checks:
             print("    CHECK: " + c)
 
