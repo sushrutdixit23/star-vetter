@@ -49,3 +49,4 @@ diag_scan10.py
 
 .vercel
 .env*
+benchmark_run/
