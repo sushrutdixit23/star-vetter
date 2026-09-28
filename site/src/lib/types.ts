@@ -387,6 +387,36 @@ export interface GaiaContext {
   note?: string;
 }
 
+// ---------- ground_survey_period.json, written by f12_ground_survey_period.py:
+// each confirmed candidate's TESS period, independently tested against real
+// ZTF ground-survey photometry - a different instrument than TESS, spanning
+// different years. ----------
+
+export interface GroundSurveyClusteredPoint {
+  phase: number;
+  mag: number;
+  sigma: number;
+}
+
+export interface GroundSurveyBand {
+  n_points: number;
+  baseline_mag: number;
+  typical_err: number;
+  n_outliers: number;
+  verdict: "CONFIRMED" | "NOT_CONFIRMED";
+  clustered_points: GroundSurveyClusteredPoint[];
+}
+
+export interface GroundSurveyEntry {
+  status: "CONFIRMED" | "NOT_CONFIRMED" | "NO_DATA" | "INSUFFICIENT_DATA" | "TIC_NOT_FOUND" | "ERROR";
+  period_days_tested?: number;
+  ra?: number;
+  dec?: number;
+  bands?: Record<string, GroundSurveyBand>;
+  n_points_total?: number;
+  error?: string;
+}
+
 // ---------- benchmark.json, written by benchmark_report.py: known eclipsing
 // binaries run blind through the unmodified pipeline. ----------
 

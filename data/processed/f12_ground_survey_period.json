@@ -1,0 +1,2940 @@
+{
+  "1007259218": {
+    "dec": -67.4549076164895,
+    "ra": 202.491587277173,
+    "status": "NO_DATA"
+  },
+  "111149941": {
+    "dec": -3.34054215546987,
+    "ra": 219.826258031778,
+    "status": "NO_DATA"
+  },
+  "111240209": {
+    "dec": -31.8731133111351,
+    "ra": 110.390468919186,
+    "status": "NO_DATA"
+  },
+  "119459681": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 15.6188,
+        "clustered_points": [
+          {
+            "mag": 15.9314,
+            "phase": 0.4837,
+            "sigma": 21.3
+          },
+          {
+            "mag": 15.9826,
+            "phase": 0.4841,
+            "sigma": 24.5
+          },
+          {
+            "mag": 16.0906,
+            "phase": 0.5072,
+            "sigma": 31.1
+          },
+          {
+            "mag": 16.1177,
+            "phase": 0.5239,
+            "sigma": 32.7
+          }
+        ],
+        "n_outliers": 13,
+        "n_points": 320,
+        "typical_err": 0.0139,
+        "verdict": "CONFIRMED"
+      },
+      "zi": {
+        "baseline_mag": 14.3275,
+        "clustered_points": [],
+        "n_outliers": 0,
+        "n_points": 27,
+        "typical_err": 0.009,
+        "verdict": "NOT_CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 14.743,
+        "clustered_points": [
+          {
+            "mag": 14.9333,
+            "phase": 0.4537,
+            "sigma": 16.7
+          },
+          {
+            "mag": 15.2043,
+            "phase": 0.4747,
+            "sigma": 39.7
+          },
+          {
+            "mag": 14.8752,
+            "phase": 0.4777,
+            "sigma": 11.7
+          },
+          {
+            "mag": 15.0299,
+            "phase": 0.4807,
+            "sigma": 25.0
+          },
+          {
+            "mag": 15.0895,
+            "phase": 0.4946,
+            "sigma": 27.0
+          },
+          {
+            "mag": 14.8299,
+            "phase": 0.4968,
+            "sigma": 7.7
+          }
+        ],
+        "n_outliers": 24,
+        "n_points": 389,
+        "typical_err": 0.0113,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": -10.4373731179879,
+    "period_days_tested": 5.944205171807016,
+    "ra": 100.719498767861,
+    "status": "CONFIRMED"
+  },
+  "133688675": {
+    "dec": -36.8867228751156,
+    "ra": 121.153587973126,
+    "status": "NO_DATA"
+  },
+  "139805341": {
+    "dec": -48.7482108029693,
+    "ra": 324.792097856079,
+    "status": "NO_DATA"
+  },
+  "150230753": {
+    "dec": -43.7638146098851,
+    "ra": 231.65549354701,
+    "status": "NO_DATA"
+  },
+  "152160223": {
+    "dec": -34.7743829042171,
+    "ra": 119.635119872615,
+    "status": "NO_DATA"
+  },
+  "152676628": {
+    "dec": -31.5843509708608,
+    "ra": 120.19039373827,
+    "status": "NO_DATA"
+  },
+  "158398880": {
+    "dec": -53.5320784833268,
+    "ra": 289.040738213111,
+    "status": "NO_DATA"
+  },
+  "158864044": {
+    "dec": -40.5160079087384,
+    "ra": 218.424986281856,
+    "status": "NO_DATA"
+  },
+  "176348607": {
+    "dec": -18.6676075327775,
+    "ra": 122.009966910333,
+    "status": "NO_DATA"
+  },
+  "193548084": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 12.9079,
+        "clustered_points": [
+          {
+            "mag": 12.9962,
+            "phase": 0.0083,
+            "sigma": 9.4
+          },
+          {
+            "mag": 12.9666,
+            "phase": 0.0333,
+            "sigma": 6.5
+          },
+          {
+            "mag": 12.9735,
+            "phase": 0.0358,
+            "sigma": 7.2
+          },
+          {
+            "mag": 12.9586,
+            "phase": 0.0566,
+            "sigma": 5.6
+          },
+          {
+            "mag": 12.9713,
+            "phase": 0.9812,
+            "sigma": 7.0
+          },
+          {
+            "mag": 12.9557,
+            "phase": 0.9841,
+            "sigma": 5.3
+          },
+          {
+            "mag": 12.9674,
+            "phase": 0.9938,
+            "sigma": 6.5
+          },
+          {
+            "mag": 12.9725,
+            "phase": 0.9988,
+            "sigma": 7.1
+          },
+          {
+            "mag": 12.9535,
+            "phase": 0.9999,
+            "sigma": 5.0
+          }
+        ],
+        "n_outliers": 94,
+        "n_points": 729,
+        "typical_err": 0.009,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": 46.1739636548,
+    "period_days_tested": 0.9530432727144372,
+    "ra": 306.038288532045,
+    "status": "CONFIRMED"
+  },
+  "216935767": {
+    "dec": -45.9369348646415,
+    "ra": 259.524353507775,
+    "status": "NO_DATA"
+  },
+  "220423668": {
+    "dec": -54.8937238265054,
+    "ra": 72.3062291711963,
+    "status": "NO_DATA"
+  },
+  "224215371": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 13.6631,
+        "clustered_points": [],
+        "n_outliers": 1,
+        "n_points": 518,
+        "typical_err": 0.012,
+        "verdict": "NOT_CONFIRMED"
+      },
+      "zi": {
+        "baseline_mag": 12.8271,
+        "clustered_points": [],
+        "n_outliers": 0,
+        "n_points": 166,
+        "typical_err": 0.0141,
+        "verdict": "NOT_CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 13.0331,
+        "clustered_points": [],
+        "n_outliers": 0,
+        "n_points": 604,
+        "typical_err": 0.0127,
+        "verdict": "NOT_CONFIRMED"
+      }
+    },
+    "dec": -1.31784128526002,
+    "period_days_tested": 5.49309077514592,
+    "ra": 343.292781731905,
+    "status": "NOT_CONFIRMED"
+  },
+  "229146166": {
+    "dec": -50.3122283253713,
+    "ra": 27.0984969751376,
+    "status": "NO_DATA"
+  },
+  "229490432": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 13.8999,
+        "clustered_points": [
+          {
+            "mag": 13.9613,
+            "phase": 0.1964,
+            "sigma": 5.8
+          },
+          {
+            "mag": 13.9774,
+            "phase": 0.2004,
+            "sigma": 7.3
+          },
+          {
+            "mag": 14.0021,
+            "phase": 0.2131,
+            "sigma": 9.6
+          },
+          {
+            "mag": 13.9895,
+            "phase": 0.2172,
+            "sigma": 8.4
+          },
+          {
+            "mag": 13.9969,
+            "phase": 0.2218,
+            "sigma": 9.1
+          },
+          {
+            "mag": 13.9574,
+            "phase": 0.2225,
+            "sigma": 5.4
+          },
+          {
+            "mag": 13.9943,
+            "phase": 0.2251,
+            "sigma": 8.9
+          },
+          {
+            "mag": 13.9848,
+            "phase": 0.2254,
+            "sigma": 8.0
+          },
+          {
+            "mag": 13.9612,
+            "phase": 0.2279,
+            "sigma": 5.8
+          },
+          {
+            "mag": 13.9588,
+            "phase": 0.2288,
+            "sigma": 5.5
+          },
+          {
+            "mag": 13.9903,
+            "phase": 0.23,
+            "sigma": 8.5
+          },
+          {
+            "mag": 13.9869,
+            "phase": 0.2324,
+            "sigma": 8.2
+          },
+          {
+            "mag": 13.9761,
+            "phase": 0.2414,
+            "sigma": 7.2
+          },
+          {
+            "mag": 13.9763,
+            "phase": 0.2417,
+            "sigma": 7.2
+          },
+          {
+            "mag": 13.9761,
+            "phase": 0.2444,
+            "sigma": 7.2
+          },
+          {
+            "mag": 13.9767,
+            "phase": 0.2445,
+            "sigma": 7.2
+          },
+          {
+            "mag": 13.977,
+            "phase": 0.2449,
+            "sigma": 7.3
+          }
+        ],
+        "n_outliers": 63,
+        "n_points": 1144,
+        "typical_err": 0.0106,
+        "verdict": "CONFIRMED"
+      },
+      "zi": {
+        "baseline_mag": 13.136,
+        "clustered_points": [
+          {
+            "mag": 13.2146,
+            "phase": 0.2088,
+            "sigma": 6.5
+          },
+          {
+            "mag": 13.2055,
+            "phase": 0.2257,
+            "sigma": 5.8
+          },
+          {
+            "mag": 13.1985,
+            "phase": 0.2326,
+            "sigma": 5.2
+          }
+        ],
+        "n_outliers": 9,
+        "n_points": 259,
+        "typical_err": 0.0121,
+        "verdict": "CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 13.3632,
+        "clustered_points": [
+          {
+            "mag": 13.4393,
+            "phase": 0.1893,
+            "sigma": 7.3
+          },
+          {
+            "mag": 13.4246,
+            "phase": 0.204,
+            "sigma": 5.9
+          },
+          {
+            "mag": 13.4366,
+            "phase": 0.2053,
+            "sigma": 7.0
+          },
+          {
+            "mag": 13.4414,
+            "phase": 0.212,
+            "sigma": 7.5
+          },
+          {
+            "mag": 13.4404,
+            "phase": 0.225,
+            "sigma": 7.4
+          },
+          {
+            "mag": 13.4399,
+            "phase": 0.2267,
+            "sigma": 7.3
+          },
+          {
+            "mag": 13.4187,
+            "phase": 0.2275,
+            "sigma": 5.3
+          },
+          {
+            "mag": 13.4558,
+            "phase": 0.2319,
+            "sigma": 8.8
+          },
+          {
+            "mag": 13.435,
+            "phase": 0.2322,
+            "sigma": 6.9
+          },
+          {
+            "mag": 13.4365,
+            "phase": 0.2339,
+            "sigma": 7.0
+          },
+          {
+            "mag": 13.4242,
+            "phase": 0.2345,
+            "sigma": 5.8
+          },
+          {
+            "mag": 13.4212,
+            "phase": 0.2391,
+            "sigma": 5.5
+          }
+        ],
+        "n_outliers": 64,
+        "n_points": 1328,
+        "typical_err": 0.0105,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": 65.4758662438225,
+    "period_days_tested": 1.1643519577055024,
+    "ra": 296.339960112835,
+    "status": "CONFIRMED"
+  },
+  "229494833": {
+    "dec": 60.1322029735344,
+    "ra": 296.274061663566,
+    "status": "NO_DATA"
+  },
+  "231055671": {
+    "dec": -55.5014079095587,
+    "ra": 30.1458134675992,
+    "status": "NO_DATA"
+  },
+  "232261044": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 14.9339,
+        "clustered_points": [
+          {
+            "mag": 15.646,
+            "phase": 0.0496,
+            "sigma": 55.5
+          },
+          {
+            "mag": 14.995,
+            "phase": 0.0874,
+            "sigma": 5.1
+          },
+          {
+            "mag": 15.5348,
+            "phase": 0.0874,
+            "sigma": 47.6
+          },
+          {
+            "mag": 15.5379,
+            "phase": 0.0881,
+            "sigma": 47.8
+          }
+        ],
+        "n_outliers": 43,
+        "n_points": 150,
+        "typical_err": 0.0126,
+        "verdict": "CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 14.485,
+        "clustered_points": [
+          {
+            "mag": 15.0503,
+            "phase": 0.0221,
+            "sigma": 50.0
+          },
+          {
+            "mag": 15.0258,
+            "phase": 0.0339,
+            "sigma": 49.3
+          }
+        ],
+        "n_outliers": 93,
+        "n_points": 237,
+        "typical_err": 0.0107,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": 4.54417141017408,
+    "period_days_tested": 0.810820648448669,
+    "ra": 91.7874468063131,
+    "status": "CONFIRMED"
+  },
+  "233452636": {
+    "dec": -44.345676533564,
+    "ra": 250.472962674338,
+    "status": "NO_DATA"
+  },
+  "233459038": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 14.0313,
+        "clustered_points": [
+          {
+            "mag": 14.4417,
+            "phase": 0.2038,
+            "sigma": 30.3
+          },
+          {
+            "mag": 14.1368,
+            "phase": 0.2427,
+            "sigma": 7.8
+          },
+          {
+            "mag": 14.2329,
+            "phase": 0.245,
+            "sigma": 14.9
+          },
+          {
+            "mag": 14.209,
+            "phase": 0.2457,
+            "sigma": 13.1
+          },
+          {
+            "mag": 14.2722,
+            "phase": 0.2463,
+            "sigma": 17.8
+          },
+          {
+            "mag": 14.1495,
+            "phase": 0.249,
+            "sigma": 8.7
+          }
+        ],
+        "n_outliers": 8,
+        "n_points": 1076,
+        "typical_err": 0.0136,
+        "verdict": "CONFIRMED"
+      },
+      "zi": {
+        "baseline_mag": 13.5032,
+        "clustered_points": [],
+        "n_outliers": 0,
+        "n_points": 314,
+        "typical_err": 0.0129,
+        "verdict": "NOT_CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 13.6241,
+        "clustered_points": [],
+        "n_outliers": 1,
+        "n_points": 1016,
+        "typical_err": 0.0131,
+        "verdict": "NOT_CONFIRMED"
+      }
+    },
+    "dec": 53.2124099081766,
+    "period_days_tested": 25.33843893363065,
+    "ra": 210.855229716798,
+    "status": "CONFIRMED"
+  },
+  "235512374": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 12.7342,
+        "clustered_points": [
+          {
+            "mag": 12.7854,
+            "phase": 0.1118,
+            "sigma": 5.3
+          },
+          {
+            "mag": 12.7961,
+            "phase": 0.1488,
+            "sigma": 5.2
+          }
+        ],
+        "n_outliers": 9,
+        "n_points": 375,
+        "typical_err": 0.0118,
+        "verdict": "CONFIRMED"
+      },
+      "zi": {
+        "baseline_mag": 12.4029,
+        "clustered_points": [],
+        "n_outliers": 0,
+        "n_points": 89,
+        "typical_err": 0.0117,
+        "verdict": "NOT_CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 12.4966,
+        "clustered_points": [
+          {
+            "mag": 12.5657,
+            "phase": 0.1201,
+            "sigma": 6.6
+          },
+          {
+            "mag": 12.5875,
+            "phase": 0.134,
+            "sigma": 8.7
+          }
+        ],
+        "n_outliers": 4,
+        "n_points": 397,
+        "typical_err": 0.0105,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": 10.5685561762179,
+    "period_days_tested": 3.744060356550739,
+    "ra": 104.484410270683,
+    "status": "CONFIRMED"
+  },
+  "237115819": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 14.5815,
+        "clustered_points": [
+          {
+            "mag": 14.6818,
+            "phase": 0.189,
+            "sigma": 7.5
+          },
+          {
+            "mag": 14.7243,
+            "phase": 0.1894,
+            "sigma": 10.6
+          },
+          {
+            "mag": 14.7112,
+            "phase": 0.1921,
+            "sigma": 9.7
+          },
+          {
+            "mag": 14.7146,
+            "phase": 0.1937,
+            "sigma": 9.9
+          },
+          {
+            "mag": 14.7002,
+            "phase": 0.194,
+            "sigma": 8.8
+          },
+          {
+            "mag": 14.6667,
+            "phase": 0.1946,
+            "sigma": 6.3
+          }
+        ],
+        "n_outliers": 15,
+        "n_points": 1168,
+        "typical_err": 0.0134,
+        "verdict": "CONFIRMED"
+      },
+      "zi": {
+        "baseline_mag": 13.643,
+        "clustered_points": [],
+        "n_outliers": 1,
+        "n_points": 162,
+        "typical_err": 0.0117,
+        "verdict": "NOT_CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 13.8783,
+        "clustered_points": [
+          {
+            "mag": 13.9371,
+            "phase": 0.0124,
+            "sigma": 5.7
+          },
+          {
+            "mag": 13.9724,
+            "phase": 0.9696,
+            "sigma": 9.1
+          },
+          {
+            "mag": 13.9438,
+            "phase": 0.979,
+            "sigma": 6.3
+          }
+        ],
+        "n_outliers": 27,
+        "n_points": 1198,
+        "typical_err": 0.0104,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": 59.3700826740371,
+    "period_days_tested": 14.79205908513923,
+    "ra": 269.854186696401,
+    "status": "CONFIRMED"
+  },
+  "237226943": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 13.7467,
+        "clustered_points": [],
+        "n_outliers": 1,
+        "n_points": 723,
+        "typical_err": 0.0105,
+        "verdict": "NOT_CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 13.2906,
+        "clustered_points": [
+          {
+            "mag": 14.0737,
+            "phase": 0.1497,
+            "sigma": 77.0
+          },
+          {
+            "mag": 13.3493,
+            "phase": 0.1547,
+            "sigma": 5.7
+          }
+        ],
+        "n_outliers": 2,
+        "n_points": 732,
+        "typical_err": 0.0103,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": 77.945588791213,
+    "period_days_tested": 1.9983404286027555,
+    "ra": 296.917015807452,
+    "status": "CONFIRMED"
+  },
+  "238618726": {
+    "dec": -50.1674111707545,
+    "ra": 122.409061409792,
+    "status": "NO_DATA"
+  },
+  "239661046": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 12.5163,
+        "clustered_points": [
+          {
+            "mag": 12.6292,
+            "phase": 0.0026,
+            "sigma": 9.0
+          },
+          {
+            "mag": 12.5818,
+            "phase": 0.0086,
+            "sigma": 5.2
+          },
+          {
+            "mag": 12.6136,
+            "phase": 0.0094,
+            "sigma": 7.4
+          },
+          {
+            "mag": 12.5888,
+            "phase": 0.046,
+            "sigma": 5.8
+          },
+          {
+            "mag": 12.6479,
+            "phase": 0.9715,
+            "sigma": 10.5
+          },
+          {
+            "mag": 12.618,
+            "phase": 0.9766,
+            "sigma": 8.1
+          }
+        ],
+        "n_outliers": 43,
+        "n_points": 441,
+        "typical_err": 0.0126,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": 34.5493193700602,
+    "period_days_tested": 1.0539905752346004,
+    "ra": 64.5884617316447,
+    "status": "CONFIRMED"
+  },
+  "244999763": {
+    "dec": -52.5726984829194,
+    "ra": 197.483485445977,
+    "status": "NO_DATA"
+  },
+  "250549396": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 12.6216,
+        "clustered_points": [
+          {
+            "mag": 12.7526,
+            "phase": 0.7751,
+            "sigma": 5.2
+          },
+          {
+            "mag": 12.8302,
+            "phase": 0.7847,
+            "sigma": 8.3
+          },
+          {
+            "mag": 12.7381,
+            "phase": 0.7961,
+            "sigma": 7.0
+          },
+          {
+            "mag": 12.732,
+            "phase": 0.7963,
+            "sigma": 6.6
+          },
+          {
+            "mag": 12.7602,
+            "phase": 0.8215,
+            "sigma": 5.5
+          }
+        ],
+        "n_outliers": 8,
+        "n_points": 351,
+        "typical_err": 0.0259,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": -2.87538880669798,
+    "period_days_tested": 2.1928961891401686,
+    "ra": 94.5745143752669,
+    "status": "CONFIRMED"
+  },
+  "251898081": {
+    "dec": 58.7978070189217,
+    "ra": 351.835906951325,
+    "status": "NO_DATA"
+  },
+  "258490713": {
+    "dec": -71.3587791608823,
+    "ra": 221.976008318001,
+    "status": "NO_DATA"
+  },
+  "267516382": {
+    "dec": -59.1679429642433,
+    "ra": 176.144418891887,
+    "status": "NO_DATA"
+  },
+  "273158289": {
+    "dec": -58.1009578967363,
+    "ra": 188.598380565541,
+    "status": "NO_DATA"
+  },
+  "273212554": {
+    "dec": -51.7605939955163,
+    "ra": 178.907367778354,
+    "status": "NO_DATA"
+  },
+  "273787849": {
+    "dec": -81.448955116092,
+    "ra": 28.834354573993,
+    "status": "NO_DATA"
+  },
+  "281310348": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 14.6123,
+        "clustered_points": [
+          {
+            "mag": 14.694,
+            "phase": 0.211,
+            "sigma": 5.6
+          },
+          {
+            "mag": 14.7083,
+            "phase": 0.2607,
+            "sigma": 6.5
+          }
+        ],
+        "n_outliers": 5,
+        "n_points": 73,
+        "typical_err": 0.0115,
+        "verdict": "CONFIRMED"
+      },
+      "zi": {
+        "baseline_mag": 13.7424,
+        "clustered_points": [],
+        "n_outliers": 0,
+        "n_points": 32,
+        "typical_err": 0.0079,
+        "verdict": "NOT_CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 13.9844,
+        "clustered_points": [],
+        "n_outliers": 1,
+        "n_points": 60,
+        "typical_err": 0.0085,
+        "verdict": "NOT_CONFIRMED"
+      }
+    },
+    "dec": 1.65765144521008,
+    "period_days_tested": 1.7702142184960212,
+    "ra": 99.0456925921485,
+    "status": "CONFIRMED"
+  },
+  "290129286": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 15.6247,
+        "clustered_points": [
+          {
+            "mag": 15.7206,
+            "phase": 0.087,
+            "sigma": 6.8
+          },
+          {
+            "mag": 15.7115,
+            "phase": 0.1072,
+            "sigma": 6.1
+          }
+        ],
+        "n_outliers": 21,
+        "n_points": 253,
+        "typical_err": 0.014,
+        "verdict": "CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 14.9112,
+        "clustered_points": [
+          {
+            "mag": 14.9759,
+            "phase": 0.0017,
+            "sigma": 6.0
+          },
+          {
+            "mag": 14.9656,
+            "phase": 0.044,
+            "sigma": 5.1
+          },
+          {
+            "mag": 15.0046,
+            "phase": 0.0488,
+            "sigma": 8.7
+          }
+        ],
+        "n_outliers": 41,
+        "n_points": 308,
+        "typical_err": 0.0107,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": -26.8367677975167,
+    "period_days_tested": 0.8890204583576605,
+    "ra": 319.523378706543,
+    "status": "CONFIRMED"
+  },
+  "294860388": {
+    "dec": -52.4030157651986,
+    "ra": 140.459803455705,
+    "status": "NO_DATA"
+  },
+  "29495157": {
+    "dec": -27.092335306163,
+    "n_points_total": 12,
+    "ra": 314.264674669845,
+    "status": "INSUFFICIENT_DATA"
+  },
+  "294976780": {
+    "dec": -52.1698979099742,
+    "ra": 140.569203976794,
+    "status": "NO_DATA"
+  },
+  "295373509": {
+    "dec": -67.4742156444099,
+    "ra": 271.646280416382,
+    "status": "NO_DATA"
+  },
+  "303470667": {
+    "dec": -60.7345978246875,
+    "ra": 271.762238757627,
+    "status": "NO_DATA"
+  },
+  "306294675": {
+    "dec": -60.5119803486425,
+    "ra": 178.997604866626,
+    "status": "NO_DATA"
+  },
+  "307453359": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 14.9086,
+        "clustered_points": [
+          {
+            "mag": 15.0229,
+            "phase": 0.2987,
+            "sigma": 10.9
+          },
+          {
+            "mag": 14.9898,
+            "phase": 0.3366,
+            "sigma": 7.8
+          },
+          {
+            "mag": 15.0692,
+            "phase": 0.3427,
+            "sigma": 15.3
+          }
+        ],
+        "n_outliers": 9,
+        "n_points": 200,
+        "typical_err": 0.0104,
+        "verdict": "CONFIRMED"
+      },
+      "zi": {
+        "baseline_mag": 14.3777,
+        "clustered_points": [
+          {
+            "mag": 14.5439,
+            "phase": 0.3123,
+            "sigma": 12.6
+          },
+          {
+            "mag": 14.4836,
+            "phase": 0.3211,
+            "sigma": 8.0
+          }
+        ],
+        "n_outliers": 3,
+        "n_points": 42,
+        "typical_err": 0.0131,
+        "verdict": "CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 14.5103,
+        "clustered_points": [
+          {
+            "mag": 14.5616,
+            "phase": 0.2924,
+            "sigma": 5.9
+          },
+          {
+            "mag": 14.6517,
+            "phase": 0.3318,
+            "sigma": 16.2
+          }
+        ],
+        "n_outliers": 9,
+        "n_points": 493,
+        "typical_err": 0.0087,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": -16.0926604149198,
+    "period_days_tested": 3.740100951266336,
+    "ra": 124.229066356334,
+    "status": "CONFIRMED"
+  },
+  "309656476": {
+    "dec": -64.3556621524161,
+    "ra": 79.1221185961166,
+    "status": "NO_DATA"
+  },
+  "313684677": {
+    "dec": -60.9830356827724,
+    "ra": 202.050299105907,
+    "status": "NO_DATA"
+  },
+  "318887646": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 13.5652,
+        "clustered_points": [
+          {
+            "mag": 13.6413,
+            "phase": 0.4295,
+            "sigma": 6.0
+          },
+          {
+            "mag": 13.6438,
+            "phase": 0.4345,
+            "sigma": 6.2
+          },
+          {
+            "mag": 13.6645,
+            "phase": 0.44,
+            "sigma": 7.9
+          }
+        ],
+        "n_outliers": 3,
+        "n_points": 517,
+        "typical_err": 0.0127,
+        "verdict": "CONFIRMED"
+      },
+      "zi": {
+        "baseline_mag": 12.5458,
+        "clustered_points": [],
+        "n_outliers": 1,
+        "n_points": 93,
+        "typical_err": 0.0141,
+        "verdict": "NOT_CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 12.8043,
+        "clustered_points": [],
+        "n_outliers": 1,
+        "n_points": 512,
+        "typical_err": 0.0139,
+        "verdict": "NOT_CONFIRMED"
+      }
+    },
+    "dec": 0.670634651367275,
+    "period_days_tested": 14.281663889625127,
+    "ra": 42.1340192453745,
+    "status": "CONFIRMED"
+  },
+  "318907244": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 13.1333,
+        "clustered_points": [
+          {
+            "mag": 13.7809,
+            "phase": 0.3211,
+            "sigma": 57.4
+          },
+          {
+            "mag": 13.2307,
+            "phase": 0.3456,
+            "sigma": 8.8
+          }
+        ],
+        "n_outliers": 3,
+        "n_points": 307,
+        "typical_err": 0.0111,
+        "verdict": "CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 12.7805,
+        "clustered_points": [
+          {
+            "mag": 14.2047,
+            "phase": 0.3503,
+            "sigma": 116.7
+          },
+          {
+            "mag": 12.963,
+            "phase": 0.3771,
+            "sigma": 14.6
+          }
+        ],
+        "n_outliers": 2,
+        "n_points": 696,
+        "typical_err": 0.0125,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": -8.24996572847207,
+    "period_days_tested": 1.023331473215669,
+    "ra": 110.083456484645,
+    "status": "CONFIRMED"
+  },
+  "326225355": {
+    "dec": -37.649628335772,
+    "ra": 261.462321218901,
+    "status": "NO_DATA"
+  },
+  "330901906": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 12.9319,
+        "clustered_points": [],
+        "n_outliers": 0,
+        "n_points": 744,
+        "typical_err": 0.0148,
+        "verdict": "NOT_CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 12.5545,
+        "clustered_points": [
+          {
+            "mag": 13.0945,
+            "phase": 0.5172,
+            "sigma": 49.6
+          },
+          {
+            "mag": 12.6241,
+            "phase": 0.5235,
+            "sigma": 6.4
+          }
+        ],
+        "n_outliers": 3,
+        "n_points": 553,
+        "typical_err": 0.0109,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": 45.2545459212884,
+    "period_days_tested": 3.732068126022025,
+    "ra": 329.778509506321,
+    "status": "CONFIRMED"
+  },
+  "333145823": {
+    "dec": -15.4173462274786,
+    "ra": 99.7589577401719,
+    "status": "NO_DATA"
+  },
+  "342586820": {
+    "dec": -71.0306255987967,
+    "ra": 204.993815437556,
+    "status": "NO_DATA"
+  },
+  "348884775": {
+    "dec": -15.0750893587977,
+    "ra": 148.484823846752,
+    "status": "NO_DATA"
+  },
+  "349701853": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 14.1317,
+        "clustered_points": [
+          {
+            "mag": 14.4239,
+            "phase": 0.468,
+            "sigma": 24.7
+          },
+          {
+            "mag": 14.6287,
+            "phase": 0.4688,
+            "sigma": 41.5
+          },
+          {
+            "mag": 14.7528,
+            "phase": 0.4694,
+            "sigma": 51.5
+          }
+        ],
+        "n_outliers": 7,
+        "n_points": 632,
+        "typical_err": 0.0116,
+        "verdict": "CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 13.5313,
+        "clustered_points": [
+          {
+            "mag": 13.6772,
+            "phase": 0.4669,
+            "sigma": 13.9
+          },
+          {
+            "mag": 14.0319,
+            "phase": 0.4692,
+            "sigma": 47.4
+          },
+          {
+            "mag": 14.027,
+            "phase": 0.4695,
+            "sigma": 47.0
+          },
+          {
+            "mag": 13.9826,
+            "phase": 0.47,
+            "sigma": 42.8
+          },
+          {
+            "mag": 13.635,
+            "phase": 0.4719,
+            "sigma": 9.9
+          }
+        ],
+        "n_outliers": 23,
+        "n_points": 1061,
+        "typical_err": 0.0104,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": 19.0814568539624,
+    "period_days_tested": 30.342708642712942,
+    "ra": 282.823146056294,
+    "status": "CONFIRMED"
+  },
+  "349725115": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 14.444,
+        "clustered_points": [
+          {
+            "mag": 14.5524,
+            "phase": 0.3275,
+            "sigma": 8.2
+          },
+          {
+            "mag": 14.8012,
+            "phase": 0.3349,
+            "sigma": 27.0
+          }
+        ],
+        "n_outliers": 9,
+        "n_points": 543,
+        "typical_err": 0.0131,
+        "verdict": "CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 13.7377,
+        "clustered_points": [
+          {
+            "mag": 13.8768,
+            "phase": 0.1023,
+            "sigma": 10.1
+          },
+          {
+            "mag": 13.8374,
+            "phase": 0.1025,
+            "sigma": 7.3
+          },
+          {
+            "mag": 14.015,
+            "phase": 0.106,
+            "sigma": 20.1
+          }
+        ],
+        "n_outliers": 16,
+        "n_points": 1142,
+        "typical_err": 0.0137,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": 13.9418394127249,
+    "period_days_tested": 16.2203202005104,
+    "ra": 297.393069383569,
+    "status": "CONFIRMED"
+  },
+  "365726727": {
+    "dec": -62.7002842647284,
+    "ra": 274.969345338486,
+    "status": "NO_DATA"
+  },
+  "365764494": {
+    "dec": 50.403697090811,
+    "ra": 312.358165041747,
+    "status": "NO_DATA"
+  },
+  "365998904": {
+    "dec": -61.2570934103673,
+    "ra": 276.328567964778,
+    "status": "NO_DATA"
+  },
+  "370553309": {
+    "dec": -70.2393721877977,
+    "ra": 143.977174297469,
+    "status": "NO_DATA"
+  },
+  "373896170": {
+    "dec": 60.7656791660609,
+    "ra": 28.3239723932971,
+    "status": "NO_DATA"
+  },
+  "374158907": {
+    "dec": -48.5035895164731,
+    "ra": 159.87858830514,
+    "status": "NO_DATA"
+  },
+  "380943251": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 16.3357,
+        "clustered_points": [
+          {
+            "mag": 16.4439,
+            "phase": 0.1359,
+            "sigma": 6.2
+          },
+          {
+            "mag": 16.4463,
+            "phase": 0.1685,
+            "sigma": 6.3
+          },
+          {
+            "mag": 16.4442,
+            "phase": 0.1801,
+            "sigma": 5.7
+          }
+        ],
+        "n_outliers": 27,
+        "n_points": 833,
+        "typical_err": 0.0173,
+        "verdict": "CONFIRMED"
+      },
+      "zi": {
+        "baseline_mag": 14.73,
+        "clustered_points": [
+          {
+            "mag": 14.8341,
+            "phase": 0.1267,
+            "sigma": 8.5
+          },
+          {
+            "mag": 14.8168,
+            "phase": 0.1396,
+            "sigma": 7.1
+          },
+          {
+            "mag": 14.8118,
+            "phase": 0.142,
+            "sigma": 6.7
+          }
+        ],
+        "n_outliers": 15,
+        "n_points": 104,
+        "typical_err": 0.0122,
+        "verdict": "CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 15.2179,
+        "clustered_points": [
+          {
+            "mag": 15.2892,
+            "phase": 0.0717,
+            "sigma": 5.4
+          },
+          {
+            "mag": 15.3007,
+            "phase": 0.0759,
+            "sigma": 6.3
+          },
+          {
+            "mag": 15.2995,
+            "phase": 0.08,
+            "sigma": 6.2
+          },
+          {
+            "mag": 15.3173,
+            "phase": 0.09,
+            "sigma": 7.6
+          }
+        ],
+        "n_outliers": 53,
+        "n_points": 875,
+        "typical_err": 0.0137,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": 0.525088151298237,
+    "period_days_tested": 0.7209347459493273,
+    "ra": 19.2877859652627,
+    "status": "CONFIRMED"
+  },
+  "392559026": {
+    "dec": -70.4369054653127,
+    "ra": 175.372227654806,
+    "status": "NO_DATA"
+  },
+  "399544063": {
+    "dec": 47.0047196277701,
+    "ra": 40.1230389328744,
+    "status": "NO_DATA"
+  },
+  "399770041": {
+    "dec": -67.6697469470678,
+    "ra": 164.742645632941,
+    "status": "NO_DATA"
+  },
+  "401936263": {
+    "dec": -51.5401548230507,
+    "ra": 136.172263670061,
+    "status": "NO_DATA"
+  },
+  "411305220": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 12.5737,
+        "clustered_points": [],
+        "n_outliers": 0,
+        "n_points": 1102,
+        "typical_err": 0.0121,
+        "verdict": "NOT_CONFIRMED"
+      },
+      "zi": {
+        "baseline_mag": 12.13,
+        "clustered_points": [],
+        "n_outliers": 0,
+        "n_points": 164,
+        "typical_err": 0.0134,
+        "verdict": "NOT_CONFIRMED"
+      }
+    },
+    "dec": 23.0655579001651,
+    "period_days_tested": 21.59343174594404,
+    "ra": 336.99769065087,
+    "status": "NOT_CONFIRMED"
+  },
+  "411434067": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 13.578,
+        "clustered_points": [
+          {
+            "mag": 13.6463,
+            "phase": 0.0124,
+            "sigma": 6.8
+          },
+          {
+            "mag": 13.6378,
+            "phase": 0.0135,
+            "sigma": 5.9
+          },
+          {
+            "mag": 13.6312,
+            "phase": 0.0188,
+            "sigma": 5.3
+          },
+          {
+            "mag": 13.6442,
+            "phase": 0.0215,
+            "sigma": 6.6
+          },
+          {
+            "mag": 13.6621,
+            "phase": 0.0234,
+            "sigma": 8.4
+          },
+          {
+            "mag": 13.6301,
+            "phase": 0.0236,
+            "sigma": 5.2
+          },
+          {
+            "mag": 13.666,
+            "phase": 0.0264,
+            "sigma": 8.7
+          },
+          {
+            "mag": 13.6541,
+            "phase": 0.0279,
+            "sigma": 6.2
+          },
+          {
+            "mag": 13.6576,
+            "phase": 0.0288,
+            "sigma": 7.9
+          },
+          {
+            "mag": 13.637,
+            "phase": 0.0291,
+            "sigma": 5.9
+          },
+          {
+            "mag": 13.6414,
+            "phase": 0.03,
+            "sigma": 6.3
+          },
+          {
+            "mag": 13.6389,
+            "phase": 0.0308,
+            "sigma": 6.1
+          },
+          {
+            "mag": 13.6619,
+            "phase": 0.031,
+            "sigma": 8.3
+          },
+          {
+            "mag": 13.654,
+            "phase": 0.033,
+            "sigma": 7.5
+          },
+          {
+            "mag": 13.6678,
+            "phase": 0.0346,
+            "sigma": 8.9
+          },
+          {
+            "mag": 13.6574,
+            "phase": 0.0356,
+            "sigma": 7.9
+          },
+          {
+            "mag": 13.6605,
+            "phase": 0.0358,
+            "sigma": 6.7
+          },
+          {
+            "mag": 13.6587,
+            "phase": 0.0366,
+            "sigma": 8.0
+          },
+          {
+            "mag": 13.6618,
+            "phase": 0.0373,
+            "sigma": 8.3
+          },
+          {
+            "mag": 13.6649,
+            "phase": 0.0376,
+            "sigma": 8.6
+          },
+          {
+            "mag": 13.6614,
+            "phase": 0.038,
+            "sigma": 8.3
+          },
+          {
+            "mag": 13.6562,
+            "phase": 0.0385,
+            "sigma": 7.8
+          },
+          {
+            "mag": 13.6547,
+            "phase": 0.039,
+            "sigma": 7.6
+          },
+          {
+            "mag": 13.6843,
+            "phase": 0.042,
+            "sigma": 10.6
+          },
+          {
+            "mag": 13.6533,
+            "phase": 0.0432,
+            "sigma": 7.5
+          },
+          {
+            "mag": 13.6812,
+            "phase": 0.0438,
+            "sigma": 10.3
+          },
+          {
+            "mag": 13.6595,
+            "phase": 0.044,
+            "sigma": 8.1
+          },
+          {
+            "mag": 13.6624,
+            "phase": 0.0448,
+            "sigma": 8.4
+          },
+          {
+            "mag": 13.6441,
+            "phase": 0.0449,
+            "sigma": 6.6
+          },
+          {
+            "mag": 13.6578,
+            "phase": 0.0451,
+            "sigma": 7.9
+          },
+          {
+            "mag": 13.6579,
+            "phase": 0.0456,
+            "sigma": 7.9
+          },
+          {
+            "mag": 13.6732,
+            "phase": 0.0483,
+            "sigma": 7.7
+          },
+          {
+            "mag": 13.652,
+            "phase": 0.0502,
+            "sigma": 7.3
+          },
+          {
+            "mag": 13.6525,
+            "phase": 0.0509,
+            "sigma": 7.4
+          },
+          {
+            "mag": 13.656,
+            "phase": 0.0511,
+            "sigma": 7.7
+          },
+          {
+            "mag": 13.6407,
+            "phase": 0.0513,
+            "sigma": 6.2
+          },
+          {
+            "mag": 13.6539,
+            "phase": 0.0517,
+            "sigma": 7.5
+          },
+          {
+            "mag": 13.6769,
+            "phase": 0.0527,
+            "sigma": 9.8
+          },
+          {
+            "mag": 13.6683,
+            "phase": 0.0533,
+            "sigma": 9.0
+          },
+          {
+            "mag": 13.6475,
+            "phase": 0.0533,
+            "sigma": 6.9
+          },
+          {
+            "mag": 13.6886,
+            "phase": 0.0539,
+            "sigma": 11.0
+          },
+          {
+            "mag": 13.6689,
+            "phase": 0.0554,
+            "sigma": 9.0
+          },
+          {
+            "mag": 13.6631,
+            "phase": 0.0561,
+            "sigma": 8.5
+          },
+          {
+            "mag": 13.6573,
+            "phase": 0.0565,
+            "sigma": 7.9
+          },
+          {
+            "mag": 13.6562,
+            "phase": 0.0569,
+            "sigma": 7.8
+          },
+          {
+            "mag": 13.6572,
+            "phase": 0.0572,
+            "sigma": 7.9
+          },
+          {
+            "mag": 13.6664,
+            "phase": 0.0595,
+            "sigma": 8.8
+          },
+          {
+            "mag": 13.654,
+            "phase": 0.06,
+            "sigma": 7.5
+          },
+          {
+            "mag": 13.6453,
+            "phase": 0.0611,
+            "sigma": 6.7
+          },
+          {
+            "mag": 13.6582,
+            "phase": 0.0617,
+            "sigma": 6.5
+          },
+          {
+            "mag": 13.6548,
+            "phase": 0.062,
+            "sigma": 7.6
+          }
+        ],
+        "n_outliers": 83,
+        "n_points": 1309,
+        "typical_err": 0.0101,
+        "verdict": "CONFIRMED"
+      },
+      "zi": {
+        "baseline_mag": 13.1266,
+        "clustered_points": [
+          {
+            "mag": 13.1955,
+            "phase": 0.0297,
+            "sigma": 5.7
+          },
+          {
+            "mag": 13.254,
+            "phase": 0.0313,
+            "sigma": 10.6
+          },
+          {
+            "mag": 13.201,
+            "phase": 0.0333,
+            "sigma": 5.7
+          },
+          {
+            "mag": 13.2162,
+            "phase": 0.0371,
+            "sigma": 7.4
+          },
+          {
+            "mag": 13.2213,
+            "phase": 0.0435,
+            "sigma": 7.8
+          },
+          {
+            "mag": 13.2111,
+            "phase": 0.0454,
+            "sigma": 7.0
+          },
+          {
+            "mag": 13.2074,
+            "phase": 0.0507,
+            "sigma": 6.7
+          },
+          {
+            "mag": 13.2226,
+            "phase": 0.0518,
+            "sigma": 8.0
+          },
+          {
+            "mag": 13.212,
+            "phase": 0.0532,
+            "sigma": 7.1
+          },
+          {
+            "mag": 13.219,
+            "phase": 0.0578,
+            "sigma": 7.7
+          },
+          {
+            "mag": 13.2358,
+            "phase": 0.059,
+            "sigma": 9.0
+          },
+          {
+            "mag": 13.1984,
+            "phase": 0.0599,
+            "sigma": 5.9
+          },
+          {
+            "mag": 13.2179,
+            "phase": 0.0652,
+            "sigma": 7.6
+          },
+          {
+            "mag": 13.1935,
+            "phase": 0.0756,
+            "sigma": 5.5
+          },
+          {
+            "mag": 13.1953,
+            "phase": 0.0773,
+            "sigma": 5.7
+          },
+          {
+            "mag": 13.1906,
+            "phase": 0.9911,
+            "sigma": 5.3
+          }
+        ],
+        "n_outliers": 19,
+        "n_points": 316,
+        "typical_err": 0.0121,
+        "verdict": "CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 13.2166,
+        "clustered_points": [
+          {
+            "mag": 13.2687,
+            "phase": 0.002,
+            "sigma": 5.2
+          },
+          {
+            "mag": 13.2806,
+            "phase": 0.0059,
+            "sigma": 6.3
+          },
+          {
+            "mag": 13.2865,
+            "phase": 0.008,
+            "sigma": 6.9
+          },
+          {
+            "mag": 13.2731,
+            "phase": 0.0083,
+            "sigma": 5.6
+          },
+          {
+            "mag": 13.2763,
+            "phase": 0.0084,
+            "sigma": 5.9
+          },
+          {
+            "mag": 13.2829,
+            "phase": 0.0092,
+            "sigma": 6.6
+          },
+          {
+            "mag": 13.2756,
+            "phase": 0.0139,
+            "sigma": 5.8
+          },
+          {
+            "mag": 13.2741,
+            "phase": 0.0153,
+            "sigma": 5.7
+          },
+          {
+            "mag": 13.2778,
+            "phase": 0.016,
+            "sigma": 6.1
+          },
+          {
+            "mag": 13.2994,
+            "phase": 0.0166,
+            "sigma": 7.1
+          },
+          {
+            "mag": 13.2835,
+            "phase": 0.017,
+            "sigma": 5.7
+          },
+          {
+            "mag": 13.2895,
+            "phase": 0.0176,
+            "sigma": 6.3
+          },
+          {
+            "mag": 13.2695,
+            "phase": 0.0213,
+            "sigma": 5.2
+          },
+          {
+            "mag": 13.2964,
+            "phase": 0.0219,
+            "sigma": 7.9
+          },
+          {
+            "mag": 13.2753,
+            "phase": 0.0223,
+            "sigma": 5.0
+          },
+          {
+            "mag": 13.292,
+            "phase": 0.0226,
+            "sigma": 6.5
+          },
+          {
+            "mag": 13.3058,
+            "phase": 0.0229,
+            "sigma": 7.7
+          },
+          {
+            "mag": 13.268,
+            "phase": 0.023,
+            "sigma": 5.1
+          },
+          {
+            "mag": 13.3112,
+            "phase": 0.0232,
+            "sigma": 8.1
+          },
+          {
+            "mag": 13.2934,
+            "phase": 0.0246,
+            "sigma": 7.6
+          },
+          {
+            "mag": 13.2801,
+            "phase": 0.025,
+            "sigma": 6.3
+          },
+          {
+            "mag": 13.2969,
+            "phase": 0.0252,
+            "sigma": 7.9
+          },
+          {
+            "mag": 13.2871,
+            "phase": 0.0255,
+            "sigma": 7.0
+          },
+          {
+            "mag": 13.2796,
+            "phase": 0.0274,
+            "sigma": 6.2
+          },
+          {
+            "mag": 13.3121,
+            "phase": 0.0276,
+            "sigma": 9.5
+          },
+          {
+            "mag": 13.2764,
+            "phase": 0.0295,
+            "sigma": 5.9
+          },
+          {
+            "mag": 13.2886,
+            "phase": 0.0304,
+            "sigma": 7.1
+          },
+          {
+            "mag": 13.2839,
+            "phase": 0.0307,
+            "sigma": 6.7
+          },
+          {
+            "mag": 13.3002,
+            "phase": 0.0313,
+            "sigma": 8.3
+          },
+          {
+            "mag": 13.292,
+            "phase": 0.0315,
+            "sigma": 7.5
+          },
+          {
+            "mag": 13.2919,
+            "phase": 0.032,
+            "sigma": 7.4
+          },
+          {
+            "mag": 13.2967,
+            "phase": 0.032,
+            "sigma": 7.9
+          },
+          {
+            "mag": 13.3113,
+            "phase": 0.0324,
+            "sigma": 9.4
+          },
+          {
+            "mag": 13.2789,
+            "phase": 0.0327,
+            "sigma": 6.2
+          },
+          {
+            "mag": 13.3097,
+            "phase": 0.0329,
+            "sigma": 9.2
+          },
+          {
+            "mag": 13.301,
+            "phase": 0.0336,
+            "sigma": 8.4
+          },
+          {
+            "mag": 13.2778,
+            "phase": 0.0337,
+            "sigma": 6.1
+          },
+          {
+            "mag": 13.3031,
+            "phase": 0.0361,
+            "sigma": 8.6
+          },
+          {
+            "mag": 13.2753,
+            "phase": 0.0368,
+            "sigma": 5.8
+          },
+          {
+            "mag": 13.3332,
+            "phase": 0.0368,
+            "sigma": 10.0
+          },
+          {
+            "mag": 13.2833,
+            "phase": 0.0372,
+            "sigma": 6.6
+          },
+          {
+            "mag": 13.2813,
+            "phase": 0.0375,
+            "sigma": 6.4
+          },
+          {
+            "mag": 13.2904,
+            "phase": 0.0381,
+            "sigma": 7.3
+          },
+          {
+            "mag": 13.3124,
+            "phase": 0.04,
+            "sigma": 9.5
+          },
+          {
+            "mag": 13.305,
+            "phase": 0.0401,
+            "sigma": 8.7
+          },
+          {
+            "mag": 13.2868,
+            "phase": 0.0411,
+            "sigma": 6.9
+          },
+          {
+            "mag": 13.3013,
+            "phase": 0.0414,
+            "sigma": 8.4
+          },
+          {
+            "mag": 13.2949,
+            "phase": 0.0418,
+            "sigma": 7.7
+          },
+          {
+            "mag": 13.2933,
+            "phase": 0.0426,
+            "sigma": 7.6
+          },
+          {
+            "mag": 13.2956,
+            "phase": 0.0433,
+            "sigma": 7.8
+          },
+          {
+            "mag": 13.3001,
+            "phase": 0.0434,
+            "sigma": 8.3
+          },
+          {
+            "mag": 13.3274,
+            "phase": 0.0437,
+            "sigma": 9.5
+          },
+          {
+            "mag": 13.2977,
+            "phase": 0.0439,
+            "sigma": 8.0
+          },
+          {
+            "mag": 13.2761,
+            "phase": 0.044,
+            "sigma": 5.9
+          },
+          {
+            "mag": 13.3129,
+            "phase": 0.044,
+            "sigma": 8.3
+          },
+          {
+            "mag": 13.309,
+            "phase": 0.0444,
+            "sigma": 8.0
+          },
+          {
+            "mag": 13.2953,
+            "phase": 0.0453,
+            "sigma": 7.8
+          },
+          {
+            "mag": 13.2962,
+            "phase": 0.0453,
+            "sigma": 7.9
+          },
+          {
+            "mag": 13.2822,
+            "phase": 0.0458,
+            "sigma": 6.5
+          },
+          {
+            "mag": 13.3004,
+            "phase": 0.0465,
+            "sigma": 8.3
+          },
+          {
+            "mag": 13.3013,
+            "phase": 0.0466,
+            "sigma": 8.4
+          },
+          {
+            "mag": 13.293,
+            "phase": 0.0467,
+            "sigma": 7.6
+          },
+          {
+            "mag": 13.3068,
+            "phase": 0.0472,
+            "sigma": 8.9
+          },
+          {
+            "mag": 13.32,
+            "phase": 0.0472,
+            "sigma": 10.2
+          },
+          {
+            "mag": 13.2806,
+            "phase": 0.0486,
+            "sigma": 6.3
+          },
+          {
+            "mag": 13.3132,
+            "phase": 0.0489,
+            "sigma": 9.6
+          },
+          {
+            "mag": 13.3086,
+            "phase": 0.049,
+            "sigma": 9.1
+          },
+          {
+            "mag": 13.3046,
+            "phase": 0.0508,
+            "sigma": 8.7
+          },
+          {
+            "mag": 13.3106,
+            "phase": 0.0509,
+            "sigma": 9.3
+          },
+          {
+            "mag": 13.3126,
+            "phase": 0.0517,
+            "sigma": 9.5
+          },
+          {
+            "mag": 13.3095,
+            "phase": 0.9829,
+            "sigma": 9.2
+          }
+        ],
+        "n_outliers": 123,
+        "n_points": 1570,
+        "typical_err": 0.0101,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": 19.1815551328472,
+    "period_days_tested": 1.353604313972901,
+    "ra": 338.324902842304,
+    "status": "CONFIRMED"
+  },
+  "411457490": {
+    "dec": -67.5135639250344,
+    "ra": 179.607723828298,
+    "status": "NO_DATA"
+  },
+  "430314843": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 13.5477,
+        "clustered_points": [],
+        "n_outliers": 0,
+        "n_points": 70,
+        "typical_err": 0.0262,
+        "verdict": "NOT_CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 12.7712,
+        "clustered_points": [
+          {
+            "mag": 12.8552,
+            "phase": 0.6549,
+            "sigma": 5.5
+          },
+          {
+            "mag": 12.8752,
+            "phase": 0.6583,
+            "sigma": 6.8
+          },
+          {
+            "mag": 12.8614,
+            "phase": 0.6617,
+            "sigma": 5.9
+          }
+        ],
+        "n_outliers": 7,
+        "n_points": 90,
+        "typical_err": 0.0153,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": 20.7749416674023,
+    "period_days_tested": 1.144288653404174,
+    "ra": 68.0414835824933,
+    "status": "CONFIRMED"
+  },
+  "43330648": {
+    "dec": 23.5234783757279,
+    "ra": 260.987653478089,
+    "status": "NO_DATA"
+  },
+  "434321668": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 15.152,
+        "clustered_points": [
+          {
+            "mag": 15.6152,
+            "phase": 0.1212,
+            "sigma": 37.2
+          },
+          {
+            "mag": 15.2865,
+            "phase": 0.1577,
+            "sigma": 11.4
+          }
+        ],
+        "n_outliers": 20,
+        "n_points": 434,
+        "typical_err": 0.0116,
+        "verdict": "CONFIRMED"
+      },
+      "zi": {
+        "baseline_mag": 14.3679,
+        "clustered_points": [
+          {
+            "mag": 14.4883,
+            "phase": 0.7802,
+            "sigma": 12.6
+          },
+          {
+            "mag": 14.4493,
+            "phase": 0.7841,
+            "sigma": 8.6
+          }
+        ],
+        "n_outliers": 2,
+        "n_points": 38,
+        "typical_err": 0.0095,
+        "verdict": "CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 14.591,
+        "clustered_points": [
+          {
+            "mag": 14.7484,
+            "phase": 0.0509,
+            "sigma": 14.5
+          },
+          {
+            "mag": 14.7395,
+            "phase": 0.0525,
+            "sigma": 13.7
+          }
+        ],
+        "n_outliers": 29,
+        "n_points": 657,
+        "typical_err": 0.0107,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": 14.0241036585545,
+    "period_days_tested": 5.563850297806913,
+    "ra": 93.6317260425062,
+    "status": "CONFIRMED"
+  },
+  "437022904": {
+    "dec": 20.7219033611105,
+    "ra": 106.84121501826,
+    "status": "NO_DATA"
+  },
+  "437150434": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 12.8186,
+        "clustered_points": [
+          {
+            "mag": 13.1463,
+            "phase": 0.5258,
+            "sigma": 29.0
+          },
+          {
+            "mag": 13.2402,
+            "phase": 0.5284,
+            "sigma": 37.3
+          }
+        ],
+        "n_outliers": 2,
+        "n_points": 125,
+        "typical_err": 0.0114,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": -22.1841575621893,
+    "period_days_tested": 5.285343164440589,
+    "ra": 123.38826091798,
+    "status": "CONFIRMED"
+  },
+  "437171483": {
+    "dec": -55.6510299560047,
+    "ra": 141.071811162621,
+    "status": "NO_DATA"
+  },
+  "43785616": {
+    "dec": -10.2807334099288,
+    "ra": 77.4952812560076,
+    "status": "NO_DATA"
+  },
+  "444465823": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 14.1017,
+        "clustered_points": [],
+        "n_outliers": 1,
+        "n_points": 1159,
+        "typical_err": 0.0171,
+        "verdict": "NOT_CONFIRMED"
+      },
+      "zi": {
+        "baseline_mag": 12.6779,
+        "clustered_points": [],
+        "n_outliers": 0,
+        "n_points": 67,
+        "typical_err": 0.013,
+        "verdict": "NOT_CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 13.1406,
+        "clustered_points": [
+          {
+            "mag": 13.225,
+            "phase": 0.0222,
+            "sigma": 5.1
+          },
+          {
+            "mag": 13.2307,
+            "phase": 0.9921,
+            "sigma": 5.4
+          }
+        ],
+        "n_outliers": 6,
+        "n_points": 1865,
+        "typical_err": 0.014,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": 65.6718246580931,
+    "period_days_tested": 18.513330110923107,
+    "ra": 8.01300035964578,
+    "status": "CONFIRMED"
+  },
+  "445266372": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 15.174,
+        "clustered_points": [],
+        "n_outliers": 1,
+        "n_points": 113,
+        "typical_err": 0.0123,
+        "verdict": "NOT_CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 14.5986,
+        "clustered_points": [],
+        "n_outliers": 1,
+        "n_points": 146,
+        "typical_err": 0.0109,
+        "verdict": "NOT_CONFIRMED"
+      }
+    },
+    "dec": -15.5303229436785,
+    "period_days_tested": 5.806269683814529,
+    "ra": 100.858879749296,
+    "status": "NOT_CONFIRMED"
+  },
+  "44533527": {
+    "dec": 15.494171492093,
+    "ra": 268.564612896867,
+    "status": "NO_DATA"
+  },
+  "446502638": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 15.872,
+        "clustered_points": [
+          {
+            "mag": 15.974,
+            "phase": 0.0016,
+            "sigma": 6.5
+          },
+          {
+            "mag": 15.9713,
+            "phase": 0.0329,
+            "sigma": 6.3
+          },
+          {
+            "mag": 15.9705,
+            "phase": 0.0338,
+            "sigma": 6.3
+          },
+          {
+            "mag": 15.9955,
+            "phase": 0.0483,
+            "sigma": 7.8
+          },
+          {
+            "mag": 15.9529,
+            "phase": 0.9531,
+            "sigma": 5.2
+          },
+          {
+            "mag": 15.977,
+            "phase": 0.9764,
+            "sigma": 6.7
+          },
+          {
+            "mag": 15.9839,
+            "phase": 0.9872,
+            "sigma": 7.1
+          },
+          {
+            "mag": 15.9769,
+            "phase": 0.9885,
+            "sigma": 6.6
+          }
+        ],
+        "n_outliers": 83,
+        "n_points": 394,
+        "typical_err": 0.0155,
+        "verdict": "CONFIRMED"
+      },
+      "zi": {
+        "baseline_mag": 12.7211,
+        "clustered_points": [],
+        "n_outliers": 0,
+        "n_points": 38,
+        "typical_err": 0.0119,
+        "verdict": "NOT_CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 14.3488,
+        "clustered_points": [
+          {
+            "mag": 14.4405,
+            "phase": 0.0003,
+            "sigma": 6.8
+          },
+          {
+            "mag": 14.4183,
+            "phase": 0.0272,
+            "sigma": 5.1
+          },
+          {
+            "mag": 14.4226,
+            "phase": 0.0465,
+            "sigma": 5.5
+          },
+          {
+            "mag": 14.4334,
+            "phase": 0.0473,
+            "sigma": 6.3
+          },
+          {
+            "mag": 14.4374,
+            "phase": 0.9722,
+            "sigma": 6.6
+          }
+        ],
+        "n_outliers": 33,
+        "n_points": 635,
+        "typical_err": 0.0135,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": -13.3010635700827,
+    "period_days_tested": 1.1079572971866851,
+    "ra": 287.689891416181,
+    "status": "CONFIRMED"
+  },
+  "446758441": {
+    "dec": -50.648335,
+    "ra": 156.391561,
+    "status": "NO_DATA"
+  },
+  "453692345": {
+    "dec": -73.5004242801869,
+    "ra": 157.938797776527,
+    "status": "NO_DATA"
+  },
+  "459533211": {
+    "dec": -58.9221708143185,
+    "ra": 162.891404006497,
+    "status": "NO_DATA"
+  },
+  "463349042": {
+    "dec": -56.3428709635113,
+    "ra": 153.614616476303,
+    "status": "NO_DATA"
+  },
+  "467214801": {
+    "dec": 57.7297899858446,
+    "ra": 296.750011895494,
+    "status": "NO_DATA"
+  },
+  "467962259": {
+    "dec": -63.0114921514082,
+    "ra": 285.942093378881,
+    "status": "NO_DATA"
+  },
+  "59603820": {
+    "dec": -44.7294576128226,
+    "ra": 109.304145676879,
+    "status": "NO_DATA"
+  },
+  "65970288": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 14.1492,
+        "clustered_points": [],
+        "n_outliers": 0,
+        "n_points": 164,
+        "typical_err": 0.0143,
+        "verdict": "NOT_CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 13.8487,
+        "clustered_points": [],
+        "n_outliers": 1,
+        "n_points": 807,
+        "typical_err": 0.0167,
+        "verdict": "NOT_CONFIRMED"
+      }
+    },
+    "dec": -27.6181759310757,
+    "period_days_tested": 1.370533916643225,
+    "ra": 108.810021531842,
+    "status": "NOT_CONFIRMED"
+  },
+  "66716482": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 13.5661,
+        "clustered_points": [],
+        "n_outliers": 1,
+        "n_points": 285,
+        "typical_err": 0.0134,
+        "verdict": "NOT_CONFIRMED"
+      },
+      "zi": {
+        "baseline_mag": 13.1735,
+        "clustered_points": [],
+        "n_outliers": 0,
+        "n_points": 112,
+        "typical_err": 0.0119,
+        "verdict": "NOT_CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 13.2543,
+        "clustered_points": [],
+        "n_outliers": 1,
+        "n_points": 361,
+        "typical_err": 0.0127,
+        "verdict": "NOT_CONFIRMED"
+      }
+    },
+    "dec": -4.75862707626643,
+    "period_days_tested": 8.028258931278463,
+    "ra": 199.484839633234,
+    "status": "NOT_CONFIRMED"
+  },
+  "66732476": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 13.3053,
+        "clustered_points": [
+          {
+            "mag": 13.4378,
+            "phase": 0.3936,
+            "sigma": 9.8
+          },
+          {
+            "mag": 13.4353,
+            "phase": 0.4052,
+            "sigma": 9.6
+          }
+        ],
+        "n_outliers": 11,
+        "n_points": 284,
+        "typical_err": 0.0136,
+        "verdict": "CONFIRMED"
+      },
+      "zi": {
+        "baseline_mag": 12.7408,
+        "clustered_points": [
+          {
+            "mag": 12.8309,
+            "phase": 0.133,
+            "sigma": 7.3
+          },
+          {
+            "mag": 12.8603,
+            "phase": 0.1485,
+            "sigma": 9.8
+          }
+        ],
+        "n_outliers": 8,
+        "n_points": 114,
+        "typical_err": 0.0124,
+        "verdict": "CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 12.8697,
+        "clustered_points": [
+          {
+            "mag": 12.9967,
+            "phase": 0.0383,
+            "sigma": 9.8
+          },
+          {
+            "mag": 12.9438,
+            "phase": 0.0506,
+            "sigma": 5.7
+          }
+        ],
+        "n_outliers": 17,
+        "n_points": 354,
+        "typical_err": 0.0131,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": -5.0460356536951,
+    "period_days_tested": 3.1087371204482817,
+    "ra": 199.602919621877,
+    "status": "CONFIRMED"
+  },
+  "70762350": {
+    "dec": -34.5641177844045,
+    "ra": 0.93106922421332,
+    "status": "NO_DATA"
+  },
+  "72729777": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 12.2255,
+        "clustered_points": [
+          {
+            "mag": 12.3171,
+            "phase": 0.0962,
+            "sigma": 5.1
+          },
+          {
+            "mag": 12.4556,
+            "phase": 0.1019,
+            "sigma": 11.8
+          },
+          {
+            "mag": 12.4586,
+            "phase": 0.1019,
+            "sigma": 13.1
+          },
+          {
+            "mag": 12.5628,
+            "phase": 0.1065,
+            "sigma": 17.5
+          },
+          {
+            "mag": 12.5335,
+            "phase": 0.1065,
+            "sigma": 17.4
+          }
+        ],
+        "n_outliers": 7,
+        "n_points": 494,
+        "typical_err": 0.0183,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": -26.4309387814854,
+    "period_days_tested": 28.67554362946531,
+    "ra": 34.323565714615,
+    "status": "CONFIRMED"
+  },
+  "77210120": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 13.2797,
+        "clustered_points": [
+          {
+            "mag": 13.3626,
+            "phase": 0.2715,
+            "sigma": 9.8
+          },
+          {
+            "mag": 13.3709,
+            "phase": 0.2749,
+            "sigma": 10.7
+          },
+          {
+            "mag": 13.3873,
+            "phase": 0.2984,
+            "sigma": 12.7
+          }
+        ],
+        "n_outliers": 5,
+        "n_points": 36,
+        "typical_err": 0.0085,
+        "verdict": "CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 12.6358,
+        "clustered_points": [
+          {
+            "mag": 12.697,
+            "phase": 0.2741,
+            "sigma": 6.5
+          },
+          {
+            "mag": 12.7022,
+            "phase": 0.2847,
+            "sigma": 7.0
+          }
+        ],
+        "n_outliers": 3,
+        "n_points": 39,
+        "typical_err": 0.0095,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": 9.87410223322177,
+    "period_days_tested": 1.5344313502902909,
+    "ra": 270.663652147697,
+    "status": "CONFIRMED"
+  },
+  "78955414": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 15.3404,
+        "clustered_points": [
+          {
+            "mag": 15.4193,
+            "phase": 0.2161,
+            "sigma": 6.0
+          },
+          {
+            "mag": 15.419,
+            "phase": 0.2309,
+            "sigma": 6.0
+          }
+        ],
+        "n_outliers": 4,
+        "n_points": 160,
+        "typical_err": 0.013,
+        "verdict": "CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 14.9553,
+        "clustered_points": [
+          {
+            "mag": 15.0302,
+            "phase": 0.206,
+            "sigma": 5.8
+          },
+          {
+            "mag": 15.025,
+            "phase": 0.232,
+            "sigma": 5.4
+          },
+          {
+            "mag": 15.0292,
+            "phase": 0.2336,
+            "sigma": 5.7
+          }
+        ],
+        "n_outliers": 3,
+        "n_points": 393,
+        "typical_err": 0.013,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": -21.9024378726158,
+    "period_days_tested": 1.99668584600498,
+    "ra": 103.528866430258,
+    "status": "CONFIRMED"
+  },
+  "79792004": {
+    "dec": -42.2466010116774,
+    "ra": 120.548326819604,
+    "status": "NO_DATA"
+  },
+  "86880482": {
+    "dec": -45.3276393187768,
+    "ra": 272.38984455138,
+    "status": "NO_DATA"
+  },
+  "86934109": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 12.9795,
+        "clustered_points": [],
+        "n_outliers": 0,
+        "n_points": 56,
+        "typical_err": 0.0168,
+        "verdict": "NOT_CONFIRMED"
+      }
+    },
+    "dec": 35.2250187269014,
+    "period_days_tested": 1.0522571656841455,
+    "ra": 298.75507856831,
+    "status": "NOT_CONFIRMED"
+  },
+  "86956236": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 12.5524,
+        "clustered_points": [],
+        "n_outliers": 1,
+        "n_points": 335,
+        "typical_err": 0.0128,
+        "verdict": "NOT_CONFIRMED"
+      }
+    },
+    "dec": 29.2261799618058,
+    "period_days_tested": 35.42002699584757,
+    "ra": 98.9186685344632,
+    "status": "NOT_CONFIRMED"
+  },
+  "942471837": {
+    "dec": -32.3126057511344,
+    "ra": 167.9224726117,
+    "status": "NO_DATA"
+  },
+  "9586662": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 14.4516,
+        "clustered_points": [],
+        "n_outliers": 0,
+        "n_points": 145,
+        "typical_err": 0.0143,
+        "verdict": "NOT_CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 13.779,
+        "clustered_points": [],
+        "n_outliers": 0,
+        "n_points": 163,
+        "typical_err": 0.0129,
+        "verdict": "NOT_CONFIRMED"
+      }
+    },
+    "dec": -27.3925833794133,
+    "period_days_tested": 1.1130671370396392,
+    "ra": 193.371428575375,
+    "status": "NOT_CONFIRMED"
+  },
+  "96795030": {
+    "dec": -31.9194276913827,
+    "ra": 105.026107548554,
+    "status": "NO_DATA"
+  }
+}

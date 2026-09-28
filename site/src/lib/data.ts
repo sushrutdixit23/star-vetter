@@ -13,6 +13,7 @@ import type {
   Timeseries,
   GaiaContext,
   Benchmark,
+  GroundSurveyEntry,
 } from "./types";
 import type { Summary } from "@/components/dash/DetailPanels";
 
@@ -125,6 +126,15 @@ export function getGaiaContext(): Record<string, GaiaContext> | null {
   if (!fs.existsSync(p)) return null;
   const raw = fs.readFileSync(p, "utf-8").replace(/"gaia_source_id": *([0-9]+)/g, '"gaia_source_id": "$1"');
   return JSON.parse(raw) as Record<string, GaiaContext>;
+}
+
+// ground_survey_period.json is written by f12_ground_survey_period.py: a
+// TIC-keyed independent confirmation check against real ZTF ground-survey
+// photometry, separate from the TESS data used to find each candidate.
+export function getGroundSurvey(): Record<string, GroundSurveyEntry> | null {
+  const p = path.join(DATA_DIR, "ground_survey_period.json");
+  if (!fs.existsSync(p)) return null;
+  return JSON.parse(fs.readFileSync(p, "utf-8")) as Record<string, GroundSurveyEntry>;
 }
 
 // benchmark.json is written by benchmark_report.py. Optional: the
