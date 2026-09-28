@@ -217,8 +217,10 @@ def main():
     kn_nb = nb[nb["capable"]].merge(known, left_on="nbr_TIC", right_on="TIC", suffixes=("", "_k"))
     kn_nb = kn_nb.merge(df[["TIC", "bls_period"]], left_on="target_TIC", right_on="TIC",
                         suffixes=("", "_t"))
-    kn_nb["period_check"] = [best_period_ratio_flag(bp, kp) for bp, kp in
-                             zip(kn_nb["bls_period"], pd.to_numeric(kn_nb["known_period"], errors="coerce"))]
+    kn_nb["period_check"] = pd.Series(
+        [best_period_ratio_flag(bp, kp) for bp, kp in
+         zip(kn_nb["bls_period"], pd.to_numeric(kn_nb["known_period"], errors="coerce"))],
+        index=kn_nb.index, dtype="object")
     period_matched = kn_nb[kn_nb["period_check"].str.startswith("agrees")]
     matched_targets = set(period_matched["target_TIC"].astype(int))
 
