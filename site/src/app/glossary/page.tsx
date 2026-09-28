@@ -1,53 +1,41 @@
 import Link from "next/link";
 import { glossaryByCategory } from "@/lib/glossary";
+import Band from "@/components/journal/Band";
 
 export const metadata = {
   title: "Glossary - Star Vetter",
   description: "Plain-English definitions for every technical term used on Star Vetter.",
 };
 
+const NUMERALS = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
+
 export default function GlossaryPage() {
   const groups = glossaryByCategory();
 
   return (
-    <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-12 sm:py-16">
-      <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent/80">
-        Reference
-      </p>
-      <h1 className="mt-3 text-3xl font-semibold tracking-tight text-fg sm:text-4xl">
-        Glossary
-      </h1>
-      <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted">
-        Every technical term used anywhere on this site, in plain English.
-        The same definitions also show up inline wherever a term appears in
-        a candidate&apos;s dossier - click the dotted underline.
-      </p>
+    <main className="mx-auto w-full max-w-[1600px] flex-1 px-4 py-10 sm:px-8">
+      <header className="pb-10">
+        <div className="nav-caps font-mono text-[11px] text-muted">Reference</div>
+        <h1 className="mt-3 font-display text-4xl leading-[1.05] text-fg sm:text-5xl">Glossary.</h1>
+        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">Every technical term used anywhere on this site, in plain English. The same definitions also show up inline wherever a term appears on a candidate page - click the dotted underline.</p>
+      </header>
 
-      <div className="mt-12 space-y-12">
-        {groups.map((g) => (
-          <section key={g.category}>
-            <h2 className="mb-4 text-sm font-medium uppercase tracking-wide text-faint">
-              {g.label}
-            </h2>
-            <dl className="space-y-5">
-              {g.terms.map(({ id, entry }) => (
-                <div key={id} id={id} className="scroll-mt-20">
-                  <dt className="text-sm font-semibold text-fg">{entry.term}</dt>
-                  <dd className="mt-1 text-sm leading-relaxed text-muted">{entry.def}</dd>
-                </div>
-              ))}
-            </dl>
-          </section>
-        ))}
-      </div>
+      {groups.map((g, gi) => (
+        <Band key={g.category} num={NUMERALS[gi] ?? String(gi + 1)} title={g.label}>
+          <dl className="grid gap-x-10 gap-y-5 md:grid-cols-2">
+            {g.terms.map(({ id, entry }) => (
+              <div key={id} id={id} className="scroll-mt-24 border-t border-line pt-3">
+                <dt className="text-sm font-medium text-fg">{entry.term}</dt>
+                <dd className="mt-1 text-sm leading-relaxed text-muted">{entry.def}</dd>
+              </div>
+            ))}
+          </dl>
+        </Band>
+      ))}
 
-      <div className="mb-16 mt-12 flex gap-6">
-        <Link href="/about" className="font-mono text-xs uppercase tracking-wide text-accent/80 hover:text-accent">
-          &larr; how the pipeline works
-        </Link>
-        <Link href="/" className="font-mono text-xs uppercase tracking-wide text-accent/80 hover:text-accent">
-          view confirmed candidates
-        </Link>
+      <div className="flex gap-8 border-t border-line py-10">
+        <Link href="/about" className="nav-caps font-mono text-[11px] text-accent hover:text-fg">&larr; How the pipeline works</Link>
+        <Link href="/candidates" className="nav-caps font-mono text-[11px] text-accent hover:text-fg">View the candidates &rarr;</Link>
       </div>
     </main>
   );

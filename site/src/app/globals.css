@@ -79,3 +79,26 @@ body::before {
   mix-blend-mode: overlay;
   background-image: var(--grain);
 }
+
+/* Star animations: a gentle halo pulse and a slow surface churn. Both
+   stop entirely for visitors who ask for reduced motion. */
+@keyframes sv-twinkle {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.07); }
+}
+@keyframes sv-spin {
+  to { transform: rotate(360deg); }
+}
+.sv-twinkle {
+  animation: sv-twinkle 4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.sv-spin {
+  animation: sv-spin 70s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sv-twinkle, .sv-spin { animation: none; }
+}
