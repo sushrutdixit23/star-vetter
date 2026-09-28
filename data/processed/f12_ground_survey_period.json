@@ -156,6 +156,11 @@
     "ra": 27.0984969751376,
     "status": "NO_DATA"
   },
+  "229473505": {
+    "dec": 62.4159804660658,
+    "ra": 295.351879306331,
+    "status": "NO_DATA"
+  },
   "229490432": {
     "bands": {
       "zg": {
@@ -466,6 +471,52 @@
     "dec": 58.7978070189217,
     "ra": 351.835906951325,
     "status": "NO_DATA"
+  },
+  "257747010": {
+    "bands": {
+      "zg": {
+        "baseline_mag": 17.2427,
+        "clustered_points": [],
+        "n_outliers": 32,
+        "n_points": 707,
+        "p_value": 0.012918,
+        "typical_err": 0.0196,
+        "verdict": "NOT_CONFIRMED"
+      },
+      "zi": {
+        "baseline_mag": 14.8518,
+        "clustered_points": [],
+        "n_outliers": 14,
+        "n_points": 223,
+        "p_value": 0.021536,
+        "typical_err": 0.0157,
+        "verdict": "NOT_CONFIRMED"
+      },
+      "zr": {
+        "baseline_mag": 15.7886,
+        "clustered_points": [
+          {
+            "mag": 16.4061,
+            "phase": 0.8819,
+            "sigma": 38.9
+          },
+          {
+            "mag": 15.9882,
+            "phase": 0.8819,
+            "sigma": 13.3
+          }
+        ],
+        "n_outliers": 57,
+        "n_points": 1046,
+        "p_value": 0.00786,
+        "typical_err": 0.0148,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "dec": 21.8506604842403,
+    "period_days_tested": 2.1174241299046823,
+    "ra": 320.331450236628,
+    "status": "CONFIRMED"
   },
   "258490713": {
     "dec": -71.3587791608823,

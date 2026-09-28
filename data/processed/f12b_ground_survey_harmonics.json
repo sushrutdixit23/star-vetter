@@ -779,6 +779,92 @@
     },
     "status": "DONE"
   },
+  "257747010": {
+    "aliased_tess_side": true,
+    "base_confirmed": true,
+    "base_period_days": 2.1174241299046823,
+    "corrected_period_days": 4.234848259809365,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 17.2427,
+            "clustered_points": [],
+            "n_outliers": 32,
+            "n_points": 707,
+            "p_value": 0.025675,
+            "typical_err": 0.0196,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 14.8518,
+            "clustered_points": [],
+            "n_outliers": 14,
+            "n_points": 223,
+            "p_value": 0.042643,
+            "typical_err": 0.0157,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 15.7886,
+            "clustered_points": [],
+            "n_outliers": 57,
+            "n_points": 1046,
+            "p_value": 0.015659,
+            "typical_err": 0.0148,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 1.0587120649523412
+      },
+      "2.0": {
+        "any_confirmed": true,
+        "bands": {
+          "zg": {
+            "baseline_mag": 17.2427,
+            "clustered_points": [
+              {
+                "mag": 17.7431,
+                "phase": 0.4439,
+                "sigma": 19.8
+              },
+              {
+                "mag": 17.3951,
+                "phase": 0.4439,
+                "sigma": 7.2
+              }
+            ],
+            "n_outliers": 32,
+            "n_points": 707,
+            "p_value": 0.006479,
+            "typical_err": 0.0196,
+            "verdict": "CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 14.8518,
+            "clustered_points": [],
+            "n_outliers": 14,
+            "n_points": 223,
+            "p_value": 0.010822,
+            "typical_err": 0.0157,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 15.7886,
+            "clustered_points": [],
+            "n_outliers": 57,
+            "n_points": 1046,
+            "p_value": 0.036489,
+            "typical_err": 0.0148,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 4.234848259809365
+      }
+    },
+    "status": "DONE"
+  },
   "281310348": {
     "aliased_tess_side": false,
     "base_confirmed": true,
