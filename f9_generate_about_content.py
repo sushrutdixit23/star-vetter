@@ -23,6 +23,20 @@ but this script's own prompt was never fixed - so a future --force run could
 reproduce the same class of bugs. This version closes that gap the same way
 f8_generate_writeups.py and f10_generate_discoveries.py were hardened.
 
+v3: two changes.
+1. The cached output now also stores n_confirmed_at_generation, the
+   confirmed count that was live at generation time. check_about_content_drift.py
+   reads that field to decide whether an automated run needs to pass --force
+   here; the pipeline calls check_about_content_drift.py --auto-fix instead
+   of calling this script directly, so --force only fires when the count
+   moved.
+2. A real --force run produced a narrative and an FAQ answer both claiming
+   the ML score helps "other researchers" prioritize "future work" or
+   "follow-up work" - nothing in the facts given to the prompt supports
+   that claim, and it edges against the existing rule that nothing uses the
+   ML score to prioritize or gate anything. Added an explicit rule against
+   this invented framing so a regeneration does not reproduce it.
+
 Requires:
   ANTHROPIC_API_KEY environment variable
   pip install anthropic (already installed if you ran f8_generate_writeups.py)
@@ -57,10 +71,11 @@ HARD RULES (follow all of these - the previous version of this page broke every 
 - Do not use the words "discovery", "discovered", "genuine", "verified", "published", "literature", "peer-reviewed", or "proven" anywhere. "Confirmed" may only be used as this project's own defined term for "passed the pixel-level check" - always distinct from being scientifically verified.
 - The pixel-level check is fully automated. Never describe it as manual, visual, or done by a human.
 - The machine learning score is a second opinion only. Never say it decides, prioritizes, filters, screens, or gates which candidates get checked - nothing currently uses it to make that decision.
+- Never describe the ML score as being used by other researchers, or as guiding, prioritizing, or informing anyone's future work or follow-up. The facts given state only its training size and how it compares to the baseline - nothing about who uses it or how, so do not invent a downstream use for it.
 - Never claim all candidates are free of caveats or that the process has no open questions. Some candidates carry open caveats on their individual pages; the narrative and FAQs must leave room for that rather than imply universal cleanliness.
 - Never say a candidate has joined the scientific literature, been added to an official catalog, or received professional or human follow-up. Being listed on this site is the end of what this pipeline itself does.
 - This pipeline measures orbital period and relative eclipse depths from the light curve only. Never say it measures, derives, or determines stellar masses - that would require radial-velocity spectroscopy this project does not perform.
-- Describe the period-alias check accurately if you mention it at all: it compares the depth of odd-numbered eclipses against even-numbered eclipses (an odd/even eclipse-depth test). Never call this "period fitting" or describe it as a period-search technique.
+- Describe the period-alias check accurately if you mention it at all: it compares the depth of odd-numbered eclipses against even-numbered eclipses (an odd/even eclipse-depth test). Never call this"period fitting" or describe it as a period-search technique.
 - Use only standard ASCII characters - no em dashes, no smart quotes (use a hyphen or comma instead, and straight quotes only).
 
 Return ONLY valid JSON (no markdown code fences, no commentary before or after), matching exactly this shape:
@@ -174,6 +189,7 @@ def main():
         "faqs": content["faqs"],
         "model": MODEL,
         "generated_at": datetime.now(timezone.utc).isoformat(),
+        "n_confirmed_at_generation": index.get("generated_stats", {}).get("n_confirmed"),
     }
 
     cache_path.parent.mkdir(parents=True, exist_ok=True)
