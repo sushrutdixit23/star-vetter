@@ -1,5 +1,5 @@
 import { Suspense, createElement } from "react";
-import { getAllCandidates, getDashboard, getSiteMeta } from "@/lib/data";
+import { getAllCandidates, getDashboard, getGaiaContext, getSiteMeta } from "@/lib/data";
 import { toCardData } from "@/lib/cards";
 import CandidateBrowser from "@/components/CandidateBrowser";
 
@@ -8,12 +8,13 @@ export const metadata = {
 };
 
 export default function CandidatesPage() {
-  const cards = getAllCandidates().map(toCardData);
+  const gaia = getGaiaContext();
+  const cards = getAllCandidates().map((c) => ({ ...toCardData(c), ruweElevated: gaia ? gaia[String(c.tic)]?.elevated_ruwe ?? null : null }));
   const meta = getSiteMeta();
   const skyPoints = getDashboard()?.sky ?? [];
 
   return (
-    <main className="mx-auto w-full max-w-[1600px] flex-1 px-4 py-10 sm:px-8">
+    <main className="w-full flex-1 px-4 py-10 sm:px-8 xl:px-12">
       <div className="grid gap-6 border-b border-line pb-8 lg:grid-cols-[3rem_minmax(0,1fr)]">
         <div className="font-display text-3xl leading-none text-faint">II</div>
         <div>

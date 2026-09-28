@@ -40,6 +40,7 @@ export default function CandidateBrowser({
   const [sort, setSort] = useState<SortKey>("bls_snr");
   const initialView = params.get("view");
   const [view, setView] = useState<ViewMode>(initialView === "table" || initialView === "sky" ? initialView : "clocks");
+  const [gaiaOnly, setGaiaOnly] = useState(false);
 
   const tiersPresent = TIER_ORDER.filter((t) => cards.some((c) => c.tier === t));
 
@@ -48,6 +49,7 @@ export default function CandidateBrowser({
     const list = cards.filter(
       (c) =>
         (tier === "ALL" || c.tier === tier) &&
+        (!gaiaOnly || c.ruweElevated === true) &&
         (q === "" || String(c.tic).includes(q))
     );
     const val = (c: CardData) =>
@@ -95,6 +97,11 @@ export default function CandidateBrowser({
               </span>
             </Chip>
           ))}
+          {cards.some((c) => c.ruweElevated) && (
+            <Chip active={gaiaOnly} onClick={() => setGaiaOnly((g) => !g)}>
+              Gaia RUWE elevated <span className="ml-1 text-faint">{cards.filter((c) => c.ruweElevated).length}</span>
+            </Chip>
+          )}
         </div>
         <div className="flex gap-2">
           <input
@@ -140,7 +147,7 @@ export default function CandidateBrowser({
             <p className="text-xs text-faint">No sky positions available for this filter.</p>
           ) : (
             <>
-              <SkyMap points={shownSkyPoints} className="w-full" />
+              <SkyMap points={shownSkyPoints} className="mx-auto w-full max-w-[1700px]" />
               <p className="mt-3 text-[11px] text-faint">
                 {shownSkyPoints.length} of {shown.length} filtered candidates have a catalog
                 position. Hover a point for details; click to open it.
@@ -199,6 +206,7 @@ function TableView({
                   <Link href={`/candidates/${c.tic}`} className="font-mono text-fg hover:text-accent">
                     {c.tic}
                   </Link>
+                  {c.ruweElevated && <span title="Gaia RUWE above 1.4" className="ml-2 rounded-full border border-accent-cool/40 px-1.5 py-0.5 font-mono text-[9px] text-accent-cool">RUWE</span>}
                 </td>
                 <td className="px-4 py-2.5">
                   <div className="h-8 w-24 rounded border border-line bg-canvas p-0.5">

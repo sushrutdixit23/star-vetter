@@ -267,7 +267,7 @@ export default function HeroGauntlet({ funnel, short, intro }: { funnel: FunnelS
           <div className="hidden font-display text-3xl leading-none text-faint xl:block">I</div>
           <div className="flex flex-col justify-center">{intro}</div>
           {ready && (
-            <div className="aspect-[4/3] w-full">
+            <div className="aspect-[4/3] max-h-[78vh] w-full">
               <canvas ref={canvasRef} aria-hidden="true" className="h-full w-full" />
             </div>
           )}

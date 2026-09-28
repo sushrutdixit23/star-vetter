@@ -11,6 +11,8 @@ import type {
   SiteIndex,
   SiteMeta,
   Timeseries,
+  GaiaContext,
+  Benchmark,
 } from "./types";
 import type { Summary } from "@/components/dash/DetailPanels";
 
@@ -113,6 +115,24 @@ export function getTimeseries(tic: number): Timeseries | null {
   const p = path.join(DATA_DIR, "timeseries", `TIC${tic}.json`);
   if (!fs.existsSync(p)) return null;
   return JSON.parse(fs.readFileSync(p, "utf-8")) as Timeseries;
+}
+
+// gaia_context.json is written by the pipeline's Gaia DR3 cross-match.
+// Gaia source ids exceed JavaScript's safe integer range, so they are
+// quoted before parsing - a plain JSON.parse would silently change digits.
+export function getGaiaContext(): Record<string, GaiaContext> | null {
+  const p = path.join(DATA_DIR, "gaia_context.json");
+  if (!fs.existsSync(p)) return null;
+  const raw = fs.readFileSync(p, "utf-8").replace(/"gaia_source_id": *([0-9]+)/g, '"gaia_source_id": "$1"');
+  return JSON.parse(raw) as Record<string, GaiaContext>;
+}
+
+// benchmark.json is written by benchmark_report.py. Optional: the
+// reliability page says "not yet published" without it.
+export function getBenchmark(): Benchmark | null {
+  const p = path.join(DATA_DIR, "benchmark.json");
+  if (!fs.existsSync(p)) return null;
+  return JSON.parse(fs.readFileSync(p, "utf-8")) as Benchmark;
 }
 
 // The one place a Candidate (export_site_data.py's shape) becomes a Summary

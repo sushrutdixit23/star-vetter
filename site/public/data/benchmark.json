@@ -1,0 +1,768 @@
+{
+  "generated_at": "2026-09-28T13:47:56.230131+00:00",
+  "sample": {
+    "source": "Kostov et al. 2025, table 3 (newly catalogued eclipsing binaries)",
+    "n": 60,
+    "selection": "Drawn at random, stratified by TESS magnitude quartile so the sample spans the real brightness range"
+  },
+  "definition": "A known eclipsing binary counts as recovered if it passes every stage and the pixel check returns ON_TARGET. The period the pipeline finds is not yet compared with the catalogue period.",
+  "controls_note": "Two calibration stars with known answers are run alongside to validate the pixel check; they are excluded from every count.",
+  "funnel": [
+    {
+      "label": "Known eclipsing binaries sampled",
+      "count": 60
+    },
+    {
+      "label": "Light curve fetched",
+      "count": 47
+    },
+    {
+      "label": "Vetted (reliable data)",
+      "count": 42
+    },
+    {
+      "label": "Passed every vetting gate",
+      "count": 22
+    },
+    {
+      "label": "Novel (no catalog match)",
+      "count": 21
+    },
+    {
+      "label": "On-target at the pixel check",
+      "count": 10
+    }
+  ],
+  "recall": {
+    "recovered": 10,
+    "sampled": 60
+  },
+  "fetch_status": [
+    {
+      "key": "NO_DATA",
+      "count": 8
+    },
+    {
+      "key": "OK",
+      "count": 47
+    },
+    {
+      "key": "PROCESSING_ERROR",
+      "count": 5
+    }
+  ],
+  "gates": [
+    {
+      "gate": "insufficient_intransit_points",
+      "label": "< 10 in-transit points",
+      "count": 10
+    },
+    {
+      "gate": "below_noise_floor",
+      "label": "SNR < 10",
+      "count": 0
+    },
+    {
+      "gate": "noisy_photometry",
+      "label": "noisy photometry (>2% above 1.2x baseline)",
+      "count": 2
+    },
+    {
+      "gate": "inhomogeneous_photometry",
+      "label": "inhomogeneous photometry segments",
+      "count": 6
+    },
+    {
+      "gate": "depth_too_small",
+      "label": "depth < 10 ppm",
+      "count": 0
+    },
+    {
+      "gate": "non_finite_bls_result",
+      "label": "non-finite BLS result",
+      "count": 0
+    },
+    {
+      "gate": "too_few_eclipses",
+      "label": "< 3 eclipses observed",
+      "count": 16
+    },
+    {
+      "gate": "robust_depth_mismatch",
+      "label": "median/BLS depth mismatch",
+      "count": 6
+    }
+  ],
+  "novelty": [
+    {
+      "key": "KNOWN_OTHER_TYPE",
+      "count": 1
+    },
+    {
+      "key": "NOVEL",
+      "count": 21
+    }
+  ],
+  "pixel": [
+    {
+      "key": "INCONCLUSIVE",
+      "count": 9
+    },
+    {
+      "key": "OFF_TARGET",
+      "count": 1
+    },
+    {
+      "key": "ON_TARGET",
+      "count": 10
+    },
+    {
+      "key": "UNRESOLVED",
+      "count": 1
+    }
+  ],
+  "too_few_eclipses": {
+    "n_flagged": 16,
+    "median_period_flagged": 4.273018,
+    "n_rest": 26,
+    "median_period_rest": 3.2927429999999998
+  },
+  "by_tmag": [
+    {
+      "bin": "<12",
+      "recovered": 1,
+      "n": 3
+    },
+    {
+      "bin": "12-13",
+      "recovered": 2,
+      "n": 11
+    },
+    {
+      "bin": "13-14",
+      "recovered": 4,
+      "n": 23
+    },
+    {
+      "bin": "14+",
+      "recovered": 3,
+      "n": 23
+    }
+  ],
+  "controls": [
+    {
+      "TIC": 427332229,
+      "role": "control",
+      "verdict": "ON_TARGET",
+      "note": null
+    },
+    {
+      "TIC": 158329671,
+      "role": "control",
+      "verdict": "OFF_TARGET",
+      "note": null
+    }
+  ],
+  "stars": [
+    {
+      "tic": 149696773,
+      "tmag": 12.84,
+      "true_period_days": 7.895622,
+      "stage": "vetting",
+      "outcome": "failed a vetting gate",
+      "recovered": false,
+      "gates": [
+        "< 10 in-transit points",
+        "< 3 eclipses observed"
+      ]
+    },
+    {
+      "tic": 17124100,
+      "tmag": 12.25,
+      "true_period_days": 9.760748,
+      "stage": "vetting",
+      "outcome": "failed a vetting gate",
+      "recovered": false,
+      "gates": [
+        "< 10 in-transit points",
+        "< 3 eclipses observed"
+      ]
+    },
+    {
+      "tic": 355449770,
+      "tmag": 14.24,
+      "true_period_days": 1.472166,
+      "stage": "vetting",
+      "outcome": "failed a vetting gate",
+      "recovered": false,
+      "gates": [
+        "< 3 eclipses observed"
+      ]
+    },
+    {
+      "tic": 176760623,
+      "tmag": 14.7,
+      "true_period_days": 1.21875,
+      "stage": "vetting",
+      "outcome": "failed a vetting gate",
+      "recovered": false,
+      "gates": [
+        "< 3 eclipses observed"
+      ]
+    },
+    {
+      "tic": 207148552,
+      "tmag": 12.92,
+      "true_period_days": 1.989558,
+      "stage": "pixel",
+      "outcome": "ON_TARGET",
+      "recovered": true,
+      "gates": []
+    },
+    {
+      "tic": 265674312,
+      "tmag": 14.51,
+      "true_period_days": 3.56787,
+      "stage": "fetch",
+      "outcome": "NO_DATA",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 22623237,
+      "tmag": 14.38,
+      "true_period_days": 1.633744,
+      "stage": "fetch",
+      "outcome": "NO_DATA",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 289960699,
+      "tmag": 14.88,
+      "true_period_days": 3.293425,
+      "stage": "fetch",
+      "outcome": "NO_DATA",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 115347208,
+      "tmag": 12.43,
+      "true_period_days": 5.252374,
+      "stage": "novelty",
+      "outcome": "KNOWN_OTHER_TYPE",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 257736428,
+      "tmag": 14.72,
+      "true_period_days": 1.61284,
+      "stage": "pixel",
+      "outcome": "ON_TARGET",
+      "recovered": true,
+      "gates": []
+    },
+    {
+      "tic": 178717799,
+      "tmag": 14.75,
+      "true_period_days": 5.321248,
+      "stage": "vetting",
+      "outcome": "failed a vetting gate",
+      "recovered": false,
+      "gates": [
+        "< 3 eclipses observed"
+      ]
+    },
+    {
+      "tic": 165171867,
+      "tmag": 14.71,
+      "true_period_days": 2.540586,
+      "stage": "fetch",
+      "outcome": "PROCESSING_ERROR",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 388788212,
+      "tmag": 13.92,
+      "true_period_days": 2.438399,
+      "stage": "fetch",
+      "outcome": "NO_DATA",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 266215601,
+      "tmag": 11.47,
+      "true_period_days": 3.019359,
+      "stage": "vetting",
+      "outcome": "failed a vetting gate",
+      "recovered": false,
+      "gates": [
+        "inhomogeneous photometry segments",
+        "< 3 eclipses observed"
+      ]
+    },
+    {
+      "tic": 332534999,
+      "tmag": 14.94,
+      "true_period_days": 3.551803,
+      "stage": "vetting",
+      "outcome": "failed a vetting gate",
+      "recovered": false,
+      "gates": [
+        "< 10 in-transit points",
+        "< 3 eclipses observed"
+      ]
+    },
+    {
+      "tic": 116248810,
+      "tmag": 13.48,
+      "true_period_days": 6.123465,
+      "stage": "vetting",
+      "outcome": "failed a vetting gate",
+      "recovered": false,
+      "gates": [
+        "inhomogeneous photometry segments"
+      ]
+    },
+    {
+      "tic": 233188334,
+      "tmag": 12.91,
+      "true_period_days": 2.637262,
+      "stage": "pixel",
+      "outcome": "ON_TARGET",
+      "recovered": true,
+      "gates": []
+    },
+    {
+      "tic": 123890398,
+      "tmag": 10.01,
+      "true_period_days": 5.026144,
+      "stage": "pixel",
+      "outcome": "ON_TARGET",
+      "recovered": true,
+      "gates": []
+    },
+    {
+      "tic": 21509909,
+      "tmag": 14.28,
+      "true_period_days": 1.517986,
+      "stage": "vetting",
+      "outcome": "failed a vetting gate",
+      "recovered": false,
+      "gates": [
+        "noisy photometry (>2% above 1.2x baseline)",
+        "median/BLS depth mismatch"
+      ]
+    },
+    {
+      "tic": 233660802,
+      "tmag": 12.99,
+      "true_period_days": 4.222596,
+      "stage": "fetch",
+      "outcome": "PROCESSING_ERROR",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 147515022,
+      "tmag": 13.94,
+      "true_period_days": 6.477872,
+      "stage": "vetting",
+      "outcome": "UNRELIABLE_DATA",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 266136973,
+      "tmag": 13.36,
+      "true_period_days": 1.978866,
+      "stage": "vetting",
+      "outcome": "failed a vetting gate",
+      "recovered": false,
+      "gates": [
+        "noisy photometry (>2% above 1.2x baseline)",
+        "inhomogeneous photometry segments",
+        "median/BLS depth mismatch"
+      ]
+    },
+    {
+      "tic": 177273977,
+      "tmag": 13.92,
+      "true_period_days": 2.231528,
+      "stage": "pixel",
+      "outcome": "INCONCLUSIVE",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 274053153,
+      "tmag": 14.48,
+      "true_period_days": 1.443799,
+      "stage": "fetch",
+      "outcome": "PROCESSING_ERROR",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 124103438,
+      "tmag": 13.53,
+      "true_period_days": 4.687173,
+      "stage": "vetting",
+      "outcome": "failed a vetting gate",
+      "recovered": false,
+      "gates": [
+        "< 10 in-transit points",
+        "< 3 eclipses observed",
+        "median/BLS depth mismatch"
+      ]
+    },
+    {
+      "tic": 280216031,
+      "tmag": 14.5,
+      "true_period_days": 2.899977,
+      "stage": "pixel",
+      "outcome": "INCONCLUSIVE",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 220129408,
+      "tmag": 13.73,
+      "true_period_days": 3.876393,
+      "stage": "vetting",
+      "outcome": "failed a vetting gate",
+      "recovered": false,
+      "gates": [
+        "< 10 in-transit points",
+        "< 3 eclipses observed"
+      ]
+    },
+    {
+      "tic": 470120373,
+      "tmag": 13.82,
+      "true_period_days": 2.264151,
+      "stage": "vetting",
+      "outcome": "UNRELIABLE_DATA",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 401851394,
+      "tmag": 12.65,
+      "true_period_days": 17.012372,
+      "stage": "vetting",
+      "outcome": "failed a vetting gate",
+      "recovered": false,
+      "gates": [
+        "< 3 eclipses observed"
+      ]
+    },
+    {
+      "tic": 284729033,
+      "tmag": 14.02,
+      "true_period_days": 3.189928,
+      "stage": "pixel",
+      "outcome": "ON_TARGET",
+      "recovered": true,
+      "gates": []
+    },
+    {
+      "tic": 130927029,
+      "tmag": 13.29,
+      "true_period_days": 3.544175,
+      "stage": "vetting",
+      "outcome": "failed a vetting gate",
+      "recovered": false,
+      "gates": [
+        "< 10 in-transit points",
+        "< 3 eclipses observed",
+        "median/BLS depth mismatch"
+      ]
+    },
+    {
+      "tic": 395811975,
+      "tmag": 13.37,
+      "true_period_days": 1.304242,
+      "stage": "pixel",
+      "outcome": "UNRESOLVED",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 373616761,
+      "tmag": 13.4,
+      "true_period_days": 3.395558,
+      "stage": "vetting",
+      "outcome": "failed a vetting gate",
+      "recovered": false,
+      "gates": [
+        "inhomogeneous photometry segments"
+      ]
+    },
+    {
+      "tic": 359756865,
+      "tmag": 14.62,
+      "true_period_days": 13.892547,
+      "stage": "pixel",
+      "outcome": "INCONCLUSIVE",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 447428113,
+      "tmag": 12.8,
+      "true_period_days": 1.145146,
+      "stage": "pixel",
+      "outcome": "OFF_TARGET",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 206699788,
+      "tmag": 14.21,
+      "true_period_days": 4.655603,
+      "stage": "pixel",
+      "outcome": "INCONCLUSIVE",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 14497682,
+      "tmag": 14.72,
+      "true_period_days": 5.324312,
+      "stage": "pixel",
+      "outcome": "INCONCLUSIVE",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 262401356,
+      "tmag": 13.94,
+      "true_period_days": 4.498288,
+      "stage": "pixel",
+      "outcome": "INCONCLUSIVE",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 396605560,
+      "tmag": 13.99,
+      "true_period_days": 1.445466,
+      "stage": "fetch",
+      "outcome": "PROCESSING_ERROR",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 352610727,
+      "tmag": 13.76,
+      "true_period_days": 6.180155,
+      "stage": "vetting",
+      "outcome": "UNRELIABLE_DATA",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 34784455,
+      "tmag": 14.32,
+      "true_period_days": 1.686806,
+      "stage": "pixel",
+      "outcome": "ON_TARGET",
+      "recovered": true,
+      "gates": []
+    },
+    {
+      "tic": 413076401,
+      "tmag": 13.01,
+      "true_period_days": 7.209082,
+      "stage": "pixel",
+      "outcome": "INCONCLUSIVE",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 454113205,
+      "tmag": 13.26,
+      "true_period_days": 3.887869,
+      "stage": "pixel",
+      "outcome": "ON_TARGET",
+      "recovered": true,
+      "gates": []
+    },
+    {
+      "tic": 262751441,
+      "tmag": 12.09,
+      "true_period_days": 1.060828,
+      "stage": "vetting",
+      "outcome": "failed a vetting gate",
+      "recovered": false,
+      "gates": [
+        "< 10 in-transit points",
+        "< 3 eclipses observed"
+      ]
+    },
+    {
+      "tic": 393454264,
+      "tmag": 14.64,
+      "true_period_days": 2.054899,
+      "stage": "vetting",
+      "outcome": "failed a vetting gate",
+      "recovered": false,
+      "gates": [
+        "< 10 in-transit points",
+        "< 3 eclipses observed",
+        "median/BLS depth mismatch"
+      ]
+    },
+    {
+      "tic": 301278870,
+      "tmag": 13.89,
+      "true_period_days": 2.011325,
+      "stage": "pixel",
+      "outcome": "ON_TARGET",
+      "recovered": true,
+      "gates": []
+    },
+    {
+      "tic": 219174532,
+      "tmag": 14.26,
+      "true_period_days": 10.631864,
+      "stage": "vetting",
+      "outcome": "failed a vetting gate",
+      "recovered": false,
+      "gates": [
+        "< 10 in-transit points",
+        "< 3 eclipses observed"
+      ]
+    },
+    {
+      "tic": 188729963,
+      "tmag": 13.61,
+      "true_period_days": 1.996587,
+      "stage": "vetting",
+      "outcome": "UNRELIABLE_DATA",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 273543575,
+      "tmag": 14.86,
+      "true_period_days": 8.803664,
+      "stage": "fetch",
+      "outcome": "NO_DATA",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 301376615,
+      "tmag": 11.26,
+      "true_period_days": 7.494097,
+      "stage": "vetting",
+      "outcome": "failed a vetting gate",
+      "recovered": false,
+      "gates": [
+        "inhomogeneous photometry segments",
+        "< 3 eclipses observed"
+      ]
+    },
+    {
+      "tic": 468533471,
+      "tmag": 13.7,
+      "true_period_days": 15.48158,
+      "stage": "fetch",
+      "outcome": "NO_DATA",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 263811213,
+      "tmag": 13.19,
+      "true_period_days": 2.031976,
+      "stage": "pixel",
+      "outcome": "ON_TARGET",
+      "recovered": true,
+      "gates": []
+    },
+    {
+      "tic": 401536004,
+      "tmag": 14.58,
+      "true_period_days": 12.366714,
+      "stage": "fetch",
+      "outcome": "NO_DATA",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 242968405,
+      "tmag": 13.14,
+      "true_period_days": 10.231752,
+      "stage": "pixel",
+      "outcome": "ON_TARGET",
+      "recovered": true,
+      "gates": []
+    },
+    {
+      "tic": 231854767,
+      "tmag": 12.25,
+      "true_period_days": 14.012685,
+      "stage": "pixel",
+      "outcome": "INCONCLUSIVE",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 266588882,
+      "tmag": 14.06,
+      "true_period_days": 1.823831,
+      "stage": "fetch",
+      "outcome": "PROCESSING_ERROR",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 189884150,
+      "tmag": 12.07,
+      "true_period_days": 4.669643,
+      "stage": "vetting",
+      "outcome": "failed a vetting gate",
+      "recovered": false,
+      "gates": [
+        "< 10 in-transit points",
+        "inhomogeneous photometry segments",
+        "< 3 eclipses observed",
+        "median/BLS depth mismatch"
+      ]
+    },
+    {
+      "tic": 334555521,
+      "tmag": 13.4,
+      "true_period_days": 7.477621,
+      "stage": "pixel",
+      "outcome": "INCONCLUSIVE",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 18431420,
+      "tmag": 14.83,
+      "true_period_days": 1.394089,
+      "stage": "vetting",
+      "outcome": "UNRELIABLE_DATA",
+      "recovered": false,
+      "gates": []
+    },
+    {
+      "tic": 428863492,
+      "tmag": 13.9,
+      "true_period_days": 2.863917,
+      "stage": "fetch",
+      "outcome": "NO_DATA",
+      "recovered": false,
+      "gates": []
+    }
+  ]
+}

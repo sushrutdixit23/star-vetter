@@ -366,6 +366,72 @@ export interface Timeseries {
   flux: number[];
 }
 
+// ---------- Gaia DR3 context per candidate (gaia_context.json, keyed by
+// TIC as a string). gaia_source_id is read as a string: the ids exceed
+// JavaScript's safe integer range. ----------
+
+export interface GaiaContext {
+  status: string;
+  gaia_source_id: string | null;
+  separation_arcsec: number | null;
+  phot_g_mean_mag: number | null;
+  bp_rp: number | null;
+  parallax_mas: number | null;
+  parallax_error_mas: number | null;
+  parallax_snr?: number | null;
+  distance_pc: number | null;
+  distance_reliable: boolean;
+  abs_g_mag?: number | null;
+  ruwe: number | null;
+  elevated_ruwe?: boolean;
+  note?: string;
+}
+
+// ---------- benchmark.json, written by benchmark_report.py: known eclipsing
+// binaries run blind through the unmodified pipeline. ----------
+
+export interface BenchmarkCount {
+  key: string;
+  count: number;
+}
+
+export interface BenchmarkStar {
+  tic: number;
+  tmag: number | null;
+  true_period_days: number | null;
+  stage: string;
+  outcome: string;
+  recovered: boolean;
+  gates: string[];
+}
+
+export interface BenchmarkControl {
+  TIC?: number | null;
+  role?: string | null;
+  verdict?: string | null;
+  expected?: string | null;
+  expected_verdict?: string | null;
+  note?: string | null;
+  reason?: string | null;
+}
+
+export interface Benchmark {
+  generated_at: string;
+  sample: { source: string; n: number; selection: string };
+  definition: string;
+  controls_note: string;
+  funnel: { label: string; count: number }[];
+  recall: { recovered: number; sampled: number };
+  fetch_status: BenchmarkCount[];
+  gates: { gate: string; label: string; count: number }[];
+  novelty: BenchmarkCount[];
+  pixel: BenchmarkCount[];
+  too_few_eclipses: { n_flagged: number; median_period_flagged: number | null; n_rest: number; median_period_rest: number | null } | null;
+  by_tmag: { bin: string; recovered: number; n: number }[];
+  controls: BenchmarkControl[];
+  stars: BenchmarkStar[];
+}
+
 export interface SkyPoint {
   tic: number;
   tier: Tier;

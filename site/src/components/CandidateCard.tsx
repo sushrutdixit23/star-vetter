@@ -16,6 +16,7 @@ export interface CardData {
   bls_snr: number;
   pixel_snr: number;
   binned: [number, number | null][];
+  ruweElevated?: boolean | null;
 }
 
 export default function CandidateCard({ c }: { c: CardData }) {
@@ -30,7 +31,10 @@ export default function CandidateCard({ c }: { c: CardData }) {
           <div className="font-mono text-xs text-faint">TIC</div>
           <div className="font-mono text-lg font-semibold text-fg">{c.tic}</div>
         </div>
-        <TierBadge tier={c.tier} />
+        <div className="flex flex-col items-end gap-1">
+          <TierBadge tier={c.tier} />
+          {c.ruweElevated && <span title="Gaia's position measurements fit this source poorly (RUWE above 1.4) - often a sign of more than one star. Context, not confirmation." className="rounded-full border border-accent-cool/40 bg-accent-cool/10 px-2 py-0.5 font-mono text-[10px] text-accent-cool">Gaia RUWE</span>}
+        </div>
       </div>
 
       <div className="mt-3">
