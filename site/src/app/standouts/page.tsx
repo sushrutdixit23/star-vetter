@@ -11,7 +11,7 @@ export default function StandoutsPage() {
   const standouts = data?.discoveries ?? [];
 
   return (
-    <main className="mx-auto w-full max-w-[1600px] flex-1 px-4 py-10 sm:px-8">
+    <main className="w-full flex-1 px-4 py-10 sm:px-8 xl:px-12">
       <header className="pb-10">
         <div className="nav-caps font-mono text-[11px] text-muted">From the survivors</div>
         <h1 className="mt-3 font-display text-4xl leading-[1.05] text-fg sm:text-5xl">Standouts.</h1>

@@ -180,6 +180,143 @@ def main():
               f"median={ratio.median():.3f}  mean={ratio.mean():.3f}  n={len(ratio)}")
 
     print(f"\nFull per-star intermediate tables are in {proc}")
+    export_site_json(root, proc, gt, manifest, f3i, vet_ok, trustworthy, f4f, pix, gt2, gate_cols,
+                     n_sampled, n_fetch_ok, n_vet_ok, n_trustworthy, n_novel, n_on_target)
+
+
+def export_site_json(root, proc, gt, manifest, f3i, vet_ok, trustworthy, f4f, pix, gt2, gate_cols,
+                     n_sampled, n_fetch_ok, n_vet_ok, n_trustworthy, n_novel, n_on_target):
+    # Additive: also save this report as JSON for the website's reliability
+    # page. Uses only the frames main() already computed; changes nothing it
+    # prints. root is the benchmark_run folder, so the site's data folder is
+    # root.parent / site / public / data. Durations and depths are left out:
+    # their units in the source table are not yet confirmed.
+    import json
+    import math
+    from datetime import datetime, timezone
+
+    site_dir = root.parent / "site" / "public" / "data"
+    if not site_dir.is_dir():
+        print(f"(site data folder not found at {site_dir} - benchmark.json not written)")
+        return
+
+    def num(x):
+        try:
+            v = float(x)
+        except (TypeError, ValueError):
+            return None
+        return None if math.isnan(v) or math.isinf(v) else v
+
+    def counts(frame, col):
+        if len(frame) == 0 or col not in frame.columns:
+            return []
+        return [{"key": str(k), "count": int(len(g))} for k, g in frame.groupby(col)]
+
+    gates = []
+    gates_by_tic = {}
+    for col, label in gate_cols:
+        if col in vet_ok.columns:
+            flagged = to_bool(vet_ok[col])
+            gates.append({"gate": col, "label": label, "count": int(flagged.sum())})
+            for t in vet_ok[flagged]["TIC"]:
+                gates_by_tic.setdefault(int(t), []).append(label)
+
+    tfe = None
+    if "too_few_eclipses" in vet_ok.columns:
+        merged = vet_ok.merge(gt[["TIC", "true_period_days"]], on="TIC", how="left")
+        mask = to_bool(merged["too_few_eclipses"])
+        tfe = {
+            "n_flagged": int(mask.sum()),
+            "median_period_flagged": num(merged[mask]["true_period_days"].median()) if mask.any() else None,
+            "n_rest": int((~mask).sum()),
+            "median_period_rest": num(merged[~mask]["true_period_days"].median()) if (~mask).any() else None,
+        }
+
+    by_tmag = []
+    for label, grp in gt2.groupby("tmag_bin", observed=True):
+        by_tmag.append({"bin": str(label), "recovered": int(grp["on_target"].sum()), "n": int(len(grp))})
+
+    controls = []
+    try:
+        allpix = pd.read_csv(proc / "diag_pixel_results_v2.csv")
+        ctl = allpix[allpix["role"] != "candidate"]
+        keep = [c for c in ["TIC", "role", "verdict", "expected", "expected_verdict", "note", "reason"] if c in ctl.columns]
+        for _, row in ctl[keep].iterrows():
+            entry = {}
+            for k in keep:
+                v = row[k]
+                if pd.isna(v):
+                    entry[k] = None
+                elif k == "TIC":
+                    entry[k] = int(v)
+                else:
+                    entry[k] = str(v)
+            controls.append(entry)
+    except Exception as exc:
+        print(f"(could not read calibration controls for benchmark.json: {exc})")
+
+    fetched = set(manifest[manifest["status"] == "OK"]["TIC"])
+    fetch_status = dict(zip(manifest["TIC"], manifest["status"].astype(str)))
+    vet_status = dict(zip(f3i["TIC"], f3i["status"].astype(str)))
+    vetted = set(vet_ok["TIC"])
+    trusted = set(trustworthy["TIC"])
+    novelty = dict(zip(f4f["TIC"], f4f["verdict"].astype(str)))
+    pixel = dict(zip(pix["TIC"], pix["verdict"].astype(str)))
+    stars = []
+    for _, r in gt.iterrows():
+        t = int(r["TIC"])
+        if t not in fetched:
+            stage, outcome = "fetch", fetch_status.get(t, "not attempted")
+        elif t not in vetted:
+            stage, outcome = "vetting", vet_status.get(t, "not vetted")
+        elif t not in trusted:
+            stage, outcome = "vetting", "failed a vetting gate"
+        elif novelty.get(t) != "NOVEL":
+            stage, outcome = "novelty", novelty.get(t, "not checked")
+        elif t not in pixel:
+            stage, outcome = "pixel", "not pixel-checked"
+        else:
+            stage, outcome = "pixel", pixel[t]
+        stars.append({
+            "tic": t,
+            "tmag": num(r["Tmag"]),
+            "true_period_days": num(r["true_period_days"]),
+            "stage": stage,
+            "outcome": outcome,
+            "recovered": pixel.get(t) == "ON_TARGET",
+            "gates": gates_by_tic.get(t, []),
+        })
+
+    payload = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "sample": {
+            "source": "Kostov et al. 2025, table 3 (newly catalogued eclipsing binaries)",
+            "n": int(n_sampled),
+            "selection": "Drawn at random, stratified by TESS magnitude quartile so the sample spans the real brightness range",
+        },
+        "definition": "A known eclipsing binary counts as recovered if it passes every stage and the pixel check returns ON_TARGET. The period the pipeline finds is not yet compared with the catalogue period.",
+        "controls_note": "Two calibration stars with known answers are run alongside to validate the pixel check; they are excluded from every count.",
+        "funnel": [
+            {"label": "Known eclipsing binaries sampled", "count": int(n_sampled)},
+            {"label": "Light curve fetched", "count": int(n_fetch_ok)},
+            {"label": "Vetted (reliable data)", "count": int(n_vet_ok)},
+            {"label": "Passed every vetting gate", "count": int(n_trustworthy)},
+            {"label": "Novel (no catalog match)", "count": int(n_novel)},
+            {"label": "On-target at the pixel check", "count": int(n_on_target)},
+        ],
+        "recall": {"recovered": int(n_on_target), "sampled": int(n_sampled)},
+        "fetch_status": counts(manifest, "status"),
+        "gates": gates,
+        "novelty": counts(f4f, "verdict"),
+        "pixel": counts(pix, "verdict"),
+        "too_few_eclipses": tfe,
+        "by_tmag": by_tmag,
+        "controls": controls,
+        "stars": stars,
+    }
+    out = site_dir / "benchmark.json"
+    out.write_text(json.dumps(payload, indent=2, allow_nan=False), encoding="utf-8")
+    print(f"Wrote {out}")
 
 
 if __name__ == "__main__":

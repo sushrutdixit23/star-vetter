@@ -42,7 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteHeader tics={tics} run={run} />
         {children}
         <footer className="mt-auto border-t border-line">
-          <div className="mx-auto flex max-w-[1920px] flex-wrap items-center justify-between gap-3 px-3 py-6 text-xs text-faint sm:px-6">
+          <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-6 text-xs text-faint sm:px-8 xl:px-12">
             <span>
               Star Vetter - built on public TESS data from MAST. Every number
               shown is produced by the pipeline itself.
@@ -53,6 +53,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               </Link>
               <Link href="/glossary" className="nav-caps hover:text-muted">
                 Glossary
+              </Link>
+              <Link href="/reliability" className="nav-caps hover:text-muted">
+                Reliability
               </Link>
             </nav>
             <span className="font-mono">TESS / MAST / Gaia</span>

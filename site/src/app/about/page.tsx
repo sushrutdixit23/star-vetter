@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getAboutContent, getModelMetrics, getPipelineStats } from "@/lib/data";
 import { safeWriteup } from "@/lib/writeup";
+import { currentOnly, fillTokens, liveNumbers } from "@/lib/liveText";
 import Band from "@/components/journal/Band";
 
 export const metadata = {
@@ -22,7 +23,7 @@ const STAGES = [
   },
   {
     title: "Catalog cross-match",
-    text: "Every statistically-passing candidate is checked against 6 variable-star and eclipsing-binary catalogs. A match means the star is already known and vetting stops there; only unmatched candidates are carried forward as novel.",
+    text: "Every statistically-passing candidate is checked against {catalogs} variable-star and eclipsing-binary catalogs. A match means the star is already known and vetting stops there; only unmatched candidates are carried forward as novel.",
   },
   {
     title: "Contamination check",
@@ -30,7 +31,7 @@ const STAGES = [
   },
   {
     title: "Pixel-level confirmation",
-    text: "The only stage that looks at pixels rather than the summed light curve: difference imaging between in- and out-of-eclipse cadences, checked against the 6 pixel-level gates below, to confirm the dimming comes from the target and not a blended neighbour.",
+    text: "The only stage that looks at pixels rather than the summed light curve: difference imaging between in- and out-of-eclipse cadences, checked against the {pixel_gates} pixel-level gates below, to confirm the dimming comes from the target and not a blended neighbour.",
   },
   {
     title: "Dossier",
@@ -44,11 +45,12 @@ export default function AboutPage() {
   const aboutContent = getAboutContent();
   const maxCount = stats && stats.funnel.length > 0 ? stats.funnel[0].count : 1;
   const chosen = metrics ? metrics.models[metrics.chosen_model] : null;
-  const narrative = aboutContent ? safeWriteup(aboutContent.narrative) : null;
-  const faqs = aboutContent ? aboutContent.faqs.map((qa) => ({ question: qa.question, answer: safeWriteup(qa.answer) })).filter((qa) => qa.answer !== null) : [];
+  const live = liveNumbers(stats, metrics);
+  const narrative = aboutContent ? currentOnly(safeWriteup(fillTokens(aboutContent.narrative, live.tokens)), live.allowed) : null;
+  const faqs = aboutContent ? aboutContent.faqs.map((qa) => ({ question: currentOnly(fillTokens(qa.question, live.tokens), live.allowed), answer: currentOnly(safeWriteup(fillTokens(qa.answer, live.tokens)), live.allowed) })).filter((qa) => qa.question !== null && qa.answer !== null) : [];
 
   return (
-    <main className="mx-auto w-full max-w-[1600px] flex-1 px-4 py-10 sm:px-8">
+    <main className="w-full flex-1 px-4 py-10 sm:px-8 xl:px-12">
       <header className="grid gap-6 pb-10 lg:grid-cols-[3rem_minmax(0,1fr)]">
         <div className="font-display text-3xl leading-none text-faint">IV</div>
         <div>
@@ -56,7 +58,7 @@ export default function AboutPage() {
           <h1 className="mt-3 font-display text-4xl leading-[1.05] text-fg sm:text-5xl">How Star Vetter <em>decides</em>.</h1>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">
             Star Vetter runs unattended, end to end, from sampling a fresh batch of TESS targets through to a written dossier for every surviving candidate. No step is manually curated: every number on this page and in every candidate&apos;s dossier comes directly from the pipeline&apos;s own output, and every stage transition is logged with the reasoning behind it. Unfamiliar term? Everything technical here is also in the{" "}
-            <Link href="/glossary" className="text-accent hover:underline">glossary</Link>.
+            <Link href="/glossary" className="text-accent hover:underline">glossary</Link>. How well does it work? See <Link href="/reliability" className="text-accent hover:underline">how it was tested against known binaries</Link>.
           </p>
           <div className="mt-8 grid gap-6 border-t border-line pt-6 sm:grid-cols-3">
             <div>
@@ -101,7 +103,7 @@ export default function AboutPage() {
                 <span className="font-display text-2xl leading-none text-faint">{i + 1}</span>
                 <h3 className="nav-caps font-mono text-[11px] text-fg">{s.title}</h3>
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{s.text}</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{fillTokens(s.text, live.tokens)}</p>
             </li>
           ))}
         </ol>

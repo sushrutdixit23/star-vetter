@@ -13,7 +13,7 @@ export default function SkyPage() {
   const points = (dash?.sky ?? []).filter((p) => p.ra !== null && p.dec !== null);
 
   return (
-    <main className="mx-auto w-full max-w-[1400px] flex-1 space-y-6 px-3 py-8 sm:px-6 sm:py-10">
+    <main className="w-full flex-1 space-y-6 px-4 py-10 sm:px-8 xl:px-12">
       <div>
         <div className="nav-caps text-xs text-accent">The sky</div>
         <h1 className="mt-1 font-display text-4xl italic text-fg sm:text-5xl">Where the survivors are.</h1>
@@ -23,7 +23,7 @@ export default function SkyPage() {
         <p className="text-xs text-faint">Run export_dashboard.py to add sky positions.</p>
       ) : (
         <div className="rounded-xl border border-line bg-panel p-4 sm:p-6">
-          <SkyMap points={points} className="w-full" />
+          <SkyMap points={points} className="mx-auto w-full max-w-[1700px]" />
         </div>
       )}
     </main>

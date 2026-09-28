@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
-import { getAllCandidates, getAllTics, getCandidate, getDetail, getSiteMeta, getTimeseries, toSummary } from "@/lib/data";
+import { getAllCandidates, getAllTics, getCandidate, getDetail, getGaiaContext, getSiteMeta, getTimeseries, toSummary } from "@/lib/data";
 import { bestPeriod } from "@/lib/cards";
 import { TIER_STYLE } from "@/lib/tiers";
 import { summaryLine } from "@/lib/summary";
@@ -12,6 +12,7 @@ import OrbitSchematic from "@/components/plate/OrbitSchematic";
 import NextEclipses from "@/components/plate/NextEclipses";
 import FoldItYourself from "@/components/plate/FoldItYourself";
 import CandidateSidebar, { type SidebarItem } from "@/components/plate/CandidateSidebar";
+import GaiaContextPanel, { gaiaVerdict } from "@/components/plate/GaiaContextPanel";
 
 // The specimen plate: the permalink every card, search result and share
 // link points at. A sidebar of every survivor, a header, then five
@@ -150,6 +151,9 @@ export default async function CandidatePage({ params }: { params: Promise<{ tic:
   const hasDossier = meta ? meta.dossiers_available.includes(tic) : false;
   const color = TIER_STYLE[s.tier].chart;
   const orbitCurve = d ? fineCurve(d.fold.raw) : null;
+  const gaiaAll = getGaiaContext();
+  const gaia = gaiaAll ? gaiaAll[String(tic)] ?? null : null;
+  const gaiaV = gaiaVerdict(gaia);
   const writeup = safeWriteup(d?.writeup, tic);
 
   const items = sidebarItems();
@@ -192,7 +196,7 @@ export default async function CandidatePage({ params }: { params: Promise<{ tic:
   ];
 
   return (
-    <main className="mx-auto w-full max-w-[1600px] flex-1">
+    <main className="w-full flex-1">
       <div className="lg:grid lg:grid-cols-[19rem_minmax(0,1fr)]">
         <aside className="hidden border-r border-line lg:block">
           <div className="sticky top-[3.75rem] h-[calc(100vh-3.75rem)]">
@@ -249,11 +253,15 @@ export default async function CandidatePage({ params }: { params: Promise<{ tic:
             <PixelEvidence s={s} d={d} />
           </Row>
 
-          <Row num="IV" title="Fold it yourself" lede="Adjust the period and watch the eclipse appear." verdict={<Verdict kind="pass" label="Best fit" note="The period the pipeline measured. Drag the slider away from it and the eclipse smears out." rows={foldRows} />}>
+          <Row num="IV" title="The Gaia view" lede="A second spacecraft's measurements: how far away the star is, how bright and what colour, and whether its position fits a single star." verdict={gaiaV ? <Verdict {...gaiaV} /> : undefined}>
+            <GaiaContextPanel gaia={gaia} all={gaiaAll} tic={tic} />
+          </Row>
+
+          <Row num="V" title="Fold it yourself" lede="Adjust the period and watch the eclipse appear." verdict={<Verdict kind="pass" label="Best fit" note="The period the pipeline measured. Drag the slider away from it and the eclipse smears out." rows={foldRows} />}>
             <FoldItYourself d={d} ts={ts} color={color} />
           </Row>
 
-          <Row num="V" title="Caveats" lede="Known limitations and things to check.">
+          <Row num="VI" title="Caveats" lede="Known limitations and things to check.">
             {hasCaveats ? (
               <div className="space-y-1.5">
                 {checks.map((chk, i) => (
@@ -275,7 +283,7 @@ export default async function CandidatePage({ params }: { params: Promise<{ tic:
           <details className="group border-t border-line py-8">
             <summary className="flex cursor-pointer list-none items-center justify-between gap-4 [&::-webkit-details-marker]:hidden">
               <div className="flex items-baseline gap-6">
-                <span className="w-10 font-display text-3xl leading-none text-faint">VI</span>
+                <span className="w-10 font-display text-3xl leading-none text-faint">VII</span>
                 <div>
                   <h2 className="font-display text-lg uppercase tracking-[0.16em] text-fg">Instrument</h2>
                   <p className="mt-1 text-sm text-muted">Raw values, fits and technical details.</p>

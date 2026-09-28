@@ -21,14 +21,14 @@ function StarMark({ className }: { className?: string }) {
 export default function SiteHeader({ tics, run }: { tics: number[]; run?: { sampled: number; confirmed: number } | null }) {
   return (
     <header className="sticky top-0 z-30 border-b border-line bg-canvas/85 backdrop-blur">
-      <div className="mx-auto flex max-w-[1600px] items-center gap-4 px-4 py-3 sm:gap-8 sm:px-8">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3 sm:flex-nowrap sm:gap-8 sm:px-8 xl:px-12">
         <Link href="/" className="flex shrink-0 items-center gap-3 text-fg">
           <StarMark className="h-6 w-6" />
-          <span className="display-caps hidden text-base sm:inline">Star Vetter</span>
+          <span className="display-caps text-base">Star Vetter</span>
         </Link>
-        <nav className="flex flex-1 justify-center gap-4 overflow-x-auto text-[11px] text-muted sm:gap-8">
+        <nav className="order-last flex w-full justify-between text-[11px] text-muted sm:order-none sm:w-auto sm:flex-1 sm:justify-center sm:gap-8">
           {NAV.map((n) => (
-            <Link key={n.href} href={n.href} className="nav-caps shrink-0 font-mono transition-colors hover:text-fg"><span className="text-faint">{n.num}.</span> {n.label}</Link>
+            <Link key={n.href} href={n.href} className="nav-caps shrink-0 font-mono transition-colors hover:text-fg"><span className="hidden text-faint sm:inline">{n.num}. </span>{n.label}</Link>
           ))}
         </nav>
         <div className="hidden lg:block">

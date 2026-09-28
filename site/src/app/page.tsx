@@ -74,7 +74,7 @@ export default function Home() {
   );
 
   return (
-    <main className="mx-auto w-full max-w-[1600px] flex-1 px-4 sm:px-8">
+    <main className="w-full flex-1 px-4 sm:px-8 xl:px-12">
       <TicRedirect />
 
       <HeroGauntlet funnel={funnel} short={SHORT} intro={intro} />
