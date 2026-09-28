@@ -403,6 +403,11 @@ export interface GroundSurveyBand {
   baseline_mag: number;
   typical_err: number;
   n_outliers: number;
+  // Chance-corrected significance of the tightest pair of outliers landing
+  // as close as they did, given how many outliers this band has (exact
+  // circular-spacing formula; see f12_ground_survey_period.py). null when
+  // there weren't enough outliers to test. CONFIRMED requires p < 0.01.
+  p_value: number | null;
   verdict: "CONFIRMED" | "NOT_CONFIRMED";
   clustered_points: GroundSurveyClusteredPoint[];
 }

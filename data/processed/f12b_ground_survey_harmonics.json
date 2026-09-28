@@ -1,0 +1,2493 @@
+{
+  "119459681": {
+    "aliased_tess_side": false,
+    "base_confirmed": false,
+    "base_period_days": 5.944205171807016,
+    "corrected_period_days": null,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 15.6188,
+            "clustered_points": [],
+            "n_outliers": 13,
+            "n_points": 320,
+            "p_value": 0.024623,
+            "typical_err": 0.0139,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 14.3275,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 27,
+            "p_value": null,
+            "typical_err": 0.009,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 14.743,
+            "clustered_points": [],
+            "n_outliers": 24,
+            "n_points": 389,
+            "p_value": 0.022699,
+            "typical_err": 0.0113,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 2.972102585903508
+      },
+      "2.0": {
+        "any_confirmed": true,
+        "bands": {
+          "zg": {
+            "baseline_mag": 15.6188,
+            "clustered_points": [
+              {
+                "mag": 15.783,
+                "phase": 0.7984,
+                "sigma": 10.5
+              },
+              {
+                "mag": 15.78,
+                "phase": 0.7984,
+                "sigma": 10.3
+              }
+            ],
+            "n_outliers": 13,
+            "n_points": 320,
+            "p_value": 0.006209,
+            "typical_err": 0.0139,
+            "verdict": "CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 14.3275,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 27,
+            "p_value": null,
+            "typical_err": 0.009,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 14.743,
+            "clustered_points": [],
+            "n_outliers": 24,
+            "n_points": 389,
+            "p_value": 0.020751,
+            "typical_err": 0.0113,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 11.888410343614032
+      }
+    },
+    "status": "DONE"
+  },
+  "193548084": {
+    "aliased_tess_side": true,
+    "base_confirmed": false,
+    "base_period_days": 0.9530432727144372,
+    "corrected_period_days": 1.9060865454288745,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 12.9079,
+            "clustered_points": [],
+            "n_outliers": 94,
+            "n_points": 729,
+            "p_value": 0.323049,
+            "typical_err": 0.009,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 0.4765216363572186
+      },
+      "2.0": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 12.9079,
+            "clustered_points": [],
+            "n_outliers": 94,
+            "n_points": 729,
+            "p_value": 0.092794,
+            "typical_err": 0.009,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 1.9060865454288745
+      }
+    },
+    "status": "DONE"
+  },
+  "224215371": {
+    "aliased_tess_side": true,
+    "base_confirmed": false,
+    "base_period_days": 5.49309077514592,
+    "corrected_period_days": 10.98618155029184,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 13.6631,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 518,
+            "p_value": null,
+            "typical_err": 0.012,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 12.8271,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 166,
+            "p_value": null,
+            "typical_err": 0.0141,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.0331,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 604,
+            "p_value": null,
+            "typical_err": 0.0127,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 2.74654538757296
+      },
+      "2.0": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 13.6631,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 518,
+            "p_value": null,
+            "typical_err": 0.012,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 12.8271,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 166,
+            "p_value": null,
+            "typical_err": 0.0141,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.0331,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 604,
+            "p_value": null,
+            "typical_err": 0.0127,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 10.98618155029184
+      }
+    },
+    "status": "DONE"
+  },
+  "229490432": {
+    "aliased_tess_side": true,
+    "base_confirmed": true,
+    "base_period_days": 1.1643519577055024,
+    "corrected_period_days": 2.3287039154110047,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 13.8999,
+            "clustered_points": [],
+            "n_outliers": 63,
+            "n_points": 1144,
+            "p_value": 0.316337,
+            "typical_err": 0.0106,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 13.136,
+            "clustered_points": [],
+            "n_outliers": 9,
+            "n_points": 259,
+            "p_value": 0.65467,
+            "typical_err": 0.0121,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.3632,
+            "clustered_points": [],
+            "n_outliers": 64,
+            "n_points": 1328,
+            "p_value": 0.018021,
+            "typical_err": 0.0105,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 0.5821759788527512
+      },
+      "2.0": {
+        "any_confirmed": true,
+        "bands": {
+          "zg": {
+            "baseline_mag": 13.8999,
+            "clustered_points": [],
+            "n_outliers": 63,
+            "n_points": 1144,
+            "p_value": 0.090494,
+            "typical_err": 0.0106,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 13.136,
+            "clustered_points": [],
+            "n_outliers": 9,
+            "n_points": 259,
+            "p_value": 0.223424,
+            "typical_err": 0.0121,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.3632,
+            "clustered_points": [
+              {
+                "mag": 13.4484,
+                "phase": 0.1322,
+                "sigma": 8.1
+              },
+              {
+                "mag": 13.448,
+                "phase": 0.1322,
+                "sigma": 8.1
+              }
+            ],
+            "n_outliers": 64,
+            "n_points": 1328,
+            "p_value": 0.004535,
+            "typical_err": 0.0105,
+            "verdict": "CONFIRMED"
+          }
+        },
+        "period_days_tested": 2.3287039154110047
+      }
+    },
+    "status": "DONE"
+  },
+  "232261044": {
+    "aliased_tess_side": true,
+    "base_confirmed": true,
+    "base_period_days": 0.810820648448669,
+    "corrected_period_days": 1.621641296897338,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": true,
+        "bands": {
+          "zg": {
+            "baseline_mag": 14.9339,
+            "clustered_points": [
+              {
+                "mag": 14.995,
+                "phase": 0.1748,
+                "sigma": 5.1
+              },
+              {
+                "mag": 15.5348,
+                "phase": 0.1748,
+                "sigma": 47.6
+              }
+            ],
+            "n_outliers": 43,
+            "n_points": 150,
+            "p_value": 0.0,
+            "typical_err": 0.0126,
+            "verdict": "CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 14.485,
+            "clustered_points": [
+              {
+                "mag": 14.5551,
+                "phase": 0.119,
+                "sigma": 6.7
+              },
+              {
+                "mag": 15.0272,
+                "phase": 0.119,
+                "sigma": 49.4
+              }
+            ],
+            "n_outliers": 93,
+            "n_points": 237,
+            "p_value": 0.0,
+            "typical_err": 0.0107,
+            "verdict": "CONFIRMED"
+          }
+        },
+        "period_days_tested": 0.4054103242243345
+      },
+      "2.0": {
+        "any_confirmed": true,
+        "bands": {
+          "zg": {
+            "baseline_mag": 14.9339,
+            "clustered_points": [
+              {
+                "mag": 14.9997,
+                "phase": 0.0729,
+                "sigma": 5.5
+              },
+              {
+                "mag": 15.5454,
+                "phase": 0.0729,
+                "sigma": 48.4
+              }
+            ],
+            "n_outliers": 43,
+            "n_points": 150,
+            "p_value": 0.0,
+            "typical_err": 0.0126,
+            "verdict": "CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 14.485,
+            "clustered_points": [
+              {
+                "mag": 14.5561,
+                "phase": 0.046,
+                "sigma": 6.6
+              },
+              {
+                "mag": 15.0347,
+                "phase": 0.046,
+                "sigma": 48.7
+              }
+            ],
+            "n_outliers": 93,
+            "n_points": 237,
+            "p_value": 0.0,
+            "typical_err": 0.0107,
+            "verdict": "CONFIRMED"
+          }
+        },
+        "period_days_tested": 1.621641296897338
+      }
+    },
+    "status": "DONE"
+  },
+  "233459038": {
+    "aliased_tess_side": true,
+    "base_confirmed": false,
+    "base_period_days": 25.33843893363065,
+    "corrected_period_days": 50.6768778672613,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 14.0313,
+            "clustered_points": [],
+            "n_outliers": 8,
+            "n_points": 1076,
+            "p_value": 0.015357,
+            "typical_err": 0.0136,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 13.5032,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 314,
+            "p_value": null,
+            "typical_err": 0.0129,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.6241,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 1016,
+            "p_value": null,
+            "typical_err": 0.0131,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 12.669219466815324
+      },
+      "2.0": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 14.0313,
+            "clustered_points": [],
+            "n_outliers": 8,
+            "n_points": 1076,
+            "p_value": 0.017404,
+            "typical_err": 0.0136,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 13.5032,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 314,
+            "p_value": null,
+            "typical_err": 0.0129,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.6241,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 1016,
+            "p_value": null,
+            "typical_err": 0.0131,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 50.6768778672613
+      }
+    },
+    "status": "DONE"
+  },
+  "235512374": {
+    "aliased_tess_side": false,
+    "base_confirmed": false,
+    "base_period_days": 3.744060356550739,
+    "corrected_period_days": null,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 12.7342,
+            "clustered_points": [],
+            "n_outliers": 9,
+            "n_points": 375,
+            "p_value": 0.035493,
+            "typical_err": 0.0118,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 12.4029,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 89,
+            "p_value": null,
+            "typical_err": 0.0117,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 12.4966,
+            "clustered_points": [],
+            "n_outliers": 4,
+            "n_points": 397,
+            "p_value": 0.297573,
+            "typical_err": 0.0105,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 1.8720301782753694
+      },
+      "2.0": {
+        "any_confirmed": true,
+        "bands": {
+          "zg": {
+            "baseline_mag": 12.7342,
+            "clustered_points": [
+              {
+                "mag": 12.797,
+                "phase": 0.4297,
+                "sigma": 5.3
+              },
+              {
+                "mag": 12.8011,
+                "phase": 0.4299,
+                "sigma": 5.7
+              }
+            ],
+            "n_outliers": 9,
+            "n_points": 375,
+            "p_value": 0.008979,
+            "typical_err": 0.0118,
+            "verdict": "CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 12.4029,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 89,
+            "p_value": null,
+            "typical_err": 0.0117,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 12.4966,
+            "clustered_points": [],
+            "n_outliers": 4,
+            "n_points": 397,
+            "p_value": 0.081012,
+            "typical_err": 0.0105,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 7.488120713101478
+      }
+    },
+    "status": "DONE"
+  },
+  "237115819": {
+    "aliased_tess_side": false,
+    "base_confirmed": true,
+    "base_period_days": 14.79205908513923,
+    "corrected_period_days": null,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": true,
+        "bands": {
+          "zg": {
+            "baseline_mag": 14.5815,
+            "clustered_points": [],
+            "n_outliers": 15,
+            "n_points": 1168,
+            "p_value": 0.076816,
+            "typical_err": 0.0134,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 13.643,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 162,
+            "p_value": null,
+            "typical_err": 0.0117,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.8783,
+            "clustered_points": [
+              {
+                "mag": 13.9928,
+                "phase": 0.386,
+                "sigma": 11.0
+              },
+              {
+                "mag": 13.9846,
+                "phase": 0.386,
+                "sigma": 10.2
+              }
+            ],
+            "n_outliers": 27,
+            "n_points": 1198,
+            "p_value": 0.000581,
+            "typical_err": 0.0104,
+            "verdict": "CONFIRMED"
+          }
+        },
+        "period_days_tested": 7.396029542569615
+      },
+      "2.0": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 14.5815,
+            "clustered_points": [],
+            "n_outliers": 15,
+            "n_points": 1168,
+            "p_value": 0.022242,
+            "typical_err": 0.0134,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 13.643,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 162,
+            "p_value": null,
+            "typical_err": 0.0117,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.8783,
+            "clustered_points": [],
+            "n_outliers": 27,
+            "n_points": 1198,
+            "p_value": 0.010656,
+            "typical_err": 0.0104,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 29.58411817027846
+      }
+    },
+    "status": "DONE"
+  },
+  "237226943": {
+    "aliased_tess_side": false,
+    "base_confirmed": true,
+    "base_period_days": 1.9983404286027555,
+    "corrected_period_days": null,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 13.7467,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 723,
+            "p_value": null,
+            "typical_err": 0.0105,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.2906,
+            "clustered_points": [],
+            "n_outliers": 2,
+            "n_points": 732,
+            "p_value": 0.019982,
+            "typical_err": 0.0103,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 0.9991702143013778
+      },
+      "2.0": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 13.7467,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 723,
+            "p_value": null,
+            "typical_err": 0.0105,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.2906,
+            "clustered_points": [],
+            "n_outliers": 2,
+            "n_points": 732,
+            "p_value": 0.995004,
+            "typical_err": 0.0103,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 3.996680857205511
+      }
+    },
+    "status": "DONE"
+  },
+  "239661046": {
+    "aliased_tess_side": false,
+    "base_confirmed": false,
+    "base_period_days": 1.0539905752346004,
+    "corrected_period_days": null,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 12.5163,
+            "clustered_points": [],
+            "n_outliers": 43,
+            "n_points": 441,
+            "p_value": 0.13382,
+            "typical_err": 0.0126,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 0.5269952876173002
+      },
+      "2.0": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 12.5163,
+            "clustered_points": [],
+            "n_outliers": 43,
+            "n_points": 441,
+            "p_value": 0.321944,
+            "typical_err": 0.0126,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 2.1079811504692008
+      }
+    },
+    "status": "DONE"
+  },
+  "250549396": {
+    "aliased_tess_side": false,
+    "base_confirmed": false,
+    "base_period_days": 2.1928961891401686,
+    "corrected_period_days": null,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 12.6216,
+            "clustered_points": [],
+            "n_outliers": 8,
+            "n_points": 351,
+            "p_value": 0.023404,
+            "typical_err": 0.0259,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 1.0964480945700843
+      },
+      "2.0": {
+        "any_confirmed": true,
+        "bands": {
+          "zg": {
+            "baseline_mag": 12.6216,
+            "clustered_points": [
+              {
+                "mag": 12.7381,
+                "phase": 0.3981,
+                "sigma": 7.0
+              },
+              {
+                "mag": 12.732,
+                "phase": 0.3982,
+                "sigma": 6.6
+              }
+            ],
+            "n_outliers": 8,
+            "n_points": 351,
+            "p_value": 0.005896,
+            "typical_err": 0.0259,
+            "verdict": "CONFIRMED"
+          }
+        },
+        "period_days_tested": 4.385792378280337
+      }
+    },
+    "status": "DONE"
+  },
+  "281310348": {
+    "aliased_tess_side": false,
+    "base_confirmed": true,
+    "base_period_days": 1.7702142184960212,
+    "corrected_period_days": null,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 14.6123,
+            "clustered_points": [],
+            "n_outliers": 5,
+            "n_points": 73,
+            "p_value": 0.010679,
+            "typical_err": 0.0115,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 13.7424,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 32,
+            "p_value": null,
+            "typical_err": 0.0079,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.9844,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 60,
+            "p_value": null,
+            "typical_err": 0.0085,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 0.8851071092480106
+      },
+      "2.0": {
+        "any_confirmed": true,
+        "bands": {
+          "zg": {
+            "baseline_mag": 14.6123,
+            "clustered_points": [
+              {
+                "mag": 14.7026,
+                "phase": 0.6685,
+                "sigma": 7.8
+              },
+              {
+                "mag": 14.695,
+                "phase": 0.6686,
+                "sigma": 7.1
+              }
+            ],
+            "n_outliers": 5,
+            "n_points": 73,
+            "p_value": 0.002678,
+            "typical_err": 0.0115,
+            "verdict": "CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 13.7424,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 32,
+            "p_value": null,
+            "typical_err": 0.0079,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.9844,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 60,
+            "p_value": null,
+            "typical_err": 0.0085,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 3.5404284369920425
+      }
+    },
+    "status": "DONE"
+  },
+  "290129286": {
+    "aliased_tess_side": true,
+    "base_confirmed": false,
+    "base_period_days": 0.8890204583576605,
+    "corrected_period_days": 1.778040916715321,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 15.6247,
+            "clustered_points": [],
+            "n_outliers": 21,
+            "n_points": 253,
+            "p_value": 0.208132,
+            "typical_err": 0.014,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 14.9112,
+            "clustered_points": [],
+            "n_outliers": 41,
+            "n_points": 308,
+            "p_value": 0.216899,
+            "typical_err": 0.0107,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 0.44451022917883026
+      },
+      "2.0": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 15.6247,
+            "clustered_points": [],
+            "n_outliers": 21,
+            "n_points": 253,
+            "p_value": 0.11961,
+            "typical_err": 0.014,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 14.9112,
+            "clustered_points": [],
+            "n_outliers": 41,
+            "n_points": 308,
+            "p_value": 0.059161,
+            "typical_err": 0.0107,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 1.778040916715321
+      }
+    },
+    "status": "DONE"
+  },
+  "307453359": {
+    "aliased_tess_side": false,
+    "base_confirmed": false,
+    "base_period_days": 3.740100951266336,
+    "corrected_period_days": null,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 14.9086,
+            "clustered_points": [],
+            "n_outliers": 9,
+            "n_points": 200,
+            "p_value": 0.213403,
+            "typical_err": 0.0104,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 14.3777,
+            "clustered_points": [],
+            "n_outliers": 3,
+            "n_points": 42,
+            "p_value": 0.102511,
+            "typical_err": 0.0131,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 14.5103,
+            "clustered_points": [],
+            "n_outliers": 9,
+            "n_points": 493,
+            "p_value": 0.063755,
+            "typical_err": 0.0087,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 1.870050475633168
+      },
+      "2.0": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 14.9086,
+            "clustered_points": [],
+            "n_outliers": 9,
+            "n_points": 200,
+            "p_value": 0.057612,
+            "typical_err": 0.0104,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 14.3777,
+            "clustered_points": [],
+            "n_outliers": 3,
+            "n_points": 42,
+            "p_value": 0.026147,
+            "typical_err": 0.0131,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 14.5103,
+            "clustered_points": [],
+            "n_outliers": 9,
+            "n_points": 493,
+            "p_value": 0.016285,
+            "typical_err": 0.0087,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 7.480201902532672
+      }
+    },
+    "status": "DONE"
+  },
+  "318887646": {
+    "aliased_tess_side": false,
+    "base_confirmed": false,
+    "base_period_days": 14.281663889625127,
+    "corrected_period_days": null,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 13.5652,
+            "clustered_points": [],
+            "n_outliers": 3,
+            "n_points": 517,
+            "p_value": 0.058672,
+            "typical_err": 0.0127,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 12.5458,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 93,
+            "p_value": null,
+            "typical_err": 0.0141,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 12.8043,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 512,
+            "p_value": null,
+            "typical_err": 0.0139,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 7.140831944812564
+      },
+      "2.0": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 13.5652,
+            "clustered_points": [],
+            "n_outliers": 3,
+            "n_points": 517,
+            "p_value": 0.014834,
+            "typical_err": 0.0127,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 12.5458,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 93,
+            "p_value": null,
+            "typical_err": 0.0141,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 12.8043,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 512,
+            "p_value": null,
+            "typical_err": 0.0139,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 28.563327779250255
+      }
+    },
+    "status": "DONE"
+  },
+  "318907244": {
+    "aliased_tess_side": false,
+    "base_confirmed": false,
+    "base_period_days": 1.023331473215669,
+    "corrected_period_days": null,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 13.1333,
+            "clustered_points": [],
+            "n_outliers": 3,
+            "n_points": 307,
+            "p_value": 0.272351,
+            "typical_err": 0.0111,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 12.7805,
+            "clustered_points": [],
+            "n_outliers": 2,
+            "n_points": 696,
+            "p_value": 0.107259,
+            "typical_err": 0.0125,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 0.5116657366078345
+      },
+      "2.0": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 13.1333,
+            "clustered_points": [],
+            "n_outliers": 3,
+            "n_points": 307,
+            "p_value": 0.185389,
+            "typical_err": 0.0111,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 12.7805,
+            "clustered_points": [],
+            "n_outliers": 2,
+            "n_points": 696,
+            "p_value": 0.973185,
+            "typical_err": 0.0125,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 2.046662946431338
+      }
+    },
+    "status": "DONE"
+  },
+  "330901906": {
+    "aliased_tess_side": false,
+    "base_confirmed": false,
+    "base_period_days": 3.732068126022025,
+    "corrected_period_days": null,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 12.9319,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 744,
+            "p_value": null,
+            "typical_err": 0.0148,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 12.5545,
+            "clustered_points": [],
+            "n_outliers": 3,
+            "n_points": 553,
+            "p_value": 0.074796,
+            "typical_err": 0.0109,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 1.8660340630110126
+      },
+      "2.0": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 12.9319,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 744,
+            "p_value": null,
+            "typical_err": 0.0148,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 12.5545,
+            "clustered_points": [],
+            "n_outliers": 3,
+            "n_points": 553,
+            "p_value": 0.018972,
+            "typical_err": 0.0109,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 7.46413625204405
+      }
+    },
+    "status": "DONE"
+  },
+  "349701853": {
+    "aliased_tess_side": false,
+    "base_confirmed": true,
+    "base_period_days": 30.342708642712942,
+    "corrected_period_days": null,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 14.1317,
+            "clustered_points": [],
+            "n_outliers": 7,
+            "n_points": 632,
+            "p_value": 0.050293,
+            "typical_err": 0.0116,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.5313,
+            "clustered_points": [],
+            "n_outliers": 23,
+            "n_points": 1061,
+            "p_value": 0.014566,
+            "typical_err": 0.0104,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 15.171354321356471
+      },
+      "2.0": {
+        "any_confirmed": true,
+        "bands": {
+          "zg": {
+            "baseline_mag": 14.1317,
+            "clustered_points": [],
+            "n_outliers": 7,
+            "n_points": 632,
+            "p_value": 0.03085,
+            "typical_err": 0.0116,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.5313,
+            "clustered_points": [
+              {
+                "mag": 13.6881,
+                "phase": 0.8948,
+                "sigma": 15.0
+              },
+              {
+                "mag": 13.6724,
+                "phase": 0.8948,
+                "sigma": 13.5
+              }
+            ],
+            "n_outliers": 23,
+            "n_points": 1061,
+            "p_value": 0.003661,
+            "typical_err": 0.0104,
+            "verdict": "CONFIRMED"
+          }
+        },
+        "period_days_tested": 60.685417285425885
+      }
+    },
+    "status": "DONE"
+  },
+  "349725115": {
+    "aliased_tess_side": true,
+    "base_confirmed": true,
+    "base_period_days": 16.2203202005104,
+    "corrected_period_days": 32.4406404010208,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": true,
+        "bands": {
+          "zg": {
+            "baseline_mag": 14.444,
+            "clustered_points": [
+              {
+                "mag": 14.6843,
+                "phase": 0.9851,
+                "sigma": 18.6
+              },
+              {
+                "mag": 14.6848,
+                "phase": 0.9851,
+                "sigma": 18.6
+              }
+            ],
+            "n_outliers": 9,
+            "n_points": 543,
+            "p_value": 0.004103,
+            "typical_err": 0.0131,
+            "verdict": "CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.7377,
+            "clustered_points": [],
+            "n_outliers": 16,
+            "n_points": 1142,
+            "p_value": 0.07084,
+            "typical_err": 0.0137,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 8.1101601002552
+      },
+      "2.0": {
+        "any_confirmed": true,
+        "bands": {
+          "zg": {
+            "baseline_mag": 14.444,
+            "clustered_points": [
+              {
+                "mag": 14.6843,
+                "phase": 0.2463,
+                "sigma": 18.6
+              },
+              {
+                "mag": 14.6848,
+                "phase": 0.2463,
+                "sigma": 18.6
+              }
+            ],
+            "n_outliers": 9,
+            "n_points": 543,
+            "p_value": 0.001027,
+            "typical_err": 0.0131,
+            "verdict": "CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.7377,
+            "clustered_points": [],
+            "n_outliers": 16,
+            "n_points": 1142,
+            "p_value": 0.018168,
+            "typical_err": 0.0137,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 32.4406404010208
+      }
+    },
+    "status": "DONE"
+  },
+  "380943251": {
+    "aliased_tess_side": false,
+    "base_confirmed": false,
+    "base_period_days": 0.7209347459493273,
+    "corrected_period_days": null,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 16.3357,
+            "clustered_points": [],
+            "n_outliers": 27,
+            "n_points": 833,
+            "p_value": 0.483459,
+            "typical_err": 0.0173,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 14.73,
+            "clustered_points": [],
+            "n_outliers": 15,
+            "n_points": 104,
+            "p_value": 0.188866,
+            "typical_err": 0.0122,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 15.2179,
+            "clustered_points": [],
+            "n_outliers": 53,
+            "n_points": 875,
+            "p_value": 0.266235,
+            "typical_err": 0.0137,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 0.36046737297466364
+      },
+      "2.0": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 16.3357,
+            "clustered_points": [],
+            "n_outliers": 27,
+            "n_points": 833,
+            "p_value": 0.198048,
+            "typical_err": 0.0173,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 14.73,
+            "clustered_points": [],
+            "n_outliers": 15,
+            "n_points": 104,
+            "p_value": 0.220836,
+            "typical_err": 0.0122,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 15.2179,
+            "clustered_points": [],
+            "n_outliers": 53,
+            "n_points": 875,
+            "p_value": 0.074313,
+            "typical_err": 0.0137,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 1.4418694918986545
+      }
+    },
+    "status": "DONE"
+  },
+  "411305220": {
+    "aliased_tess_side": true,
+    "base_confirmed": false,
+    "base_period_days": 21.59343174594404,
+    "corrected_period_days": 43.18686349188808,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 12.5737,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 1102,
+            "p_value": null,
+            "typical_err": 0.0121,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 12.13,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 164,
+            "p_value": null,
+            "typical_err": 0.0134,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 10.79671587297202
+      },
+      "2.0": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 12.5737,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 1102,
+            "p_value": null,
+            "typical_err": 0.0121,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 12.13,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 164,
+            "p_value": null,
+            "typical_err": 0.0134,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 43.18686349188808
+      }
+    },
+    "status": "DONE"
+  },
+  "411434067": {
+    "aliased_tess_side": true,
+    "base_confirmed": false,
+    "base_period_days": 1.353604313972901,
+    "corrected_period_days": 2.707208627945802,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 13.578,
+            "clustered_points": [],
+            "n_outliers": 83,
+            "n_points": 1309,
+            "p_value": 0.066701,
+            "typical_err": 0.0101,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 13.1266,
+            "clustered_points": [],
+            "n_outliers": 19,
+            "n_points": 316,
+            "p_value": 0.238712,
+            "typical_err": 0.0121,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.2166,
+            "clustered_points": [],
+            "n_outliers": 123,
+            "n_points": 1570,
+            "p_value": 0.176233,
+            "typical_err": 0.0101,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 0.6768021569864505
+      },
+      "2.0": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 13.578,
+            "clustered_points": [],
+            "n_outliers": 83,
+            "n_points": 1309,
+            "p_value": 0.030888,
+            "typical_err": 0.0101,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 13.1266,
+            "clustered_points": [],
+            "n_outliers": 19,
+            "n_points": 316,
+            "p_value": 0.065552,
+            "typical_err": 0.0121,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.2166,
+            "clustered_points": [],
+            "n_outliers": 123,
+            "n_points": 1570,
+            "p_value": 0.12412,
+            "typical_err": 0.0101,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 2.707208627945802
+      }
+    },
+    "status": "DONE"
+  },
+  "430314843": {
+    "aliased_tess_side": false,
+    "base_confirmed": false,
+    "base_period_days": 1.144288653404174,
+    "corrected_period_days": null,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 13.5477,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 70,
+            "p_value": null,
+            "typical_err": 0.0262,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 12.7712,
+            "clustered_points": [],
+            "n_outliers": 7,
+            "n_points": 90,
+            "p_value": 0.03351,
+            "typical_err": 0.0153,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 0.572144326702087
+      },
+      "2.0": {
+        "any_confirmed": true,
+        "bands": {
+          "zg": {
+            "baseline_mag": 13.5477,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 70,
+            "p_value": null,
+            "typical_err": 0.0262,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 12.7712,
+            "clustered_points": [
+              {
+                "mag": 12.8789,
+                "phase": 0.3839,
+                "sigma": 7.1
+              },
+              {
+                "mag": 12.8739,
+                "phase": 0.3841,
+                "sigma": 6.8
+              }
+            ],
+            "n_outliers": 7,
+            "n_points": 90,
+            "p_value": 0.008467,
+            "typical_err": 0.0153,
+            "verdict": "CONFIRMED"
+          }
+        },
+        "period_days_tested": 2.288577306808348
+      }
+    },
+    "status": "DONE"
+  },
+  "434321668": {
+    "aliased_tess_side": true,
+    "base_confirmed": true,
+    "base_period_days": 5.563850297806913,
+    "corrected_period_days": 11.127700595613826,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 15.152,
+            "clustered_points": [],
+            "n_outliers": 20,
+            "n_points": 434,
+            "p_value": 0.059891,
+            "typical_err": 0.0116,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 14.3679,
+            "clustered_points": [],
+            "n_outliers": 2,
+            "n_points": 38,
+            "p_value": 0.015485,
+            "typical_err": 0.0095,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 14.591,
+            "clustered_points": [],
+            "n_outliers": 29,
+            "n_points": 657,
+            "p_value": 0.093467,
+            "typical_err": 0.0107,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 2.7819251489034564
+      },
+      "2.0": {
+        "any_confirmed": true,
+        "bands": {
+          "zg": {
+            "baseline_mag": 15.152,
+            "clustered_points": [],
+            "n_outliers": 20,
+            "n_points": 434,
+            "p_value": 0.015303,
+            "typical_err": 0.0116,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 14.3679,
+            "clustered_points": [
+              {
+                "mag": 14.4883,
+                "phase": 0.3901,
+                "sigma": 12.6
+              },
+              {
+                "mag": 14.4493,
+                "phase": 0.392,
+                "sigma": 8.6
+              }
+            ],
+            "n_outliers": 2,
+            "n_points": 38,
+            "p_value": 0.003871,
+            "typical_err": 0.0095,
+            "verdict": "CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 14.591,
+            "clustered_points": [],
+            "n_outliers": 29,
+            "n_points": 657,
+            "p_value": 0.024202,
+            "typical_err": 0.0107,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 11.127700595613826
+      }
+    },
+    "status": "DONE"
+  },
+  "437150434": {
+    "aliased_tess_side": false,
+    "base_confirmed": true,
+    "base_period_days": 5.285343164440589,
+    "corrected_period_days": null,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 12.8186,
+            "clustered_points": [],
+            "n_outliers": 2,
+            "n_points": 125,
+            "p_value": 0.010381,
+            "typical_err": 0.0114,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 2.6426715822202946
+      },
+      "2.0": {
+        "any_confirmed": true,
+        "bands": {
+          "zg": {
+            "baseline_mag": 12.8186,
+            "clustered_points": [
+              {
+                "mag": 13.1463,
+                "phase": 0.2629,
+                "sigma": 29.0
+              },
+              {
+                "mag": 13.2402,
+                "phase": 0.2642,
+                "sigma": 37.3
+              }
+            ],
+            "n_outliers": 2,
+            "n_points": 125,
+            "p_value": 0.002595,
+            "typical_err": 0.0114,
+            "verdict": "CONFIRMED"
+          }
+        },
+        "period_days_tested": 10.570686328881179
+      }
+    },
+    "status": "DONE"
+  },
+  "444465823": {
+    "aliased_tess_side": true,
+    "base_confirmed": false,
+    "base_period_days": 18.513330110923107,
+    "corrected_period_days": 37.026660221846214,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 14.1017,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 1159,
+            "p_value": null,
+            "typical_err": 0.0171,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 12.6779,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 67,
+            "p_value": null,
+            "typical_err": 0.013,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.1406,
+            "clustered_points": [],
+            "n_outliers": 6,
+            "n_points": 1865,
+            "p_value": 0.771859,
+            "typical_err": 0.014,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 9.256665055461553
+      },
+      "2.0": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 14.1017,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 1159,
+            "p_value": null,
+            "typical_err": 0.0171,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 12.6779,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 67,
+            "p_value": null,
+            "typical_err": 0.013,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.1406,
+            "clustered_points": [],
+            "n_outliers": 6,
+            "n_points": 1865,
+            "p_value": 0.377621,
+            "typical_err": 0.014,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 37.026660221846214
+      }
+    },
+    "status": "DONE"
+  },
+  "445266372": {
+    "aliased_tess_side": true,
+    "base_confirmed": false,
+    "base_period_days": 5.806269683814529,
+    "corrected_period_days": 11.612539367629058,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 15.174,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 113,
+            "p_value": null,
+            "typical_err": 0.0123,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 14.5986,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 146,
+            "p_value": null,
+            "typical_err": 0.0109,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 2.9031348419072645
+      },
+      "2.0": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 15.174,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 113,
+            "p_value": null,
+            "typical_err": 0.0123,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 14.5986,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 146,
+            "p_value": null,
+            "typical_err": 0.0109,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 11.612539367629058
+      }
+    },
+    "status": "DONE"
+  },
+  "446502638": {
+    "aliased_tess_side": false,
+    "base_confirmed": false,
+    "base_period_days": 1.1079572971866851,
+    "corrected_period_days": null,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 15.872,
+            "clustered_points": [],
+            "n_outliers": 83,
+            "n_points": 394,
+            "p_value": 0.55053,
+            "typical_err": 0.0155,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 12.7211,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 38,
+            "p_value": null,
+            "typical_err": 0.0119,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 14.3488,
+            "clustered_points": [],
+            "n_outliers": 33,
+            "n_points": 635,
+            "p_value": 0.191563,
+            "typical_err": 0.0135,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 0.5539786485933426
+      },
+      "2.0": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 15.872,
+            "clustered_points": [],
+            "n_outliers": 83,
+            "n_points": 394,
+            "p_value": 0.442395,
+            "typical_err": 0.0155,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 12.7211,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 38,
+            "p_value": null,
+            "typical_err": 0.0119,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 14.3488,
+            "clustered_points": [],
+            "n_outliers": 33,
+            "n_points": 635,
+            "p_value": 0.087732,
+            "typical_err": 0.0135,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 2.2159145943733702
+      }
+    },
+    "status": "DONE"
+  },
+  "65970288": {
+    "aliased_tess_side": false,
+    "base_confirmed": false,
+    "base_period_days": 1.370533916643225,
+    "corrected_period_days": null,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 14.1492,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 164,
+            "p_value": null,
+            "typical_err": 0.0143,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.8487,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 807,
+            "p_value": null,
+            "typical_err": 0.0167,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 0.6852669583216126
+      },
+      "2.0": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 14.1492,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 164,
+            "p_value": null,
+            "typical_err": 0.0143,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.8487,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 807,
+            "p_value": null,
+            "typical_err": 0.0167,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 2.74106783328645
+      }
+    },
+    "status": "DONE"
+  },
+  "66716482": {
+    "aliased_tess_side": false,
+    "base_confirmed": false,
+    "base_period_days": 8.028258931278463,
+    "corrected_period_days": null,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 13.5661,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 285,
+            "p_value": null,
+            "typical_err": 0.0134,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 13.1735,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 112,
+            "p_value": null,
+            "typical_err": 0.0119,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.2543,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 361,
+            "p_value": null,
+            "typical_err": 0.0127,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 4.014129465639232
+      },
+      "2.0": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 13.5661,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 285,
+            "p_value": null,
+            "typical_err": 0.0134,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 13.1735,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 112,
+            "p_value": null,
+            "typical_err": 0.0119,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.2543,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 361,
+            "p_value": null,
+            "typical_err": 0.0127,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 16.056517862556927
+      }
+    },
+    "status": "DONE"
+  },
+  "66732476": {
+    "aliased_tess_side": false,
+    "base_confirmed": false,
+    "base_period_days": 3.1087371204482817,
+    "corrected_period_days": null,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 13.3053,
+            "clustered_points": [],
+            "n_outliers": 11,
+            "n_points": 284,
+            "p_value": 0.709299,
+            "typical_err": 0.0136,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 12.7408,
+            "clustered_points": [],
+            "n_outliers": 8,
+            "n_points": 114,
+            "p_value": 0.593161,
+            "typical_err": 0.0124,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 12.8697,
+            "clustered_points": [],
+            "n_outliers": 17,
+            "n_points": 354,
+            "p_value": 0.351552,
+            "typical_err": 0.0131,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 1.5543685602241408
+      },
+      "2.0": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 13.3053,
+            "clustered_points": [],
+            "n_outliers": 11,
+            "n_points": 284,
+            "p_value": 0.482224,
+            "typical_err": 0.0136,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zi": {
+            "baseline_mag": 12.7408,
+            "clustered_points": [],
+            "n_outliers": 8,
+            "n_points": 114,
+            "p_value": 0.359604,
+            "typical_err": 0.0124,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 12.8697,
+            "clustered_points": [],
+            "n_outliers": 17,
+            "n_points": 354,
+            "p_value": 0.101653,
+            "typical_err": 0.0131,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 6.217474240896563
+      }
+    },
+    "status": "DONE"
+  },
+  "72729777": {
+    "aliased_tess_side": true,
+    "base_confirmed": true,
+    "base_period_days": 28.67554362946531,
+    "corrected_period_days": 57.35108725893062,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": true,
+        "bands": {
+          "zg": {
+            "baseline_mag": 12.2255,
+            "clustered_points": [
+              {
+                "mag": 12.4586,
+                "phase": 0.2038,
+                "sigma": 13.1
+              },
+              {
+                "mag": 12.4556,
+                "phase": 0.2037,
+                "sigma": 11.8
+              }
+            ],
+            "n_outliers": 7,
+            "n_points": 494,
+            "p_value": 0.001321,
+            "typical_err": 0.0183,
+            "verdict": "CONFIRMED"
+          }
+        },
+        "period_days_tested": 14.337771814732655
+      },
+      "2.0": {
+        "any_confirmed": true,
+        "bands": {
+          "zg": {
+            "baseline_mag": 12.2255,
+            "clustered_points": [
+              {
+                "mag": 12.4586,
+                "phase": 0.0509,
+                "sigma": 13.1
+              },
+              {
+                "mag": 12.4556,
+                "phase": 0.0509,
+                "sigma": 11.8
+              }
+            ],
+            "n_outliers": 7,
+            "n_points": 494,
+            "p_value": 0.00033,
+            "typical_err": 0.0183,
+            "verdict": "CONFIRMED"
+          }
+        },
+        "period_days_tested": 57.35108725893062
+      }
+    },
+    "status": "DONE"
+  },
+  "77210120": {
+    "aliased_tess_side": false,
+    "base_confirmed": true,
+    "base_period_days": 1.5344313502902909,
+    "corrected_period_days": null,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 13.2797,
+            "clustered_points": [],
+            "n_outliers": 5,
+            "n_points": 36,
+            "p_value": 0.012015,
+            "typical_err": 0.0085,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 12.6358,
+            "clustered_points": [],
+            "n_outliers": 3,
+            "n_points": 39,
+            "p_value": 0.12392,
+            "typical_err": 0.0095,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 0.7672156751451454
+      },
+      "2.0": {
+        "any_confirmed": true,
+        "bands": {
+          "zg": {
+            "baseline_mag": 13.2797,
+            "clustered_points": [
+              {
+                "mag": 13.3323,
+                "phase": 0.2506,
+                "sigma": 6.2
+              },
+              {
+                "mag": 13.3409,
+                "phase": 0.2508,
+                "sigma": 7.2
+              }
+            ],
+            "n_outliers": 5,
+            "n_points": 36,
+            "p_value": 0.003014,
+            "typical_err": 0.0085,
+            "verdict": "CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 12.6358,
+            "clustered_points": [],
+            "n_outliers": 3,
+            "n_points": 39,
+            "p_value": 0.476801,
+            "typical_err": 0.0095,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 3.0688627005805817
+      }
+    },
+    "status": "DONE"
+  },
+  "78955414": {
+    "aliased_tess_side": false,
+    "base_confirmed": true,
+    "base_period_days": 1.99668584600498,
+    "corrected_period_days": null,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 15.3404,
+            "clustered_points": [],
+            "n_outliers": 4,
+            "n_points": 160,
+            "p_value": 0.315332,
+            "typical_err": 0.013,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 14.9553,
+            "clustered_points": [],
+            "n_outliers": 3,
+            "n_points": 393,
+            "p_value": 0.019107,
+            "typical_err": 0.013,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 0.99834292300249
+      },
+      "2.0": {
+        "any_confirmed": true,
+        "bands": {
+          "zg": {
+            "baseline_mag": 15.3404,
+            "clustered_points": [],
+            "n_outliers": 4,
+            "n_points": 160,
+            "p_value": 0.464418,
+            "typical_err": 0.013,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 14.9553,
+            "clustered_points": [
+              {
+                "mag": 15.025,
+                "phase": 0.616,
+                "sigma": 5.4
+              },
+              {
+                "mag": 15.0292,
+                "phase": 0.6168,
+                "sigma": 5.7
+              }
+            ],
+            "n_outliers": 3,
+            "n_points": 393,
+            "p_value": 0.004794,
+            "typical_err": 0.013,
+            "verdict": "CONFIRMED"
+          }
+        },
+        "period_days_tested": 3.99337169200996
+      }
+    },
+    "status": "DONE"
+  },
+  "86934109": {
+    "aliased_tess_side": false,
+    "base_confirmed": false,
+    "base_period_days": 1.0522571656841455,
+    "corrected_period_days": null,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 12.9795,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 56,
+            "p_value": null,
+            "typical_err": 0.0168,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 0.5261285828420728
+      },
+      "2.0": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 12.9795,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 56,
+            "p_value": null,
+            "typical_err": 0.0168,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 2.104514331368291
+      }
+    },
+    "status": "DONE"
+  },
+  "86956236": {
+    "aliased_tess_side": true,
+    "base_confirmed": false,
+    "base_period_days": 35.42002699584757,
+    "corrected_period_days": 70.84005399169514,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 12.5524,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 335,
+            "p_value": null,
+            "typical_err": 0.0128,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 17.710013497923786
+      },
+      "2.0": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 12.5524,
+            "clustered_points": [],
+            "n_outliers": 1,
+            "n_points": 335,
+            "p_value": null,
+            "typical_err": 0.0128,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 70.84005399169514
+      }
+    },
+    "status": "DONE"
+  },
+  "9586662": {
+    "aliased_tess_side": false,
+    "base_confirmed": false,
+    "base_period_days": 1.1130671370396392,
+    "corrected_period_days": null,
+    "harmonics": {
+      "0.5": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 14.4516,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 145,
+            "p_value": null,
+            "typical_err": 0.0143,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.779,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 163,
+            "p_value": null,
+            "typical_err": 0.0129,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 0.5565335685198196
+      },
+      "2.0": {
+        "any_confirmed": false,
+        "bands": {
+          "zg": {
+            "baseline_mag": 14.4516,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 145,
+            "p_value": null,
+            "typical_err": 0.0143,
+            "verdict": "NOT_CONFIRMED"
+          },
+          "zr": {
+            "baseline_mag": 13.779,
+            "clustered_points": [],
+            "n_outliers": 0,
+            "n_points": 163,
+            "p_value": null,
+            "typical_err": 0.0129,
+            "verdict": "NOT_CONFIRMED"
+          }
+        },
+        "period_days_tested": 2.2261342740792784
+      }
+    },
+    "status": "DONE"
+  }
+}
