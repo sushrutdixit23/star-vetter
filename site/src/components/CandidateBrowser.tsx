@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import CandidateCard, { type CardData } from "./CandidateCard";
 import TierBadge from "./TierBadge";
+import MiniChart from "./MiniChart";
 import SkyMap from "./dash/SkyMap";
 import { TIER_ORDER, TIER_STYLE } from "@/lib/tiers";
 import { fmtNum, fmtDepth } from "@/lib/format";
@@ -37,7 +38,8 @@ export default function CandidateBrowser({
   const [query, setQuery] = useState(params.get("q") ?? "");
   const [tier, setTier] = useState<Tier | "ALL">("ALL");
   const [sort, setSort] = useState<SortKey>("bls_snr");
-  const [view, setView] = useState<ViewMode>("clocks");
+  const initialView = params.get("view");
+  const [view, setView] = useState<ViewMode>(initialView === "table" || initialView === "sky" ? initialView : "clocks");
 
   const tiersPresent = TIER_ORDER.filter((t) => cards.some((c) => c.tier === t));
 
@@ -141,7 +143,7 @@ export default function CandidateBrowser({
               <SkyMap points={shownSkyPoints} className="w-full" />
               <p className="mt-3 text-[11px] text-faint">
                 {shownSkyPoints.length} of {shown.length} filtered candidates have a catalog
-                position. Hover a point for its TIC number.
+                position. Hover a point for details; click to open it.
               </p>
             </>
           )}
@@ -166,19 +168,21 @@ function TableView({
     { key: "bls_snr", label: "BLS SNR" },
     { key: "pixel_snr", label: "Pixel SNR" },
   ];
+  const maxDepth = Math.max(...cards.map((c) => c.depth_frac), 0.0001);
   return (
     <div className="overflow-x-auto rounded-xl border border-line bg-panel">
-      <table className="w-full min-w-[640px] text-sm">
+      <table className="w-full min-w-[760px] text-sm">
         <thead>
-          <tr className="border-b border-line text-left text-xs text-faint">
-            <th className="px-4 py-2.5 font-medium">TIC</th>
-            <th className="px-4 py-2.5 font-medium">Tier</th>
+          <tr className="border-b border-line text-left">
+            <th className="nav-caps px-4 py-3 text-[10px] font-medium text-faint">TIC</th>
+            <th className="nav-caps px-4 py-3 text-[10px] font-medium text-faint">Signal</th>
+            <th className="nav-caps px-4 py-3 text-[10px] font-medium text-faint">Tier</th>
             {cols.map((c) => (
-              <th key={c.key} className="px-4 py-2.5 text-right font-medium">
+              <th key={c.key} className="px-4 py-3 text-right">
                 <button
                   type="button"
                   onClick={() => onSort(c.key)}
-                  className={`nav-caps ${sort === c.key ? "text-accent" : "text-faint hover:text-fg"}`}
+                  className={`nav-caps text-[10px] ${sort === c.key ? "text-accent" : "text-faint hover:text-fg"}`}
                 >
                   {c.label}
                 </button>
@@ -187,24 +191,42 @@ function TableView({
           </tr>
         </thead>
         <tbody>
-          {cards.map((c) => (
-            <tr key={c.tic} className="border-b border-line last:border-0 hover:bg-panel-2">
-              <td className="px-4 py-2.5">
-                <Link href={`/candidates/${c.tic}`} className="font-mono text-fg hover:text-accent">
-                  {c.tic}
-                </Link>
-              </td>
-              <td className="px-4 py-2.5">
-                <TierBadge tier={c.tier} />
-              </td>
-              <td className="px-4 py-2.5 text-right font-mono text-fg/80">
-                {fmtNum(c.corrected_period_days ?? c.period_days, 3)}d
-              </td>
-              <td className="px-4 py-2.5 text-right font-mono text-fg/80">{fmtDepth(c.depth_frac)}</td>
-              <td className="px-4 py-2.5 text-right font-mono text-fg/80">{fmtNum(c.bls_snr, 0)}</td>
-              <td className="px-4 py-2.5 text-right font-mono text-fg/80">{fmtNum(c.pixel_snr, 1)}</td>
-            </tr>
-          ))}
+          {cards.map((c) => {
+            const color = TIER_STYLE[c.tier].chart;
+            return (
+              <tr key={c.tic} className="border-b border-line last:border-0 transition-colors hover:bg-panel-2">
+                <td className="px-4 py-2.5" style={{ borderLeft: `2px solid ${color}` }}>
+                  <Link href={`/candidates/${c.tic}`} className="font-mono text-fg hover:text-accent">
+                    {c.tic}
+                  </Link>
+                </td>
+                <td className="px-4 py-2.5">
+                  <div className="h-8 w-24 rounded border border-line bg-canvas p-0.5">
+                    <MiniChart binned={c.binned} height={28} color={color} />
+                  </div>
+                </td>
+                <td className="px-4 py-2.5">
+                  <TierBadge tier={c.tier} />
+                </td>
+                <td className="px-4 py-2.5 text-right font-mono text-fg/80">
+                  {fmtNum(c.corrected_period_days ?? c.period_days, 3)}d
+                </td>
+                <td className="px-4 py-2.5">
+                  <div className="flex items-center justify-end gap-2">
+                    <div className="h-1.5 w-16 overflow-hidden rounded-full bg-panel-2">
+                      <div
+                        className="h-full rounded-full"
+                        style={{ width: `${Math.max(4, (c.depth_frac / maxDepth) * 100)}%`, background: color }}
+                      />
+                    </div>
+                    <span className="font-mono text-fg/80">{fmtDepth(c.depth_frac)}</span>
+                  </div>
+                </td>
+                <td className="px-4 py-2.5 text-right font-mono text-fg/80">{fmtNum(c.bls_snr, 0)}</td>
+                <td className="px-4 py-2.5 text-right font-mono text-fg/80">{fmtNum(c.pixel_snr, 1)}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

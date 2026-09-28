@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
-import { getAllTics } from "@/lib/data";
+import { getAllTics, getPipelineStats } from "@/lib/data";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -30,6 +30,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   const tics = getAllTics();
+  const funnel = getPipelineStats()?.funnel ?? [];
+  const run = funnel.length >= 6 ? { sampled: funnel[0].count, confirmed: funnel[5].count } : null;
   return (
     <html
       lang="en"
@@ -37,7 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} ${displaySerif.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <SiteHeader tics={tics} />
+        <SiteHeader tics={tics} run={run} />
         {children}
         <footer className="mt-auto border-t border-line">
           <div className="mx-auto flex max-w-[1920px] flex-wrap items-center justify-between gap-3 px-3 py-6 text-xs text-faint sm:px-6">

@@ -52,7 +52,7 @@ jobs:
           pip install anthropic
           python f8_generate_writeups.py "$GITHUB_WORKSPACE"
           python export_dashboard.py "$GITHUB_WORKSPACE"
-          python f9_generate_about_content.py "$GITHUB_WORKSPACE"
+          python check_about_content_drift.py "$GITHUB_WORKSPACE" --auto-fix
           python f10_generate_discoveries.py "$GITHUB_WORKSPACE"
 
       - name: Set up Node
