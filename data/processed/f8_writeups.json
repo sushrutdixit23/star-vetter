@@ -1,4 +1,9 @@
 {
+  "1003150980": {
+    "generated_at": "2026-09-29T06:14:44.928663+00:00",
+    "model": "claude-haiku-4-5-20251001",
+    "writeup": "TIC 1003150980 is a candidate eclipsing binary star with an orbital period of 4.7765 days. Automated analysis of TESS photometry detected a primary eclipse with a depth of 2.71 percent dimming and a secondary eclipse at 5.3 sigma significance, yielding a strong detection signal of 176.6 in the transit-search algorithm. Pixel-level image analysis confirms a peak signal-to-noise ratio of 10.1, though the centroid is offset 1.9 arcsec from the target. The star does not appear in six major variable-star catalogs. An important caveat: the target identification relies on a centroid margin of only 0.019 pixels from the nearest bright neighbor, falling within TESS's documented systematic uncertainty of 0.10 to 0.3 pixels, meaning the instrument's resolution cannot confidently distinguish this star from that neighbor."
+  },
   "1007259218": {
     "generated_at": "2026-09-27T14:48:34.735122+00:00",
     "model": "claude-haiku-4-5-20251001",
