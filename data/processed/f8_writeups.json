@@ -349,6 +349,11 @@
     "model": "claude-haiku-4-5-20251001",
     "writeup": "TIC 365998904 is a newly discovered eclipsing binary star system with an orbital period of just 1.2494 days. When the primary star passes in front of its companion, the system dims by 2.40 percent - a clear signal detected with extremely high confidence, producing a signal-to-noise ratio of 375.0. Notably, no secondary eclipse was detected. The candidate passed all data quality checks and does not appear in any of six major variable-star catalogs, making it a genuine new discovery. Independent confirmation through difference-imaging analysis yielded a strong signal-to-noise ratio of 15.5, though with a centroid offset of 2.9 arcseconds from the target position. With a machine learning screening score of 0.71, this system represents a valuable addition to our catalog of known binary stars."
   },
+  "367193047": {
+    "generated_at": "2026-09-30T22:44:30.541275+00:00",
+    "model": "claude-haiku-4-5-20251001",
+    "writeup": "TIC 367193047 is a candidate eclipsing binary star with an orbital period of 2.191730 days, detected through automated analysis of TESS photometry. The primary eclipse produces a 4.55% dimming, while no secondary eclipse was detected. The brightness dip shows a high detection significance with a BLS signal-to-noise ratio of 455.4, and pixel-level image analysis confirms the signal at a peak signal-to-noise of 36.2, though the centroid offset of 3.5 arcsec from the target warrants note. The candidate does not appear in six major variable-star catalogs. However, the alternating eclipse depths show a significant odd/even z-score of 5.79, indicating the true orbital period is double the initial automated estimate. While pixel-level confirmation and eclipse timing remain unaffected by this data-quality flag, the period ambiguity represents an open question about this candidate system."
+  },
   "370553309": {
     "generated_at": "2026-09-27T10:30:45.281591+00:00",
     "model": "claude-haiku-4-5-20251001",
@@ -363,6 +368,11 @@
     "generated_at": "2026-09-27T10:30:27.472801+00:00",
     "model": "claude-haiku-4-5-20251001",
     "writeup": "TIC 374158907 is an eclipsing binary star system newly discovered in survey data and absent from all existing variable-star catalogs. The system shows a primary eclipse that dims the star by 4.97 percent every 29.3 days, with a secondary eclipse also detected at high confidence. The discovery was confirmed through multiple independent methods, including detailed pixel-level analysis that ruled out false positives from nearby stars. The system's characteristics - including alternating eclipse depths that reveal the true orbital period - make it a valuable addition to known eclipsing binaries, offering opportunities for detailed study of this stellar pair."
+  },
+  "378367349": {
+    "generated_at": "2026-09-30T22:44:32.858748+00:00",
+    "model": "claude-haiku-4-5-20251001",
+    "writeup": "TIC 378367349 is a candidate eclipsing binary star detected in TESS photometry with an orbital period of 30.207391 days and a primary eclipse depth of 2.04 percent. A secondary eclipse was detected at 6.9 sigma significance, and the automated detection pipeline assigned a signal-to-noise ratio of 256.1. The candidate does not appear in six major variable-star catalogs. However, two important caveats apply: alternating eclipses show significantly different depths, suggesting the initially measured period was actually half the true orbital period, and the pixel-level analysis places the dimming source only 0.085 pixels closer to the target than to a nearby bright star - within TESS's systematic centroid uncertainty of 0.10 to 0.3 pixels. TESS's resolution cannot confidently rule out contamination from the neighbor star."
   },
   "380943251": {
     "generated_at": "2026-09-27T10:29:58.943551+00:00",
