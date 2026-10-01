@@ -334,6 +334,11 @@
     "model": "claude-haiku-4-5-20251001",
     "writeup": "TIC 348787043 is a candidate eclipsing binary star system with an orbital period of 3.7497 days. Analysis of TESS photometry reveals a primary eclipse causing the star to dim by 1.74%, with a detection significance of 38.7 on the BLS signal-to-noise scale. Pixel-level image analysis provides additional support, showing a difference-imaging peak signal-to-noise of 7.5, though the centroid offset of 5.8 arcsec from the target merits further investigation. No secondary eclipse was detected in the available data. The candidate does not appear in six major variable-star catalogs, making it a novel find. The automated pipeline assigned it a machine-learning screening score of 0.49, and it passed all data quality checks without flags."
   },
+  "348791607": {
+    "generated_at": "2026-10-01T23:12:48.366244+00:00",
+    "model": "claude-haiku-4-5-20251001",
+    "writeup": "TIC 348791607 is a candidate eclipsing binary star with an orbital period of 4.4302 days, detected through automated analysis of TESS photometry. The system shows a primary eclipse that dims the light by 1.71 percent, with a strong detection signal-to-noise of 48.1 using the Box Least Squares method. Pixel-level image analysis provides additional support, revealing a difference-imaging peak signal-to-noise of 16.0 and a centroid offset of 1.4 arcseconds from the target position. No secondary eclipse was detected in the available data. Notably, this candidate does not appear in any of six major variable-star catalogs, suggesting it may be previously unknown. The automated pipeline assigned it a machine-learning screening score of 0.46, and the data passed all quality checks without flags."
+  },
   "348884775": {
     "generated_at": "2026-09-27T14:23:42.389531+00:00",
     "model": "template-only (manual correction, see patch_bad_writeups.py)",
