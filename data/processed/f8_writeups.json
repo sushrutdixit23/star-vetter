@@ -54,6 +54,11 @@
     "model": "claude-haiku-4-5-20251001",
     "writeup": "TIC 152676628 is a candidate eclipsing binary star detected through automated analysis of TESS photometry. The system shows a primary eclipse with a depth of 1.01% occurring every 5.2599 days, while no secondary eclipse was detected. The eclipse signal achieved a detection significance of 159.1 using the Box Least Squares algorithm, and pixel-level difference imaging confirmed the signal with a peak signal-to-noise ratio of 20.7, though the centroid offset of 5.4 arcseconds warrants consideration. The candidate does not appear in six major variable-star catalogs, making it a novel target. The machine-learning screening score of 0.83 suggests the pipeline's model assesses this as likely to be a genuine target star, and the candidate passed all data quality checks."
   },
+  "156776551": {
+    "generated_at": "2026-10-02T22:46:46.093154+00:00",
+    "model": "claude-haiku-4-5-20251001",
+    "writeup": "TIC 156776551 is a candidate eclipsing binary star with an orbital period of 3.3936 days. Analysis of TESS photometry reveals a primary eclipse that dims the system by 22.63%, along with a secondary eclipse detected at 5.6 sigma significance near orbital phase 0.49. The binary light-curve signal achieves a detection significance of 132.0 using the Box Least Squares method. Pixel-level difference imaging confirms the signal originates near the target location, with a peak signal-to-noise of 43.9, though with a centroid offset of 3.8 arcseconds. The candidate does not appear in six major variable-star catalogs, suggesting it may be previously unrecorded. The pipeline's machine learning model assigns it a screening score of 0.30, and the data passed all quality checks without flags."
+  },
   "156780644": {
     "generated_at": "2026-09-29T13:04:28.385594+00:00",
     "model": "claude-haiku-4-5-20251001",
