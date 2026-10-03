@@ -1,34 +1,34 @@
 {
-  "trained_at": "2026-10-03T06:04:05.830945+00:00",
-  "n_samples": 1307,
-  "n_positive": 128,
-  "n_negative": 1179,
+  "trained_at": "2026-10-03T11:58:09.054686+00:00",
+  "n_samples": 1322,
+  "n_positive": 132,
+  "n_negative": 1190,
   "n_folds": 5,
   "baseline": {
     "description": "current pipeline behavior: every candidate that passes statistical vetting and novelty cross-match goes to the pixel check",
     "recall": 1.0,
-    "precision": 0.0979
+    "precision": 0.0998
   },
   "models": {
     "logistic_regression": {
-      "precision_mean": 0.21865535649882673,
-      "precision_std": 0.025166516834569427,
-      "recall_mean": 0.6806153846153846,
-      "recall_std": 0.12769267840539328,
-      "roc_auc_mean": 0.7634375156037615,
-      "roc_auc_std": 0.04633776987854743,
-      "average_precision_mean": 0.2646072640434002,
-      "average_precision_std": 0.05839934926862437
+      "precision_mean": 0.20988587620776927,
+      "precision_std": 0.03444160271685952,
+      "recall_mean": 0.6207977207977209,
+      "recall_std": 0.07847645448057433,
+      "roc_auc_mean": 0.7375050875050875,
+      "roc_auc_std": 0.023060167965019127,
+      "average_precision_mean": 0.24359037309804704,
+      "average_precision_std": 0.02888816815287319
     },
     "hist_gradient_boosting": {
-      "precision_mean": 0.5274325674325675,
-      "precision_std": 0.12204220133988619,
-      "recall_mean": 0.18,
-      "recall_std": 0.09886455979486254,
-      "roc_auc_mean": 0.8328843241143999,
-      "roc_auc_std": 0.04803204011483168,
-      "average_precision_mean": 0.3864494593325002,
-      "average_precision_std": 0.06926948079024024
+      "precision_mean": 0.45666666666666667,
+      "precision_std": 0.10413666234542206,
+      "recall_mean": 0.15242165242165245,
+      "recall_std": 0.10107337023292598,
+      "roc_auc_mean": 0.8202099643276114,
+      "roc_auc_std": 0.034587756532949626,
+      "average_precision_mean": 0.3904965755082584,
+      "average_precision_std": 0.0906169174317025
     }
   },
   "chosen_model": "hist_gradient_boosting",
@@ -38,132 +38,132 @@
     {
       "target_recall": 0.95,
       "threshold": 0.01,
-      "recall": 0.953,
-      "fraction_screened_out": 0.344
+      "recall": 0.955,
+      "fraction_screened_out": 0.312
     },
     {
       "target_recall": 0.9,
       "threshold": 0.02,
-      "recall": 0.914,
-      "fraction_screened_out": 0.474
+      "recall": 0.909,
+      "fraction_screened_out": 0.437
     },
     {
       "target_recall": 0.8,
       "threshold": 0.05,
-      "recall": 0.812,
-      "fraction_screened_out": 0.658
+      "recall": 0.818,
+      "fraction_screened_out": 0.629
     }
   ],
   "models_screening_value": {
     "logistic_regression": [
       {
         "target_recall": 0.95,
-        "threshold": 0.26,
-        "recall": 0.953,
-        "fraction_screened_out": 0.257
+        "threshold": 0.21,
+        "recall": 0.955,
+        "fraction_screened_out": 0.177
       },
       {
         "target_recall": 0.9,
-        "threshold": 0.34,
-        "recall": 0.914,
-        "fraction_screened_out": 0.414
+        "threshold": 0.32,
+        "recall": 0.909,
+        "fraction_screened_out": 0.372
       },
       {
         "target_recall": 0.8,
-        "threshold": 0.43,
-        "recall": 0.805,
-        "fraction_screened_out": 0.59
+        "threshold": 0.38,
+        "recall": 0.811,
+        "fraction_screened_out": 0.495
       }
     ],
     "hist_gradient_boosting": [
       {
         "target_recall": 0.95,
         "threshold": 0.01,
-        "recall": 0.953,
-        "fraction_screened_out": 0.344
+        "recall": 0.955,
+        "fraction_screened_out": 0.312
       },
       {
         "target_recall": 0.9,
         "threshold": 0.02,
-        "recall": 0.914,
-        "fraction_screened_out": 0.474
+        "recall": 0.909,
+        "fraction_screened_out": 0.437
       },
       {
         "target_recall": 0.8,
         "threshold": 0.05,
-        "recall": 0.812,
-        "fraction_screened_out": 0.658
+        "recall": 0.818,
+        "fraction_screened_out": 0.629
       }
     ]
   },
   "feature_importance": [
     {
-      "feature": "Tmag",
-      "importance_mean": 0.0844
-    },
-    {
       "feature": "robust_sigma",
-      "importance_mean": 0.0765
+      "importance_mean": 0.0953
     },
     {
-      "feature": "n_points",
-      "importance_mean": 0.0164
-    },
-    {
-      "feature": "depth_ratio",
-      "importance_mean": 0.0163
-    },
-    {
-      "feature": "secondary_sigma",
-      "importance_mean": 0.0141
+      "feature": "Tmag",
+      "importance_mean": 0.0769
     },
     {
       "feature": "bls_duration",
-      "importance_mean": 0.0134
+      "importance_mean": 0.0197
     },
     {
-      "feature": "n_eclipses_observed",
-      "importance_mean": 0.0104
+      "feature": "n_points",
+      "importance_mean": 0.0167
     },
     {
       "feature": "bls_period",
-      "importance_mean": 0.0087
+      "importance_mean": 0.015
+    },
+    {
+      "feature": "depth_ratio",
+      "importance_mean": 0.0148
+    },
+    {
+      "feature": "secondary_sigma",
+      "importance_mean": 0.0102
+    },
+    {
+      "feature": "n_eclipses_observed",
+      "importance_mean": 0.0078
     },
     {
       "feature": "odd_even_z",
-      "importance_mean": 0.0041
-    },
-    {
-      "feature": "secondary_phase",
-      "importance_mean": 0.0036
-    },
-    {
-      "feature": "depth_even",
-      "importance_mean": 0.0026
+      "importance_mean": 0.0058
     },
     {
       "feature": "bls_snr",
-      "importance_mean": 0.002
+      "importance_mean": 0.0046
+    },
+    {
+      "feature": "depth_even",
+      "importance_mean": 0.0044
     },
     {
       "feature": "bls_depth",
-      "importance_mean": 0.0019
+      "importance_mean": 0.004
     },
     {
-      "feature": "author_used",
-      "importance_mean": 0.0016
+      "feature": "secondary_phase",
+      "importance_mean": 0.0035
     },
     {
       "feature": "robust_depth",
-      "importance_mean": 0.0016
+      "importance_mean": 0.0035
+    },
+    {
+      "feature": "author_used",
+      "importance_mean": 0.0034
     },
     {
       "feature": "depth_odd",
-      "importance_mean": 0.0015
+      "importance_mean": 0.002
     },
     {
       "feature": "n_sectors",
-      "importance_mean": 0.001
+      "importance_mean": 0.0007
     },
     {
       "feature": "secondary_detected",

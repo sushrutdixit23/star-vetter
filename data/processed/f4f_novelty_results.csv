@@ -1366,3 +1366,21 @@ TIC,bls_period,bls_depth,bls_snr,n_eclipses_observed,gap_edge_suspect,verdict,ex
 469564058,2.6708717713219587,0.0164154779561116,127.846021180444,10.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
 48698699,8.25138999401837,0.0032845685927673,28.813844477581128,3.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
 54279627,1.7094358419334863,0.020962618317998,49.95203333430537,13.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+108951106,6.529908019862856,0.0127072995608973,246.1488227236051,4.0,False,KNOWN_OTHER_TYPE,False,True,Gaia DR3 5611963049612705920,DSCT|GDOR|SXPHE,,False,True,,,,False,,True,DSCT|GDOR|SXPHE,0.68308526,False,,,False,,,,,,no_catalog_period
+153403905,0.8841583792655511,0.0180141737407196,464.9205808555976,24.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+202451068,1.0338835199324126,0.0073936009535294,33.64180394981636,23.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+221234628,1.261831551314027,0.0138553396844635,22.155224456051823,19.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+231976099,5.479695950886297,0.017997152184273,62.4258355237446,8.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+258204238,0.6870359878187736,0.0113189676149458,692.5946482982142,226.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+259069191,4.090466256203313,0.0318693362248082,61.23404832466178,5.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+308474674,0.9798866094618892,0.0112774384454564,55.173253023032814,26.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+313498432,27.44412437585308,0.0009800829727443,38.69223625249508,3.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+317300172,6.711018461605158,0.0190936145623284,119.33267108913142,12.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+349408618,0.9574982469293504,0.0001425578616781,15.212395334595543,558.0,False,KNOWN_OTHER_TYPE,False,True,Gaia DR3 5288709036218592896,ROT,,False,True,,,,False,,True,SOLAR_LIKE,0.7809593,False,,,False,,,,,,no_catalog_period
+402998017,2.424661433001217,0.0080740339646708,60.48381480717627,9.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+405216391,3.114525707654868,0.0708114077916434,233.5295244837285,8.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+446987195,13.194919667084164,0.2653802473277968,379.31168555425,3.0,True,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+450591608,14.53214078164728,0.0032173211575814,26.96650551145036,3.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+469564095,2.6708718033428007,0.0826998946574452,625.1313138347509,10.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+54279674,3.4210243697863483,0.0044694710311929,20.109640784181227,6.0,False,KNOWN_OTHER_TYPE,False,True,Gaia DR3 3035430207599331584,RS,,False,True,,,,False,,True,RS,0.33031237,False,,,False,,,,,,no_catalog_period
+59545210,1.2711852353554798,0.0009683557608875,53.60244250419099,35.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
