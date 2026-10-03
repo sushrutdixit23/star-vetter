@@ -39,6 +39,11 @@
     "model": "claude-haiku-4-5-20251001",
     "writeup": "TIC 139805341 is a newly discovered eclipsing binary star with an orbital period of just 2.9315 days. When the primary star passes in front of its companion, the system dims by 1.08 percent - a subtle change detected with high confidence by automated surveys. A secondary eclipse has not been observed. The candidate passed all data quality checks and does not appear in any of six existing variable-star catalogs, making it a genuinely novel discovery. While the machine-learning pipeline gives it a moderate confidence score of 0.29, the strong detection signal of 22.6 and independent confirmation through imaging analysis support its validity as a real astronomical object worthy of follow-up study."
   },
+  "140918728": {
+    "generated_at": "2026-10-03T06:04:23.519611+00:00",
+    "model": "claude-haiku-4-5-20251001",
+    "writeup": "TIC 140918728 is a candidate eclipsing binary star with an orbital period of 0.8221 days. TESS photometry reveals a primary eclipse that dims the system by 1.68 percent, detected with a signal-to-noise ratio of 230.0 using the Box Least Squares algorithm. No secondary eclipse was detected. Pixel-level image analysis confirms the signal originates near the target location, with a peak signal-to-noise of 59.1, though the centroid offset measures 3.3 arcseconds from the nominal position. The candidate does not appear in six major variable-star catalogs, making it potentially novel. The machine learning classifier assigned it a score of 0.42, indicating moderate confidence that this represents a real eclipsing binary system."
+  },
   "150230753": {
     "generated_at": "2026-09-27T23:56:53.772134+00:00",
     "model": "claude-haiku-4-5-20251001",
