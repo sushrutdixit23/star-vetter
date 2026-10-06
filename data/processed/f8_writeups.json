@@ -214,6 +214,11 @@
     "model": "claude-haiku-4-5-20251001",
     "writeup": "TIC 250549396 is a newly discovered eclipsing binary star system with an orbital period of just 2.1929 days. When the primary star passes in front of its companion, the system dims by 6.90 percent, a signal detected with exceptional clarity - a signal-to-noise ratio of 837.8. While no secondary eclipse was observed, independent analysis using difference imaging confirmed the signal with a peak signal-to-noise of 41.1, with the measured position offset by only 0.6 arcseconds from the target star. This candidate had never appeared in any of six major variable-star catalogs, making it a genuinely novel discovery. The system passed all data quality checks and scored 0.68 on the machine-learning model's reliability scale, indicating strong confidence that this is a real astrophysical object worthy of further study."
   },
+  "251663993": {
+    "generated_at": "2026-10-06T00:23:55.785344+00:00",
+    "model": "claude-haiku-4-5-20251001",
+    "writeup": "TIC 251663993 is a candidate eclipsing binary star with an orbital period of 7.310545 days, detected through automated analysis of TESS photometry. The primary eclipse produces a dimming of 0.05%, with a detection significance of 15.7 in the BLS periodogram. Pixel-level imaging analysis confirms the signal at the target location with a peak signal-to-noise of 7.1, though the centroid offset of 13.0 arcsec warrants attention. Notably, the eclipse depths alternate significantly between cycles, which suggests the initially measured period was actually half the true orbital period. No secondary eclipse was detected, and the candidate does not appear in six major variable-star catalogs, making it a novel find. The machine-learning screening score of 0.82 indicates moderate confidence that this represents a genuine astrophysical source rather than an artifact."
+  },
   "251898081": {
     "generated_at": "2026-09-27T10:29:37.752710+00:00",
     "model": "claude-haiku-4-5-20251001",
@@ -493,6 +498,11 @@
     "generated_at": "2026-10-05T05:54:37.838975+00:00",
     "model": "claude-haiku-4-5-20251001",
     "writeup": "TIC 376932335 is a candidate eclipsing binary star with an orbital period of 79.164465 days and a primary eclipse depth of 0.04 percent. Automated analysis of TESS photometry detected the signal with a significance of 15.8, and pixel-level imaging confirmed a peak signal-to-noise ratio of 16.8, though the centroid offset of 15.0 arcsec warrants further attention. No secondary eclipse was detected. The target does not appear in six major variable-star catalogs, making it a novel find. However, a data quality flag indicates that alternating eclipses differ significantly in depth, suggesting the true period may be double the initial measurement - the corrected value reported here is 79.164465 days. This open question does not affect the pixel-level confirmation or eclipse timing measurements, but it highlights an important caveat in the automated pipeline's initial period estimate."
+  },
+  "376932771": {
+    "generated_at": "2026-10-06T00:23:53.375333+00:00",
+    "model": "claude-haiku-4-5-20251001",
+    "writeup": "The automated TESS photometry pipeline has identified TIC 376932771 as a candidate eclipsing binary star with an orbital period of 8.000586 days. The system shows a primary eclipse with 3.69% dimming and a secondary eclipse detected at 6.9 sigma significance. Pixel-level analysis confirms the signal at the target location with a peak signal-to-noise ratio of 27.2, though the centroid offset of 2.4 arcseconds warrants attention. One data quality flag indicates that alternating eclipses differ significantly in depth, which the analysis attributes to the system's true period being double the initial detection value. The candidate does not appear in six major variable-star catalogs, and the detection achieved a signal-to-noise ratio of 598 in the box-least-squares search, suggesting a robust photometric signal worthy of further investigation."
   },
   "378367349": {
     "generated_at": "2026-09-30T22:44:32.858748+00:00",
