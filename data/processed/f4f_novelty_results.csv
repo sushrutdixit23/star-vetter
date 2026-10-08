@@ -1700,3 +1700,23 @@ TIC,bls_period,bls_depth,bls_snr,n_eclipses_observed,gap_edge_suspect,verdict,ex
 59490510,9.124822000495104,0.3299045841344841,1068.3729672514544,12.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
 60237914,9.104626792079417,0.1080283523395295,240.41083539027173,3.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
 995199494,1.5317140608600306,0.0999817293188458,202.75467356022008,16.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+19686730,1.2909390597430523,0.0154907359086562,43.32625045372889,14.0,False,KNOWN_OTHER_TYPE,False,True,Gaia DR3 3063116288338141696,DSCT|GDOR|SXPHE,,False,True,,,,False,,True,DSCT|GDOR|SXPHE,0.4685501,False,,,False,,,,,,no_catalog_period
+213498275,1.3322374964052053,0.2140419330319523,289.6716286935268,100.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+214331815,4.823101091293105,0.0243777678327812,52.06009498880268,5.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+229406613,35.52707228994014,0.0004947280874125,10.880198924500004,11.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+230128376,39.54967045903385,0.0003150665358822,19.434952001262857,8.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+287721165,0.6693623136824356,0.0129081535777711,157.7302103266709,157.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+295190446,2.523483212246063,0.0106601667542375,26.59090782502765,20.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+317388122,2.256509888567558,0.0088991739589412,191.5899798017849,24.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+320203681,2.153021334011286,0.0736640185058591,233.1174770456077,13.0,False,KNOWN_OTHER_TYPE,False,True,ASASSN-V J193923.07-571526.4,ROT,4.2751,True,True,J193923.07-571526.6,ROT,4.2751,False,,False,,,False,,,False,,,,,vsx,agrees_0.5x
+348865765,1.1272645390819875,0.3584923986955413,244.87067156210392,106.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+376940945,12.917362279558098,0.0046693886363057,19.890385986181744,3.0,True,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+394854368,26.41009010317472,0.6610507301758305,1052.6257914496744,3.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+43739689,0.6516068031668266,0.0027802815355941,49.237184747272245,33.0,False,KNOWN_OTHER_TYPE,False,True,Gaia DR3 4500243990901049216,DSCT|GDOR|SXPHE,,False,True,,,,False,,True,DSCT|GDOR|SXPHE,0.4550927,False,,,False,,,,,,no_catalog_period
+446931986,1.040383679407089,0.0031018968056049,16.729331375763294,20.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+450607749,10.740900008428396,0.0060110090941332,49.12545093575894,3.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+46105612,24.85741086038708,0.022431840479633,142.3460945072156,3.0,True,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+467913149,9.689504199233848,0.0153431314720215,63.73841435560569,4.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+59488906,13.93719620932046,0.0421252276907597,3299.2558488365985,4.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+65300490,1.2661828455255884,0.0143061565447956,102.18687029681688,18.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
+995199492,1.5317140608600306,0.0999817293188458,202.75467356022008,16.0,False,NOVEL,False,False,,,,False,True,,,,False,,False,,,False,,,False,,,,,,no_catalog_period
