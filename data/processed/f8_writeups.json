@@ -454,6 +454,11 @@
     "model": "claude-haiku-4-5-20251001",
     "writeup": "TIC 340965597 is a candidate eclipsing binary star with an orbital period of 8.418963 days, detected through automated analysis of TESS photometry. The primary eclipse produces a 7.23 percent dimming, while no secondary eclipse was detected. The transit signal has a detection significance of 477.0 in the Box Least Squares periodogram, and pixel-level difference imaging confirms a peak signal-to-noise of 92.8, though with a centroid offset of 2.5 arcseconds from the target position. The candidate does not appear in six major variable-star catalogs. However, a significant data quality flag indicates that alternating eclipses differ substantially in depth, which may point to a true orbital period twice the initially measured value. The automated machine learning screening assigns this target a score of 0.57, indicating moderate confidence in its status as a real eclipsing system."
   },
+  "341290373": {
+    "generated_at": "2026-10-11T22:33:40.996389+00:00",
+    "model": "claude-haiku-4-5-20251001",
+    "writeup": "TIC 341290373 is a candidate eclipsing binary star with an orbital period of 1.8748 days, detected through automated analysis of TESS photometry. The primary eclipse produces a 2.50% dimming signal with a detection significance of 209.9 on the BLS scale, while no secondary eclipse was detected. Pixel-level image analysis yields a difference-imaging peak signal-to-noise of 35.0, though the centroid offset of 1.7 arcsec raises an important limitation: TESS's resolution cannot confidently separate this target from a nearby bright star. The on-target determination relies on a centroid margin of only 0.029 pixels, well within the instrument's known systematic uncertainty of 0.10-0.3 pixels. The candidate does not appear in six major variable-star catalogs. Confirmation through additional observations would be needed to establish whether this signal originates from the intended target or from blended starlight."
+  },
   "342569756": {
     "generated_at": "2026-09-29T13:04:25.944877+00:00",
     "model": "claude-haiku-4-5-20251001",

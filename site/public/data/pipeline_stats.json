@@ -2,33 +2,33 @@
   "funnel": [
     {
       "label": "Targets sampled and fetch attempted",
-      "count": 12675
+      "count": 12825
     },
     {
       "label": "Usable light curve obtained",
-      "count": 8173
+      "count": 8262
     },
     {
       "label": "Passed statistical vetting gates",
-      "count": 1959
+      "count": 1975
     },
     {
       "label": "Flagged novel (no catalog match)",
-      "count": 1724
+      "count": 1737
     },
     {
       "label": "Survived contamination check, pixel-checked",
-      "count": 1881
+      "count": 1894
     },
     {
       "label": "Confirmed on-target",
-      "count": 185
+      "count": 186
     }
   ],
   "catalog_progress": {
     "total_catalog": 872720,
-    "sampled_to_date": 12675,
-    "fraction": 0.014523558529654413
+    "sampled_to_date": 12825,
+    "fraction": 0.014695434961958017
   },
   "catalogs": [
     "VSX",
