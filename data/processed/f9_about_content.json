@@ -1,36 +1,36 @@
 {
   "faqs": [
     {
-      "answer": "An eclipsing binary is a pair of stars orbiting each other in such an orientation that, from Earth's perspective, one star periodically passes in front of the other. When this happens, the combined brightness of the system dips slightly. By observing these brightness dips over time, astronomers can measure the orbital period and relative sizes of the stars.",
+      "answer": "An eclipsing binary is a system of two stars orbiting each other in such a way that, from our vantage point on Earth, one star regularly passes in front of the other. During these eclipses, the combined light we receive from the pair dips noticeably. By measuring how much light is lost and how long each eclipse lasts, astronomers can infer properties like orbital period and the relative sizes and brightness of the two stars.",
       "question": "What is an eclipsing binary star?"
     },
     {
-      "answer": "A 'candidate' is a TESS light curve that shows statistical signs of being an eclipsing binary and does not match any known catalog. A 'confirmed' candidate is one that has passed the automated pixel-level check, meaning the signal is verified to originate from the target star itself and not from a nearby source. 'Confirmed' here means it passed Star Vetter's internal vetting process, not that it has been scientifically validated or added to an official catalog.",
-      "question": "What does 'candidate' versus 'confirmed' mean on this site?"
+      "answer": "A candidate is a star system that the automated pipeline has flagged as showing an eclipse-like pattern in TESS data and that has passed statistical checks and cross-matching against known catalogs. A confirmed candidate is one that has also passed the automated pixel-level check, which verifies that the eclipse signal comes from the target star itself rather than from nearby background stars or instrumental artifacts. Confirmation here means the object has passed this pipeline's own automated vetting; it does not mean the candidate has been scientifically validated by independent observers or included in official astronomical databases.",
+      "question": "What is the difference between a 'candidate' and 'confirmed' on this site?"
     },
     {
-      "answer": "The machine learning model is a hist_gradient_boosting classifier trained on 1947 hand-labeled examples from this project. It provides a second opinion on candidate quality and outperforms the rule-based baseline used to decide which candidates get pixel-checked. The score helps quantify confidence, but it is not currently used to gate which candidates receive automated vetting or to prioritize any downstream follow-up.",
-      "question": "What is the machine learning score shown for each candidate?"
+      "answer": "Star Vetter uses a machine-learning model (gradient boosting, trained on 1,967 labeled examples) that provides a second opinion on whether a candidate is likely to be real. The model outperforms the rule-based baseline used in the main pipeline. However, the ML score is a research tool only; it does not currently decide which candidates are checked or move forward through the vetting stages. It is not used to prioritize candidates for others' follow-up work.",
+      "question": "What is the machine-learning screening score?"
     },
     {
-      "answer": "After a candidate passes statistical vetting and a novelty check against six known variable-star catalogs, it undergoes an automated pixel-level check. This process examines whether the eclipse signal originates from the target star's pixels or instead comes from a nearby contaminating source. This check is fully automated and confirms that the signal is on-target.",
-      "question": "How does Star Vetter check whether a candidate is real?"
+      "answer": "The pixel-level check is a fully automated process that inspects the spatial distribution of the eclipse signal within TESS's pixel data. It confirms whether the dip in brightness originates from the target star at the expected position, or whether the signal is contaminated by a nearby star. Candidates that pass this check are marked as confirmed on-target; those that fail are removed from the confirmed list.",
+      "question": "How is each candidate checked at the pixel level?"
     },
     {
-      "answer": "TESS observes with a regular cadence, which can sometimes create ambiguity in measured periods. Star Vetter includes a period-alias check: it compares the eclipse depth of odd-numbered eclipses against even-numbered eclipses. Large differences suggest the true period may be half (or another fraction of) the measured value. This test flags candidates where aliasing is suspected, but such candidates are not automatically rejected.",
-      "question": "What happens if the orbital period might be aliased?"
+      "answer": "TESS observes stars at a fixed cadence, which can sometimes make it hard to distinguish the true orbital period from false aliases - particularly the half-period, where twice as many eclipses are counted per orbit. To check for this, Star Vetter compares the average depth of odd-numbered eclipses against even-numbered eclipses. If they differ significantly, it suggests the period is not aliased. If they are suspiciously similar, an alias flag is raised on the candidate's detail page.",
+      "question": "What happens if a candidate's eclipse period looks aliased?"
     },
     {
-      "answer": "Yes. Each confirmed candidate on Star Vetter's site includes a link to the TESS light curve data and orbital parameters measured from it. You can download the data and examine the light curve yourself, apply your own analysis, or cross-reference the candidate against other catalogs and follow-up surveys.",
-      "question": "Can I verify a result myself?"
+      "answer": "Yes. All confirmed candidates are listed on this site with links to the TESS data and plots showing the detected eclipses. You can download the light curve and examine it yourself using free software tools. The candidate's detail page also includes its orbital period and eclipse depths, measured directly from the light curve, which you can use to check the detection independently.",
+      "question": "Can I verify a confirmed candidate myself?"
     },
     {
-      "answer": "Star Vetter's pipeline ends when a candidate is listed on this site. The project does not perform follow-up spectroscopy, add candidates to official catalogs, contact other researchers, or track what happens to these candidates afterward. The site provides the raw findings and makes them freely available for others to use, study, or follow up on as they choose.",
-      "question": "What happens after Star Vetter lists a candidate?"
+      "answer": "Being listed on Star Vetter is the end of this automated pipeline's work. The site provides a clean, vetted catalog of eclipsing-binary candidates for the astronomical community. What happens next - whether a candidate is observed by other facilities, incorporated into official catalogs, or studied in detail - is beyond the scope of this project. We do not track follow-up observations or track whether candidates eventually become part of the scientific record.",
+      "question": "What happens to a candidate after it appears on Star Vetter?"
     }
   ],
-  "generated_at": "2026-10-13T01:54:58.684684+00:00",
+  "generated_at": "2026-10-13T14:37:24.482794+00:00",
   "model": "claude-haiku-4-5-20251001",
-  "n_confirmed_at_generation": 192,
-  "narrative": "Star Vetter automatically finds eclipsing binary star systems in data from NASA's TESS satellite and checks whether the signals are real. TESS observes hundreds of thousands of stars, and when two stars orbit each other and eclipse each other from our viewpoint, TESS records a telltale dip in brightness. The project starts with a large sample of TESS targets, applies statistical tests to flag promising candidates, cross-checks them against six existing variable-star catalogs to avoid re-cataloging known systems, and then performs an automated pixel-level check to confirm the signal comes from the target star itself rather than a nearby source. The result is a ranked list of 192 confirmed candidates. The vetting pipeline emphasizes eliminating false positives: only about 9.9 percent of candidates that pass statistics and novelty checks survive the pixel-level test. The machine learning model trained on these vetted examples provides an independent scoring of candidate quality, beating the rule-based baseline while helping quantify confidence in each result."
+  "n_confirmed_at_generation": 193,
+  "narrative": "Star Vetter automatically identifies and vets candidate eclipsing binary stars in data from NASA's TESS satellite. An eclipsing binary is a pair of stars orbiting each other such that, from Earth, one star periodically passes in front of the other, dimming the light we receive. TESS continuously monitors hundreds of thousands of stars; Star Vetter scans these light curves for the telltale dimming pattern of an eclipse. Each candidate is then checked against six major variable-star catalogs to filter out known objects, passed through statistical vetting gates to ensure the eclipse signal is real, and finally examined at the pixel level to confirm the light originates from the target star itself rather than a nearby contaminant. Of roughly 13,400 targets sampled so far, about 1,900 reached pixel-level inspection, and 193 have been confirmed on-target. The high automation and multi-stage filtering make Star Vetter a reliable tool for building a catalog of eclipsing binaries worthy of follow-up study, though individual candidates may carry caveats noted on their detail pages."
 }
