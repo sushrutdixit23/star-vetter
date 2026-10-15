@@ -94,6 +94,11 @@
     "model": "claude-haiku-4-5-20251001",
     "writeup": "TIC 178331798 is a candidate eclipsing binary star with an orbital period of 1.8205 days. Automated analysis of TESS photometry detected a primary eclipse causing a 2.45% dimming of starlight, with a strong signal-to-noise ratio of 79.9 from the box-least-squares search algorithm. No secondary eclipse was detected. Pixel-level image analysis provided a difference-imaging confirmation with a signal-to-noise peak of 7.9, though the centroid offset measured 9.0 arcsec from the target. The candidate does not appear in six major variable-star catalogs, making it a previously unlisted object. The machine-learning screening score of 0.35 indicates moderate confidence that this represents a real stellar target. This candidate has passed all automated data quality checks."
   },
+  "178354956": {
+    "generated_at": "2026-10-15T21:59:26.684715+00:00",
+    "model": "claude-haiku-4-5-20251001",
+    "writeup": "TIC 178354956 is a candidate eclipsing binary star with an orbital period of 2.888565 days, identified through automated analysis of TESS photometry and pixel-level imaging. The primary eclipse produces a 6.67 percent dimming, detected with a signal-to-noise ratio of 71.6 in the periodogram analysis and confirmed at the pixel level with a peak signal-to-noise of 74.1. No secondary eclipse was detected. The target does not appear in six major variable-star catalogs, making it a novel candidate. However, an important open question remains: the eclipse depths alternate significantly between odd and even cycles, which suggests the true orbital period may be double the initially measured value. Pixel-level confirmation and timing measurements support the corrected period of 2.888565 days reported here."
+  },
   "188173846": {
     "generated_at": "2026-10-10T06:23:58.132580+00:00",
     "model": "claude-haiku-4-5-20251001",
