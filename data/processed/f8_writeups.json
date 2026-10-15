@@ -1014,6 +1014,11 @@
     "model": "claude-haiku-4-5-20251001",
     "writeup": "Astronomers have discovered a new eclipsing binary star system called TIC 86956236, in which two stars orbit each other every 70.84 days. When the primary star passes in front of its companion, the system dims by about 5 percent - a dip significant enough to be detected from space-based observations. The discovery was made possible by analyzing data with advanced algorithms that identified subtle brightness changes in the star's light. This system does not appear in existing catalogs of known variable stars, making it a genuine new find. While a secondary eclipse from the companion star was not detected, multiple confirmation tests including detailed pixel-level analysis support that this is indeed a real eclipsing binary rather than a false signal or background object."
   },
+  "94125661": {
+    "generated_at": "2026-10-15T11:50:47.533203+00:00",
+    "model": "claude-haiku-4-5-20251001",
+    "writeup": "TIC 94125661 is a candidate eclipsing binary star identified through automated analysis of TESS photometry data. The system shows a primary eclipse that dims the star by 25.18% with an orbital period of 3.2293 days. A secondary eclipse was also detected at a signal-to-noise ratio of 6.1 sigma, occurring near orbital phase 0.49, suggesting two stars orbiting each other. Pixel-level image analysis confirms the signal originates from the target location, with a peak signal-to-noise ratio of 52.2. The overall detection significance reaches 239.2 in the Box Least Squares analysis. The candidate does not appear in six major variable-star catalogs, making it a novel candidate for follow-up study by other observers and instruments."
+  },
   "942471837": {
     "generated_at": "2026-09-28T12:51:46.244290+00:00",
     "model": "claude-haiku-4-5-20251001",
