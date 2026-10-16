@@ -124,6 +124,11 @@
     "model": "claude-haiku-4-5-20251001",
     "writeup": "TIC 216935767 is a candidate eclipsing binary star identified through automated analysis of TESS photometry. The system shows a primary eclipse with a depth of 3.00 percent and an orbital period of 0.9859 days, detected with a signal-to-noise ratio of 281.9 using the Box Least Squares algorithm. Pixel-level image analysis confirms the signal at the target location with a peak signal-to-noise of 27.3, though a centroid offset of 1.4 arcsec was measured. No secondary eclipse was detected in the data. The candidate does not appear in any of six major variable-star catalogs, making it a potentially new object. The pipeline's machine learning model assigned this target a screening score of 0.30, and the light curve passed all automated data quality checks."
   },
+  "219800831": {
+    "generated_at": "2026-10-16T05:05:33.883766+00:00",
+    "model": "claude-haiku-4-5-20251001",
+    "writeup": "TIC 219800831 is a candidate eclipsing binary star with an orbital period of 36.8877 days. The system shows a primary eclipse with a depth of 0.14% dimming, detected with a signal-to-noise ratio of 38.5 using automated light-curve analysis. Pixel-level imaging confirms a peak signal-to-noise of 22.1, though the centroid offset of 16.0 arcsec from the target warrants consideration in follow-up observations. No secondary eclipse was detected in the available data. This candidate does not appear in any of six major variable-star catalogs, making it a novel candidate. The automated machine-learning screening assigned it a score of 0.78 out of 1.0, indicating a reasonably high likelihood of being a true eclipsing system."
+  },
   "219892238": {
     "generated_at": "2026-10-05T14:57:55.500068+00:00",
     "model": "claude-haiku-4-5-20251001",
@@ -423,6 +428,11 @@
     "generated_at": "2026-10-15T17:49:55.879394+00:00",
     "model": "claude-haiku-4-5-20251001",
     "writeup": "TIC 308574817 is a candidate eclipsing binary star with an orbital period of 4.6 days, detected in automated TESS photometry data. The system shows a primary eclipse with a dimming depth of 11.30 percent, while no secondary eclipse was detected. The transit signal achieved a high detection significance of 132.8 in the BLS analysis, and pixel-level difference imaging confirmed the signal at the target location with a peak signal-to-noise of 23.8, though the centroid offset of 0.7 arcseconds warrants note. The candidate does not appear in six major variable-star catalogs. However, a data quality flag indicates that alternating eclipse depths differ significantly, suggesting the true orbital period may be double the initial measurement. Despite this period ambiguity, pixel-level confirmation and eclipse timing remain consistent with the corrected 4.6-day period reported here."
+  },
+  "308578336": {
+    "generated_at": "2026-10-16T05:05:31.541341+00:00",
+    "model": "claude-haiku-4-5-20251001",
+    "writeup": "TIC 308578336 is a candidate eclipsing binary star detected through automated analysis of TESS photometry. The system shows a primary eclipse with a depth of 17.45 percent and completes its orbital cycle every 4.2766 days. A secondary eclipse was detected at a phase of 0.30 with 7.3 sigma significance, suggesting a close binary pair. The automated detection achieved a signal-to-noise ratio of 179.8 using the Box Least Squares method, and pixel-level difference imaging confirmed the signal with a peak signal-to-noise of 73.7. The source does not appear in six cross-checked variable-star catalogs, making it a previously unknown candidate. While the machine-learning screening score of 0.36 indicates moderate confidence, the candidate passed all data quality checks without flags."
   },
   "309656476": {
     "generated_at": "2026-09-27T10:30:04.830977+00:00",
