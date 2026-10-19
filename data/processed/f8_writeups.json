@@ -19,6 +19,11 @@
     "model": "claude-haiku-4-5-20251001",
     "writeup": "TIC 111240209 is a candidate eclipsing binary star identified through automated analysis of TESS photometry. The system shows a primary eclipse with 16.21% dimming and an orbital period of 66.490212 days, though initial detection flagged alternating eclipses with significantly different depths - a pattern indicating the true period is twice what initial analysis suggested. Pixel-level imaging confirms the signal originates from the target location, with a centroid offset of 2.2 arcseconds and a difference-imaging peak signal-to-noise of 59.5. The object does not appear in six major variable-star catalogs, and the detection achieves a BLS signal-to-noise of 1156.6. The machine-learning screening model assigns this candidate a score of 0.90, indicating high confidence in its physical reality as an eclipsing binary system."
   },
+  "114549849": {
+    "generated_at": "2026-10-19T05:28:12.055874+00:00",
+    "model": "claude-haiku-4-5-20251001",
+    "writeup": "TIC 114549849 is a candidate eclipsing binary star system detected through automated analysis of TESS photometry. The system shows a primary eclipse with a depth of 21.72 percent and an orbital period of 8.6790 days. A secondary eclipse was also detected at 7.7 sigma significance, located at phase -0.41. The binary signal achieved a detection significance of 286.0 in the box-least-squares search, and pixel-level image analysis confirmed the signal with a difference-imaging peak signal-to-noise ratio of 54.6 and a centroid offset of 2.0 arcseconds from the target. This candidate does not appear in any of six major variable-star catalogs, making it a novel find. The machine-learning screening score of 0.55 indicates moderate confidence that this represents a genuine physical system."
+  },
   "119459681": {
     "generated_at": "2026-09-27T10:29:22.156986+00:00",
     "model": "claude-haiku-4-5-20251001",
