@@ -2610,3 +2610,74 @@ TIC,role,verdict,sector,lc_pts_in_sector,t0_shift_phase,lc_dip_sigma,compactness
 308640702,candidate,OFF_TARGET,8,861,0.0050000000000000044,37.48164884355808,1.0,19,369,19.54910150046092,38.95440458819656,2.0289399351471245,42.607738638089614,836175639,0.06493501878917823,3.9377000000000013,22,
 976925030,candidate,INCONCLUSIVE,11,1080,0.020000000000000018,6.730182888916884,0.1202663279177711,96,498,2.7964709295975854,3.90332927204257,0.6013282281744327,12.627892791663086,450603572,0.2884840162326301,3.1508000000000003,756,difference image too weak to locate the source
 59823538,candidate,INCONCLUSIVE,12,1045,-0.012500000000000011,7.434955958365775,0.42842104065236325,60,417,-1.0278086697483166,5.2534055026847915,5.5428316724403635,116.39946512124763,1330784183,0.5422317416802055,3.151,313,dimming is spread across the cutout rather than one star (background/systematics) - source cannot be located
+313005146,candidate,INCONCLUSIVE,66,11140,0.1725,3.3397945969118603,,,,,,,,,,,,the light curve itself shows no clear eclipse in this sector
+446812280,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+376867620,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+96680649,candidate,ON_TARGET,59,9718,0.0,602.9571738108203,0.6419848431700415,443,4511,47.15246461916894,23.17340189805955,0.5277244636850446,11.082213737385935,96680645,2.307025042248686,3.3016000000000005,1,
+86722937,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+272922818,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+394981103,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+59411511,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+468122704,candidate,ON_TARGET,13,1113,0.0,41.67517881640175,0.8664324236070937,23,460,34.329689105668805,23.974380746666984,0.17195460250182149,3.611046652538251,468122707,2.5229116779228744,0.45030000000000037,3,
+214167734,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+378700406,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+232312285,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+40066223,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+318125386,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+244822281,candidate,OFF_TARGET,81,11057,0.0,232.75484263279944,0.7021793920979282,74,4262,21.612625071230728,191.45021317683938,2.6821005435242853,56.32411141400999,244822268,0.14407300430575332,-2.403599999999999,5,
+373564756,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+257922637,candidate,ON_TARGET,70,9079,0.0,268.4797551053503,0.8292460393650256,216,4090,155.52766531552925,48.65794356076156,0.10096440720383998,2.1202525512806396,,,,0,
+178432639,candidate,INCONCLUSIVE,7,1071,0.0,73.00328894025093,,0,0,,,,,,,,,too few in/out-of-eclipse cadences in this sector
+124404442,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+373573454,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+230362858,candidate,OFF_TARGET,12,1054,0.0025000000000000577,57.96260809640714,0.6973158549144268,91,464,24.99307773076556,13.698513623878588,1.5039004914776875,31.581910321031437,1237045529,0.09054096536192287,3.667300000000001,731,
+43712813,candidate,ON_TARGET,5,1123,0.0050000000000000044,211.38577294024233,0.7936294524028049,43,461,48.50460488929424,37.91051954327063,0.18405651080180643,3.865186726837935,43712827,5.237881054888124,2.6884999999999994,1,
+373508731,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+318109813,candidate,ON_TARGET,10,1106,-0.007500000000000007,104.60510434278095,0.9234865286137498,31,446,65.81068193110914,27.642475621745305,0.09452141191020083,1.9849496501142174,318109796,0.3103295073491582,0.2627000000000006,169,
+340455429,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+264124220,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+153902577,candidate,OFF_TARGET,12,1029,-0.0025000000000000022,69.82480787492942,0.5644567576936026,33,399,1.6855106880238941,8.478438571814541,5.326895372045093,111.86480281294695,1271479538,0.36982206729803613,2.6651999999999987,392,
+221836286,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+468116664,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+373595702,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+182536219,candidate,ON_TARGET,34,3386,0.0,80.83443435089215,0.8345601875223755,35,1408,25.092965224154014,15.862729413649756,0.08452963555434677,1.7751223466412822,182404282,1.7201141136037197,2.9199,12,
+257924522,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+318824922,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+290612192,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+440937410,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+977836954,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+447350975,candidate,ON_TARGET,12,1024,0.0,82.18161767963842,0.812624493691309,71,496,32.640084831180566,8.87373331510927,0.3296919787734349,6.923531554242134,447350979,0.8348401473901993,4.008300000000002,39,
+329980189,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+224280833,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+469453661,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+349212017,candidate,INCONCLUSIVE,80,11036,0.0,94.0289468047987,0.08965760346110827,8,3669,-8.55422012704843,43.850569463646785,7.325343601245666,153.83221562615898,349212028,5.576092329744867,-0.5375000000000014,10,dimming is spread across the cutout rather than one star (background/systematics) - source cannot be located
+389048677,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+468096482,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+54399435,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+41867756,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+229078864,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+214196247,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+185993751,candidate,OFF_TARGET,15,1189,-0.0025000000000000022,23.13715746968208,0.961833958654133,24,472,5.677272023537148,25.575351337928897,1.5636905367567984,32.83750127189276,185993756,0.058520533723154355,0.7137999999999991,48,
+42519202,candidate,OFF_TARGET,12,1085,0.24,27.372367059092863,1.0,26,487,3.518517186773234,17.99331511254028,1.2697637817931833,26.66503941765685,42519280,0.15167524015868017,3.2026000000000003,305,
+258005374,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+318977751,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+172626599,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+441773632,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+300349962,candidate,OFF_TARGET,13,1115,0.0,19.98476326481694,0.7801559870498405,17,512,14.278655097380293,107.7422666897645,2.112629098744057,44.3652110736252,300349966,0.21468399800126176,-2.1304,37,
+378579323,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+468095625,candidate,OFF_TARGET,10,1106,0.0050000000000000044,27.048491220495414,0.9188831130986432,235,243,7.69069582829909,46.86977741190484,2.1745179795930376,45.664877571453786,468095729,0.09209507633591797,-2.159799999999999,312,
+330106685,candidate,OFF_TARGET,11,1077,0.0,27.48531966550774,0.980793388540808,59,488,12.377027585997485,22.943600175500144,1.1479231913723735,24.106387018819845,330106648,0.08815415655476123,-2.257900000000001,556,
+59378262,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+140872709,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+17529896,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+232480151,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+378695976,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+259157825,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+290525180,candidate,OFF_TARGET,10,1106,-0.0025000000000000022,13.679429163352271,0.8783319604341258,97,450,3.9090561104260835,29.200015554548823,1.7207558865301,36.1358736171321,917837743,0.08572091768197704,3.8162999999999982,866,
+405490101,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+65068061,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+156246971,candidate,OFF_TARGET,6,903,0.01749999999999996,20.790081547570278,0.7891946799821145,45,382,11.34949060635042,35.58031209349479,3.447761104900982,72.40298320292062,156246950,0.15315379532782636,-2.8310999999999993,63,
+403155611,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
+378723309,candidate,OFF_TARGET,10,1106,-0.015000000000000013,8.045838224613373,0.8997666009114629,89,447,9.554522039910815,52.31248848638648,1.7422582198744956,36.58742261736441,378723394,0.09102955427085158,4.057500000000001,661,
+230062203,candidate,INCONCLUSIVE,57,10259,0.4175,4.728130903546109,,,,,,,,,,,,the light curve itself shows no clear eclipse in this sector
+108645781,candidate,INCONCLUSIVE,,,,,,,,,,,,,,,,"error: FileNotFoundError(2, 'No such file or directory')"
