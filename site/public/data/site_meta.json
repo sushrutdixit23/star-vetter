@@ -1,8 +1,8 @@
 {
   "last_run": {
-    "iso": "2026-10-22T04:35:29+00:00",
-    "display": "22 Oct 2026, 04:35 (UTC+00:00)",
-    "log_file": "orchestrator_20261022_043529.log"
+    "iso": "2026-10-22T11:43:38+00:00",
+    "display": "22 Oct 2026, 11:43 (UTC+00:00)",
+    "log_file": "orchestrator_20261022_114338.log"
   },
   "runs_logged": 1,
   "dossiers_available": [
@@ -265,7 +265,9 @@
     43712813,
     318109813,
     182536219,
-    447350975
+    447350975,
+    59363206,
+    272885856
   ],
   "combined_dossier": "/dossiers/star_vetter_dossiers.pdf"
 }
