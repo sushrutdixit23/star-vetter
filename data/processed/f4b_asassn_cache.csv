@@ -3236,3 +3236,40 @@ TIC,asassn_queried_ok,asassn_match,asassn_name,asassn_type,asassn_period,asassn_
 86524646,True,False,,,,
 975977866,True,False,,,,
 320573517,True,False,,,,
+172465577,False,False,,,,call did not finish within 60s
+200328899,True,False,,,,
+222002983,True,False,,,,
+223397307,True,False,,,,
+257819083,True,False,,,,
+290707810,True,False,,,,
+300376849,True,False,,,,
+307896828,False,False,,,,"HTTPSConnectionPool(host='vizier.cds.unistra.fr', port=443): Max retries exceeded with url: /viz-bin/votable (Caused by NewConnectionError(""HTTPSConnection(host='vizier.cds.unistra.fr', port=443): Fai"
+314105729,False,False,,,,"HTTPSConnectionPool(host='vizier.cds.unistra.fr', port=443): Max retries exceeded with url: /viz-bin/votable (Caused by NewConnectionError(""HTTPSConnection(host='vizier.cds.unistra.fr', port=443): Fai"
+319158885,False,False,,,,"HTTPSConnectionPool(host='vizier.cds.unistra.fr', port=443): Max retries exceeded with url: /viz-bin/votable (Caused by NewConnectionError(""HTTPSConnection(host='vizier.cds.unistra.fr', port=443): Fai"
+344137970,False,False,,,,"HTTPSConnectionPool(host='vizier.cds.unistra.fr', port=443): Max retries exceeded with url: /viz-bin/votable (Caused by NewConnectionError(""HTTPSConnection(host='vizier.cds.unistra.fr', port=443): Fai"
+344228260,False,False,,,,"HTTPSConnectionPool(host='vizier.cds.unistra.fr', port=443): Max retries exceeded with url: /viz-bin/votable (Caused by NewConnectionError(""HTTPSConnection(host='vizier.cds.unistra.fr', port=443): Fai"
+378816725,False,False,,,,"HTTPSConnectionPool(host='vizier.cds.unistra.fr', port=443): Max retries exceeded with url: /viz-bin/votable (Caused by NewConnectionError(""HTTPSConnection(host='vizier.cds.unistra.fr', port=443): Fai"
+405520729,False,False,,,,"HTTPSConnectionPool(host='vizier.cds.unistra.fr', port=443): Max retries exceeded with url: /viz-bin/votable (Caused by NewConnectionError(""HTTPSConnection(host='vizier.cds.unistra.fr', port=443): Fai"
+446684095,False,False,,,,"HTTPSConnectionPool(host='vizier.cds.unistra.fr', port=443): Max retries exceeded with url: /viz-bin/votable (Caused by NewConnectionError(""HTTPSConnection(host='vizier.cds.unistra.fr', port=443): Fai"
+447423512,False,False,,,,"HTTPSConnectionPool(host='vizier.cds.unistra.fr', port=443): Max retries exceeded with url: /viz-bin/votable (Caused by NewConnectionError(""HTTPSConnection(host='vizier.cds.unistra.fr', port=443): Fai"
+450502046,False,False,,,,"HTTPSConnectionPool(host='vizier.cds.unistra.fr', port=443): Max retries exceeded with url: /viz-bin/votable (Caused by NewConnectionError(""HTTPSConnection(host='vizier.cds.unistra.fr', port=443): Fai"
+48752888,False,False,,,,"HTTPSConnectionPool(host='vizier.cds.unistra.fr', port=443): Max retries exceeded with url: /viz-bin/votable (Caused by NewConnectionError(""HTTPSConnection(host='vizier.cds.unistra.fr', port=443): Fai"
+59694577,True,False,,,,
+84503343,False,False,,,,call did not finish within 60s
+93952819,False,False,,,,503 Server Error: Service Unavailable for url: https://vizier.cds.unistra.fr/viz-bin/votable
+975879954,False,False,,,,"HTTPSConnectionPool(host='vizier.cds.unistra.fr', port=443): Max retries exceeded with url: /viz-bin/votable (Caused by NewConnectionError(""HTTPSConnection(host='vizier.cds.unistra.fr', port=443): Fai"
+172465577,True,False,,,,
+307896828,True,False,,,,
+314105729,True,False,,,,
+319158885,True,False,,,,
+344137970,True,False,,,,
+344228260,True,False,,,,
+378816725,True,False,,,,
+405520729,True,False,,,,
+446684095,True,False,,,,
+447423512,True,False,,,,
+450502046,True,False,,,,
+48752888,True,False,,,,
+84503343,True,False,,,,
+93952819,True,False,,,,
+975879954,True,False,,,,
