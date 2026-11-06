@@ -22,6 +22,7 @@ except ImportError as exc:
 # same 1x/2x/0.5x/3x/1/3x period comparison as the F4 novelty step; this file
 # must sit in the same folder as f4_novelty.py
 from f4_novelty import best_period_ratio_flag
+from upstream import EXIT_UPSTREAM_DOWN, UpstreamDown, FailureBreaker, query_tic_chunked
 
 # Read-only diagnostic: could a NEIGHBOURING star be the real source of each
 # candidate's eclipse? TESS pixels are 21 arcsec, so light from stars within
@@ -148,16 +149,15 @@ def main():
 
     print(f"\nFetching target brightness + TIC contamination ratio for {len(nov)} stars...")
     try:
-        tinfo = call_with_timeout(Catalogs.query_criteria, kwargs={"catalog": "Tic", "ID": nov["TIC"].tolist()},
-                                   timeout=CATALOG_TIMEOUT_SEC)
-    except TimeoutError:
-        print(f"\nMAST TIC catalog did not respond within {CATALOG_TIMEOUT_SEC}s.")
-        print("Check your connection (and firewall/proxy settings if any) and try again.")
-        sys.exit(1)
-    except Exception as exc:
-        print(f"\nCould not reach the MAST TIC catalog: {exc}")
-        print("This needs outbound internet access to mast.stsci.edu. Check your connection and try again.")
-        sys.exit(1)
+        # chunked: one 3,350-ID request timed out on 2026-11-06
+        tinfo = query_tic_chunked(
+            lambda ids: Catalogs.query_criteria(catalog="Tic", ID=ids),
+            nov["TIC"].tolist(), timeout=CATALOG_TIMEOUT_SEC)
+    except UpstreamDown as exc:
+        print(f"\n{exc}")
+        print(f"Stopping without writing results (exit code {EXIT_UPSTREAM_DOWN}); "
+              f"the orchestrator will not retry this.")
+        sys.exit(EXIT_UPSTREAM_DOWN)
     tinfo = tinfo[["ID", "ra", "dec", "Tmag", "contratio"]].to_pandas()
     tinfo = tinfo.rename(columns={"ID": "TIC", "Tmag": "target_Tmag"})
     tinfo["TIC"] = tinfo["TIC"].astype(int)
@@ -174,8 +174,14 @@ def main():
     print(f"Querying TIC neighbours within {SEARCH_RADIUS_ARCSEC:.0f} arcsec "
           f"({SEARCH_RADIUS_ARCSEC / TESS_PIXEL_ARCSEC:.0f} TESS pixels) for {len(todo)} star(s)...")
     failed = []
+    breaker = FailureBreaker(5)
     for i, (_, r) in enumerate(todo.iterrows()):
         rows, err = query_neighbours(r["ra"], r["dec"], int(r["TIC"]))
+        if breaker.record(rows is not None):
+            print(f"\nMAST NOT ANSWERING: {breaker.consecutive} neighbour queries in a row failed. "
+                  f"Stopping instead of timing out on the remaining {len(todo) - i - 1}.")
+            print(f"Writing no results (exit code {EXIT_UPSTREAM_DOWN}); the orchestrator will not retry.")
+            sys.exit(EXIT_UPSTREAM_DOWN)
         if rows is None:
             failed.append(int(r["TIC"]))
             print(f"  WARNING: TIC {int(r['TIC'])} neighbour query failed: {repr(err)[:200]}")
@@ -185,6 +191,12 @@ def main():
         if (i + 1) % 20 == 0:
             print(f"  ... {i + 1}/{len(todo)} queried (safe to stop; re-run resumes)")
         time.sleep(0.05)
+
+    if failed and len(failed) > 0.02 * len(df):
+        print(f"\n{len(failed)} of {len(df)} stars have no neighbour data (limit 2%). A star with "
+              f"no neighbour data would be treated as uncontaminated, so no results are written "
+              f"(exit code {EXIT_UPSTREAM_DOWN}).")
+        sys.exit(EXIT_UPSTREAM_DOWN)
 
     nb = pd.read_csv(cache_path)
     nb = nb[nb["target_TIC"].isin(df["TIC"])]

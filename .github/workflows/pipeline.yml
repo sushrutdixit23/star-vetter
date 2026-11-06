@@ -20,10 +20,22 @@ concurrency:
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
-    timeout-minutes: 240
+    # A healthy run takes 30-45 minutes. 150 leaves room for a slow MAST day
+    # but stops a stuck run from holding the queue for 4 hours (every scheduled
+    # run from 2026-11-01 was cancelled at the old 240-minute limit).
+    timeout-minutes: 150
+    env:
+      # stream logs live so Actions timestamps show when stages really ran
+      PYTHONUNBUFFERED: "1"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      # Fails in about a minute, before any work, if MAST or the CDS services
+      # are down. Without this a run spends hours timing out and then either
+      # commits wrong data or gets cancelled. See upstream.py.
+      - name: Pre-flight - are the catalog services up?
+        run: python3 upstream.py
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -68,7 +80,10 @@ jobs:
         working-directory: site
         run: npm run build
 
+      # Commit and deploy only from main, so a test run started on another
+      # branch (workflow_dispatch) can never push data or publish the site.
       - name: Commit pipeline results
+        if: github.ref == 'refs/heads/main'
         run: |
           git config user.name "star-vetter-bot"
           git config user.email "actions@users.noreply.github.com"
@@ -98,6 +113,7 @@ jobs:
           fi
 
       - name: Deploy to Vercel
+        if: github.ref == 'refs/heads/main'
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: team_ob7v7MrM3oA18xhRZwbqff7n
@@ -106,3 +122,16 @@ jobs:
           npx vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
           npx vercel build --prod --token="$VERCEL_TOKEN"
           npx vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"
+
+      # Keep the orchestrator log and run record when anything fails: they are
+      # not committed (data/logs is git-ignored) and vanish with the runner.
+      - name: Upload run logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pipeline-logs-${{ github.run_id }}
+          path: |
+            data/logs/
+            data/runs/
+          retention-days: 14
+          if-no-files-found: ignore
