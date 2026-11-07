@@ -240,7 +240,7 @@ export default async function CandidatePage({ params }: { params: Promise<{ tic:
               )}
             </div>
             <div className="flex flex-col justify-center">
-              <OrbitSchematic teff={d?.catalog.teff_k ?? null} period={period} t0={d ? d.t0_btjd : c.ephemeris.t0_btjd} depth1={d?.primary ? d.primary.depth : null} depth2={d?.secondary && d.secondary.detected ? d.secondary.depth : null} secPhase={d?.secondary && d.secondary.detected ? d.secondary.phase : null} duration={d ? d.duration_days : s.duration_days} depth2Upper={d?.secondary && !d.secondary.detected ? Math.max(d.secondary.depth, 0) + 5 * d.secondary.err : null} curve={orbitCurve} surface={getSurfaceEvidenceFor(tic)} variability={getVariabilityFor(tic)} sinusoid={Boolean(d?.periodicity?.flag)} className="w-full text-fg" />
+              <OrbitSchematic teff={d?.catalog.teff_k ?? null} period={period} t0={d ? d.t0_btjd : c.ephemeris.t0_btjd} depth1={d?.primary ? d.primary.depth : null} depth2={d?.secondary && d.secondary.detected ? d.secondary.depth : null} secPhase={d?.secondary && d.secondary.detected ? d.secondary.phase : null} duration={d ? d.duration_days : s.duration_days} depth2Upper={d?.secondary && !d.secondary.detected ? Math.max(d.secondary.depth, 0) + 5 * d.secondary.err : null} curve={orbitCurve} surface={getSurfaceEvidenceFor(tic)} variability={getVariabilityFor(tic)} zoom={d?.zoom ?? null} sinusoid={Boolean(d?.periodicity?.flag)} className="w-full text-fg" />
             </div>
             <div className="xl:sticky xl:top-20">
               <NextEclipses pred={getPredictionFor(tic)} />

@@ -3,7 +3,8 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import StarBody from "../StarBody";
 import StarScene, { type SceneStatus } from "./StarScene";
-import type { SurfaceStar, SurfaceVariabilityStar } from "@/lib/types";
+import EclipseCloseup from "./EclipseCloseup";
+import type { SurfaceStar, SurfaceVariabilityStar, ZoomData } from "@/lib/types";
 
 // The two stars, drawn from what the light curve actually says about them.
 //
@@ -168,7 +169,7 @@ function fluxAt(c: [number, number][], ph: number): number {
   return a[1] + (b[1] - a[1]) * f;
 }
 
-export default function OrbitSchematic({ teff, period, t0, depth1, depth2, depth2Upper = null, secPhase, duration, sinusoid, curve = null, surface = null, variability = null, className = "" }: { teff: number | null; period: number; t0: number; depth1: number | null; depth2: number | null; depth2Upper?: number | null; secPhase: number | null; duration: number; sinusoid: boolean; curve?: [number, number][] | null; surface?: SurfaceStar | null; variability?: SurfaceVariabilityStar | null; className?: string }) {
+export default function OrbitSchematic({ teff, period, t0, depth1, depth2, depth2Upper = null, secPhase, duration, sinusoid, curve = null, surface = null, variability = null, zoom = null, className = "" }: { teff: number | null; period: number; t0: number; depth1: number | null; depth2: number | null; depth2Upper?: number | null; secPhase: number | null; duration: number; sinusoid: boolean; curve?: [number, number][] | null; surface?: SurfaceStar | null; variability?: SurfaceVariabilityStar | null; zoom?: { primary: ZoomData | null; secondary: ZoomData | null } | null; className?: string }) {
   const geo = useMemo(() => derive(teff, period, depth1, depth2, depth2Upper, secPhase, duration, sinusoid), [teff, period, depth1, depth2, depth2Upper, secPhase, duration, sinusoid]);
   const [phase, setPhase] = useState(0);
   const [mode, setMode] = useState<"zoom" | "true">("zoom");
@@ -428,6 +429,20 @@ export default function OrbitSchematic({ teff, period, t0, depth1, depth2, depth
           <button type="button" onClick={() => setTideView("exag")} className={`nav-caps rounded-md border px-2.5 py-1 font-mono text-[10px] transition-colors ${tideView === "exag" ? "border-accent text-accent" : "border-line text-muted hover:text-fg"}`}>Tides exaggerated</button>
           <button type="button" onClick={() => setTideView("true")} className={`nav-caps rounded-md border px-2.5 py-1 font-mono text-[10px] transition-colors ${tideView === "true" ? "border-accent text-accent" : "border-line text-muted hover:text-fg"}`}>Tides true size</button>
         </div>
+      )}
+      {geo.ok && geo.aR1 !== null && zoom?.primary && (
+        <EclipseCloseup
+          k={geo.k}
+          j={geo.j}
+          duration={duration}
+          teff1={unit(tempRgb(t1))}
+          edge1={unit(tempRgb(t1 * 0.78))}
+          teff2={unit(tempRgb(t2))}
+          edge2={unit(tempRgb(t2 * 0.78))}
+          zoomPrimary={zoom.primary}
+          zoomSecondary={zoom.secondary}
+          secondaryDetected={secPhase !== null}
+        />
       )}
       {geo.note && <p className="mt-3 rounded-md border border-accent-cool/30 bg-accent-cool/5 px-3 py-2 text-[11px] leading-relaxed text-muted">{geo.note}</p>}
       {rows.length > 0 && (
