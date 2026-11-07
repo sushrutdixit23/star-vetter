@@ -40,6 +40,7 @@ diag_scan10.py
 /data/lightcurves/
 /data/pixel_check/
 /data/logs/
+/data/injection/
 
 # --- Next.js site ---
 /site/node_modules/
