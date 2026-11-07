@@ -26,6 +26,12 @@ export interface SceneStar {
   edge: [number, number, number];
   glow: number;
   contrast: number;
+  // unit vector from this star towards the other (x right, y down, z at viewer)
+  axis: [number, number, number];
+  // tidal stretch along the axis (0 = sphere): long axis = 1+e, short = 1/sqrt(1+e)
+  elong: number;
+  // extra brightness of the face turned toward the other star (0 = none)
+  heat: number;
 }
 
 export type SceneStatus = "pending" | "ok" | "fail";
@@ -56,6 +62,9 @@ uniform vec3 uC1;
 uniform vec3 uE1;
 uniform vec2 uGl;
 uniform vec2 uCon;
+uniform vec4 uA0;
+uniform vec4 uA1;
+uniform vec2 uHt;
 
 vec3 hash33(vec3 p3) {
   p3 = fract(p3 * vec3(0.1031, 0.1030, 0.0973));
@@ -81,8 +90,10 @@ float worley(vec3 p, float t) {
   return sqrt(d);
 }
 
-// Premultiplied RGBA of one star (halo + disc) at viewBox position p.
-vec4 star(vec2 p, vec4 s, vec3 c0, vec3 e0, float gl, float contrast, float seed) {
+// Premultiplied RGBA of one star (halo + disc) at viewBox position p. The star
+// is an ellipsoid stretched along "ax.xyz" by "ax.w" (0 = a sphere), seen
+// orthographically from +z: solve P.M.P = 1 along the line of sight.
+vec4 star(vec2 p, vec4 s, vec3 c0, vec3 e0, float gl, float contrast, float seed, vec4 ax, float heat) {
   float d = length(p - s.xy);
   float r = s.z;
   float dim = s.w;
@@ -96,12 +107,23 @@ vec4 star(vec2 p, vec4 s, vec3 c0, vec3 e0, float gl, float contrast, float seed
   vec4 outc = vec4(haloRgb, h * 0.4);
 
   float aa = (${VIEW_W}.0 / uRes.x) * 1.2;
-  float cov = 1.0 - smoothstep(r - aa, r + aa * 0.4, d);
+  vec2 q = (p - s.xy) / r;
+  vec3 u = ax.xyz;
+  float m = 1.0 + ax.w;
+  float k = 1.0 / ((1.0 + ax.w) * (1.0 + ax.w)) - m;
+  float uq = u.x * q.x + u.y * q.y;
+  float qa = m + k * u.z * u.z;
+  float qb = k * u.z * uq;
+  float qc = m * dot(q, q) + k * uq * uq - 1.0;
+  float disc = qb * qb - qa * qc;
+  float dd = disc / (2.0 * qa) * r;
+  float cov = smoothstep(-0.4 * aa, aa, dd);
   if (cov > 0.0) {
-    float rho = min(d / r, 0.999);
-    vec2 q = (p - s.xy) / r;
-    float mu = sqrt(1.0 - rho * rho);
-    vec3 n = vec3(q.x, -q.y, mu);
+    float z = (-qb + sqrt(max(disc, 0.0))) / qa;
+    vec3 P = vec3(q, z);
+    vec3 N = normalize(m * P + k * u * dot(u, P));
+    float mu = clamp(N.z, 0.0, 1.0);
+    vec3 n = vec3(P.x, -P.y, P.z);
     float ang = uTime * 0.035 + seed * 6.0;
     float ca = cos(ang);
     float sa = sin(ang);
@@ -119,7 +141,9 @@ vec4 star(vec2 p, vec4 s, vec3 c0, vec3 e0, float gl, float contrast, float seed
     float ld = 1.0 - 0.58 * lm - 0.14 * lm * lm;
     vec3 col = mix(e0, c0, pow(mu, 0.55));
     col = mix(col, vec3(1.0), 0.22 * pow(mu, 4.0));
-    col *= ld * gran * mix(0.6, 1.0, clamp(uRad, 0.0, 1.0));
+    float hot = heat * max(dot(N, u), 0.0);
+    col = mix(col, vec3(1.0, 0.93, 0.8), min(hot, 1.0) * 0.35);
+    col *= (1.0 + hot) * ld * gran * mix(0.6, 1.0, clamp(uRad, 0.0, 1.0));
     col *= 1.12 * (1.0 - (1.0 - dim) * 0.7);
     col = min(col, vec3(1.0));
     outc = vec4(col * cov, cov) + outc * (1.0 - cov);
@@ -129,8 +153,8 @@ vec4 star(vec2 p, vec4 s, vec3 c0, vec3 e0, float gl, float contrast, float seed
 
 void main() {
   vec2 p = vec2(gl_FragCoord.x / uRes.x * ${VIEW_W}.0, (1.0 - gl_FragCoord.y / uRes.y) * ${VIEW_H}.0);
-  vec4 a = star(p, uS0, uC0, uE0, uGl.x, uCon.x, 0.17);
-  vec4 b = star(p, uS1, uC1, uE1, uGl.y, uCon.y, 0.61);
+  vec4 a = star(p, uS0, uC0, uE0, uGl.x, uCon.x, 0.17, uA0, uHt.x);
+  vec4 b = star(p, uS1, uC1, uE1, uGl.y, uCon.y, 0.61, uA1, uHt.y);
   vec4 back = uFront > 0.5 ? a : b;
   vec4 front = uFront > 0.5 ? b : a;
   vec4 col = front + back * (1.0 - front.a);
@@ -215,6 +239,9 @@ export default function StarScene({ primary, companion, companionFront, radiance
     const uE1 = U("uE1");
     const uGl = U("uGl");
     const uCon = U("uCon");
+    const uA0 = U("uA0");
+    const uA1 = U("uA1");
+    const uHt = U("uHt");
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let visible = true;
@@ -254,6 +281,9 @@ export default function StarScene({ primary, companion, companionFront, radiance
       gl.uniform3fv(uE1, p.companion.edge);
       gl.uniform2f(uGl, p.primary.glow, p.companion.glow);
       gl.uniform2f(uCon, p.primary.contrast, p.companion.contrast);
+      gl.uniform4f(uA0, p.primary.axis[0], p.primary.axis[1], p.primary.axis[2], p.primary.elong);
+      gl.uniform4f(uA1, p.companion.axis[0], p.companion.axis[1], p.companion.axis[2], p.companion.elong);
+      gl.uniform2f(uHt, p.primary.heat, p.companion.heat);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     };
 

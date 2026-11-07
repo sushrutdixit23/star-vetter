@@ -16,6 +16,8 @@ import type {
   GroundSurveyEntry,
   PredictionsData,
   PredictionStar,
+  SurfaceEvidence,
+  SurfaceStar,
 } from "./types";
 import type { Summary } from "@/components/dash/DetailPanels";
 
@@ -156,6 +158,13 @@ export function getPredictions(): PredictionsData | null {
   const p = path.join(DATA_DIR, "predictions.json");
   PREDICTIONS = fs.existsSync(p) ? (JSON.parse(fs.readFileSync(p, "utf-8")) as PredictionsData) : null;
   return PREDICTIONS;
+}
+
+export function getSurfaceEvidenceFor(tic: number): SurfaceStar | null {
+  const p = path.join(DATA_DIR, "surface_evidence.json");
+  if (!fs.existsSync(p)) return null;
+  const all = JSON.parse(fs.readFileSync(p, "utf-8")) as SurfaceEvidence;
+  return all.stars[String(tic)] ?? null;
 }
 
 export function getPredictionFor(tic: number): PredictionStar | null {

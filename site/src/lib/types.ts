@@ -609,3 +609,24 @@ export interface PredictionsData {
   extra_catalog_recall: ExtraCatalogRecall | null;
   stars: PredictionStar[];
 }
+
+// surface_evidence.json (export_surface_evidence.py): tidal / heating signals
+// measured in each star's folded light curve. Drawn only where flagged.
+export interface SurfaceStar {
+  tides: boolean;
+  heating: boolean;
+  elongation: number;
+  sinusoidal: boolean;
+  ellipsoidal_amp?: number;
+  ellipsoidal_err?: number;
+  ellipsoidal_quadrature?: number;
+  reflection_amp?: number;
+  reflection_err?: number;
+  frac_used?: number;
+}
+
+export interface SurfaceEvidence {
+  thresholds: { min_snr: number };
+  limits: string[];
+  stars: Record<string, SurfaceStar>;
+}

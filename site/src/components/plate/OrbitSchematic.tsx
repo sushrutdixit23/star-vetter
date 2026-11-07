@@ -3,6 +3,7 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import StarBody from "../StarBody";
 import StarScene, { type SceneStatus } from "./StarScene";
+import type { SurfaceStar } from "@/lib/types";
 
 // The two stars, drawn from what the light curve actually says about them.
 //
@@ -167,11 +168,12 @@ function fluxAt(c: [number, number][], ph: number): number {
   return a[1] + (b[1] - a[1]) * f;
 }
 
-export default function OrbitSchematic({ teff, period, t0, depth1, depth2, depth2Upper = null, secPhase, duration, sinusoid, curve = null, className = "" }: { teff: number | null; period: number; t0: number; depth1: number | null; depth2: number | null; depth2Upper?: number | null; secPhase: number | null; duration: number; sinusoid: boolean; curve?: [number, number][] | null; className?: string }) {
+export default function OrbitSchematic({ teff, period, t0, depth1, depth2, depth2Upper = null, secPhase, duration, sinusoid, curve = null, surface = null, className = "" }: { teff: number | null; period: number; t0: number; depth1: number | null; depth2: number | null; depth2Upper?: number | null; secPhase: number | null; duration: number; sinusoid: boolean; curve?: [number, number][] | null; surface?: SurfaceStar | null; className?: string }) {
   const geo = useMemo(() => derive(teff, period, depth1, depth2, depth2Upper, secPhase, duration, sinusoid), [teff, period, depth1, depth2, depth2Upper, secPhase, duration, sinusoid]);
   const [phase, setPhase] = useState(0);
   const [mode, setMode] = useState<"zoom" | "true">("zoom");
   const [gl, setGl] = useState<SceneStatus>("pending");
+  const [tideView, setTideView] = useState<"exag" | "true">("exag");
   const maskId = `sv-m${useId().replace(/[^a-zA-Z0-9]/g, "")}`;
   const pausedRef = useRef(false);
   const warpRef = useRef({ hw: 0, sp: 0.5, on: false });
@@ -297,6 +299,20 @@ export default function OrbitSchematic({ teff, period, t0, depth1, depth2, depth
   const compEdge = tempColor(t2 * 0.78);
   const glOk = gl === "ok";
   const dim2 = overlapping ? transitDim : 1;
+
+  // Tides and heating: only where the folded light curve measured them
+  // (surface_evidence.json) AND the eclipse geometry is usable.
+  const tides = Boolean(surface?.tides) && geo.ok && !sinusoid;
+  const elongTrue = tides && surface ? surface.elongation : 0;
+  const exag = tides && tideView === "exag" ? Math.min(15, Math.max(1, 0.15 / Math.max(elongTrue, 1e-6))) : 1;
+  const elongDraw = Math.min(0.15, elongTrue * exag);
+  const lightFrac2 = geo.ok && geo.j > 0 ? (geo.j * geo.k * geo.k) / (1 + geo.j * geo.k * geo.k) : 0;
+  const heated = Boolean(surface?.heating) && geo.ok && !sinusoid && lightFrac2 > 0;
+  const heatDraw = heated && surface?.reflection_amp ? Math.min(2, (2 * surface.reflection_amp) / lightFrac2) : 0;
+  const depthZ = z * Math.sqrt(Math.max(0, 1 - Math.min(1, tilt) ** 2));
+  const dirLen = Math.hypot(compX - CX, compY - CY, depthZ) || 1;
+  const toComp: [number, number, number] = [(compX - CX) / dirLen, (compY - CY) / dirLen, depthZ / dirLen];
+  const toPrim: [number, number, number] = [-toComp[0], -toComp[1], -toComp[2]];
   const glow1 = trueScale ? Math.max(2, 10 / R1) : 1.1;
   const glow2 = trueScale ? Math.max(2, 8 / compR) : 0.8;
   const speed = fmtInt((period * 86400) / ORBIT_SECONDS);
@@ -312,6 +328,11 @@ export default function OrbitSchematic({ teff, period, t0, depth1, depth2, depth
     rows.push(["Face hidden at primary eclipse", geo.k >= 1 ? "all of it" : `~${(geo.k * geo.k * 100).toFixed(0)}%`]);
     if (geo.aR1) rows.push(["Separation", `~${geo.aR1.toFixed(geo.aR1 < 10 ? 1 : 0)} x the star's radius`]);
     rows.push(["Eccentricity", geo.e > 0 ? `at least ${geo.e.toFixed(3)}` : "consistent with circular"]);
+    if (surface && !sinusoid) {
+      if (tides && surface.ellipsoidal_amp !== undefined) rows.push(["Tidal signal", `two humps per orbit, ${(surface.ellipsoidal_amp * 100).toFixed(2)}% +/- ${((surface.ellipsoidal_err ?? 0) * 100).toFixed(2)}%`]);
+      if (heated && surface.reflection_amp !== undefined) rows.push(["Heated inner face", `one hump per orbit, ${(surface.reflection_amp * 100).toFixed(2)}% +/- ${((surface.reflection_err ?? 0) * 100).toFixed(2)}%`]);
+      if (!tides && !heated) rows.push(["Tidal / heating signal", "none measured above 8 sigma"]);
+    }
     if (secPhase !== null) rows.push(["Secondary eclipse phase", `${secPhase.toFixed(3)} measured, ${modelSecPhase.toFixed(3)} in this orbit`]);
   }
 
@@ -321,6 +342,8 @@ export default function OrbitSchematic({ teff, period, t0, depth1, depth2, depth
   else caption.push("Not to scale.");
   if (sortedCurve) caption.push("A star's surface never gets dimmer during an eclipse - part of it is simply hidden. What drops is the total light we receive, shown exactly by the readout and bar below from the real light curve; the glow dims with it, exaggerated so small dips show.");
   if (glOk) caption.push("Star surfaces are a generic animated granulation pattern on a limb-darkened disc (bright centre, darker redder rim); the pattern is illustrative, not a measurement of this star.");
+  if (glOk && tides) caption.push(`Tides: this star's light curve shows a measured two-humps-per-orbit signal, so both stars are drawn as stretched toward each other (an equilibrium-tide estimate, good to about a factor of two, assumed equal for both stars).${exag > 1.05 ? ` Shown exaggerated ${exag.toFixed(0)}x so it is visible; the real stretch is about ${(elongTrue * 100).toFixed(1)}%.` : ""} A folded light curve cannot rule out spots locked to the orbit.`);
+  if (glOk && heated && heatDraw > 0) caption.push("Heating: the measured one-hump signal is drawn as a brighter inner face on the companion, the usual case; the data cannot say which star carries it.");
   caption.push(teff ? `Colours follow temperature on a stellar colour scale, saturated so the differences show; the star's is its catalogue value (${fmtInt(teff)} K).` : "Colours are illustrative.");
   if (geo.ok) caption.push("The companion's colour, sizes and orbit shape are estimates from the eclipse depths, duration and timing, assuming central eclipses and spherical stars - good to perhaps tens of percent.");
   caption.push("Only the relative orbit is shown; both stars really circle their common centre of mass.");
@@ -344,8 +367,8 @@ export default function OrbitSchematic({ teff, period, t0, depth1, depth2, depth
           onStatus={setGl}
           companionFront={front}
           radiance={radiance}
-          primary={{ cx: CX, cy: CY, r: R1, dim: 1, color: unit(tempRgb(t1)), edge: unit(tempRgb(t1 * 0.78)), glow: glow1, contrast: granuleContrast(t1) }}
-          companion={{ cx: compX, cy: compY, r: compR, dim: dim2, color: unit(tempRgb(t2)), edge: unit(tempRgb(t2 * 0.78)), glow: glow2, contrast: granuleContrast(t2) }}
+          primary={{ cx: CX, cy: CY, r: R1, dim: 1, color: unit(tempRgb(t1)), edge: unit(tempRgb(t1 * 0.78)), glow: glow1, contrast: granuleContrast(t1), axis: toComp, elong: elongDraw, heat: 0 }}
+          companion={{ cx: compX, cy: compY, r: compR, dim: dim2, color: unit(tempRgb(t2)), edge: unit(tempRgb(t2 * 0.78)), glow: glow2, contrast: granuleContrast(t2), axis: toPrim, elong: elongDraw, heat: heatDraw }}
         />
         {glOk && (
           <svg viewBox="0 0 320 160" className="pointer-events-none absolute inset-0 block h-full w-full" aria-hidden="true">
@@ -379,6 +402,12 @@ export default function OrbitSchematic({ teff, period, t0, depth1, depth2, depth
         <div className="mt-2 flex justify-center gap-1.5">
           <button type="button" onClick={() => setMode("zoom")} className={`nav-caps rounded-md border px-2.5 py-1 font-mono text-[10px] transition-colors ${mode === "zoom" ? "border-accent text-accent" : "border-line text-muted hover:text-fg"}`}>Zoomed</button>
           <button type="button" onClick={() => setMode("true")} className={`nav-caps rounded-md border px-2.5 py-1 font-mono text-[10px] transition-colors ${mode === "true" ? "border-accent text-accent" : "border-line text-muted hover:text-fg"}`}>True scale</button>
+        </div>
+      )}
+      {glOk && tides && elongTrue > 0 && (
+        <div className="mt-1.5 flex justify-center gap-1.5">
+          <button type="button" onClick={() => setTideView("exag")} className={`nav-caps rounded-md border px-2.5 py-1 font-mono text-[10px] transition-colors ${tideView === "exag" ? "border-accent text-accent" : "border-line text-muted hover:text-fg"}`}>Tides exaggerated</button>
+          <button type="button" onClick={() => setTideView("true")} className={`nav-caps rounded-md border px-2.5 py-1 font-mono text-[10px] transition-colors ${tideView === "true" ? "border-accent text-accent" : "border-line text-muted hover:text-fg"}`}>Tides true size</button>
         </div>
       )}
       {geo.note && <p className="mt-3 rounded-md border border-accent-cool/30 bg-accent-cool/5 px-3 py-2 text-[11px] leading-relaxed text-muted">{geo.note}</p>}
