@@ -60,7 +60,8 @@ export default function CandidateBrowser({
           : sort === "period"
             ? (c.corrected_period_days ?? c.period_days)
             : c.depth_frac;
-    return [...list].sort((a, b) => val(b) - val(a));
+    // stars already listed in a catalog sort below the rest
+    return [...list].sort((a, b) => Number(Boolean(a.alreadyKnown)) - Number(Boolean(b.alreadyKnown)) || val(b) - val(a));
   })();
 
   const shownTics = new Set(shown.map((c) => c.tic));
@@ -206,6 +207,7 @@ function TableView({
                   <Link href={`/candidates/${c.tic}`} className="font-mono text-fg hover:text-accent">
                     {c.tic}
                   </Link>
+                  {c.alreadyKnown && <span title="Same star and period found in an existing catalog" className="ml-2 rounded-full border border-accent-cool/50 px-1.5 py-0.5 font-mono text-[9px] text-accent-cool">KNOWN</span>}
                   {c.ruweElevated && <span title="Gaia RUWE above 1.4" className="ml-2 rounded-full border border-accent-cool/40 px-1.5 py-0.5 font-mono text-[9px] text-accent-cool">RUWE</span>}
                 </td>
                 <td className="px-4 py-2.5">

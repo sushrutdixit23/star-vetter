@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
-import { getAllCandidates, getAllTics, getCandidate, getDetail, getGaiaContext, getGroundSurvey, getPredictionFor, getSurfaceEvidenceFor, getVariabilityFor, getSiteMeta, getTimeseries, toSummary } from "@/lib/data";
+import { getAllCandidates, getAllTics, getCandidate, getDetail, getGaiaContext, getGroundSurvey, getPredictionFor, getSurfaceEvidenceFor, getVariabilityFor, getNoveltyExtra, getSiteMeta, getTimeseries, toSummary } from "@/lib/data";
 import { bestPeriod } from "@/lib/cards";
 import { TIER_STYLE } from "@/lib/tiers";
 import { summaryLine } from "@/lib/summary";
@@ -11,6 +11,7 @@ import { AliasPanel, Card, CatalogPanel, CaveatsList, EclipseProfiles, LightCurv
 import OrbitSchematic from "@/components/plate/OrbitSchematic";
 import NextEclipses from "@/components/plate/NextEclipses";
 import ShareButtons from "@/components/plate/ShareButtons";
+import type { NoveltyExtra } from "@/lib/types";
 import FoldItYourself from "@/components/plate/FoldItYourself";
 import CandidateSidebar, { type SidebarItem } from "@/components/plate/CandidateSidebar";
 import GaiaContextPanel, { gaiaVerdict } from "@/components/plate/GaiaContextPanel";
@@ -23,6 +24,18 @@ import GroundSurveyPanel, { groundSurveyVerdict } from "@/components/plate/Groun
 
 export async function generateStaticParams() {
   return getAllTics().map((tic) => ({ tic: String(tic) }));
+}
+
+const CAT_NAMES: Record<string, string> = { ztf: "ZTF", crts: "CRTS", wise: "WISE", atlas: "ATLAS", asas: "ASAS-3", kelt: "KELT" };
+const catList = (l: string[]) => l.map((k) => CAT_NAMES[k] ?? k).join(", ");
+
+function noveltyLine(n: NoveltyExtra | null): string {
+  const base = "An eclipsing-binary candidate from TESS.";
+  if (!n) return `${base} Not checked against the extra catalogs.`;
+  if (n.verdict === "ALREADY_KNOWN") return `${base} It is already listed in ${catList(n.matched_catalogs)} at the same period, so it is not a new find.`;
+  if (n.verdict === "KNOWN_VARIABLE_PERIOD_DIFFERS") return `${base} It is listed as a variable star in ${catList(n.known_other_period)} with a different period, so novelty is unclear.`;
+  if (n.verdict === "NEARBY_PERIOD_MATCH" || n.verdict === "NEARBY_VARIABLE") return `${base} A variable star is listed very close by in ${catList(n.nearby_catalogs)}, which could be a neighbour or the same star.`;
+  return `${base} No match in the catalogs searched, which is weak evidence of novelty.`;
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ tic: string }> }) {
@@ -229,10 +242,10 @@ export default async function CandidatePage({ params }: { params: Promise<{ tic:
             <div>
               <div className="nav-caps font-mono text-[11px] text-muted">Candidate</div>
               <h1 className="mt-2 font-display text-5xl leading-none text-fg sm:text-6xl xl:text-5xl 2xl:text-6xl">TIC {s.tic}</h1>
-              <p className="mt-3 font-display text-lg text-muted">An eclipsing-binary candidate from TESS. No match in the catalogs searched, which is weak evidence of novelty.</p>
+              <p className="mt-3 font-display text-lg text-muted">{noveltyLine(getNoveltyExtra(s.tic))}</p>
               <div className="mt-4 flex flex-wrap items-center gap-2">
                 <TierBadge tier={s.tier} />
-                <span className="nav-caps rounded-full border border-line px-2.5 py-0.5 font-mono text-[10px] text-fg">Survivor</span>
+                {getNoveltyExtra(s.tic)?.verdict === "ALREADY_KNOWN" ? <span className="nav-caps rounded-full border border-accent-cool/50 bg-accent-cool/10 px-2.5 py-0.5 font-mono text-[10px] text-accent-cool">Already known</span> : <span className="nav-caps rounded-full border border-line px-2.5 py-0.5 font-mono text-[10px] text-fg">Survivor</span>}
                 <span className="rounded-full border border-line px-2.5 py-0.5 font-mono text-[11px] text-accent">P = {period.toFixed(5)} d</span>
               </div>
               <div className="mt-4"><ShareButtons tic={s.tic} /></div>

@@ -17,6 +17,8 @@ export interface CardData {
   pixel_snr: number;
   binned: [number, number | null][];
   ruweElevated?: boolean | null;
+  // six-catalog cross-match: set only when the star is already listed
+  alreadyKnown?: string | null; // catalog names, e.g. "ATLAS"
 }
 
 export default function CandidateCard({ c }: { c: CardData }) {
@@ -33,6 +35,7 @@ export default function CandidateCard({ c }: { c: CardData }) {
         </div>
         <div className="flex flex-col items-end gap-1">
           <TierBadge tier={c.tier} />
+          {c.alreadyKnown && <span title="Same star and period found in an existing catalog" className="rounded-full border border-accent-cool/50 bg-accent-cool/10 px-2 py-0.5 font-mono text-[10px] text-accent-cool">Already known: {c.alreadyKnown}</span>}
           {c.ruweElevated && <span title="Gaia's position measurements fit this source poorly (RUWE above 1.4) - often a sign of more than one star. Context, not confirmation." className="rounded-full border border-accent-cool/40 bg-accent-cool/10 px-2 py-0.5 font-mono text-[10px] text-accent-cool">Gaia RUWE</span>}
         </div>
       </div>

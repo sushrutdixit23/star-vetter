@@ -650,3 +650,12 @@ export interface SurfaceVariabilityStar {
   spots_B?: VariabilityTest;
   flares?: VariabilityTest;
 }
+
+// novelty_extra.json (export_novelty_extra.py): the six-catalog cross-match
+// verdict for every candidate. ALREADY_KNOWN = same star, same period.
+export interface NoveltyExtra {
+  verdict: string;
+  matched_catalogs: string[];
+  known_other_period: string[];
+  nearby_catalogs: string[];
+}

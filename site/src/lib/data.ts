@@ -18,6 +18,7 @@ import type {
   PredictionStar,
   SurfaceEvidence,
   SurfaceStar,
+  NoveltyExtra,
   SurfaceVariabilityStar,
 } from "./types";
 import type { Summary } from "@/components/dash/DetailPanels";
@@ -173,6 +174,18 @@ export function getVariabilityFor(tic: number): SurfaceVariabilityStar | null {
   if (!fs.existsSync(p)) return null;
   const all = JSON.parse(fs.readFileSync(p, "utf-8")) as { stars: Record<string, SurfaceVariabilityStar> };
   return all.stars[String(tic)] ?? null;
+}
+
+let NOVELTY_EXTRA: Record<string, NoveltyExtra> | null | undefined;
+export function getNoveltyExtraMap(): Record<string, NoveltyExtra> | null {
+  if (NOVELTY_EXTRA !== undefined) return NOVELTY_EXTRA;
+  const p = path.join(DATA_DIR, "novelty_extra.json");
+  NOVELTY_EXTRA = fs.existsSync(p) ? (JSON.parse(fs.readFileSync(p, "utf-8")) as { stars: Record<string, NoveltyExtra> }).stars : null;
+  return NOVELTY_EXTRA;
+}
+
+export function getNoveltyExtra(tic: number): NoveltyExtra | null {
+  return getNoveltyExtraMap()?.[String(tic)] ?? null;
 }
 
 export function getPredictionFor(tic: number): PredictionStar | null {
