@@ -51,6 +51,8 @@ RECOVERY_TOL = 0.02                       # period match tolerance (relative)
 SHUFFLE_BLOCK_DAYS = 1.0
 MAX_POINTS = 60000                        # keeps one BLS run under a minute
 SEED = 20261108
+PPE_EDGES = [0.0, 3.0, 6.0, 12.0, 1e9]
+PPE_LABELS = ["<3", "3-6", "6-12", ">12"]
 PERIOD_EDGES = [0.0, 1.0, 2.0, 5.0, 10.0, 40.0]
 PERIOD_LABELS = ["<1 d", "1-2 d", "2-5 d", "5-10 d", ">10 d"]
 DEPTH_EDGES = [0.0, 0.005, 0.02, 0.1, 1.0]
@@ -58,7 +60,7 @@ DEPTH_LABELS = ["<0.5%", "0.5-2%", "2-10%", ">10%"]
 GATE_FLAGS = ["too_few_eclipses", "insufficient_intransit_points", "below_noise_floor",
               "robust_depth_mismatch", "noisy_photometry", "inhomogeneous_photometry",
               "depth_too_small", "non_finite_bls_result"]
-RESULT_COLUMNS = ["tic", "stratum", "tmag", "author", "n_points", "span_days", "kind", "k", "seed",
+RESULT_COLUMNS = ["tic", "stratum", "tmag", "author", "n_points", "span_days", "cadence_min", "kind", "k", "seed",
                   "period", "t0", "depth1", "depth2", "duration", "ingress_frac", "searchable",
                   "status", "passed", "bls_period", "bls_snr", "n_eclipses", "outcome"] + GATE_FLAGS
 
@@ -216,6 +218,11 @@ def build_report(res, now=None):
 
     srch["pbin"] = pd.cut(srch["period"], PERIOD_EDGES, labels=PERIOD_LABELS, right=False)
     srch["dbin"] = pd.cut(srch["depth1"], DEPTH_EDGES, labels=DEPTH_LABELS, right=False)
+    by_ppe = []
+    if "cadence_min" in srch.columns and srch["cadence_min"].notna().all():
+        ppe = srch["duration"] / (srch["cadence_min"] / 1440.0)
+        pb = pd.cut(ppe, PPE_EDGES, labels=PPE_LABELS, right=False)
+        by_ppe = [dict(cell(srch[pb == b]), bin=b) for b in PPE_LABELS]
     by_period = [dict(cell(srch[srch["pbin"] == b]), bin=b) for b in PERIOD_LABELS]
     by_depth = [dict(cell(srch[srch["dbin"] == b]), bin=b) for b in DEPTH_LABELS]
 
@@ -248,6 +255,7 @@ def build_report(res, now=None):
         "recall_by_tmag_stratum": by_stratum,
         "recall_by_period": by_period,
         "recall_by_depth": by_depth,
+        "recall_by_points_per_eclipse": by_ppe,
         "miss_reasons": miss_reasons,
         "passed_with_unrelated_period": rate(wrong, int(len(inj))),
         "false_alarm_shuffle": rate(null_pass, int(len(shuf))),
@@ -296,6 +304,7 @@ def run_star(row, work, n_inj, n_null, f2, f3):
     df = pd.read_csv(path)
     t, flux, err = df["time"].to_numpy(), df["flux"].to_numpy(), df["flux_err"].to_numpy()
     span = float(t.max() - t.min())
+    cadence_min = float(np.median(np.diff(t)) * 1440.0)
     rows = []
 
     def vet(kind, k, flux_k, extra):
@@ -305,7 +314,7 @@ def run_star(row, work, n_inj, n_null, f2, f3):
         tmp.unlink(missing_ok=True)
         passed = passes_gates(res)
         base = {"tic": tic, "stratum": int(row.stratum), "tmag": tmag, "author": row.author_used,
-                "n_points": len(t), "span_days": span, "kind": kind, "k": k,
+                "n_points": len(t), "span_days": span, "cadence_min": cadence_min, "kind": kind, "k": k,
                 "status": res.get("status"), "passed": passed,
                 "bls_period": res.get("bls_period"), "bls_snr": res.get("bls_snr"),
                 "n_eclipses": res.get("n_eclipses_observed")}
