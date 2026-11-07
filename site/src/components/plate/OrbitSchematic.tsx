@@ -4,6 +4,7 @@ import { useEffect, useId, useMemo, useRef, useState } from "react";
 import StarBody from "../StarBody";
 import StarScene, { type SceneStatus } from "./StarScene";
 import EclipseCloseup from "./EclipseCloseup";
+import { tempColor, tempRgb } from "@/lib/starColor";
 import type { SurfaceStar, SurfaceVariabilityStar, ZoomData } from "@/lib/types";
 
 // The two stars, drawn from what the light curve actually says about them.
@@ -45,20 +46,6 @@ const SPECKS: [number, number, number, string][] = [
   [12, 92, 0.5, "#ffe6c2"], [312, 70, 0.5, "#ffffff"], [70, 60, 0.4, "#cfe0ff"], [255, 58, 0.4, "#ffe6c2"],
 ];
 
-const COLOR_SCALE: [number, number, number, number][] = [
-  [2500, 255, 90, 50],
-  [3500, 255, 128, 64],
-  [4500, 255, 170, 90],
-  [5300, 255, 205, 120],
-  [5800, 255, 224, 150],
-  [6300, 255, 238, 190],
-  [7000, 245, 244, 240],
-  [8000, 214, 226, 255],
-  [10000, 175, 200, 255],
-  [15000, 145, 178, 255],
-  [30000, 120, 160, 255],
-];
-
 interface Geometry {
   ok: boolean;
   note: string | null;
@@ -73,22 +60,6 @@ interface Geometry {
 
 function nowBtjd(): number {
   return Date.now() / 86400000 + 2440587.5 - 2457000;
-}
-
-function tempRgb(kelvin: number): [number, number, number] {
-  const t = Math.min(30000, Math.max(2500, kelvin));
-  let i = 0;
-  while (i < COLOR_SCALE.length - 2 && t > COLOR_SCALE[i + 1][0]) i++;
-  const a = COLOR_SCALE[i];
-  const b = COLOR_SCALE[i + 1];
-  const f = (t - a[0]) / (b[0] - a[0]);
-  const mix = (x: number, y: number) => Math.round(x + (y - x) * f);
-  return [mix(a[1], b[1]), mix(a[2], b[2]), mix(a[3], b[3])];
-}
-
-function tempColor(kelvin: number): string {
-  const [r, g, b] = tempRgb(kelvin);
-  return `rgb(${r},${g},${b})`;
 }
 
 const unit = (c: [number, number, number]): [number, number, number] => [c[0] / 255, c[1] / 255, c[2] / 255];
@@ -177,6 +148,11 @@ export default function OrbitSchematic({ teff, period, t0, depth1, depth2, depth
   const [tideView, setTideView] = useState<"exag" | "true">("exag");
   const maskId = `sv-m${useId().replace(/[^a-zA-Z0-9]/g, "")}`;
   const pausedRef = useRef(false);
+  const [playing, setPlaying] = useState(true);
+  const playingRef = useRef(true);
+  useEffect(() => {
+    playingRef.current = playing;
+  }, [playing]);
   const warpRef = useRef({ hw: 0, sp: 0.5, on: false });
 
   useEffect(() => {
@@ -190,7 +166,7 @@ export default function OrbitSchematic({ teff, period, t0, depth1, depth2, depth
     let raf = 0;
     let last: number | null = null;
     const tick = (ts: number) => {
-      if (last !== null && !pausedRef.current) {
+      if (last !== null && !pausedRef.current && playingRef.current) {
         const dt = (ts - last) / 1000;
         setPhase((p) => {
           const w = warpRef.current;
@@ -367,7 +343,7 @@ export default function OrbitSchematic({ teff, period, t0, depth1, depth2, depth
   caption.push(teff ? `Colours follow temperature on a stellar colour scale, saturated so the differences show; the star's is its catalogue value (${fmtInt(teff)} K).` : "Colours are illustrative.");
   if (geo.ok) caption.push("The companion's colour, sizes and orbit shape are estimates from the eclipse depths, duration and timing, assuming central eclipses and spherical stars - good to perhaps tens of percent.");
   caption.push("Only the relative orbit is shown; both stars really circle their common centre of mass.");
-  caption.push(`Animated about ${speed}x faster than real on average, slowing down through each eclipse, and starting from where the system is in its orbit right now. Hover to pause.`);
+  caption.push(`Animated about ${speed}x faster than real on average, slowing down through each eclipse, and starting from where the system is in its orbit right now. Hover to pause, or drag the slider to scrub through the orbit.`);
 
   return (
     <div className={className}>
@@ -418,6 +394,30 @@ export default function OrbitSchematic({ teff, period, t0, depth1, depth2, depth
           </div>
         </div>
       )}
+      <div className="mt-2">
+        <div className="flex items-center gap-2">
+          <button type="button" onClick={() => setPlaying((v) => !v)} className="nav-caps shrink-0 rounded-md border border-line px-2 py-0.5 font-mono text-[10px] text-muted transition-colors hover:text-fg">{playing ? "Pause" : "Play"}</button>
+          <div className="relative w-full pb-3">
+            <input
+              type="range"
+              min={0}
+              max={1}
+              step={0.001}
+              value={phase}
+              aria-label="Orbital phase: scrub through the orbit"
+              onChange={(e) => {
+                setPlaying(false);
+                setPhase(parseFloat(e.target.value));
+              }}
+              className="h-1 w-full cursor-pointer accent-[var(--accent,#7aa7ff)]"
+            />
+            <span className="pointer-events-none absolute left-0 top-3 font-mono text-[9px] text-faint">P</span>
+            <span className="pointer-events-none absolute top-3 -translate-x-1/2 font-mono text-[9px] text-faint" style={{ left: `${(secPhase ?? 0.5) * 100}%` }} title={secPhase === null ? "Expected position; no secondary eclipse was measured" : "Secondary eclipse"}>{secPhase === null ? "S?" : "S"}</span>
+            <span className="pointer-events-none absolute right-0 top-3 font-mono text-[9px] text-faint">P</span>
+          </div>
+        </div>
+        <p className="text-center font-mono text-[10px] text-muted">phase {phase.toFixed(3)} - {phase * period < 1 ? `${(phase * period * 24).toFixed(1)} hours` : `${(phase * period).toFixed(2)} days`} after primary eclipse</p>
+      </div>
       {geo.aR1 !== null && (
         <div className="mt-2 flex justify-center gap-1.5">
           <button type="button" onClick={() => setMode("zoom")} className={`nav-caps rounded-md border px-2.5 py-1 font-mono text-[10px] transition-colors ${mode === "zoom" ? "border-accent text-accent" : "border-line text-muted hover:text-fg"}`}>Zoomed</button>

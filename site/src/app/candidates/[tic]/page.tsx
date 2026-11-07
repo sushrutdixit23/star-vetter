@@ -10,6 +10,7 @@ import TierBadge from "@/components/TierBadge";
 import { AliasPanel, Card, CatalogPanel, CaveatsList, EclipseProfiles, LightCurvePanel, PixelEvidence, QuickActions, StatsTable, TimingPanel } from "@/components/dash/DetailPanels";
 import OrbitSchematic from "@/components/plate/OrbitSchematic";
 import NextEclipses from "@/components/plate/NextEclipses";
+import ShareButtons from "@/components/plate/ShareButtons";
 import FoldItYourself from "@/components/plate/FoldItYourself";
 import CandidateSidebar, { type SidebarItem } from "@/components/plate/CandidateSidebar";
 import GaiaContextPanel, { gaiaVerdict } from "@/components/plate/GaiaContextPanel";
@@ -26,7 +27,10 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ tic: string }> }) {
   const { tic: ticParam } = await params;
-  return { title: `TIC ${ticParam} - Star Vetter` };
+  return {
+    title: `TIC ${ticParam} - Star Vetter`,
+    description: `TIC ${ticParam}: an eclipsing-binary candidate from NASA TESS data, vetted by Star Vetter. Not confirmed.`,
+  };
 }
 
 // Built once per build worker, not once per page: every plate shares the
@@ -231,6 +235,7 @@ export default async function CandidatePage({ params }: { params: Promise<{ tic:
                 <span className="nav-caps rounded-full border border-line px-2.5 py-0.5 font-mono text-[10px] text-fg">Survivor</span>
                 <span className="rounded-full border border-line px-2.5 py-0.5 font-mono text-[11px] text-accent">P = {period.toFixed(5)} d</span>
               </div>
+              <div className="mt-4"><ShareButtons tic={s.tic} /></div>
               <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">{summaryLine(s, d)}</p>
               {writeup && (
                 <div className="mt-5 max-w-xl border-l-2 border-accent/40 pl-4">

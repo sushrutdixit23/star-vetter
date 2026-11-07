@@ -222,7 +222,7 @@ export default function EclipseCloseup(p: CloseupProps) {
       </div>
 
       <div className="mt-2 flex items-center gap-2">
-        <button type="button" onClick={() => setPlaying((v) => !v)} className="nav-caps rounded-md border border-line px-2 py-0.5 font-mono text-[10px] text-muted hover:text-fg">{playing ? "Pause" : "Play"}</button>
+        <button type="button" onClick={() => setPlaying((v) => !v)} className="nav-caps rounded-md border border-line px-2 py-0.5 font-mono text-[10px] text-muted hover:text-fg">{playing ? "Pause sweep" : "Play sweep"}</button>
         <input
           type="range"
           min={-WINDOW}
