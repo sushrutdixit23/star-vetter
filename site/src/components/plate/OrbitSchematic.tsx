@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import StarBody from "../StarBody";
+import StarScene, { type SceneStatus } from "./StarScene";
 
 // The two stars, drawn from what the light curve actually says about them.
 //
@@ -72,7 +73,7 @@ function nowBtjd(): number {
   return Date.now() / 86400000 + 2440587.5 - 2457000;
 }
 
-function tempColor(kelvin: number): string {
+function tempRgb(kelvin: number): [number, number, number] {
   const t = Math.min(30000, Math.max(2500, kelvin));
   let i = 0;
   while (i < COLOR_SCALE.length - 2 && t > COLOR_SCALE[i + 1][0]) i++;
@@ -80,7 +81,20 @@ function tempColor(kelvin: number): string {
   const b = COLOR_SCALE[i + 1];
   const f = (t - a[0]) / (b[0] - a[0]);
   const mix = (x: number, y: number) => Math.round(x + (y - x) * f);
-  return `rgb(${mix(a[1], b[1])},${mix(a[2], b[2])},${mix(a[3], b[3])})`;
+  return [mix(a[1], b[1]), mix(a[2], b[2]), mix(a[3], b[3])];
+}
+
+function tempColor(kelvin: number): string {
+  const [r, g, b] = tempRgb(kelvin);
+  return `rgb(${r},${g},${b})`;
+}
+
+const unit = (c: [number, number, number]): [number, number, number] => [c[0] / 255, c[1] / 255, c[2] / 255];
+
+// Granule contrast rises with temperature (a real trend: hot convective
+// surfaces are more contrasty than cool ones); the pattern itself is generic.
+function granuleContrast(kelvin: number): number {
+  return 0.1 + 0.16 * Math.min(1, Math.max(0, (kelvin - 3500) / 3500));
 }
 
 const r1 = (v: number) => Math.round(v * 10) / 10;
@@ -157,6 +171,8 @@ export default function OrbitSchematic({ teff, period, t0, depth1, depth2, depth
   const geo = useMemo(() => derive(teff, period, depth1, depth2, depth2Upper, secPhase, duration, sinusoid), [teff, period, depth1, depth2, depth2Upper, secPhase, duration, sinusoid]);
   const [phase, setPhase] = useState(0);
   const [mode, setMode] = useState<"zoom" | "true">("zoom");
+  const [gl, setGl] = useState<SceneStatus>("pending");
+  const maskId = `sv-m${useId().replace(/[^a-zA-Z0-9]/g, "")}`;
   const pausedRef = useRef(false);
   const warpRef = useRef({ hw: 0, sp: 0.5, on: false });
 
@@ -279,6 +295,8 @@ export default function OrbitSchematic({ teff, period, t0, depth1, depth2, depth
   const starEdge = tempColor(t1 * 0.78);
   const compColor = tempColor(t2);
   const compEdge = tempColor(t2 * 0.78);
+  const glOk = gl === "ok";
+  const dim2 = overlapping ? transitDim : 1;
   const glow1 = trueScale ? Math.max(2, 10 / R1) : 1.1;
   const glow2 = trueScale ? Math.max(2, 8 / compR) : 0.8;
   const speed = fmtInt((period * 86400) / ORBIT_SECONDS);
@@ -302,6 +320,7 @@ export default function OrbitSchematic({ teff, period, t0, depth1, depth2, depth
   else if (zoomFactor) caption.push(`Zoomed: both stars drawn about ${Math.round(zoomFactor)}x larger than their real size relative to the orbit, so they overlap for longer than the real eclipse lasts.`);
   else caption.push("Not to scale.");
   if (sortedCurve) caption.push("A star's surface never gets dimmer during an eclipse - part of it is simply hidden. What drops is the total light we receive, shown exactly by the readout and bar below from the real light curve; the glow dims with it, exaggerated so small dips show.");
+  if (glOk) caption.push("Star surfaces are a generic animated granulation pattern on a limb-darkened disc (bright centre, darker redder rim); the pattern is illustrative, not a measurement of this star.");
   caption.push(teff ? `Colours follow temperature on a stellar colour scale, saturated so the differences show; the star's is its catalogue value (${fmtInt(teff)} K).` : "Colours are illustrative.");
   if (geo.ok) caption.push("The companion's colour, sizes and orbit shape are estimates from the eclipse depths, duration and timing, assuming central eclipses and spherical stars - good to perhaps tens of percent.");
   caption.push("Only the relative orbit is shown; both stars really circle their common centre of mass.");
@@ -309,16 +328,37 @@ export default function OrbitSchematic({ teff, period, t0, depth1, depth2, depth
 
   return (
     <div className={className}>
-      <svg viewBox="0 0 320 160" className="block w-full" role="img" aria-label="Animated drawing of the two stars and their orbit" onMouseEnter={() => { pausedRef.current = true; }} onMouseLeave={() => { pausedRef.current = false; }}>
-        {SPECKS.map(([x, y, s, col], i) => (
-          <circle key={i} cx={x} cy={y} r={s} fill={col} opacity={0.4} className="sv-twinkle" style={{ animationDelay: `${i * 0.37}s` }} />
-        ))}
-        <path d={orbitPaths.back} fill="none" stroke="currentColor" strokeOpacity={0.22} strokeDasharray="2 5" />
-        {!front && companion}
-        <StarBody cx={CX} cy={CY} r={r1(R1)} color={starColor} edge={starEdge} glow={glow1} flare={!trueScale} texture={!trueScale} radiance={radiance} />
-        <path d={orbitPaths.front} fill="none" stroke="currentColor" strokeOpacity={0.32} strokeDasharray="2 5" />
-        {front && companion}
-      </svg>
+      <div className="relative" onMouseEnter={() => { pausedRef.current = true; }} onMouseLeave={() => { pausedRef.current = false; }}>
+        <svg viewBox="0 0 320 160" className="block w-full" role="img" aria-label="Animated drawing of the two stars and their orbit">
+          {SPECKS.map(([x, y, s2, col], i) => (
+            <circle key={i} cx={x} cy={y} r={s2} fill={col} opacity={0.4} className="sv-twinkle" style={{ animationDelay: `${i * 0.37}s` }} />
+          ))}
+          <path d={orbitPaths.back} fill="none" stroke="currentColor" strokeOpacity={0.22} strokeDasharray="2 5" />
+          {!glOk && !front && companion}
+          {!glOk && <StarBody cx={CX} cy={CY} r={r1(R1)} color={starColor} edge={starEdge} glow={glow1} flare={!trueScale} texture={!trueScale} radiance={radiance} />}
+          {!glOk && <path d={orbitPaths.front} fill="none" stroke="currentColor" strokeOpacity={0.32} strokeDasharray="2 5" />}
+          {!glOk && front && companion}
+        </svg>
+        <StarScene
+          className={`pointer-events-none absolute inset-0 h-full w-full transition-opacity duration-300 ${glOk ? "opacity-100" : "opacity-0"}`}
+          onStatus={setGl}
+          companionFront={front}
+          radiance={radiance}
+          primary={{ cx: CX, cy: CY, r: R1, dim: 1, color: unit(tempRgb(t1)), edge: unit(tempRgb(t1 * 0.78)), glow: glow1, contrast: granuleContrast(t1) }}
+          companion={{ cx: compX, cy: compY, r: compR, dim: dim2, color: unit(tempRgb(t2)), edge: unit(tempRgb(t2 * 0.78)), glow: glow2, contrast: granuleContrast(t2) }}
+        />
+        {glOk && (
+          <svg viewBox="0 0 320 160" className="pointer-events-none absolute inset-0 block h-full w-full" aria-hidden="true">
+            <defs>
+              <mask id={maskId}>
+                <rect width="320" height="160" fill="white" />
+                {front && <circle cx={compX} cy={compY} r={compR + 1.5} fill="black" />}
+              </mask>
+            </defs>
+            <path d={orbitPaths.front} fill="none" stroke="currentColor" strokeOpacity={0.32} strokeDasharray="2 5" mask={`url(#${maskId})`} />
+          </svg>
+        )}
+      </div>
       {sortedCurve && (
         <div className="mt-2">
           <svg viewBox="0 0 320 48" className="block w-full" role="img" aria-label="The star's light curve, with the current orbital phase marked">
