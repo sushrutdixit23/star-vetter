@@ -55,3 +55,6 @@ benchmark_run/
 data/processed/f13_lc_cache/
 data/processed/f13_cache/
 data/processed/f14_cache/
+
+# frozen pre-registration zips are deposited, not committed
+preregistration/*.zip

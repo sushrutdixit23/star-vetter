@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getAllCandidates, getDashboard, getDetail, getPipelineStats, getSiteMeta } from "@/lib/data";
+import { getAllCandidates, getDashboard, getDetail, getPipelineStats, getPredictions, getSiteMeta } from "@/lib/data";
 import Panel from "@/components/Panel";
 import PipelineStages from "@/components/dash/PipelineStages";
 import SkyMap from "@/components/dash/SkyMap";
@@ -11,11 +11,12 @@ import HeroGauntlet from "@/components/journal/HeroGauntlet";
 import EclipseExplainer from "@/components/journal/EclipseExplainer";
 import NeighbourTest from "@/components/journal/NeighbourTest";
 import SurvivorClocks from "@/components/journal/SurvivorClocks";
+import ForecastBand, { type ForecastItem } from "@/components/journal/ForecastBand";
 import TicRedirect from "@/components/journal/TicRedirect";
 
-// The journal: seven sections in the order of the story - the machine,
+// The journal: eight sections in the order of the story - the machine,
 // its gauntlet, what an eclipse is, the impostor test, the survivors,
-// where they are, and the machine still running. Every number comes from
+// the forecast, where they are, and the machine still running. Every number comes from
 // the pipeline's own exports in public/data.
 
 const SHORT: Record<string, string> = {
@@ -24,7 +25,7 @@ const SHORT: Record<string, string> = {
   "Passed statistical vetting gates": "statistically passing",
   "Flagged novel (no catalog match)": "novel (catalog-unique)",
   "Survived contamination check, pixel-checked": "pixel-checked",
-  "Confirmed on-target": "confirmed on-target",
+  "Confirmed on-target": "pixel-localized",
 };
 
 const fmt = (n: number | undefined) => (n === undefined ? "-" : n.toLocaleString("en-US"));
@@ -56,6 +57,14 @@ export default function Home() {
       secondaryPhase: d && d.secondary && d.secondary.detected ? d.secondary.phase : null,
     };
   });
+
+  // The next dated eclipse of each predicted star, soonest first. The first
+  // prediction per star is its earliest; the clock itself lives in ForecastBand.
+  const pred = getPredictions();
+  const forecast: ForecastItem[] = (pred?.stars ?? [])
+    .map((s) => ({ tic: s.tic, grade: s.grade, utc: s.predictions[0].utc, sigma_min: s.predictions[0].sigma_min, approximate: s.predictions[0].approximate }))
+    .sort((a, b) => a.utc.localeCompare(b.utc))
+    .slice(0, 4);
 
   const intro = (
     <>
@@ -92,16 +101,20 @@ export default function Home() {
 
       <SurvivorClocks survivors={survivors} />
 
+      {pred && pred.stars.length > 0 && (
+        <ForecastBand year9StartUtc="2026-11-26T00:00:00Z" items={forecast} nStars={pred.stars.length} nEclipses={pred.stars.reduce((n, s) => n + s.predictions.length, 0)} nValidated={pred.counts.listed_validated} />
+      )}
+
       <div className="grid gap-12 border-t border-line py-10 2xl:grid-cols-2 2xl:gap-0">
         {dash && dash.sky.some((p) => p.ra !== null) && (
           <div className="min-w-0 2xl:pr-10">
-            <Band variant="half" num="VI" title="The sky" lede="Every survivor at its real catalog position on the whole sky. Hover a point for its coordinates; click it to open the full evidence." action={<Link href="/sky" className="nav-caps inline-flex items-center rounded-md border border-line px-3 py-1.5 font-mono text-[11px] text-fg hover:border-accent/60">Full sky view &rarr;</Link>}>
+            <Band variant="half" num="VII" title="The sky" lede="Every survivor at its real catalog position on the whole sky. Hover a point for its coordinates; click it to open the full evidence." action={<Link href="/sky" className="nav-caps inline-flex items-center rounded-md border border-line px-3 py-1.5 font-mono text-[11px] text-fg hover:border-accent/60">Full sky view &rarr;</Link>}>
               <SkyMap points={dash.sky} className="w-full" />
             </Band>
           </div>
         )}
         <div id="latest-run" className="min-w-0 scroll-mt-24 2xl:border-l 2xl:border-line 2xl:pl-10">
-          <Band variant="half" num="VII" title="The machine is still running" lede="The pipeline keeps drawing and vetting new TESS targets on a schedule. Every number on this site comes from its latest completed run.">
+          <Band variant="half" num="VIII" title="The machine is still running" lede="The pipeline keeps drawing and vetting new TESS targets on a schedule. Every number on this site comes from its latest completed run.">
             <div className="rounded-lg border border-line bg-panel/60 p-5">
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-emerald-400" />

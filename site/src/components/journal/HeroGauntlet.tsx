@@ -110,7 +110,7 @@ export default function HeroGauntlet({ funnel, short, intro }: { funnel: FunnelS
     if (steps.length < 6) return [];
     const [S, U, V, N, X, C] = steps.map((s) => s.count);
     return [
-      { key: "confirmed", label: "Confirmed on-target", reached: 5, count: C, color: "--fg" },
+      { key: "confirmed", label: "Pixel-localized", reached: 5, count: C, color: "--fg" },
       { key: "pixel", label: "Failed pixel check", reached: 4, count: Math.max(X - C, 0), color: "--accent-kill" },
       { key: "neighbour", label: "Variable neighbour", reached: 3, count: Math.max(N - X, 0), color: "#c9c4b8" },
       { key: "catalogued", label: "Already catalogued", reached: 2, count: Math.max(V - N, 0), color: "--accent-cool" },

@@ -21,7 +21,7 @@ export default function CandidatesPage() {
           <div className="nav-caps font-mono text-[11px] text-muted">The survivors</div>
           <h1 className="mt-3 font-display text-4xl leading-[1.05] text-fg sm:text-5xl">{cards.length} candidates made it through <em>every test</em>.</h1>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">
-            Each one passed statistical vetting, matched none of the cross-checked catalogs, and had its dimming centred on its own star at the pixel level. They are uncatalogued eclipsing-binary candidates, not published discoveries; the tier badge carries any caveat the pipeline raised.
+            Each one passed statistical vetting, matched none of the cross-checked catalogs, and had its dimming centred on its own star at the pixel level. They are eclipsing-binary candidates with no match found in the cross-checked catalogs, which is weak evidence of novelty (those catalogs list only about 15% of known binaries), and not published discoveries; the tier badge carries any caveat the pipeline raised.
             {meta?.combined_dossier && (
               <>
                 {" "}

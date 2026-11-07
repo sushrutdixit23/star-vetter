@@ -343,7 +343,7 @@ export default function OrbitSchematic({ teff, period, t0, depth1, depth2, depth
       )}
       {geo.note && <p className="mt-3 rounded-md border border-accent-cool/30 bg-accent-cool/5 px-3 py-2 text-[11px] leading-relaxed text-muted">{geo.note}</p>}
       {rows.length > 0 && (
-        <dl className="mt-3 grid grid-cols-1 gap-x-6 gap-y-1 font-mono text-[10px] sm:grid-cols-2">
+        <dl className="mt-3 grid grid-cols-1 gap-x-6 gap-y-1 font-mono text-[10px] 2xl:grid-cols-2">
           {rows.map(([label, value]) => (
             <div key={label} className="flex justify-between gap-3 border-b border-line pb-1">
               <dt className="text-faint">{label}</dt>

@@ -27,7 +27,7 @@ export default function NeighbourTest({ tic, maps, offsetPx, offsetArcsec, neare
   const dv = maps.diff.flat().filter((v): v is number => v !== null);
 
   return (
-    <Band variant="half" num="IV" title="The impostor test" lede="A TESS pixel is 21 arcseconds wide, so a neighbour's eclipse can leak into a star's light and look exactly like a real one. Subtracting the in-eclipse image from the out-of-eclipse image shows what actually dimmed." action={<p className="text-sm text-muted"><span className="mr-2 font-mono text-2xl text-accent-kill">{fmt(failed)}</span>of {fmt(reached)} candidates were not confirmed on-target here.</p>}>
+    <Band variant="half" num="IV" title="The impostor test" lede="A TESS pixel is 21 arcseconds wide, so a neighbour's eclipse can leak into a star's light and look exactly like a real one. Subtracting the in-eclipse image from the out-of-eclipse image shows what actually dimmed." action={<p className="text-sm text-muted"><span className="mr-2 font-mono text-2xl text-accent-kill">{fmt(failed)}</span>of {fmt(reached)} candidates did not pass pixel localization here.</p>}>
       <div className="grid grid-cols-2 gap-3">
         <Heatmap grid={maps.out} lo={lo} hi={hi} stretch="sqrt" target={maps.target} neighbours={maps.neighbours} label="Out of eclipse" />
         {second === "in" ? (

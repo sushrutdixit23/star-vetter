@@ -27,7 +27,7 @@ export default function SiteHeader({ tics, run }: { tics: number[]; run?: { samp
           <StarMark className="h-6 w-6" />
           <span className="display-caps text-base">Star Vetter</span>
         </Link>
-        <nav className="order-last flex w-full justify-between text-[11px] text-muted sm:order-none sm:w-auto sm:min-w-0 sm:flex-1 sm:justify-center sm:gap-5 2xl:gap-8">
+        <nav className="order-last -mx-1 flex w-full justify-between overflow-x-auto px-1 pb-0.5 text-[10px] text-muted sm:mx-0 sm:px-0 sm:pb-0 sm:text-[11px] sm:order-none sm:w-auto sm:min-w-0 sm:flex-1 sm:justify-center sm:gap-5 2xl:gap-8">
           {NAV.map((n) => (
             <Link key={n.href} href={n.href} className="nav-caps shrink-0 font-mono transition-colors hover:text-fg"><span className="hidden text-faint 2xl:inline">{n.num}. </span>{n.label}</Link>
           ))}

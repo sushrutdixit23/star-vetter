@@ -221,11 +221,11 @@ export default async function CandidatePage({ params }: { params: Promise<{ tic:
             </div>
           </div>
 
-          <section className="grid gap-8 py-8 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_17rem]">
+          <section className="grid gap-8 py-8 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)_17rem] xl:items-start">
             <div>
               <div className="nav-caps font-mono text-[11px] text-muted">Candidate</div>
-              <h1 className="mt-2 font-display text-5xl leading-none text-fg sm:text-6xl">TIC {s.tic}</h1>
-              <p className="mt-3 font-display text-lg text-muted">An uncatalogued eclipsing-binary candidate from TESS.</p>
+              <h1 className="mt-2 font-display text-5xl leading-none text-fg sm:text-6xl xl:text-5xl 2xl:text-6xl">TIC {s.tic}</h1>
+              <p className="mt-3 font-display text-lg text-muted">An eclipsing-binary candidate from TESS. No match in the catalogs searched, which is weak evidence of novelty.</p>
               <div className="mt-4 flex flex-wrap items-center gap-2">
                 <TierBadge tier={s.tier} />
                 <span className="nav-caps rounded-full border border-line px-2.5 py-0.5 font-mono text-[10px] text-fg">Survivor</span>
@@ -242,7 +242,9 @@ export default async function CandidatePage({ params }: { params: Promise<{ tic:
             <div className="flex flex-col justify-center">
               <OrbitSchematic teff={d?.catalog.teff_k ?? null} period={period} t0={d ? d.t0_btjd : c.ephemeris.t0_btjd} depth1={d?.primary ? d.primary.depth : null} depth2={d?.secondary && d.secondary.detected ? d.secondary.depth : null} secPhase={d?.secondary && d.secondary.detected ? d.secondary.phase : null} duration={d ? d.duration_days : s.duration_days} depth2Upper={d?.secondary && !d.secondary.detected ? Math.max(d.secondary.depth, 0) + 5 * d.secondary.err : null} curve={orbitCurve} sinusoid={Boolean(d?.periodicity?.flag)} className="w-full text-fg" />
             </div>
-            <NextEclipses pred={getPredictionFor(tic)} />
+            <div className="xl:sticky xl:top-20">
+              <NextEclipses pred={getPredictionFor(tic)} />
+            </div>
           </section>
 
           <Row num="I" title="The signal" lede="A repeating, consistent dip in brightness." verdict={<Verdict {...signalVerdict} />}>

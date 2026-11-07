@@ -19,7 +19,7 @@ const L = {
   usable: "Usable light curve obtained",
   passing: "Passed statistical vetting gates",
   novel: "Flagged novel (no catalog match)",
-  confirmed: "Confirmed on-target",
+  confirmed: "Confirmed on-target", // the data key the pipeline exports; only displayed text is renamed
 };
 
 export default function PipelineStrip({
@@ -45,7 +45,7 @@ export default function PipelineStrip({
     diff(S, U) && `-${diff(S, U)} no usable data`,
     diff(U, V) && `-${diff(U, V)} rejected`,
     diff(V, N) && `-${diff(V, N)} already known`,
-    diff(N, C) && `-${diff(N, C)} not confirmed`,
+    diff(N, C) && `-${diff(N, C)} not localized`,
     C !== undefined ? `${C.toLocaleString("en-US")} written up` : null,
   ];
   const matched = featured.novelty.catalogs.filter((c) => c.matched).length;
