@@ -31,6 +31,17 @@ from f4_novelty import (
     type_tokens, classify_tokens, best_period_ratio_flag,
     MATCH_RADIUS_ARCSEC, GAIA_ECL_CLASS, GAIA_ELL_CLASS, GAIA_EP_CLASS,
 )
+from upstream import EXIT_UPSTREAM_DOWN, UpstreamDown, FailureBreaker, query_tic_chunked
+
+# FAIL CLOSED (added 2026-11-07, see upstream.py for the incident). If a bulk
+# catalog cross-match cannot be completed, or the per-star ASAS-SN service
+# stops answering, this script exits with EXIT_UPSTREAM_DOWN BEFORE writing
+# f4f_novelty_results.csv. It used to record a timed-out catalog as "zero
+# matches", which turned already-catalogued stars into NOVEL ones.
+XMATCH_RETRIES = 2                 # extra attempts per bulk catalog
+XMATCH_RETRY_DELAY_SEC = 15
+ASASSN_MAX_CONSECUTIVE_FAILURES = 5    # service is down, stop querying
+ASASSN_MAX_UNRESOLVED_FRACTION = 0.02  # more than this unresolved = untrustworthy
 
 # f4f = f4e pointed at f3i's vetting output (adds the median-depth gate,
 # gap #8), plus one new verdict: CONTAMINATED - a star whose period matches a
@@ -283,16 +294,14 @@ def main():
     tic_ids = trustworthy["TIC"].tolist()
     print(f"\nQuerying MAST TIC catalog for {len(tic_ids)} stars' coordinates...")
     try:
-        tic_info = call_with_timeout(Catalogs.query_criteria, kwargs={"catalog": "Tic", "ID": tic_ids},
-                                      timeout=CATALOG_TIMEOUT_SEC)
-    except TimeoutError:
-        print(f"\nMAST TIC catalog did not respond within {CATALOG_TIMEOUT_SEC}s.")
-        print("Check your connection (and firewall/proxy settings if any) and try again.")
-        sys.exit(1)
-    except Exception as exc:
-        print(f"\nCould not reach the MAST TIC catalog: {exc}")
-        print("This needs outbound internet access to mast.stsci.edu. Check your connection and try again.")
-        sys.exit(1)
+        tic_info = query_tic_chunked(
+            lambda ids: Catalogs.query_criteria(catalog="Tic", ID=ids),
+            tic_ids, timeout=CATALOG_TIMEOUT_SEC)
+    except UpstreamDown as exc:
+        print(f"\n{exc}")
+        print("Stopping without writing any results (exit code "
+              f"{EXIT_UPSTREAM_DOWN}); the orchestrator will not retry this.")
+        sys.exit(EXIT_UPSTREAM_DOWN)
     tic_info = tic_info[["ID", "ra", "dec", "Tmag"]].to_pandas()
     tic_info = tic_info.rename(columns={"ID": "TIC"})
     tic_info["TIC"] = tic_info["TIC"].astype(int)
@@ -312,27 +321,41 @@ def main():
         "gaia_class": "vizier:I/358/vclassre",
     }
     xmatch_results = {}
+    xmatch_failed = []
     for key, cat2 in xmatch_catalogs.items():
         print(f"\nCross-matching against {cat2} (radius={MATCH_RADIUS_ARCSEC} arcsec)...")
-        try:
-            xm = call_with_timeout(
-                XMatch.query,
-                kwargs={"cat1": cat1, "cat2": cat2, "max_distance": MATCH_RADIUS_ARCSEC * u.arcsec,
-                        "colRA1": "ra", "colDec1": "dec"},
-                timeout=XMATCH_TIMEOUT_SEC,
-            )
-            xm_df = xm.to_pandas()
-            if len(xm_df) > 0:
-                xm_df = xm_df.sort_values("angDist").drop_duplicates(subset="TIC", keep="first")
-            xmatch_results[key] = xm_df
-            print(f"  {len(xm_df)} / {len(merged)} stars matched.")
-        except TimeoutError:
-            print(f"  FAILED (did not respond within {XMATCH_TIMEOUT_SEC}s). "
-                  f"Treating as zero matches for this catalog and continuing.")
-            xmatch_results[key] = pd.DataFrame()
-        except Exception as exc:
-            print(f"  FAILED ({exc}). Treating as zero matches for this catalog and continuing.")
-            xmatch_results[key] = pd.DataFrame()
+        last_err = None
+        for attempt in range(XMATCH_RETRIES + 1):
+            try:
+                xm = call_with_timeout(
+                    XMatch.query,
+                    kwargs={"cat1": cat1, "cat2": cat2, "max_distance": MATCH_RADIUS_ARCSEC * u.arcsec,
+                            "colRA1": "ra", "colDec1": "dec"},
+                    timeout=XMATCH_TIMEOUT_SEC,
+                )
+                xm_df = xm.to_pandas()
+                if len(xm_df) > 0:
+                    xm_df = xm_df.sort_values("angDist").drop_duplicates(subset="TIC", keep="first")
+                xmatch_results[key] = xm_df
+                print(f"  {len(xm_df)} / {len(merged)} stars matched.")
+                last_err = None
+                break
+            except Exception as exc:
+                last_err = exc
+                print(f"  attempt {attempt + 1}/{XMATCH_RETRIES + 1} failed: "
+                      f"{str(exc)[:120] or type(exc).__name__}")
+                if attempt < XMATCH_RETRIES:
+                    time.sleep(XMATCH_RETRY_DELAY_SEC)
+        if last_err is not None:
+            xmatch_failed.append(cat2)
+            break  # one dead catalog is enough; do not burn time on the rest
+
+    if xmatch_failed:
+        print(f"\nCATALOG CROSS-MATCH UNAVAILABLE: {', '.join(xmatch_failed)}")
+        print("A missing answer is NOT a 'no match'. Writing no results, so no star is "
+              "wrongly labelled NOVEL.")
+        print(f"Stopping with exit code {EXIT_UPSTREAM_DOWN}; the orchestrator will not retry this.")
+        sys.exit(EXIT_UPSTREAM_DOWN)
 
     # --- Step 3: ASAS-SN, per star, cached + resumable + retried ---
     print(f"\nCross-matching against ASAS-SN (II/366/catv2021) star by star (cached, resumable)...")
@@ -357,6 +380,7 @@ def main():
 
     n_done_this_run = 0
     start_time = time.time()
+    breaker = FailureBreaker(ASASSN_MAX_CONSECUTIVE_FAILURES)
     for row in todo:
         tic = int(row["TIC"])
         coord = SkyCoord(ra=row["ra"] * u.deg, dec=row["dec"] * u.deg, frame="icrs")
@@ -368,6 +392,13 @@ def main():
         n_done_this_run += 1
         if not res["asassn_queried_ok"]:
             print(f"    WARNING: TIC {tic} ASAS-SN query failed after retries: {res['asassn_error']}")
+        if breaker.record(res["asassn_queried_ok"]):
+            print(f"\nASAS-SN SERVICE NOT ANSWERING: {breaker.consecutive} stars in a row failed. "
+                  f"Stopping instead of timing out on the other {len(todo) - n_done_this_run}.")
+            print("Writing no results. Stars already answered are cached and will not be "
+                  "re-queried next run.")
+            print(f"Stopping with exit code {EXIT_UPSTREAM_DOWN}; the orchestrator will not retry this.")
+            sys.exit(EXIT_UPSTREAM_DOWN)
         if n_done_this_run % 50 == 0 and n_done_this_run < len(todo):
             elapsed = time.time() - start_time
             rate = elapsed / n_done_this_run
@@ -384,6 +415,12 @@ def main():
     n_matches = sum(1 for r in this_run if r.get("asassn_match") in (True, "True"))
     print(f"  {n_matches} / {len(merged)} stars matched. "
           f"({n_query_failures} star(s) never resolved after retries, treated as no-match)")
+    if n_query_failures > ASASSN_MAX_UNRESOLVED_FRACTION * len(merged):
+        print(f"\nToo many stars unresolved against ASAS-SN ({n_query_failures} of {len(merged)}, "
+              f"limit {ASASSN_MAX_UNRESOLVED_FRACTION:.0%}). Treating them all as no-match would "
+              f"mislabel catalogued stars as NOVEL.")
+        print(f"Writing no results; stopping with exit code {EXIT_UPSTREAM_DOWN}.")
+        sys.exit(EXIT_UPSTREAM_DOWN)
 
     # --- Step 3b: TESS-specific catalogs, exact TIC match ---
     print(f"\nLoading TESS-specific catalogs (matched by exact TIC ID)...")

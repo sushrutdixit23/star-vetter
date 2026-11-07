@@ -56,6 +56,7 @@ import pandas as pd
 
 MAX_RETRIES = 3
 RETRY_DELAY_SEC = 20
+UPSTREAM_DOWN_EXIT_CODE = 3   # same value as upstream.EXIT_UPSTREAM_DOWN: never retried
 
 
 def make_logger(logf):
@@ -163,6 +164,15 @@ def run_stage(name, script_name, project_root, log, logf):
         if proc.returncode == 0:
             log(f"  -> {name} finished OK in {elapsed / 60:.1f} min")
             return "ok", total_elapsed, attempt
+
+        if proc.returncode == UPSTREAM_DOWN_EXIT_CODE:
+            # a remote catalog service is down (see upstream.py). Retrying
+            # would only repeat the same timeouts; the stage wrote nothing,
+            # so stopping here leaves no wrong data behind.
+            log(f"  -> {name} stopped: a required remote service is unavailable "
+                f"(exit code {UPSTREAM_DOWN_EXIT_CODE}). Not retrying; no results were written "
+                f"by this stage.")
+            return "failed", total_elapsed + 0.0, attempt
 
         if proc.returncode == 2:
             log(f"  -> {name} has nothing to do yet (exit code 2 - e.g. not enough labeled "
