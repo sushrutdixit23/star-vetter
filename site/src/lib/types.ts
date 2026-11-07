@@ -630,3 +630,23 @@ export interface SurfaceEvidence {
   limits: string[];
   stars: Record<string, SurfaceStar>;
 }
+
+// surface_variability.json (export_surface_variability.py): starspot and flare
+// tests on the full light curves. Each test is detected / none / not_tested.
+export interface VariabilityTest {
+  status: "detected" | "none" | "not_tested";
+  reason?: string;
+  cadence_min?: number;
+  exposure_days?: number;
+  n_candidates?: number;
+  n_false_alarms?: number;
+  n_tested?: number;
+}
+
+export interface SurfaceVariabilityStar {
+  tested: boolean;
+  reason?: string;
+  spots_A?: VariabilityTest;
+  spots_B?: VariabilityTest;
+  flares?: VariabilityTest;
+}

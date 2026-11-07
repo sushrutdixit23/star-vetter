@@ -18,6 +18,7 @@ import type {
   PredictionStar,
   SurfaceEvidence,
   SurfaceStar,
+  SurfaceVariabilityStar,
 } from "./types";
 import type { Summary } from "@/components/dash/DetailPanels";
 
@@ -164,6 +165,13 @@ export function getSurfaceEvidenceFor(tic: number): SurfaceStar | null {
   const p = path.join(DATA_DIR, "surface_evidence.json");
   if (!fs.existsSync(p)) return null;
   const all = JSON.parse(fs.readFileSync(p, "utf-8")) as SurfaceEvidence;
+  return all.stars[String(tic)] ?? null;
+}
+
+export function getVariabilityFor(tic: number): SurfaceVariabilityStar | null {
+  const p = path.join(DATA_DIR, "surface_variability.json");
+  if (!fs.existsSync(p)) return null;
+  const all = JSON.parse(fs.readFileSync(p, "utf-8")) as { stars: Record<string, SurfaceVariabilityStar> };
   return all.stars[String(tic)] ?? null;
 }
 

@@ -3,7 +3,7 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import StarBody from "../StarBody";
 import StarScene, { type SceneStatus } from "./StarScene";
-import type { SurfaceStar } from "@/lib/types";
+import type { SurfaceStar, SurfaceVariabilityStar } from "@/lib/types";
 
 // The two stars, drawn from what the light curve actually says about them.
 //
@@ -168,7 +168,7 @@ function fluxAt(c: [number, number][], ph: number): number {
   return a[1] + (b[1] - a[1]) * f;
 }
 
-export default function OrbitSchematic({ teff, period, t0, depth1, depth2, depth2Upper = null, secPhase, duration, sinusoid, curve = null, surface = null, className = "" }: { teff: number | null; period: number; t0: number; depth1: number | null; depth2: number | null; depth2Upper?: number | null; secPhase: number | null; duration: number; sinusoid: boolean; curve?: [number, number][] | null; surface?: SurfaceStar | null; className?: string }) {
+export default function OrbitSchematic({ teff, period, t0, depth1, depth2, depth2Upper = null, secPhase, duration, sinusoid, curve = null, surface = null, variability = null, className = "" }: { teff: number | null; period: number; t0: number; depth1: number | null; depth2: number | null; depth2Upper?: number | null; secPhase: number | null; duration: number; sinusoid: boolean; curve?: [number, number][] | null; surface?: SurfaceStar | null; variability?: SurfaceVariabilityStar | null; className?: string }) {
   const geo = useMemo(() => derive(teff, period, depth1, depth2, depth2Upper, secPhase, duration, sinusoid), [teff, period, depth1, depth2, depth2Upper, secPhase, duration, sinusoid]);
   const [phase, setPhase] = useState(0);
   const [mode, setMode] = useState<"zoom" | "true">("zoom");
@@ -332,6 +332,25 @@ export default function OrbitSchematic({ teff, period, t0, depth1, depth2, depth
       if (tides && surface.ellipsoidal_amp !== undefined) rows.push(["Tidal signal", `two humps per orbit, ${(surface.ellipsoidal_amp * 100).toFixed(2)}% +/- ${((surface.ellipsoidal_err ?? 0) * 100).toFixed(2)}%`]);
       if (heated && surface.reflection_amp !== undefined) rows.push(["Heated inner face", `one hump per orbit, ${(surface.reflection_amp * 100).toFixed(2)}% +/- ${((surface.reflection_err ?? 0) * 100).toFixed(2)}%`]);
       if (!tides && !heated) rows.push(["Tidal / heating signal", "none measured above 8 sigma"]);
+    }
+    if (variability) {
+      const sp = variability.spots_A;
+      const sb = variability.spots_B;
+      let spotText = variability.tested ? "not testable (needs two clean orbits)" : "not testable (no full light curve here)";
+      if (variability.tested && sp && sb && (sp.status !== "not_tested" || sb.status !== "not_tested")) {
+        if (sp.status === "detected") spotText = "rotation signal found in 2+ orbits";
+        else if (sb.status === "detected") spotText = "orbit-locked signal changes between orbits - unconfirmed, not drawn";
+        else spotText = "none found";
+      }
+      rows.push(["Starspots", spotText]);
+      const fl = variability.flares;
+      let flareText = "not testable (no full light curve)";
+      if (variability.tested && fl) {
+        if (fl.status === "none") flareText = `none found in ${Math.round(fl.exposure_days ?? 0)} days`;
+        else if (fl.status === "detected") flareText = `${fl.n_candidates} candidate flares`;
+        else flareText = `not testable (${Math.round(fl.cadence_min ?? 0)}-minute cadence)`;
+      }
+      rows.push(["Flares", flareText]);
     }
     if (secPhase !== null) rows.push(["Secondary eclipse phase", `${secPhase.toFixed(3)} measured, ${modelSecPhase.toFixed(3)} in this orbit`]);
   }
