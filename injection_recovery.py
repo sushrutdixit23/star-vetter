@@ -55,9 +55,12 @@ PERIOD_EDGES = [0.0, 1.0, 2.0, 5.0, 10.0, 40.0]
 PERIOD_LABELS = ["<1 d", "1-2 d", "2-5 d", "5-10 d", ">10 d"]
 DEPTH_EDGES = [0.0, 0.005, 0.02, 0.1, 1.0]
 DEPTH_LABELS = ["<0.5%", "0.5-2%", "2-10%", ">10%"]
+GATE_FLAGS = ["too_few_eclipses", "insufficient_intransit_points", "below_noise_floor",
+              "robust_depth_mismatch", "noisy_photometry", "inhomogeneous_photometry",
+              "depth_too_small", "non_finite_bls_result"]
 RESULT_COLUMNS = ["tic", "stratum", "tmag", "author", "n_points", "span_days", "kind", "k", "seed",
                   "period", "t0", "depth1", "depth2", "duration", "ingress_frac", "searchable",
-                  "status", "passed", "bls_period", "bls_snr", "n_eclipses", "outcome"]
+                  "status", "passed", "bls_period", "bls_snr", "n_eclipses", "outcome"] + GATE_FLAGS
 
 
 def z95():
@@ -194,7 +197,7 @@ def choose_stars(manifest, vetting, edges, per_stratum, seed=SEED, max_points=MA
 def build_report(res, now=None):
     """results DataFrame (RESULT_COLUMNS) -> JSON-able report."""
     inj = res[res["kind"] == "inject"]
-    nul = res[res["kind"] == "null"]
+    shuf = res[res["kind"] == "shuffle"]
     srch = inj[inj["searchable"].astype(bool)].copy()
     srch["detected"] = srch["outcome"].isin(["exact", "alias"])
     srch["exact"] = srch["outcome"] == "exact"
@@ -216,8 +219,14 @@ def build_report(res, now=None):
     by_period = [dict(cell(srch[srch["pbin"] == b]), bin=b) for b in PERIOD_LABELS]
     by_depth = [dict(cell(srch[srch["dbin"] == b]), bin=b) for b in DEPTH_LABELS]
 
+    missed = srch[(srch["outcome"] == "missed") & (srch["status"] == "OK")]
+    miss_reasons = []
+    for g in GATE_FLAGS:
+        if g in missed.columns:
+            k = int(missed[g].fillna(False).astype(bool).sum())
+            miss_reasons.append({"gate": g, "missed_flagged": rate(k, int(len(missed)))})
     wrong = int((inj["outcome"] == "wrong").sum())
-    null_pass = int(nul["passed"].astype(bool).sum())
+    null_pass = int(shuf["passed"].astype(bool).sum())
     out = {
         "generated_at": (now or datetime.now(timezone.utc)).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "prior": PRIOR,
@@ -225,22 +234,23 @@ def build_report(res, now=None):
             "gates": "f3i_vet.process_one_star, unchanged; pass = status OK and not depth_flagged_implausible",
             "stars": "usable, reliable, unmodified light curve fails the gates, at most %d points" % MAX_POINTS,
             "recovery": "detected = passed with BLS period within %.0f percent of the true period or of half / double it; exact = true period only" % (100 * RECOVERY_TOL),
-            "null": "real light curve cut into %.1f-day chunks placed in random order" % SHUFFLE_BLOCK_DAYS,
+            "shuffle": "real light curve cut into %.1f-day chunks placed in random order" % SHUFFLE_BLOCK_DAYS,
             "not_tested": ["pixel check", "eccentric orbits", "limb-darkened eclipse shapes", "periods beyond half the data span"],
         },
         "counts": {
             "stars": int(res["tic"].nunique()),
             "injections": int(len(inj)),
             "searchable_injections": int(len(srch)),
-            "null_runs": int(len(nul)),
+            "shuffle_runs": int(len(shuf)),
         },
         "searchable_fraction": rate(int(len(srch)), int(len(inj))),
         "recall_overall": cell(srch),
         "recall_by_tmag_stratum": by_stratum,
         "recall_by_period": by_period,
         "recall_by_depth": by_depth,
+        "miss_reasons": miss_reasons,
         "passed_with_unrelated_period": rate(wrong, int(len(inj))),
-        "false_alarm_null": rate(null_pass, int(len(nul))),
+        "false_alarm_shuffle": rate(null_pass, int(len(shuf))),
         "notes": [
             "Recall depends on the injection prior; compare bins, do not quote the overall figure as 'the' recall.",
             "Injections beyond half the data span cannot be found by construction and are excluded from recall (see searchable_fraction).",
@@ -299,6 +309,8 @@ def run_star(row, work, n_inj, n_null, f2, f3):
                 "status": res.get("status"), "passed": passed,
                 "bls_period": res.get("bls_period"), "bls_snr": res.get("bls_snr"),
                 "n_eclipses": res.get("n_eclipses_observed")}
+        for g in GATE_FLAGS:
+            base[g] = res.get(g)
         base.update(extra)
         return base
 
@@ -315,7 +327,7 @@ def run_star(row, work, n_inj, n_null, f2, f3):
     for k in range(n_null):
         seed_k = int(star_rng(SEED, tic, 1000 + k).integers(1, 2 ** 31))
         rng = np.random.default_rng(seed_k)
-        r = vet("null", k, block_shuffle(flux, t, rng), {"seed": seed_k, "searchable": True})
+        r = vet("shuffle", k, block_shuffle(flux, t, rng), {"seed": seed_k, "searchable": True})
         r["outcome"] = "pass" if r["passed"] else "clean"
         rows.append(r)
     return rows
@@ -379,8 +391,8 @@ def cmd_report(args):
         f.write("\n")
     c = rep["counts"]
     ro = rep["recall_overall"]
-    fa = rep["false_alarm_null"]
-    print("Stars %d, injections %d (%d searchable), null runs %d" % (c["stars"], c["injections"], c["searchable_injections"], c["null_runs"]))
+    fa = rep["false_alarm_shuffle"]
+    print("Stars %d, injections %d (%d searchable), shuffled runs %d" % (c["stars"], c["injections"], c["searchable_injections"], c["shuffle_runs"]))
     print("Detected (searchable): %d/%d = %.1f%% (95%% %.1f-%.1f%%)" % (ro["detected"]["k"], ro["detected"]["n"], 100 * (ro["detected"]["rate"] or 0), 100 * ro["detected"]["lo"], 100 * ro["detected"]["hi"]))
     print("False alarm on shuffled light curves: %d/%d = %.1f%%" % (fa["k"], fa["n"], 100 * (fa["rate"] or 0)))
     print("Written: %s" % out)

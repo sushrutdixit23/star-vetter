@@ -120,7 +120,7 @@ def test_report_counts_and_excludes_unsearchable_from_recall():
         rows.append(dict(base, kind="inject", k=k, period=30.0, depth1=0.1, depth2=0.0, searchable=False,
                          passed=False, bls_period=None, outcome="missed"))
     for k in range(10):
-        rows.append(dict(base, kind="null", k=k, period=np.nan, depth1=np.nan, depth2=np.nan, searchable=True,
+        rows.append(dict(base, kind="shuffle", k=k, period=np.nan, depth1=np.nan, depth2=np.nan, searchable=True,
                          passed=(k == 0), bls_period=2.0, outcome="pass" if k == 0 else "clean"))
     res = pd.DataFrame(rows)
     rep = ir.build_report(res, now=datetime(2026, 11, 8, tzinfo=timezone.utc))
@@ -128,7 +128,7 @@ def test_report_counts_and_excludes_unsearchable_from_recall():
     assert rep["recall_overall"]["detected"]["k"] == 3 and rep["recall_overall"]["detected"]["n"] == 4
     assert rep["recall_overall"]["exact_period"]["k"] == 2
     assert rep["searchable_fraction"]["k"] == 4 and rep["searchable_fraction"]["n"] == 6
-    assert rep["false_alarm_null"]["k"] == 1 and rep["false_alarm_null"]["n"] == 10
+    assert rep["false_alarm_shuffle"]["k"] == 1 and rep["false_alarm_shuffle"]["n"] == 10
     by_p = {b["bin"]: b for b in rep["recall_by_period"]}
     assert by_p["<1 d"]["n"] == 0 and by_p["1-2 d"]["n"] == 1 and by_p[">10 d"]["detected"]["k"] == 0
     assert sum(b["n"] for b in rep["recall_by_period"]) == 4
