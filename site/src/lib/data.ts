@@ -14,6 +14,8 @@ import type {
   GaiaContext,
   Benchmark,
   GroundSurveyEntry,
+  PredictionsData,
+  PredictionStar,
 } from "./types";
 import type { Summary } from "@/components/dash/DetailPanels";
 
@@ -143,6 +145,21 @@ export function getBenchmark(): Benchmark | null {
   const p = path.join(DATA_DIR, "benchmark.json");
   if (!fs.existsSync(p)) return null;
   return JSON.parse(fs.readFileSync(p, "utf-8")) as Benchmark;
+}
+
+// predictions.json is written by export_predictions.py: Year 9 eclipse
+// predictions with honest uncertainties, only for stars whose ephemeris passed
+// the hold-out. Optional, same pattern as every other getter here.
+let PREDICTIONS: PredictionsData | null | undefined;
+export function getPredictions(): PredictionsData | null {
+  if (PREDICTIONS !== undefined) return PREDICTIONS; // read once per build worker, not once per plate
+  const p = path.join(DATA_DIR, "predictions.json");
+  PREDICTIONS = fs.existsSync(p) ? (JSON.parse(fs.readFileSync(p, "utf-8")) as PredictionsData) : null;
+  return PREDICTIONS;
+}
+
+export function getPredictionFor(tic: number): PredictionStar | null {
+  return getPredictions()?.stars.find((s) => s.tic === tic) ?? null;
 }
 
 // The one place a Candidate (export_site_data.py's shape) becomes a Summary

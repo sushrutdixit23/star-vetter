@@ -50,3 +50,8 @@ diag_scan10.py
 .vercel
 .env*
 benchmark_run/
+
+# --- Regenerable measurement caches (large / resumable work, not results) ---
+data/processed/f13_lc_cache/
+data/processed/f13_cache/
+data/processed/f14_cache/

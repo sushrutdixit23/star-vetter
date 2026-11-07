@@ -502,3 +502,110 @@ export interface Dashboard {
   activity: ActivityEvent[];
   activity_log: string | null;
 }
+
+// predictions.json is written by export_predictions.py from f13_ephemeris.py's
+// output. Optional: the Predictions page and the candidate plates fall back to
+// a "not published yet" message without it.
+export type PredictionGrade = "VALIDATED" | "UNVALIDATED";
+
+export interface PredictedEclipse {
+  sector: number;
+  cycle: number;
+  t_btjd: number;
+  utc: string; // "YYYY-MM-DD HH:MM:SS", geocentric UTC
+  sigma_min: number;
+  approximate: boolean; // sector dates are interpolated, not announced
+  horizon_days: number | null; // days beyond the last measured eclipse
+}
+
+export interface PredictionStar {
+  tic: number;
+  tier: string;
+  grade: PredictionGrade;
+  tmag: number | null;
+  ra: number | null;
+  dec: number | null;
+  depth_frac: number | null;
+  ephemeris: {
+    period_days: number;
+    period_sigma_days: number;
+    t0_btjd: number;
+    n_eclipses: number;
+    sectors_connected: number[];
+    sectors_unconnected: number[];
+    baseline_days: number;
+    timing_jitter_min: number | null;
+    timing_excess: boolean;
+  };
+  holdout: {
+    status: string;
+    sectors_tested: number | null;
+    min_p_value: number | null;
+    tested_reach_days: number | null; // furthest forward distance the hold-out predicted
+    prediction_horizon_days: number | null; // nearest new prediction beyond the data
+    extrapolation_factor: number | null; // horizon / tested reach
+    grade_note: string;
+  };
+  novelty_extra: {
+    verdict: string;
+    matched_catalogs: string[];
+    known_other_period: string[];
+    nearby_catalogs: string[];
+  } | null;
+  best_sigma_min: number;
+  predictions: PredictedEclipse[];
+}
+
+export interface PredictionsValidation {
+  n_stars: number;
+  median_abs_epoch_error_min: number | null;
+  epoch_within_3sigma_fraction: number | null;
+  period_z_robust_spread: number | null;
+  source: string;
+}
+
+export interface HoldoutCalibration {
+  n_stars: number;
+  n_failed: number;
+  failed_timing_scatter_min: number[];
+  source: string;
+}
+
+export interface ExtraCatalogRecall {
+  n_known_ebs: number;
+  recall_period_match: number;
+  recall_period_match_ci95: [number, number];
+  recall_any_same_star: number;
+  candidates_n: number;
+  candidates_period_match_rate: number;
+  source: string;
+}
+
+export interface PredictionsData {
+  generated_utc: string;
+  selection_rule: string[];
+  max_sigma_min: number;
+  conventions: Record<string, string>;
+  counts: {
+    candidates_considered: number;
+    listed: number;
+    listed_validated: number;
+    listed_unvalidated: number;
+    rejected_failed_holdout: number;
+    status: Record<string, number>;
+    holdout: Record<string, number>;
+  };
+  excluded: Record<string, number>;
+  rejected: {
+    tic: number;
+    holdout_min_p_value: number | null;
+    holdout_max_z_equiv: number | null;
+    n_eclipses: number | null;
+    baseline_days: number | null;
+    grade_note: string;
+  }[];
+  validation: PredictionsValidation | null;
+  holdout_calibration: HoldoutCalibration | null;
+  extra_catalog_recall: ExtraCatalogRecall | null;
+  stars: PredictionStar[];
+}

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
-import { getAllCandidates, getAllTics, getCandidate, getDetail, getGaiaContext, getGroundSurvey, getSiteMeta, getTimeseries, toSummary } from "@/lib/data";
+import { getAllCandidates, getAllTics, getCandidate, getDetail, getGaiaContext, getGroundSurvey, getPredictionFor, getSiteMeta, getTimeseries, toSummary } from "@/lib/data";
 import { bestPeriod } from "@/lib/cards";
 import { TIER_STYLE } from "@/lib/tiers";
 import { summaryLine } from "@/lib/summary";
@@ -242,7 +242,7 @@ export default async function CandidatePage({ params }: { params: Promise<{ tic:
             <div className="flex flex-col justify-center">
               <OrbitSchematic teff={d?.catalog.teff_k ?? null} period={period} t0={d ? d.t0_btjd : c.ephemeris.t0_btjd} depth1={d?.primary ? d.primary.depth : null} depth2={d?.secondary && d.secondary.detected ? d.secondary.depth : null} secPhase={d?.secondary && d.secondary.detected ? d.secondary.phase : null} duration={d ? d.duration_days : s.duration_days} depth2Upper={d?.secondary && !d.secondary.detected ? Math.max(d.secondary.depth, 0) + 5 * d.secondary.err : null} curve={orbitCurve} sinusoid={Boolean(d?.periodicity?.flag)} className="w-full text-fg" />
             </div>
-            <NextEclipses d={d} />
+            <NextEclipses pred={getPredictionFor(tic)} />
           </section>
 
           <Row num="I" title="The signal" lede="A repeating, consistent dip in brightness." verdict={<Verdict {...signalVerdict} />}>
