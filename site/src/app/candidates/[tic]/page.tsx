@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
-import { getAllCandidates, getAllTics, getCandidate, getDetail, getGaiaContext, getGroundSurvey, getPredictionFor, getSurfaceEvidenceFor, getVariabilityFor, getNoveltyExtra, getSiteMeta, getTimeseries, toSummary } from "@/lib/data";
+import { getAllCandidates, getAllTics, getCandidate, getDetail, getGaiaContext, getGroundSurvey, getPredictionFor, getSurfaceEvidenceFor, getVariabilityFor, getNoveltyExtra, getNeighbourFor, getSiteMeta, getTimeseries, toSummary } from "@/lib/data";
 import { bestPeriod } from "@/lib/cards";
 import { TIER_STYLE } from "@/lib/tiers";
 import { summaryLine } from "@/lib/summary";
@@ -11,7 +11,7 @@ import { AliasPanel, Card, CatalogPanel, CaveatsList, EclipseProfiles, LightCurv
 import OrbitSchematic from "@/components/plate/OrbitSchematic";
 import NextEclipses from "@/components/plate/NextEclipses";
 import ShareButtons from "@/components/plate/ShareButtons";
-import type { NoveltyExtra } from "@/lib/types";
+import type { NeighbourStar, NoveltyExtra } from "@/lib/types";
 import FoldItYourself from "@/components/plate/FoldItYourself";
 import CandidateSidebar, { type SidebarItem } from "@/components/plate/CandidateSidebar";
 import GaiaContextPanel, { gaiaVerdict } from "@/components/plate/GaiaContextPanel";
@@ -36,6 +36,15 @@ function noveltyLine(n: NoveltyExtra | null): string {
   if (n.verdict === "KNOWN_VARIABLE_PERIOD_DIFFERS") return `${base} It is listed as a variable star in ${catList(n.known_other_period)} with a different period, so novelty is unclear.`;
   if (n.verdict === "NEARBY_PERIOD_MATCH" || n.verdict === "NEARBY_VARIABLE") return `${base} A variable star is listed very close by in ${catList(n.nearby_catalogs)}, which could be a neighbour or the same star.`;
   return `${base} No match in the catalogs searched, which is weak evidence of novelty.`;
+}
+
+function neighbourLine(n: NeighbourStar | null): string | null {
+  if (!n) return null;
+  const c = n.closest_viable;
+  if (n.status === "NO_VIABLE_NEIGHBOUR") return "No known neighbouring star is both bright enough and in the right place to be the source of the dimming.";
+  if (n.status === "UNSEPARABLE_NEIGHBOUR" && c) return `A star ${c.sep_arcsec.toFixed(1)} arcseconds away is bright enough to be the source and too close for TESS pixels to tell apart from the target. Ground-based imaging would settle it.`;
+  if (c) return `A star ${c.sep_arcsec.toFixed(0)} arcseconds away is bright enough and sits near the measured centre of the dimming, so it cannot be ruled out as the source.`;
+  return null;
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ tic: string }> }) {
@@ -250,6 +259,7 @@ export default async function CandidatePage({ params }: { params: Promise<{ tic:
               </div>
               <div className="mt-4"><ShareButtons tic={s.tic} /></div>
               <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">{summaryLine(s, d)}</p>
+              {neighbourLine(getNeighbourFor(s.tic)) && <p className="mt-2 max-w-xl text-xs leading-relaxed text-faint">{neighbourLine(getNeighbourFor(s.tic))}</p>}
               {writeup && (
                 <div className="mt-5 max-w-xl border-l-2 border-accent/40 pl-4">
                   <div className="nav-caps font-mono text-[10px] text-faint">In plain English</div>

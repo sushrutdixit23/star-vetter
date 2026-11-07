@@ -26,8 +26,8 @@ import pandas as pd
 #    the raw rates are lower bounds;
 #  - the recall-corrected figure uses the 60-star benchmark and assumes the
 #    unvetted stars are as easy to recover as the vetted benchmark stars,
-#    which is probably optimistic. It is provisional until injection-recovery
-#    (the next feature) replaces it.
+#    which is probably optimistic. It is provisional; recovery.json gives a second
+#    estimate from injected binaries.
 
 Z95 = 1.959964
 N_STRATA = 5
@@ -195,7 +195,7 @@ def build_audit(manifest, vetting, novelty, pixel, pop_tmag, benchmark, now=None
             "value": summarize(np.minimum(1.0, (d_ot / d_usable) / d_rec)),
             "assumption": "The unvetted stars are as easy for this pipeline to recover as the vetted benchmark stars. "
                           "Probably optimistic (unvetted signals are weaker), so this is likely a LOWER bound on the true "
-                          "eclipsing-binary fraction. Replaced by injection-recovery in the next feature.",
+                          "eclipsing-binary fraction. Injected-binary recovery (recovery.json) is a second, independent estimate of recall.",
         }
 
     periods = _period_table(nov, on_target)

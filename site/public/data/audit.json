@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-07T20:12:06Z",
+  "generated_at": "2026-11-07T21:37:20Z",
   "frame": {
     "list": "Kostov et al. 2025 TESS Ten Thousand Catalog, unvetted list (VizieR J/ApJS/279/50 table 2)",
     "population": 872720,
@@ -320,7 +320,7 @@
       "lo": 0.06357001774169503,
       "hi": 0.19684987316039915
     },
-    "assumption": "The unvetted stars are as easy for this pipeline to recover as the vetted benchmark stars. Probably optimistic (unvetted signals are weaker), so this is likely a LOWER bound on the true eclipsing-binary fraction. Replaced by injection-recovery in the next feature."
+    "assumption": "The unvetted stars are as easy for this pipeline to recover as the vetted benchmark stars. Probably optimistic (unvetted signals are weaker), so this is likely a LOWER bound on the true eclipsing-binary fraction. Injected-binary recovery (recovery.json) is a second, independent estimate of recall."
   },
   "periods": [
     {

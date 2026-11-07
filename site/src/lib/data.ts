@@ -20,6 +20,11 @@ import type {
   SurfaceStar,
   NoveltyExtra,
   SurfaceVariabilityStar,
+  AuditData,
+  RecoveryData,
+  AtlasAliasData,
+  NeighboursData,
+  NeighbourStar,
 } from "./types";
 import type { Summary } from "@/components/dash/DetailPanels";
 
@@ -186,6 +191,20 @@ export function getNoveltyExtraMap(): Record<string, NoveltyExtra> | null {
 
 export function getNoveltyExtra(tic: number): NoveltyExtra | null {
   return getNoveltyExtraMap()?.[String(tic)] ?? null;
+}
+
+function readOptional<T>(name: string): T | null {
+  const p = path.join(DATA_DIR, name);
+  return fs.existsSync(p) ? (JSON.parse(fs.readFileSync(p, "utf-8")) as T) : null;
+}
+
+export const getAudit = () => readOptional<AuditData>("audit.json");
+export const getRecovery = () => readOptional<RecoveryData>("recovery.json");
+export const getAtlasAlias = () => readOptional<AtlasAliasData>("atlas_alias.json");
+export const getNeighbours = () => readOptional<NeighboursData>("neighbours.json");
+
+export function getNeighbourFor(tic: number): NeighbourStar | null {
+  return getNeighbours()?.stars[String(tic)] ?? null;
 }
 
 export function getPredictionFor(tic: number): PredictionStar | null {

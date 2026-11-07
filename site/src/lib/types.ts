@@ -659,3 +659,96 @@ export interface NoveltyExtra {
   known_other_period: string[];
   nearby_catalogs: string[];
 }
+
+// audit.json (export_audit.py): the funnel of the Kostov et al. 2025 unvetted
+// list with stratified rates and 95% intervals.
+export interface RateInterval {
+  k: number;
+  n: number;
+  rate: number | null;
+  lo: number;
+  hi: number;
+}
+export interface MedianInterval {
+  median: number;
+  lo: number;
+  hi: number;
+}
+export interface AuditStratum {
+  stratum: number;
+  label: string;
+  population: number;
+  weight: number;
+  sampled: number;
+  usable: number;
+  passed_gates: number;
+  novel: number;
+  on_target: number;
+  usable_rate: RateInterval;
+  passed_per_usable: RateInterval;
+  on_target_per_usable: RateInterval;
+}
+export interface AuditData {
+  generated_at: string;
+  frame: { list: string; population: number; sampled: number; sampled_fraction: number; design: string; intervals: string };
+  funnel: { key: string; label: string; count: number }[];
+  strata: AuditStratum[];
+  rates: Record<string, MedianInterval>;
+  recall: { source: string; recovered: number; usable: number; sampled: number; given_usable: RateInterval };
+  provisional_correction: { label: string; value: MedianInterval; assumption: string } | null;
+  periods: { bin: string; passed: number; on_target: number }[];
+  notes: string[];
+}
+
+// recovery.json (injection_recovery.py): synthetic binaries injected into real
+// light curves and run through the real gates.
+export interface RecoveryCell {
+  n: number;
+  detected: RateInterval;
+  exact_period: RateInterval;
+  bin?: string;
+  stratum?: number;
+}
+export interface RecoveryData {
+  generated_at: string;
+  counts: { stars: number; injections: number; searchable_injections: number; shuffle_runs: number };
+  searchable_fraction: RateInterval;
+  recall_overall: RecoveryCell;
+  recall_by_tmag_stratum: RecoveryCell[];
+  recall_by_period: RecoveryCell[];
+  recall_by_depth: RecoveryCell[];
+  recall_by_points_per_eclipse: RecoveryCell[];
+  miss_reasons: { gate: string; missed_flagged: RateInterval }[];
+  passed_with_unrelated_period: RateInterval;
+  false_alarm_shuffle: RateInterval;
+  method: { gates: string; stars: string; recovery: string; shuffle: string; not_tested: string[] };
+  notes: string[];
+}
+
+// atlas_alias.json (f14b_atlas_alias.py)
+export interface AtlasAliasData {
+  tested: number;
+  atlas_class_of_tested: Record<string, number>;
+  explained: { k: number; n: number; harmonic_only: number; with_sidereal: number };
+  chance: { pair_rate: number; expected_explained: number; p_value_at_least_observed: number | null };
+  already_matching_ratio_1_half_2: number;
+  method: { relation: string; hypotheses: number; tolerance_basis: string };
+  reading: string;
+}
+
+// neighbours.json (f15_neighbours.py)
+export interface NeighbourStar {
+  offset_arcsec: number;
+  diff_snr: number;
+  n_neighbours: number;
+  status: "NO_VIABLE_NEIGHBOUR" | "UNSEPARABLE_NEIGHBOUR" | "VIABLE_NEIGHBOUR_AT_OFFSET";
+  viable: number;
+  closest_viable: { tic: number; sep_arcsec: number; delta_tmag: number; required_depth: number } | null;
+}
+export interface NeighboursData {
+  stars_assessed: number;
+  summary_by_floor: Record<string, Record<string, number>>;
+  method: { headline_floor_arcsec: number; centroid_floors_arcsec: number[]; assumptions: string; not_covered: string };
+  statuses: Record<string, string>;
+  stars: Record<string, NeighbourStar>;
+}
