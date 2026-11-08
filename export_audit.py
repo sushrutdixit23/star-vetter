@@ -84,7 +84,7 @@ def summarize(draws):
     return {"median": float(med), "lo": float(lo), "hi": float(hi)}
 
 
-def build_audit(manifest, vetting, novelty, pixel, pop_tmag, benchmark, now=None):
+def build_audit(manifest, vetting, novelty, pixel, pop_tmag, benchmark, now=None, injection=None):
     """Pure function: DataFrames in, JSON-able dict out.
 
     manifest: TIC, Tmag, status          (the sampling frame)
@@ -197,6 +197,21 @@ def build_audit(manifest, vetting, novelty, pixel, pop_tmag, benchmark, now=None
                           "Probably optimistic (unvetted signals are weaker), so this is likely a LOWER bound on the true "
                           "eclipsing-binary fraction. Injected-binary recovery (recovery.json) is a second, independent estimate of recall.",
         }
+        # second estimate from injected binaries (an optimistic recall: eclipses were added after flattening)
+        inj_k = int((injection or {}).get("k", 0))
+        inj_n = int((injection or {}).get("n", 0))
+        if inj_n > 0:
+            d_inj = rng.beta(inj_k + 0.5, inj_n - inj_k + 0.5, size=MC_DRAWS)
+            provisional["with_injection_recall"] = {
+                "recall": _rate(inj_k, inj_n),
+                "value": summarize(np.minimum(1.0, (d_ot / d_usable) / d_inj)),
+                "consistent_with_benchmark": bool(
+                    _rate(inj_k, inj_n)["lo"] <= provisional_hi(b_rec, b_usable)
+                    and _rate(b_rec, b_usable)["lo"] <= _rate(inj_k, inj_n)["hi"]),
+                "note": "Recall of injected binaries the search range can reach. Injections were added after flattening, "
+                        "so this recall is probably too high and the corrected rate too low; the benchmark recall uses real "
+                        "eclipses but only %d stars." % b_usable,
+            }
 
     periods = _period_table(nov, on_target)
 
@@ -238,6 +253,10 @@ def build_audit(manifest, vetting, novelty, pixel, pop_tmag, benchmark, now=None
         "periods": periods,
         "notes": notes,
     }
+
+
+def provisional_hi(k, n):
+    return _rate(k, n)["hi"]
 
 
 def _rate(k, n):
@@ -289,7 +308,11 @@ def main():
         print("ERROR: could not read table2_unvetted.parquet: %s" % e)
         sys.exit(1)
 
-    audit = build_audit(manifest, vetting, novelty, pixel, pop.to_numpy(), benchmark)
+    injection = None
+    rec_path = root / "site" / "public" / "data" / "recovery.json"
+    if rec_path.exists():
+        injection = json.loads(rec_path.read_text(encoding="utf-8")).get("recall_overall", {}).get("detected")
+    audit = build_audit(manifest, vetting, novelty, pixel, pop.to_numpy(), benchmark, injection=injection)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with open(out_path, "w", encoding="utf-8", newline="\n") as f:
         json.dump(audit, f, indent=2)
@@ -305,6 +328,11 @@ def main():
     if pc:
         v = pc["value"]
         print("Provisional recall-corrected: %.1f%% (95%% %.1f-%.1f%%)" % (100 * v["median"], 100 * v["lo"], 100 * v["hi"]))
+        wi = pc.get("with_injection_recall")
+        if wi:
+            w = wi["value"]
+            print("  with injection recall: %.1f%% (95%% %.1f-%.1f%%); consistent with benchmark recall: %s" % (
+                100 * w["median"], 100 * w["lo"], 100 * w["hi"], wi["consistent_with_benchmark"]))
 
 
 if __name__ == "__main__":

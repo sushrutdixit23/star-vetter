@@ -103,6 +103,18 @@ def test_output_is_reproducible_and_correction_is_flagged_provisional():
     assert 0.0 <= pc["value"]["lo"] <= pc["value"]["median"] <= pc["value"]["hi"] <= 1.0
 
 
+def test_injection_recall_gives_a_second_corrected_rate_and_a_consistency_flag():
+    base = ea.build_audit(*_synthetic())
+    assert "with_injection_recall" not in base["provisional_correction"]
+    inj = ea.build_audit(*_synthetic(), injection={"k": 87, "n": 306})
+    w = inj["provisional_correction"]["with_injection_recall"]
+    assert inj["provisional_correction"]["value"] == base["provisional_correction"]["value"]   # first estimate unchanged
+    assert w["recall"]["k"] == 87 and 0.0 <= w["value"]["lo"] <= w["value"]["hi"] <= 1.0
+    # a much higher recall means a smaller correction
+    hi = ea.build_audit(*_synthetic(), injection={"k": 300, "n": 306})["provisional_correction"]["with_injection_recall"]
+    assert hi["value"]["median"] <= w["value"]["median"]
+
+
 def test_period_table_counts_match_passed():
     a = ea.build_audit(*_synthetic())
     assert sum(p["passed"] for p in a["periods"]) == 3

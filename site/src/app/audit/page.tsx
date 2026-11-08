@@ -89,7 +89,7 @@ export default function AuditPage() {
             <p className="mt-5 max-w-3xl text-sm leading-relaxed text-muted">This is the rate at which <em>this pipeline</em> recovers a binary, not the share of the list that is real. It is a lower bound: the pipeline misses most binaries (section III), the pixel check only ran on stars with no catalog match, and stars with no usable light curve ({pc(1 - a.rates.usable_per_sampled.median, 0)} of the sample) cannot be assessed at all.</p>
             {a.provisional_correction && (
               <p className="mt-4 max-w-3xl border-l-2 border-accent/40 pl-4 text-sm leading-relaxed text-muted">
-                <span className="text-fg">Provisional correction: {mi(a.provisional_correction.value, 0)}.</span> {a.provisional_correction.assumption}
+                <span className="text-fg">Provisional correction: {mi(a.provisional_correction.value, 0)}</span> using the recall on {a.recall.usable} known binaries ({pc(a.recall.given_usable.rate ?? 0, 0)}). {a.provisional_correction.with_injection_recall && (<>Using the recall on injected binaries instead ({pc(a.provisional_correction.with_injection_recall.recall.rate ?? 0, 0)}) gives {mi(a.provisional_correction.with_injection_recall.value, 0)}; the two recall estimates {a.provisional_correction.with_injection_recall.consistent_with_benchmark ? "agree within their intervals" : "disagree"}. </>)}{a.provisional_correction.assumption}
               </p>
             )}
           </Band>

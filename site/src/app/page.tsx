@@ -69,7 +69,7 @@ export default function Home() {
   const intro = (
     <>
       <div className="nav-caps font-mono text-[11px] text-muted">An autonomous observatory</div>
-      <h1 className="mt-4 font-display text-4xl leading-[1.05] text-fg sm:text-5xl 2xl:text-6xl">I built a machine that hunts for new binary stars, then tries to <em>kill everything</em> it finds.</h1>
+      <h1 className="mt-4 font-display text-4xl leading-[1.05] text-fg sm:text-5xl 2xl:text-6xl">I built a machine that audits the unvetted TESS binary-star list, then tries to <em>kill everything</em> it finds.</h1>
       <p className="mt-5 max-w-md text-sm leading-relaxed text-muted">An unattended agent that screens unexamined stars from NASA&apos;s TESS telescope for eclipsing binaries - statistical vetting, cross-matching against {stats?.catalogs.length ?? 6} catalogs, and pixel-level source confirmation. Every number on this site comes from the pipeline itself.</p>
       {stats?.catalog_progress && (
         <p className="mt-4 font-mono text-[11px] text-faint">{stats.catalog_progress.sampled_to_date.toLocaleString("en-US")} of {stats.catalog_progress.total_catalog.toLocaleString("en-US")} TESS targets examined ({(stats.catalog_progress.fraction * 100).toFixed(2)}%)</p>

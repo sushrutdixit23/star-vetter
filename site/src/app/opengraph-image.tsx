@@ -62,7 +62,7 @@ export default function Image() {
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "60px 64px", width: 660, height: "100%" }}>
           <div style={{ display: "flex", fontSize: 22, letterSpacing: 8, color: "#cfd3dd" }}>STAR VETTER</div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ display: "flex", fontSize: 54, lineHeight: 1.1 }}>I built a machine that hunts for new binary stars, then tries to kill everything it finds.</div>
+            <div style={{ display: "flex", fontSize: 54, lineHeight: 1.1 }}>I built a machine that audits the unvetted TESS binary-star list, then tries to kill everything it finds.</div>
             <div style={{ display: "flex", marginTop: 24, fontSize: 24, lineHeight: 1.35, color: "#9aa0b2" }}>An unattended pipeline vetting NASA TESS stars for eclipsing binaries - every number from the pipeline itself.</div>
           </div>
           <div style={{ display: "flex", fontSize: 22, color: "#93b9ff" }}>{stat}</div>
