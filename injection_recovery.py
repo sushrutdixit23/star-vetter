@@ -196,7 +196,7 @@ def choose_stars(manifest, vetting, edges, per_stratum, seed=SEED, max_points=MA
     return pd.concat(picks).reset_index(drop=True)
 
 
-def build_report(res, now=None):
+def build_report(res, now=None, host_periods=None):
     """results DataFrame (RESULT_COLUMNS) -> JSON-able report."""
     inj = res[res["kind"] == "inject"]
     shuf = res[res["kind"] == "shuffle"]
@@ -232,6 +232,15 @@ def build_report(res, now=None):
         if g in missed.columns:
             k = int(missed[g].fillna(False).astype(bool).sum())
             miss_reasons.append({"gate": g, "missed_flagged": rate(k, int(len(missed)))})
+    host_lock = None
+    if host_periods:
+        # a miss whose best period is the host star's OWN period (or half / double it): the search
+        # locked onto a signal that was already there, not onto the injected eclipse
+        def on_host(r):
+            hp = host_periods.get(int(r["tic"]))
+            return bool(hp) and classify_outcome(True, r["bls_period"], float(hp)) != "wrong"
+        k_host = int(sum(on_host(r) for _, r in missed.iterrows()))
+        host_lock = rate(k_host, int(len(missed)))
     wrong = int((inj["outcome"] == "wrong").sum())
     null_pass = int(shuf["passed"].astype(bool).sum())
     out = {
@@ -257,11 +266,13 @@ def build_report(res, now=None):
         "recall_by_depth": by_depth,
         "recall_by_points_per_eclipse": by_ppe,
         "miss_reasons": miss_reasons,
+        "missed_on_host_signal": host_lock,
         "passed_with_unrelated_period": rate(wrong, int(len(inj))),
         "false_alarm_shuffle": rate(null_pass, int(len(shuf))),
         "notes": [
             "Recall depends on the injection prior; compare bins, do not quote the overall figure as 'the' recall.",
             "Injections beyond half the data span cannot be found by construction and are excluded from recall (see searchable_fraction).",
+            "Host stars are those whose untouched light curve fails the gates, which skews them toward noisy or variable stars; see missed_on_host_signal. Recall on quiet stars is probably higher.",
             "False-alarm rate is for gate passes from non-periodic noise in these real light curves; it does not count real non-eclipsing variables.",
         ],
     }
@@ -425,7 +436,9 @@ def cmd_report(args):
     res = res.drop_duplicates(["tic", "kind", "k"]).reindex(columns=RESULT_COLUMNS)
     suffix = ("_" + tag) if tag else ""
     res.to_csv(root / "data" / "processed" / ("injection_results%s.csv" % suffix), index=False, lineterminator="\n")
-    rep = build_report(res)
+    vet = pd.read_csv(root / "data" / "processed" / "f3i_vetting_results.csv", usecols=["TIC", "bls_period"])
+    host_periods = {int(t): float(p) for t, p in zip(vet["TIC"], vet["bls_period"]) if np.isfinite(p) and p > 0}
+    rep = build_report(res, host_periods=host_periods)
     out = root / "site" / "public" / "data" / ("recovery%s.json" % suffix)
     with open(out, "w", encoding="utf-8", newline="\n") as f:
         json.dump(rep, f, indent=2)

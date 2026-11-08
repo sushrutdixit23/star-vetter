@@ -163,6 +163,9 @@ export default function AuditPage() {
           </p>
           <ul className="mt-6 max-w-3xl list-disc space-y-1.5 pl-5 text-xs leading-relaxed text-faint">
             <li>Based on {r.counts.stars} stars, mostly 30-minute full-frame light curves; the bins hold few injections each, so the intervals are wide.</li>
+            {r.missed_on_host_signal && r.missed_on_host_signal.n > 0 && (
+              <li>The host stars were chosen because they fail the gates unaided, so they lean toward noisy or variable stars. In {r.missed_on_host_signal.k} of {r.missed_on_host_signal.n} misses ({pc(r.missed_on_host_signal.rate, 0)}) the search locked onto a signal the star already had, so recall on quiet stars is probably higher.</li>
+            )}
             <li>The artificial eclipses were added after the survey&apos;s flattening step, so real eclipses are probably recovered less often than shown.</li>
             <li>Not tested: the pixel check, eccentric orbits, limb-darkened eclipse shapes, and periods beyond half the data span ({pc(1 - (r.searchable_fraction.rate ?? 0), 0)} of injections).</li>
           </ul>

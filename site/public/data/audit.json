@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-08T01:23:54Z",
+  "generated_at": "2026-11-08T12:06:21Z",
   "frame": {
     "list": "Kostov et al. 2025 TESS Ten Thousand Catalog, unvetted list (VizieR J/ApJS/279/50 table 2)",
     "population": 872720,
@@ -335,7 +335,7 @@
         "hi": 0.09687272093466721
       },
       "consistent_with_benchmark": true,
-      "note": "Recall of injected binaries the search range can reach. Injections were added after flattening, so this recall is probably too high and the corrected rate too low; the benchmark recall uses real eclipses but only 47 stars."
+      "note": "Recall of injected binaries the search range can reach, in host stars that fail the gates unaided (noisier than typical, which pushes recall down) and with eclipses added after flattening (which pushes it up), so its direction of bias is unknown; the benchmark recall uses real eclipses but only 47 stars."
     }
   },
   "periods": [

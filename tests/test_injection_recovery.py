@@ -169,3 +169,16 @@ def test_whatif_tag_is_empty_for_the_default_and_distinct_otherwise():
     assert ir.whatif_tag(NS(min_eclipses=None, period_grid_scale_max=None)) == ""
     assert ir.whatif_tag(NS(min_eclipses=2, period_grid_scale_max=None)) == "min2"
     assert ir.whatif_tag(NS(min_eclipses=None, period_grid_scale_max=8.0)) == "grid8"
+
+
+def test_report_counts_misses_that_locked_onto_the_host_signal():
+    rows = []
+    for k, (bls, outcome) in enumerate([(2.0, "missed"), (10.0, "missed"), (4.0, "missed"), (5.0, "exact")]):
+        rows.append({"tic": 1, "stratum": 0, "tmag": 12.0, "author": "X", "n_points": 100, "span_days": 20.0, "cadence_min": 30.0,
+                     "kind": "inject", "k": k, "status": "OK", "passed": outcome != "missed", "bls_period": bls, "bls_snr": 9.0,
+                     "n_eclipses": 3, "outcome": outcome, "period": 5.0, "depth1": 0.05, "duration": 0.1, "searchable": True})
+    res = pd.DataFrame(rows).reindex(columns=ir.RESULT_COLUMNS)
+    rep = ir.build_report(res, host_periods={1: 2.0})
+    # host period 2.0: a miss at 2.0 (same) and 4.0 (double) lock on; 10.0 does not
+    assert rep["missed_on_host_signal"]["k"] == 2 and rep["missed_on_host_signal"]["n"] == 3
+    assert ir.build_report(res)["missed_on_host_signal"] is None

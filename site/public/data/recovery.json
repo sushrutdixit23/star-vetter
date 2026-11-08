@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-07T21:18:35Z",
+  "generated_at": "2026-11-08T12:06:20Z",
   "prior": {
     "period_days": [
       0.65,
@@ -492,6 +492,13 @@
       }
     }
   ],
+  "missed_on_host_signal": {
+    "k": 174,
+    "n": 217,
+    "rate": 0.8018433179723502,
+    "lo": 0.7437590345914104,
+    "hi": 0.8494266863488481
+  },
   "passed_with_unrelated_period": {
     "k": 3,
     "n": 360,
@@ -509,6 +516,7 @@
   "notes": [
     "Recall depends on the injection prior; compare bins, do not quote the overall figure as 'the' recall.",
     "Injections beyond half the data span cannot be found by construction and are excluded from recall (see searchable_fraction).",
+    "Host stars are those whose untouched light curve fails the gates, which skews them toward noisy or variable stars; see missed_on_host_signal. Recall on quiet stars is probably higher.",
     "False-alarm rate is for gate passes from non-periodic noise in these real light curves; it does not count real non-eclipsing variables."
   ]
 }

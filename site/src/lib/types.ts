@@ -722,6 +722,7 @@ export interface RecoveryData {
   recall_by_depth: RecoveryCell[];
   recall_by_points_per_eclipse: RecoveryCell[];
   miss_reasons: { gate: string; missed_flagged: RateInterval }[];
+  missed_on_host_signal?: RateInterval | null;
   passed_with_unrelated_period: RateInterval;
   false_alarm_shuffle: RateInterval;
   method: { gates: string; stars: string; recovery: string; shuffle: string; not_tested: string[] };

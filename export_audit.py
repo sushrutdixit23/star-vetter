@@ -208,8 +208,9 @@ def build_audit(manifest, vetting, novelty, pixel, pop_tmag, benchmark, now=None
                 "consistent_with_benchmark": bool(
                     _rate(inj_k, inj_n)["lo"] <= provisional_hi(b_rec, b_usable)
                     and _rate(b_rec, b_usable)["lo"] <= _rate(inj_k, inj_n)["hi"]),
-                "note": "Recall of injected binaries the search range can reach. Injections were added after flattening, "
-                        "so this recall is probably too high and the corrected rate too low; the benchmark recall uses real "
+                "note": "Recall of injected binaries the search range can reach, in host stars that fail the gates unaided "
+                        "(noisier than typical, which pushes recall down) and with eclipses added after flattening "
+                        "(which pushes it up), so its direction of bias is unknown; the benchmark recall uses real "
                         "eclipses but only %d stars." % b_usable,
             }
 
