@@ -211,7 +211,7 @@ export default function EclipseCloseup(p: CloseupProps) {
       <svg viewBox="0 0 320 60" className="mt-2 block w-full" role="img" aria-label="Measured eclipse profile with the model curve and the current time marked">
         {profile && profile.raw.map((q, i) => <circle key={i} cx={sx(q[0])} cy={sy(q[1])} r={0.8} fill="currentColor" opacity={0.18} />)}
         <path d={path(curve)} fill="none" stroke="currentColor" strokeOpacity={0.55} strokeDasharray="3 3" strokeWidth={1} />
-        {profile && <path d={path(profile.bin)} fill="none" className="stroke-accent" strokeWidth={1.5} strokeLinejoin="round" />}
+        {profile && <path d={path(profile.bin)} fill="none" className="stroke-accent sv-draw" pathLength={1} strokeWidth={1.5} strokeLinejoin="round" />}
         <line x1={sx(tau)} x2={sx(tau)} y1={1} y2={59} className="stroke-accent" strokeOpacity={0.6} strokeWidth={1} />
         <circle cx={sx(tau)} cy={sy(fMeas ?? fModel)} r={2.8} className="fill-accent" />
       </svg>

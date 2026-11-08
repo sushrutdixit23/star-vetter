@@ -26,7 +26,7 @@ export default function CandidateCard({ c }: { c: CardData }) {
   return (
     <Link
       href={`/candidates/${c.tic}`}
-      className="group block rounded-xl border border-line bg-panel p-4 transition hover:border-accent/40"
+      className="sv-lift group block rounded-xl border border-line bg-panel p-4 hover:border-accent/40"
     >
       <div className="flex items-start justify-between gap-2">
         <div>

@@ -1,6 +1,7 @@
 import { getAudit, getRecovery, getAtlasAlias, getNeighbours } from "@/lib/data";
 import type { RateInterval, MedianInterval, RecoveryCell } from "@/lib/types";
 import Band from "@/components/journal/Band";
+import CountUp from "@/components/CountUp";
 
 export const metadata = {
   title: "The audit - Star Vetter",
@@ -23,10 +24,10 @@ const GATE_LABEL: Record<string, string> = {
   non_finite_bls_result: "Fit failed",
 };
 
-function Bar({ value, max }: { value: number; max: number }) {
+function Bar({ value, max, i = 0 }: { value: number; max: number; i?: number }) {
   return (
     <div className="h-1.5 overflow-hidden rounded-full bg-panel-2">
-      <div className="h-full rounded-full bg-accent/70" style={{ width: `${Math.max(2, (value / (max || 1)) * 100)}%` }} />
+      <div className="sv-grow h-full rounded-full bg-accent/70" style={{ width: `${Math.max(2, (value / (max || 1)) * 100)}%`, "--i": i } as React.CSSProperties} />
     </div>
   );
 }
@@ -73,17 +74,17 @@ export default function AuditPage() {
         <>
           <Band num="I" title="The funnel" lede={`A seeded random sample of ${n0(a.frame.sampled)} stars (${pc(a.frame.sampled_fraction, 1)} of the list), re-weighted by brightness.`}>
             <div className="space-y-4">
-              {a.funnel.map((step) => (
+              {a.funnel.map((step, i) => (
                 <div key={step.key}>
                   <div className="mb-1.5 flex items-baseline justify-between gap-4 text-sm">
                     <span className="text-muted">{step.label}</span>
-                    <span className="font-mono text-fg">{n0(step.count)}</span>
+                    <span className="font-mono text-fg"><CountUp value={step.count} /></span>
                   </div>
-                  <Bar value={step.count} max={funnelMax} />
+                  <Bar value={step.count} max={funnelMax} i={i} />
                 </div>
               ))}
             </div>
-            <div className="mt-8 font-display text-5xl leading-none text-fg">{mi(a.rates.on_target_per_usable, 2)}</div>
+            <div className="mt-8 font-display text-5xl leading-none text-fg"><CountUp value={100 * a.rates.on_target_per_usable.median} decimals={2} suffix="%" /> <span className="text-xl text-muted">(95% interval {pc(a.rates.on_target_per_usable.lo, 2)} to {pc(a.rates.on_target_per_usable.hi, 2)})</span></div>
             <div className="mt-2 font-mono text-[11px] text-muted">of stars with a usable light curve are confirmed on-target, 95% interval</div>
             <p className="mt-5 max-w-3xl text-sm leading-relaxed text-muted">This is the rate at which <em>this pipeline</em> recovers a binary, not the share of the list that is real. It is a lower bound: the pipeline misses most binaries (section III), the pixel check only ran on stars with no catalog match, and stars with no usable light curve ({pc(1 - a.rates.usable_per_sampled.median, 0)} of the sample) cannot be assessed at all.</p>
             {a.provisional_correction && (
@@ -126,7 +127,7 @@ export default function AuditPage() {
 
       {r && (
         <Band num="III" title="What it misses" lede={`${n0(r.counts.injections)} artificial binaries were added to real light curves of ${r.counts.stars} sampled stars, then run through the real gates.`}>
-          <div className="font-display text-5xl leading-none text-fg">{pc(r.recall_overall.detected.rate, 0)}</div>
+          <div className="font-display text-5xl leading-none text-fg"><CountUp value={100 * (r.recall_overall.detected.rate ?? 0)} suffix="%" /></div>
           <div className="mt-2 font-mono text-[11px] text-muted">of injected binaries that the search range could reach got through ({r.recall_overall.detected.k} of {r.recall_overall.n}; 95% {pc(r.recall_overall.detected.lo, 0)} to {pc(r.recall_overall.detected.hi, 0)})</div>
           <p className="mt-5 max-w-3xl text-sm leading-relaxed text-muted">How often a binary is found depends heavily on how deep its eclipses are and how often they are seen, so compare the bins below instead of quoting one number. The figure depends on the mix of periods and depths that was injected.</p>
           <div className="mt-8 grid gap-10 md:grid-cols-2">
@@ -170,7 +171,7 @@ export default function AuditPage() {
 
       {al && (
         <Band num="IV" title="Old catalog periods" lede="Some candidates sit on an ATLAS variable with a different period. Is the ATLAS period just an alias?">
-          <div className="font-display text-5xl leading-none text-fg">{al.explained.k} <span className="text-3xl text-muted">of {al.tested}</span></div>
+          <div className="font-display text-5xl leading-none text-fg"><CountUp value={al.explained.k} /> <span className="text-3xl text-muted">of {al.tested}</span></div>
           <div className="mt-2 font-mono text-[11px] text-muted">disagreeing periods are explained by a harmonic or sidereal-day alias; chance alone gives about {al.chance.expected_explained.toFixed(1)}</div>
           <p className="mt-5 max-w-3xl text-sm leading-relaxed text-muted">ATLAS marks {al.atlas_class_of_tested["dubious"] ?? 0} of these as &quot;dubious&quot;, which means the variability itself may not be real, and its detached-binary periods are often wrong. Aliases account for a few more stars than luck would, so a handful of the disagreements are probably ATLAS period errors. The remaining {al.tested - al.explained.k} are not explained by aliasing, and TESS does not show that ATLAS is wrong for them. The honest claim is only that TESS establishes a period for stars whose ATLAS detection was low-significance.</p>
         </Band>
@@ -181,7 +182,7 @@ export default function AuditPage() {
           <div className="grid gap-6 sm:grid-cols-3">
             {(["NO_VIABLE_NEIGHBOUR", "UNSEPARABLE_NEIGHBOUR", "VIABLE_NEIGHBOUR_AT_OFFSET"] as const).map((k) => (
               <div key={k}>
-                <div className="font-display text-5xl leading-none text-fg">{nbSum[k] ?? 0}</div>
+                <div className="font-display text-5xl leading-none text-fg"><CountUp value={nbSum[k] ?? 0} /></div>
                 <div className="mt-2 text-sm leading-relaxed text-muted">{nb.statuses[k]}</div>
               </div>
             ))}
