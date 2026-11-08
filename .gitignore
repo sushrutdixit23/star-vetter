@@ -59,3 +59,4 @@ data/processed/f14_cache/
 
 # frozen pre-registration zips are deposited, not committed
 preregistration/*.zip
+/data/processed/cat_ijspeert2024_parent_tics.txt
