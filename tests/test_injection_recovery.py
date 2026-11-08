@@ -155,3 +155,17 @@ def test_end_to_end_a_deep_eclipse_is_recovered_and_flat_noise_is_not():
     assert ir.passes_gates(ra)
     assert ir.classify_outcome(True, ra["bls_period"], 2.37) in ("exact", "alias")
     assert not ir.passes_gates(rb)
+
+
+def test_grid_size_scales_with_span_and_is_capped():
+    assert ir.grid_size(15000, 20.0, 8) == 15000          # shorter than a sector: default
+    assert ir.grid_size(15000, 56.0, 8) == 30000
+    assert ir.grid_size(15000, 840.0, 8) == 15000 * 8     # capped
+    assert ir.grid_size(15000, 840.0, 2) == 30000
+
+
+def test_whatif_tag_is_empty_for_the_default_and_distinct_otherwise():
+    from types import SimpleNamespace as NS
+    assert ir.whatif_tag(NS(min_eclipses=None, period_grid_scale_max=None)) == ""
+    assert ir.whatif_tag(NS(min_eclipses=2, period_grid_scale_max=None)) == "min2"
+    assert ir.whatif_tag(NS(min_eclipses=None, period_grid_scale_max=8.0)) == "grid8"

@@ -304,6 +304,10 @@ def run_star(row, work, n_inj, n_null, f2, f3):
     df = pd.read_csv(path)
     t, flux, err = df["time"].to_numpy(), df["flux"].to_numpy(), df["flux_err"].to_numpy()
     span = float(t.max() - t.min())
+    if span < GRID["min_span"]:
+        return []
+    if GRID["scale_max"] is not None:
+        f3.N_PERIOD_GRID = grid_size(GRID["base"], span, GRID["scale_max"])
     cadence_min = float(np.median(np.diff(t)) * 1440.0)
     rows = []
 
@@ -342,6 +346,26 @@ def run_star(row, work, n_inj, n_null, f2, f3):
     return rows
 
 
+GRID = {"scale_max": None, "min_span": 0.0}   # what-if settings set by cmd_run
+BASE_SPAN_DAYS = 28.0                          # one TESS sector: the span the default period grid was sized for
+
+
+def whatif_tag(args):
+    """File-name tag for a what-if run; empty for the default pipeline."""
+    parts = []
+    if getattr(args, "min_eclipses", None) is not None:
+        parts.append("min%d" % args.min_eclipses)
+    if getattr(args, "period_grid_scale_max", None) is not None:
+        parts.append("grid%g" % args.period_grid_scale_max)
+    return "_".join(parts)
+
+
+def grid_size(base, span, scale_max):
+    """Period-grid size scaled with the time span, because the grid must step by less than
+    about a transit duration over the whole baseline. One sector keeps the default."""
+    return int(base * min(scale_max, max(1.0, span / BASE_SPAN_DAYS)))
+
+
 def cmd_run(args):
     root = Path(args.root).resolve()
     proc = root / "data" / "processed"
@@ -360,10 +384,13 @@ def cmd_run(args):
     f3.make_plot = lambda *a, **k: None     # plots are not needed here
     if args.min_eclipses is not None:
         f3.MIN_ECLIPSES_OBSERVED = args.min_eclipses     # what-if run; the gate code itself is unchanged
+    GRID["scale_max"] = args.period_grid_scale_max
+    GRID["min_span"] = args.min_span_days
+    GRID["base"] = f3.N_PERIOD_GRID
 
     shard, nshard = args.shard
-    out_csv = work / (("results_min%d_shard%d.csv" % (args.min_eclipses, shard)) if args.min_eclipses is not None
-                      else ("results_shard%d.csv" % shard))
+    tag = whatif_tag(args)
+    out_csv = work / ("results_%sshard%d.csv" % (tag + "_" if tag else "", shard))
     done = set()
     if out_csv.exists():
         done = set(pd.read_csv(out_csv)["tic"].astype(int))
@@ -389,14 +416,14 @@ def cmd_run(args):
 def cmd_report(args):
     root = Path(args.root).resolve()
     work = root / "data" / "injection"
-    tag = ("min%d_" % args.min_eclipses) if args.min_eclipses is not None else ""
-    shards = sorted(work.glob("results_%sshard*.csv" % tag))
+    tag = whatif_tag(args)
+    shards = sorted(work.glob("results_%sshard*.csv" % (tag + "_" if tag else "")))
     if not shards:
         print("ERROR: no result shards under %s - run the 'run' step first." % work)
         sys.exit(1)
     res = pd.concat([pd.read_csv(p) for p in shards], ignore_index=True)
     res = res.drop_duplicates(["tic", "kind", "k"]).reindex(columns=RESULT_COLUMNS)
-    suffix = ("_min%d" % args.min_eclipses) if args.min_eclipses is not None else ""
+    suffix = ("_" + tag) if tag else ""
     res.to_csv(root / "data" / "processed" / ("injection_results%s.csv" % suffix), index=False, lineterminator="\n")
     rep = build_report(res)
     out = root / "site" / "public" / "data" / ("recovery%s.json" % suffix)
@@ -424,11 +451,15 @@ def main():
                    help="i/n: run every n-th star starting at i")
     r.add_argument("--min-eclipses", type=int, default=None,
                    help="what-if: require this many observed eclipses instead of the pipeline default (results go to separate files)")
+    r.add_argument("--period-grid-scale-max", type=float, default=None,
+                   help="what-if: grow the BLS period grid with the span, up to this multiple of the default (one sector = default)")
+    r.add_argument("--min-span-days", type=float, default=0.0, help="what-if: skip stars whose light curve is shorter than this")
     r.add_argument("--offline-resolver", action="store_true", help="resolve TIC names from the survey list (for networks where the MAST resolver is unreachable)")
     r.set_defaults(fn=cmd_run)
     p = sub.add_parser("report", help="merge shards, write injection_results.csv and recovery.json")
     p.add_argument("root")
     p.add_argument("--min-eclipses", type=int, default=None, help="report the what-if run made with this setting")
+    p.add_argument("--period-grid-scale-max", type=float, default=None, help="report the what-if run made with this setting")
     p.set_defaults(fn=cmd_report)
     args = ap.parse_args()
     args.fn(args)
