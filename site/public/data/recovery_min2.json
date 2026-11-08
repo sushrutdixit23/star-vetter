@@ -1,0 +1,514 @@
+{
+  "generated_at": "2026-11-08T07:52:40Z",
+  "prior": {
+    "period_days": [
+      0.65,
+      39.8
+    ],
+    "primary_depth": [
+      0.002,
+      0.5
+    ],
+    "total_mass_msun": [
+      0.8,
+      3.0
+    ],
+    "radius_sum_rsun": [
+      0.8,
+      3.0
+    ],
+    "impact_parameter": [
+      0.0,
+      0.9
+    ],
+    "ingress_fraction": [
+      0.2,
+      1.0
+    ],
+    "secondary_probability": 0.5,
+    "secondary_depth_ratio": [
+      0.1,
+      1.0
+    ]
+  },
+  "method": {
+    "gates": "f3i_vet.process_one_star, unchanged; pass = status OK and not depth_flagged_implausible",
+    "stars": "usable, reliable, unmodified light curve fails the gates, at most 60000 points",
+    "recovery": "detected = passed with BLS period within 2 percent of the true period or of half / double it; exact = true period only",
+    "shuffle": "real light curve cut into 1.0-day chunks placed in random order",
+    "not_tested": [
+      "pixel check",
+      "eccentric orbits",
+      "limb-darkened eclipse shapes",
+      "periods beyond half the data span"
+    ]
+  },
+  "counts": {
+    "stars": 60,
+    "injections": 360,
+    "searchable_injections": 306,
+    "shuffle_runs": 120
+  },
+  "searchable_fraction": {
+    "k": 306,
+    "n": 360,
+    "rate": 0.85,
+    "lo": 0.8094291100154514,
+    "hi": 0.8831802500471013
+  },
+  "recall_overall": {
+    "n": 306,
+    "detected": {
+      "k": 90,
+      "n": 306,
+      "rate": 0.29411764705882354,
+      "lo": 0.24587134189810114,
+      "hi": 0.34746907014704065
+    },
+    "exact_period": {
+      "k": 57,
+      "n": 306,
+      "rate": 0.18627450980392157,
+      "lo": 0.14663948645000263,
+      "hi": 0.23368876047592757
+    }
+  },
+  "recall_by_tmag_stratum": [
+    {
+      "n": 66,
+      "detected": {
+        "k": 17,
+        "n": 66,
+        "rate": 0.25757575757575757,
+        "lo": 0.16748843553330722,
+        "hi": 0.37433098644658197
+      },
+      "exact_period": {
+        "k": 11,
+        "n": 66,
+        "rate": 0.16666666666666666,
+        "lo": 0.09569583305576236,
+        "hi": 0.2743058721665853
+      },
+      "stratum": 0,
+      "stars": 12
+    },
+    {
+      "n": 65,
+      "detected": {
+        "k": 13,
+        "n": 65,
+        "rate": 0.2,
+        "lo": 0.12077959192497155,
+        "hi": 0.3127013273674554
+      },
+      "exact_period": {
+        "k": 9,
+        "n": 65,
+        "rate": 0.13846153846153847,
+        "lo": 0.07459090367003281,
+        "hi": 0.2426809734259689
+      },
+      "stratum": 1,
+      "stars": 12
+    },
+    {
+      "n": 59,
+      "detected": {
+        "k": 16,
+        "n": 59,
+        "rate": 0.2711864406779661,
+        "lo": 0.17436970875269475,
+        "hi": 0.39597763071627756
+      },
+      "exact_period": {
+        "k": 12,
+        "n": 59,
+        "rate": 0.2033898305084746,
+        "lo": 0.12036272369750813,
+        "hi": 0.3226801237622709
+      },
+      "stratum": 2,
+      "stars": 12
+    },
+    {
+      "n": 61,
+      "detected": {
+        "k": 20,
+        "n": 61,
+        "rate": 0.32786885245901637,
+        "lo": 0.22335119727890218,
+        "hi": 0.45278193787395904
+      },
+      "exact_period": {
+        "k": 11,
+        "n": 61,
+        "rate": 0.18032786885245902,
+        "lo": 0.10379140078524819,
+        "hi": 0.2947415644986369
+      },
+      "stratum": 3,
+      "stars": 12
+    },
+    {
+      "n": 55,
+      "detected": {
+        "k": 24,
+        "n": 55,
+        "rate": 0.43636363636363634,
+        "lo": 0.31373442273181157,
+        "hi": 0.567301837532886
+      },
+      "exact_period": {
+        "k": 14,
+        "n": 55,
+        "rate": 0.2545454545454545,
+        "lo": 0.1581211471211116,
+        "hi": 0.3830187138998645
+      },
+      "stratum": 4,
+      "stars": 12
+    }
+  ],
+  "recall_by_period": [
+    {
+      "n": 39,
+      "detected": {
+        "k": 10,
+        "n": 39,
+        "rate": 0.2564102564102564,
+        "lo": 0.14568780474586973,
+        "hi": 0.41081656050824766
+      },
+      "exact_period": {
+        "k": 9,
+        "n": 39,
+        "rate": 0.23076923076923078,
+        "lo": 0.12645804064318109,
+        "hi": 0.3833625735850539
+      },
+      "bin": "<1 d"
+    },
+    {
+      "n": 60,
+      "detected": {
+        "k": 21,
+        "n": 60,
+        "rate": 0.35,
+        "lo": 0.2416777433189201,
+        "hi": 0.47637381259134803
+      },
+      "exact_period": {
+        "k": 13,
+        "n": 60,
+        "rate": 0.21666666666666667,
+        "lo": 0.13123043995390482,
+        "hi": 0.3362002767654906
+      },
+      "bin": "1-2 d"
+    },
+    {
+      "n": 95,
+      "detected": {
+        "k": 34,
+        "n": 95,
+        "rate": 0.35789473684210527,
+        "lo": 0.2687504160365929,
+        "hi": 0.45808485829474077
+      },
+      "exact_period": {
+        "k": 21,
+        "n": 95,
+        "rate": 0.22105263157894736,
+        "lo": 0.149373529000424,
+        "hi": 0.3144142317240455
+      },
+      "bin": "2-5 d"
+    },
+    {
+      "n": 60,
+      "detected": {
+        "k": 17,
+        "n": 60,
+        "rate": 0.2833333333333333,
+        "lo": 0.1850682836411917,
+        "hi": 0.40767285267364
+      },
+      "exact_period": {
+        "k": 9,
+        "n": 60,
+        "rate": 0.15,
+        "lo": 0.08097440540959933,
+        "hi": 0.2611458917143597
+      },
+      "bin": "5-10 d"
+    },
+    {
+      "n": 52,
+      "detected": {
+        "k": 8,
+        "n": 52,
+        "rate": 0.15384615384615385,
+        "lo": 0.08007684975817665,
+        "hi": 0.27524085287336875
+      },
+      "exact_period": {
+        "k": 5,
+        "n": 52,
+        "rate": 0.09615384615384616,
+        "lo": 0.041774350788203046,
+        "hi": 0.2060963022819332
+      },
+      "bin": ">10 d"
+    }
+  ],
+  "recall_by_depth": [
+    {
+      "n": 49,
+      "detected": {
+        "k": 1,
+        "n": 49,
+        "rate": 0.02040816326530612,
+        "lo": 0.003611672549881484,
+        "hi": 0.10693521629394014
+      },
+      "exact_period": {
+        "k": 1,
+        "n": 49,
+        "rate": 0.02040816326530612,
+        "lo": 0.003611672549881484,
+        "hi": 0.10693521629394014
+      },
+      "bin": "<0.5%"
+    },
+    {
+      "n": 88,
+      "detected": {
+        "k": 12,
+        "n": 88,
+        "rate": 0.13636363636363635,
+        "lo": 0.0797594534801491,
+        "hi": 0.2233875045541386
+      },
+      "exact_period": {
+        "k": 8,
+        "n": 88,
+        "rate": 0.09090909090909091,
+        "lo": 0.046786421235876625,
+        "hi": 0.16925390655269706
+      },
+      "bin": "0.5-2%"
+    },
+    {
+      "n": 75,
+      "detected": {
+        "k": 20,
+        "n": 75,
+        "rate": 0.26666666666666666,
+        "lo": 0.179763135738092,
+        "hi": 0.37630799109511226
+      },
+      "exact_period": {
+        "k": 14,
+        "n": 75,
+        "rate": 0.18666666666666668,
+        "lo": 0.11458109561892754,
+        "hi": 0.2892858461285181
+      },
+      "bin": "2-10%"
+    },
+    {
+      "n": 94,
+      "detected": {
+        "k": 57,
+        "n": 94,
+        "rate": 0.6063829787234043,
+        "lo": 0.5053112559843349,
+        "hi": 0.6991010680823428
+      },
+      "exact_period": {
+        "k": 34,
+        "n": 94,
+        "rate": 0.3617021276595745,
+        "lo": 0.2717691858120199,
+        "hi": 0.46249479290129913
+      },
+      "bin": ">10%"
+    }
+  ],
+  "recall_by_points_per_eclipse": [
+    {
+      "n": 25,
+      "detected": {
+        "k": 1,
+        "n": 25,
+        "rate": 0.04,
+        "lo": 0.007096233423382073,
+        "hi": 0.1954406391161776
+      },
+      "exact_period": {
+        "k": 1,
+        "n": 25,
+        "rate": 0.04,
+        "lo": 0.007096233423382073,
+        "hi": 0.1954406391161776
+      },
+      "bin": "<3"
+    },
+    {
+      "n": 70,
+      "detected": {
+        "k": 24,
+        "n": 70,
+        "rate": 0.34285714285714286,
+        "lo": 0.24245988732847254,
+        "hi": 0.45960450395927066
+      },
+      "exact_period": {
+        "k": 15,
+        "n": 70,
+        "rate": 0.21428571428571427,
+        "lo": 0.13438702966734445,
+        "hi": 0.3239118635830978
+      },
+      "bin": "3-6"
+    },
+    {
+      "n": 97,
+      "detected": {
+        "k": 40,
+        "n": 97,
+        "rate": 0.41237113402061853,
+        "lo": 0.3195732394982523,
+        "hi": 0.5118453041385339
+      },
+      "exact_period": {
+        "k": 22,
+        "n": 97,
+        "rate": 0.2268041237113402,
+        "lo": 0.1548180996160779,
+        "hi": 0.319604418780962
+      },
+      "bin": "6-12"
+    },
+    {
+      "n": 114,
+      "detected": {
+        "k": 25,
+        "n": 114,
+        "rate": 0.21929824561403508,
+        "lo": 0.1531837603632965,
+        "hi": 0.30371366260166827
+      },
+      "exact_period": {
+        "k": 19,
+        "n": 114,
+        "rate": 0.16666666666666666,
+        "lo": 0.1093738536450561,
+        "hi": 0.24569183612583956
+      },
+      "bin": ">12"
+    }
+  ],
+  "miss_reasons": [
+    {
+      "gate": "too_few_eclipses",
+      "missed_flagged": {
+        "k": 114,
+        "n": 177,
+        "rate": 0.6440677966101694,
+        "lo": 0.5711575947089417,
+        "hi": 0.710857383026204
+      }
+    },
+    {
+      "gate": "insufficient_intransit_points",
+      "missed_flagged": {
+        "k": 73,
+        "n": 177,
+        "rate": 0.4124293785310734,
+        "lo": 0.34251842526921994,
+        "hi": 0.4860607059113776
+      }
+    },
+    {
+      "gate": "below_noise_floor",
+      "missed_flagged": {
+        "k": 0,
+        "n": 177,
+        "rate": 0.0,
+        "lo": 0.0,
+        "hi": 0.02124213609567
+      }
+    },
+    {
+      "gate": "robust_depth_mismatch",
+      "missed_flagged": {
+        "k": 80,
+        "n": 177,
+        "rate": 0.4519774011299435,
+        "lo": 0.38045381579693344,
+        "hi": 0.5255411916246846
+      }
+    },
+    {
+      "gate": "noisy_photometry",
+      "missed_flagged": {
+        "k": 6,
+        "n": 177,
+        "rate": 0.03389830508474576,
+        "lo": 0.015626745098251765,
+        "hi": 0.07197185634686434
+      }
+    },
+    {
+      "gate": "inhomogeneous_photometry",
+      "missed_flagged": {
+        "k": 24,
+        "n": 177,
+        "rate": 0.13559322033898305,
+        "lo": 0.0928398253933618,
+        "hi": 0.1938281721000926
+      }
+    },
+    {
+      "gate": "depth_too_small",
+      "missed_flagged": {
+        "k": 0,
+        "n": 177,
+        "rate": 0.0,
+        "lo": 0.0,
+        "hi": 0.02124213609567
+      }
+    },
+    {
+      "gate": "non_finite_bls_result",
+      "missed_flagged": {
+        "k": 0,
+        "n": 177,
+        "rate": 0.0,
+        "lo": 0.0,
+        "hi": 0.02124213609567
+      }
+    }
+  ],
+  "passed_with_unrelated_period": {
+    "k": 51,
+    "n": 360,
+    "rate": 0.14166666666666666,
+    "lo": 0.10942020778547656,
+    "hi": 0.18147973310286236
+  },
+  "false_alarm_shuffle": {
+    "k": 37,
+    "n": 120,
+    "rate": 0.30833333333333335,
+    "lo": 0.23272736935342025,
+    "hi": 0.39582997795551506
+  },
+  "notes": [
+    "Recall depends on the injection prior; compare bins, do not quote the overall figure as 'the' recall.",
+    "Injections beyond half the data span cannot be found by construction and are excluded from recall (see searchable_fraction).",
+    "False-alarm rate is for gate passes from non-periodic noise in these real light curves; it does not count real non-eclipsing variables."
+  ]
+}
