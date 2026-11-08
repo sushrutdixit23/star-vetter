@@ -358,9 +358,12 @@ def cmd_run(args):
     import f2c_fetch_lightcurves as f2
     import f3i_vet as f3
     f3.make_plot = lambda *a, **k: None     # plots are not needed here
+    if args.min_eclipses is not None:
+        f3.MIN_ECLIPSES_OBSERVED = args.min_eclipses     # what-if run; the gate code itself is unchanged
 
     shard, nshard = args.shard
-    out_csv = work / ("results_shard%d.csv" % shard)
+    out_csv = work / (("results_min%d_shard%d.csv" % (args.min_eclipses, shard)) if args.min_eclipses is not None
+                      else ("results_shard%d.csv" % shard))
     done = set()
     if out_csv.exists():
         done = set(pd.read_csv(out_csv)["tic"].astype(int))
@@ -386,15 +389,17 @@ def cmd_run(args):
 def cmd_report(args):
     root = Path(args.root).resolve()
     work = root / "data" / "injection"
-    shards = sorted(work.glob("results_shard*.csv"))
+    tag = ("min%d_" % args.min_eclipses) if args.min_eclipses is not None else ""
+    shards = sorted(work.glob("results_%sshard*.csv" % tag))
     if not shards:
         print("ERROR: no result shards under %s - run the 'run' step first." % work)
         sys.exit(1)
     res = pd.concat([pd.read_csv(p) for p in shards], ignore_index=True)
     res = res.drop_duplicates(["tic", "kind", "k"]).reindex(columns=RESULT_COLUMNS)
-    res.to_csv(root / "data" / "processed" / "injection_results.csv", index=False, lineterminator="\n")
+    suffix = ("_min%d" % args.min_eclipses) if args.min_eclipses is not None else ""
+    res.to_csv(root / "data" / "processed" / ("injection_results%s.csv" % suffix), index=False, lineterminator="\n")
     rep = build_report(res)
-    out = root / "site" / "public" / "data" / "recovery.json"
+    out = root / "site" / "public" / "data" / ("recovery%s.json" % suffix)
     with open(out, "w", encoding="utf-8", newline="\n") as f:
         json.dump(rep, f, indent=2)
         f.write("\n")
@@ -417,10 +422,13 @@ def main():
     r.add_argument("--nulls", type=int, default=2)
     r.add_argument("--shard", type=lambda s: tuple(int(x) for x in s.split("/")), default=(0, 1),
                    help="i/n: run every n-th star starting at i")
+    r.add_argument("--min-eclipses", type=int, default=None,
+                   help="what-if: require this many observed eclipses instead of the pipeline default (results go to separate files)")
     r.add_argument("--offline-resolver", action="store_true", help="resolve TIC names from the survey list (for networks where the MAST resolver is unreachable)")
     r.set_defaults(fn=cmd_run)
     p = sub.add_parser("report", help="merge shards, write injection_results.csv and recovery.json")
     p.add_argument("root")
+    p.add_argument("--min-eclipses", type=int, default=None, help="report the what-if run made with this setting")
     p.set_defaults(fn=cmd_report)
     args = ap.parse_args()
     args.fn(args)
