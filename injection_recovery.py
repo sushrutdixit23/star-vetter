@@ -174,7 +174,7 @@ def star_rng(seed, tic, salt=0):
     return np.random.default_rng([int(seed), int(tic), int(salt)])
 
 
-def choose_stars(manifest, vetting, edges, per_stratum, seed=SEED, max_points=MAX_POINTS):
+def choose_stars(manifest, vetting, edges, per_stratum, seed=SEED, max_points=MAX_POINTS, max_host_snr=None):
     """Seeded draw of stars per Tmag stratum from usable stars whose unmodified
     light curve is reliable but fails the gates."""
     m = manifest[manifest["status"] == "OK"].copy()
@@ -183,6 +183,9 @@ def choose_stars(manifest, vetting, edges, per_stratum, seed=SEED, max_points=MA
     v["TIC"] = v["TIC"].astype(int)
     v = v[v["status"] == "OK"]
     v = v.assign(base_pass=(v["depth_flagged_implausible"] == False))   # noqa: E712
+    if max_host_snr is not None:
+        # quiet hosts: the star's own best BLS signal is weak, so it cannot out-compete an injected eclipse
+        v = v[np.isfinite(v["bls_snr"].astype(float)) & (v["bls_snr"].astype(float) <= max_host_snr)]
     m = m.merge(v[["TIC", "base_pass"]], on="TIC", how="inner")
     m = m[(~m["base_pass"].astype(bool)) & (m["n_points"] <= max_points)]
     m["stratum"] = np.searchsorted(np.asarray(edges, dtype=float), m["Tmag"].astype(float), side="left")
@@ -368,6 +371,8 @@ def whatif_tag(args):
         parts.append("min%d" % args.min_eclipses)
     if getattr(args, "period_grid_scale_max", None) is not None:
         parts.append("grid%g" % args.period_grid_scale_max)
+    if getattr(args, "max_host_snr", None) is not None:
+        parts.append("hostsnr%g" % args.max_host_snr)
     return "_".join(parts)
 
 
@@ -386,7 +391,7 @@ def cmd_run(args):
     edges = json.loads((root / "site" / "public" / "data" / "audit.json").read_text(encoding="utf-8"))["frame"]["strata_inner_edges"]
     manifest = pd.read_csv(proc / "f2c_manifest.csv")
     vetting = pd.read_csv(proc / "f3i_vetting_results.csv")
-    stars = choose_stars(manifest, vetting, edges, args.stars_per_stratum)
+    stars = choose_stars(manifest, vetting, edges, args.stars_per_stratum, max_host_snr=args.max_host_snr)
     pop = pd.read_parquet(proc / "table2_unvetted.parquet", columns=["TIC", "RAJ2000", "DEJ2000"])
     if args.offline_resolver:
         install_offline_resolver(pop)
@@ -466,6 +471,8 @@ def main():
                    help="what-if: require this many observed eclipses instead of the pipeline default (results go to separate files)")
     r.add_argument("--period-grid-scale-max", type=float, default=None,
                    help="what-if: grow the BLS period grid with the span, up to this multiple of the default (one sector = default)")
+    r.add_argument("--max-host-snr", type=float, default=None,
+                   help="what-if: only use host stars whose own best BLS SNR is at most this (quiet hosts)")
     r.add_argument("--min-span-days", type=float, default=0.0, help="what-if: skip stars whose light curve is shorter than this")
     r.add_argument("--offline-resolver", action="store_true", help="resolve TIC names from the survey list (for networks where the MAST resolver is unreachable)")
     r.set_defaults(fn=cmd_run)
@@ -473,6 +480,7 @@ def main():
     p.add_argument("root")
     p.add_argument("--min-eclipses", type=int, default=None, help="report the what-if run made with this setting")
     p.add_argument("--period-grid-scale-max", type=float, default=None, help="report the what-if run made with this setting")
+    p.add_argument("--max-host-snr", type=float, default=None, help="report the what-if run made with this setting")
     p.set_defaults(fn=cmd_report)
     args = ap.parse_args()
     args.fn(args)

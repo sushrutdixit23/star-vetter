@@ -182,3 +182,12 @@ def test_report_counts_misses_that_locked_onto_the_host_signal():
     # host period 2.0: a miss at 2.0 (same) and 4.0 (double) lock on; 10.0 does not
     assert rep["missed_on_host_signal"]["k"] == 2 and rep["missed_on_host_signal"]["n"] == 3
     assert ir.build_report(res)["missed_on_host_signal"] is None
+
+
+def test_choose_stars_can_restrict_to_quiet_hosts():
+    manifest = pd.DataFrame({"TIC": [1, 2, 3, 4], "status": ["OK"] * 4, "n_points": [100] * 4, "Tmag": [12.0] * 4})
+    vetting = pd.DataFrame({"TIC": [1, 2, 3, 4], "status": ["OK"] * 4, "depth_flagged_implausible": [True] * 4,
+                            "bls_snr": [5.0, 40.0, 400.0, float("-inf")]})
+    quiet = ir.choose_stars(manifest, vetting, [13.0], 10, max_host_snr=50.0)
+    assert set(quiet["TIC"]) == {1, 2}                      # strong and non-finite hosts are excluded
+    assert set(ir.choose_stars(manifest, vetting, [13.0], 10)["TIC"]) == {1, 2, 3, 4}
