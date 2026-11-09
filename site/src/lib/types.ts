@@ -697,6 +697,7 @@ export interface AuditData {
   recall: { source: string; recovered: number; usable: number; sampled: number; given_usable: RateInterval };
   provisional_correction: {
     label: string; value: MedianInterval; assumption: string;
+    with_quiet_host_recall?: { recall: RateInterval; value: MedianInterval; note: string };
     with_injection_recall?: { recall: RateInterval; value: MedianInterval; consistent_with_benchmark: boolean; note: string };
   } | null;
   periods: { bin: string; passed: number; on_target: number }[];

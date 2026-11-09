@@ -139,3 +139,11 @@ def test_published_audit_matches_the_pipeline_files():
     assert len(tics) == f["on_target"] or len(tics) <= f["on_target"]
     assert a["frame"]["population"] > 800000
     assert p.read_bytes().isascii()
+
+
+def test_quiet_host_recall_adds_a_third_corrected_rate():
+    q = ea.build_audit(*_synthetic(), injection={"k": 87, "n": 306}, injection_quiet={"k": 153, "n": 293})
+    pc = q["provisional_correction"]
+    assert pc["with_quiet_host_recall"]["recall"]["k"] == 153
+    assert pc["with_quiet_host_recall"]["value"]["median"] <= pc["with_injection_recall"]["value"]["median"]
+    assert "with_quiet_host_recall" not in ea.build_audit(*_synthetic(), injection={"k": 87, "n": 306})["provisional_correction"]

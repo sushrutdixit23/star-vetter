@@ -84,7 +84,7 @@ def summarize(draws):
     return {"median": float(med), "lo": float(lo), "hi": float(hi)}
 
 
-def build_audit(manifest, vetting, novelty, pixel, pop_tmag, benchmark, now=None, injection=None):
+def build_audit(manifest, vetting, novelty, pixel, pop_tmag, benchmark, now=None, injection=None, injection_quiet=None):
     """Pure function: DataFrames in, JSON-able dict out.
 
     manifest: TIC, Tmag, status          (the sampling frame)
@@ -214,6 +214,17 @@ def build_audit(manifest, vetting, novelty, pixel, pop_tmag, benchmark, now=None
                         "eclipses but only %d stars." % b_usable,
             }
 
+        qk = int((injection_quiet or {}).get("k", 0))
+        qn = int((injection_quiet or {}).get("n", 0))
+        if qn > 0:
+            d_q = rng.beta(qk + 0.5, qn - qk + 0.5, size=MC_DRAWS)
+            provisional["with_quiet_host_recall"] = {
+                "recall": _rate(qk, qn),
+                "value": summarize(np.minimum(1.0, (d_ot / d_usable) / d_q)),
+                "note": "Same injections into host stars whose own best BLS signal is weak (the quietest quarter of the stars that fail "
+                        "the gates). This is the most favourable host mix, so it bounds the recall, and the corrected rate, from the other side.",
+            }
+
     periods = _period_table(nov, on_target)
 
     pass_tot = int(frame["passed"].sum())
@@ -313,7 +324,11 @@ def main():
     rec_path = root / "site" / "public" / "data" / "recovery.json"
     if rec_path.exists():
         injection = json.loads(rec_path.read_text(encoding="utf-8")).get("recall_overall", {}).get("detected")
-    audit = build_audit(manifest, vetting, novelty, pixel, pop.to_numpy(), benchmark, injection=injection)
+    quiet = None
+    q_path = root / "site" / "public" / "data" / "recovery_hostsnr48.6.json"
+    if q_path.exists():
+        quiet = json.loads(q_path.read_text(encoding="utf-8")).get("recall_overall", {}).get("detected")
+    audit = build_audit(manifest, vetting, novelty, pixel, pop.to_numpy(), benchmark, injection=injection, injection_quiet=quiet)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with open(out_path, "w", encoding="utf-8", newline="\n") as f:
         json.dump(audit, f, indent=2)
@@ -330,6 +345,10 @@ def main():
         v = pc["value"]
         print("Provisional recall-corrected: %.1f%% (95%% %.1f-%.1f%%)" % (100 * v["median"], 100 * v["lo"], 100 * v["hi"]))
         wi = pc.get("with_injection_recall")
+        wq = pc.get("with_quiet_host_recall")
+        if wq:
+            w = wq["value"]
+            print("  with quiet-host recall: %.1f%% (95%% %.1f-%.1f%%)" % (100 * w["median"], 100 * w["lo"], 100 * w["hi"]))
         if wi:
             w = wi["value"]
             print("  with injection recall: %.1f%% (95%% %.1f-%.1f%%); consistent with benchmark recall: %s" % (
