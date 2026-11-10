@@ -151,7 +151,7 @@ export default function LightCurveChart({
           />
         ))}
 
-        <path d={linePath} fill="none" stroke={color} strokeWidth={2} />
+        <path d={linePath} fill="none" stroke={color} strokeWidth={2} pathLength={1} className="sv-draw" />
 
         {hover && hover[1] !== null && (
           <>

@@ -1,46 +1,46 @@
 {
   "discoveries": [
     {
-      "blurb": "This candidate stands out for its remarkably deep primary eclipse, with the star dimming by 33.08 percent - the deepest in this sample. The eclipse repeats every 30.3 days with extraordinary clarity in TESS data, producing a detection signal 343.5 times above background noise. A secondary eclipse is also visible, suggesting both stars contribute meaningfully to the light we observe.",
+      "blurb": "The primary eclipse removes 42.04% of the light, the deepest of any candidate with no open caveats. Measured: orbital period 9.1248 days, detection signal-to-noise 1068. A secondary eclipse is also detected, at 584.7 sigma. It matched none of the 6 catalogs searched, which is weak evidence of novelty. It is a candidate, not a confirmed eclipsing binary.",
       "category": "deepest_eclipse",
       "category_label": "Deepest eclipse",
-      "headline": "Star system dims by one-third each orbit",
-      "stat_text": "33.1% dimming",
-      "tic": 349701853
+      "headline": "Deepest eclipse among the clean candidates",
+      "stat_text": "42.0% dimming",
+      "tic": 59490510
     },
     {
-      "blurb": "With an orbital period of 28.9 days, this candidate ranks among the longest-period eclipsing binary systems detected in TESS data. Despite the shallow primary eclipse of just 0.11 percent, the signal stands out clearly over background noise. A secondary eclipse is also detected, confirming the binary nature of this wide, slowly-orbiting pair.",
+      "blurb": "The two stars take 36.9 days to orbit each other, the longest period of any candidate with no open caveats. Measured: primary eclipse depth 0.10%, detection signal-to-noise 39. A secondary eclipse is also detected, at 8.2 sigma. It matched none of the 6 catalogs searched, which is weak evidence of novelty. It is a candidate, not a confirmed eclipsing binary.",
       "category": "longest_period",
       "category_label": "Longest orbital period",
-      "headline": "Widest orbital dance among the candidates",
-      "stat_text": "28.9 day orbit",
-      "tic": 309656476
+      "headline": "Longest orbit among the clean candidates",
+      "stat_text": "36.9 day orbit",
+      "tic": 219800831
     },
     {
-      "blurb": "This candidate completes a full orbit in just 0.72 days - among the shortest orbital periods observed. The two stars are locked in a tight cosmic dance, dimming to 7.88 percent of their combined light at primary eclipse. The rapid cadence of eclipses provides excellent opportunities to map these closely-packed stellar systems.",
+      "blurb": "The two stars take only 0.668 days to orbit each other, the shortest period of any candidate with no open caveats. Measured: primary eclipse depth 4.55%, detection signal-to-noise 29. A secondary eclipse is also detected, at 30.1 sigma. It matched none of the 6 catalogs searched, which is weak evidence of novelty. It is a candidate, not a confirmed eclipsing binary.",
       "category": "shortest_period",
       "category_label": "Shortest orbital period",
-      "headline": "Stars race around each other rapidly",
-      "stat_text": "0.721 day orbit",
-      "tic": 380943251
+      "headline": "Shortest orbit among the clean candidates",
+      "stat_text": "0.668 day orbit",
+      "tic": 230163860
     },
     {
-      "blurb": "Scoring 0.957 on the automated vetting pipeline, this candidate represents nearly ideal data quality and eclipse characteristics. The primary eclipse dims the system by nearly 30 percent every 5.3 days, and the signal towers above background noise with a detection strength of 1081 sigma. No flags or caveats mar this candidate's vetting profile.",
+      "blurb": "The screening model gives it 0.994 out of 1, the highest of the clean candidates. The model is a second opinion and is not used to accept or reject anything. Measured: orbital period 8.6780 days, primary eclipse depth 34.29%, detection signal-to-noise 2066. A secondary eclipse is also detected, at 581.3 sigma. It matched none of the 6 catalogs searched, which is weak evidence of novelty. It is a candidate, not a confirmed eclipsing binary.",
       "category": "highest_ml_score",
       "category_label": "Highest ML screening score",
-      "headline": "Machine learning marks this as pristine",
-      "stat_text": "ML score 0.957",
-      "tic": 437150434
+      "headline": "Highest score from the screening model",
+      "stat_text": "ML score 0.994",
+      "tic": 257927198
     },
     {
-      "blurb": "The secondary eclipse in this system stands out with unprecedented clarity, detected at 418.3 sigma - far exceeding typical detection thresholds. This exceptionally clean signal reveals the companion star's light as it passes behind the primary every 14.8 days. The high-confidence secondary eclipse provides rare insight into both members of this binary pair.",
+      "blurb": "Its secondary eclipse is detected at 568.1 sigma, the clearest of the clean candidates. Measured: orbital period 0.8290 days, primary eclipse depth 0.40%, detection signal-to-noise 1075. It matched none of the 6 catalogs searched, which is weak evidence of novelty. It is a candidate, not a confirmed eclipsing binary.",
       "category": "clearest_secondary",
       "category_label": "Clearest secondary eclipse",
-      "headline": "Companion star shines brilliantly clear",
-      "stat_text": "secondary eclipse at 418.3 sigma",
-      "tic": 237115819
+      "headline": "Clearest secondary eclipse",
+      "stat_text": "secondary eclipse at 568.1 sigma",
+      "tic": 403017570
     }
   ],
-  "generated_at": "2026-09-27T17:49:17.603035+00:00",
-  "model": "claude-haiku-4-5-20251001"
+  "generated_at": "2026-11-07T12:25:33.141998+00:00",
+  "model": "fixed templates (no language model)"
 }

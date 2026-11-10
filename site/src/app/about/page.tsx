@@ -151,7 +151,7 @@ export default function AboutPage() {
       {metrics && chosen && (
         <Band num="V" title="The learning layer" lede="An experimental second opinion. It does not skip anything yet.">
           <p className="max-w-3xl text-sm leading-relaxed text-muted">
-            A model trained on this pipeline&apos;s own labeled history to predict the pixel-check outcome before it runs. It does not currently skip any pixel check - every novel candidate still gets the full check - this only measures whether the model could, safely, do that one day. Chosen model: <span className="font-mono text-fg">{metrics.chosen_model}</span>, cross-validated on {metrics.n_training_samples.toLocaleString("en-US")} labeled candidates ({metrics.n_training_positive} confirmed on-target, {metrics.n_training_negative} not).
+            A model trained on this pipeline&apos;s own labeled history to predict the pixel-check outcome before it runs. It does not currently skip any pixel check - every novel candidate still gets the full check - this only measures whether the model could, safely, do that one day. Chosen model: <span className="font-mono text-fg">{metrics.chosen_model}</span>, cross-validated on {metrics.n_training_samples.toLocaleString("en-US")} labeled candidates ({metrics.n_training_positive} pixel-localized, {metrics.n_training_negative} not).
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-3">
             <div className="rounded-lg border border-line bg-panel/60 p-4">

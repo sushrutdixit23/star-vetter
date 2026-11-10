@@ -7,6 +7,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+import writeup_guard
+
 # Builds the extra data behind the dashboard home page, on top of what
 # export_site_data.py already wrote. Read-only against the pipeline: it only
 # reads the light-curve CSVs, the vetting CSV, the pixel-check maps, the
@@ -483,7 +485,8 @@ def main():
                 ml = ml_scores.get(tic, {"ml_score": None, "ml_model_name": None})
                 existing["ml_score"] = ml["ml_score"]
                 existing["ml_model_name"] = ml["ml_model_name"]
-                existing["writeup"] = writeups.get(str(tic), {}).get("writeup")
+                _w = writeups.get(str(tic), {}).get("writeup")
+                existing["writeup"] = _w if writeup_guard.is_safe(_w, tic) else None
                 detail_path.write_text(json.dumps(existing, separators=(",", ":")),
                                        encoding="utf-8", newline="\n")
                 sky.append({"tic": tic, "tier": cj["tier"], "ra": info.get("ra"), "dec": info.get("dec"),
@@ -618,7 +621,7 @@ def main():
             "pixel_maps": maps,
             "ml_score": ml["ml_score"],
             "ml_model_name": ml["ml_model_name"],
-            "writeup": writeups.get(str(tic), {}).get("writeup"),
+            "writeup": (lambda w: w if writeup_guard.is_safe(w, tic) else None)(writeups.get(str(tic), {}).get("writeup")),
         }
         (detail_dir / f"TIC{tic}.json").write_text(json.dumps(detail, separators=(",", ":")),
                                                    encoding="utf-8", newline="\n")

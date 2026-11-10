@@ -1,0 +1,13 @@
+{
+ "n_known_ebs": 450,
+ "n_incomplete_excluded": 0,
+ "recall_period_match": 0.14888888888888888,
+ "recall_period_match_ci95": [
+  0.11897506764788013,
+  0.1847467595270637
+ ],
+ "recall_any_same_star": 0.27555555555555555,
+ "candidates_n": 307,
+ "candidates_period_match_rate": 0.029315960912052116,
+ "source": "Prsa et al. 2022 known TESS eclipsing binaries, Tmag 12-15.5, run through the same cross-match code"
+}

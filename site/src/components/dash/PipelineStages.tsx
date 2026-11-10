@@ -91,7 +91,7 @@ export default function PipelineStages({
           <div className="text-[9px] text-faint">stars in cutout</div>
         </div>
       ) },
-    { n: "06", title: "Pixel", count: C, icon: IconPixel, sub: "Difference imaging", note: minus(X, C, "not confirmed"),
+    { n: "06", title: "Pixel", count: C, icon: IconPixel, sub: "Difference imaging", note: minus(X, C, "not localized"),
       thumb: pixelThumb },
     { n: "07", title: "Dossier", count: dossiers ?? C, icon: IconDossier, sub: "Written up", note: "PDF per star",
       thumb: <DossierThumb /> },

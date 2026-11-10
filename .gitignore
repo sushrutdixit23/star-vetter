@@ -40,6 +40,7 @@ diag_scan10.py
 /data/lightcurves/
 /data/pixel_check/
 /data/logs/
+/data/injection/
 
 # --- Next.js site ---
 /site/node_modules/
@@ -50,3 +51,14 @@ diag_scan10.py
 .vercel
 .env*
 benchmark_run/
+
+# --- Regenerable measurement caches (large / resumable work, not results) ---
+data/processed/f13_lc_cache/
+data/processed/f13_cache/
+data/processed/f14_cache/
+
+# frozen pre-registration zips are deposited, not committed
+preregistration/*.zip
+/data/processed/cat_ijspeert2024_parent_tics.txt
+/data/ztf_raw/
+/data/processed/f18_cache/

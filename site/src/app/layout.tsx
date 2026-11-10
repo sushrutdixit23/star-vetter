@@ -23,6 +23,9 @@ const displaySerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
+  // Absolute base for the link-preview cards (og:image); without it Next
+  // writes http://localhost:3000 into the built pages.
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://star-vetter.vercel.app"),
   title: "Star Vetter",
   description:
     "An unattended AI pipeline that screens unvetted TESS candidates for real eclipsing binary stars - statistical vetting, catalog cross-matching, and pixel-level source confirmation, with every decision logged.",

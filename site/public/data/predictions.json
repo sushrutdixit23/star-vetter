@@ -1,0 +1,435 @@
+{
+ "generated_utc": "2026-11-10T13:05:12Z",
+ "selection_rule": [
+  "The ephemeris was fitted (at least two eclipses, status OK).",
+  "It is not REJECTED: a REJECTED ephemeris failed to predict a TESS sector, or a block of later sectors, it had not been shown.",
+  "At least one primary eclipse falls inside a TESS Year 9 sector the star is on silicon for.",
+  "The best 1-sigma uncertainty among its predictions is at most 120 minutes."
+ ],
+ "max_sigma_min": 120.0,
+ "conventions": {
+  "time_scale": "Times are geocentric UTC (barycentric time corrected for light travel to Earth's centre). BTJD = BJD_TDB - 2457000 is given alongside.",
+  "grades": "VALIDATED: the ephemeris, fitted to the earliest sectors only, predicted the later ones, and the new predictions reach no more than 3 times as far beyond the data as that test did. UNVALIDATED: either only one sector could be phase-connected so nothing could be held out, or the test covered a much shorter distance than the prediction does. Real eclipse timing drifts, and only a long enough test sees it.",
+  "sigma": "1-sigma uncertainty of the predicted eclipse time: the ephemeris fit error plus the excess timing noise found in the star's own history. It does not include the measurement error of the future observation, which is added when the outcome is graded.",
+  "eclipse": "Primary eclipse only, mid-eclipse time.",
+  "outcome_rule": "When Year 9 data are public, each eclipse that TESS observed is timed with the same code. It counts as RECOVERED if the measured mid-eclipse lies within 3 sigma of the prediction (sigma combined with the measurement error), INCONSISTENT if it is observed but outside, and INSUFFICIENT DATA if the eclipse was not covered. Nothing is dropped after the fact. Where SPOC or TESS-SPOC light curves exist for a sector they are used for grading. When QLP light curves are used, a systematic timing term of 3 minutes is added in quadrature to the measurement error, because Kostov et al. (2025, ApJS 279, 50, footnote 22) report a timing error of about 3 minutes in QLP light curves beyond Sector 74. This rule is fixed before any Year 9 data exist.",
+  "approximate_sectors": "Sectors 117-121 have interpolated dates and are marked approximate."
+ },
+ "counts": {
+  "candidates_considered": 169,
+  "listed": 4,
+  "listed_validated": 2,
+  "listed_unvalidated": 2,
+  "rejected_failed_holdout": 0,
+  "status": {
+   "OK": 72,
+   "NOT_ELIGIBLE": 52,
+   "TOO_FEW_ECLIPSES": 27,
+   "NO_TEMPLATE": 18
+  },
+  "holdout": {
+   "NOT_TESTABLE": 53,
+   "PASS": 19
+  }
+ },
+ "excluded": {
+  "UNCERTAINTY_TOO_LARGE": 41,
+  "PREDICTED_ECLIPSE_MISSING": 32,
+  "TOO_FEW_ECLIPSES": 27,
+  "NO_YEAR9_ECLIPSE": 27,
+  "PIPELINE_CHECK_FLAGGED": 20,
+  "NO_TEMPLATE": 18
+ },
+ "rejected": [],
+ "validation": {
+  "n_stars": 24,
+  "median_abs_epoch_error_min": 0.1723084382683737,
+  "epoch_within_3sigma_fraction": 1.0,
+  "period_z_robust_spread": 0.7036706221925448,
+  "source": "Prsa et al. 2022 (VizieR J/ApJS/258/16), sectors 1-26, starting ephemeris deliberately degraded"
+ },
+ "holdout_calibration": {
+  "n_stars": 25,
+  "n_failed": 1,
+  "failed_timing_scatter_min": [
+   14.6
+  ],
+  "source": "Prsa et al. 2022 binaries, sectors 1-26, none used to set the test's parameters"
+ },
+ "extra_catalog_recall": {
+  "n_known_ebs": 450,
+  "n_incomplete_excluded": 0,
+  "recall_period_match": 0.14888888888888888,
+  "recall_period_match_ci95": [
+   0.11897506764788013,
+   0.1847467595270637
+  ],
+  "recall_any_same_star": 0.27555555555555555,
+  "candidates_n": 307,
+  "candidates_period_match_rate": 0.029315960912052116,
+  "source": "Prsa et al. 2022 known TESS eclipsing binaries, Tmag 12-15.5, run through the same cross-match code"
+ },
+ "stars": [
+  {
+   "tic": 66732476,
+   "tier": "CLEAN",
+   "grade": "UNVALIDATED",
+   "tmag": 12.483,
+   "ra": 199.60292,
+   "dec": -5.04604,
+   "depth_frac": 0.098141164207321,
+   "ephemeris": {
+    "period_days": 3.112104321562026,
+    "period_sigma_days": 6.0863228557455713e-05,
+    "t0_btjd": 2568.9168021754654,
+    "n_eclipses": 7.0,
+    "sectors_connected": [
+     46
+    ],
+    "sectors_unconnected": [],
+    "baseline_days": 21.784053442821914,
+    "timing_jitter_min": 1.0234129205733868,
+    "timing_excess": true
+   },
+   "holdout": {
+    "status": "NOT_TESTABLE",
+    "sectors_tested": 0.0,
+    "min_p_value": null,
+    "tested_reach_days": null,
+    "prediction_horizon_days": 1901.4963475901293,
+    "extrapolation_factor": null,
+    "grade_note": "Only one sector is phase-connected, so nothing could be held out."
+   },
+   "novelty_extra": {
+    "verdict": "NO_MATCH",
+    "matched_catalogs": [],
+    "known_other_period": [],
+    "nearby_catalogs": []
+   },
+   "best_sigma_min": 53.85791727410541,
+   "predictions": [
+    {
+     "sector": 115,
+     "cycle": 619,
+     "t_btjd": 4479.748855614549,
+     "utc": "2027-03-15 05:49:45",
+     "sigma_min": 53.85791727410541,
+     "approximate": false,
+     "horizon_days": 1901.4963475901293
+    },
+    {
+     "sector": 115,
+     "cycle": 620,
+     "t_btjd": 4482.860959936112,
+     "utc": "2027-03-18 08:30:59",
+     "sigma_min": 53.945528823113335,
+     "approximate": false,
+     "horizon_days": 1904.608451911692
+    },
+    {
+     "sector": 115,
+     "cycle": 621,
+     "t_btjd": 4485.973064257673,
+     "utc": "2027-03-21 11:12:15",
+     "sigma_min": 54.03314047429078,
+     "approximate": false,
+     "horizon_days": 1907.7205562332535
+    },
+    {
+     "sector": 115,
+     "cycle": 622,
+     "t_btjd": 4489.085168579235,
+     "utc": "2027-03-24 13:53:32",
+     "sigma_min": 54.12075222714158,
+     "approximate": false,
+     "horizon_days": 1910.8326605548157
+    },
+    {
+     "sector": 115,
+     "cycle": 623,
+     "t_btjd": 4492.1972729007975,
+     "utc": "2027-03-27 16:34:51",
+     "sigma_min": 54.20836408117273,
+     "approximate": false,
+     "horizon_days": 1913.944764876378
+    },
+    {
+     "sector": 115,
+     "cycle": 624,
+     "t_btjd": 4495.309377222359,
+     "utc": "2027-03-30 19:16:10",
+     "sigma_min": 54.29597603589445,
+     "approximate": false,
+     "horizon_days": 1917.05686919794
+    },
+    {
+     "sector": 115,
+     "cycle": 625,
+     "t_btjd": 4498.421481543921,
+     "utc": "2027-04-02 21:57:32",
+     "sigma_min": 54.38358809082011,
+     "approximate": false,
+     "horizon_days": 1920.1689735195012
+    },
+    {
+     "sector": 115,
+     "cycle": 626,
+     "t_btjd": 4501.533585865484,
+     "utc": "2027-04-06 00:38:54",
+     "sigma_min": 54.471200245466186,
+     "approximate": false,
+     "horizon_days": 1923.281077841064
+    },
+    {
+     "sector": 115,
+     "cycle": 627,
+     "t_btjd": 4504.645690187045,
+     "utc": "2027-04-09 03:20:18",
+     "sigma_min": 54.558812499352285,
+     "approximate": false,
+     "horizon_days": 1926.3931821626256
+    }
+   ]
+  },
+  {
+   "tic": 264099112,
+   "tier": "CLEAN",
+   "grade": "UNVALIDATED",
+   "tmag": 11.742,
+   "ra": 271.0036,
+   "dec": 10.77245,
+   "depth_frac": 0.1983437919390263,
+   "ephemeris": {
+    "period_days": 5.977850839969309,
+    "period_sigma_days": 0.0002723504412878,
+    "t0_btjd": 3497.6049898944007,
+    "n_eclipses": 3.0,
+    "sectors_connected": [
+     80
+    ],
+    "sectors_unconnected": [],
+    "baseline_days": 11.955679373533712,
+    "timing_jitter_min": 1.0975873933500648,
+    "timing_excess": true
+   },
+   "holdout": {
+    "status": "NOT_TESTABLE",
+    "sectors_tested": 0.0,
+    "min_p_value": null,
+    "tested_reach_days": null,
+    "prediction_horizon_days": 1058.0794532637187,
+    "extrapolation_factor": null,
+    "grade_note": "Only one sector is phase-connected, so nothing could be held out."
+   },
+   "novelty_extra": {
+    "verdict": "NO_MATCH",
+    "matched_catalogs": [],
+    "known_other_period": [],
+    "nearby_catalogs": []
+   },
+   "best_sigma_min": 69.80664307980517,
+   "predictions": [
+    {
+     "sector": 118,
+     "cycle": 180,
+     "t_btjd": 4561.662439408938,
+     "utc": "2027-06-05 03:46:03",
+     "sigma_min": 69.80664307980517,
+     "approximate": true,
+     "horizon_days": 1058.0794532637187
+    },
+    {
+     "sector": 118,
+     "cycle": 181,
+     "t_btjd": 4567.640290248907,
+     "utc": "2027-06-11 03:13:59",
+     "sigma_min": 70.1987353639029,
+     "approximate": true,
+     "horizon_days": 1064.0573041036882
+    },
+    {
+     "sector": 118,
+     "cycle": 182,
+     "t_btjd": 4573.618141088877,
+     "utc": "2027-06-17 02:41:59",
+     "sigma_min": 70.59082867404095,
+     "approximate": true,
+     "horizon_days": 1070.0351549436575
+    },
+    {
+     "sector": 118,
+     "cycle": 183,
+     "t_btjd": 4579.595991928845,
+     "utc": "2027-06-23 02:10:03",
+     "sigma_min": 70.98292299321653,
+     "approximate": true,
+     "horizon_days": 1076.0130057836263
+    },
+    {
+     "sector": 118,
+     "cycle": 184,
+     "t_btjd": 4585.573842768815,
+     "utc": "2027-06-29 01:38:11",
+     "sigma_min": 71.37501830480036,
+     "approximate": true,
+     "horizon_days": 1081.9908566235958
+    }
+   ]
+  },
+  {
+   "tic": 59387976,
+   "tier": "CLEAN",
+   "grade": "VALIDATED",
+   "tmag": 13.015,
+   "ra": 297.23399,
+   "dec": 30.62367,
+   "depth_frac": 0.1334911940159744,
+   "ephemeris": {
+    "period_days": 22.520949981362254,
+    "period_sigma_days": 2.049417041431188e-05,
+    "t0_btjd": 3031.499369674169,
+    "n_eclipses": 7.0,
+    "sectors_connected": [
+     41,
+     54,
+     55,
+     74,
+     75,
+     81
+    ],
+    "sectors_unconnected": [],
+    "baseline_days": 1103.5256612171015,
+    "timing_jitter_min": 1.0,
+    "timing_excess": false
+   },
+   "holdout": {
+    "status": "PASS",
+    "sectors_tested": 10.0,
+    "min_p_value": 0.395178550230101,
+    "tested_reach_days": 743.191831917869,
+    "prediction_horizon_days": 1081.005819792635,
+    "extrapolation_factor": 1.4545448070964515,
+    "grade_note": "Predicted later sectors it had not seen, up to 743 days beyond its data, with comparable precision; these predictions reach 1081 days."
+   },
+   "novelty_extra": {
+    "verdict": "NO_MATCH",
+    "matched_catalogs": [],
+    "known_other_period": [],
+    "nearby_catalogs": []
+   },
+   "best_sigma_min": 2.3441713176400247,
+   "predictions": [
+    {
+     "sector": 119,
+     "cycle": 97,
+     "t_btjd": 4607.965868369527,
+     "utc": "2027-07-21 11:04:23",
+     "sigma_min": 2.3441713176400247,
+     "approximate": true,
+     "horizon_days": 1081.005819792635
+    },
+    {
+     "sector": 120,
+     "cycle": 98,
+     "t_btjd": 4630.48681835089,
+     "utc": "2027-08-12 23:34:35",
+     "sigma_min": 2.3700738318130616,
+     "approximate": true,
+     "horizon_days": 1103.5267697739978
+    }
+   ]
+  },
+  {
+   "tic": 41996755,
+   "tier": "CLEAN",
+   "grade": "VALIDATED",
+   "tmag": 13.014,
+   "ra": 302.01534,
+   "dec": 40.44862,
+   "depth_frac": 0.1089496585135018,
+   "ephemeris": {
+    "period_days": 9.563156012919729,
+    "period_sigma_days": 7.27705374074135e-06,
+    "t0_btjd": 2888.859712743368,
+    "n_eclipses": 24.0,
+    "sectors_connected": [
+     14,
+     15,
+     41,
+     54,
+     55,
+     75,
+     81,
+     82
+    ],
+    "sectors_unconnected": [],
+    "baseline_days": 1874.382876626032,
+    "timing_jitter_min": 3.26707854745182,
+    "timing_excess": true
+   },
+   "holdout": {
+    "status": "PASS",
+    "sectors_tested": 14.0,
+    "min_p_value": 0.2969979810558634,
+    "tested_reach_days": 1118.88812282218,
+    "prediction_horizon_days": 1061.5097569032018,
+    "extrapolation_factor": 0.9487184064710132,
+    "grade_note": "Predicted later sectors it had not seen, up to 1119 days beyond its data, with comparable precision; these predictions reach 1062 days."
+   },
+   "novelty_extra": {
+    "verdict": "NO_MATCH",
+    "matched_catalogs": [],
+    "known_other_period": [],
+    "nearby_catalogs": []
+   },
+   "best_sigma_min": 3.930686593876191,
+   "predictions": [
+    {
+     "sector": 120,
+     "cycle": 307,
+     "t_btjd": 4619.790951081839,
+     "utc": "2027-08-02 06:53:27",
+     "sigma_min": 3.930686593876191,
+     "approximate": true,
+     "horizon_days": 1061.5097569032018
+    },
+    {
+     "sector": 120,
+     "cycle": 308,
+     "t_btjd": 4629.354107094759,
+     "utc": "2027-08-11 20:24:20",
+     "sigma_min": 3.936158356951844,
+     "approximate": true,
+     "horizon_days": 1071.0729129161214
+    },
+    {
+     "sector": 120,
+     "cycle": 309,
+     "t_btjd": 4638.917263107678,
+     "utc": "2027-08-21 09:55:19",
+     "sigma_min": 3.941650382748511,
+     "approximate": true,
+     "horizon_days": 1080.636068929041
+    },
+    {
+     "sector": 121,
+     "cycle": 310,
+     "t_btjd": 4648.480419120598,
+     "utc": "2027-08-30 23:26:25",
+     "sigma_min": 3.94716258668641,
+     "approximate": true,
+     "horizon_days": 1090.1992249419604
+    },
+    {
+     "sector": 121,
+     "cycle": 311,
+     "t_btjd": 4658.043575133517,
+     "utc": "2027-09-09 12:57:38",
+     "sigma_min": 3.9526948843476712,
+     "approximate": true,
+     "horizon_days": 1099.76238095488
+    }
+   ]
+  }
+ ]
+}

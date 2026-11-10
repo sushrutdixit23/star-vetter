@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getBenchmark } from "@/lib/data";
 import Band from "@/components/journal/Band";
+import CountUp from "@/components/CountUp";
 
 export const metadata = {
   title: "How reliable is this? - Star Vetter",
@@ -29,7 +30,7 @@ const pct = (n: number, d: number) => (d > 0 ? `${((100 * n) / d).toFixed(1)}%` 
 function Bar({ value, max, tone = "accent" }: { value: number; max: number; tone?: "accent" | "kill" }) {
   return (
     <div className="h-1.5 overflow-hidden rounded-full bg-panel-2">
-      <div className={`h-full rounded-full ${tone === "kill" ? "bg-accent-kill/70" : "bg-accent/70"}`} style={{ width: `${Math.max(2, (value / (max || 1)) * 100)}%` }} />
+      <div className={`sv-grow h-full rounded-full ${tone === "kill" ? "bg-accent-kill/70" : "bg-accent/70"}`} style={{ width: `${Math.max(2, (value / (max || 1)) * 100)}%` }} />
     </div>
   );
 }
@@ -82,7 +83,7 @@ export default function ReliabilityPage() {
       ) : (
         <>
           <Band num="I" title="The result" lede={b.definition}>
-            <div className="font-display text-6xl leading-none text-fg">{b.recall.recovered} <span className="text-3xl text-muted">of {b.recall.sampled}</span></div>
+            <div className="font-display text-6xl leading-none text-fg"><CountUp value={b.recall.recovered} /> <span className="text-3xl text-muted">of {b.recall.sampled}</span></div>
             <div className="mt-2 font-mono text-[11px] text-muted">known eclipsing binaries came out the other end ({pct(b.recall.recovered, b.recall.sampled)})</div>
             <p className="mt-6 max-w-3xl text-sm leading-relaxed text-muted">{`The ${b.sample.n} were drawn from ${b.sample.source}. ${b.sample.selection}.`} A low number here means the pipeline misses many real binaries; the stages below show where. It does not tell you how many of the site&apos;s candidates are false - that needs a different test, such as injecting artificial eclipses with known answers.</p>
           </Band>
