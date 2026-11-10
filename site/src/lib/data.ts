@@ -14,6 +14,23 @@ import type {
   GaiaContext,
   Benchmark,
   GroundSurveyEntry,
+  PredictionsData,
+  PredictionStar,
+  SurfaceEvidence,
+  SurfaceStar,
+  NoveltyExtra,
+  SurfaceVariabilityStar,
+  AuditData,
+  RecoveryData,
+  AtlasAliasData,
+  NeighboursData,
+  EvidenceData,
+  EvidenceStar,
+  ZtfData,
+  GaiaData,
+  PriorArtData,
+  GaiaDr4Plan,
+  NeighbourStar,
 } from "./types";
 import type { Summary } from "@/components/dash/DetailPanels";
 
@@ -143,6 +160,70 @@ export function getBenchmark(): Benchmark | null {
   const p = path.join(DATA_DIR, "benchmark.json");
   if (!fs.existsSync(p)) return null;
   return JSON.parse(fs.readFileSync(p, "utf-8")) as Benchmark;
+}
+
+// predictions.json is written by export_predictions.py: Year 9 eclipse
+// predictions with honest uncertainties, only for stars whose ephemeris passed
+// the hold-out. Optional, same pattern as every other getter here.
+let PREDICTIONS: PredictionsData | null | undefined;
+export function getPredictions(): PredictionsData | null {
+  if (PREDICTIONS !== undefined) return PREDICTIONS; // read once per build worker, not once per plate
+  const p = path.join(DATA_DIR, "predictions.json");
+  PREDICTIONS = fs.existsSync(p) ? (JSON.parse(fs.readFileSync(p, "utf-8")) as PredictionsData) : null;
+  return PREDICTIONS;
+}
+
+export function getSurfaceEvidenceFor(tic: number): SurfaceStar | null {
+  const p = path.join(DATA_DIR, "surface_evidence.json");
+  if (!fs.existsSync(p)) return null;
+  const all = JSON.parse(fs.readFileSync(p, "utf-8")) as SurfaceEvidence;
+  return all.stars[String(tic)] ?? null;
+}
+
+export function getVariabilityFor(tic: number): SurfaceVariabilityStar | null {
+  const p = path.join(DATA_DIR, "surface_variability.json");
+  if (!fs.existsSync(p)) return null;
+  const all = JSON.parse(fs.readFileSync(p, "utf-8")) as { stars: Record<string, SurfaceVariabilityStar> };
+  return all.stars[String(tic)] ?? null;
+}
+
+let NOVELTY_EXTRA: Record<string, NoveltyExtra> | null | undefined;
+export function getNoveltyExtraMap(): Record<string, NoveltyExtra> | null {
+  if (NOVELTY_EXTRA !== undefined) return NOVELTY_EXTRA;
+  const p = path.join(DATA_DIR, "novelty_extra.json");
+  NOVELTY_EXTRA = fs.existsSync(p) ? (JSON.parse(fs.readFileSync(p, "utf-8")) as { stars: Record<string, NoveltyExtra> }).stars : null;
+  return NOVELTY_EXTRA;
+}
+
+export function getNoveltyExtra(tic: number): NoveltyExtra | null {
+  return getNoveltyExtraMap()?.[String(tic)] ?? null;
+}
+
+function readOptional<T>(name: string): T | null {
+  const p = path.join(DATA_DIR, name);
+  return fs.existsSync(p) ? (JSON.parse(fs.readFileSync(p, "utf-8")) as T) : null;
+}
+
+export const getAudit = () => readOptional<AuditData>("audit.json");
+export const getRecovery = () => readOptional<RecoveryData>("recovery.json");
+export const getAtlasAlias = () => readOptional<AtlasAliasData>("atlas_alias.json");
+export const getNeighbours = () => readOptional<NeighboursData>("neighbours.json");
+export const getEvidence = () => readOptional<EvidenceData>("evidence.json");
+export const getZtf = () => readOptional<ZtfData>("ztf_independent.json");
+export const getGaia = () => readOptional<GaiaData>("gaia_dr3.json");
+export const getPriorArt = () => readOptional<PriorArtData>("prior_art.json");
+export const getGaiaDr4Plan = () => readOptional<GaiaDr4Plan>("gaia_dr4_plan.json");
+
+export function getEvidenceFor(tic: number): EvidenceStar | null {
+  return getEvidence()?.stars[String(tic)] ?? null;
+}
+
+export function getNeighbourFor(tic: number): NeighbourStar | null {
+  return getNeighbours()?.stars[String(tic)] ?? null;
+}
+
+export function getPredictionFor(tic: number): PredictionStar | null {
+  return getPredictions()?.stars.find((s) => s.tic === tic) ?? null;
 }
 
 // The one place a Candidate (export_site_data.py's shape) becomes a Summary

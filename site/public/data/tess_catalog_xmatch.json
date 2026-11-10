@@ -1,0 +1,57 @@
+{
+ "generated_at": "2026-11-08T01:10:44Z",
+ "candidates": 307,
+ "catalogs": [
+  {
+   "key": "ijspeert2021_eb",
+   "label": "IJspeert et al. 2021 (OBA eclipsing binaries)",
+   "catalog_size": 3425,
+   "candidates_in_catalog": [],
+   "n_in_catalog": 0,
+   "n_in_parent_sample": 3,
+   "parent_size": 189979
+  },
+  {
+   "key": "ijspeert2024_eb",
+   "label": "IJspeert et al. 2024 (OBAF eclipsing binaries)",
+   "catalog_size": 69057,
+   "candidates_in_catalog": [],
+   "n_in_catalog": 0,
+   "n_in_parent_sample": 20,
+   "parent_size": 3337461
+  },
+  {
+   "key": "justesen2021_eb",
+   "label": "Justesen & Albrecht 2021 (southern eclipsing binaries)",
+   "catalog_size": 748,
+   "candidates_in_catalog": [],
+   "n_in_catalog": 0,
+   "n_in_parent_sample": null,
+   "parent_size": null
+  },
+  {
+   "key": "kostov2025_vetted",
+   "label": "Kostov et al. 2025 vetted EBs (tables 3 and 4)",
+   "catalog_size": 10001,
+   "candidates_in_catalog": [],
+   "n_in_catalog": 0,
+   "n_in_parent_sample": null,
+   "parent_size": null
+  },
+  {
+   "key": "prsa2022",
+   "label": "Prsa et al. 2022 (2-minute targets, sectors 1-26)",
+   "catalog_size": 4578,
+   "candidates_in_catalog": [],
+   "n_in_catalog": 0,
+   "n_in_parent_sample": null,
+   "parent_size": null
+  }
+ ],
+ "reading": "n_in_parent_sample is how many candidates the catalog could even have found (its search footprint). A catalog with a small footprint cannot show that a candidate is new.",
+ "not_covered": [
+  "2024-2026 machine-learning TESS catalogs (Shan, Gao, Wang, Ding, Liu)",
+  "live Villanova catalog",
+  "Gaia DR4"
+ ]
+}

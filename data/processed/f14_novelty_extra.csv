@@ -1,0 +1,308 @@
+tic,tier,verdict,matched_catalogs,known_other_period,nearby_catalogs,failed_catalogs,clear_catalogs,not_covered
+9586662,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+19569810,THIN MARGIN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+29495157,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+40100356,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+40208362,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise",asas
+41831052,THIN MARGIN,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+41996755,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+42011712,CLEAN,NEARBY_VARIABLE,,,atlas,,"ztf,crts,wise",asas
+42058853,CLEAN,ALREADY_KNOWN,atlas,,,,"ztf,crts,wise",asas
+43330648,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+43712813,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+43785616,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+43791794,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+44533527,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+46208125,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+58485530,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+59363206,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+59378274,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,ztf,,"crts,wise",asas
+59387976,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+59388389,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+59453672,PERIOD ALIAS,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise,asas",
+59458906,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+59464503,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise,asas",
+59488906,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+59490510,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise,asas",
+59603820,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+60192021,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+65051771,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+65085092,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+65257021,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+65970288,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+66716482,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+66732476,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+70762350,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+72721266,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+72729777,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+77210120,CLEAN,ALREADY_KNOWN,atlas,,,,"ztf,crts,wise,asas",
+78186062,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+78199363,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+78955414,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise,asas",
+79792004,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+80518171,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+86498032,THIN MARGIN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+86880482,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+86934109,CLEAN,NEARBY_VARIABLE,,,atlas,,"ztf,crts,wise",asas
+86956236,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+94041900,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+94125661,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+96680649,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+96687087,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+96795030,PERIOD ALIAS,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"crts,wise,asas",ztf
+96818680,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+97416864,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+97700077,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+111149941,AMBIGUOUS PHOTOMETRY,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+111240209,PERIOD ALIAS,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"crts,wise,asas",ztf
+114549849,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"crts,wise,asas",ztf
+119459681,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+119941327,PERIOD ALIAS,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise,asas",
+120025344,PERIOD ALIAS,ALREADY_KNOWN,atlas,,,,"ztf,crts,wise,asas",
+133688675,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+139805341,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+140918728,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+150230753,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+152160223,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+152676628,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+156776551,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+156780644,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+158398880,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+158864044,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+165227846,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+165535747,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+176348607,PERIOD ALIAS,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise,asas",
+178331798,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+178354956,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+178434324,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise,asas",
+182343782,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+182463007,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+182536219,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+188173846,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+188404859,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+188629001,CLEAN,ALREADY_KNOWN,atlas,,,,"ztf,crts,wise,asas",
+193548084,PERIOD ALIAS,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise",asas
+200247352,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+200647864,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+201317466,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise,asas",
+201429480,THIN MARGIN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"crts,wise,asas",ztf
+201868138,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+216935767,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+219752822,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+219765539,THIN MARGIN,NO_MATCH,,,,,"ztf,wise,atlas","crts,asas"
+219769838,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+219800831,CLEAN,NO_MATCH,,,,,"ztf,wise,atlas","crts,asas"
+219892238,PERIOD ALIAS,NO_MATCH,,,,,"ztf,wise,atlas","crts,asas"
+220423668,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+224182619,THIN MARGIN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+224215371,PERIOD ALIAS,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise,asas",
+224288919,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+224306120,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise",asas
+229012892,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+229146166,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+229181348,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+229205551,PERIOD ALIAS,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise,asas",
+229401461,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+229473505,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+229490432,PERIOD ALIAS,NO_MATCH,,,,,"ztf,wise,atlas","crts,asas"
+229494833,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+229832383,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+229845475,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+230067194,CLEAN,NO_MATCH,,,,,"ztf,wise,atlas","crts,asas"
+230163860,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise,asas",
+231055671,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+231908427,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+231917790,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+231976099,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+232039858,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+232087808,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+232171820,THIN MARGIN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+232261044,THIN MARGIN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+232421797,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+233452636,THIN MARGIN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+233459038,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+235512374,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+237115819,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+237226943,THIN MARGIN,NO_MATCH,,,,,"ztf,wise,atlas","crts,asas"
+237505178,CLEAN,NEARBY_VARIABLE,,,atlas,,"ztf,crts,wise,asas",
+237657109,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+238618726,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+239661046,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise",asas
+244999763,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+246650797,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+246860059,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+250549396,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise,asas",
+251077178,CLEAN,ALREADY_KNOWN,atlas,,,,"ztf,crts,wise,asas",
+251663993,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+251898081,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+257747010,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+257806221,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+257817337,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+257922637,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+257923571,PERIOD ALIAS,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise,asas",
+257927198,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise,asas",
+258151016,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+258204238,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise",asas
+258316486,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+258490713,CLEAN,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+260844755,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+264099112,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+264163792,CLEAN,ALREADY_KNOWN,atlas,,,,"ztf,crts,wise,asas",
+267516382,THIN MARGIN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+272854495,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+272885856,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+273026743,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+273158289,THIN MARGIN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+273212554,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+273787849,CLEAN,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+281310348,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise,asas",
+290129286,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+290436243,THIN MARGIN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+294860388,THIN MARGIN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+294976780,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+295035279,CLEAN,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+295124562,PERIOD ALIAS,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+295146943,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+295254637,PERIOD ALIAS,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+295373509,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+300146496,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+303470667,MARGINAL,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+306294675,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+307453359,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+308574817,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+308578336,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+308621446,THIN MARGIN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+309656476,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+313352561,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+313386191,PERIOD ALIAS,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise",asas
+313485023,PERIOD ALIAS,NO_MATCH,,,,,"ztf,wise,atlas","crts,asas"
+313498432,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+313590380,THIN MARGIN,NO_MATCH,,,,,"ztf,wise,atlas","crts,asas"
+313684677,THIN MARGIN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+314239566,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+318109813,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+318232056,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+318566745,PERIOD ALIAS,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+318620649,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+318887646,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+318907244,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+319039747,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise,asas",
+320341748,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+326225355,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+330901906,THIN MARGIN,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+333145823,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+334215307,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+334414710,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+334422203,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+336181565,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+340551910,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+340965597,PERIOD ALIAS,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+341290373,THIN MARGIN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+342569756,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+342586820,THIN MARGIN,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+342600336,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+342621731,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+342641246,THIN MARGIN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+348762141,PERIOD ALIAS,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+348787043,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+348791607,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+348837498,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+348884775,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+349109562,THIN MARGIN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+349116460,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+349252594,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+349701853,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise,asas",
+349725115,PERIOD ALIAS,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise,asas",
+355734358,THIN MARGIN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+355734894,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+355737250,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+355809352,PERIOD ALIAS,NO_MATCH,,,,,"ztf,wise,atlas","crts,asas"
+355828577,CLEAN,NO_MATCH,,,,,"ztf,wise,atlas","crts,asas"
+355917097,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise",asas
+355921200,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+365726727,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+365764494,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+365998904,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+367000921,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,kelt,,,"ztf,crts,wise,atlas,asas",
+367157113,PERIOD ALIAS,NEARBY_VARIABLE,,,kelt,,"ztf,crts,wise,atlas",asas
+367193047,PERIOD ALIAS,ALREADY_KNOWN,atlas,,,,"ztf,crts,wise",asas
+367430670,PERIOD ALIAS,NO_MATCH,,,,,"ztf,wise,atlas","crts,asas"
+370553309,CLEAN,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+373792319,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+373896170,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+374158907,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+376932335,PERIOD ALIAS,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+376932771,PERIOD ALIAS,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+378367349,THIN MARGIN,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+378434189,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise,asas",
+378816777,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+380943251,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise,asas",
+388939913,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+389107837,PERIOD ALIAS,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise",asas
+389751698,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+392559026,CLEAN,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+394710986,CLEAN,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+394805902,CLEAN,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+394942247,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise",asas
+395051777,CLEAN,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+399544063,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+399770041,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+401936263,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+403017570,CLEAN,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+403030272,PERIOD ALIAS,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+403069594,CLEAN,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+403080487,CLEAN,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+403329469,PERIOD ALIAS,NO_MATCH,,,,,"ztf,wise,atlas","crts,asas"
+405215869,CLEAN,ALREADY_KNOWN,atlas,,,,"ztf,crts,wise,asas",
+405216391,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise,asas",
+405392578,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise,asas",
+405529940,CLEAN,ALREADY_KNOWN,atlas,,,,"ztf,crts,wise,asas",
+411305220,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+411434067,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+411457490,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+411978234,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+412057714,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+412805586,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+419143879,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+430314843,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+434321668,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+437022904,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+437150434,CLEAN,KNOWN_VARIABLE_PERIOD_DIFFERS,,atlas,,,"ztf,crts,wise,asas",
+437171483,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+440817847,THIN MARGIN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+440828388,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+441012538,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+444465823,PERIOD ALIAS,NO_MATCH,,,,,"ztf,wise,atlas","crts,asas"
+445266372,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+446502638,THIN MARGIN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
+446692149,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+446758441,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+447009429,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+447112476,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+447115398,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+447350975,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+447439469,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+450616233,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+453692345,CLEAN,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+457675706,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+458507124,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+459533211,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+463349042,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+467214801,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+467962259,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+467976427,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+468010975,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+468017028,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+468090770,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+468122704,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+468146715,CLEAN,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+468152519,CLEAN,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+468210255,THIN MARGIN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+468210292,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+469305326,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+469306687,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+469606998,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
+942471837,THIN MARGIN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+975879954,THIN MARGIN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+1003150980,THIN MARGIN,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
+1007259218,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf

@@ -4,45 +4,29 @@ f10_generate_discoveries.py
 Picks a handful of standout candidates by real, objective criteria already
 computed by the pipeline (deepest eclipse, highest ML score, longest/
 shortest period, clearest secondary eclipse), one candidate per category,
-then calls the Claude API ONCE for all of them together to write a short
-"why this stands out" paragraph per pick - grounded strictly in that
-candidate's own numbers, never invented.
+and writes a short "why this stands out" paragraph for each.
 
-Only CLEAN-tier candidates are eligible picks: a candidate with any open
-caveat should never be framed as a standout, since there is nothing to
-reconcile a write-up against if the pipeline itself has already flagged a
-doubt about it.
+The text is built from fixed templates filled with that candidate's own
+numbers. No language model writes it: an earlier version did, and it produced
+hype ("unprecedented", "high-confidence") and one wrong sentence (a depth of
+7.88 percent described as "dimming to 7.88 percent of their combined light").
+Templates cannot invent a claim, and every sentence is checked by
+writeup_guard before it is written.
 
-Cost control: this is a one-time batch call, not per-visitor. If
-data/processed/f10_discoveries.json already exists, no API call is made at
-all. Delete that file (or pass --force) to re-pick and regenerate, for
-example after a run adds a lot of new confirmed candidates that might
-unseat the current picks.
-
-Requires:
-  ANTHROPIC_API_KEY environment variable
-  pip install anthropic (already installed if you ran the earlier f8/f9 scripts)
+Only CLEAN-tier candidates are eligible picks.
 
 Usage:
   py f10_generate_discoveries.py <project_root> [--force]
 """
 
 import json
-import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-try:
-    import anthropic
-except ImportError:
-    print("ERROR: the 'anthropic' package is not installed.")
-    print("Install it with:")
-    print("  py -m pip install anthropic")
-    sys.exit(2)
+import writeup_guard
 
-MODEL = "claude-haiku-4-5-20251001"
-MAX_TOKENS = 1600
+MODEL = "fixed templates (no language model)"
 
 
 def score_deepest(rec):
@@ -78,25 +62,6 @@ CATEGORIES = [
      lambda r: f"secondary eclipse at {r['secondary_sigma']:.1f} sigma"),
 ]
 
-PROMPT_TEMPLATE = """You are writing short showcase blurbs for a "Standouts" page on Star Vetter, a public science website that automatically vets candidate eclipsing binary stars found in TESS satellite data. For each candidate below, write a headline (5-8 words) and a blurb (60-90 words) explaining why THIS candidate is a standout example of its named category. Use ONLY the facts given for that candidate - do not invent, estimate, or add any number, fact, or claim not explicitly stated.
-
-Hard rules:
-- Do not use the words "discovery", "genuine", "confirmed", "confirms", "follow-up", "ground-based", or "astronomers".
-- Do not claim or imply any verification beyond what the facts state. This pipeline uses only automated TESS photometry and pixel-level image analysis - nothing else, no other telescopes, no human review.
-- Call it a "candidate", never a confirmed discovery or a confirmed eclipsing binary.
-- Use only standard ASCII characters - no em dashes, no smart quotes (use a hyphen or comma instead, straight quotes only).
-- Plain, accurate, engaging language for a curious non-expert. Avoid the word "exciting".
-
-Candidates:
-{candidates_block}
-
-Return ONLY valid JSON (no markdown code fences, no commentary), a JSON array with one object per candidate above, in the same order, matching exactly this shape:
-[
-  {{"tic": <tic number>, "headline": "...", "blurb": "..."}},
-  ...
-]"""
-
-
 def build_record(tic, cand, detail):
     eph = cand["ephemeris"]
     gates = cand["gates"]
@@ -116,32 +81,56 @@ def build_record(tic, cand, detail):
     }
 
 
-def facts_for_prompt(label, stat_text, rec):
-    lines = [
-        f"TIC {rec['tic']} - category: {label}",
-        f"- Headline stat for this category: {stat_text}",
-        f"- Orbital period: {rec['period_days']:.4f} days",
-    ]
-    if rec["primary_depth"] is not None:
-        lines.append(f"- Primary eclipse depth: {rec['primary_depth'] * 100:.2f}%")
-    else:
-        lines.append("- Primary eclipse depth: not available")
-    lines.append(f"- Detection significance (BLS signal-to-noise): {rec['bls_snr']:.1f}")
-    if rec["ml_score"] is not None:
-        lines.append(f"- ML screening score: {rec['ml_score']:.3f} (0 to 1)")
-    lines.append(f"- Catalog check: matched in {rec['catalog_matches']} of {rec['n_catalogs']} known variable-star catalogs")
+def _tail(rec):
+    parts = []
     if rec["secondary_sigma"] is not None:
-        lines.append(f"- Secondary eclipse: detected at {rec['secondary_sigma']:.1f} sigma, phase {rec['secondary_phase']:.2f}")
-    lines.append("- Vetting tier: CLEAN (no open caveats on this candidate)")
-    return "\n".join(lines)
+        parts.append(f"A secondary eclipse is also detected, at {rec['secondary_sigma']:.1f} sigma.")
+    else:
+        parts.append("No secondary eclipse was detected.")
+    if rec["n_catalogs"]:
+        if rec["catalog_matches"] == 0:
+            parts.append(f"It matched none of the {rec['n_catalogs']} catalogs searched, which is weak evidence of novelty.")
+        else:
+            parts.append(f"It matched {rec['catalog_matches']} of {rec['n_catalogs']} catalogs searched.")
+    parts.append("It is a candidate, not a confirmed eclipsing binary.")
+    return " ".join(parts)
 
 
-def extract_json(text):
-    text = text.strip()
-    if text.startswith("```"):
-        text = re.sub(r"^```[a-zA-Z]*\n", "", text)
-        text = re.sub(r"\n```$", "", text)
-    return json.loads(text)
+def write_text(key, rec):
+    """Return (headline, blurb) for one pick, from its own numbers only."""
+    d = rec["primary_depth"]
+    depth = f"{d * 100:.2f}%" if d is not None else "an unmeasured amount"
+    P = rec["period_days"]
+    snr = rec["bls_snr"]
+    bits = []
+    if key != "longest_period" and key != "shortest_period":
+        bits.append(f"orbital period {P:.4f} days")
+    if key != "deepest_eclipse" and d is not None:
+        bits.append(f"primary eclipse depth {depth}")
+    bits.append(f"detection signal-to-noise {snr:.0f}")
+    base = "Measured: " + ", ".join(bits) + "."
+    if key == "deepest_eclipse":
+        head = "Deepest eclipse among the clean candidates"
+        lead = f"The primary eclipse removes {depth} of the light, the deepest of any candidate with no open caveats."
+    elif key == "longest_period":
+        head = "Longest orbit among the clean candidates"
+        lead = f"The two stars take {P:.1f} days to orbit each other, the longest period of any candidate with no open caveats."
+    elif key == "shortest_period":
+        head = "Shortest orbit among the clean candidates"
+        lead = f"The two stars take only {P:.3f} days to orbit each other, the shortest period of any candidate with no open caveats."
+    elif key == "highest_ml_score":
+        head = "Highest score from the screening model"
+        lead = f"The screening model gives it {rec['ml_score']:.3f} out of 1, the highest of the clean candidates. The model is a second opinion and is not used to accept or reject anything."
+    elif key == "clearest_secondary":
+        head = "Clearest secondary eclipse"
+        lead = f"Its secondary eclipse is detected at {rec['secondary_sigma']:.1f} sigma, the clearest of the clean candidates."
+    else:
+        head = "Standout candidate"
+        lead = ""
+    tail = _tail(rec)
+    if key == "clearest_secondary":
+        tail = tail.replace(f"A secondary eclipse is also detected, at {rec['secondary_sigma']:.1f} sigma. ", "")
+    return head, " ".join(x for x in (lead, base, tail) if x)
 
 
 def main():
@@ -158,7 +147,7 @@ def main():
     site_out_path = site_data / "discoveries.json"
 
     if cache_path.exists() and not force:
-        print(f"{cache_path.name} already exists - skipping selection and the API call (no cost).")
+        print(f"{cache_path.name} already exists - skipping re-selection.")
         print("Pass --force, or delete that file, to re-pick and regenerate.")
         cached = json.loads(cache_path.read_text(encoding="utf-8"))
         site_out_path.write_text(json.dumps(cached, indent=2, ensure_ascii=True), encoding="utf-8", newline="\n")
@@ -168,9 +157,18 @@ def main():
     index = json.loads((site_data / "index.json").read_text(encoding="utf-8"))
     tics = [int(c["tic"]) for c in index["candidates"]]
 
+    # stars already listed in a catalog at the same period are never "standouts"
+    known = set()
+    ne_path = site_data / "novelty_extra.json"
+    if ne_path.exists():
+        ne = json.loads(ne_path.read_text(encoding="utf-8"))["stars"]
+        known = {int(t) for t, v in ne.items() if v.get("verdict") == "ALREADY_KNOWN"}
+
     records = {}
     skipped_non_clean = 0
     for tic in tics:
+        if tic in known:
+            continue
         cand_path = cand_dir / f"TIC{tic}.json"
         if not cand_path.exists():
             continue
@@ -213,7 +211,6 @@ def main():
             "category": key,
             "category_label": label,
             "stat_text": stat_text,
-            "facts": facts_for_prompt(label, stat_text, rec),
         })
         print(f"  {label}: TIC {best_tic} ({stat_text})")
 
@@ -221,40 +218,19 @@ def main():
         print("No categories could be filled - nothing to generate.")
         return
 
-    candidates_block = "\n\n".join(p["facts"] for p in picks)
-    prompt = PROMPT_TEMPLATE.format(candidates_block=candidates_block)
-
-    print(f"Calling Claude API once to write {len(picks)} standout blurb(s)...")
-    client = anthropic.Anthropic()
-    resp = client.messages.create(
-        model=MODEL,
-        max_tokens=MAX_TOKENS,
-        messages=[{"role": "user", "content": prompt}],
-    )
-    text = "".join(b.text for b in resp.content if b.type == "text").strip()
-
-    try:
-        written = extract_json(text)
-    except json.JSONDecodeError as exc:
-        print("ERROR: the model's reply was not valid JSON. Raw reply below - nothing was written.")
-        print(text)
-        raise SystemExit(1) from exc
-
-    written_by_tic = {int(w["tic"]): w for w in written if "tic" in w}
-
     discoveries = []
     for p in picks:
-        w = written_by_tic.get(p["tic"])
-        if not w:
-            print(f"  WARNING: no written blurb came back for TIC {p['tic']} - skipped")
+        head, blurb = write_text(p["category"], records[p["tic"]])
+        if not (writeup_guard.is_safe(head, p["tic"]) and writeup_guard.is_safe(blurb, p["tic"])):
+            print(f"  WARNING: template text for TIC {p['tic']} failed the language guard - skipped")
             continue
         discoveries.append({
             "tic": p["tic"],
             "category": p["category"],
             "category_label": p["category_label"],
             "stat_text": p["stat_text"],
-            "headline": w.get("headline", ""),
-            "blurb": w.get("blurb", ""),
+            "headline": head,
+            "blurb": blurb,
         })
 
     out = {

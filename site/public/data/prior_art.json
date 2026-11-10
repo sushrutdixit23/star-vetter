@@ -1,0 +1,2149 @@
+{
+ "generated_at": "2026-11-10T13:02:24Z",
+ "sources": [
+  {
+   "name": "Kostov+ 2026 eclipsing quadruple candidates (AJ 171, 29)",
+   "id": "J/AJ/171/29",
+   "what": "52 quadruple candidates from the same neural-network pipeline",
+   "status": "CHECKED",
+   "rows": 471,
+   "matches": 1
+  },
+  {
+   "name": "Oddo+ 2026 low-mass M+M TESS binaries (ApJ 996, 82)",
+   "id": "J/ApJ/996/82",
+   "what": "1,292 M-dwarf eclipsing binaries",
+   "status": "NOT_CHECKED",
+   "reason": "VizieR does not hold J/ApJ/996/82"
+  },
+  {
+   "name": "Liu+ 2026 TESS EB classification (ApJS 285, 5)",
+   "id": "J/ApJS/285/5",
+   "what": "20,196 TESS eclipsing binaries classified EA/EB/EW",
+   "status": "NOT_CHECKED",
+   "reason": "VizieR does not hold J/ApJS/285/5"
+  },
+  {
+   "name": "ExoFOP TOI list",
+   "id": "cat_toi_exofop.csv",
+   "what": "TESS Objects of Interest",
+   "status": "CHECKED",
+   "rows": 8151,
+   "matches": 0
+  },
+  {
+   "name": "SIMBAD object types",
+   "id": "simbad",
+   "what": "SIMBAD main object type",
+   "status": "CHECKED",
+   "matches": 92
+  }
+ ],
+ "summary": {
+  "stars": 307,
+  "in_any_new_catalog": 1,
+  "on_toi_list": 0,
+  "simbad_identified": 92,
+  "simbad_groups": {
+   "other_variable_or_peculiar": 12,
+   "plain_star": 75,
+   "other": 2,
+   "eclipsing_binary": 3
+  }
+ },
+ "note": "Kostov et al. removed every target within 21 arcsec of a known eclipsing binary before publishing table2, so no match in VSX, ASAS-SN, ATLAS, Gaia or ZTF binary lists is expected and is not evidence of novelty. This sweep covers material that filter did not use.",
+ "stars": {
+  "437150434": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "237115819": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "66732476": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "29495157": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "119459681": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "411434067": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "330901906": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "303470667": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "273158289": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "111149941": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "BD-02  3876",
+    "otype": "PM*",
+    "otype_txt": "PM*",
+    "sep_arcsec": 0.010930243549732918,
+    "group": "other_variable_or_peculiar"
+   }
+  },
+  "251898081": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 4011-1248-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.010427138435145108,
+    "group": "plain_star"
+   }
+  },
+  "467214801": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "HD 239215",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.003610004642727314,
+    "group": "plain_star"
+   }
+  },
+  "399770041": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 9212-3925-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.010468419689715213,
+    "group": "plain_star"
+   }
+  },
+  "349701853": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "233459038": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "281310348": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "318887646": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "UCAC4 454-003515",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.01929650264438144,
+    "group": "plain_star"
+   }
+  },
+  "444465823": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "380943251": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "66716482": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "309656476": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "HD  34942",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.010318104133298086,
+    "group": "plain_star"
+   }
+  },
+  "229494833": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 4231-615-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.011788233829231639,
+    "group": "plain_star"
+   }
+  },
+  "44533527": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 1553-998-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.010113515975788396,
+    "group": "plain_star"
+   }
+  },
+  "220423668": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "365998904": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "233452636": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "437171483": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "411457490": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "295373509": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "374158907": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "348884775": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "70762350": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "446502638": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "UCAC4 384-132550",
+    "otype": "PM*",
+    "otype_txt": "PM*",
+    "sep_arcsec": 0.010246676961705815,
+    "group": "other_variable_or_peculiar"
+   }
+  },
+  "326225355": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "HD 323292",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.010377513408111563,
+    "group": "plain_star"
+   }
+  },
+  "250549396": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "430314843": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "370553309": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 9200-557-1",
+    "otype": "SB*",
+    "otype_txt": "SB*",
+    "sep_arcsec": 0.011210569867351769,
+    "group": "other_variable_or_peculiar"
+   }
+  },
+  "86956236": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "349725115": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "235512374": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC  752-1105-1",
+    "otype": "SB*",
+    "otype_txt": "SB*",
+    "sep_arcsec": 0.015981395261207898,
+    "group": "other_variable_or_peculiar"
+   }
+  },
+  "244999763": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "267516382": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "193548084": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "133688675": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "224215371": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "139805341": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "43330648": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "BD+23  3099",
+    "otype": "HB*",
+    "otype_txt": "HB*",
+    "sep_arcsec": 0.01232442175589656,
+    "group": "plain_star"
+   }
+  },
+  "446758441": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "373896170": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 4032-2922-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.006414082051993044,
+    "group": "plain_star"
+   }
+  },
+  "273212554": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "HD 103586",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.016074808175549727,
+    "group": "plain_star"
+   }
+  },
+  "78955414": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "318907244": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "294976780": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "59603820": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "229490432": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "313684677": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "1007259218": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "290129286": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "342586820": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "365764494": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 3583-1080-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.016395957650070393,
+    "group": "plain_star"
+   }
+  },
+  "399544063": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 3300-2584-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.045800466405356774,
+    "group": "plain_star"
+   }
+  },
+  "229146166": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "238618726": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "216935767": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "333145823": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 5948-2522-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.018255170117023323,
+    "group": "plain_star"
+   }
+  },
+  "459533211": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "306294675": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "43785616": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 5334-755-1",
+    "otype": "SB*",
+    "otype_txt": "SB*",
+    "sep_arcsec": 0.051702175972576286,
+    "group": "other_variable_or_peculiar"
+   }
+  },
+  "176348607": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "152676628": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 7120-1690-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.011985221563294854,
+    "group": "plain_star"
+   }
+  },
+  "434321668": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "445266372": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "392559026": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "258490713": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "152160223": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "65970288": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "467962259": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "79792004": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 7667-290-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.01119542623155674,
+    "group": "plain_star"
+   }
+  },
+  "111240209": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "UCAC4 291-020472",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.013005936365670141,
+    "group": "plain_star"
+   }
+  },
+  "239661046": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "231055671": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "273787849": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "453692345": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "150230753": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "158398880": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "86934109": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 2677-1664-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.0058836880519647925,
+    "group": "plain_star"
+   }
+  },
+  "307453359": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "232261044": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "72729777": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "UCAC4 318-002620",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.014400613563313342,
+    "group": "plain_star"
+   }
+  },
+  "96795030": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "UCAC4 291-015587",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.015257650206591903,
+    "group": "plain_star"
+   }
+  },
+  "365726727": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 9072-1813-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.04196925784706412,
+    "group": "plain_star"
+   }
+  },
+  "437022904": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 1357-313-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.024168147939759705,
+    "group": "plain_star"
+   }
+  },
+  "463349042": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "401936263": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "77210120": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "942471837": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "Gaia DR3 5403471077760453888",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.0173973895541754,
+    "group": "plain_star"
+   }
+  },
+  "158864044": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "237226943": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "86880482": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "411305220": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "294860388": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "9586662": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "UCAC4 314-069342",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.013091580830440304,
+    "group": "plain_star"
+   }
+  },
+  "257747010": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "229473505": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 4234-1979-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.004806572105684531,
+    "group": "plain_star"
+   }
+  },
+  "411978234": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "394710986": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "UCAC4 068-018036",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.006574087273295961,
+    "group": "plain_star"
+   }
+  },
+  "1003150980": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "342569756": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "156780644": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "246650797": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "348762141": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "334422203": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "43791794": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "BD+17  3308",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.0228952095225935,
+    "group": "plain_star"
+   }
+  },
+  "334414710": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "229845475": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "313590380": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 4551-2326-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.0071462405145413625,
+    "group": "plain_star"
+   }
+  },
+  "367193047": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "378367349": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "295124562": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "229832383": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "2MASS J16362465-4417549",
+    "otype": "LP?",
+    "otype_txt": "LP?",
+    "sep_arcsec": 4.919055804901266,
+    "group": "other"
+   }
+  },
+  "348787043": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "348791607": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "447009429": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "405215869": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "120025344": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "412057714": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 1287-32-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.06156009613652486,
+    "group": "plain_star"
+   }
+  },
+  "156776551": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "140918728": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "258204238": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "Gaia DR2 2103537302109961728",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.010397028253325773,
+    "group": "plain_star"
+   }
+  },
+  "405216391": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "231976099": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "313498432": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "BD+53  1877",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.009160140922615854,
+    "group": "plain_star"
+   }
+  },
+  "373792319": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "342600336": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "246860059": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "367157113": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 1902-1539-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.02075006879006312,
+    "group": "plain_star"
+   }
+  },
+  "295035279": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "313485023": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "348837498": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "UCAC4 367-050299",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.013785777650401313,
+    "group": "plain_star"
+   }
+  },
+  "403017570": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "HD 132656",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.003918649460924256,
+    "group": "plain_star"
+   }
+  },
+  "318620649": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "230163860": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "ATO J318.0202+12.9205",
+    "otype": "EB?",
+    "otype_txt": "EB?",
+    "sep_arcsec": 0.05866855891863326,
+    "group": "eclipsing_binary"
+   }
+  },
+  "340965597": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "355921200": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "355917097": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 4164-567-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.16372414722092843,
+    "group": "plain_star"
+   }
+  },
+  "376932335": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "CPD-82    80",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.005763536734127035,
+    "group": "plain_star"
+   }
+  },
+  "219892238": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "318566745": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 9332-1264-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.009012026329887596,
+    "group": "plain_star"
+   }
+  },
+  "42058853": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 2644-1832-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.07559014037988954,
+    "group": "plain_star"
+   }
+  },
+  "376932771": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "UCAC4 061-002828",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.008578822209616428,
+    "group": "plain_star"
+   }
+  },
+  "251663993": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 5146-514-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.0167271751619347,
+    "group": "plain_star"
+   }
+  },
+  "165535747": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "378434189": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "394805902": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "232039858": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "388939913": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "MGC 34491",
+    "otype": "PM*",
+    "otype_txt": "PM*",
+    "sep_arcsec": 0.003174301689136712,
+    "group": "other_variable_or_peculiar"
+   }
+  },
+  "403030272": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "96818680": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 7346-239-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.025493321981113794,
+    "group": "plain_star"
+   }
+  },
+  "295146943": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "42011712": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "441012538": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "313386191": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "[SSB2001]  9",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.0107714188363773,
+    "group": "plain_star"
+   }
+  },
+  "59490510": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "469606998": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 3976-757-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.024930886781454432,
+    "group": "plain_star"
+   }
+  },
+  "59488906": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "HD  55823",
+    "otype": "**",
+    "otype_txt": "**",
+    "sep_arcsec": 0.017361844649236458,
+    "group": "eclipsing_binary"
+   }
+  },
+  "403069594": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "UCAC4 088-049712",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.007170019736488354,
+    "group": "plain_star"
+   }
+  },
+  "224306120": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "41996755": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "447112476": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 9260-3714-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.12724640736893925,
+    "group": "plain_star"
+   }
+  },
+  "403080487": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 9270-126-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.19497909956761056,
+    "group": "plain_star"
+   }
+  },
+  "450616233": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "273026743": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "HD 109136",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.018187685977473403,
+    "group": "plain_star"
+   }
+  },
+  "313352561": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "342621731": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "232087808": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "229401461": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "HD 184168",
+    "otype": "PM*",
+    "otype_txt": "PM*",
+    "sep_arcsec": 0.00875423742270385,
+    "group": "other_variable_or_peculiar"
+   }
+  },
+  "447115398": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 9260-965-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.01654858259809527,
+    "group": "plain_star"
+   }
+  },
+  "72721266": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "60192021": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "188173846": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "188629001": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "ATO J350.5011-14.7617",
+    "otype": "V*",
+    "otype_txt": "V*",
+    "sep_arcsec": 0.008199539785245234,
+    "group": "other_variable_or_peculiar"
+   }
+  },
+  "40208362": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 3150-2243-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.025990920689128505,
+    "group": "plain_star"
+   }
+  },
+  "295254637": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "468210292": {
+   "in_new_catalogs": [
+    {
+     "source": "Kostov+ 2026 eclipsing quadruple candidates (AJ 171, 29)",
+     "id": "J/AJ/171/29"
+    }
+   ],
+   "toi": null,
+   "simbad": null
+  },
+  "258151016": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "341290373": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "201868138": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "65257021": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "468210255": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "467976427": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "59464503": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "UCAC4 529-022329",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.021555521200687416,
+    "group": "plain_star"
+   }
+  },
+  "264163792": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC  770-2083-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.010989060484144369,
+    "group": "plain_star"
+   }
+  },
+  "97416864": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "59458906": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 1358-362-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.00929331679985111,
+    "group": "plain_star"
+   }
+  },
+  "178331798": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "229205551": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "237505178": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "468010975": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "405392578": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "232171820": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "320341748": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "300146496": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "229181348": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "59453672": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 1354-371-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.012183033752746581,
+    "group": "plain_star"
+   }
+  },
+  "355828577": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 4143-114-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.14981653783392818,
+    "group": "plain_star"
+   }
+  },
+  "367000921": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 1077-960-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.07116932770596936,
+    "group": "plain_star"
+   }
+  },
+  "334215307": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "40100356": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "94125661": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "308574817": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "468017028": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "224288919": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 3837-762-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.010294131229066547,
+    "group": "plain_star"
+   }
+  },
+  "178354956": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "308578336": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "219800831": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 4208-892-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.007468940025480116,
+    "group": "plain_star"
+   }
+  },
+  "229012892": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "HD    225",
+    "otype": "PM*",
+    "otype_txt": "PM*",
+    "sep_arcsec": 0.018138145043004157,
+    "group": "other_variable_or_peculiar"
+   }
+  },
+  "340551910": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "232421797": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "119941327": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "355809352": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "HD  74242",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.012963603406560404,
+    "group": "plain_star"
+   }
+  },
+  "394942247": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "224182619": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "BD-00  3767",
+    "otype": "RB?",
+    "otype_txt": "RB?",
+    "sep_arcsec": 0.019096673980601053,
+    "group": "other"
+   }
+  },
+  "342641246": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "201429480": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "Gaia DR3 2896151736808004480",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.014331395808324357,
+    "group": "plain_star"
+   }
+  },
+  "59388389": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "Hen 3-1781",
+    "otype": "Em*",
+    "otype_txt": "Em*",
+    "sep_arcsec": 0.003438869515540641,
+    "group": "plain_star"
+   }
+  },
+  "46208125": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "201317466": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "UCAC4 494-097945",
+    "otype": "SB*",
+    "otype_txt": "SB*",
+    "sep_arcsec": 0.016365908754325365,
+    "group": "other_variable_or_peculiar"
+   }
+  },
+  "318232056": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "59387976": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "260844755": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "389107837": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "457675706": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "65085092": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "336181565": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "308621446": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "96687087": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "219769838": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "UCAC2  24842601",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.014606263593283618,
+    "group": "plain_star"
+   }
+  },
+  "219765539": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 4211-1112-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.007959425687786998,
+    "group": "plain_star"
+   }
+  },
+  "114549849": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "314239566": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "290436243": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "94041900": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "97700077": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "349252594": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "257927198": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "258316486": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "41831052": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "BD+37  2659",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.015387155069633375,
+    "group": "plain_star"
+   }
+  },
+  "59378274": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "65051771": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "230067194": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "219752822": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 4202-1424-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.005679422793686781,
+    "group": "plain_star"
+   }
+  },
+  "257923571": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "78199363": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "96680649": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "2MASS J04553542+3034400",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.014124338720234554,
+    "group": "plain_star"
+   }
+  },
+  "468122704": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "257922637": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "43712813": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "318109813": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "Gaia DR3 5335931136547920128",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.01482166192101245,
+    "group": "plain_star"
+   }
+  },
+  "182536219": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "447350975": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "59363206": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 1354-1086-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.0023730863796652883,
+    "group": "plain_star"
+   }
+  },
+  "272885856": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "HD  93532",
+    "otype": "**",
+    "otype_txt": "**",
+    "sep_arcsec": 0.5936467482770027,
+    "group": "eclipsing_binary"
+   }
+  },
+  "182463007": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "178434324": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "319039747": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "264099112": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "231917790": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "468090770": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "2MASS J11200128-6125342",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.04373872049944803,
+    "group": "plain_star"
+   }
+  },
+  "200647864": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "469305326": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "165227846": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "NGTS-EB-8",
+    "otype": "SB*",
+    "otype_txt": "SB*",
+    "sep_arcsec": 0.016596176591701116,
+    "group": "other_variable_or_peculiar"
+   }
+  },
+  "182343782": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "HD 174025",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.01735391505057182,
+    "group": "plain_star"
+   }
+  },
+  "458507124": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "469306687": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "58485530": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "251077178": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "78186062": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "419143879": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "446692149": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "80518171": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "440828388": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "389751698": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "237657109": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "403329469": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "975879954": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "378816777": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "HD 228175",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.01671544708694492,
+    "group": "plain_star"
+   }
+  },
+  "355737250": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "468146715": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "19569810": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "349116460": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "440817847": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "405529940": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "468152519": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "257817337": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 2074-980-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.014938145062218649,
+    "group": "plain_star"
+   }
+  },
+  "200247352": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "257806221": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "86498032": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 1618-1707-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.14312956698003326,
+    "group": "plain_star"
+   }
+  },
+  "412805586": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "349109562": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "355734894": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 1489-304-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.003877748129275931,
+    "group": "plain_star"
+   }
+  },
+  "367430670": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "395051777": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "355734358": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "LSPM J1517+2108A",
+    "otype": "PM*",
+    "otype_txt": "PM*",
+    "sep_arcsec": 0.3045802013311945,
+    "group": "other_variable_or_peculiar"
+   }
+  },
+  "231908427": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "272854495": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 7402-1243-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.17284355278518856,
+    "group": "plain_star"
+   }
+  },
+  "447439469": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 8196-4242-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.029180444781732512,
+    "group": "plain_star"
+   }
+  },
+  "188404859": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  }
+ }
+}

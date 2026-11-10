@@ -1,0 +1,429 @@
+{
+  "generated_at": "2026-11-07T21:27:04Z",
+  "method": {
+    "relation": "1/P_TESS = |1/(f*P_ATLAS) + s*j/0.99727|",
+    "multipliers": [
+      0.3333333333333333,
+      0.5,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0
+    ],
+    "sidereal_orders": [
+      0.0,
+      0.5,
+      1.0,
+      2.0,
+      3.0
+    ],
+    "hypotheses": 72,
+    "frequency_tolerance_per_day": 0.0016129032258064516,
+    "tolerance_basis": "1 / 620-day ATLAS DR1 median baseline (Heinze et al. 2018)",
+    "chance_rate_basis": "ATLAS period of each star against the TESS period of every other candidate"
+  },
+  "tested": 37,
+  "atlas_class_of_tested": {
+    "dubious": 35,
+    "CBF": 1,
+    "IRR": 1
+  },
+  "explained": {
+    "k": 8,
+    "n": 37,
+    "harmonic_only": 2,
+    "with_sidereal": 6
+  },
+  "chance": {
+    "pair_rate": 0.08275922981805335,
+    "expected_explained": 3.062091503267974,
+    "p_value_at_least_observed": 0.009603911649536962
+  },
+  "already_matching_ratio_1_half_2": 9,
+  "stars": [
+    {
+      "tic": 40208362,
+      "atlas_class": "dubious",
+      "atlas_period": 0.276372,
+      "tess_period": 0.6908158154499998,
+      "ratio_atlas_over_tess": 0.4000661157706274,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 59378274,
+      "atlas_class": "dubious",
+      "atlas_period": 0.262617,
+      "tess_period": 0.7878253948330453,
+      "ratio_atlas_over_tess": 0.33334416702276193,
+      "explained": true,
+      "explanation": {
+        "multiplier": 3.0,
+        "sidereal_order": 0.0,
+        "sign": 1,
+        "kind": "harmonic",
+        "freq_error": 4.125281085598509e-05
+      }
+    },
+    {
+      "tic": 59453672,
+      "atlas_class": "dubious",
+      "atlas_period": 0.945681,
+      "tess_period": 8.357921995284443,
+      "ratio_atlas_over_tess": 0.11314786145809391,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 59464503,
+      "atlas_class": "dubious",
+      "atlas_period": 1.326117,
+      "tess_period": 0.9939166285071582,
+      "ratio_atlas_over_tess": 1.334233638883575,
+      "explained": true,
+      "explanation": {
+        "multiplier": 0.5,
+        "sidereal_order": 0.5,
+        "sign": -1,
+        "kind": "sidereal",
+        "freq_error": 0.0006732107158984313
+      }
+    },
+    {
+      "tic": 59490510,
+      "atlas_class": "dubious",
+      "atlas_period": 10.645854,
+      "tess_period": 9.124822000495104,
+      "ratio_atlas_over_tess": 1.1666916899225395,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 78955414,
+      "atlas_class": "dubious",
+      "atlas_period": 0.443607,
+      "tess_period": 1.99668584600498,
+      "ratio_atlas_over_tess": 0.22217165553989388,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 96795030,
+      "atlas_class": "dubious",
+      "atlas_period": 2.174543,
+      "tess_period": 3.4190797683388188,
+      "ratio_atlas_over_tess": 0.6360024180004771,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 111240209,
+      "atlas_class": "dubious",
+      "atlas_period": 7.978278,
+      "tess_period": 66.49021161482689,
+      "ratio_atlas_over_tess": 0.11999176730279643,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 114549849,
+      "atlas_class": "dubious",
+      "atlas_period": 0.90072,
+      "tess_period": 8.679003296834441,
+      "ratio_atlas_over_tess": 0.10378150222946987,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 119941327,
+      "atlas_class": "dubious",
+      "atlas_period": 7.987467,
+      "tess_period": 6.521291493101546,
+      "ratio_atlas_over_tess": 1.2248290094760257,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 176348607,
+      "atlas_class": "dubious",
+      "atlas_period": 3.14936,
+      "tess_period": 2.965244305829872,
+      "ratio_atlas_over_tess": 1.0620912394328335,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 178434324,
+      "atlas_class": "dubious",
+      "atlas_period": 1.588886,
+      "tess_period": 2.384440924512456,
+      "ratio_atlas_over_tess": 0.6663557833058404,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 193548084,
+      "atlas_class": "dubious",
+      "atlas_period": 8.310311,
+      "tess_period": 1.9060865454288745,
+      "ratio_atlas_over_tess": 4.359881255092832,
+      "explained": true,
+      "explanation": {
+        "multiplier": 5.0,
+        "sidereal_order": 0.5,
+        "sign": 1,
+        "kind": "sidereal",
+        "freq_error": 0.0008000750097745257
+      }
+    },
+    {
+      "tic": 201317466,
+      "atlas_class": "dubious",
+      "atlas_period": 4.667453,
+      "tess_period": 5.624225848355638,
+      "ratio_atlas_over_tess": 0.8298836365834471,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 201429480,
+      "atlas_class": "dubious",
+      "atlas_period": 1.213644,
+      "tess_period": 2.89247219701313,
+      "ratio_atlas_over_tess": 0.4195870927482906,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 224215371,
+      "atlas_class": "dubious",
+      "atlas_period": 10.573321,
+      "tess_period": 10.98618155029184,
+      "ratio_atlas_over_tess": 0.9624200138690705,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 224306120,
+      "atlas_class": "dubious",
+      "atlas_period": 1.133813,
+      "tess_period": 4.175202260331893,
+      "ratio_atlas_over_tess": 0.2715588202210524,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 229205551,
+      "atlas_class": "dubious",
+      "atlas_period": 0.451681,
+      "tess_period": 5.835269058878197,
+      "ratio_atlas_over_tess": 0.07740534248592704,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 230163860,
+      "atlas_class": "CBF",
+      "atlas_period": 0.222369,
+      "tess_period": 0.667528579954749,
+      "ratio_atlas_over_tess": 0.3331228155280994,
+      "explained": true,
+      "explanation": {
+        "multiplier": 3.0,
+        "sidereal_order": 0.0,
+        "sign": 1,
+        "kind": "harmonic",
+        "freq_error": 0.0009467048250157983
+      }
+    },
+    {
+      "tic": 239661046,
+      "atlas_class": "dubious",
+      "atlas_period": 18.88999,
+      "tess_period": 1.0539905752346004,
+      "ratio_atlas_over_tess": 17.922351910780048,
+      "explained": true,
+      "explanation": {
+        "multiplier": 1.0,
+        "sidereal_order": 1.0,
+        "sign": -1,
+        "kind": "sidereal",
+        "freq_error": 0.0010242955407688825
+      }
+    },
+    {
+      "tic": 250549396,
+      "atlas_class": "dubious",
+      "atlas_period": 1.566895,
+      "tess_period": 2.1928961891401686,
+      "ratio_atlas_over_tess": 0.7145322280916441,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 257923571,
+      "atlas_class": "dubious",
+      "atlas_period": 1.51904,
+      "tess_period": 1.7704927620767272,
+      "ratio_atlas_over_tess": 0.8579758316652016,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 257927198,
+      "atlas_class": "dubious",
+      "atlas_period": 1.883421,
+      "tess_period": 8.678045389493699,
+      "ratio_atlas_over_tess": 0.2170328588371078,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 258204238,
+      "atlas_class": "dubious",
+      "atlas_period": 4.331842,
+      "tess_period": 0.6870359878187736,
+      "ratio_atlas_over_tess": 6.305116583125269,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 281310348,
+      "atlas_class": "dubious",
+      "atlas_period": 2.904282,
+      "tess_period": 1.7702142184960212,
+      "ratio_atlas_over_tess": 1.6406387258980926,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 313386191,
+      "atlas_class": "dubious",
+      "atlas_period": 1.553219,
+      "tess_period": 40.72450956728928,
+      "ratio_atlas_over_tess": 0.03813966126304381,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 319039747,
+      "atlas_class": "dubious",
+      "atlas_period": 2.717867,
+      "tess_period": 1.0169484195423164,
+      "ratio_atlas_over_tess": 2.672571143011552,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 349701853,
+      "atlas_class": "dubious",
+      "atlas_period": 1.927053,
+      "tess_period": 30.342708642712942,
+      "ratio_atlas_over_tess": 0.06350959048156032,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 349725115,
+      "atlas_class": "dubious",
+      "atlas_period": 1.150768,
+      "tess_period": 32.4406404010208,
+      "ratio_atlas_over_tess": 0.0354730358517765,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 355917097,
+      "atlas_class": "dubious",
+      "atlas_period": 2.978659,
+      "tess_period": 1.1947206850406455,
+      "ratio_atlas_over_tess": 2.4931844215107595,
+      "explained": true,
+      "explanation": {
+        "multiplier": 1.0,
+        "sidereal_order": 0.5,
+        "sign": 1,
+        "kind": "sidereal",
+        "freq_error": 7.455644756337865e-05
+      }
+    },
+    {
+      "tic": 378434189,
+      "atlas_class": "dubious",
+      "atlas_period": 0.569685,
+      "tess_period": 0.8112932754818855,
+      "ratio_atlas_over_tess": 0.7021936668483084,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 380943251,
+      "atlas_class": "dubious",
+      "atlas_period": 0.836844,
+      "tess_period": 0.7209347459493273,
+      "ratio_atlas_over_tess": 1.1607763458508902,
+      "explained": true,
+      "explanation": {
+        "multiplier": 0.5,
+        "sidereal_order": 1.0,
+        "sign": -1,
+        "kind": "sidereal",
+        "freq_error": 0.00010613213582777448
+      }
+    },
+    {
+      "tic": 389107837,
+      "atlas_class": "dubious",
+      "atlas_period": 4.400634,
+      "tess_period": 4.120253413981562,
+      "ratio_atlas_over_tess": 1.0680493546991556,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 394942247,
+      "atlas_class": "IRR",
+      "atlas_period": 0.859829,
+      "tess_period": 2.4320538273364622,
+      "ratio_atlas_over_tess": 0.35354028366291046,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 405216391,
+      "atlas_class": "dubious",
+      "atlas_period": 1.215796,
+      "tess_period": 3.114525707654868,
+      "ratio_atlas_over_tess": 0.39036312881021396,
+      "explained": true,
+      "explanation": {
+        "multiplier": 1.0,
+        "sidereal_order": 0.5,
+        "sign": -1,
+        "kind": "sidereal",
+        "freq_error": 6.149604405425446e-05
+      }
+    },
+    {
+      "tic": 405392578,
+      "atlas_class": "dubious",
+      "atlas_period": 0.269619,
+      "tess_period": 5.162568132732381,
+      "ratio_atlas_over_tess": 0.05222575142215108,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 437150434,
+      "atlas_class": "dubious",
+      "atlas_period": 8.162985,
+      "tess_period": 5.285343164440589,
+      "ratio_atlas_over_tess": 1.5444569531303056,
+      "explained": false,
+      "explanation": null
+    }
+  ],
+  "reading": "ATLAS labels 'dubious' mean the variability may not be real (Heinze et al. 2018), and its detached-EB periods are often wrong. A star counts as 'explained' only if a harmonic or sidereal alias reproduces the TESS period to within the ATLAS frequency resolution; compare the explained count with the chance count, not with zero."
+}
