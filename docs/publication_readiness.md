@@ -61,6 +61,9 @@ Still yours:
 3. Check ADS for 2025 to 2026 papers on the listed TIC numbers (not reachable from the sandbox).
 4. Submit to RNAAS with the AI-usage disclosure.
 
+See also: `docs/after_publication.md` (what happens after submission, with dates), `docs/next_papers.md`
+(what each later paper needs), `docs/vsx/` (submission package), `grade_predictions.py` (Year 9 grading).
+
 ## Path after the note
 
 1. RNAAS (1,500 words, one table, moderated, DOI).

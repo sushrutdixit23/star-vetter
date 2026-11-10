@@ -91,6 +91,15 @@ def analysis_checks(root, now=None):
     else:
         add("predictions.json present", False, "")
 
+    w1 = root / "docs" / "vsx" / "vsx_wave1.csv"
+    if w1.exists():
+        import pandas as pd
+        df = pd.read_csv(w1)
+        add("VSX wave 1 has no caveats and only ZTF-supported stars", len(df) > 0 and df["caveats"].isna().all() and df["evidence"].str.contains("ZTF").all(),
+            "%d stars" % len(df))
+    else:
+        add("VSX package present", False, "docs/vsx/vsx_wave1.csv missing")
+
     bad = []
     for p in _text_files(root):
         low = p.read_text(encoding="utf-8").lower()
