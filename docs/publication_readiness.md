@@ -36,6 +36,9 @@ and `docs/rnaas_note.md`.
 - Evidence tiers and novelty labels per star, shown on the Audit page and each candidate page.
 - Predictions with QLP timing term in the grading rule, verified sector assignments.
 - Gaia DR4 plan: which stars can be tested with a fixed-ephemeris fold on release day.
+- Findings from the light curves (`docs/novelty_findings.md`, generated): e cos w lower limits for stars that pass
+  vetoes against fast pulsators and period multiples, a tidal-circularisation sanity check, and a calibrated
+  eclipse-timing search (one smooth period-change candidate). Next actions: `docs/novelty_next_steps.md`.
 
 ## Not possible from this environment
 

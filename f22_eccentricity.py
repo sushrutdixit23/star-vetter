@@ -264,13 +264,16 @@ def run(root, tics=None):
         res["alternation"] = alt
         if res.get("verdict") == "ECCENTRIC":
             zp = root / "data" / "ztf_raw" / ("TIC%d.csv" % tic)
-            res["ztf"] = None
+            res["ztf"], res["ztf_coverage"] = None, "no_file"
             if zp.exists():
                 tz, fz = load_ztf(zp)
+                res["ztf_coverage"] = "insufficient_points"
                 try:
                     res["ztf"] = ztf_secondary(tz, fz, float(pfit or period), t0 + 2457000.0, dur, res["secondary_phase"])
+                    if res["ztf"] is not None:
+                        res["ztf_coverage"] = "measured"
                 except Exception as e:  # noqa: BLE001 - visible, never silent
-                    res["ztf"] = {"error": repr(e)}
+                    res["ztf"], res["ztf_coverage"] = {"error": repr(e)}, "error"
         res["n_points"] = int(len(t))
         res["n_sectors"] = int(len(np.unique(sec)))
         stars[str(tic)] = res

@@ -33,6 +33,9 @@ import f22_eccentricity as f22
 TESS_FLOOR_MIN = 2.0
 ZTF_FLOOR_MIN = 3.0
 MIN_IN_ECLIPSE = 6
+MAX_RANGE_FRACTION = 0.05
+MIN_GROUPS_FOR_DRIFT = 6
+SMOOTH_MIN_IMPROVEMENT = 25.0   # chi-square gain of a parabola over a line
 
 
 def tess_groups(points, period):
@@ -78,6 +81,23 @@ def _season_fit(ts, fs, period, t0, tp, tf, shifts):
     return np.where(np.isfinite(chi), chi, np.inf)
 
 
+def best_shift(ts, fs, period, t0, tp, tf, half_width):
+    """Two-stage timing shift. Stage 1 searches +-0.2 in phase (the ephemeris may have drifted by
+    hundreds of cycles) in steps of a sixth of the eclipse half-width; a best shift within two
+    steps of the window edge is rejected (the fit has not found an eclipse, it has hit a wall).
+    Stage 2 refines on a fine grid. Returns (shift, fine_grid, chi_fine) or None."""
+    step = half_width / 6.0
+    coarse = np.arange(-0.2, 0.2 + step / 2, step)
+    chi = _season_fit(ts, fs, period, t0, tp, tf, coarse)
+    i = int(np.argmin(chi))
+    if not np.isfinite(chi[i]) or i < 2 or i > len(coarse) - 3:
+        return None
+    fine = np.linspace(coarse[i] - 1.5 * step, coarse[i] + 1.5 * step, 61)
+    cf = _season_fit(ts, fs, period, t0, tp, tf, fine)
+    j = int(np.argmin(cf))
+    return float(fine[j]), fine, cf, float(cf[j]), float(chi[i])
+
+
 def ztf_season_times(t, f, period, t0, template_phase, template_flux, half_width, n_boot=60, seed=5, min_dchi=25.0):
     """One eclipse time per ZTF observing season, relative to (period, t0), in minutes.
     The error is the bootstrap scatter of the fitted shift (points resampled within the season),
@@ -90,31 +110,30 @@ def ztf_season_times(t, f, period, t0, template_phase, template_flux, half_width
     season = np.floor((t - 2458000.5 - 120.0) / 365.25).astype(int)      # seasons split in the summer gap
     tp = np.asarray(template_phase)
     tf = np.asarray(template_flux)
-    shifts = np.linspace(-4 * half_width, 4 * half_width, 161)
     for s in np.unique(season):
         m = season == s
         ts, fs = t[m], f[m]
         if len(ts) < 30:
             continue
-        chi = _season_fit(ts, fs, period, t0, tp, tf, shifts)
-        i = int(np.argmin(chi))
-        if i in (0, len(shifts) - 1):
+        bs = best_shift(ts, fs, period, t0, tp, tf, half_width)
+        if bs is None:
             continue
-        ph0 = f22.fold_phase(ts, period, t0) - shifts[i]
+        shift, fine, cf, chi_best, _ = bs
+        ph0 = f22.fold_phase(ts, period, t0) - shift
         n_in = int((np.abs(ph0) < half_width).sum())
         flat = ((fs - fs.mean()) ** 2).sum()
-        s2 = chi[i] / max(len(ts) - 3, 1)
-        if n_in < MIN_IN_ECLIPSE or (flat - chi[i]) / s2 < min_dchi:
+        s2 = chi_best / max(len(ts) - 3, 1)
+        if n_in < MIN_IN_ECLIPSE or (flat - chi_best) / s2 < min_dchi:
             continue
         boots = []
         for _ in range(n_boot):
             k = rng.integers(0, len(ts), len(ts))
-            cb = _season_fit(ts[k], fs[k], period, t0, tp, tf, shifts)
-            boots.append(shifts[int(np.argmin(cb))])
-        err = max(float(np.std(boots)), shifts[1] - shifts[0])
+            cb = _season_fit(ts[k], fs[k], period, t0, tp, tf, fine)
+            boots.append(fine[int(np.argmin(cb))])
+        err = max(float(np.std(boots)), fine[1] - fine[0])
         epoch = float(np.round((np.median(ts) - t0) / period))
         out.append({"source": "ZTF", "season": int(2018 + s), "epoch": epoch,
-                    "oc_min": float((shifts[i] * period + (epoch * period - epoch * period)) * 1440.0),
+                    "oc_min": float(shift * period * 1440.0),
                     "err_min": float(np.hypot(err * period * 1440.0, ZTF_FLOOR_MIN)), "n": int(len(ts)), "n_in_eclipse": n_in})
     return out
 
@@ -125,26 +144,27 @@ def tess_sector_times(t, f, sector, period, t0, template_phase, template_flux, h
     out = []
     rng = np.random.default_rng(seed)
     tp, tf = np.asarray(template_phase), np.asarray(template_flux)
-    shifts = np.linspace(-4 * half_width, 4 * half_width, 161)
     for s in np.unique(sector):
         m = sector == s
         ts, fs = t[m], f[m]
         if len(ts) < 200:
             continue
-        chi = _season_fit(ts, fs, period, t0, tp, tf, shifts)
-        i = int(np.argmin(chi))
-        if i in (0, len(shifts) - 1):
+        bs = best_shift(ts, fs, period, t0, tp, tf, half_width)
+        if bs is None:
             continue
-        ph0 = f22.fold_phase(ts, period, t0) - shifts[i]
-        if (np.abs(ph0) < half_width).sum() < 3 * MIN_IN_ECLIPSE:
-            continue
+        shift, fine, cf, chi_best, _ = bs
+        ph0 = f22.fold_phase(ts, period, t0) - shift
+        flat = ((fs - fs.mean()) ** 2).sum()
+        if (np.abs(ph0) < half_width).sum() < 3 * MIN_IN_ECLIPSE or \
+                (flat - chi_best) / (chi_best / max(len(ts) - 3, 1)) < 25.0:
+            continue                                  # the eclipse is not detected in this sector
         boots = []
         for _ in range(n_boot):
             k = rng.integers(0, len(ts), len(ts))
-            boots.append(shifts[int(np.argmin(_season_fit(ts[k], fs[k], period, t0, tp, tf, shifts)))])
-        err = max(float(np.std(boots)), shifts[1] - shifts[0])
+            boots.append(fine[int(np.argmin(_season_fit(ts[k], fs[k], period, t0, tp, tf, fine)))])
+        err = max(float(np.std(boots)), fine[1] - fine[0])
         epoch = float(np.round((np.median(ts) - t0) / period))
-        out.append({"source": "TESS", "sector": int(s), "epoch": epoch, "oc_min": float(shifts[i] * period * 1440.0),
+        out.append({"source": "TESS", "sector": int(s), "epoch": epoch, "oc_min": float(shift * period * 1440.0),
                     "err_min": float(np.hypot(err * period * 1440.0, TESS_FLOOR_MIN)), "n": int(len(ts))})
     return out
 
@@ -162,7 +182,7 @@ def chi2_sf(x, k):
     return float(chi2.sf(x, k))
 
 
-def assess(groups):
+def assess(groups, period_days=None):
     if len(groups) < 3:
         return {"verdict": "NOT_TESTABLE", "groups": groups}
     E = np.array([g["epoch"] for g in groups])
@@ -170,7 +190,7 @@ def assess(groups):
     s = np.array([g["err_min"] for g in groups])
     co1, c1, r1 = fit_poly(E, y, s, 1)
     p_line = chi2_sf(c1, len(E) - 2)
-    res = {"groups": groups, "n_groups": len(groups), "chi2_line": c1, "dof_line": len(E) - 2, "p_line": p_line,
+    res = {"groups": groups, "n_groups": len(groups), "period_days": None, "chi2_line": c1, "dof_line": len(E) - 2, "p_line": p_line,
            "residual_range_min": float(np.ptp(r1))}
     if len(E) >= 4:
         co2, c2, _ = fit_poly(E, y, s, 2)
@@ -197,14 +217,42 @@ def assess(groups):
         res.update({"chi2_ztf_vs_tess_line": cz, "p_ztf_vs_tess_line": chi2_sf(cz, int(izt.sum()))})
         ztf_rejects = res["p_ztf_vs_tess_line"] < 1e-3
     res["tess_rejects_line"], res["ztf_rejects_tess_line"] = tess_rejects, ztf_rejects
-    if p_line < 1e-3 and ztf_rejects:
-        res["verdict"] = "DRIFT_CONFIRMED"
-    elif p_line < 1e-3 and ztf_rejects is None:
-        res["verdict"] = "DRIFT_TESS_ONLY"
-    elif p_line < 1e-3:
-        res["verdict"] = "DRIFT_UNCONFIRMED"
-    else:
+    res["period_days"] = period_days
+    if period_days and res["residual_range_min"] > MAX_RANGE_FRACTION * period_days * 1440.0:
+        # a light-travel-time or apsidal signal of more than 5 per cent of the orbit is not credible:
+        # it is a mismatched template or a cycle-count slip
+        res["verdict"] = "IMPLAUSIBLE_AMPLITUDE"
+        return res
+    if len(E) < MIN_GROUPS_FOR_DRIFT:
+        res["verdict"] = "CONSTANT" if p_line >= 1e-3 else "DRIFT_TOO_FEW_TIMES"
+        return res
+    if p_line >= 1e-3:
         res["verdict"] = "CONSTANT"
+        return res
+    # smooth period change: a parabola must fit well, and the two instruments must lie on the same curve
+    smooth = False
+    if "chi2_quad" in res and res["n_tess"] >= 3 and res["n_ztf"] >= 2:
+        gain = c1 - res["chi2_quad"]
+        co2, _, _ = fit_poly(E, y, s, 2)
+        A = np.vstack([np.ones(len(E)), E, E ** 2]).T
+        w = 1.0 / s
+        cov = np.linalg.inv((A * w[:, None]).T @ (A * w[:, None]))
+        sig_c2 = float(np.sqrt(cov[2, 2]))
+        res["period_change"] = {
+            "quad_coeff_min_per_cycle2": float(co2[2]), "quad_sigma": sig_c2,
+            "gain_over_line_chi2": float(gain),
+            "dP_dt_seconds_per_year": float((2.0 * co2[2] / 1440.0) / period_days * 365.25 * 86400.0) if period_days else None,
+            "dP_dt_sigma_seconds_per_year": float((2.0 * sig_c2 / 1440.0) / period_days * 365.25 * 86400.0) if period_days else None,
+        }
+        smooth = gain >= SMOOTH_MIN_IMPROVEMENT and res["p_quad"] >= 0.01 and abs(co2[2]) > 5 * sig_c2
+    if smooth:
+        res["verdict"] = "PERIOD_CHANGE_SMOOTH"
+    elif ztf_rejects:
+        res["verdict"] = "DRIFT_CONFIRMED"
+    elif ztf_rejects is None:
+        res["verdict"] = "DRIFT_TESS_ONLY"
+    else:
+        res["verdict"] = "DRIFT_UNCONFIRMED"
     return res
 
 
@@ -227,7 +275,7 @@ def calibrate(root, n_rep=3, seed=11):
     sky = {int(r["tic"]): r for r in json.loads((d / "dashboard.json").read_text(encoding="utf-8"))["sky"]}
     vet = pd.read_csv(root / "data" / "processed" / "f3i_vetting_results.csv").set_index("TIC")
     rng = np.random.default_rng(seed)
-    flagged, total, per = 0, 0, []
+    flagged, total, per, verdicts = 0, 0, [], {}
     for tic in sorted(sky):
         dp = d / "detail" / ("TIC%d.json" % tic)
         zp = root / "data" / "ztf_raw" / ("TIC%d.csv" % tic)
@@ -273,16 +321,18 @@ def calibrate(root, n_rep=3, seed=11):
                 rt[m] = rng.permutation(rest[m])
             g = tess_sector_times(tt_, At @ cot + rt, st_, P, t0, b[:, 0], b[:, 1], half, n_boot=20)
             g += ztf_season_times(tz, fsyn, P, t0, b[:, 0], b[:, 1], half, n_boot=20)
-            a = assess(sorted(g, key=lambda x: x["epoch"]))
+            a = assess(sorted(g, key=lambda x: x["epoch"]), P)
             total += 1
-            hit = a["verdict"] in ("DRIFT_CONFIRMED", "DRIFT_TESS_ONLY", "DRIFT_UNCONFIRMED")
+            hit = a["verdict"] in ("PERIOD_CHANGE_SMOOTH", "DRIFT_CONFIRMED", "DRIFT_TESS_ONLY", "DRIFT_UNCONFIRMED")
+            verdicts[a["verdict"]] = verdicts.get(a["verdict"], 0) + 1
             flagged += hit
             per.append((tic, hit))
-    return {"trials": total, "flagged": flagged, "rate": flagged / total if total else None,
+    return {"trials": total, "flagged": flagged, "rate": flagged / total if total else None, "verdicts": verdicts,
             "stars_flagged": sorted({t for t, h in per if h})}
 
 
 def run(root, tics=None):
+    """tics: optional subset (the rest are reported as NOT_TESTABLE from the previous run's group count)."""
     d = root / "site" / "public" / "data"
     sky = {int(r["tic"]): r for r in json.loads((d / "dashboard.json").read_text(encoding="utf-8"))["sky"]}
     vet = pd.read_csv(root / "data" / "processed" / "f3i_vetting_results.csv").set_index("TIC")
@@ -309,8 +359,7 @@ def run(root, tics=None):
             # template epoch = TESS t0 at epoch 0 (oc relative to the same linear ephemeris as TESS points)
             groups += ztf_season_times(tz, fz, P, t0, b[:, 0], b[:, 1], half)
         groups.sort(key=lambda g: g["epoch"])
-        stars[str(tic)] = assess(groups)
-        stars[str(tic)]["period_days"] = P
+        stars[str(tic)] = assess(groups, P)
     counts = {}
     for s in stars.values():
         counts[s["verdict"]] = counts.get(s["verdict"], 0) + 1
@@ -318,10 +367,31 @@ def run(root, tics=None):
             "floors_min": {"tess": TESS_FLOOR_MIN, "ztf": ZTF_FLOOR_MIN}, "stars": stars}
 
 
+def reassess(root):
+    """Re-apply the verdict rules to the eclipse times already measured (no refitting)."""
+    path = root / "data" / "processed" / "f23_etv.json"
+    rep = json.loads(path.read_text(encoding="utf-8"))
+    counts = {}
+    for t, st in rep["stars"].items():
+        groups = st.get("groups") or []
+        new = assess(groups, st.get("period_days"))
+        rep["stars"][t] = new
+        counts[new["verdict"]] = counts.get(new["verdict"], 0) + 1
+    rep["counts"] = counts
+    rep["generated_at"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    path.write_text(json.dumps(rep, indent=1) + "\n", encoding="utf-8", newline="\n")
+    return counts
+
+
 def main():
     root = Path(sys.argv[1]).resolve()
+    if len(sys.argv) > 2 and sys.argv[2] == "--reassess":
+        print(json.dumps(reassess(root)))
+        return
     if len(sys.argv) > 2 and sys.argv[2] == "--calibrate":
-        print(json.dumps(calibrate(root), indent=1))
+        cal = calibrate(root)
+        (root / "data" / "processed" / "f23_calibration.json").write_text(json.dumps(cal, indent=1) + "\n", encoding="utf-8", newline="\n")
+        print(json.dumps(cal, indent=1))
         return
     rep = run(root)
     p = root / "data" / "processed" / "f23_etv.json"

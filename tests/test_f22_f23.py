@@ -74,7 +74,7 @@ def test_etv_constant_period_is_constant_and_a_parabola_is_not():
     flat = f23.assess(grp(rng.normal(0, 2.0, E.size)))
     assert flat["verdict"] == "CONSTANT"
     curved = f23.assess(grp(1e-4 * (E - 600) ** 2 + rng.normal(0, 2.0, E.size)))
-    assert curved["verdict"] == "DRIFT_CONFIRMED"
+    assert curved["verdict"] == "PERIOD_CHANGE_SMOOTH"
     assert curved["p_quad"] > 1e-3          # and the parabola describes it
 
 
@@ -90,7 +90,7 @@ def test_shared_template_puts_tess_and_ztf_on_one_zero_point():
     g = f23.tess_sector_times(tt, ft, (tt // 27).astype(int), P, t0, tp, tf, 0.03, n_boot=5)
     g += f23.ztf_season_times(tz, fz, P, t0, tp, tf, 0.03, n_boot=5)
     assert len(g) >= 4
-    assert max(abs(x["oc_min"]) for x in g) < 5.0
+    assert all(abs(x["oc_min"]) < 3 * x["err_min"] for x in g)   # consistent with zero within errors
     assert f23.assess(sorted(g, key=lambda x: x["epoch"]))["verdict"] == "CONSTANT"
 
 
@@ -130,3 +130,47 @@ def test_period_refinement_uses_only_the_primary():
     f += rng.normal(0, 0.01, t.size)
     got = f22.refine_period_primary(t, f, 3.0, t0, dur)
     assert abs(got - P_true) < 1e-4   # drift over 500 cycles stays under a third of the eclipse
+
+
+def test_implausibly_large_drift_is_rejected_as_a_failed_measurement():
+    groups = [{"source": "TESS", "epoch": e, "oc_min": 300.0 * (e % 2), "err_min": 3.0} for e in (0, 101, 200, 301, 400)]
+    a = f23.assess(groups, period_days=1.0)        # 300 min is 21 per cent of a 1 d orbit
+    assert a["verdict"] == "IMPLAUSIBLE_AMPLITUDE"
+
+
+def test_a_search_pinned_at_the_window_edge_gives_no_time():
+    tp = np.linspace(-0.5, 0.5, 201)
+    tf = 1 - 0.2 * (np.abs(tp) < 0.02)
+    rng = np.random.default_rng(1)
+    t = np.arange(0, 54.0, 2 / 1440)
+    f = np.ones_like(t) + rng.normal(0, 0.002, t.size)       # no eclipse at all
+    assert f23.tess_sector_times(t, f, np.ones(t.size, int), 2.0, 0.3, tp, tf, 0.03, n_boot=3) == []
+
+
+def _groups_from(E, y, err, n_ztf_every=4):
+    return [{"source": "ZTF" if i % n_ztf_every == 0 else "TESS", "epoch": float(e), "oc_min": float(v), "err_min": err}
+            for i, (e, v) in enumerate(zip(E, y))]
+
+
+def test_smooth_parabola_in_two_instruments_is_a_period_change():
+    rng = np.random.default_rng(5)
+    E = np.arange(0, 200, 8)
+    y = 0.003 * E ** 2 - 0.4 * E + rng.normal(0, 2.0, E.size)
+    a = f23.assess(_groups_from(E, y, 2.0), period_days=10.0)
+    assert a["verdict"] == "PERIOD_CHANGE_SMOOTH"
+    # dP/dt = (2 c2 / 1440) / P * 365.25 * 86400 seconds per year
+    assert a["period_change"]["dP_dt_seconds_per_year"] == pytest.approx(2 * 0.003 / 1440 / 10.0 * 365.25 * 86400, rel=0.1)
+
+
+def test_jumpy_timing_is_not_called_a_smooth_period_change():
+    rng = np.random.default_rng(6)
+    E = np.arange(0, 200, 8)
+    y = rng.normal(0, 40.0, E.size)                      # scatter far beyond the 2 min errors
+    a = f23.assess(_groups_from(E, y, 2.0), period_days=10.0)
+    assert a["verdict"] != "PERIOD_CHANGE_SMOOTH"
+
+
+def test_too_few_times_never_gives_a_drift():
+    E = np.array([0, 50, 100, 150, 200])
+    a = f23.assess(_groups_from(E, 0.01 * E ** 2, 1.0), period_days=10.0)
+    assert a["verdict"] in ("DRIFT_TOO_FEW_TIMES", "CONSTANT")
