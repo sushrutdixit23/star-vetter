@@ -81,3 +81,35 @@ def test_states_that_the_stars_are_not_new_detections_and_gives_the_outcome_rule
 def test_word_count_ignores_table_separators():
     assert dr.word_count("a b\n|---|---|\n| c | d |") == 4
     assert dr.table_count("x\n|---|---|\ny") == 1
+
+
+EXTRA = ["evidence.json", "ztf_independent.json", "gaia_dr3.json", "prior_art.json", "recovery_min2.json"]
+needs_extra = pytest.mark.skipif(not all((D / n).exists() for n in EXTRA), reason="independent-evidence files not generated")
+
+
+def _full_text():
+    ev, ztf, g, pa, r2 = [json.loads((D / n).read_text(encoding="utf-8")) for n in EXTRA]
+    return dr.render(*_data(), ev=ev, ztf=ztf, gdr3=g, prior=pa, rec2=r2)
+
+
+@needs_extra
+def test_full_note_stays_within_limits_and_is_ascii():
+    t = _full_text()
+    assert dr.word_count(t) <= dr.WORD_LIMIT
+    assert dr.table_count(t) == 1
+    assert t.isascii()
+    assert "%s" not in t and "%d" not in t and not re.search(r"[:(=] ?None\b", t)
+
+
+@needs_extra
+def test_independent_numbers_come_from_the_files_and_the_catalog_caveat_is_stated():
+    ev, ztf, g, pa, r2 = [json.loads((D / n).read_text(encoding="utf-8")) for n in EXTRA]
+    t = _full_text()
+    ct = ztf["summary"]["confirmed_among_testable"]
+    assert "%d of the %d stars it could have tested" % (ct["k"], ct["n"]) in t
+    assert "Absence from catalogs is largely by construction" in t
+    assert "3-minute term" in t
+    assert "lower bound" in t
+    nv = ev["summary"]["by_novelty"]
+    assert "%d are already known as eclipsing binaries" % nv.get("KNOWN_ECLIPSING", 0) in t
+    assert "Gaia DR4" in t and "not excluded" in t       # what has not been done is said, not implied

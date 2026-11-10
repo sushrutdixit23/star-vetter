@@ -24,6 +24,12 @@ import type {
   RecoveryData,
   AtlasAliasData,
   NeighboursData,
+  EvidenceData,
+  EvidenceStar,
+  ZtfData,
+  GaiaData,
+  PriorArtData,
+  GaiaDr4Plan,
   NeighbourStar,
 } from "./types";
 import type { Summary } from "@/components/dash/DetailPanels";
@@ -202,6 +208,15 @@ export const getAudit = () => readOptional<AuditData>("audit.json");
 export const getRecovery = () => readOptional<RecoveryData>("recovery.json");
 export const getAtlasAlias = () => readOptional<AtlasAliasData>("atlas_alias.json");
 export const getNeighbours = () => readOptional<NeighboursData>("neighbours.json");
+export const getEvidence = () => readOptional<EvidenceData>("evidence.json");
+export const getZtf = () => readOptional<ZtfData>("ztf_independent.json");
+export const getGaia = () => readOptional<GaiaData>("gaia_dr3.json");
+export const getPriorArt = () => readOptional<PriorArtData>("prior_art.json");
+export const getGaiaDr4Plan = () => readOptional<GaiaDr4Plan>("gaia_dr4_plan.json");
+
+export function getEvidenceFor(tic: number): EvidenceStar | null {
+  return getEvidence()?.stars[String(tic)] ?? null;
+}
 
 export function getNeighbourFor(tic: number): NeighbourStar | null {
   return getNeighbours()?.stars[String(tic)] ?? null;

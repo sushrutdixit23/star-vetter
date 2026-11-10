@@ -1,0 +1,3946 @@
+{
+ "generated_at": "2026-11-10T13:12:35Z",
+ "summary": {
+  "stars": 307,
+  "by_evidence_tier": {
+   "TESS_ONLY_CLEAN": 70,
+   "TESS_ONLY_CAVEATS": 190,
+   "INDEPENDENTLY_SUPPORTED": 37,
+   "DISFAVOURED": 10
+  },
+  "by_novelty": {
+   "KNOWN_VARIABLE": 46,
+   "NO_PRIOR_FOUND": 243,
+   "KNOWN_BINARY": 4,
+   "KNOWN_ECLIPSING": 14
+  },
+  "tier_by_novelty": {
+   "TESS_ONLY_CLEAN|KNOWN_VARIABLE": 10,
+   "TESS_ONLY_CAVEATS|NO_PRIOR_FOUND": 162,
+   "INDEPENDENTLY_SUPPORTED|NO_PRIOR_FOUND": 19,
+   "TESS_ONLY_CAVEATS|KNOWN_VARIABLE": 21,
+   "TESS_ONLY_CLEAN|NO_PRIOR_FOUND": 58,
+   "INDEPENDENTLY_SUPPORTED|KNOWN_VARIABLE": 11,
+   "INDEPENDENTLY_SUPPORTED|KNOWN_BINARY": 4,
+   "DISFAVOURED|NO_PRIOR_FOUND": 4,
+   "INDEPENDENTLY_SUPPORTED|KNOWN_ECLIPSING": 3,
+   "TESS_ONLY_CAVEATS|KNOWN_ECLIPSING": 7,
+   "DISFAVOURED|KNOWN_ECLIPSING": 2,
+   "DISFAVOURED|KNOWN_VARIABLE": 4,
+   "TESS_ONLY_CLEAN|KNOWN_ECLIPSING": 2
+  },
+  "by_ztf_status": {
+   "INCONCLUSIVE": 22,
+   "NOT_RUN": 113,
+   "CONFIRMED": 34,
+   "NO_DATA": 128,
+   "NOT_SEEN": 10
+  }
+ },
+ "definitions": {
+  "INDEPENDENTLY_SUPPORTED": "At least one line of evidence that does not use TESS pixels processed by this pipeline (ZTF recovery, or a Gaia DR3 spectroscopic-binary period equal to the TESS period or half/double it), and nothing against it.",
+  "TESS_ONLY_CLEAN": "No independent line yet; cleanest TESS tier and no viable neighbour in the TIC or in Gaia.",
+  "TESS_ONLY_CAVEATS": "No independent line yet, with at least one caveat. Candidate only.",
+  "DISFAVOURED": "Evidence against: ZTF could have seen the eclipse and did not, or a TESS planet candidate.",
+  "KNOWN_ECLIPSING": "Listed or labelled as an eclipsing binary elsewhere.",
+  "KNOWN_BINARY": "Known as a spectroscopic or astrometric binary but not as eclipsing.",
+  "KNOWN_VARIABLE": "Listed as a variable, possibly at another period.",
+  "NO_PRIOR_FOUND": "Nothing found in the sources checked, which are not exhaustive."
+ },
+ "stars": {
+  "437150434": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "INCONCLUSIVE",
+   "gaia_period_relation": null
+  },
+  "237115819": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "66732476": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "29495157": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "119459681": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [
+    "ZTF odd/even eclipse depths differ (z=-9.4): the true period may be twice the one tested"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "411434067": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "Gaia RUWE above 1.4 (possible unresolved companion)",
+    "ZTF odd/even eclipse depths differ (z=3.0): the true period may be twice the one tested"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "330901906": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "303470667": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier marginal",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "273158289": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "111149941": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier ambiguous photometry"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "SIMBAD: BD-02  3876 (PM*)"
+   ],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "251898081": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "467214801": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "399770041": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "349701853": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "233459038": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "281310348": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "318887646": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "444465823": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "INCONCLUSIVE",
+   "gaia_period_relation": null
+  },
+  "380943251": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "66716482": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "309656476": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "229494833": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "44533527": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "220423668": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "365998904": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "233452636": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "437171483": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "411457490": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "295373509": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "374158907": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "348884775": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "70762350": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "446502638": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "SIMBAD: UCAC4 384-132550 (PM*)"
+   ],
+   "ztf_status": "INCONCLUSIVE",
+   "gaia_period_relation": null
+  },
+  "326225355": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "250549396": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "430314843": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "370553309": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "Gaia DR3 SB1 orbit at the TESS period (same)"
+   ],
+   "against": [],
+   "caveats": [],
+   "novelty": "KNOWN_BINARY",
+   "novelty_reasons": [
+    "Gaia DR3 SB1 orbit, period equals the TESS period",
+    "SIMBAD: TYC 9200-557-1 (SB*)"
+   ],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": "same"
+  },
+  "86956236": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "INCONCLUSIVE",
+   "gaia_period_relation": null
+  },
+  "349725115": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "INCONCLUSIVE",
+   "gaia_period_relation": null
+  },
+  "235512374": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "Gaia DR3 SB1 orbit at the TESS period (same)"
+   ],
+   "against": [],
+   "caveats": [],
+   "novelty": "KNOWN_BINARY",
+   "novelty_reasons": [
+    "Gaia DR3 SB1 orbit, period equals the TESS period",
+    "SIMBAD: TYC  752-1105-1 (SB*)"
+   ],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": "same"
+  },
+  "244999763": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "267516382": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "193548084": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "INCONCLUSIVE",
+   "gaia_period_relation": null
+  },
+  "133688675": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "224215371": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "139805341": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "43330648": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "446758441": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "373896170": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "273212554": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "78955414": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "318907244": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "294976780": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "59603820": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "229490432": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "313684677": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "1007259218": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "290129286": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "342586820": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "365764494": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "399544063": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "229146166": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "238618726": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "216935767": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "333145823": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "459533211": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "306294675": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "43785616": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "Gaia DR3 SB1 orbit at the TESS period (same)"
+   ],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "KNOWN_BINARY",
+   "novelty_reasons": [
+    "Gaia DR3 SB1 orbit, period equals the TESS period",
+    "SIMBAD: TYC 5334-755-1 (SB*)"
+   ],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": "same"
+  },
+  "176348607": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "152676628": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "434321668": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "INCONCLUSIVE",
+   "gaia_period_relation": null
+  },
+  "445266372": {
+   "evidence_tier": "DISFAVOURED",
+   "independent_lines": [],
+   "against": [
+    "ZTF could have seen the eclipse (power 0.67) and did not"
+   ],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_SEEN",
+   "gaia_period_relation": null
+  },
+  "392559026": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "258490713": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "152160223": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "65970288": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "INCONCLUSIVE",
+   "gaia_period_relation": null
+  },
+  "467962259": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "79792004": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "111240209": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "239661046": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "231055671": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "273787849": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "453692345": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "150230753": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "158398880": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "86934109": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "NEARBY_VARIABLE"
+   ],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "307453359": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "232261044": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "72729777": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "INCONCLUSIVE",
+   "gaia_period_relation": null
+  },
+  "96795030": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "365726727": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "437022904": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "463349042": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "401936263": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "77210120": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 0.71)"
+   ],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "KNOWN_ECLIPSING",
+   "novelty_reasons": [
+    "catalog match at this period"
+   ],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "942471837": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "158864044": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "237226943": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "86880482": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "411305220": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "INCONCLUSIVE",
+   "gaia_period_relation": null
+  },
+  "294860388": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "9586662": {
+   "evidence_tier": "DISFAVOURED",
+   "independent_lines": [],
+   "against": [
+    "ZTF could have seen the eclipse (power 0.96) and did not"
+   ],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_SEEN",
+   "gaia_period_relation": null
+  },
+  "257747010": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "229473505": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "411978234": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "394710986": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "1003150980": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "342569756": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "156780644": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "246650797": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "348762141": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "334422203": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "43791794": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "334414710": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "229845475": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "313590380": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "367193047": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "KNOWN_ECLIPSING",
+   "novelty_reasons": [
+    "catalog match at this period"
+   ],
+   "ztf_status": "INCONCLUSIVE",
+   "gaia_period_relation": null
+  },
+  "378367349": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "INCONCLUSIVE",
+   "gaia_period_relation": null
+  },
+  "295124562": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "229832383": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "348787043": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "348791607": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "447009429": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "405215869": {
+   "evidence_tier": "DISFAVOURED",
+   "independent_lines": [],
+   "against": [
+    "ZTF could have seen the eclipse (power 1.00) and did not"
+   ],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "KNOWN_ECLIPSING",
+   "novelty_reasons": [
+    "catalog match at this period"
+   ],
+   "ztf_status": "NOT_SEEN",
+   "gaia_period_relation": null
+  },
+  "120025344": {
+   "evidence_tier": "DISFAVOURED",
+   "independent_lines": [],
+   "against": [
+    "ZTF could have seen the eclipse (power 1.00) and did not"
+   ],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "KNOWN_ECLIPSING",
+   "novelty_reasons": [
+    "catalog match at this period"
+   ],
+   "ztf_status": "NOT_SEEN",
+   "gaia_period_relation": null
+  },
+  "412057714": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "156776551": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "140918728": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "258204238": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "405216391": {
+   "evidence_tier": "DISFAVOURED",
+   "independent_lines": [],
+   "against": [
+    "ZTF could have seen the eclipse (power 1.00) and did not"
+   ],
+   "caveats": [],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "NOT_SEEN",
+   "gaia_period_relation": null
+  },
+  "231976099": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "313498432": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "373792319": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "342600336": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "246860059": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "367157113": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "NEARBY_VARIABLE"
+   ],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "295035279": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "313485023": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "348837498": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "403017570": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "318620649": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "230163860": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "KNOWN_ECLIPSING",
+   "novelty_reasons": [
+    "SIMBAD: ATO J318.0202+12.9205 (EB?)"
+   ],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "340965597": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "355921200": {
+   "evidence_tier": "DISFAVOURED",
+   "independent_lines": [],
+   "against": [
+    "ZTF could have seen the eclipse (power 0.75) and did not"
+   ],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_SEEN",
+   "gaia_period_relation": null
+  },
+  "355917097": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "INCONCLUSIVE",
+   "gaia_period_relation": null
+  },
+  "376932335": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "219892238": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "318566745": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "42058853": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "KNOWN_ECLIPSING",
+   "novelty_reasons": [
+    "catalog match at this period"
+   ],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "376932771": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "251663993": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "165535747": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "378434189": {
+   "evidence_tier": "DISFAVOURED",
+   "independent_lines": [],
+   "against": [
+    "ZTF could have seen the eclipse (power 0.88) and did not"
+   ],
+   "caveats": [
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "NOT_SEEN",
+   "gaia_period_relation": null
+  },
+  "394805902": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "232039858": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "388939913": {
+   "evidence_tier": "DISFAVOURED",
+   "independent_lines": [],
+   "against": [
+    "ZTF could have seen the eclipse (power 1.00) and did not"
+   ],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "SIMBAD: MGC 34491 (PM*)"
+   ],
+   "ztf_status": "NOT_SEEN",
+   "gaia_period_relation": null
+  },
+  "403030272": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "96818680": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "295146943": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "42011712": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "NEARBY_VARIABLE"
+   ],
+   "ztf_status": "INCONCLUSIVE",
+   "gaia_period_relation": null
+  },
+  "441012538": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "INCONCLUSIVE",
+   "gaia_period_relation": null
+  },
+  "313386191": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "59490510": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "INCONCLUSIVE",
+   "gaia_period_relation": null
+  },
+  "469606998": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "59488906": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "KNOWN_ECLIPSING",
+   "novelty_reasons": [
+    "SIMBAD: HD  55823 (**)"
+   ],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "403069594": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "224306120": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "INCONCLUSIVE",
+   "gaia_period_relation": null
+  },
+  "41996755": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "447112476": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)",
+    "Gaia source identification ambiguous"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "403080487": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "450616233": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "273026743": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "313352561": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "342621731": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "232087808": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "229401461": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "SIMBAD: HD 184168 (PM*)"
+   ],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "447115398": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "72721266": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "60192021": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "188173846": {
+   "evidence_tier": "DISFAVOURED",
+   "independent_lines": [],
+   "against": [
+    "ZTF could have seen the eclipse (power 0.96) and did not"
+   ],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_SEEN",
+   "gaia_period_relation": null
+  },
+  "188629001": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 0.96)"
+   ],
+   "against": [],
+   "caveats": [],
+   "novelty": "KNOWN_ECLIPSING",
+   "novelty_reasons": [
+    "catalog match at this period"
+   ],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "40208362": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "295254637": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "468210292": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "a bright-enough neighbour sits at the measured offset (TIC)"
+   ],
+   "novelty": "KNOWN_ECLIPSING",
+   "novelty_reasons": [
+    "listed in J/AJ/171/29"
+   ],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "258151016": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "341290373": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "201868138": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "65257021": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "INCONCLUSIVE",
+   "gaia_period_relation": null
+  },
+  "468210255": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "467976427": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "59464503": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [
+    "ZTF odd/even eclipse depths differ (z=-3.7): the true period may be twice the one tested"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "264163792": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "KNOWN_ECLIPSING",
+   "novelty_reasons": [
+    "catalog match at this period"
+   ],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "97416864": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "59458906": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "178331798": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "229205551": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "Gaia RUWE above 1.4 (possible unresolved companion)",
+    "ZTF odd/even eclipse depths differ (z=-10.7): the true period may be twice the one tested"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "237505178": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "NEARBY_VARIABLE"
+   ],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "468010975": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "405392578": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)",
+    "ZTF odd/even eclipse depths differ (z=-10.4): the true period may be twice the one tested"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "232171820": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "320341748": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "300146496": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "229181348": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "59453672": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00664, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "355828577": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "INCONCLUSIVE",
+   "gaia_period_relation": null
+  },
+  "367000921": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "334215307": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "40100356": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "94125661": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "308574817": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "468017028": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "224288919": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "178354956": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "308578336": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "219800831": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "229012892": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "SIMBAD: HD    225 (PM*)"
+   ],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "340551910": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "232421797": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "119941327": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "Gaia RUWE above 1.4 (possible unresolved companion)",
+    "ZTF odd/even eclipse depths differ (z=-3.5): the true period may be twice the one tested"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "355809352": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "394942247": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [
+    "ZTF odd/even eclipse depths differ (z=-10.1): the true period may be twice the one tested"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "224182619": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "342641246": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "201429480": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "59388389": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "46208125": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "201317466": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)",
+    "Gaia DR3 SB1 orbit at the TESS period (same)"
+   ],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)",
+    "ZTF odd/even eclipse depths differ (z=5.9): the true period may be twice the one tested"
+   ],
+   "novelty": "KNOWN_BINARY",
+   "novelty_reasons": [
+    "Gaia DR3 SB1 orbit, period equals the TESS period",
+    "SIMBAD: UCAC4 494-097945 (SB*)"
+   ],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": "same"
+  },
+  "318232056": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "59387976": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "260844755": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "389107837": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "ZTF odd/even eclipse depths differ (z=10.5): the true period may be twice the one tested"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "457675706": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "65085092": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "336181565": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "308621446": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "96687087": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "ZTF odd/even eclipse depths differ (z=3.6): the true period may be twice the one tested"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "219769838": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "INCONCLUSIVE",
+   "gaia_period_relation": null
+  },
+  "219765539": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "114549849": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "314239566": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "290436243": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "94041900": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "INCONCLUSIVE",
+   "gaia_period_relation": null
+  },
+  "97700077": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "349252594": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "257927198": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "258316486": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "41831052": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "59378274": {
+   "evidence_tier": "DISFAVOURED",
+   "independent_lines": [],
+   "against": [
+    "ZTF could have seen the eclipse (power 0.92) and did not"
+   ],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "NOT_SEEN",
+   "gaia_period_relation": null
+  },
+  "65051771": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "230067194": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "219752822": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "257923571": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "78199363": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "96680649": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "468122704": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "257922637": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "43712813": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "318109813": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "182536219": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "447350975": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "59363206": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "272885856": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "KNOWN_ECLIPSING",
+   "novelty_reasons": [
+    "SIMBAD: HD  93532 (**)"
+   ],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "182463007": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "178434324": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [
+    "ZTF odd/even eclipse depths differ (z=6.1): the true period may be twice the one tested"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "319039747": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "KNOWN_VARIABLE_PERIOD_DIFFERS"
+   ],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "264099112": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "231917790": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "468090770": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "200647864": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "469305326": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "165227846": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "KNOWN_ECLIPSING",
+   "novelty_reasons": [
+    "SIMBAD: NGTS-EB-8 (SB*)"
+   ],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "182343782": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "458507124": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "469306687": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "58485530": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "251077178": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "KNOWN_ECLIPSING",
+   "novelty_reasons": [
+    "catalog match at this period"
+   ],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "78186062": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "419143879": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "446692149": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "80518171": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "440828388": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "389751698": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "237657109": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "403329469": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "INCONCLUSIVE",
+   "gaia_period_relation": null
+  },
+  "975879954": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "378816777": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "355737250": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "468146715": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "19569810": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "349116460": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour sits at the measured offset (TIC)",
+    "a bright-enough neighbour sits at the measured offset (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "440817847": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "405529940": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [],
+   "novelty": "KNOWN_ECLIPSING",
+   "novelty_reasons": [
+    "catalog match at this period"
+   ],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "468152519": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "257817337": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "200247352": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "257806221": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "86498032": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "412805586": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "349109562": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "355734894": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "367430670": {
+   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
+   "independent_lines": [
+    "ZTF recovers the eclipses (p=0.00332, power 1.00)"
+   ],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "CONFIRMED",
+   "gaia_period_relation": null
+  },
+  "395051777": {
+   "evidence_tier": "TESS_ONLY_CLEAN",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "355734358": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier thin margin",
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)",
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "KNOWN_VARIABLE",
+   "novelty_reasons": [
+    "SIMBAD: LSPM J1517+2108A (PM*)"
+   ],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "231908427": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "TESS vetting tier period alias"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "272854495": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NOT_RUN",
+   "gaia_period_relation": null
+  },
+  "447439469": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "Gaia RUWE above 1.4 (possible unresolved companion)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  },
+  "188404859": {
+   "evidence_tier": "TESS_ONLY_CAVEATS",
+   "independent_lines": [],
+   "against": [],
+   "caveats": [
+    "a bright-enough neighbour is too close to separate in TESS pixels (TIC)",
+    "a bright-enough neighbour is too close to separate in TESS pixels (Gaia)"
+   ],
+   "novelty": "NO_PRIOR_FOUND",
+   "novelty_reasons": [],
+   "ztf_status": "NO_DATA",
+   "gaia_period_relation": null
+  }
+ }
+}

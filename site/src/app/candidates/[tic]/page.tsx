@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
-import { getAllCandidates, getAllTics, getCandidate, getDetail, getGaiaContext, getGroundSurvey, getPredictionFor, getSurfaceEvidenceFor, getVariabilityFor, getNoveltyExtra, getNeighbourFor, getSiteMeta, getTimeseries, toSummary } from "@/lib/data";
+import { getAllCandidates, getAllTics, getCandidate, getDetail, getGaiaContext, getGroundSurvey, getPredictionFor, getSurfaceEvidenceFor, getVariabilityFor, getNoveltyExtra, getNeighbourFor, getEvidenceFor, getSiteMeta, getTimeseries, toSummary } from "@/lib/data";
 import { bestPeriod } from "@/lib/cards";
 import { TIER_STYLE } from "@/lib/tiers";
 import { summaryLine } from "@/lib/summary";
@@ -11,7 +11,7 @@ import { AliasPanel, Card, CatalogPanel, CaveatsList, EclipseProfiles, LightCurv
 import OrbitSchematic from "@/components/plate/OrbitSchematic";
 import NextEclipses from "@/components/plate/NextEclipses";
 import ShareButtons from "@/components/plate/ShareButtons";
-import type { NeighbourStar, NoveltyExtra } from "@/lib/types";
+import type { EvidenceStar, NeighbourStar, NoveltyExtra } from "@/lib/types";
 import FoldItYourself from "@/components/plate/FoldItYourself";
 import CandidateSidebar, { type SidebarItem } from "@/components/plate/CandidateSidebar";
 import GaiaContextPanel, { gaiaVerdict } from "@/components/plate/GaiaContextPanel";
@@ -36,6 +36,37 @@ function noveltyLine(n: NoveltyExtra | null): string {
   if (n.verdict === "KNOWN_VARIABLE_PERIOD_DIFFERS") return `${base} It is listed as a variable star in ${catList(n.known_other_period)} with a different period, so novelty is unclear.`;
   if (n.verdict === "NEARBY_PERIOD_MATCH" || n.verdict === "NEARBY_VARIABLE") return `${base} A variable star is listed very close by in ${catList(n.nearby_catalogs)}, which could be a neighbour or the same star.`;
   return `${base} No match in the catalogs searched, which is weak evidence of novelty.`;
+}
+
+const TIER_LABEL: Record<string, string> = {
+  INDEPENDENTLY_SUPPORTED: "Independently supported",
+  TESS_ONLY_CLEAN: "TESS only",
+  TESS_ONLY_CAVEATS: "TESS only, caveats",
+  DISFAVOURED: "Evidence against",
+};
+const NOVELTY_LABEL: Record<string, string> = {
+  KNOWN_ECLIPSING: "Known as eclipsing",
+  KNOWN_BINARY: "Known binary",
+  KNOWN_VARIABLE: "Known variable",
+  NO_PRIOR_FOUND: "No prior found",
+};
+
+function EvidenceNote({ e }: { e: EvidenceStar }) {
+  const rows: [string, string[]][] = [
+    ["Independent evidence", e.independent_lines],
+    ["Against", e.against],
+    ["Caveats", e.caveats],
+    ["Already known", e.novelty_reasons],
+  ];
+  const shown = rows.filter(([, v]) => v.length > 0);
+  return (
+    <div className="mt-3 max-w-xl text-xs leading-relaxed text-muted">
+      {shown.length === 0 && <p>No independent evidence yet. ZTF status: {e.ztf_status.toLowerCase().replace("_", " ")}. Nothing known about this star was found in the sources checked.</p>}
+      {shown.map(([label, items]) => (
+        <p key={label} className="mt-1"><span className="text-fg">{label}: </span>{items.join("; ")}.</p>
+      ))}
+    </div>
+  );
 }
 
 function neighbourLine(n: NeighbourStar | null): string | null {
@@ -256,10 +287,13 @@ export default async function CandidatePage({ params }: { params: Promise<{ tic:
                 <TierBadge tier={s.tier} />
                 {getNoveltyExtra(s.tic)?.verdict === "ALREADY_KNOWN" ? <span className="nav-caps rounded-full border border-accent-cool/50 bg-accent-cool/10 px-2.5 py-0.5 font-mono text-[10px] text-accent-cool">Already known</span> : <span className="nav-caps rounded-full border border-line px-2.5 py-0.5 font-mono text-[10px] text-fg">Survivor</span>}
                 <span className="rounded-full border border-line px-2.5 py-0.5 font-mono text-[11px] text-accent">P = {period.toFixed(5)} d</span>
+                {getEvidenceFor(s.tic) && <span className="nav-caps rounded-full border border-accent/50 bg-accent/10 px-2.5 py-0.5 font-mono text-[10px] text-accent">{TIER_LABEL[getEvidenceFor(s.tic)!.evidence_tier]}</span>}
+                {getEvidenceFor(s.tic) && <span className="nav-caps rounded-full border border-line px-2.5 py-0.5 font-mono text-[10px] text-muted">{NOVELTY_LABEL[getEvidenceFor(s.tic)!.novelty]}</span>}
               </div>
               <div className="mt-4"><ShareButtons tic={s.tic} /></div>
               <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">{summaryLine(s, d)}</p>
               {neighbourLine(getNeighbourFor(s.tic)) && <p className="mt-2 max-w-xl text-xs leading-relaxed text-faint">{neighbourLine(getNeighbourFor(s.tic))}</p>}
+              {getEvidenceFor(s.tic) && <EvidenceNote e={getEvidenceFor(s.tic)!} />}
               {writeup && (
                 <div className="mt-5 max-w-xl border-l-2 border-accent/40 pl-4">
                   <div className="nav-caps font-mono text-[10px] text-faint">In plain English</div>

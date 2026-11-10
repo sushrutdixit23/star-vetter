@@ -1,4 +1,4 @@
-import { getAudit, getRecovery, getAtlasAlias, getNeighbours } from "@/lib/data";
+import { getAudit, getRecovery, getAtlasAlias, getNeighbours, getEvidence, getZtf, getGaia, getPriorArt, getGaiaDr4Plan } from "@/lib/data";
 import type { RateInterval, MedianInterval, RecoveryCell } from "@/lib/types";
 import Band from "@/components/journal/Band";
 import CountUp from "@/components/CountUp";
@@ -56,6 +56,23 @@ export default function AuditPage() {
   const headline = nb ? String(nb.method.headline_floor_arcsec) : "6";
   const nbSum = nb?.summary_by_floor[headline] ?? null;
   const funnelMax = a?.funnel[0]?.count ?? 1;
+  const ev = getEvidence();
+  const zt = getZtf();
+  const gx = getGaia();
+  const pa = getPriorArt();
+  const dr4 = getGaiaDr4Plan();
+  const TIERS: [string, string][] = [
+    ["INDEPENDENTLY_SUPPORTED", "Independently supported"],
+    ["TESS_ONLY_CLEAN", "TESS only, no caveats"],
+    ["TESS_ONLY_CAVEATS", "TESS only, with caveats"],
+    ["DISFAVOURED", "Evidence against"],
+  ];
+  const NOVELTY: [string, string][] = [
+    ["KNOWN_ECLIPSING", "Already known as eclipsing"],
+    ["KNOWN_BINARY", "Known binary, not as eclipsing"],
+    ["KNOWN_VARIABLE", "Known variable"],
+    ["NO_PRIOR_FOUND", "Nothing found"],
+  ];
 
   return (
     <main className="w-full flex-1 px-4 py-10 sm:px-8 xl:px-12">
@@ -94,7 +111,7 @@ export default function AuditPage() {
             )}
           </Band>
 
-          <Band num="II" title="Brightness" lede="Fainter stars give fewer confirmed binaries, partly because fewer have usable light curves and partly because signals are weaker.">
+          <Band num="II" title="Brightness" lede="Fainter stars give fewer on-target candidates, partly because fewer have usable light curves and partly because signals are weaker.">
             <div className="overflow-x-auto">
               <table className="w-full min-w-[34rem] border-collapse font-mono text-xs">
                 <thead>
@@ -191,6 +208,46 @@ export default function AuditPage() {
             ))}
           </div>
           <p className="mt-6 max-w-3xl text-sm leading-relaxed text-muted">A neighbour counts only if it is bright enough to produce the eclipse after allowing for how little of its light reaches the aperture, <em>and</em> sits where the measured centre of the dimming is. The tolerance on that centre is an assumption ({headline} arcseconds here; {nb.method.centroid_floors_arcsec.join(", ")} give {nb.method.centroid_floors_arcsec.map((f) => nb.summary_by_floor[String(f)]?.NO_VIABLE_NEIGHBOUR ?? 0).join(", ")} stars with no viable neighbour). Only stars in the TESS Input Catalog are considered. TESS cannot rule out a neighbour inside that tolerance; ground-based imaging can.</p>
+        </Band>
+      )}
+
+      {ev && zt && gx && pa && (
+        <Band num="VI" title="Independent evidence" lede="Every earlier check used TESS pixels this pipeline processed. These use other telescopes and other measurements.">
+          <div className="grid gap-6 sm:grid-cols-4">
+            {TIERS.map(([k, label]) => (
+              <div key={k}>
+                <div className="font-display text-5xl leading-none text-fg"><CountUp value={ev.summary.by_evidence_tier[k] ?? 0} /></div>
+                <div className="mt-2 font-mono text-[11px] text-fg">{label}</div>
+                <div className="mt-1 text-xs leading-relaxed text-muted">{ev.definitions[k]}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 grid gap-8 lg:grid-cols-2">
+            <div>
+              <h3 className="nav-caps font-mono text-[11px] text-accent">ZTF: did another telescope see the eclipses?</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{zt.summary.stars - (zt.summary.by_status.NO_DATA ?? 0)} of {zt.summary.stars} stars have enough ZTF data (it does not cover most of the far south). For each, the search ran on ZTF alone around the TESS period, was compared with {zt.method.null.split(" ")[0]} control periods, and was tested for power by injecting an eclipse of the TESS depth. Of the {zt.summary.testable} stars where ZTF could have seen the eclipse, <span className="text-fg">{zt.summary.confirmed_among_testable.k} were confirmed</span> ({ci(zt.summary.confirmed_among_testable, 0)}) and {zt.summary.testable - zt.summary.confirmed_among_testable.k} were not seen. {zt.summary.by_status.INCONCLUSIVE ?? 0} more were too faint or sparse in ZTF to tell either way.</p>
+              <p className="mt-2 text-xs leading-relaxed text-faint">That confirmed share is the best direct estimate of how many survivors are real eclipsing binaries, but ZTF can only test the brighter, deeper-eclipse stars, so it is not a rate for all {zt.summary.stars}.</p>
+            </div>
+            <div>
+              <h3 className="nav-caps font-mono text-[11px] text-accent">Gaia DR3: a second measurement</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{gx.summary.in_gaia_nss_orbit} stars have a Gaia two-body orbit. Where its period equals the TESS period (or half or double it) that is a radial-velocity measurement agreeing with the photometry, and it also means the star was already known to be a binary. {gx.summary.ruwe_elevated} of {gx.summary.matched + gx.summary.ambiguous} have a Gaia RUWE above 1.4, which hints at an unresolved companion. Repeating the neighbour test with Gaia gives {gx.summary.contamination_status_gaia.NO_VIABLE_NEIGHBOUR ?? 0} stars with no viable neighbour, close to the TESS Input Catalog answer.</p>
+              {dr4 && <p className="mt-2 text-xs leading-relaxed text-faint">Gaia DR4 (2 December 2026) covers the whole sky, but a fixed-ephemeris test needs an ephemeris good enough to carry back to 2014 to 2020; only {dr4.testable} of {dr4.stars_with_precise_ephemeris} stars with a precise timing fit qualify.</p>}
+            </div>
+          </div>
+
+          <div className="mt-10">
+            <h3 className="nav-caps font-mono text-[11px] text-accent">What is already known</h3>
+            <div className="mt-3 grid gap-6 sm:grid-cols-4">
+              {NOVELTY.map(([k, label]) => (
+                <div key={k}>
+                  <div className="font-display text-4xl leading-none text-fg"><CountUp value={ev.summary.by_novelty[k] ?? 0} /></div>
+                  <div className="mt-2 font-mono text-[11px] text-fg">{label}</div>
+                </div>
+              ))}
+            </div>
+            <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted">{pa.note} Sources checked: {pa.sources.filter((s) => s.status === "CHECKED").map((s) => s.name).join("; ")}. {pa.sources.some((s) => s.status === "NOT_CHECKED") ? `Not checked: ${pa.sources.filter((s) => s.status === "NOT_CHECKED").map((s) => `${s.name} (${s.reason})`).join("; ")}.` : ""}</p>
+          </div>
         </Band>
       )}
     </main>

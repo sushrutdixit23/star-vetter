@@ -757,3 +757,72 @@ export interface NeighboursData {
   statuses: Record<string, string>;
   stars: Record<string, NeighbourStar>;
 }
+
+
+// evidence.json (f20_evidence.py)
+export type EvidenceTier = "INDEPENDENTLY_SUPPORTED" | "TESS_ONLY_CLEAN" | "TESS_ONLY_CAVEATS" | "DISFAVOURED";
+export type NoveltyLabel = "KNOWN_ECLIPSING" | "KNOWN_BINARY" | "KNOWN_VARIABLE" | "NO_PRIOR_FOUND";
+export interface EvidenceStar {
+  evidence_tier: EvidenceTier;
+  independent_lines: string[];
+  against: string[];
+  caveats: string[];
+  novelty: NoveltyLabel;
+  novelty_reasons: string[];
+  ztf_status: string;
+  gaia_period_relation: string | null;
+}
+export interface EvidenceData {
+  generated_at: string;
+  summary: {
+    stars: number;
+    by_evidence_tier: Record<string, number>;
+    by_novelty: Record<string, number>;
+    tier_by_novelty: Record<string, number>;
+    by_ztf_status: Record<string, number>;
+  };
+  definitions: Record<string, string>;
+  stars: Record<string, EvidenceStar>;
+}
+
+// ztf_independent.json (f17_ztf_independent.py, export_independent.py)
+export interface ZtfData {
+  generated_at: string;
+  summary: {
+    stars: number;
+    by_status: Record<string, number>;
+    testable: number;
+    confirmed_among_testable: RateInterval;
+    confirmed_among_with_data: RateInterval;
+    by_tier: Record<string, Record<string, number>>;
+  };
+  method: Record<string, string>;
+}
+
+// gaia_dr3.json (f18_gaia_dr3.py)
+export interface GaiaData {
+  generated_at: string;
+  data_release: string;
+  summary: {
+    stars: number; matched: number; ambiguous: number; none: number; ruwe_elevated: number;
+    contamination_status_gaia: Record<string, number>;
+    in_gaia_eb_table: number; in_gaia_nss_orbit: number; with_gaia_rv: number; rv_variable: number;
+  };
+  method: { match: string; contamination: string; dr4: string };
+}
+
+// prior_art.json (f19_prior_art.py)
+export interface PriorArtData {
+  generated_at: string;
+  sources: { name: string; id: string; what: string; status: "CHECKED" | "NOT_CHECKED"; reason?: string; rows?: number; matches?: number }[];
+  summary: { stars: number; in_any_new_catalog: number; on_toi_list: number; simbad_identified: number; simbad_groups: Record<string, number> };
+  note: string;
+}
+
+// gaia_dr4_plan.json (f21_gaia_dr4_ready.py)
+export interface GaiaDr4Plan {
+  release: string;
+  criterion: string;
+  stars_with_precise_ephemeris: number;
+  testable: number;
+}
