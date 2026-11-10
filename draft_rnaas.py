@@ -97,7 +97,7 @@ def _independent_section(ev, ztf, gdr3, prior):
     ]
 
 
-def render(audit, rec, alias, nb, pred, novelty, xm, ev=None, ztf=None, gdr3=None, prior=None, rec2=None):
+def render(audit, rec, alias, nb, pred, novelty, xm, ev=None, ztf=None, gdr3=None, prior=None, rec2=None, prereg=None, fields=None):
     a, r, al = audit, rec, alias
     ot = a["rates"]["on_target_per_usable"]
     ps = a["rates"]["passed_gates_per_usable"]
@@ -117,7 +117,10 @@ def render(audit, rec, alias, nb, pred, novelty, xm, ev=None, ztf=None, gdr3=Non
     L = []
     L.append("# An audit of the unvetted TESS Ten Thousand eclipsing-binary list, with pre-registered eclipse times for TESS Year 9")
     L.append("")
-    L.append("Sushrut Dixit [[ORCID and affiliation, e.g. Independent researcher, Lucknow, India]]")
+    if fields:
+        L.append("%s, %s (ORCID %s)" % (fields["name"], fields["affiliation"], fields["orcid"]))
+    else:
+        L.append("Sushrut Dixit [[ORCID and affiliation, e.g. Independent researcher, Lucknow, India]]")
     L.append("")
     L.append("## Abstract")
     L.append("")
@@ -224,7 +227,7 @@ def render(audit, rec, alias, nb, pred, novelty, xm, ev=None, ztf=None, gdr3=Non
         "recovered if the measured mid-eclipse lies within 3 sigma of the prediction, with sigma combined in quadrature with the "
         "measurement error and, for QLP light curves, a 3-minute term for known QLP timing errors (Kostov et al. 2025), SPOC data being preferred; as inconsistent if observed outside that; and as insufficient data if not covered. Every "
         "prediction is reported whatever its outcome. The predictions were frozen with SHA-256 hashes and deposited "
-        "before the data: [[Zenodo DOI and deposit date, to be inserted after the freeze]].")
+        "before the data: %s." % (("doi:%s, deposited %s UTC" % (prereg["doi"], prereg["deposited_utc"][:10])) if prereg else "[[Zenodo DOI and deposit date, to be inserted after the freeze]]"))
     L.append("")
     L.append("## 7. Limits")
     L.append("")
@@ -250,12 +253,16 @@ def render(audit, rec, alias, nb, pred, novelty, xm, ev=None, ztf=None, gdr3=Non
     L.append("")
     L.append("## Data and code")
     L.append("")
-    L.append("Code, data files and the frozen predictions: [[repository URL and Zenodo DOI]].")
+    if prereg:
+        L.append("Code and data files: %s. Frozen predictions: doi:%s (bundle SHA-256 %s, built from commit %s)." % (
+            prereg["repo"], prereg["doi"], prereg["bundle_sha256"][:16] + "...", prereg["commit"][:7]))
+    else:
+        L.append("Code, data files and the frozen predictions: [[repository URL and Zenodo DOI]].")
     L.append("")
     L.append("## AI-usage disclosure")
     L.append("")
     L.append(
-        "[[Author to confirm before submission.]] The AI tool Claude (Anthropic) was used to write and debug the analysis code, "
+        ("" if (fields and fields.get("ai_usage_confirmed")) else "[[Author to confirm before submission.]] ") + "The AI tool Claude (Anthropic) was used to write and debug the analysis code, "
         "to run the injection tests, and to draft and edit this note. The author checked the code outputs and the numbers "
         "in the text against the data files, and responsibility for the final manuscript text lies entirely with the author.")
     L.append("")
@@ -302,6 +309,10 @@ def main():
                      ("prior", "prior_art.json"), ("rec2", "recovery_min2.json")):
         if (root / DATA / name).exists():
             extra[key] = _load(root, name)
+    pre = _load(root, "preregistration.json") if (root / DATA / "preregistration.json").exists() else None
+    extra["prereg"] = pre
+    fp = root / "docs" / "author_fields.json"
+    extra["fields"] = json.loads(fp.read_text(encoding="utf-8")) if fp.exists() else None
     text = render(_load(root, "audit.json"), _load(root, "recovery.json"), _load(root, "atlas_alias.json"),
                   _load(root, "neighbours.json"), _load(root, "predictions.json"),
                   _load(root, "novelty_extra.json"), _load(root, "tess_catalog_xmatch.json"), **extra)

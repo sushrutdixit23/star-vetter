@@ -50,14 +50,16 @@ and `docs/rnaas_note.md`.
 
 ## Author actions before submission
 
-1. Merge PR #1, then PR #2.
-2. Freeze the predictions before 2026-11-26: `py freeze_predictions.py .`, then
-   `py freeze_predictions.py --verify <bundle>`.
-3. Upload the zip to Zenodo with your ORCID and send the DOI.
-4. Fill the `[[...]]` fields in `docs/rnaas_note.md` (ORCID and affiliation, Zenodo DOI and
-   date, repository URL, AI-usage confirmation) and read the whole note as the person
-   responsible for it.
-5. Check ADS for 2025 to 2026 papers on the listed TIC numbers.
+Done: PRs merged to main; predictions frozen 2026-11-10 from commit d85f405 (bundle hash on the
+Predictions page); deposited on Zenodo as doi:10.5281/zenodo.24115848; ORCID and affiliation filled
+from `docs/author_fields.json`.
+
+Still yours:
+1. Read the whole note as the person responsible for it. Then set `ai_usage_confirmed` to `true` in
+   `docs/author_fields.json` and run `py draft_rnaas.py .` to remove the last `[[...]]` field.
+2. Add your ORCID to the Zenodo record once Zenodo can find it (Edit the published record).
+3. Check ADS for 2025 to 2026 papers on the listed TIC numbers (not reachable from the sandbox).
+4. Submit to RNAAS with the AI-usage disclosure.
 
 ## Path after the note
 

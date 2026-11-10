@@ -25,9 +25,10 @@ def test_author_actions_count_unfilled_fields_and_days(tmp_path):
     (tmp_path / "docs" / "rnaas_note.md").write_text("a [[x]] b [[y]]\n", encoding="utf-8")
     now = datetime(2026, 11, 10, tzinfo=timezone.utc)
     items = dict(cr.author_actions(tmp_path, now=now))
-    assert any("Fill the 2 [[...]] fields" in k for k in items)
+    assert any("2 [[...]] field(s) left" in k for k in items)
     assert any("16 days before Year 9" in k for k in items)
-    assert not any(items.values())          # nothing is ever marked done automatically here
+    done = [k for k, v in items.items() if v]
+    assert done == ["Merge the PRs into main (PR #1 and #3 are merged)"]     # nothing else is marked done without evidence
 
 
 def test_year9_jd_matches_the_calendar():

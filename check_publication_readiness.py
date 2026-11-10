@@ -71,6 +71,9 @@ def analysis_checks(root, now=None):
         try:
             extra = {k: _json(root, f) for k, f in (("ev", "evidence.json"), ("ztf", "ztf_independent.json"), ("gdr3", "gaia_dr3.json"),
                                                     ("prior", "prior_art.json"), ("rec2", "recovery_min2.json"))}
+            fp = root / "docs" / "author_fields.json"
+            extra["fields"] = json.loads(fp.read_text(encoding="utf-8")) if fp.exists() else None
+            extra["prereg"] = _json(root, "preregistration.json")
             fresh = dr.render(_json(root, "audit.json"), _json(root, "recovery.json"), _json(root, "atlas_alias.json"), _json(root, "neighbours.json"),
                               _json(root, "predictions.json"), _json(root, "novelty_extra.json"), _json(root, "tess_catalog_xmatch.json"), **extra)
             add("RNAAS note matches the data files (not stale)", fresh.strip() == txt.strip(), "regenerated text %s the committed note" % ("equals" if fresh.strip() == txt.strip() else "DIFFERS from"))
@@ -107,15 +110,15 @@ def analysis_checks(root, now=None):
 def author_actions(root, now=None):
     now = now or datetime.now(timezone.utc)
     days = (YEAR9_START - now).days
-    frozen = list((root / "preregistration").glob("star-vetter-predictions-*.zip")) if (root / "preregistration").exists() else []
+    pre = _json(root, "preregistration.json")
+    frozen = bool(pre)
     items = []
-    items.append(("Merge PR #1 then PR #2 on GitHub", None))
-    items.append(("Freeze the predictions: py freeze_predictions.py . then py freeze_predictions.py --verify <bundle>; %s" %
-                  ("a frozen bundle already exists" if frozen else "no frozen bundle yet; %d days before Year 9 starts (2026-11-26)" % days), bool(frozen)))
-    items.append(("Upload the zip to Zenodo with your ORCID and send me the DOI", None))
+    items.append(("Merge the PRs into main (PR #1 and #3 are merged)", True))
+    items.append(("Freeze the predictions (py freeze_predictions.py .; then --verify): %s" %
+                  ("done, frozen %s UTC, doi:%s" % (pre["frozen_utc"], pre["doi"]) if frozen else "not done; %d days before Year 9 starts (2026-11-26)" % days), frozen))
     note = (root / "docs" / "rnaas_note.md").read_text(encoding="utf-8") if (root / "docs" / "rnaas_note.md").exists() else ""
     n = len(re.findall(r"\[\[.*?\]\]", note))
-    items.append(("Fill the %d [[...]] fields in docs/rnaas_note.md (ORCID/affiliation, Zenodo DOI, repository URL, AI-usage confirmation)" % n, n == 0))
+    items.append(("Read the whole note and confirm the AI-usage statement (set ai_usage_confirmed to true in docs/author_fields.json, then run py draft_rnaas.py .); %d [[...]] field(s) left in docs/rnaas_note.md" % n, n == 0))
     items.append(("Final prior-art look in ADS for 2025-2026 papers on these TIC numbers (not reachable from the sandbox)", None))
     items.append(("Optional: ATLAS forced photometry for the southern stars needs your own ATLAS account/token", None))
     return items

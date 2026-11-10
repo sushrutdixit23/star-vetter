@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Panel from "@/components/Panel";
 import PredictionsBoard from "@/components/predictions/PredictionsBoard";
-import { getPredictions } from "@/lib/data";
+import { getPredictions, getPreregistration } from "@/lib/data";
 
 export const metadata = {
   title: "Predictions - Star Vetter",
@@ -27,6 +27,7 @@ function pct(x: number | null | undefined, digits = 0): string {
 
 export default function PredictionsPage() {
   const data = getPredictions();
+  const pre = getPreregistration();
 
   return (
     <main className="w-full flex-1 px-4 py-10 sm:px-8 xl:px-12">
@@ -40,6 +41,19 @@ export default function PredictionsPage() {
           These are candidate eclipsing binaries, not confirmed ones, and this page makes no claim that any of them is new.
         </p>
       </header>
+
+      {pre ? (
+        <section className="mb-8 rounded-xl border border-line p-4 sm:p-5">
+          <div className="nav-caps font-mono text-[11px] text-muted">Frozen and deposited</div>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted">
+            These predictions were frozen on {pre.frozen_utc.slice(0, 10)} (UTC {pre.frozen_utc.slice(11, 16)}) and deposited on Zenodo
+            before any Year 9 data exist: <a className="text-fg underline" href={pre.url}>doi:{pre.doi}</a>. The bundle is hashed
+            file by file; its overall SHA-256 is <span className="break-all font-mono text-xs">{pre.bundle_sha256}</span>, built
+            from <a className="text-fg underline" href={`${pre.repo}/commit/${pre.commit}`}>commit {pre.commit.slice(0, 7)}</a> of the
+            public repository. Anyone can re-run the freeze script with its verify option and compare.
+          </p>
+        </section>
+      ) : null}
 
       {!data ? (
         <p className="border-t border-line py-10 text-sm text-faint">Run f13_ephemeris.py and export_predictions.py to populate this page.</p>

@@ -826,3 +826,19 @@ export interface GaiaDr4Plan {
   stars_with_precise_ephemeris: number;
   testable: number;
 }
+
+// preregistration.json: where the frozen predictions were deposited. Written by
+// hand from the freeze manifest and the Zenodo record (see docs/publication_readiness.md).
+export interface Preregistration {
+  doi: string;
+  url: string;
+  deposited_utc: string;
+  frozen_utc: string;
+  bundle_sha256: string;
+  commit: string;
+  branch: string;
+  stars: number;
+  eclipses: number;
+  file: string;
+  repo: string;
+}
