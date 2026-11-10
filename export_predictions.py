@@ -53,7 +53,11 @@ CONVENTIONS = {
     "outcome_rule": "When Year 9 data are public, each eclipse that TESS observed is timed with the same code. "
                     "It counts as RECOVERED if the measured mid-eclipse lies within 3 sigma of the prediction "
                     "(sigma combined with the measurement error), INCONSISTENT if it is observed but outside, "
-                    "and INSUFFICIENT DATA if the eclipse was not covered. Nothing is dropped after the fact.",
+                    "and INSUFFICIENT DATA if the eclipse was not covered. Nothing is dropped after the fact. "
+                    "Where SPOC or TESS-SPOC light curves exist for a sector they are used for grading. When QLP light curves are "
+                    "used, a systematic timing term of 3 minutes is added in quadrature to the measurement error, because "
+                    "Kostov et al. (2025, ApJS 279, 50, footnote 22) report a timing error of about 3 minutes in QLP light "
+                    "curves beyond Sector 74. This rule is fixed before any Year 9 data exist.",
     "approximate_sectors": "Sectors 117-121 have interpolated dates and are marked approximate.",
 }
 

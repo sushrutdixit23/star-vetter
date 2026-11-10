@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-11-07T00:19:14Z",
+ "generated_utc": "2026-11-10T13:05:12Z",
  "selection_rule": [
   "The ephemeris was fitted (at least two eclipses, status OK).",
   "It is not REJECTED: a REJECTED ephemeris failed to predict a TESS sector, or a block of later sectors, it had not been shown.",
@@ -12,7 +12,7 @@
   "grades": "VALIDATED: the ephemeris, fitted to the earliest sectors only, predicted the later ones, and the new predictions reach no more than 3 times as far beyond the data as that test did. UNVALIDATED: either only one sector could be phase-connected so nothing could be held out, or the test covered a much shorter distance than the prediction does. Real eclipse timing drifts, and only a long enough test sees it.",
   "sigma": "1-sigma uncertainty of the predicted eclipse time: the ephemeris fit error plus the excess timing noise found in the star's own history. It does not include the measurement error of the future observation, which is added when the outcome is graded.",
   "eclipse": "Primary eclipse only, mid-eclipse time.",
-  "outcome_rule": "When Year 9 data are public, each eclipse that TESS observed is timed with the same code. It counts as RECOVERED if the measured mid-eclipse lies within 3 sigma of the prediction (sigma combined with the measurement error), INCONSISTENT if it is observed but outside, and INSUFFICIENT DATA if the eclipse was not covered. Nothing is dropped after the fact.",
+  "outcome_rule": "When Year 9 data are public, each eclipse that TESS observed is timed with the same code. It counts as RECOVERED if the measured mid-eclipse lies within 3 sigma of the prediction (sigma combined with the measurement error), INCONSISTENT if it is observed but outside, and INSUFFICIENT DATA if the eclipse was not covered. Nothing is dropped after the fact. Where SPOC or TESS-SPOC light curves exist for a sector they are used for grading. When QLP light curves are used, a systematic timing term of 3 minutes is added in quadrature to the measurement error, because Kostov et al. (2025, ApJS 279, 50, footnote 22) report a timing error of about 3 minutes in QLP light curves beyond Sector 74. This rule is fixed before any Year 9 data exist.",
   "approximate_sectors": "Sectors 117-121 have interpolated dates and are marked approximate."
  },
  "counts": {
