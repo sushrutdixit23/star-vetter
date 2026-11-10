@@ -141,7 +141,7 @@ def local_scan(t, f, e, p0, duration):
             "period": P, "t0": T0, "duration": D, "n_in": int(inbox.sum()), "n_events": int(len(epochs))}
 
 
-def control_periods(p0, n, rng, span, lo=0.3, hi=3.0):
+def control_periods(p0, n, rng, span, lo=0.3, hi=3.0, min_period=0.2):
     """Unrelated trial periods: log-uniform ratios to p0 that stay clear of every
     simple harmonic n/m of p0 (m, n up to 4) and keep at least 3 cycles in the span."""
     harmonics = np.array([a / b for a in range(1, 5) for b in range(1, 5)])
@@ -152,7 +152,7 @@ def control_periods(p0, n, rng, span, lo=0.3, hi=3.0):
         r = float(np.exp(rng.uniform(np.log(lo), np.log(hi))))
         if np.min(np.abs(r / harmonics - 1.0)) < HARMONIC_EXCLUSION:
             continue
-        if p0 * r * 3 > span or p0 * r < 0.2:
+        if p0 * r * 3 > span or p0 * r < min_period:
             continue
         out.append(p0 * r)
     return np.array(out)
@@ -170,7 +170,7 @@ def assess(t, f, e, p0, duration, depth_tess, tic, n_controls=N_CONTROLS, n_inje
     span = float(t.max() - t.min())
     obs = local_scan(t, f, e, p0, duration)
     rng = rng_for(tic, 1)
-    ctrl_p = control_periods(p0, n_controls, rng, span)
+    ctrl_p = control_periods(p0, n_controls, rng, span, min_period=max(0.2, 1.01 * duration))   # BLS needs box < period; only affects stars that would otherwise fail
     ctrl = np.array([local_scan(t, f, e, p, duration)["snr"] for p in ctrl_p])
     p_value = float((1 + np.sum(ctrl >= obs["snr"])) / (1 + len(ctrl))) if len(ctrl) else None
     thr = float(np.quantile(ctrl, CONTROL_QUANTILE)) if len(ctrl) >= 20 else None

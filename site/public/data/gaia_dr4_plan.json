@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-10T13:08:21Z",
+ "generated_at": "2026-11-10T13:23:40Z",
  "release": "Gaia DR4, 2 December 2026",
  "criterion": "ephemeris timing error at both ends of the Gaia window below 25% of the eclipse duration, and at least 3 expected in-eclipse points at 70 transits",
  "stars_with_precise_ephemeris": 72,

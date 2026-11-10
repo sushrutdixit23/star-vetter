@@ -115,3 +115,8 @@ def test_summarise_counts_and_testable_fraction():
     s = z.summarise(stars)
     assert s["stars"] == 10 and s["testable"] == 4 and s["confirmed_among_testable"]["k"] == 3
     assert s["confirmed_among_with_data"]["n"] == 6
+
+
+def test_control_periods_leave_room_for_the_box():
+    c = z.control_periods(1.05, 100, np.random.default_rng(0), span=2000.0, min_period=1.01 * 0.5)
+    assert c.min() >= 0.505
