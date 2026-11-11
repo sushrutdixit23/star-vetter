@@ -873,6 +873,22 @@ export interface PeriodChangeStar {
   dP_dt_sigma_seconds_per_year: number;
 }
 
+export interface LtteResult {
+  tic: number;
+  period_days: number;
+  chi2_parabola: number;
+  best_chi2: number;
+  best_p3_years: number;
+  allowed_p3_years: [number, number];
+  statistically_allowed_p3_years: [number, number];
+  max_plausible_m3_msun: number;
+  amplitude_min_range: [number, number];
+  m3_min_msun_range: [number, number];
+  fits_as_well_as_parabola: boolean;
+  extra_parameters_vs_parabola: number;
+  gaia_dr3_orbit_sensitive_below_years: number;
+}
+
 export interface FindingsData {
   generated_at: string;
   verdict_counts: Record<string, number>;
@@ -890,6 +906,19 @@ export interface FindingsData {
     counts: Record<string, number>;
     period_change: PeriodChangeStar[];
     calibration: { trials: number; flagged: number } | null;
+    ltte: LtteResult[] | null;
+  } | null;
+  validation: {
+    n_tested: number;
+    n_with_measurement: number;
+    median_abs_phase_error: number | null;
+    "fraction_within_0.01": number | null;
+    circular_truth: number;
+    false_positive_eccentric: number;
+    eccentric_truth: number;
+    recovered_eccentric: number;
+    eccentric_truth_verdicts: Record<string, number>;
+    circular_truth_verdicts: Record<string, number>;
   } | null;
   limits: string[];
 }

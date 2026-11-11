@@ -1,0 +1,20 @@
+{
+ "n_tested": 50,
+ "n_with_measurement": 44,
+ "median_abs_phase_error": 0.0002572602348905051,
+ "fraction_within_0.010": 1.0,
+ "circular_truth": 27,
+ "false_positive_eccentric": 0,
+ "eccentric_truth": 23,
+ "recovered_eccentric": 18,
+ "eccentric_truth_verdicts": {
+  "ECCENTRIC": 18,
+  "INSUFFICIENT_FOR_HALVES": 5
+ },
+ "circular_truth_verdicts": {
+  "CIRCULAR_WITHIN_ERRORS": 26,
+  "SECONDARY_NOT_REPRODUCED": 1
+ },
+ "false_positive_rate": 0.0,
+ "recall_eccentric": 0.782608695652174
+}

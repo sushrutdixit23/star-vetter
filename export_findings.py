@@ -88,7 +88,22 @@ def build(root):
         cp = d / "f23_calibration.json"
         if cp.exists():
             cal = load(cp)
-        out["timing_drift"] = {"counts": c, "period_change": sig, "floors_min": etv.get("floors_min"), "calibration": cal}
+        lp = d / "f23_ltte.json"
+        ltte = None
+        if lp.exists():
+            ltte = [{"tic": int(t), **{k: v[k] for k in ("period_days", "chi2_parabola", "best_chi2", "best_p3_years", "allowed_p3_years",
+                     "statistically_allowed_p3_years", "max_plausible_m3_msun", "amplitude_min_range", "m3_min_msun_range",
+                     "fits_as_well_as_parabola", "extra_parameters_vs_parabola", "gaia_dr3_orbit_sensitive_below_years")}}
+                    for t, v in load(lp).items()]
+        out["timing_drift"] = {"counts": c, "period_change": sig, "floors_min": etv.get("floors_min"), "calibration": cal, "ltte": ltte}
+    vp = d / "f22_validation_prsa_summary.json"
+    out["validation"] = None
+    if vp.exists():
+        v = load(vp)
+        out["validation"] = {k: v.get(k) for k in ("n_tested", "n_with_measurement", "median_abs_phase_error", "circular_truth",
+                             "false_positive_eccentric", "eccentric_truth", "recovered_eccentric", "eccentric_truth_verdicts",
+                             "circular_truth_verdicts")}
+        out["validation"]["fraction_within_0.01"] = v.get("fraction_within_0.010")
     return out
 
 
@@ -137,10 +152,34 @@ def markdown(o):
                 L.append("| %d | %.4f | %d | %d | %.0f (%d dof) | %.1f (%d dof) | %+.1f +- %.1f |" % (
                     r["tic"], r["period_days"], r["n_tess"], r["n_ztf"], r["chi2_line"], r["dof_line"], r["chi2_parabola"],
                     r["dof_parabola"], r["dP_dt_seconds_per_year"], r["dP_dt_sigma_seconds_per_year"]))
-            L += ["", "The cause is not tested here (a distant third body, mass exchange and others all produce a parabola over a few years). "
+            L += ["", "The cause is not settled (a distant third body, mass exchange and others all produce a parabola over a few years). "
                   "Predictions of the next eclipses are in `docs/period_change_predictions.json`."]
+            for r in td.get("ltte") or []:
+                lo, hi = r["allowed_p3_years"]
+                slo, shi = r["statistically_allowed_p3_years"]
+                L += ["", "Light-travel-time test for TIC %d (circular third-body orbit, %d extra parameters over the parabola): "
+                      "best fit P3 = %.1f yr with chi2 %.1f against %.1f for the parabola, so it %s the parabola. "
+                      "Orbits with P3 from %.1f to %.1f yr are statistically allowed; capping the unseen companion at %.1f Msun leaves %.1f to %.1f yr, "
+                      "light-time amplitude %.0f to %.0f min, minimum companion mass %.2f to %.2f Msun. "
+                      "Orbits shorter than about %.1f yr are excluded by the data. This does not show a third body exists." % (
+                          r["tic"], r["extra_parameters_vs_parabola"], r["best_p3_years"], r["best_chi2"], r["chi2_parabola"],
+                          "does not improve on" if not r["fits_as_well_as_parabola"] else "fits as well as",
+                          slo, shi, r["max_plausible_m3_msun"], lo, hi, r["amplitude_min_range"][0], r["amplitude_min_range"][1],
+                          r["m3_min_msun_range"][0], r["m3_min_msun_range"][1], slo)]
         else:
             L.append("No star passed every rule.")
+    v = o.get("validation")
+    if v:
+        L += ["", "## External check of the eccentricity measurement", "",
+              "The same code was run on %d TESS eclipsing binaries from the Prsa et al. 2022 catalog (published secondary phases, fitted by other code), "
+              "using only the published period and epoch as input and the first 26 sectors the catalog was fitted on." % v["n_tested"],
+              "Measured secondary phase against the published phase: median absolute difference %s, %s of measured systems within 0.01 in phase." % (
+                  "n/a" if v["median_abs_phase_error"] is None else "%.4f" % v["median_abs_phase_error"],
+                  "n/a" if v.get("fraction_within_0.01") is None else "%.0f%%" % (100 * v["fraction_within_0.01"])),
+              "Published as circular: %d systems, %d called eccentric (false positives). Published as eccentric: %d systems, %d recovered; "
+              "the rest were vetoed or lacked enough secondary eclipses to test, which is by design (the rule prefers a miss to a false claim)." % (
+                  v["circular_truth"], v["false_positive_eccentric"], v["eccentric_truth"], v["recovered_eccentric"]),
+              "Verdicts for published-eccentric systems: " + ", ".join("%s %d" % (k, n) for k, n in sorted((v["eccentric_truth_verdicts"] or {}).items())) + "."]
     L += ["", "## Limits", ""] + ["- " + x for x in o["limits"]] + [""]
     return "\n".join(L)
 

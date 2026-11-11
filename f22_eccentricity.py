@@ -96,6 +96,25 @@ def split_halves(t, period, t0, sector=None):
     return cyc % 2 == 0, "alternating orbits"
 
 
+def secondary_events(t, period, t0, duration, phase, min_points=None):
+    """Number of separate orbits that contribute points to the secondary window.
+    An orbit counts when it has at least half the points the window would hold at the median cadence
+    (never fewer than 3), so 2-minute and 30-minute data are judged alike."""
+    if len(t) < 2:
+        return 0
+    if min_points is None:
+        dt = float(np.median(np.diff(np.sort(t))))
+        min_points = max(3, int(0.5 * duration / dt)) if dt > 0 else 3
+    ph = fold_phase(t, period, t0) % 1.0
+    half = 0.5 * duration / period
+    m = np.abs(ph - phase) <= half
+    if not m.any():
+        return 0
+    cyc = np.floor((t[m] - t0) / period - phase + 0.5).astype(int)
+    vals, counts = np.unique(cyc, return_counts=True)
+    return int((counts >= min_points).sum())
+
+
 def other_dips(t, f, period, t0, duration, sec_phase):
     """Deepest dip away from BOTH the primary and the claimed secondary. A third dip means the
     pipeline period is a multiple of the true one and the 'secondary' is only one of several."""
@@ -160,6 +179,13 @@ def assess(t, f, period, t0, duration, sector=None):
     if full["snr"] < MIN_SECONDARY_SNR:
         return out
     tol = max(1.5 * duration / period, 0.01)
+    n_a = secondary_events(t[a], period, t0, duration, full["phase"])
+    n_b = secondary_events(t[~a], period, t0, duration, full["phase"])
+    out["secondary_events"] = [n_a, n_b]
+    if min(n_a, n_b) < 2:
+        # a real secondary may be present, but there is no way to test it against itself
+        out["verdict"] = "INSUFFICIENT_FOR_HALVES"
+        return out
     if h1 is None or h2 is None or min(h1["snr"], h2["snr"]) < MIN_HALF_SNR or \
             abs(h1["phase"] - full["phase"]) > tol or abs(h2["phase"] - full["phase"]) > tol:
         out["verdict"] = "SECONDARY_NOT_REPRODUCED"

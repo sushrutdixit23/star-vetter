@@ -1,18 +1,19 @@
 {
- "generated_at": "2026-11-11T05:36:39Z",
+ "generated_at": "2026-11-11T06:27:30Z",
  "counts": {
-  "CIRCULAR_WITHIN_ERRORS": 115,
-  "ECCENTRIC": 17,
+  "INSUFFICIENT_FOR_HALVES": 66,
+  "ECCENTRIC": 13,
   "NO_SECONDARY": 104,
-  "SECONDARY_NOT_REPRODUCED": 55,
   "NOT_TESTABLE": 13,
+  "CIRCULAR_WITHIN_ERRORS": 93,
+  "SECONDARY_NOT_REPRODUCED": 15,
   "PERIOD_MULTIPLE_SUSPECTED": 3
  },
  "method": "Box scan for the secondary eclipse at the pipeline period (the half-period case is read from odd/even eclipse times); e cos(omega) = (pi/2)(phase - 0.5); accepted only when two independent halves of the data each show the dip at the same phase; ECCENTRIC stars are re-measured in ZTF with calibrated random-phase controls.",
  "stars": {
   "9586662": {
-   "verdict": "CIRCULAR_WITHIN_ERRORS",
-   "ecosw": -0.0034447600206241767,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.4978069976598093,
     "depth": 0.01328453940009644,
@@ -32,11 +33,10 @@
     "n_in": 29
    },
    "halves": "alternating orbits",
-   "secondary_phase": 0.4978069976598093,
-   "secondary_phase_sigma": 0.005138879211740471,
-   "secondary_depth": 0.01328453940009644,
-   "secondary_snr": 9.715488853949791,
-   "ecosw_sigma": 0.008072132589644586,
+   "secondary_events": [
+    0,
+    0
+   ],
    "alternation": null,
    "n_points": 1075,
    "n_sectors": 1
@@ -63,6 +63,10 @@
     "n_in": 11
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    2,
+    2
+   ],
    "secondary_phase": 0.51323040498455,
    "secondary_phase_sigma": 0.0005557831142329883,
    "secondary_depth": 0.0419003590409619,
@@ -154,7 +158,7 @@
    "n_sectors": 9
   },
   "40208362": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.5997018772595878,
@@ -175,6 +179,10 @@
     "n_in": 194
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    0,
+    36
+   ],
    "alternation": {
     "odd_even_time_offset_min": 1.3825,
     "offset_sigma_min": 0.13285141923156285,
@@ -254,6 +262,10 @@
     "n_in": 2575
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    20,
+    41
+   ],
    "secondary_phase": 0.49704708807154757,
    "secondary_phase_sigma": 0.0016140900909747402,
    "secondary_depth": 0.003290289777744926,
@@ -312,6 +324,10 @@
     "n_in": 246
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    3,
+    4
+   ],
    "alternation": null,
    "n_points": 70154,
    "n_sectors": 5
@@ -343,7 +359,7 @@
    "n_sectors": 1
   },
   "43785616": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.5304382438653845,
@@ -364,12 +380,16 @@
     "n_in": 252
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    0,
+    1
+   ],
    "alternation": null,
    "n_points": 17562,
    "n_sectors": 1
   },
   "43791794": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.3566268297068125,
@@ -390,6 +410,10 @@
     "n_in": 105
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    2,
+    1
+   ],
    "alternation": null,
    "n_points": 14685,
    "n_sectors": 2
@@ -442,6 +466,10 @@
     "n_in": 23
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    3,
+    3
+   ],
    "secondary_phase": 0.502499335420494,
    "secondary_phase_sigma": 0.0008732917610092539,
    "secondary_depth": 0.01361954204617244,
@@ -488,7 +516,7 @@
    "n_sectors": 1
   },
   "59363206": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.5000817957821317,
@@ -509,6 +537,10 @@
     "n_in": 49
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    0,
+    2
+   ],
    "alternation": null,
    "n_points": 6184,
    "n_sectors": 2
@@ -535,6 +567,10 @@
     "n_in": 1281
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    34,
+    64
+   ],
    "secondary_phase": 0.3297666558999263,
    "secondary_phase_sigma": 0.00024614973115397176,
    "secondary_depth": 0.03726560375656596,
@@ -566,8 +602,8 @@
    "n_sectors": 6
   },
   "59387976": {
-   "verdict": "ECCENTRIC",
-   "ecosw": -0.06982734286646898,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.45554653287931546,
     "depth": 0.015170397548855408,
@@ -587,22 +623,10 @@
     "n_in": 195
    },
    "halves": "alternating sectors",
-   "secondary_phase": 0.45554653287931546,
-   "secondary_phase_sigma": 0.0005976836611440994,
-   "secondary_depth": 0.015170397548855408,
-   "secondary_snr": 15.683760533373466,
-   "ecosw_sigma": 0.000938839299510477,
-   "other_dip": {
-    "phase": 0.507484718204879,
-    "depth": 0.0035072738348265187,
-    "snr": 3.2972694956775914
-   },
-   "fast_signal": {
-    "period_days": 0.05854747868486407,
-    "amplitude": 0.0014662760372654295,
-    "fap": 0.052602850246044365,
-    "amplitude_over_secondary_depth": 0.09665376484323304
-   },
+   "secondary_events": [
+    1,
+    2
+   ],
    "alternation": {
     "odd_even_time_offset_min": 1.2635,
     "offset_sigma_min": 0.6347606068478455,
@@ -614,19 +638,6 @@
     "n_even": 3,
     "n_odd": 4
    },
-   "ztf": {
-    "period_used_days": 22.520601025644666,
-    "n_points": 1780,
-    "primary_shift_phase": -0.0040000000000000036,
-    "scan_phase": 0.8458486310102371,
-    "scan_snr": 4.619206667129965,
-    "snr_at_tess_phase": -1.9924415398218207,
-    "n_in_at_tess_phase": 13,
-    "p_value": 0.945273631840796,
-    "scan_agrees_with_tess": false,
-    "confirmed": false
-   },
-   "ztf_coverage": "measured",
    "n_points": 44954,
    "n_sectors": 6
   },
@@ -669,6 +680,10 @@
     "n_in": 52
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    3,
+    3
+   ],
    "secondary_phase": 0.5010806289396732,
    "secondary_phase_sigma": 0.00024638594305774735,
    "secondary_depth": 0.02035065397437763,
@@ -696,8 +711,8 @@
    "n_sectors": 5
   },
   "59464503": {
-   "verdict": "CIRCULAR_WITHIN_ERRORS",
-   "ecosw": -0.005440429762227012,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.4965365148431892,
     "depth": 0.04459672583161589,
@@ -717,18 +732,17 @@
     "n_in": 37
    },
    "halves": "alternating orbits",
-   "secondary_phase": 0.4965365148431892,
-   "secondary_phase_sigma": 0.0012898668298727833,
-   "secondary_depth": 0.04459672583161589,
-   "secondary_snr": 16.380398521977128,
-   "ecosw_sigma": 0.002026118078418746,
+   "secondary_events": [
+    1,
+    1
+   ],
    "alternation": null,
    "n_points": 904,
    "n_sectors": 1
   },
   "59488906": {
-   "verdict": "CIRCULAR_WITHIN_ERRORS",
-   "ecosw": 4.1975608141460317e-05,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.5000267225021,
     "depth": 0.046610906361275406,
@@ -748,11 +762,10 @@
     "n_in": 105
    },
    "halves": "alternating sectors",
-   "secondary_phase": 0.5000267225021,
-   "secondary_phase_sigma": 6.855925018096232e-05,
-   "secondary_depth": 0.046610906361275406,
-   "secondary_snr": 31.919668037742376,
-   "ecosw_sigma": 0.00010769261835206797,
+   "secondary_events": [
+    1,
+    1
+   ],
    "alternation": null,
    "n_points": 18937,
    "n_sectors": 3
@@ -779,6 +792,10 @@
     "n_in": 207
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    3,
+    3
+   ],
    "secondary_phase": 0.6624882902352639,
    "secondary_phase_sigma": 0.0002467669817242668,
    "secondary_depth": 0.24201529913346698,
@@ -823,7 +840,7 @@
    "n_sectors": 5
   },
   "59603820": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.49981122609782247,
@@ -834,6 +851,10 @@
    "half_a": null,
    "half_b": null,
    "halves": "alternating orbits",
+   "secondary_events": [
+    2,
+    1
+   ],
    "alternation": null,
    "n_points": 862,
    "n_sectors": 1
@@ -860,6 +881,10 @@
     "n_in": 16
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    2,
+    2
+   ],
    "secondary_phase": 0.5410199338712969,
    "secondary_phase_sigma": 0.00032975508795241026,
    "secondary_depth": 0.042650937289488544,
@@ -940,6 +965,10 @@
     "n_in": 19
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    6,
+    5
+   ],
    "secondary_phase": 0.5005629865715231,
    "secondary_phase_sigma": 0.0013283830800251417,
    "secondary_depth": 0.06195723948660259,
@@ -960,8 +989,8 @@
    "n_sectors": 1
   },
   "65257021": {
-   "verdict": "CIRCULAR_WITHIN_ERRORS",
-   "ecosw": -0.001488035579840404,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.49905268712788714,
     "depth": 0.04092311869447185,
@@ -981,11 +1010,10 @@
     "n_in": 10
    },
    "halves": "alternating orbits",
-   "secondary_phase": 0.49905268712788714,
-   "secondary_phase_sigma": 0.0008538360341283913,
-   "secondary_depth": 0.04092311869447185,
-   "secondary_snr": 12.353897695544918,
-   "ecosw_sigma": 0.0013412025060939988,
+   "secondary_events": [
+    1,
+    1
+   ],
    "alternation": null,
    "n_points": 1072,
    "n_sectors": 1
@@ -1126,6 +1154,10 @@
     "n_in": 25
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    8,
+    3
+   ],
    "secondary_phase": 0.4995238834564539,
    "secondary_phase_sigma": 0.0029926218868699117,
    "secondary_depth": 0.005824814063112971,
@@ -1146,7 +1178,7 @@
    "n_sectors": 1
   },
   "72729777": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.6202061684737905,
@@ -1167,6 +1199,10 @@
     "n_in": 31
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    1,
+    0
+   ],
    "alternation": null,
    "n_points": 71591,
    "n_sectors": 4
@@ -1229,6 +1265,10 @@
     "n_in": 25
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    4,
+    4
+   ],
    "secondary_phase": 0.5036064782261954,
    "secondary_phase_sigma": 0.0008536083067322894,
    "secondary_depth": 0.027850389860676117,
@@ -1239,7 +1279,7 @@
    "n_sectors": 1
   },
   "78199363": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.6541310594260268,
@@ -1260,6 +1300,10 @@
     "n_in": 20
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    1,
+    1
+   ],
    "alternation": null,
    "n_points": 1086,
    "n_sectors": 1
@@ -1364,6 +1408,10 @@
     "n_in": 364
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    11,
+    10
+   ],
    "secondary_phase": 0.4992946566011044,
    "secondary_phase_sigma": 0.006391460764753415,
    "secondary_depth": 0.010586007441472534,
@@ -1437,7 +1485,7 @@
    "n_sectors": 8
   },
   "86956236": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.49981943534775236,
@@ -1458,13 +1506,17 @@
     "n_in": 17
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    1,
+    0
+   ],
    "alternation": null,
    "n_points": 10594,
    "n_sectors": 4
   },
   "94041900": {
-   "verdict": "CIRCULAR_WITHIN_ERRORS",
-   "ecosw": -0.0006151227530599463,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.49960840069296886,
     "depth": 0.07029280302895557,
@@ -1484,18 +1536,17 @@
     "n_in": 106
    },
    "halves": "alternating sectors",
-   "secondary_phase": 0.49960840069296886,
-   "secondary_phase_sigma": 0.0006001345444948125,
-   "secondary_depth": 0.07029280302895557,
-   "secondary_snr": 27.094129906375272,
-   "ecosw_sigma": 0.0009426891380751799,
+   "secondary_events": [
+    1,
+    1
+   ],
    "alternation": null,
    "n_points": 25844,
    "n_sectors": 3
   },
   "94125661": {
-   "verdict": "CIRCULAR_WITHIN_ERRORS",
-   "ecosw": -0.003332645255231457,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.49787837213623265,
     "depth": 0.05049023226939575,
@@ -1515,11 +1566,10 @@
     "n_in": 16
    },
    "halves": "alternating orbits",
-   "secondary_phase": 0.49787837213623265,
-   "secondary_phase_sigma": 0.00047117023078316903,
-   "secondary_depth": 0.05049023226939575,
-   "secondary_snr": 13.80190643493932,
-   "ecosw_sigma": 0.0007401124678093056,
+   "secondary_events": [
+    0,
+    0
+   ],
    "alternation": null,
    "n_points": 1072,
    "n_sectors": 1
@@ -1546,6 +1596,10 @@
     "n_in": 286
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    5,
+    3
+   ],
    "secondary_phase": 0.5019567404077641,
    "secondary_phase_sigma": 0.00021928383249601615,
    "secondary_depth": 0.02767289965987252,
@@ -1577,6 +1631,10 @@
     "n_in": 73
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    3,
+    3
+   ],
    "secondary_phase": 0.4955443783463691,
    "secondary_phase_sigma": 0.0021840566925048766,
    "secondary_depth": 0.17083951833540367,
@@ -1608,6 +1666,10 @@
     "n_in": 67
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    8,
+    6
+   ],
    "secondary_phase": 0.49847098630023023,
    "secondary_phase_sigma": 0.00017009561796315712,
    "secondary_depth": 0.047448327458305295,
@@ -1649,6 +1711,10 @@
     "n_in": 124
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    7,
+    3
+   ],
    "secondary_phase": 0.5000920464755291,
    "secondary_phase_sigma": 0.0008592520113992475,
    "secondary_depth": 0.004148460216627292,
@@ -1690,6 +1756,10 @@
     "n_in": 78
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    14,
+    14
+   ],
    "secondary_phase": 0.5095066065783156,
    "secondary_phase_sigma": 0.002535139493681044,
    "secondary_depth": 0.01752916511095237,
@@ -1762,7 +1832,7 @@
    "n_sectors": 1
   },
   "111240209": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.5004455746354736,
@@ -1783,12 +1853,16 @@
     "n_in": 210
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    1,
+    0
+   ],
    "alternation": null,
    "n_points": 37184,
    "n_sectors": 4
   },
   "114549849": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.5905572446179429,
@@ -1809,6 +1883,10 @@
     "n_in": 11
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    2,
+    0
+   ],
    "alternation": null,
    "n_points": 1072,
    "n_sectors": 1
@@ -1840,8 +1918,8 @@
    "n_sectors": 1
   },
   "119941327": {
-   "verdict": "CIRCULAR_WITHIN_ERRORS",
-   "ecosw": 0.007566378589742013,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.5048169062154485,
     "depth": 0.03724211284692869,
@@ -1861,11 +1939,10 @@
     "n_in": 13
    },
    "halves": "alternating orbits",
-   "secondary_phase": 0.5048169062154485,
-   "secondary_phase_sigma": 0.0018484993065045474,
-   "secondary_depth": 0.03724211284692869,
-   "secondary_snr": 9.041869103073001,
-   "ecosw_sigma": 0.0029036159207402566,
+   "secondary_events": [
+    1,
+    2
+   ],
    "alternation": null,
    "n_points": 903,
    "n_sectors": 1
@@ -1892,6 +1969,10 @@
     "n_in": 12
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    3,
+    4
+   ],
    "secondary_phase": 0.4993303679149826,
    "secondary_phase_sigma": 0.0019210042750711087,
    "secondary_depth": 0.04721930301508914,
@@ -1985,6 +2066,10 @@
     "n_in": 113
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    22,
+    28
+   ],
    "secondary_phase": 0.5001134191033823,
    "secondary_phase_sigma": 0.00156095704954811,
    "secondary_depth": 0.015974053985867154,
@@ -2016,6 +2101,10 @@
     "n_in": 12
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    3,
+    4
+   ],
    "secondary_phase": 0.4996623795334233,
    "secondary_phase_sigma": 0.00268567324110075,
    "secondary_depth": 0.18083312568878918,
@@ -2078,8 +2167,8 @@
    "n_sectors": 1
   },
   "156776551": {
-   "verdict": "CIRCULAR_WITHIN_ERRORS",
-   "ecosw": -0.0009894372202143293,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.49937010470209514,
     "depth": 0.04888292084434587,
@@ -2099,11 +2188,10 @@
     "n_in": 13
    },
    "halves": "alternating orbits",
-   "secondary_phase": 0.49937010470209514,
-   "secondary_phase_sigma": 0.001693444083165102,
-   "secondary_depth": 0.04888292084434587,
-   "secondary_snr": 10.001814358520072,
-   "ecosw_sigma": 0.0026600557454682936,
+   "secondary_events": [
+    1,
+    0
+   ],
    "alternation": null,
    "n_points": 1032,
    "n_sectors": 1
@@ -2130,6 +2218,10 @@
     "n_in": 16
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    4,
+    3
+   ],
    "secondary_phase": 0.501271152134333,
    "secondary_phase_sigma": 0.0017292565549814343,
    "secondary_depth": 0.31332114845076686,
@@ -2161,6 +2253,10 @@
     "n_in": 24
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    4,
+    4
+   ],
    "secondary_phase": 0.49948896247726987,
    "secondary_phase_sigma": 0.001077516054935057,
    "secondary_depth": 0.05978173830781697,
@@ -2218,6 +2314,10 @@
     "n_in": 87
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    6,
+    6
+   ],
    "secondary_phase": 0.49986910347185654,
    "secondary_phase_sigma": 0.00010001986427288223,
    "secondary_depth": 0.10511327757695277,
@@ -2264,8 +2364,8 @@
    "n_sectors": 1
   },
   "176348607": {
-   "verdict": "CIRCULAR_WITHIN_ERRORS",
-   "ecosw": 0.002612877812830195,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.5016634096784283,
     "depth": 0.05254007379301695,
@@ -2285,11 +2385,10 @@
     "n_in": 11
    },
    "halves": "alternating orbits",
-   "secondary_phase": 0.5016634096784283,
-   "secondary_phase_sigma": 0.00028754883640483525,
-   "secondary_depth": 0.05254007379301695,
-   "secondary_snr": 17.005754575465275,
-   "ecosw_sigma": 0.0004516806559988618,
+   "secondary_events": [
+    0,
+    0
+   ],
    "alternation": null,
    "n_points": 1072,
    "n_sectors": 1
@@ -2316,6 +2415,10 @@
     "n_in": 35
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    9,
+    10
+   ],
    "secondary_phase": 0.4978130544851373,
    "secondary_phase_sigma": 0.0022293053352729626,
    "secondary_depth": 0.005037742015469804,
@@ -2357,6 +2460,10 @@
     "n_in": 131
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    8,
+    9
+   ],
    "secondary_phase": 0.5000661034816377,
    "secondary_phase_sigma": 0.00030637043485545745,
    "secondary_depth": 0.0807411282844197,
@@ -2398,6 +2505,10 @@
     "n_in": 22
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    6,
+    4
+   ],
    "secondary_phase": 0.60219720783018,
    "secondary_phase_sigma": 0.0010366922514560351,
    "secondary_depth": 0.23817239636298027,
@@ -2463,6 +2574,10 @@
     "n_in": 138
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    6,
+    6
+   ],
    "alternation": {
     "odd_even_time_offset_min": 3.4630000000000005,
     "offset_sigma_min": 5.9357954215689945,
@@ -2499,6 +2614,10 @@
     "n_in": 41
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    7,
+    5
+   ],
    "secondary_phase": 0.4999220006243236,
    "secondary_phase_sigma": 0.0007703011081851563,
    "secondary_depth": 0.011868892383278817,
@@ -2621,6 +2740,10 @@
     "n_in": 3472
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    41,
+    28
+   ],
    "secondary_phase": 0.49953778963311946,
    "secondary_phase_sigma": 0.029576536530224184,
    "secondary_depth": 0.013527889176375929,
@@ -2662,6 +2785,10 @@
     "n_in": 61
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    7,
+    5
+   ],
    "secondary_phase": 0.5026364388068998,
    "secondary_phase_sigma": 0.0036951238571985845,
    "secondary_depth": 0.011296193551081912,
@@ -2693,6 +2820,10 @@
     "n_in": 50
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    2,
+    2
+   ],
    "secondary_phase": 0.4996930252434466,
    "secondary_phase_sigma": 0.001001120481958273,
    "secondary_depth": 0.059452259154246456,
@@ -2724,6 +2855,10 @@
     "n_in": 364
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    4,
+    5
+   ],
    "secondary_phase": 0.4956965398289968,
    "secondary_phase_sigma": 0.004230463653531025,
    "secondary_depth": 0.05267207315263733,
@@ -2765,6 +2900,10 @@
     "n_in": 146
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    7,
+    9
+   ],
    "secondary_phase": 0.4982454067690529,
    "secondary_phase_sigma": 0.008072290555825395,
    "secondary_depth": 0.01038502614140202,
@@ -2806,6 +2945,10 @@
     "n_in": 17
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    5,
+    5
+   ],
    "secondary_phase": 0.4993961263915833,
    "secondary_phase_sigma": 0.0009449002544662894,
    "secondary_depth": 0.01460495342364343,
@@ -2899,6 +3042,10 @@
     "n_in": 691
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    10,
+    8
+   ],
    "alternation": null,
    "n_points": 16935,
    "n_sectors": 1
@@ -2925,6 +3072,10 @@
     "n_in": 673
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    24,
+    27
+   ],
    "secondary_phase": 0.5008345512897444,
    "secondary_phase_sigma": 0.002777678928847671,
    "secondary_depth": 0.009492639681290438,
@@ -2966,13 +3117,17 @@
     "n_in": 413
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    5,
+    4
+   ],
    "alternation": null,
    "n_points": 128360,
    "n_sectors": 14
   },
   "219892238": {
-   "verdict": "CIRCULAR_WITHIN_ERRORS",
-   "ecosw": 3.560267597601476e-05,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.5000226653674755,
     "depth": 0.047741325152620084,
@@ -2992,11 +3147,10 @@
     "n_in": 527
    },
    "halves": "alternating sectors",
-   "secondary_phase": 0.5000226653674755,
-   "secondary_phase_sigma": 5.910928849842123e-05,
-   "secondary_depth": 0.047741325152620084,
-   "secondary_snr": 141.48346712359697,
-   "ecosw_sigma": 9.28486532527799e-05,
+   "secondary_events": [
+    1,
+    3
+   ],
    "alternation": null,
    "n_points": 176572,
    "n_sectors": 11
@@ -3023,6 +3177,10 @@
     "n_in": 148
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    10,
+    7
+   ],
    "secondary_phase": 0.5006324483963137,
    "secondary_phase_sigma": 0.00015551900491184156,
    "secondary_depth": 0.05831418272341016,
@@ -3064,6 +3222,10 @@
     "n_in": 222
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    18,
+    17
+   ],
    "secondary_phase": 0.5014048401313722,
    "secondary_phase_sigma": 0.00033784245289145143,
    "secondary_depth": 0.0036206753154494065,
@@ -3084,7 +3246,7 @@
    "n_sectors": 1
   },
   "224215371": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.25086594860841926,
@@ -3105,6 +3267,10 @@
     "n_in": 72
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    1,
+    2
+   ],
    "alternation": null,
    "n_points": 10049,
    "n_sectors": 2
@@ -3131,6 +3297,10 @@
     "n_in": 220
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    4,
+    3
+   ],
    "alternation": null,
    "n_points": 6503,
    "n_sectors": 1
@@ -3193,6 +3363,10 @@
     "n_in": 338
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    3,
+    3
+   ],
    "secondary_phase": 0.5003306511395124,
    "secondary_phase_sigma": 0.006988366453766187,
    "secondary_depth": 0.008977294378921585,
@@ -3224,6 +3398,10 @@
     "n_in": 10
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    4,
+    2
+   ],
    "secondary_phase": 0.49991717367834937,
    "secondary_phase_sigma": 0.0002777007649895358,
    "secondary_depth": 0.17184838365030108,
@@ -3234,7 +3412,7 @@
    "n_sectors": 2
   },
   "229181348": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.500927641379255,
@@ -3250,6 +3428,10 @@
     "n_in": 11
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    0,
+    0
+   ],
    "alternation": null,
    "n_points": 1073,
    "n_sectors": 1
@@ -3302,6 +3484,10 @@
     "n_in": 104
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    3,
+    2
+   ],
    "alternation": null,
    "n_points": 164312,
    "n_sectors": 17
@@ -3354,6 +3540,10 @@
     "n_in": 4462
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    57,
+    52
+   ],
    "secondary_phase": 0.4997645448382913,
    "secondary_phase_sigma": 7.281596601360263e-05,
    "secondary_depth": 0.023057548504777592,
@@ -3395,6 +3585,10 @@
     "n_in": 312
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    4,
+    6
+   ],
    "secondary_phase": 0.5000520559802241,
    "secondary_phase_sigma": 0.00048360086765497634,
    "secondary_depth": 0.0005544186225527881,
@@ -3478,6 +3672,10 @@
     "n_in": 352
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    32,
+    34
+   ],
    "secondary_phase": 0.66336832786918,
    "secondary_phase_sigma": 0.010282852651507912,
    "secondary_depth": 0.019434588862742963,
@@ -3520,12 +3718,16 @@
     "n_in": 620
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    39,
+    36
+   ],
    "alternation": null,
    "n_points": 14207,
    "n_sectors": 2
   },
   "231055671": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.1644604710488849,
@@ -3536,12 +3738,16 @@
    "half_a": null,
    "half_b": null,
    "halves": "alternating sectors",
+   "secondary_events": [
+    1,
+    1
+   ],
    "alternation": null,
    "n_points": 1826,
    "n_sectors": 2
   },
   "231908427": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.5014637175658142,
@@ -3562,6 +3768,10 @@
     "n_in": 11
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    1,
+    2
+   ],
    "alternation": null,
    "n_points": 2090,
    "n_sectors": 2
@@ -3588,6 +3798,10 @@
     "n_in": 27
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    8,
+    6
+   ],
    "secondary_phase": 0.5017137313216137,
    "secondary_phase_sigma": 0.00140519771859135,
    "secondary_depth": 0.14656772941837448,
@@ -3655,6 +3869,10 @@
     "n_in": 16
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    4,
+    4
+   ],
    "secondary_phase": 0.5015096912931708,
    "secondary_phase_sigma": 0.0009387007370796896,
    "secondary_depth": 0.0787958184006845,
@@ -3686,6 +3904,10 @@
     "n_in": 14
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    3,
+    3
+   ],
    "secondary_phase": 0.5038770407398457,
    "secondary_phase_sigma": 0.0007306374862778249,
    "secondary_depth": 0.010086853360736558,
@@ -3696,7 +3918,7 @@
    "n_sectors": 1
   },
   "232171820": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.1495336252825705,
@@ -3707,6 +3929,10 @@
    "half_a": null,
    "half_b": null,
    "halves": "alternating orbits",
+   "secondary_events": [
+    0,
+    1
+   ],
    "alternation": null,
    "n_points": 904,
    "n_sectors": 1
@@ -3733,6 +3959,10 @@
     "n_in": 31
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    7,
+    8
+   ],
    "secondary_phase": 0.49547757076522325,
    "secondary_phase_sigma": 0.0016327153416003382,
    "secondary_depth": 0.021960222421852138,
@@ -3805,7 +4035,7 @@
    "n_sectors": 1
   },
   "233459038": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.7815971448366507,
@@ -3826,13 +4056,17 @@
     "n_in": 80
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    0,
+    0
+   ],
    "alternation": null,
    "n_points": 14763,
    "n_sectors": 6
   },
   "235512374": {
-   "verdict": "CIRCULAR_WITHIN_ERRORS",
-   "ecosw": -0.00039482087759359875,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.4997486492227804,
     "depth": 0.004453076373015841,
@@ -3852,11 +4086,10 @@
     "n_in": 10
    },
    "halves": "alternating orbits",
-   "secondary_phase": 0.4997486492227804,
-   "secondary_phase_sigma": 0.0012153986312517795,
-   "secondary_depth": 0.004453076373015841,
-   "secondary_snr": 7.542364377128228,
-   "ecosw_sigma": 0.0019091437055618402,
+   "secondary_events": [
+    0,
+    0
+   ],
    "alternation": null,
    "n_points": 904,
    "n_sectors": 1
@@ -3883,6 +4116,10 @@
     "n_in": 762
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    17,
+    17
+   ],
    "secondary_phase": 0.5003430713493066,
    "secondary_phase_sigma": 1.6898737517936096e-05,
    "secondary_depth": 0.11749506361110296,
@@ -3939,8 +4176,8 @@
    "n_sectors": 26
   },
   "237505178": {
-   "verdict": "CIRCULAR_WITHIN_ERRORS",
-   "ecosw": 0.004387732325912063,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.502793317154532,
     "depth": 0.01534645249710398,
@@ -3960,11 +4197,10 @@
     "n_in": 13
    },
    "halves": "alternating orbits",
-   "secondary_phase": 0.502793317154532,
-   "secondary_phase_sigma": 0.006389645236444752,
-   "secondary_depth": 0.01534645249710398,
-   "secondary_snr": 7.165333155589726,
-   "ecosw_sigma": 0.010036831266929926,
+   "secondary_events": [
+    1,
+    2
+   ],
    "alternation": null,
    "n_points": 904,
    "n_sectors": 1
@@ -4053,6 +4289,10 @@
     "n_in": 491
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    17,
+    20
+   ],
    "alternation": {
     "odd_even_time_offset_min": 0.15700000000000003,
     "offset_sigma_min": 0.14251390320428986,
@@ -4089,6 +4329,10 @@
     "n_in": 34
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    7,
+    7
+   ],
    "secondary_phase": 0.5060150748529626,
    "secondary_phase_sigma": 0.0022748057904589114,
    "secondary_depth": 0.0057382183371559314,
@@ -4109,7 +4353,7 @@
    "n_sectors": 1
   },
   "246650797": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.24116441720415377,
@@ -4120,6 +4364,10 @@
    "half_a": null,
    "half_b": null,
    "halves": "alternating orbits",
+   "secondary_events": [
+    1,
+    1
+   ],
    "alternation": null,
    "n_points": 1148,
    "n_sectors": 1
@@ -4203,6 +4451,10 @@
     "n_in": 401
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    26,
+    33
+   ],
    "secondary_phase": 0.4972446991794527,
    "secondary_phase_sigma": 0.000620857853926719,
    "secondary_depth": 0.03902561361825252,
@@ -4223,7 +4475,7 @@
    "n_sectors": 2
   },
   "251663993": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.5015843590569934,
@@ -4244,12 +4496,16 @@
     "n_in": 102
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    0,
+    2
+   ],
    "alternation": null,
    "n_points": 9465,
    "n_sectors": 1
   },
   "251898081": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.453676137743155,
@@ -4270,6 +4526,10 @@
     "n_in": 142
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    2,
+    0
+   ],
    "alternation": null,
    "n_points": 45998,
    "n_sectors": 5
@@ -4296,6 +4556,10 @@
     "n_in": 183
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    6,
+    5
+   ],
    "secondary_phase": 0.501550411465014,
    "secondary_phase_sigma": 0.003967647927972218,
    "secondary_depth": 0.2528523398117566,
@@ -4316,7 +4580,7 @@
    "n_sectors": 2
   },
   "257806221": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.4997951731049049,
@@ -4337,12 +4601,16 @@
     "n_in": 105
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    0,
+    1
+   ],
    "alternation": null,
    "n_points": 14297,
    "n_sectors": 2
   },
   "257817337": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.49680884438451867,
@@ -4363,6 +4631,10 @@
     "n_in": 13
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    1,
+    0
+   ],
    "alternation": null,
    "n_points": 7180,
    "n_sectors": 1
@@ -4389,6 +4661,10 @@
     "n_in": 52
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    2,
+    2
+   ],
    "secondary_phase": 0.5000916620815274,
    "secondary_phase_sigma": 7.594712779102296e-05,
    "secondary_depth": 0.07757336220043909,
@@ -4420,6 +4696,10 @@
     "n_in": 526
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    11,
+    11
+   ],
    "secondary_phase": 0.49884278682413813,
    "secondary_phase_sigma": 0.009945888314522311,
    "secondary_depth": 0.004531352909492359,
@@ -4461,6 +4741,10 @@
     "n_in": 97
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    3,
+    2
+   ],
    "secondary_phase": 0.5004697259050254,
    "secondary_phase_sigma": 3.4589548118365525e-05,
    "secondary_depth": 0.13455654160272956,
@@ -4581,6 +4865,10 @@
     "n_in": 12
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    3,
+    3
+   ],
    "secondary_phase": 0.5016630521175005,
    "secondary_phase_sigma": 0.0011324404295599833,
    "secondary_depth": 0.03149196570204105,
@@ -4612,6 +4900,10 @@
     "n_in": 133
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    58,
+    34
+   ],
    "secondary_phase": 0.5020767974672025,
    "secondary_phase_sigma": 0.001906978058431408,
    "secondary_depth": 0.01919266532101882,
@@ -4643,6 +4935,10 @@
     "n_in": 104
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    2,
+    2
+   ],
    "secondary_phase": 0.6260061193714876,
    "secondary_phase_sigma": 0.00029609838282718126,
    "secondary_depth": 0.2119483897568165,
@@ -4704,6 +5000,10 @@
     "n_in": 69
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    4,
+    3
+   ],
    "secondary_phase": 0.48963757943458436,
    "secondary_phase_sigma": 0.00407323474749266,
    "secondary_depth": 0.006951038536866294,
@@ -4788,6 +5088,10 @@
     "n_in": 429
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    9,
+    4
+   ],
    "alternation": {
     "odd_even_time_offset_min": 0.269,
     "offset_sigma_min": 0.2559734522373345,
@@ -4876,6 +5180,10 @@
     "n_in": 173
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    23,
+    10
+   ],
    "secondary_phase": 0.5133711794114219,
    "secondary_phase_sigma": 0.002544949351088066,
    "secondary_depth": 0.006609751444606404,
@@ -4945,8 +5253,8 @@
    "n_sectors": 1
   },
   "290129286": {
-   "verdict": "CIRCULAR_WITHIN_ERRORS",
-   "ecosw": -0.0017366709265176816,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.4988944009500829,
     "depth": 0.08628435163695525,
@@ -4966,11 +5274,10 @@
     "n_in": 23
    },
    "halves": "alternating orbits",
-   "secondary_phase": 0.4988944009500829,
-   "secondary_phase_sigma": 0.0009024093434626538,
-   "secondary_depth": 0.08628435163695525,
-   "secondary_snr": 13.088020319630724,
-   "ecosw_sigma": 0.0014175012819765307,
+   "secondary_events": [
+    1,
+    1
+   ],
    "alternation": null,
    "n_points": 1062,
    "n_sectors": 1
@@ -4997,6 +5304,10 @@
     "n_in": 54
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    15,
+    11
+   ],
    "secondary_phase": 0.48935912792109215,
    "secondary_phase_sigma": 0.0038716790115405075,
    "secondary_depth": 0.03596896400586358,
@@ -5064,6 +5375,10 @@
     "n_in": 138
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    25,
+    25
+   ],
    "secondary_phase": 0.5065020299226145,
    "secondary_phase_sigma": 0.0017344439073429304,
    "secondary_depth": 0.016925329094726882,
@@ -5084,8 +5399,8 @@
    "n_sectors": 2
   },
   "295035279": {
-   "verdict": "ECCENTRIC",
-   "ecosw": -0.37766628695805887,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.2595701743658509,
     "depth": 0.10562209715198512,
@@ -5105,25 +5420,11 @@
     "n_in": 14
    },
    "halves": "alternating sectors",
-   "secondary_phase": 0.2595701743658509,
-   "secondary_phase_sigma": 0.0008851196668234196,
-   "secondary_depth": 0.10562209715198512,
-   "secondary_snr": 21.30202565066373,
-   "ecosw_sigma": 0.00139034272142015,
-   "other_dip": {
-    "phase": 0.464352011566456,
-    "depth": 0.002822593903435644,
-    "snr": 3.7030960414456477
-   },
-   "fast_signal": {
-    "period_days": 0.086077393380436,
-    "amplitude": 0.004759266003208564,
-    "fap": 1.0,
-    "amplitude_over_secondary_depth": 0.04505937802352295
-   },
+   "secondary_events": [
+    1,
+    2
+   ],
    "alternation": null,
-   "ztf": null,
-   "ztf_coverage": "insufficient_points",
    "n_points": 2167,
    "n_sectors": 2
   },
@@ -5211,6 +5512,10 @@
     "n_in": 22
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    4,
+    4
+   ],
    "secondary_phase": 0.5003717677714216,
    "secondary_phase_sigma": 0.0005109325562830775,
    "secondary_depth": 0.0535589709267279,
@@ -5242,6 +5547,10 @@
     "n_in": 15
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    3,
+    3
+   ],
    "secondary_phase": 0.5001859332236184,
    "secondary_phase_sigma": 0.004344110288322517,
    "secondary_depth": 0.0114985064353883,
@@ -5335,6 +5644,10 @@
     "n_in": 51
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    8,
+    9
+   ],
    "secondary_phase": 0.5663121496704339,
    "secondary_phase_sigma": 0.0017567647874401349,
    "secondary_depth": 0.011954803124378799,
@@ -5415,6 +5728,10 @@
     "n_in": 10
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    3,
+    3
+   ],
    "secondary_phase": 0.4996083788934686,
    "secondary_phase_sigma": 0.003020875994221628,
    "secondary_depth": 0.16217625770062882,
@@ -5446,6 +5763,10 @@
     "n_in": 12
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    2,
+    2
+   ],
    "secondary_phase": 0.30388599195728205,
    "secondary_phase_sigma": 0.0008958780631051926,
    "secondary_depth": 0.1339068616253154,
@@ -5527,6 +5848,10 @@
     "n_in": 73
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    3,
+    3
+   ],
    "alternation": null,
    "n_points": 62989,
    "n_sectors": 7
@@ -5553,6 +5878,10 @@
     "n_in": 653
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    36,
+    18
+   ],
    "secondary_phase": 0.499296142337947,
    "secondary_phase_sigma": 0.0019494217280024706,
    "secondary_depth": 0.018526518226430366,
@@ -5573,7 +5902,7 @@
    "n_sectors": 3
   },
   "313386191": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.5001257031196317,
@@ -5589,6 +5918,10 @@
    },
    "half_b": null,
    "halves": "alternating sectors",
+   "secondary_events": [
+    1,
+    1
+   ],
    "alternation": null,
    "n_points": 2924,
    "n_sectors": 3
@@ -5615,6 +5948,10 @@
     "n_in": 563
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    6,
+    4
+   ],
    "secondary_phase": 0.5018622868640384,
    "secondary_phase_sigma": 0.00020771705486333225,
    "secondary_depth": 0.02074408561783969,
@@ -5635,7 +5972,7 @@
    "n_sectors": 10
   },
   "313498432": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.5517737024094543,
@@ -5656,6 +5993,10 @@
     "n_in": 52
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    1,
+    1
+   ],
    "alternation": null,
    "n_points": 39742,
    "n_sectors": 5
@@ -5780,6 +6121,10 @@
     "n_in": 21
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    4,
+    4
+   ],
    "secondary_phase": 0.5002282162599124,
    "secondary_phase_sigma": 0.0005787635342520414,
    "secondary_depth": 0.040952957914276444,
@@ -5821,6 +6166,10 @@
     "n_in": 144
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    7,
+    7
+   ],
    "secondary_phase": 0.4999970543885313,
    "secondary_phase_sigma": 0.0013365671690457048,
    "secondary_depth": 0.03540674981575187,
@@ -5841,7 +6190,7 @@
    "n_sectors": 1
   },
   "318566745": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.5007241575739104,
@@ -5862,12 +6211,16 @@
     "n_in": 40
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    0,
+    1
+   ],
    "alternation": null,
    "n_points": 13358,
    "n_sectors": 4
   },
   "318620649": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.4992863043829559,
@@ -5888,6 +6241,10 @@
     "n_in": 211
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    1,
+    2
+   ],
    "alternation": null,
    "n_points": 41256,
    "n_sectors": 5
@@ -5997,7 +6354,7 @@
    "n_sectors": 1
   },
   "326225355": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.5002335567240269,
@@ -6018,6 +6375,10 @@
     "n_in": 35
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    1,
+    1
+   ],
    "alternation": null,
    "n_points": 4591,
    "n_sectors": 2
@@ -6044,6 +6405,10 @@
     "n_in": 1475
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    7,
+    14
+   ],
    "secondary_phase": 0.4943208446713961,
    "secondary_phase_sigma": 0.0015501489044301062,
    "secondary_depth": 0.001385006880025852,
@@ -6064,7 +6429,7 @@
    "n_sectors": 4
   },
   "333145823": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.5017056639287734,
@@ -6085,6 +6450,10 @@
     "n_in": 144
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    0,
+    25
+   ],
    "alternation": {
     "odd_even_time_offset_min": -0.17099999999999999,
     "offset_sigma_min": 0.42715345320714865,
@@ -6121,6 +6490,10 @@
     "n_in": 71
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    16,
+    18
+   ],
    "secondary_phase": 0.501756547090996,
    "secondary_phase_sigma": 0.00114191289354737,
    "secondary_depth": 0.01440150371250537,
@@ -6147,7 +6520,7 @@
    "n_sectors": 1
   },
   "334422203": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.4998209314013582,
@@ -6168,13 +6541,17 @@
     "n_in": 11
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    0,
+    1
+   ],
    "alternation": null,
    "n_points": 964,
    "n_sectors": 1
   },
   "336181565": {
-   "verdict": "CIRCULAR_WITHIN_ERRORS",
-   "ecosw": -0.0007470859918468808,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.49952439028593143,
     "depth": 0.028415992062463258,
@@ -6194,11 +6571,10 @@
     "n_in": 18
    },
    "halves": "alternating orbits",
-   "secondary_phase": 0.49952439028593143,
-   "secondary_phase_sigma": 0.002259010686731344,
-   "secondary_depth": 0.028415992062463258,
-   "secondary_snr": 13.203371551791086,
-   "ecosw_sigma": 0.003548445688908012,
+   "secondary_events": [
+    0,
+    0
+   ],
    "alternation": null,
    "n_points": 1081,
    "n_sectors": 1
@@ -6225,6 +6601,10 @@
     "n_in": 425
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    26,
+    13
+   ],
    "secondary_phase": 0.5039185799952557,
    "secondary_phase_sigma": 0.006974788333920928,
    "secondary_depth": 0.033032004910496515,
@@ -6266,6 +6646,10 @@
     "n_in": 36
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    2,
+    3
+   ],
    "secondary_phase": 0.5043276260414307,
    "secondary_phase_sigma": 0.0009012401237984968,
    "secondary_depth": 0.06703202466384361,
@@ -6385,6 +6769,10 @@
     "n_in": 50
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    24,
+    12
+   ],
    "secondary_phase": 0.49972239059176066,
    "secondary_phase_sigma": 0.0007632229506619921,
    "secondary_depth": 0.013598714963090952,
@@ -6416,6 +6804,10 @@
     "n_in": 2671
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    41,
+    35
+   ],
    "secondary_phase": 0.5027797772599183,
    "secondary_phase_sigma": 0.0015225108635485984,
    "secondary_depth": 0.028241474047625892,
@@ -6472,7 +6864,7 @@
    "n_sectors": 2
   },
   "348762141": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.7264831580759548,
@@ -6488,6 +6880,10 @@
    },
    "half_b": null,
    "halves": "alternating sectors",
+   "secondary_events": [
+    2,
+    0
+   ],
    "alternation": null,
    "n_points": 3325,
    "n_sectors": 3
@@ -6608,6 +7004,10 @@
     "n_in": 563
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    8,
+    11
+   ],
    "secondary_phase": 0.501729100729568,
    "secondary_phase_sigma": 0.00015623416519180977,
    "secondary_depth": 0.009816919564746396,
@@ -6664,7 +7064,7 @@
    "n_sectors": 1
   },
   "349252594": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.15368822688995162,
@@ -6685,12 +7085,16 @@
     "n_in": 24
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    1,
+    1
+   ],
    "alternation": null,
    "n_points": 3240,
    "n_sectors": 1
   },
   "349701853": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.32309243278054,
@@ -6711,12 +7115,16 @@
     "n_in": 51
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    0,
+    1
+   ],
    "alternation": null,
    "n_points": 22012,
    "n_sectors": 4
   },
   "349725115": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.4987684503107892,
@@ -6737,13 +7145,17 @@
     "n_in": 73
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    1,
+    1
+   ],
    "alternation": null,
    "n_points": 14634,
    "n_sectors": 2
   },
   "355734358": {
-   "verdict": "CIRCULAR_WITHIN_ERRORS",
-   "ecosw": 0.001241461770182489,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.5007903391095366,
     "depth": 0.06995847258420751,
@@ -6763,18 +7175,17 @@
     "n_in": 44
    },
    "halves": "alternating orbits",
-   "secondary_phase": 0.5007903391095366,
-   "secondary_phase_sigma": 0.0005281460735557242,
-   "secondary_depth": 0.06995847258420751,
-   "secondary_snr": 19.076491538741074,
-   "ecosw_sigma": 0.0008296099123524788,
+   "secondary_events": [
+    1,
+    2
+   ],
    "alternation": null,
    "n_points": 7895,
    "n_sectors": 1
   },
   "355734894": {
-   "verdict": "CIRCULAR_WITHIN_ERRORS",
-   "ecosw": 0.0030682927921474685,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.501953335858894,
     "depth": 0.001265839544970504,
@@ -6794,17 +7205,16 @@
     "n_in": 32
    },
    "halves": "alternating orbits",
-   "secondary_phase": 0.501953335858894,
-   "secondary_phase_sigma": 0.004124818687026577,
-   "secondary_depth": 0.001265839544970504,
-   "secondary_snr": 7.3283267111096695,
-   "ecosw_sigma": 0.006479250042276295,
+   "secondary_events": [
+    1,
+    1
+   ],
    "alternation": null,
    "n_points": 4413,
    "n_sectors": 1
   },
   "355737250": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.49945824593851756,
@@ -6825,12 +7235,16 @@
     "n_in": 11
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    2,
+    1
+   ],
    "alternation": null,
    "n_points": 1183,
    "n_sectors": 1
   },
   "355809352": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.3360618868012433,
@@ -6851,6 +7265,10 @@
     "n_in": 36
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    0,
+    1
+   ],
    "alternation": null,
    "n_points": 14819,
    "n_sectors": 2
@@ -6877,6 +7295,10 @@
     "n_in": 533
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    27,
+    55
+   ],
    "alternation": null,
    "n_points": 26012,
    "n_sectors": 7
@@ -6910,6 +7332,10 @@
     "n_in": 138
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    8,
+    8
+   ],
    "secondary_phase": 0.4987046090722992,
    "secondary_phase_sigma": 0.0018297648044021675,
    "secondary_depth": 0.009337206164227951,
@@ -6951,6 +7377,10 @@
     "n_in": 103
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    5,
+    6
+   ],
    "secondary_phase": 0.5012698455908866,
    "secondary_phase_sigma": 0.0023891894191884755,
    "secondary_depth": 0.05186476420121533,
@@ -6992,6 +7422,10 @@
     "n_in": 1087
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    50,
+    30
+   ],
    "secondary_phase": 0.4995099501934794,
    "secondary_phase_sigma": 0.0007416371500475194,
    "secondary_depth": 0.0076551293929445485,
@@ -7069,6 +7503,10 @@
     "n_in": 263
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    10,
+    12
+   ],
    "secondary_phase": 0.501231180575972,
    "secondary_phase_sigma": 0.0019057649299356327,
    "secondary_depth": 0.018944373065846842,
@@ -7127,6 +7565,10 @@
     "n_in": 54
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    9,
+    8
+   ],
    "secondary_phase": 0.4990755856014522,
    "secondary_phase_sigma": 0.0016476158393723406,
    "secondary_depth": 0.044532475012244,
@@ -7168,6 +7610,10 @@
     "n_in": 1011
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    13,
+    13
+   ],
    "secondary_phase": 0.4936615188733141,
    "secondary_phase_sigma": 0.0001570573341429793,
    "secondary_depth": 0.08122051908824934,
@@ -7209,6 +7655,10 @@
     "n_in": 27
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    3,
+    2
+   ],
    "secondary_phase": 0.6337907365011959,
    "secondary_phase_sigma": 0.0005523460222401355,
    "secondary_depth": 0.006054562351869297,
@@ -7232,8 +7682,8 @@
    "n_sectors": 2
   },
   "373792319": {
-   "verdict": "ECCENTRIC",
-   "ecosw": 0.49003348359953297,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.8119650047816276,
     "depth": 0.028520994032743663,
@@ -7253,36 +7703,11 @@
     "n_in": 148
    },
    "halves": "alternating sectors",
-   "secondary_phase": 0.8119650047816276,
-   "secondary_phase_sigma": 0.0010609216668127086,
-   "secondary_depth": 0.028520994032743663,
-   "secondary_snr": 30.395200496217697,
-   "ecosw_sigma": 0.0016664918572465218,
-   "other_dip": {
-    "phase": 0.872229085991938,
-    "depth": 0.002828466172742128,
-    "snr": 4.918816260298524
-   },
-   "fast_signal": {
-    "period_days": 1.0604771765013754,
-    "amplitude": 0.0066792342419400765,
-    "fap": 0.8902797445046698,
-    "amplitude_over_secondary_depth": 0.23418658670423442
-   },
+   "secondary_events": [
+    1,
+    2
+   ],
    "alternation": null,
-   "ztf": {
-    "period_used_days": 16.19951007156632,
-    "n_points": 1401,
-    "primary_shift_phase": -0.0020000000000000018,
-    "scan_phase": 0.7678416850008861,
-    "scan_snr": 4.3596368744870455,
-    "snr_at_tess_phase": 4.69014795944261,
-    "n_in_at_tess_phase": 7,
-    "p_value": 0.004975124378109453,
-    "scan_agrees_with_tess": false,
-    "confirmed": false
-   },
-   "ztf_coverage": "measured",
    "n_points": 22421,
    "n_sectors": 2
   },
@@ -7323,7 +7748,7 @@
    "n_sectors": 1
   },
   "374158907": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.48033167585371406,
@@ -7334,6 +7759,10 @@
    "half_a": null,
    "half_b": null,
    "halves": "alternating sectors",
+   "secondary_events": [
+    1,
+    1
+   ],
    "alternation": null,
    "n_points": 2189,
    "n_sectors": 2
@@ -7386,6 +7815,10 @@
     "n_in": 117
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    9,
+    8
+   ],
    "secondary_phase": 0.5014169240493814,
    "secondary_phase_sigma": 0.0009509399385316253,
    "secondary_depth": 0.041174419726804246,
@@ -7427,6 +7860,10 @@
     "n_in": 210
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    2,
+    2
+   ],
    "alternation": null,
    "n_points": 61564,
    "n_sectors": 9
@@ -7453,6 +7890,10 @@
     "n_in": 1103
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    32,
+    64
+   ],
    "secondary_phase": 0.49247210834820226,
    "secondary_phase_sigma": 0.012758431421878824,
    "secondary_depth": 0.05497675341321828,
@@ -7494,6 +7935,10 @@
     "n_in": 138
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    5,
+    2
+   ],
    "secondary_phase": 0.4981677862947722,
    "secondary_phase_sigma": 0.00024310810464120425,
    "secondary_depth": 0.026237763354958643,
@@ -7540,8 +7985,8 @@
    "n_sectors": 1
   },
   "388939913": {
-   "verdict": "CIRCULAR_WITHIN_ERRORS",
-   "ecosw": -0.0012360468776707295,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.4992131081181016,
     "depth": 0.05583167682712198,
@@ -7561,11 +8006,10 @@
     "n_in": 16
    },
    "halves": "alternating orbits",
-   "secondary_phase": 0.4992131081181016,
-   "secondary_phase_sigma": 0.00022937162988034823,
-   "secondary_depth": 0.05583167682712198,
-   "secondary_snr": 11.801808416662714,
-   "ecosw_sigma": 0.00036029611368700953,
+   "secondary_events": [
+    2,
+    1
+   ],
    "alternation": null,
    "n_points": 3284,
    "n_sectors": 1
@@ -7592,6 +8036,10 @@
     "n_in": 655
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    5,
+    12
+   ],
    "secondary_phase": 0.5013786201785679,
    "secondary_phase_sigma": 0.0002171009467112847,
    "secondary_depth": 0.2831860280030505,
@@ -7649,6 +8097,10 @@
     "n_in": 500
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    20,
+    11
+   ],
    "secondary_phase": 0.5019846962592183,
    "secondary_phase_sigma": 0.002620872471937069,
    "secondary_depth": 0.05231236838066,
@@ -7716,6 +8168,10 @@
     "n_in": 16
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    3,
+    3
+   ],
    "secondary_phase": 0.41049031925575147,
    "secondary_phase_sigma": 0.00014377729798916678,
    "secondary_depth": 0.06508632939869452,
@@ -7806,6 +8262,10 @@
     "n_in": 26
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    11,
+    7
+   ],
    "secondary_phase": 0.5008693963831714,
    "secondary_phase_sigma": 0.0005097990092515214,
    "secondary_depth": 0.006100727104571768,
@@ -7837,6 +8297,10 @@
     "n_in": 423
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    38,
+    27
+   ],
    "alternation": {
     "odd_even_time_offset_min": 1.707,
     "offset_sigma_min": 1.7398744013325955,
@@ -7931,8 +8395,8 @@
    "n_sectors": 2
   },
   "403030272": {
-   "verdict": "CIRCULAR_WITHIN_ERRORS",
-   "ecosw": -0.0003462856661535469,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.4997795476980392,
     "depth": 0.19739728945083745,
@@ -7952,11 +8416,10 @@
     "n_in": 13
    },
    "halves": "alternating orbits",
-   "secondary_phase": 0.4997795476980392,
-   "secondary_phase_sigma": 0.00280161816492569,
-   "secondary_depth": 0.19739728945083745,
-   "secondary_snr": 8.619484184567847,
-   "ecosw_sigma": 0.004400771522547133,
+   "secondary_events": [
+    1,
+    1
+   ],
    "alternation": null,
    "n_points": 3864,
    "n_sectors": 1
@@ -8024,7 +8487,7 @@
    "n_sectors": 1
   },
   "403329469": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.6953948959753242,
@@ -8045,13 +8508,17 @@
     "n_in": 216
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    1,
+    5
+   ],
    "alternation": null,
    "n_points": 131020,
    "n_sectors": 14
   },
   "405215869": {
-   "verdict": "CIRCULAR_WITHIN_ERRORS",
-   "ecosw": 0.0028116684004111585,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.5017899636970429,
     "depth": 0.0134292448980039,
@@ -8071,11 +8538,10 @@
     "n_in": 25
    },
    "halves": "alternating orbits",
-   "secondary_phase": 0.5017899636970429,
-   "secondary_phase_sigma": 0.0008979576574233428,
-   "secondary_depth": 0.0134292448980039,
-   "secondary_snr": 15.511719228850588,
-   "ecosw_sigma": 0.001410508589897937,
+   "secondary_events": [
+    0,
+    0
+   ],
    "alternation": null,
    "n_points": 1072,
    "n_sectors": 1
@@ -8102,6 +8568,10 @@
     "n_in": 21
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    7,
+    7
+   ],
    "secondary_phase": 0.49840533051275276,
    "secondary_phase_sigma": 0.001314648759923126,
    "secondary_depth": 0.020139277142579903,
@@ -8159,6 +8629,10 @@
     "n_in": 869
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    27,
+    24
+   ],
    "secondary_phase": 0.5006113556477376,
    "secondary_phase_sigma": 0.009265927115384182,
    "secondary_depth": 0.007542659312175237,
@@ -8179,8 +8653,8 @@
    "n_sectors": 2
   },
   "411305220": {
-   "verdict": "CIRCULAR_WITHIN_ERRORS",
-   "ecosw": 7.800464248858486e-05,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.5000496592977447,
     "depth": 0.024501287590751764,
@@ -8200,11 +8674,10 @@
     "n_in": 73
    },
    "halves": "alternating sectors",
-   "secondary_phase": 0.5000496592977447,
-   "secondary_phase_sigma": 0.0007752400038050222,
-   "secondary_depth": 0.024501287590751764,
-   "secondary_snr": 38.553718447077976,
-   "ecosw_sigma": 0.0012177441503613906,
+   "secondary_events": [
+    1,
+    1
+   ],
    "alternation": null,
    "n_points": 20758,
    "n_sectors": 2
@@ -8231,6 +8704,10 @@
     "n_in": 457
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    10,
+    9
+   ],
    "secondary_phase": 0.5010218785688365,
    "secondary_phase_sigma": 0.0016991391896083452,
    "secondary_depth": 0.06601724864982861,
@@ -8272,6 +8749,10 @@
     "n_in": 24
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    5,
+    6
+   ],
    "secondary_phase": 0.4993644602117124,
    "secondary_phase_sigma": 0.0007508053565771053,
    "secondary_depth": 0.05730044216814778,
@@ -8313,13 +8794,17 @@
     "n_in": 24
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    3,
+    2
+   ],
    "alternation": null,
    "n_points": 4209,
    "n_sectors": 2
   },
   "412057714": {
-   "verdict": "ECCENTRIC",
-   "ecosw": 0.1105805729906092,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.5703977792055583,
     "depth": 0.0015696425566701366,
@@ -8339,25 +8824,11 @@
     "n_in": 36
    },
    "halves": "alternating sectors",
-   "secondary_phase": 0.5703977792055583,
-   "secondary_phase_sigma": 0.0034887915658118884,
-   "secondary_depth": 0.0015696425566701366,
-   "secondary_snr": 13.210380518139845,
-   "ecosw_sigma": 0.00548018097653033,
-   "other_dip": {
-    "phase": 0.3762899366409559,
-    "depth": 0.00037429315145720565,
-    "snr": 4.347319611650201
-   },
-   "fast_signal": {
-    "period_days": 1.0103143108511525,
-    "amplitude": 0.00011856981491429304,
-    "fap": 1.4844676250452176e-15,
-    "amplitude_over_secondary_depth": 0.07553937322254363
-   },
+   "secondary_events": [
+    4,
+    1
+   ],
    "alternation": null,
-   "ztf": null,
-   "ztf_coverage": "insufficient_points",
    "n_points": 9691,
    "n_sectors": 2
   },
@@ -8445,6 +8916,10 @@
     "n_in": 159
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    19,
+    19
+   ],
    "secondary_phase": 0.49855557129539496,
    "secondary_phase_sigma": 0.0021187916972788268,
    "secondary_depth": 0.008532905034605798,
@@ -8502,6 +8977,10 @@
     "n_in": 1558
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    16,
+    15
+   ],
    "secondary_phase": 0.479183640603856,
    "secondary_phase_sigma": 0.010084700497329901,
    "secondary_depth": 0.008693106239049175,
@@ -8569,6 +9048,10 @@
     "n_in": 67
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    16,
+    17
+   ],
    "secondary_phase": 0.5001352997757085,
    "secondary_phase_sigma": 0.000494068724643193,
    "secondary_depth": 0.007235618984314129,
@@ -8600,6 +9083,10 @@
     "n_in": 23
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    4,
+    2
+   ],
    "secondary_phase": 0.49613399709731437,
    "secondary_phase_sigma": 0.0015890128264438308,
    "secondary_depth": 0.021146158297273954,
@@ -8662,7 +9149,7 @@
    "n_sectors": 1
   },
   "444465823": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.5008867170976923,
@@ -8683,6 +9170,10 @@
     "n_in": 58
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    1,
+    0
+   ],
    "alternation": null,
    "n_points": 22700,
    "n_sectors": 6
@@ -8725,6 +9216,10 @@
     "n_in": 649
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    6,
+    8
+   ],
    "secondary_phase": 0.5313119313441181,
    "secondary_phase_sigma": 0.016956976405146817,
    "secondary_depth": 0.004169232855800176,
@@ -8797,7 +9292,7 @@
    "n_sectors": 2
   },
   "447009429": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.4976727177506913,
@@ -8818,12 +9313,16 @@
     "n_in": 11
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    1,
+    1
+   ],
    "alternation": null,
    "n_points": 1086,
    "n_sectors": 1
   },
   "447112476": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.499566488482053,
@@ -8844,13 +9343,17 @@
     "n_in": 49
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    0,
+    0
+   ],
    "alternation": null,
    "n_points": 1086,
    "n_sectors": 1
   },
   "447115398": {
-   "verdict": "CIRCULAR_WITHIN_ERRORS",
-   "ecosw": -0.0005233690055025793,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.4996668129428527,
     "depth": 0.10467254378769697,
@@ -8870,11 +9373,10 @@
     "n_in": 18
    },
    "halves": "alternating sectors",
-   "secondary_phase": 0.4996668129428527,
-   "secondary_phase_sigma": 0.00015344555637109014,
-   "secondary_depth": 0.10467254378769697,
-   "secondary_snr": 44.14378047483091,
-   "ecosw_sigma": 0.00024103171631070764,
+   "secondary_events": [
+    2,
+    1
+   ],
    "alternation": null,
    "n_points": 80542,
    "n_sectors": 8
@@ -8901,6 +9403,10 @@
     "n_in": 43
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    9,
+    9
+   ],
    "secondary_phase": 0.5058804171265776,
    "secondary_phase_sigma": 0.001605082003005828,
    "secondary_depth": 0.0032385437679127715,
@@ -8942,6 +9448,10 @@
     "n_in": 61
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    20,
+    20
+   ],
    "secondary_phase": 0.4998260975288039,
    "secondary_phase_sigma": 0.005939120526576164,
    "secondary_depth": 0.03055989571914819,
@@ -8999,6 +9509,10 @@
     "n_in": 76
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    42,
+    18
+   ],
    "secondary_phase": 0.5077881277493569,
    "secondary_phase_sigma": 0.0029255043769099154,
    "secondary_depth": 0.015544587549358946,
@@ -9009,8 +9523,8 @@
    "n_sectors": 3
   },
   "457675706": {
-   "verdict": "CIRCULAR_WITHIN_ERRORS",
-   "ecosw": -0.0024019369203142284,
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
    "secondary": {
     "phase": 0.49847087946454827,
     "depth": 0.012838887645171937,
@@ -9030,11 +9544,10 @@
     "n_in": 30
    },
    "halves": "alternating orbits",
-   "secondary_phase": 0.49847087946454827,
-   "secondary_phase_sigma": 0.0008872191107853478,
-   "secondary_depth": 0.012838887645171937,
-   "secondary_snr": 17.56031907320121,
-   "ecosw_sigma": 0.0013936405202838586,
+   "secondary_events": [
+    1,
+    0
+   ],
    "alternation": null,
    "n_points": 1107,
    "n_sectors": 1
@@ -9159,6 +9672,10 @@
     "n_in": 2570
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    87,
+    74
+   ],
    "alternation": {
     "odd_even_time_offset_min": 2.3465,
     "offset_sigma_min": 5.162439424385088,
@@ -9221,6 +9738,10 @@
     "n_in": 44
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    6,
+    5
+   ],
    "secondary_phase": 0.49894561596558445,
    "secondary_phase_sigma": 0.0007431224585471164,
    "secondary_depth": 0.13671359624551094,
@@ -9262,6 +9783,10 @@
     "n_in": 10
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    2,
+    2
+   ],
    "secondary_phase": 0.6135605726146854,
    "secondary_phase_sigma": 0.00029662985313605954,
    "secondary_depth": 0.06325394571099419,
@@ -9306,6 +9831,10 @@
     "n_in": 127
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    17,
+    15
+   ],
    "secondary_phase": 0.5103561092576996,
    "secondary_phase_sigma": 0.008786291423589054,
    "secondary_depth": 0.0068438660573083565,
@@ -9347,6 +9876,10 @@
     "n_in": 88
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    8,
+    8
+   ],
    "secondary_phase": 0.5148970894943782,
    "secondary_phase_sigma": 0.0016238984260830702,
    "secondary_depth": 0.025499873881463797,
@@ -9401,6 +9934,10 @@
     "n_in": 16
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    3,
+    3
+   ],
    "secondary_phase": 0.5006222869443423,
    "secondary_phase_sigma": 0.002056547052329355,
    "secondary_depth": 0.04261015926902567,
@@ -9411,7 +9948,7 @@
    "n_sectors": 1
   },
   "468146715": {
-   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "verdict": "INSUFFICIENT_FOR_HALVES",
    "ecosw": null,
    "secondary": {
     "phase": 0.5033446652303544,
@@ -9432,6 +9969,10 @@
     "n_in": 33
    },
    "halves": "alternating orbits",
+   "secondary_events": [
+    0,
+    0
+   ],
    "alternation": null,
    "n_points": 1177,
    "n_sectors": 1
@@ -9484,6 +10025,10 @@
     "n_in": 33
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    4,
+    4
+   ],
    "secondary_phase": 0.6380674685516514,
    "secondary_phase_sigma": 0.0010947148001589913,
    "secondary_depth": 0.06019637706810499,
@@ -9538,6 +10083,10 @@
     "n_in": 40
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    8,
+    7
+   ],
    "secondary_phase": 0.4992612313281963,
    "secondary_phase_sigma": 0.0008574376206515466,
    "secondary_depth": 0.050651311329102944,
@@ -9651,6 +10200,10 @@
     "n_in": 683
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    14,
+    13
+   ],
    "secondary_phase": 0.2493150622063344,
    "secondary_phase_sigma": 8.580925606983303e-05,
    "secondary_depth": 0.020825643036323283,
@@ -9745,6 +10298,10 @@
     "n_in": 24
    },
    "halves": "alternating sectors",
+   "secondary_events": [
+    4,
+    6
+   ],
    "secondary_phase": 0.5006297984281545,
    "secondary_phase_sigma": 0.0004313137864086351,
    "secondary_depth": 0.003898893626652633,

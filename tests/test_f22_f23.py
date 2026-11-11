@@ -174,3 +174,15 @@ def test_too_few_times_never_gives_a_drift():
     E = np.array([0, 50, 100, 150, 200])
     a = f23.assess(_groups_from(E, 0.01 * E ** 2, 1.0), period_days=10.0)
     assert a["verdict"] in ("DRIFT_TOO_FEW_TIMES", "CONSTANT")
+
+
+def test_secondary_events_counts_orbits_at_any_cadence():
+    import numpy as np
+    import f22_eccentricity as f22
+    P, t0, dur, phase = 3.0, 0.0, 0.2, 0.5
+    for cadence in (2.0 / 1440, 30.0 / 1440):
+        t = np.arange(0, 12.0, cadence)
+        assert f22.secondary_events(t, P, t0, dur, phase) == 4
+    # one orbit only: cannot be split into two halves
+    t = np.arange(0, 2.2, 2.0 / 1440)
+    assert f22.secondary_events(t, P, t0, dur, phase) <= 1

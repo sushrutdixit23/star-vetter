@@ -76,9 +76,21 @@ export default function FindingsPage() {
                   </table>
                 </div>
                 <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
-                  The cause is not tested: a distant third body, mass exchange and other effects all produce a parabola over a few years.
-                  No companion has been seen and no light-travel-time orbit has been fitted.
+                  The cause is not settled: a distant third body, mass exchange and other effects all produce a parabola over a few years.
+                  No companion has been seen.
                 </p>
+                {(f.timing_drift.ltte ?? []).map((l) => (
+                  <p key={l.tic} className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
+                    Light-travel-time test for TIC {l.tic} (circular orbit of a distant companion, {l.extra_parameters_vs_parabola} extra
+                    parameters over the parabola): the best fit, P3 = {l.best_p3_years.toFixed(1)} yr, gives chi2 {l.best_chi2.toFixed(1)}
+                    against {l.chi2_parabola.toFixed(1)} for the parabola, {l.fits_as_well_as_parabola ? "no worse" : "no better"} than a constant period change.
+                    Orbits from {l.statistically_allowed_p3_years[0].toFixed(1)} to {l.statistically_allowed_p3_years[1].toFixed(0)} yr stay allowed;
+                    capping the unseen companion at {l.max_plausible_m3_msun} solar masses leaves {l.allowed_p3_years[0].toFixed(1)} to {l.allowed_p3_years[1].toFixed(1)} yr,
+                    a light-time amplitude of {l.amplitude_min_range[0].toFixed(0)} to {l.amplitude_min_range[1].toFixed(0)} min and a minimum companion
+                    mass of {l.m3_min_msun_range[0].toFixed(2)} to {l.m3_min_msun_range[1].toFixed(2)} solar masses. Orbits shorter than about{" "}
+                    {l.statistically_allowed_p3_years[0].toFixed(1)} yr are ruled out. This does not show a third body exists.
+                  </p>
+                ))}
                 {pc && Object.values(pc.stars).map((s) => (
                   <div key={s.tic} className="mt-5">
                     <div className="nav-caps font-mono text-[11px] text-muted">Predicted eclipses of TIC {s.tic} (frozen file)</div>
@@ -168,6 +180,24 @@ export default function FindingsPage() {
               </table>
             </div>
           </section>
+
+          {f.validation ? (
+            <section className="mb-10">
+              <h2 className="font-display text-2xl text-fg">Checked against other people&apos;s numbers</h2>
+              <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
+                The eccentricity code was run on {f.validation.n_tested} eclipsing binaries from the Prsa et al. 2022 TESS catalog, whose
+                secondary-eclipse phases were fitted by other code. Only the published period and epoch were given as input, on the first 26
+                sectors the catalog used. Median difference in secondary phase: {f.validation.median_abs_phase_error === null ? "n/a" : f.validation.median_abs_phase_error.toFixed(4)};{" "}
+                {f.validation["fraction_within_0.01"] === null ? "n/a" : `${(100 * f.validation["fraction_within_0.01"]).toFixed(0)}%`} of measured systems agree within 0.01 in phase.
+                Published as circular: {f.validation.circular_truth} systems, {f.validation.false_positive_eccentric} called eccentric here.
+                Published as eccentric: {f.validation.eccentric_truth} systems, {f.validation.recovered_eccentric} recovered here; the others were
+                vetoed or had too few secondary eclipses to test, by design: the rule prefers a miss to a false claim.
+              </p>
+              <ul className="mt-3 list-disc pl-5 text-xs text-muted">
+                {Object.entries(f.validation.eccentric_truth_verdicts).map(([k, n]) => (<li key={k}>Published eccentric, here {k}: {n}</li>))}
+              </ul>
+            </section>
+          ) : null}
 
           <section className="border-t border-line pt-6">
             <h2 className="font-display text-xl text-fg">Limits</h2>

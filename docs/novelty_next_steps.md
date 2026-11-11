@@ -4,8 +4,11 @@ Numbers here come from `docs/novelty_findings.md` (generated). This file lists t
 
 ## What the pipeline now supports
 
-1. A list of stars with a displaced secondary eclipse (e cos w lower limits) that pass every veto.
-   Two of them are also re-measured independently in ZTF.
+1. A list of stars with a displaced secondary eclipse (e cos w lower limits) that pass every veto,
+   including a rule that each half of the data holds at least two secondary eclipses (a star with fewer is
+   reported as INSUFFICIENT_FOR_HALVES, not as circular). Two of them are also re-measured independently in ZTF.
+   The eccentricity measurement was checked against the published phases of 50 Prsa et al. 2022
+   systems (see `docs/novelty_findings.md`).
 2. A period-change candidate, TIC 237115819: eclipse times that follow one smooth parabola in TESS
    and in ZTF; the older per-eclipse timing in the repository shows the same trend. The rule that selects it was run on
    synthetic constant-period light curves with the real sampling and noise (see the findings file).
@@ -16,7 +19,7 @@ Numbers here come from `docs/novelty_findings.md` (generated). This file lists t
 | Gap | Why it matters | Who can close it |
 |---|---|---|
 | No spectroscopy | Only e cos w is measured; masses, radii, true eccentricity and the nature of any third body need radial velocities | Author with a collaborator, or a TFOP request |
-| Cause of the period change unknown | A distant third body, mass exchange and others all give a parabola over a few years | More timing over years; a spectrum for a third set of lines |
+| Cause of the period change unknown | A light-travel-time orbit with P3 of 6 to 22 yr fits as well as the parabola but does not beat it; mass exchange and others also fit | More timing over years; a spectrum for a third set of lines |
 | Eccentric stars are mostly TESS-only | Two are re-measured in ZTF; the rest rely on two halves of TESS data | ATLAS or ASAS-SN photometry (needs your account) |
 | No physical light-curve model | Depths and durations are not turned into stellar parameters | A follow-up paper with PHOEBE or ellc plus MCMC |
 
@@ -31,8 +34,8 @@ Numbers here come from `docs/novelty_findings.md` (generated). This file lists t
 3. **Find one professional co-author or mentor** in eclipsing-binary timing or TESS follow-up
    (for example through the TESS Eclipsing Binary Working Group or the AAVSO). A second pair of
    eyes is the cheapest way to raise credibility, and they can request spectra.
-4. **Ask for spectra** of the best targets: TIC 264099112, 308578336, 59387976 (northern, ZTF
-   supported, no prior literature found) and TIC 237115819. Even two velocities per star separate
+4. **Ask for spectra** of the best targets: TIC 264099112 and 308578336 (independently supported,
+   no prior literature found), TIC 394805902 (large offset, no prior found) and TIC 237115819. Even two velocities per star separate
    a real eccentric binary from a blend. Check LAMOST and Gaia archives first (free).
 5. **Search ADS and SIMBAD** for each listed TIC number before any claim of novelty (the sandbox
    cannot reach ADS).
@@ -42,5 +45,5 @@ Numbers here come from `docs/novelty_findings.md` (generated). This file lists t
 ## What not to say yet
 
 - "Discovery of new eclipsing binaries": the stars are in Kostov et al. 2025 by construction.
-- "Third body detected": no light-travel-time orbit has been fitted and no companion seen.
+- "Third body detected": a light-travel-time orbit fits no better than a parabola and no companion is seen.
 - True eccentricities: only the projection e cos w is measured.

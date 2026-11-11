@@ -1,0 +1,51 @@
+name: CI
+
+# Runs the tests on every push and pull request, so the daily bot branch and every human change
+# are checked the same way. Readiness is reported, not enforced: it is a publication gate, not a
+# merge gate.
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt pytest
+      - name: Tests
+        run: python -I -m pytest -q
+      - name: Publication readiness (report only)
+        continue-on-error: true
+        run: python check_publication_readiness.py "$GITHUB_WORKSPACE"
+
+  site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - run: npm ci
+      - name: Type check
+        run: npx tsc --noEmit

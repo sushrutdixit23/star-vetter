@@ -1,11 +1,12 @@
 {
- "generated_at": "2026-11-11T05:36:39Z",
+ "generated_at": "2026-11-11T06:28:23Z",
  "verdict_counts": {
-  "CIRCULAR_WITHIN_ERRORS": 115,
-  "ECCENTRIC": 17,
+  "INSUFFICIENT_FOR_HALVES": 66,
+  "ECCENTRIC": 13,
   "NO_SECONDARY": 104,
-  "SECONDARY_NOT_REPRODUCED": 55,
   "NOT_TESTABLE": 13,
+  "CIRCULAR_WITHIN_ERRORS": 93,
+  "SECONDARY_NOT_REPRODUCED": 15,
   "PERIOD_MULTIPLE_SUSPECTED": 3
  },
  "candidates": [
@@ -118,30 +119,6 @@
    "evidence_tier": "INDEPENDENTLY_SUPPORTED",
    "novelty": "NO_PRIOR_FOUND",
    "caveats": []
-  },
-  {
-   "tic": 412057714,
-   "period_days": 4.487569044234845,
-   "ecosw": 0.1105805729906092,
-   "ecosw_sigma": 0.00548018097653033,
-   "e_lower_limit": 0.1105805729906092,
-   "secondary_phase": 0.5703977792055583,
-   "secondary_depth": 0.0015696425566701366,
-   "secondary_snr": 13.210380518139845,
-   "half_a_phase": 0.5694971621346726,
-   "half_b_phase": 0.5764747452662964,
-   "halves": "alternating sectors",
-   "ztf_coverage": "insufficient_points",
-   "marginal": false,
-   "ztf_confirmed": null,
-   "ztf_p_value": null,
-   "evidence_tier": "TESS_ONLY_CAVEATS",
-   "novelty": "NO_PRIOR_FOUND",
-   "caveats": [
-    "a bright-enough neighbour sits at the measured offset (TIC)",
-    "a bright-enough neighbour sits at the measured offset (Gaia)",
-    "Gaia RUWE above 1.4 (possible unresolved companion)"
-   ]
   },
   {
    "tic": 264099112,
@@ -307,103 +284,41 @@
    "evidence_tier": "INDEPENDENTLY_SUPPORTED",
    "novelty": "KNOWN_BINARY",
    "caveats": []
-  },
-  {
-   "tic": 295035279,
-   "period_days": 12.32871002643138,
-   "ecosw": -0.37766628695805887,
-   "ecosw_sigma": 0.00139034272142015,
-   "e_lower_limit": 0.37766628695805887,
-   "secondary_phase": 0.2595701743658509,
-   "secondary_depth": 0.10562209715198512,
-   "secondary_snr": 21.30202565066373,
-   "half_a_phase": 0.2606478136758236,
-   "half_b_phase": 0.2588775743421768,
-   "halves": "alternating sectors",
-   "ztf_coverage": "insufficient_points",
-   "marginal": false,
-   "ztf_confirmed": null,
-   "ztf_p_value": null,
-   "evidence_tier": "TESS_ONLY_CAVEATS",
-   "novelty": "NO_PRIOR_FOUND",
-   "caveats": [
-    "Gaia RUWE above 1.4 (possible unresolved companion)"
-   ]
-  },
-  {
-   "tic": 373792319,
-   "period_days": 16.19808698951841,
-   "ecosw": 0.49003348359953297,
-   "ecosw_sigma": 0.0016664918572465218,
-   "e_lower_limit": 0.49003348359953297,
-   "secondary_phase": 0.8119650047816276,
-   "secondary_depth": 0.028520994032743663,
-   "secondary_snr": 30.395200496217697,
-   "half_a_phase": 0.8111796831375204,
-   "half_b_phase": 0.8133015264711458,
-   "halves": "alternating sectors",
-   "ztf_coverage": "measured",
-   "marginal": false,
-   "ztf_confirmed": false,
-   "ztf_p_value": 0.004975124378109453,
-   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
-   "novelty": "NO_PRIOR_FOUND",
-   "caveats": []
-  },
-  {
-   "tic": 59387976,
-   "period_days": 22.51904530143796,
-   "ecosw": -0.06982734286646898,
-   "ecosw_sigma": 0.000938839299510477,
-   "e_lower_limit": 0.06982734286646898,
-   "secondary_phase": 0.45554653287931546,
-   "secondary_depth": 0.015170397548855408,
-   "secondary_snr": 15.683760533373466,
-   "half_a_phase": 0.45446443871124703,
-   "half_b_phase": 0.45565980603353523,
-   "halves": "alternating sectors",
-   "ztf_coverage": "measured",
-   "marginal": false,
-   "ztf_confirmed": false,
-   "ztf_p_value": 0.945273631840796,
-   "evidence_tier": "INDEPENDENTLY_SUPPORTED",
-   "novelty": "NO_PRIOR_FOUND",
-   "caveats": []
   }
  ],
  "period_bins": [
   {
    "p_min": 0.0,
    "p_max": 2.0,
-   "n_measured": 37,
+   "n_measured": 32,
    "n_offset": 0
   },
   {
    "p_min": 2.0,
    "p_max": 4.0,
-   "n_measured": 32,
+   "n_measured": 27,
    "n_offset": 2
   },
   {
    "p_min": 4.0,
    "p_max": 8.0,
-   "n_measured": 35,
-   "n_offset": 4
+   "n_measured": 30,
+   "n_offset": 3
   },
   {
    "p_min": 8.0,
    "p_max": 1000.0,
-   "n_measured": 28,
-   "n_offset": 8
+   "n_measured": 17,
+   "n_offset": 5
   }
  ],
  "circularisation": {
   "threshold_ecosw": 0.05,
-  "n_short": 37,
+  "n_short": 32,
   "k_short": 0,
-  "n_longer": 95,
-  "k_longer": 14,
-  "chance_of_none_if_same_rate_as_longer": 0.0027426620851000185
+  "n_longer": 74,
+  "k_longer": 10,
+  "chance_of_none_if_same_rate_as_longer": 0.009601611643916298
  },
  "timing_drift": {
   "counts": {
@@ -448,11 +363,58 @@
     "DRIFT_TOO_FEW_TIMES": 1
    },
    "stars_flagged": []
-  }
+  },
+  "ltte": [
+   {
+    "tic": 237115819,
+    "period_days": 14.791682599195202,
+    "chi2_parabola": 9.765808326710514,
+    "best_chi2": 6.873728871547909,
+    "best_p3_years": 8.014698572185502,
+    "allowed_p3_years": [
+     5.89552978196869,
+     22.306685605698576
+    ],
+    "statistically_allowed_p3_years": [
+     5.89552978196869,
+     399.9999999999999
+    ],
+    "max_plausible_m3_msun": 1.5,
+    "amplitude_min_range": [
+     8.716166158961093,
+     54.80189571261249
+    ],
+    "m3_min_msun_range": [
+     0.36519908334676,
+     1.7481339623542778
+    ],
+    "fits_as_well_as_parabola": true,
+    "extra_parameters_vs_parabola": 2,
+    "gaia_dr3_orbit_sensitive_below_years": 2.85
+   }
+  ]
  },
  "limits": [
   "Only e cos(omega) is measured, so each value is a lower limit on the eccentricity.",
   "Eclipses are on the TESS aperture, not proven to be on the target (see the evidence tier).",
   "Selection: a secondary must be detectable, which favours deep, well-separated eclipses."
- ]
+ ],
+ "validation": {
+  "n_tested": 50,
+  "n_with_measurement": 44,
+  "median_abs_phase_error": 0.0002572602348905051,
+  "circular_truth": 27,
+  "false_positive_eccentric": 0,
+  "eccentric_truth": 23,
+  "recovered_eccentric": 18,
+  "eccentric_truth_verdicts": {
+   "ECCENTRIC": 18,
+   "INSUFFICIENT_FOR_HALVES": 5
+  },
+  "circular_truth_verdicts": {
+   "CIRCULAR_WITHIN_ERRORS": 26,
+   "SECONDARY_NOT_REPRODUCED": 1
+  },
+  "fraction_within_0.01": 1.0
+ }
 }
