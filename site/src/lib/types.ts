@@ -842,3 +842,64 @@ export interface Preregistration {
   file: string;
   repo: string;
 }
+
+
+export interface EccentricCandidate {
+  tic: number;
+  period_days: number;
+  ecosw: number;
+  ecosw_sigma: number;
+  secondary_phase: number;
+  secondary_depth: number;
+  secondary_snr: number;
+  marginal: boolean;
+  ztf_coverage: string | null;
+  ztf_confirmed: boolean | null;
+  ztf_p_value: number | null;
+  evidence_tier: string | null;
+  novelty: string | null;
+}
+
+export interface PeriodChangeStar {
+  tic: number;
+  period_days: number;
+  n_tess: number;
+  n_ztf: number;
+  chi2_line: number;
+  dof_line: number;
+  chi2_parabola: number;
+  dof_parabola: number;
+  dP_dt_seconds_per_year: number;
+  dP_dt_sigma_seconds_per_year: number;
+}
+
+export interface FindingsData {
+  generated_at: string;
+  verdict_counts: Record<string, number>;
+  candidates: EccentricCandidate[];
+  period_bins: { p_min: number; p_max: number; n_measured: number; n_offset: number }[];
+  circularisation: {
+    threshold_ecosw: number;
+    n_short: number;
+    k_short: number;
+    n_longer: number;
+    k_longer: number;
+    chance_of_none_if_same_rate_as_longer: number | null;
+  };
+  timing_drift: {
+    counts: Record<string, number>;
+    period_change: PeriodChangeStar[];
+    calibration: { trials: number; flagged: number } | null;
+  } | null;
+  limits: string[];
+}
+
+export interface PeriodChangePredictions {
+  rule: string;
+  time_system: string;
+  stars: Record<string, {
+    tic: number;
+    period_days: number;
+    predictions: { epoch: number; bjd_tdb_parabola: number; sigma_min: number }[];
+  }>;
+}

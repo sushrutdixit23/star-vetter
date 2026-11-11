@@ -1,7 +1,7 @@
 import Link from "next/link";
 import HeaderSearch from "./HeaderSearch";
 
-// Six sections, numbered like the journal itself. Standouts and Glossary
+// Seven sections, numbered like the journal itself. Standouts and Glossary
 // live in the footer.
 const NAV = [
   { href: "/", num: "I", label: "Journal" },
@@ -10,6 +10,7 @@ const NAV = [
   { href: "/predictions", num: "IV", label: "Predictions" },
   { href: "/about", num: "V", label: "Instrument" },
   { href: "/audit", num: "VI", label: "Audit" },
+  { href: "/findings", num: "VII", label: "Findings" },
 ];
 
 function StarMark({ className }: { className?: string }) {

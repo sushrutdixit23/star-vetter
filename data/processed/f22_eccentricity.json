@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-10T20:52:05Z",
+ "generated_at": "2026-11-11T05:36:39Z",
  "counts": {
   "CIRCULAR_WITHIN_ERRORS": 115,
   "ECCENTRIC": 17,
@@ -92,6 +92,7 @@
     "scan_agrees_with_tess": false,
     "confirmed": false
    },
+   "ztf_coverage": "measured",
    "n_points": 1072,
    "n_sectors": 1
   },
@@ -625,6 +626,7 @@
     "scan_agrees_with_tess": false,
     "confirmed": false
    },
+   "ztf_coverage": "measured",
    "n_points": 44954,
    "n_sectors": 6
   },
@@ -816,6 +818,7 @@
     "scan_agrees_with_tess": true,
     "confirmed": false
    },
+   "ztf_coverage": "measured",
    "n_points": 30441,
    "n_sectors": 5
   },
@@ -875,6 +878,7 @@
    },
    "alternation": null,
    "ztf": null,
+   "ztf_coverage": "insufficient_points",
    "n_points": 1934,
    "n_sectors": 2
   },
@@ -2433,6 +2437,7 @@
     "scan_agrees_with_tess": true,
     "confirmed": true
    },
+   "ztf_coverage": "measured",
    "n_points": 1072,
    "n_sectors": 1
   },
@@ -4656,6 +4661,7 @@
    },
    "alternation": null,
    "ztf": null,
+   "ztf_coverage": "insufficient_points",
    "n_points": 10799,
    "n_sectors": 1
   },
@@ -4898,6 +4904,7 @@
     "n_odd": 17
    },
    "ztf": null,
+   "ztf_coverage": "insufficient_points",
    "n_points": 12286,
    "n_sectors": 5
   },
@@ -5116,6 +5123,7 @@
    },
    "alternation": null,
    "ztf": null,
+   "ztf_coverage": "insufficient_points",
    "n_points": 2167,
    "n_sectors": 2
   },
@@ -5355,6 +5363,7 @@
     "n_odd": 7
    },
    "ztf": null,
+   "ztf_coverage": "insufficient_points",
    "n_points": 2188,
    "n_sectors": 2
   },
@@ -5466,6 +5475,7 @@
     "scan_agrees_with_tess": true,
     "confirmed": true
    },
+   "ztf_coverage": "measured",
    "n_points": 904,
    "n_sectors": 1
   },
@@ -7217,6 +7227,7 @@
    },
    "alternation": null,
    "ztf": null,
+   "ztf_coverage": "insufficient_points",
    "n_points": 2188,
    "n_sectors": 2
   },
@@ -7271,6 +7282,7 @@
     "scan_agrees_with_tess": false,
     "confirmed": false
    },
+   "ztf_coverage": "measured",
    "n_points": 22421,
    "n_sectors": 2
   },
@@ -7732,6 +7744,7 @@
     "n_odd": 3
    },
    "ztf": null,
+   "ztf_coverage": "insufficient_points",
    "n_points": 2167,
    "n_sectors": 2
   },
@@ -8344,6 +8357,7 @@
    },
    "alternation": null,
    "ztf": null,
+   "ztf_coverage": "insufficient_points",
    "n_points": 9691,
    "n_sectors": 2
   },
@@ -9266,6 +9280,7 @@
    },
    "alternation": null,
    "ztf": null,
+   "ztf_coverage": "insufficient_points",
    "n_points": 2188,
    "n_sectors": 2
   },
@@ -9360,6 +9375,7 @@
     "n_odd": 7
    },
    "ztf": null,
+   "ztf_coverage": "insufficient_points",
    "n_points": 2188,
    "n_sectors": 2
   },
@@ -9496,6 +9512,7 @@
     "n_odd": 3
    },
    "ztf": null,
+   "ztf_coverage": "insufficient_points",
    "n_points": 2188,
    "n_sectors": 2
   },

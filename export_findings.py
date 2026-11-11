@@ -150,6 +150,9 @@ def main():
     o = build(root)
     jp = root / "site" / "public" / "data" / "eccentric.json"
     jp.write_text(json.dumps(o, indent=1) + "\n", encoding="utf-8", newline="\n")
+    pc = root / "docs" / "period_change_predictions.json"
+    if pc.exists():
+        (root / "site" / "public" / "data" / "period_change_predictions.json").write_bytes(pc.read_bytes())
     mp = root / "docs" / "novelty_findings.md"
     mp.write_text(markdown(o), encoding="utf-8", newline="\n")
     print("Written: %s and %s (%d candidates)" % (jp, mp, len(o["candidates"])))
