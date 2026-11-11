@@ -83,7 +83,7 @@ export default function FindingsPage() {
                   <p key={l.tic} className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
                     Light-travel-time test for TIC {l.tic} (circular orbit of a distant companion, {l.extra_parameters_vs_parabola} extra
                     parameters over the parabola): the best fit, P3 = {l.best_p3_years.toFixed(1)} yr, gives chi2 {l.best_chi2.toFixed(1)}
-                    against {l.chi2_parabola.toFixed(1)} for the parabola, {l.fits_as_well_as_parabola ? "no worse" : "no better"} than a constant period change.
+                    against {l.chi2_parabola.toFixed(1)} for the parabola, {l.fits_as_well_as_parabola ? "a gain too small to matter for two extra parameters over" : "no better than"} a constant period change.
                     Orbits from {l.statistically_allowed_p3_years[0].toFixed(1)} to {l.statistically_allowed_p3_years[1].toFixed(0)} yr stay allowed;
                     capping the unseen companion at {l.max_plausible_m3_msun} solar masses leaves {l.allowed_p3_years[0].toFixed(1)} to {l.allowed_p3_years[1].toFixed(1)} yr,
                     a light-time amplitude of {l.amplitude_min_range[0].toFixed(0)} to {l.amplitude_min_range[1].toFixed(0)} min and a minimum companion

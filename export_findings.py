@@ -163,7 +163,7 @@ def markdown(o):
                       "light-time amplitude %.0f to %.0f min, minimum companion mass %.2f to %.2f Msun. "
                       "Orbits shorter than about %.1f yr are excluded by the data. This does not show a third body exists." % (
                           r["tic"], r["extra_parameters_vs_parabola"], r["best_p3_years"], r["best_chi2"], r["chi2_parabola"],
-                          "does not improve on" if not r["fits_as_well_as_parabola"] else "fits as well as",
+                          "does not improve on" if not r["fits_as_well_as_parabola"] else "improves on (not significantly, for two extra parameters)",
                           slo, shi, r["max_plausible_m3_msun"], lo, hi, r["amplitude_min_range"][0], r["amplitude_min_range"][1],
                           r["m3_min_msun_range"][0], r["m3_min_msun_range"][1], slo)]
         else:

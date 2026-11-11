@@ -48,7 +48,7 @@ False-alarm rate of the full rule on 141 synthetic constant-period light curves 
 
 The cause is not settled (a distant third body, mass exchange and others all produce a parabola over a few years). Predictions of the next eclipses are in `docs/period_change_predictions.json`.
 
-Light-travel-time test for TIC 237115819 (circular third-body orbit, 2 extra parameters over the parabola): best fit P3 = 8.0 yr with chi2 6.9 against 9.8 for the parabola, so it fits as well as the parabola. Orbits with P3 from 5.9 to 400.0 yr are statistically allowed; capping the unseen companion at 1.5 Msun leaves 5.9 to 22.3 yr, light-time amplitude 9 to 55 min, minimum companion mass 0.37 to 1.75 Msun. Orbits shorter than about 5.9 yr are excluded by the data. This does not show a third body exists.
+Light-travel-time test for TIC 237115819 (circular third-body orbit, 2 extra parameters over the parabola): best fit P3 = 8.0 yr with chi2 6.9 against 9.8 for the parabola, so it improves on (not significantly, for two extra parameters) the parabola. Orbits with P3 from 5.9 to 400.0 yr are statistically allowed; capping the unseen companion at 1.5 Msun leaves 5.9 to 22.3 yr, light-time amplitude 9 to 55 min, minimum companion mass 0.37 to 1.75 Msun. Orbits shorter than about 5.9 yr are excluded by the data. This does not show a third body exists.
 
 ## External check of the eccentricity measurement
 
