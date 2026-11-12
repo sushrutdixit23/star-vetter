@@ -46,5 +46,18 @@
   "radius_gspphot": 1.8917,
   "teff_gspphot": 6480.3403,
   "mass_flame": 1.4203439
+ },
+ "AI Phe": {
+  "source_id": 4933562966514402176,
+  "phot_g_mean_mag": 8.430471,
+  "ruwe": 1.149,
+  "non_single_star": 2,
+  "radius_flame": 3.1861,
+  "radius_flame_lower": 3.1205,
+  "radius_flame_upper": 3.2584,
+  "radius_gspphot": 3.2087,
+  "teff_gspphot": 6013.207,
+  "mass_flame": 1.6440000534057617,
+  "via": "VizieR I/355 (Harvard-CfA mirror)"
  }
 }

@@ -1,10 +1,41 @@
 {
- "generated_at": "2026-11-12T15:05:53Z",
+ "generated_at": "2026-11-12T15:56:40Z",
  "what": "f28's Gaia-radius mass method applied to eclipsing binaries with published masses and radii",
  "rows": [
   {
    "name": "AI Phe",
-   "status": "GAIA_ARCHIVE_UNAVAILABLE"
+   "gaia_source_id": 4933562966514402176,
+   "ruwe": 1.149,
+   "non_single_star": 2,
+   "published": {
+    "r1": 0.037686,
+    "R1": 1.805,
+    "R2": 2.9332,
+    "M1": 1.1938,
+    "M2": 1.2438,
+    "light_ratio": 1.16,
+    "period": 24.5924
+   },
+   "status": "OK",
+   "gaia_radius_flame": 3.1861,
+   "gaia_mass_flame": 1.6440000534057617,
+   "R1_from_gaia": 2.167866463744857,
+   "R1_ratio": 1.2010340519362088,
+   "kepler_mass_from_gaia": 4.223046316913602,
+   "published_total_mass": 2.4375999999999998,
+   "mass_ratio": 1.7324607470108313,
+   "ms_check_on_gaia_inputs": {
+    "ms_expected_total_msun": 3.3501465732451594,
+    "ms_ratio": 1.2605556875151578,
+    "ms_basis": "Gaia FLAME mass",
+    "ms_consistent": true
+   },
+   "ms_check_on_true_mass_and_radius": {
+    "ms_expected_total_msun": 3.3501465732451594,
+    "ms_ratio": 0.7276099557753944,
+    "ms_basis": "Gaia FLAME mass",
+    "ms_consistent": true
+   }
   },
   {
    "name": "MU Cas",
@@ -129,15 +160,17 @@
   }
  ],
  "summary": {
-  "n": 3,
-  "median_R1_ratio": 1.0449404196971854,
-  "median_mass_ratio": 1.140829270995085,
+  "n": 4,
+  "median_R1_ratio": 1.0783164123526627,
+  "median_mass_ratio": 1.2575778085481244,
   "ms_ratio_on_gaia_inputs": [
+   1.2605556875151578,
    1.4652597786125234,
    0.8409737827001145,
    1.0252518945351967
   ],
   "ms_ratio_on_true_values": [
+   0.7276099557753944,
    1.0661658220911863,
    0.8889191530418689,
    0.8986900324190699

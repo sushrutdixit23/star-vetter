@@ -30,8 +30,9 @@ function Mark({ k, x, y, ok }: { k: number; x: number; y: number; ok: boolean })
 }
 
 /** Each check as |difference| / allowed difference, on a log axis: left of the line passes. */
-export function BenchmarkMargins({ rows, rule }: { rows: BenchmarkRow[]; rule: Record<string, number | string> }) {
-  const W = 760, L = 150, R = 20, T = 30, rowH = 34, B = 46;
+/** `compact` is the phone layout: a narrower viewBox (so text stays legible without sideways scrolling) and the cadence under the name. */
+export function BenchmarkMargins({ rows, rule, compact = false }: { rows: BenchmarkRow[]; rule: Record<string, number | string>; compact?: boolean }) {
+  const W = compact ? 380 : 760, L = compact ? 84 : 150, R = compact ? 12 : 20, T = 30, rowH = compact ? 40 : 34, B = 46;
   const H = T + rows.length * rowH + B;
   const lo = Math.log10(0.01), hi = Math.log10(100);
   const sx = (v: number) => rd(L + ((Math.log10(Math.min(100, Math.max(0.01, v))) - lo) / (hi - lo)) * (W - L - R));
@@ -46,13 +47,13 @@ export function BenchmarkMargins({ rows, rule }: { rows: BenchmarkRow[]; rule: R
             <text x={sx(t)} y={H - 26} textAnchor="middle" className="fill-faint" fontSize="11" fontFamily={MONO}>{t}</text>
           </g>
         ))}
-        <text x={(L + W - R) / 2} y={H - 8} textAnchor="middle" className="fill-faint" fontSize="11" fontFamily={MONO}>|difference from published| / allowed difference (left of 1: passes)</text>
+        <text x={(L + W - R) / 2} y={H - 8} textAnchor="middle" className="fill-faint" fontSize={compact ? 10 : 11} fontFamily={MONO}>{compact ? "difference / allowed (left of 1 passes)" : "|difference from published| / allowed difference (left of 1: passes)"}</text>
         {rows.map((r, i) => {
           const y = T + i * rowH + rowH / 2 - 8;
           return (
             <g key={`${r.name}-${r.cadence_min}`}>
-              <text x={8} y={y + 4} className="fill-fg" fontSize="12" fontFamily={MONO}>{r.name}</text>
-              <text x={96} y={y + 4} className="fill-faint" fontSize="11" fontFamily={MONO}>{r.cadence_min} min</text>
+              <text x={compact ? 4 : 8} y={y + (compact ? 0 : 4)} className="fill-fg" fontSize={compact ? 11 : 12} fontFamily={MONO}>{r.name}</text>
+              <text x={compact ? 4 : 96} y={y + (compact ? 12 : 4)} className="fill-faint" fontSize={compact ? 10 : 11} fontFamily={MONO}>{r.cadence_min} min</text>
               {r.status !== "OK" || !r.differences ? (
                 <text x={L + 8} y={y + 4} className="fill-accent-kill" fontSize="11.5" fontFamily={MONO}>no fit ({r.status.toLowerCase().replace(/_/g, " ")})</text>
               ) : (
@@ -127,9 +128,9 @@ export function BenchmarkTable({ rows }: { rows: BenchmarkRow[] }) {
 const QLABEL: Record<string, string> = { e: "e", ecosw: "e cos \u03c9", r1: "r\u2081", r2: "r\u2082", incl: "i" };
 
 /** Fraction of injections whose quoted interval contains the truth, against the fraction it should be. */
-export function CoverageBars({ m }: { m: InjectionMetrics }) {
+export function CoverageBars({ m, compact = false }: { m: InjectionMetrics; compact?: boolean }) {
   const qs = ["e", "ecosw", "r1", "r2", "incl"];
-  const W = 700, L = 110, R = 60, T = 26, rowH = 46, B = 40;
+  const W = compact ? 380 : 700, L = compact ? 60 : 110, R = compact ? 14 : 60, T = 26, rowH = compact ? 56 : 46, B = 40;
   const H = T + qs.length * rowH + B;
   const sx = (v: number) => rd(L + v * (W - L - R));
   return (
@@ -141,7 +142,7 @@ export function CoverageBars({ m }: { m: InjectionMetrics }) {
             <text x={sx(t)} y={H - 22} textAnchor="middle" className="fill-faint" fontSize="11" fontFamily={MONO}>{t * 100}%</text>
           </g>
         ))}
-        <text x={(L + W - R) / 2} y={H - 4} textAnchor="middle" className="fill-faint" fontSize="11" fontFamily={MONO}>share of injections inside the quoted interval</text>
+        <text x={(L + W - R) / 2} y={H - 4} textAnchor="middle" className="fill-faint" fontSize={compact ? 10 : 11} fontFamily={MONO}>{compact ? "share inside the quoted interval" : "share of injections inside the quoted interval"}</text>
         {qs.map((q, i) => {
           const y = T + i * rowH;
           const c68 = m.by_quantity[q]?.coverage_68 ?? 0, c95 = m.by_quantity[q]?.coverage_95 ?? 0;
@@ -150,10 +151,11 @@ export function CoverageBars({ m }: { m: InjectionMetrics }) {
               <text x={8} y={y + 14} className="fill-fg" fontSize="12.5" fontFamily={MONO}>{QLABEL[q]}</text>
               <rect x={L} y={y} width={sx(c68) - L} height={14} rx={2} className="fill-accent" />
               <line x1={sx(0.68)} x2={sx(0.68)} y1={y - 3} y2={y + 17} className="stroke-fg" strokeWidth="2" />
-              <text x={sx(Math.max(c68, 0.68)) + 8} y={y + 11} className="fill-muted" fontSize="11" fontFamily={MONO}>68%: {pct(c68)}</text>
+              {!compact && <text x={sx(Math.max(c68, 0.68)) + 8} y={y + 11} className="fill-muted" fontSize="11" fontFamily={MONO}>68%: {pct(c68)}</text>}
               <rect x={L} y={y + 18} width={sx(c95) - L} height={8} rx={2} className="fill-accent" opacity="0.45" />
               <line x1={sx(0.95)} x2={sx(0.95)} y1={y + 15} y2={y + 29} className="stroke-fg" strokeWidth="1.5" />
-              <text x={sx(Math.max(c95, 0.95)) + 8} y={y + 27} className="fill-faint" fontSize="10.5" fontFamily={MONO}>95%: {pct(c95)}</text>
+              {!compact && <text x={sx(Math.max(c95, 0.95)) + 8} y={y + 27} className="fill-faint" fontSize="10.5" fontFamily={MONO}>95%: {pct(c95)}</text>}
+              {compact && <text x={L} y={y + 42} className="fill-muted" fontSize="10.5" fontFamily={MONO}>68%: {pct(c68)}   95%: {pct(c95)}</text>}
             </g>
           );
         })}
@@ -171,9 +173,9 @@ function HostMark({ shape, x, y, filled }: { shape: number; x: number; y: number
 }
 
 /** Injected against recovered eccentricity, with 68% bars; the band is the "good" tolerance. */
-export function InjectionScatter({ points, hosts }: { points: InjectionPoint[]; hosts: { tic: number; label: string }[] }) {
+export function InjectionScatter({ points, hosts, compact = false }: { points: InjectionPoint[]; hosts: { tic: number; label: string }[]; compact?: boolean }) {
   const shapeOf = new Map(hosts.map((h, i) => [h.tic, i] as const));
-  const W = 560, H = 480, L = 56, R = 16, T = 16, B = 50;
+  const W = compact ? 380 : 560, H = compact ? 390 : 480, L = compact ? 40 : 56, R = 14, T = 16, B = 50;
   const mx = 0.6;
   const sx = (v: number) => rd(L + (Math.min(v, mx) / mx) * (W - L - R));
   const sy = (v: number) => rd(T + (1 - Math.min(Math.max(v, 0), mx) / mx) * (H - T - B));
@@ -219,8 +221,8 @@ export function InjectionScatter({ points, hosts }: { points: InjectionPoint[]; 
 
 // ---------------------------------------------------------------- convergence before / after
 
-export function ConvergenceDumbbell({ rows }: { rows: ConvergenceRow[] }) {
-  const W = 700, L = 120, R = 120, T = 26, rowH = 26, B = 40;
+export function ConvergenceDumbbell({ rows, compact = false }: { rows: ConvergenceRow[]; compact?: boolean }) {
+  const W = compact ? 380 : 700, L = compact ? 100 : 120, R = compact ? 44 : 120, T = 26, rowH = compact ? 24 : 26, B = 40;
   const H = T + rows.length * rowH + B;
   const mx = 0.6;
   const sx = (v: number) => rd(L + (Math.min(Math.max(v, 0), mx) / mx) * (W - L - R));
@@ -233,24 +235,25 @@ export function ConvergenceDumbbell({ rows }: { rows: ConvergenceRow[] }) {
             <text x={sx(t)} y={H - 22} textAnchor="middle" className="fill-faint" fontSize="11" fontFamily={MONO}>{t.toFixed(1)}</text>
           </g>
         ))}
-        <text x={(L + W - R) / 2} y={H - 4} textAnchor="middle" className="fill-faint" fontSize="11" fontFamily={MONO}>eccentricity (hollow: 1500-step chain; filled: longer chain, 68% bar)</text>
+        <text x={(L + W - R) / 2} y={H - 4} textAnchor="middle" className="fill-faint" fontSize={compact ? 10 : 11} fontFamily={MONO}>{compact ? "eccentricity (hollow: 1500 steps)" : "eccentricity (hollow: 1500-step chain; filled: longer chain, 68% bar)"}</text>
         {rows.map((r, i) => {
           const y = T + i * rowH;
           const moved = Math.abs(r.after.median - r.before.median) > 0.5 * (r.after.lo + r.after.hi);
           return (
             <g key={r.tic}>
-              <text x={8} y={y + 4} className="fill-muted" fontSize="11.5" fontFamily={MONO}>TIC {r.tic}</text>
+              <text x={compact ? 4 : 8} y={y + 4} className="fill-muted" fontSize={compact ? 10.5 : 11.5} fontFamily={MONO}>TIC {r.tic}</text>
               <line x1={sx(r.before.median)} x2={sx(r.after.median)} y1={y} y2={y} className="stroke-faint" />
               <line x1={sx(r.after.median - r.after.lo)} x2={sx(r.after.median + r.after.hi)} y1={y} y2={y} className="stroke-accent" strokeWidth="2" />
               <circle cx={sx(r.before.median)} cy={y} r={4} className="fill-none stroke-muted" strokeWidth="1.5" />
               <circle cx={sx(r.after.median)} cy={y} r={4.5} className="fill-accent" />
               <text x={W - R + 10} y={y + 4} className={moved ? "fill-fg" : "fill-faint"} fontSize="10.5" fontFamily={MONO}>
-                {r.steps_after} steps{r.converged_after ? "" : ", short"}
+                {compact ? `${r.steps_after}${r.converged_after ? "" : "*"}` : `${r.steps_after} steps${r.converged_after ? "" : ", short"}`}
               </text>
             </g>
           );
         })}
       </svg>
+      {compact && <figcaption className="mt-2 font-mono text-[11px] text-muted">Numbers: sampler steps. * the chain is still shorter than 20 autocorrelation times.</figcaption>}
     </figure>
   );
 }

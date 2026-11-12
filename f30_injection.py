@@ -127,7 +127,11 @@ def metrics(rows):
         cover95 = np.array([r["fit"][q]["p2.5"] <= r["truth"][q] <= r["fit"][q]["p97.5"] for r in ok])
         rel = q in ("r1", "r2")
         e_rel = np.array([(r["fit"][q]["median"] / r["truth"][q] - 1) for r in ok]) if rel else None
-        out["by_quantity"][q] = {"median_error": float(np.median(err)) if len(err) else None,
+        # added after the first results, NOT in the registered design: how much wider the quoted 68% interval would
+        # have to be (measured to the side the truth is on) for 68% of the injections to fall inside it
+        zs = np.array([abs(r["fit"][q]["median"] - r["truth"][q]) / max(r["fit"][q]["hi"] if r["fit"][q]["median"] < r["truth"][q] else r["fit"][q]["lo"], 1e-9) for r in ok])
+        out["by_quantity"][q] = {"error_inflation_68": float(np.percentile(zs, 68)) if len(zs) else None,
+                                 "median_error": float(np.median(err)) if len(err) else None,
                                  "median_abs_error": float(np.median(np.abs(err))) if len(err) else None,
                                  "median_abs_fractional_error": float(np.median(np.abs(e_rel))) if rel and len(ok) else None,
                                  "coverage_68": float(cover.mean()) if len(cover) else None,
@@ -148,6 +152,11 @@ def metrics(rows):
         if frac >= 0.8 and (best is None or len(a) > best["n_accepted"]):
             best = {"rsum_max": round(float(thr), 2), "n_accepted": len(a), "good_fraction": frac}
     out["trust_rule"]["largest_rsum_threshold_with_80pc_good"] = best
+    # added after the first results, NOT in the registered design: the site says that for an untrusted eccentricity
+    # |e cos omega| is a lower limit on e. Count how often the fitted |e cos omega| exceeds the injected e.
+    viol = [r for r in ok if abs(r["fit"]["ecosw"]["median"]) > r["truth"]["e"] + 0.02]
+    out["ecosw_lower_limit"] = {"n_checked": len(ok), "violations": len(viol),
+                                "rule": "fitted |e cos w| > injected e + 0.02", "violations_untrusted": sum(1 for r in viol if not r.get("trusted"))}
     return out
 
 

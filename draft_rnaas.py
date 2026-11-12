@@ -247,7 +247,7 @@ def render(audit, rec, alias, nb, pred, novelty, xm, ev=None, ztf=None, gdr3=Non
         "Absence from catalogs is largely by construction: Kostov et al. removed every target within 21 arcsec of a known eclipsing binary "
         "before publishing the unvetted list. The IJspeert et al. (2021, 2024) searches covered only %d and %d of the %d stars. "
         "Not checked: the 2026 catalogs of Oddo et al. and Liu et al. (not in VizieR), ATLAS and ASAS-SN in the south, LAMOST and SDSS spectra, and "
-        "Gaia DR4 (due 2 December 2026). No physical light-curve model was fitted, so planets, brown dwarfs and sub-0.2-pixel blends are not excluded. "
+        "Gaia DR4 (due 2 December 2026). A physical model (ellc) was fitted to 17 candidates only; for the rest, planets, brown dwarfs and sub-0.2-pixel blends are not excluded. "
         "Only %d stars have predictions, and %d are validated. The recall figures rest on %d host stars." % (
             ij21["n_in_parent_sample"], ij24["n_in_parent_sample"], xm["candidates"], c["listed"], c["listed_validated"], r["counts"]["stars"]))
     L.append("")

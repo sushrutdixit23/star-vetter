@@ -8,11 +8,12 @@ import Countdown from "@/components/physics/Countdown";
 import ScrollX from "@/components/physics/ScrollX";
 import { EccPeriodPlot, EccentricityDumbbell, MassStrip, ValidationFigure } from "@/components/physics/Figures";
 import type { EccPoint } from "@/components/physics/Figures";
+import { BenchmarkMargins, BenchmarkTable, CoverageBars, ConvergenceDumbbell, InjectionScatter, MassCalibrationTable } from "@/components/physics/Validation2";
 
 export const metadata = {
   title: "Physics - Star Vetter",
   description:
-    "A physical eclipse model fitted to the survivor light curves: sizes, tilts and orbit shapes for 17 candidates, tested against a published system and against Gaia, with the limits stated.",
+    "A physical eclipse model fitted to the survivor light curves: sizes, tilts and orbit shapes for 17 candidates, tested against published systems (including a blind test we could fail), injected eclipses and Gaia, with the failures and limits stated.",
 };
 
 const DEFAULT_TIC = 370553309;
@@ -113,6 +114,33 @@ export default function PhysicsPage() {
   const ltte = f.timing_drift?.ltte?.[0];
   const e23 = fits.get(237115819);
 
+  // ---- the pre-registered blind test, injection-recovery, longer chains, and the mass method on known systems
+  const bench = figs.benchmarks;
+  const benchRows = bench?.rows ?? [];
+  const benchPassed = benchRows.filter((r) => r.passed);
+  const benchFailed = benchRows.filter((r) => !r.passed);
+  const benchAcc = benchRows.filter((r) => r.status === "OK" && r.trusted);
+  const benchRej = benchRows.filter((r) => r.status === "OK" && !r.trusted);
+  const benchSystems = Array.from(new Set(benchRows.map((r) => r.name)));
+  const failedSystems = benchSystems.filter((n) => benchRows.some((r) => r.name === n && !r.passed));
+  const inj = figs.injection;
+  const injAll = inj?.overall;
+  const injE = injAll?.by_quantity?.e;
+  const conv = figs.convergence ?? [];
+  const convMoved = conv.filter((c) => Math.abs(c.after.median - c.before.median) > 0.5 * (c.after.lo + c.after.hi));
+  const convBiggest = conv.length ? [...conv].sort((a, b) => Math.abs(b.after.median - b.before.median) - Math.abs(a.after.median - a.before.median))[0] : null;
+  const calib = figs.mass_calibration;
+  const calibOk = (calib?.rows ?? []).filter((r) => r.status === "OK");
+  const calR = calibOk.map((r) => r.R1_ratio ?? 1);
+  const calM = calibOk.map((r) => r.mass_ratio ?? 1);
+  const calPct = (v: number) => `${v >= 1 ? "+" : "\u2212"}${Math.abs((v - 1) * 100).toFixed(0)}%`;
+  const injHosts = [
+    { tic: 370553309, label: "host TIC 370553309 (30 min)" },
+    { tic: 318887646, label: "host TIC 318887646 (10/30 min)" },
+    { tic: 43785616, label: "host TIC 43785616 (2 min)" },
+  ];
+  const pc = (v: number | null | undefined, d = 0) => (v == null ? "n/a" : `${(v * 100).toFixed(d)}%`);
+
   return (
     <main className="w-full flex-1 px-4 py-10 sm:px-8 xl:px-12">
       <header className="max-w-4xl pb-8">
@@ -189,9 +217,114 @@ export default function PhysicsPage() {
             ? `As a second check, the geometry was held at the published values and only the surface-brightness ratio, third light, limb darkening and timing were refitted (dashed). It leaves ${refit.rms_resid_ppt.toFixed(1)} ppt rms against ${ai.rms_resid_ppt.toFixed(1)} ppt for our own fit, and a chi-square ${Math.abs((refit.chi2 / refit.chi2_ours - 1) * 100).toFixed(0)}% ${refit.chi2 >= refit.chi2_ours ? "higher" : "lower"} over ${refit.n_bins} points: the two solutions describe the same eclipses. `
             : ""}
           The largest binned residual of our fit is {aiMaxRes.toFixed(0)} ppt, {((aiMaxRes / aiDepthPpt) * 100).toFixed(1)}% of the primary eclipse depth, on the eclipse ingress and egress. One system tests the machinery; it does not guarantee every
-          candidate, which are fainter, mostly have fewer eclipses, and in some cases are close pairs that spheres describe poorly.
+          candidate, which are fainter, mostly have fewer eclipses, and in some cases are close pairs that spheres describe poorly. The next sections test it harder.
         </P>
       </section>
+
+      {bench && benchRows.length > 0 ? (
+        <section id="blind" className="mt-16 scroll-mt-24 border-t border-line pt-10">
+          <Split
+            left={
+              <>
+                <H2>A test it could fail</H2>
+                <P>
+                  AI Phe was used while the method was being built, so passing it proves little. The next test was written down first. Before any fit was run, {benchSystems.length} published systems, the quantities to compare and the pass rule were committed to the repository
+                  (commit e186551, data/benchmarks/f29_preregistration.json). The fit saw only the TESS light curve, the published period and one reference time. The eclipse duration and the secondary eclipse position were measured from the data, not copied from the
+                  papers. The comparison values come from the published solutions. Each system was fitted at its native cadence and again with the data degraded to 30 minutes, with AI Phe&apos;s tolerances unchanged.
+                </P>
+                <P>
+                  <span className="text-fg">{benchPassed.length} of {benchRows.length} runs pass all six checks.</span>{" "}
+                  {failedSystems.length ? `The failures are ${failedSystems.join(" and ")}.` : "No run failed."}
+                  {" "}The trust rule that decides whether an eccentricity is shown on this page accepted {benchAcc.length} runs, and {benchAcc.filter((r) => r.passed).length} of those passed. It rejected {benchRej.length}, and {benchRej.filter((r) => !r.passed).length} of those failed.
+                </P>
+                {benchFailed.some((r) => r.status === "OK" && r.fit) ? (
+                  <P>
+                    In the failing runs the secondary eclipse could not be located on its own, so nothing pinned down e cos &omega;, and the fit settled near zero. The quoted error bars did not show it:{" "}
+                    {(() => {
+                      const miss = benchFailed
+                        .filter((r) => r.status === "OK" && r.fit)
+                        .map((r) => {
+                          const side = r.fit!.e.median > r.truth.e ? r.fit!.e.lo : r.fit!.e.hi;
+                          return { r, off: Math.abs(r.fit!.e.median - r.truth.e), sig: Math.max(side, 1e-4) };
+                        })
+                        .sort((a, b) => b.off / b.sig - a.off / a.sig)[0];
+                      return `${miss.r.name} at ${miss.r.cadence_min} minutes gave e = ${miss.r.fit!.e.median.toFixed(2)}, with an interval of about \u00b1${miss.sig.toFixed(2)}, against a published ${miss.r.truth.e.toFixed(2)}: ${(miss.off / miss.sig).toFixed(0)} interval widths away.`;
+                    })()}{" "}
+                    Four systems is a small sample, and the failures are reported as they came out. No system was dropped or swapped after the fits.
+                  </P>
+                ) : null}
+              </>
+            }
+          >
+            <div className="max-w-3xl rounded-xl border border-line bg-panel p-4">
+              <div className="sm:hidden"><BenchmarkMargins rows={benchRows} rule={bench.pass_rule} compact /></div>
+              <div className="hidden sm:block"><ScrollX min={600}><BenchmarkMargins rows={benchRows} rule={bench.pass_rule} /></ScrollX></div>
+            </div>
+            <div className="mt-6 max-w-3xl">
+              <BenchmarkTable rows={benchRows} />
+            </div>
+          </Split>
+        </section>
+      ) : null}
+
+      {inj && injAll && injE ? (
+        <section id="injection" className="mt-16 scroll-mt-24 border-t border-line pt-10">
+          <Split
+            left={
+              <>
+                <H2>Do the error bars mean what they say?</H2>
+                <P>
+                  A second check needs no published system. Take a candidate&apos;s own light curve, divide out its best-fit model so that only its real noise, gaps and trends remain, multiply in a synthetic eclipsing binary whose sizes, tilt and orbit are known, and run the whole
+                  path on it, including the trust rule. {injAll.n_fitted} of {injAll.n_injected} injections gave a fit, on the noise of three different candidates (2, 10 and 30 minute cadence).
+                </P>
+                <P>
+                  <span className="text-fg">The quoted 68% interval for e held the injected value {pc(injE.coverage_68)} of the time</span> and the 95% interval {pc(injE.coverage_95)}.
+                  {injE.error_inflation_68 != null && injE.coverage_68 != null && injE.coverage_68 < 0.6
+                    ? ` For the 68% interval to be right it would need to be about ${injE.error_inflation_68.toFixed(1)} times wider. The error bars from the sampler are too small, so every uncertainty on this page is a minimum.`
+                    : " That is close enough to the stated level to take the intervals at face value."}
+                </P>
+                <P>
+                  The trust rule accepted {injAll.trust_rule.accepted} of the injected systems; {pc(injAll.trust_rule.accepted_good_fraction)} of those had e within 0.03 of the truth, against {pc(injAll.trust_rule.rejected_good_fraction)} of the {injAll.trust_rule.rejected} it rejected.
+                  {injAll.ecosw_lower_limit
+                    ? ` For eccentricities it does not accept, the page shows |e cos \u03c9| as a lower limit on e. That limit was exceeded (fitted |e cos \u03c9| above the injected e by more than 0.02) in ${injAll.ecosw_lower_limit.violations} of ${injAll.ecosw_lower_limit.n_checked} injections. This check was added after the first results came in; it was not in the registered design.`
+                    : ""}
+                </P>
+              </>
+            }
+          >
+            <div className="max-w-3xl rounded-xl border border-line bg-panel p-4">
+              <div className="sm:hidden"><CoverageBars m={injAll} compact /></div>
+              <div className="hidden sm:block"><ScrollX min={560}><CoverageBars m={injAll} /></ScrollX></div>
+            </div>
+            <div className="mt-6 max-w-xl rounded-xl border border-line bg-panel p-4">
+              <div className="sm:hidden"><InjectionScatter points={inj.points} hosts={injHosts} compact /></div>
+              <div className="hidden sm:block"><ScrollX min={420}><InjectionScatter points={inj.points} hosts={injHosts} /></ScrollX></div>
+            </div>
+          </Split>
+        </section>
+      ) : null}
+
+      {conv.length > 0 ? (
+        <section id="chains" className="mt-16 scroll-mt-24 border-t border-line pt-10">
+          <Split
+            left={
+              <>
+                <H2>Longer chains changed answers</H2>
+                <P>
+                  The first fits ran a fixed 1500 sampler steps. Rerunning every fit until the chain had run at least 20 autocorrelation times (or hit a step limit) moved the eccentricity of {convMoved.length} of {conv.length} candidates by more than half of its quoted interval.
+                  {convBiggest ? ` The largest move was TIC ${convBiggest.tic}, from ${convBiggest.before.median.toFixed(2)} to ${convBiggest.after.median.toFixed(2)}.` : ""}
+                  {" "}Everything on this page uses the longer chains. The first-run values are kept in the repository (f26_ebfit_1500steps.json) for comparison.
+                </P>
+              </>
+            }
+          >
+            <div className="max-w-3xl rounded-xl border border-line bg-panel p-4">
+              <div className="sm:hidden"><ConvergenceDumbbell rows={conv} compact /></div>
+              <div className="hidden sm:block"><ScrollX min={620}><ConvergenceDumbbell rows={conv} /></ScrollX></div>
+            </div>
+          </Split>
+        </section>
+      ) : null}
 
       <section id="gaia" className="mt-16 scroll-mt-24 border-t border-line pt-10">
         <H2>Checked by another instrument: Gaia</H2>
@@ -337,8 +470,10 @@ export default function PhysicsPage() {
                 {figs.mass_check_points.length} are consistent.
               </P>
               <P>
-                Part of the cause is likely that Gaia&apos;s radius treats two stars as one, which inflates it. So no masses are reported. Real masses need velocities of both stars, from double-lined spectra. TIC 370553309, 59490510 and 264099112 are the most useful first
-                targets.
+                {calibOk.length
+                  ? `The method was then tried where the answer is known: ${word(calibOk.length)} eclipsing binaries with published masses and radii, using their published fractional radius so that only the Gaia radius step and Kepler's law are tested. The first star's radius came out a median ${calPct(median(calR))} (range ${calPct(Math.min(...calR))} to ${calPct(Math.max(...calR))}), and because mass goes as radius cubed, the total mass a median factor of ${median(calM).toFixed(2)} (range ${Math.min(...calM).toFixed(2)} to ${Math.max(...calM).toFixed(2)}). That is a measured part of the excess seen in the candidates. With so few systems it is not a correction that can be applied. `
+                  : "Part of the cause is likely that Gaia's radius treats two stars as one, which inflates it. "}
+                So no masses are reported. Real masses need velocities of both stars, from double-lined spectra. TIC 370553309, 59490510 and 264099112 are the most useful first targets.
               </P>
             </>
           }
@@ -347,6 +482,12 @@ export default function PhysicsPage() {
             <ScrollX min={620}><MassStrip points={figs.mass_check_points} /></ScrollX>
             <p className="mt-2 text-xs text-faint">Bars: the 10% systematic on the fractional radius plus the radius error. Filled: consistent with main-sequence stars; hollow: not.</p>
           </div>
+          {calib && calib.rows.length ? (
+            <div className="mt-6 max-w-3xl">
+              <MassCalibrationTable rows={calib.rows} />
+              <p className="mt-2 text-xs text-faint">Gaia radius with the companion&apos;s light removed, then Kepler&apos;s third law, against the published values. V1022 Cas has no Gaia radius because Gaia flags it as a binary.</p>
+            </div>
+          ) : null}
         </Split>
       </section>
 
@@ -386,7 +527,10 @@ export default function PhysicsPage() {
               <li>Spheres only, so close pairs (r1 + r2 above 0.25) give an e cos &omega; and no more.</li>
               <li>{nFits} of {phys.fits.length} attempted fits produced a result; the other had too few eclipses with a clean baseline.</li>
               <li>{nFits - nConverged} of {nFits} chains are shorter than 20 autocorrelation times.</li>
-              <li>One validation system, and two stars checked against Gaia&apos;s eccentricity.</li>
+              <li>
+                One calibration system (AI Phe){benchSystems.length ? `, ${word(benchSystems.length)} blind benchmark systems of which ${word(benchSystems.length - failedSystems.length)} passed at every cadence` : ""}, and two stars checked against Gaia&apos;s eccentricity.
+              </li>
+              {injE?.coverage_68 != null && injE.coverage_68 < 0.6 ? <li>Quoted uncertainties are too small: in injection tests the 68% interval held the truth {pc(injE.coverage_68)} of the time.</li> : null}
               <li>Everything here is a candidate or a lower limit until spectra say otherwise.</li>
             </ul>
           </div>

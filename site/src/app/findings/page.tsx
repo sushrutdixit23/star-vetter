@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getFindings, getPeriodChangePredictions } from "@/lib/data";
+import { getPhysicsFigures } from "@/lib/physics";
 
 export const metadata = {
   title: "Findings - Star Vetter",
@@ -20,6 +21,9 @@ const COVERAGE: Record<string, string> = {
 
 export default function FindingsPage() {
   const f = getFindings();
+  const phys = getPhysicsFigures();
+  const injE = phys?.injection?.overall.by_quantity.e;
+  const massCal = phys?.mass_calibration?.summary;
   const pc = getPeriodChangePredictions();
 
   return (
@@ -257,6 +261,12 @@ export default function FindingsPage() {
                 light ratio; when the two differ by more than a factor 1.6 the value is shown as inconsistent rather than used. Third light marked (prior) is not
                 constrained by the data. The full e is shown only when the stars are not too close for spheres (r1 + r2 at most 0.25), the
                 secondary eclipse was measured independently, and both values of e cos w agree; otherwise only e cos w is given. &quot;Chain short&quot;: fewer than 20 autocorrelation times, so uncertainties are indicative.
+                {injE?.coverage_68 != null && injE.coverage_68 < 0.6
+                  ? <> In injection tests the 68% intervals shown here held the true e {Math.round(injE.coverage_68 * 100)}% of the time, so read every interval as a minimum (<Link className="underline" href="/physics#injection">details</Link>).</>
+                  : null}
+                {massCal && massCal.n > 0 && massCal.median_mass_ratio != null && massCal.median_mass_ratio > 1.1
+                  ? <> On {massCal.n} published systems the same method gave a median {massCal.median_mass_ratio.toFixed(2)} times the published total mass (<Link className="underline" href="/physics#masses">details</Link>).</>
+                  : null}
                 {f.physical.mass_check && f.physical.mass_check.n > 0 && f.physical.mass_check.median_ratio !== null
                   ? ` Across ${f.physical.mass_check.n} stars the Kepler masses run a median ${f.physical.mass_check.median_ratio.toFixed(1)} times the expectation (${f.physical.mass_check.n_consistent} consistent), most likely because Gaia's radius of a two-star source is too large: these are not usable as masses, which still need double-lined spectra.`
                   : ""}

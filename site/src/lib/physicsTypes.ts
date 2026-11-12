@@ -110,6 +110,8 @@ export interface Benchmarks {
 }
 
 export interface QuantityMetrics {
+  /** How many times wider the quoted 68% interval would have to be for 68% of injections to fall inside it. */
+  error_inflation_68?: number | null;
   median_error: number | null;
   median_abs_error: number | null;
   median_abs_fractional_error: number | null;
@@ -128,6 +130,8 @@ export interface InjectionMetrics {
     rejected_good_fraction: number | null;
     largest_rsum_threshold_with_80pc_good: { rsum_max: number; n_accepted: number; good_fraction: number } | null;
   };
+  /** Added after the first results: how often the fitted |e cos w| (the "lower limit on e") exceeded the injected e. */
+  ecosw_lower_limit?: { n_checked: number; violations: number; rule: string; violations_untrusted: number };
 }
 
 export interface InjectionPoint {

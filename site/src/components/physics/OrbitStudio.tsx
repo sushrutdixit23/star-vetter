@@ -367,7 +367,7 @@ export default function OrbitStudio({ stars, initialTic }: { stars: StudioStar[]
             <dt className="text-muted">Fit residual</dt>
             <dd className="text-right font-mono text-fg">{curve.rms_resid_ppt.toFixed(2)} ppt rms</dd>
           </dl>
-          <p className="mt-2 text-[11px] leading-relaxed text-faint">Radii are fractions of the orbit&apos;s semi-major axis. Table: posterior medians. Drawing: best-fit solution.</p>
+          <p className="mt-2 text-[11px] leading-relaxed text-faint">Radii are fractions of the orbit&apos;s semi-major axis. Table: posterior medians with 68% intervals from the sampler, which injection tests show are too narrow (see the Physics page). Drawing: best-fit solution.</p>
 
           <ul className="mt-4 space-y-2 border-t border-line pt-4 text-xs leading-relaxed text-muted">
             <li>

@@ -11,8 +11,8 @@ page says masses are not recovered. This asks why, using systems where the answe
   3. The main-sequence check f28 applies to candidates (f28.main_sequence_check) is run on the same inputs,
      to see whether it reports "inconsistent" for systems that are in fact fine.
 
-Published values: data/benchmarks/f31_published_properties.json (sources there). Gaia values are fetched from the
-Gaia archive once and cached in data/benchmarks/f31_gaia.json.
+Published values: data/benchmarks/f31_published_properties.json (sources there). Gaia values are fetched once (Gaia archive, or the VizieR copy of
+the same catalog when the archive is down) and cached in data/benchmarks/f31_gaia.json.
 
 Usage: python f31_mass_calibration.py <root>    -> data/processed/f31_mass_calibration.json
 """
@@ -25,12 +25,14 @@ from pathlib import Path
 import numpy as np
 import requests
 
+import crossmatch as cx
 import f28_physical as f28
 
 TAP = "https://gea.esac.esa.int/tap-server/tap/sync"
 
 
-def gaia_row(ra, dec, attempts=6):
+def gaia_row_archive(ra, dec, attempts=6):
+    """Gaia DR3 row from the ESA archive (TAP)."""
     q = ("SELECT TOP 1 g.source_id, g.phot_g_mean_mag, g.ruwe, g.non_single_star, a.radius_flame, a.radius_flame_lower, "
          "a.radius_flame_upper, a.radius_gspphot, a.teff_gspphot, a.mass_flame FROM gaiadr3.gaia_source AS g LEFT OUTER JOIN "
          "gaiadr3.astrophysical_parameters AS a ON a.source_id = g.source_id WHERE 1 = CONTAINS(POINT('ICRS', g.ra, g.dec), "
@@ -46,6 +48,54 @@ def gaia_row(ra, dec, attempts=6):
             pass
         time.sleep(10 * (k + 1))
     raise RuntimeError("Gaia archive unavailable")
+
+
+def gaia_row_vizier(ra, dec, attempts=10):
+    """The same Gaia DR3 quantities from VizieR (I/355/gaiadr3 and I/355/paramp, which hold the same catalog), through
+    the hardened request path of crossmatch.py: an error reported inside a response raises instead of reading as 'no row'."""
+    import astropy.units as u
+    from astropy.coordinates import SkyCoord
+
+    v = cx.vizier_for(cx.MIRROR_SERVER, columns=["**"], row_limit=-1)
+    c = SkyCoord(ra * u.deg, dec * u.deg)
+    tabs = {}
+    for cat in ("I/355/gaiadr3", "I/355/paramp"):
+        for k in range(attempts):
+            try:
+                res = v.query_region(c, radius=5.4 * u.arcsec, catalog=cat, cache=False)
+                tabs[cat] = res[0].to_pandas() if len(res) else None
+                break
+            except Exception:  # noqa: BLE001 - retried, then reported
+                time.sleep(2 * (k + 1))
+        else:
+            raise RuntimeError("VizieR mirror unavailable for " + cat)
+    g = tabs["I/355/gaiadr3"]
+    if g is None or not len(g):
+        return None
+    g = g.sort_values("Gmag").iloc[0]
+    row = {"source_id": int(g["Source"]), "phot_g_mean_mag": float(g["Gmag"]), "ruwe": float(g["RUWE"]),
+           "non_single_star": int(g["NSS"]), "radius_flame": None, "radius_flame_lower": None, "radius_flame_upper": None,
+           "radius_gspphot": None, "teff_gspphot": None, "mass_flame": None, "via": "VizieR I/355 (Harvard-CfA mirror)"}
+    a = tabs["I/355/paramp"]
+    if a is not None and len(a):
+        a = a[a["Source"] == g["Source"]]
+        if len(a):
+            a = a.iloc[0]
+            for dst, src in (("radius_flame", "Rad-Flame"), ("radius_flame_lower", "b_Rad-Flame"), ("radius_flame_upper", "B_Rad-Flame"),
+                             ("radius_gspphot", "Rad"), ("mass_flame", "Mass-Flame")):
+                if src in a and not np.isnan(a[src]):
+                    row[dst] = float(a[src])
+            if "Teff" in a and not np.isnan(a["Teff"]):
+                row["teff_gspphot"] = float(a["Teff"])
+    return row
+
+
+def gaia_row(ra, dec):
+    """Gaia archive first; if it is down (it was, 2026-11-12), the VizieR copy of the same catalog."""
+    try:
+        return gaia_row_archive(ra, dec, attempts=2)
+    except RuntimeError:
+        return gaia_row_vizier(ra, dec)
 
 
 def main():

@@ -96,6 +96,27 @@ The scheduled run is defined in `.github/workflows/pipeline.yml`: cron
 `13 */6 * * *`, default batch of 150 new targets, then data export, site build,
 commit, and deploy.
 
+### Physical model (optional)
+
+`f26_ebfit.py` fits an ellc eclipsing-binary model to the eccentric and
+period-change candidates. ellc needs a Fortran compiler, so on Windows the
+simplest route is the **Physics** workflow (`.github/workflows/physics.yml`,
+Actions tab -> Run workflow): it reruns every fit on Linux until the chains
+converge, runs the pre-registered blind benchmark on published binaries
+(`f29_benchmark.py`, rules in `data/benchmarks/f29_preregistration.json`) and
+the injection-recovery test (`f30_injection.py`), and uploads one
+`physics-results` artifact. Merge it with
+`python merge_physics_runs.py . <unzipped folder>`, then
+`python export_findings.py .` and `python export_physics.py .` (the last also needs
+ellc; on Windows use WSL).
+
+### Hosting
+
+The site deploys to Vercel. `.github/workflows/pages.yml` also publishes a
+static copy to GitHub Pages on every push to `main` (one-time setup:
+Settings -> Pages -> Source: GitHub Actions), so the site stays reachable if
+Vercel is not.
+
 ## Layout
 
 ```
