@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-11T06:29:42Z",
+ "generated_at": "2026-11-12T13:30:44Z",
  "verdict_counts": {
   "INSUFFICIENT_FOR_HALVES": 66,
   "ECCENTRIC": 13,
@@ -399,6 +399,1672 @@
   "Eclipses are on the TESS aperture, not proven to be on the target (see the evidence tier).",
   "Selection: a secondary must be detectable, which favours deep, well-separated eclipses."
  ],
+ "physical": {
+  "validation": [
+   {
+    "star": "AI Phe (TIC 102069549)",
+    "reference": "Maxted et al. 2020, MNRAS 498, 332",
+    "cadence_min": 2,
+    "passed": true,
+    "checks": {
+     "e": true,
+     "esinw": true,
+     "r1": true,
+     "r2": true,
+     "incl": true
+    },
+    "truth": {
+     "r1": 0.037686,
+     "r2": 0.061242,
+     "incl": 88.359,
+     "ecosw": -0.06517,
+     "esinw": 0.1758,
+     "e": 0.1875
+    },
+    "fit": {
+     "e": 0.1888,
+     "esinw": 0.1769,
+     "ecosw": -0.0658,
+     "r1": 0.0385,
+     "r2": 0.0603,
+     "incl": 88.5685,
+     "l3": 0.0828
+    }
+   },
+   {
+    "star": "AI Phe (TIC 102069549)",
+    "reference": "Maxted et al. 2020, MNRAS 498, 332",
+    "cadence_min": 30,
+    "passed": true,
+    "checks": {
+     "e": true,
+     "esinw": true,
+     "r1": true,
+     "r2": true,
+     "incl": true
+    },
+    "truth": {
+     "r1": 0.037686,
+     "r2": 0.061242,
+     "incl": 88.359,
+     "ecosw": -0.06517,
+     "esinw": 0.1758,
+     "e": 0.1875
+    },
+    "fit": {
+     "e": 0.184,
+     "esinw": 0.172,
+     "ecosw": -0.0653,
+     "r1": 0.0383,
+     "r2": 0.0606,
+     "incl": 88.4097,
+     "l3": 0.033
+    }
+   }
+  ],
+  "fits": [
+   {
+    "tic": 273787849,
+    "status": "OK",
+    "period_days": 2.142707,
+    "e": {
+     "median": 0.0072,
+     "lo": 0.0031,
+     "hi": 0.0033
+    },
+    "omega_deg": {
+     "median": 274.1,
+     "lo": 1.9,
+     "hi": 2.8
+    },
+    "ecosw": {
+     "median": 0.0005,
+     "lo": 0.0002,
+     "hi": 0.0002
+    },
+    "esinw": {
+     "median": -0.0072,
+     "lo": 0.0033,
+     "hi": 0.0031
+    },
+    "incl_deg": {
+     "median": 73.39,
+     "lo": 0.48,
+     "hi": 0.54
+    },
+    "r1": {
+     "median": 0.0557,
+     "lo": 0.0065,
+     "hi": 0.0082
+    },
+    "r2": {
+     "median": 0.2743,
+     "lo": 0.0051,
+     "hi": 0.0047
+    },
+    "k": {
+     "median": 4.94,
+     "lo": 0.676,
+     "hi": 0.638
+    },
+    "J": {
+     "median": 0.206,
+     "lo": 0.01,
+     "hi": 0.013
+    },
+    "l3": {
+     "median": 0.062,
+     "lo": 0.041,
+     "hi": 0.059
+    },
+    "l3_p97_5": 0.184,
+    "light_ratio": {
+     "median": 5.045,
+     "lo": 1.4,
+     "hi": 1.522
+    },
+    "converged": false,
+    "flags": [
+     "rsum above 0.25: spherical stars are a poor approximation",
+     "chain shorter than 20 autocorrelation times (tau=60 steps): uncertainties are indicative"
+    ],
+    "f22_ecosw": 0.02100339950437699,
+    "e_reliable": false,
+    "l3_constrained": false,
+    "e_note": "close pair: spheres misjudge the durations"
+   },
+   {
+    "tic": 178434324,
+    "status": "OK",
+    "period_days": 2.384432,
+    "e": {
+     "median": 0.1638,
+     "lo": 0.001,
+     "hi": 0.0013
+    },
+    "omega_deg": {
+     "median": 350.1,
+     "lo": 2.3,
+     "hi": 2.2
+    },
+    "ecosw": {
+     "median": 0.1613,
+     "lo": 0.0002,
+     "hi": 0.0002
+    },
+    "esinw": {
+     "median": -0.0282,
+     "lo": 0.0069,
+     "hi": 0.0064
+    },
+    "incl_deg": {
+     "median": 87.49,
+     "lo": 0.29,
+     "hi": 0.3
+    },
+    "r1": {
+     "median": 0.1053,
+     "lo": 0.0015,
+     "hi": 0.0019
+    },
+    "r2": {
+     "median": 0.1502,
+     "lo": 0.0013,
+     "hi": 0.0013
+    },
+    "k": {
+     "median": 1.426,
+     "lo": 0.025,
+     "hi": 0.022
+    },
+    "J": {
+     "median": 0.886,
+     "lo": 0.014,
+     "hi": 0.013
+    },
+    "l3": {
+     "median": 0.012,
+     "lo": 0.009,
+     "hi": 0.016
+    },
+    "l3_p97_5": 0.048,
+    "light_ratio": {
+     "median": 1.802,
+     "lo": 0.061,
+     "hi": 0.049
+    },
+    "converged": true,
+    "flags": [
+     "rsum above 0.25: spherical stars are a poor approximation"
+    ],
+    "f22_ecosw": 0.16053099866834147,
+    "e_reliable": false,
+    "l3_constrained": true,
+    "e_note": "close pair: spheres misjudge the durations"
+   },
+   {
+    "tic": 306294675,
+    "status": "OK",
+    "period_days": 2.982267,
+    "e": {
+     "median": 0.4829,
+     "lo": 0.0184,
+     "hi": 0.0199
+    },
+    "omega_deg": {
+     "median": 79.2,
+     "lo": 0.6,
+     "hi": 0.6
+    },
+    "ecosw": {
+     "median": 0.0905,
+     "lo": 0.0016,
+     "hi": 0.0015
+    },
+    "esinw": {
+     "median": 0.4743,
+     "lo": 0.0189,
+     "hi": 0.0206
+    },
+    "incl_deg": {
+     "median": 77.76,
+     "lo": 0.3,
+     "hi": 0.31
+    },
+    "r1": {
+     "median": 0.1599,
+     "lo": 0.0181,
+     "hi": 0.019
+    },
+    "r2": {
+     "median": 0.1751,
+     "lo": 0.0108,
+     "hi": 0.0103
+    },
+    "k": {
+     "median": 1.095,
+     "lo": 0.171,
+     "hi": 0.21
+    },
+    "J": {
+     "median": 14.586,
+     "lo": 2.639,
+     "hi": 3.138
+    },
+    "l3": {
+     "median": 0.067,
+     "lo": 0.047,
+     "hi": 0.064
+    },
+    "l3_p97_5": 0.194,
+    "light_ratio": {
+     "median": 17.586,
+     "lo": 2.958,
+     "hi": 3.095
+    },
+    "converged": false,
+    "flags": [
+     "rsum above 0.25: spherical stars are a poor approximation",
+     "chain shorter than 20 autocorrelation times (tau=56 steps): uncertainties are indicative"
+    ],
+    "f22_ecosw": 0.10416288112419092,
+    "e_reliable": false,
+    "l3_constrained": false,
+    "e_note": "close pair: spheres misjudge the durations"
+   },
+   {
+    "tic": 468090770,
+    "status": "OK",
+    "period_days": 3.103459,
+    "e": {
+     "median": 0.4401,
+     "lo": 0.0157,
+     "hi": 0.0122
+    },
+    "omega_deg": {
+     "median": 85.4,
+     "lo": 0.2,
+     "hi": 0.2
+    },
+    "ecosw": {
+     "median": 0.0352,
+     "lo": 0.0006,
+     "hi": 0.0006
+    },
+    "esinw": {
+     "median": 0.4387,
+     "lo": 0.0157,
+     "hi": 0.0122
+    },
+    "incl_deg": {
+     "median": 72.42,
+     "lo": 0.32,
+     "hi": 0.36
+    },
+    "r1": {
+     "median": 0.2562,
+     "lo": 0.0159,
+     "hi": 0.0108
+    },
+    "r2": {
+     "median": 0.2391,
+     "lo": 0.0085,
+     "hi": 0.0102
+    },
+    "k": {
+     "median": 0.933,
+     "lo": 0.068,
+     "hi": 0.103
+    },
+    "J": {
+     "median": 15.758,
+     "lo": 1.751,
+     "hi": 1.302
+    },
+    "l3": {
+     "median": 0.056,
+     "lo": 0.039,
+     "hi": 0.064
+    },
+    "l3_p97_5": 0.188,
+    "light_ratio": {
+     "median": 13.803,
+     "lo": 1.418,
+     "hi": 1.551
+    },
+    "converged": false,
+    "flags": [
+     "rsum above 0.25: spherical stars are a poor approximation",
+     "chain shorter than 20 autocorrelation times (tau=47 steps): uncertainties are indicative"
+    ],
+    "f22_ecosw": 0.023400293457704086,
+    "e_reliable": false,
+    "l3_constrained": false,
+    "e_note": "close pair: spheres misjudge the durations"
+   },
+   {
+    "tic": 235512374,
+    "status": "TOO_FEW_ECLIPSES_WITH_BASELINE"
+   },
+   {
+    "tic": 308578336,
+    "status": "OK",
+    "period_days": 4.276558,
+    "e": {
+     "median": 0.3111,
+     "lo": 0.0003,
+     "hi": 0.0004
+    },
+    "omega_deg": {
+     "median": 178.6,
+     "lo": 1.8,
+     "hi": 1.9
+    },
+    "ecosw": {
+     "median": -0.3109,
+     "lo": 0.0003,
+     "hi": 0.0003
+    },
+    "esinw": {
+     "median": 0.0077,
+     "lo": 0.0104,
+     "hi": 0.0097
+    },
+    "incl_deg": {
+     "median": 85.33,
+     "lo": 0.43,
+     "hi": 0.49
+    },
+    "r1": {
+     "median": 0.0966,
+     "lo": 0.0074,
+     "hi": 0.0049
+    },
+    "r2": {
+     "median": 0.08,
+     "lo": 0.0073,
+     "hi": 0.0086
+    },
+    "k": {
+     "median": 0.83,
+     "lo": 0.114,
+     "hi": 0.16
+    },
+    "J": {
+     "median": 0.789,
+     "lo": 0.015,
+     "hi": 0.018
+    },
+    "l3": {
+     "median": 0.138,
+     "lo": 0.07,
+     "hi": 0.084
+    },
+    "l3_p97_5": 0.309,
+    "light_ratio": {
+     "median": 0.541,
+     "lo": 0.141,
+     "hi": 0.246
+    },
+    "converged": false,
+    "flags": [
+     "chain shorter than 20 autocorrelation times (tau=50 steps): uncertainties are indicative"
+    ],
+    "f22_ecosw": -0.30805516346652617,
+    "e_reliable": true,
+    "l3_constrained": false,
+    "total_mass_msun": 2.7,
+    "total_mass_rel_sigma": 0.43,
+    "total_mass_plausible": true,
+    "total_mass_ms_consistent": true,
+    "total_mass_ms_expected": 3.9
+   },
+   {
+    "tic": 201317466,
+    "status": "OK",
+    "period_days": 5.623851,
+    "e": {
+     "median": 0.0003,
+     "lo": 0.0002,
+     "hi": 0.0011
+    },
+    "omega_deg": {
+     "median": 167.1,
+     "lo": 91.5,
+     "hi": 119.5
+    },
+    "ecosw": {
+     "median": 0.0,
+     "lo": 0.0001,
+     "hi": 0.0001
+    },
+    "esinw": {
+     "median": 0.0,
+     "lo": 0.0006,
+     "hi": 0.0006
+    },
+    "incl_deg": {
+     "median": 89.38,
+     "lo": 0.44,
+     "hi": 0.38
+    },
+    "r1": {
+     "median": 0.1055,
+     "lo": 0.0005,
+     "hi": 0.001
+    },
+    "r2": {
+     "median": 0.0442,
+     "lo": 0.0005,
+     "hi": 0.0005
+    },
+    "k": {
+     "median": 0.418,
+     "lo": 0.008,
+     "hi": 0.007
+    },
+    "J": {
+     "median": 0.376,
+     "lo": 0.003,
+     "hi": 0.002
+    },
+    "l3": {
+     "median": 0.142,
+     "lo": 0.043,
+     "hi": 0.031
+    },
+    "l3_p97_5": 0.203,
+    "light_ratio": {
+     "median": 0.066,
+     "lo": 0.003,
+     "hi": 0.002
+    },
+    "converged": false,
+    "flags": [
+     "chain shorter than 20 autocorrelation times (tau=42 steps): uncertainties are indicative"
+    ],
+    "f22_ecosw": -0.006759859429119952,
+    "e_reliable": true,
+    "l3_constrained": false,
+    "total_mass_msun": 2.72,
+    "total_mass_rel_sigma": 0.3,
+    "total_mass_plausible": true,
+    "total_mass_ms_consistent": false,
+    "total_mass_ms_expected": 1.69
+   },
+   {
+    "tic": 264099112,
+    "status": "OK",
+    "period_days": 5.974384,
+    "e": {
+     "median": 0.2066,
+     "lo": 0.0013,
+     "hi": 0.0014
+    },
+    "omega_deg": {
+     "median": 343.9,
+     "lo": 1.4,
+     "hi": 1.4
+    },
+    "ecosw": {
+     "median": 0.1984,
+     "lo": 0.0001,
+     "hi": 0.0001
+    },
+    "esinw": {
+     "median": -0.0575,
+     "lo": 0.0051,
+     "hi": 0.0052
+    },
+    "incl_deg": {
+     "median": 89.6,
+     "lo": 0.21,
+     "hi": 0.22
+    },
+    "r1": {
+     "median": 0.0756,
+     "lo": 0.0007,
+     "hi": 0.0006
+    },
+    "r2": {
+     "median": 0.0704,
+     "lo": 0.0009,
+     "hi": 0.0009
+    },
+    "k": {
+     "median": 0.932,
+     "lo": 0.016,
+     "hi": 0.017
+    },
+    "J": {
+     "median": 0.996,
+     "lo": 0.015,
+     "hi": 0.016
+    },
+    "l3": {
+     "median": 0.644,
+     "lo": 0.027,
+     "hi": 0.023
+    },
+    "l3_p97_5": 0.687,
+    "light_ratio": {
+     "median": 0.866,
+     "lo": 0.024,
+     "hi": 0.026
+    },
+    "converged": false,
+    "flags": [
+     "chain shorter than 20 autocorrelation times (tau=38 steps): uncertainties are indicative",
+     "large third light: inclination and radii are degenerate with it"
+    ],
+    "f22_ecosw": 0.19792994946241205,
+    "e_reliable": true,
+    "l3_constrained": true
+   },
+   {
+    "tic": 468210255,
+    "status": "OK",
+    "period_days": 6.707415,
+    "e": {
+     "median": 0.2544,
+     "lo": 0.0131,
+     "hi": 0.0146
+    },
+    "omega_deg": {
+     "median": 32.3,
+     "lo": 5.8,
+     "hi": 4.9
+    },
+    "ecosw": {
+     "median": 0.2151,
+     "lo": 0.001,
+     "hi": 0.0009
+    },
+    "esinw": {
+     "median": 0.1359,
+     "lo": 0.0281,
+     "hi": 0.0269
+    },
+    "incl_deg": {
+     "median": 82.68,
+     "lo": 0.32,
+     "hi": 0.39
+    },
+    "r1": {
+     "median": 0.0921,
+     "lo": 0.0156,
+     "hi": 0.016
+    },
+    "r2": {
+     "median": 0.0919,
+     "lo": 0.0133,
+     "hi": 0.0105
+    },
+    "k": {
+     "median": 1.0,
+     "lo": 0.271,
+     "hi": 0.338
+    },
+    "J": {
+     "median": 1.958,
+     "lo": 0.289,
+     "hi": 0.353
+    },
+    "l3": {
+     "median": 0.055,
+     "lo": 0.037,
+     "hi": 0.054
+    },
+    "l3_p97_5": 0.174,
+    "light_ratio": {
+     "median": 2.018,
+     "lo": 0.867,
+     "hi": 1.211
+    },
+    "converged": false,
+    "flags": [
+     "chain shorter than 20 autocorrelation times (tau=62 steps): uncertainties are indicative"
+    ],
+    "f22_ecosw": 0.21687587245080395,
+    "e_reliable": true,
+    "l3_constrained": false
+   },
+   {
+    "tic": 19569810,
+    "status": "OK",
+    "period_days": 7.006172,
+    "e": {
+     "median": 0.1329,
+     "lo": 0.0295,
+     "hi": 0.029
+    },
+    "omega_deg": {
+     "median": 80.7,
+     "lo": 2.7,
+     "hi": 1.7
+    },
+    "ecosw": {
+     "median": 0.0214,
+     "lo": 0.0002,
+     "hi": 0.0002
+    },
+    "esinw": {
+     "median": 0.1311,
+     "lo": 0.03,
+     "hi": 0.0293
+    },
+    "incl_deg": {
+     "median": 84.75,
+     "lo": 0.11,
+     "hi": 0.14
+    },
+    "r1": {
+     "median": 0.0686,
+     "lo": 0.0094,
+     "hi": 0.0087
+    },
+    "r2": {
+     "median": 0.0658,
+     "lo": 0.0079,
+     "hi": 0.0092
+    },
+    "k": {
+     "median": 0.959,
+     "lo": 0.212,
+     "hi": 0.304
+    },
+    "J": {
+     "median": 0.92,
+     "lo": 0.172,
+     "hi": 0.171
+    },
+    "l3": {
+     "median": 0.057,
+     "lo": 0.038,
+     "hi": 0.053
+    },
+    "l3_p97_5": 0.185,
+    "light_ratio": {
+     "median": 0.829,
+     "lo": 0.321,
+     "hi": 0.7
+    },
+    "converged": false,
+    "flags": [
+     "chain shorter than 20 autocorrelation times (tau=67 steps): uncertainties are indicative"
+    ],
+    "f22_ecosw": 0.020782271551739985,
+    "e_reliable": true,
+    "l3_constrained": false
+   },
+   {
+    "tic": 394805902,
+    "status": "OK",
+    "period_days": 8.130189,
+    "e": {
+     "median": 0.2204,
+     "lo": 0.0102,
+     "hi": 0.0093
+    },
+    "omega_deg": {
+     "median": 128.5,
+     "lo": 1.9,
+     "hi": 2.4
+    },
+    "ecosw": {
+     "median": -0.1372,
+     "lo": 0.0004,
+     "hi": 0.0003
+    },
+    "esinw": {
+     "median": 0.1725,
+     "lo": 0.0136,
+     "hi": 0.0119
+    },
+    "incl_deg": {
+     "median": 85.21,
+     "lo": 0.13,
+     "hi": 0.15
+    },
+    "r1": {
+     "median": 0.0606,
+     "lo": 0.0051,
+     "hi": 0.0054
+    },
+    "r2": {
+     "median": 0.0679,
+     "lo": 0.004,
+     "hi": 0.0037
+    },
+    "k": {
+     "median": 1.116,
+     "lo": 0.148,
+     "hi": 0.172
+    },
+    "J": {
+     "median": 1.802,
+     "lo": 0.183,
+     "hi": 0.181
+    },
+    "l3": {
+     "median": 0.085,
+     "lo": 0.047,
+     "hi": 0.06
+    },
+    "l3_p97_5": 0.213,
+    "light_ratio": {
+     "median": 2.259,
+     "lo": 0.521,
+     "hi": 0.596
+    },
+    "converged": false,
+    "flags": [
+     "chain shorter than 20 autocorrelation times (tau=55 steps): uncertainties are indicative"
+    ],
+    "f22_ecosw": -0.1406014777256495,
+    "e_reliable": true,
+    "l3_constrained": false,
+    "total_mass_msun": 1.2,
+    "total_mass_rel_sigma": 0.4,
+    "total_mass_plausible": true,
+    "total_mass_ms_consistent": false,
+    "total_mass_ms_expected": 2.56
+   },
+   {
+    "tic": 59490510,
+    "status": "OK",
+    "period_days": 9.124314,
+    "e": {
+     "median": 0.2636,
+     "lo": 0.0003,
+     "hi": 0.0004
+    },
+    "omega_deg": {
+     "median": 351.3,
+     "lo": 0.6,
+     "hi": 0.5
+    },
+    "ecosw": {
+     "median": 0.2606,
+     "lo": 0.0,
+     "hi": 0.0
+    },
+    "esinw": {
+     "median": -0.0401,
+     "lo": 0.0026,
+     "hi": 0.0025
+    },
+    "incl_deg": {
+     "median": 89.79,
+     "lo": 0.03,
+     "hi": 0.04
+    },
+    "r1": {
+     "median": 0.037,
+     "lo": 0.0001,
+     "hi": 0.0001
+    },
+    "r2": {
+     "median": 0.0334,
+     "lo": 0.0002,
+     "hi": 0.0002
+    },
+    "k": {
+     "median": 0.901,
+     "lo": 0.006,
+     "hi": 0.007
+    },
+    "J": {
+     "median": 0.703,
+     "lo": 0.006,
+     "hi": 0.006
+    },
+    "l3": {
+     "median": 0.039,
+     "lo": 0.009,
+     "hi": 0.01
+    },
+    "l3_p97_5": 0.06,
+    "light_ratio": {
+     "median": 0.572,
+     "lo": 0.008,
+     "hi": 0.008
+    },
+    "converged": false,
+    "flags": [
+     "chain shorter than 20 autocorrelation times (tau=39 steps): uncertainties are indicative"
+    ],
+    "f22_ecosw": 0.2552360094487356,
+    "e_reliable": true,
+    "l3_constrained": true,
+    "total_mass_msun": 2.2,
+    "total_mass_rel_sigma": 0.31,
+    "total_mass_plausible": true,
+    "total_mass_ms_consistent": true,
+    "total_mass_ms_expected": 1.6
+   },
+   {
+    "tic": 60192021,
+    "status": "OK",
+    "period_days": 9.875251,
+    "e": {
+     "median": 0.0705,
+     "lo": 0.0031,
+     "hi": 0.0039
+    },
+    "omega_deg": {
+     "median": 20.6,
+     "lo": 8.9,
+     "hi": 6.9
+    },
+    "ecosw": {
+     "median": 0.066,
+     "lo": 0.0002,
+     "hi": 0.0003
+    },
+    "esinw": {
+     "median": 0.0248,
+     "lo": 0.0111,
+     "hi": 0.0096
+    },
+    "incl_deg": {
+     "median": 87.68,
+     "lo": 0.16,
+     "hi": 0.18
+    },
+    "r1": {
+     "median": 0.0776,
+     "lo": 0.0015,
+     "hi": 0.0015
+    },
+    "r2": {
+     "median": 0.028,
+     "lo": 0.0006,
+     "hi": 0.0007
+    },
+    "k": {
+     "median": 0.36,
+     "lo": 0.009,
+     "hi": 0.011
+    },
+    "J": {
+     "median": 0.424,
+     "lo": 0.008,
+     "hi": 0.008
+    },
+    "l3": {
+     "median": 0.073,
+     "lo": 0.049,
+     "hi": 0.071
+    },
+    "l3_p97_5": 0.225,
+    "light_ratio": {
+     "median": 0.055,
+     "lo": 0.003,
+     "hi": 0.004
+    },
+    "converged": false,
+    "flags": [
+     "chain shorter than 20 autocorrelation times (tau=53 steps): uncertainties are indicative"
+    ],
+    "f22_ecosw": 0.0644339614504027,
+    "e_reliable": true,
+    "l3_constrained": false,
+    "total_mass_msun": 3.13,
+    "total_mass_rel_sigma": 0.33,
+    "total_mass_plausible": true,
+    "total_mass_ms_consistent": true,
+    "total_mass_ms_expected": 2.09
+   },
+   {
+    "tic": 468010975,
+    "status": "OK",
+    "period_days": 10.126548,
+    "e": {
+     "median": 0.2478,
+     "lo": 0.017,
+     "hi": 0.0254
+    },
+    "omega_deg": {
+     "median": 315.4,
+     "lo": 5.5,
+     "hi": 4.8
+    },
+    "ecosw": {
+     "median": 0.1767,
+     "lo": 0.0012,
+     "hi": 0.0008
+    },
+    "esinw": {
+     "median": -0.1739,
+     "lo": 0.0357,
+     "hi": 0.0264
+    },
+    "incl_deg": {
+     "median": 86.86,
+     "lo": 0.09,
+     "hi": 0.11
+    },
+    "r1": {
+     "median": 0.0302,
+     "lo": 0.0046,
+     "hi": 0.0057
+    },
+    "r2": {
+     "median": 0.0493,
+     "lo": 0.007,
+     "hi": 0.0048
+    },
+    "k": {
+     "median": 1.643,
+     "lo": 0.463,
+     "hi": 0.468
+    },
+    "J": {
+     "median": 0.353,
+     "lo": 0.063,
+     "hi": 0.057
+    },
+    "l3": {
+     "median": 0.062,
+     "lo": 0.041,
+     "hi": 0.051
+    },
+    "l3_p97_5": 0.16,
+    "light_ratio": {
+     "median": 0.87,
+     "lo": 0.367,
+     "hi": 0.658
+    },
+    "converged": false,
+    "flags": [
+     "chain shorter than 20 autocorrelation times (tau=70 steps): uncertainties are indicative"
+    ],
+    "f22_ecosw": 0.178380530331873,
+    "e_reliable": true,
+    "l3_constrained": false,
+    "total_mass_msun": 2.6,
+    "total_mass_rel_sigma": 0.6,
+    "total_mass_plausible": true,
+    "total_mass_ms_consistent": false,
+    "total_mass_ms_expected": 1.53
+   },
+   {
+    "tic": 370553309,
+    "status": "OK",
+    "period_days": 11.541028,
+    "e": {
+     "median": 0.2688,
+     "lo": 0.0099,
+     "hi": 0.0116
+    },
+    "omega_deg": {
+     "median": 320.4,
+     "lo": 3.0,
+     "hi": 3.0
+    },
+    "ecosw": {
+     "median": 0.2072,
+     "lo": 0.0008,
+     "hi": 0.0008
+    },
+    "esinw": {
+     "median": -0.1712,
+     "lo": 0.0186,
+     "hi": 0.0167
+    },
+    "incl_deg": {
+     "median": 87.53,
+     "lo": 0.41,
+     "hi": 0.53
+    },
+    "r1": {
+     "median": 0.1026,
+     "lo": 0.0033,
+     "hi": 0.0031
+    },
+    "r2": {
+     "median": 0.0183,
+     "lo": 0.0008,
+     "hi": 0.0008
+    },
+    "k": {
+     "median": 0.178,
+     "lo": 0.004,
+     "hi": 0.006
+    },
+    "J": {
+     "median": 0.231,
+     "lo": 0.01,
+     "hi": 0.011
+    },
+    "l3": {
+     "median": 0.084,
+     "lo": 0.052,
+     "hi": 0.068
+    },
+    "l3_p97_5": 0.238,
+    "light_ratio": {
+     "median": 0.007,
+     "lo": 0.0,
+     "hi": 0.001
+    },
+    "converged": true,
+    "flags": [],
+    "f22_ecosw": 0.2101579974552624,
+    "e_reliable": true,
+    "l3_constrained": false,
+    "total_mass_msun": 2.03,
+    "total_mass_rel_sigma": 0.32,
+    "total_mass_plausible": true,
+    "total_mass_ms_consistent": true,
+    "total_mass_ms_expected": 2.2
+   },
+   {
+    "tic": 318887646,
+    "status": "OK",
+    "period_days": 14.282664,
+    "e": {
+     "median": 0.1408,
+     "lo": 0.0862,
+     "hi": 0.0838
+    },
+    "omega_deg": {
+     "median": 97.7,
+     "lo": 60.4,
+     "hi": 104.2
+    },
+    "ecosw": {
+     "median": 0.0119,
+     "lo": 0.0845,
+     "hi": 0.1175
+    },
+    "esinw": {
+     "median": 0.0536,
+     "lo": 0.0718,
+     "hi": 0.1243
+    },
+    "incl_deg": {
+     "median": 87.97,
+     "lo": 0.49,
+     "hi": 0.26
+    },
+    "r1": {
+     "median": 0.0348,
+     "lo": 0.0036,
+     "hi": 0.0034
+    },
+    "r2": {
+     "median": 0.0108,
+     "lo": 0.0012,
+     "hi": 0.0132
+    },
+    "k": {
+     "median": 0.295,
+     "lo": 0.038,
+     "hi": 0.465
+    },
+    "J": {
+     "median": 0.024,
+     "lo": 0.016,
+     "hi": 0.033
+    },
+    "l3": {
+     "median": 0.036,
+     "lo": 0.024,
+     "hi": 0.04
+    },
+    "l3_p97_5": 0.13,
+    "light_ratio": {
+     "median": 0.003,
+     "lo": 0.002,
+     "hi": 0.011
+    },
+    "converged": false,
+    "flags": [
+     "chain shorter than 20 autocorrelation times (tau=79 steps): uncertainties are indicative"
+    ],
+    "f22_ecosw": null,
+    "e_reliable": false,
+    "l3_constrained": false,
+    "e_note": "secondary eclipse too weak to measure independently"
+   },
+   {
+    "tic": 237115819,
+    "status": "OK",
+    "period_days": 14.792275,
+    "e": {
+     "median": 0.0002,
+     "lo": 0.0002,
+     "hi": 0.0019
+    },
+    "omega_deg": {
+     "median": 181.5,
+     "lo": 91.7,
+     "hi": 88.8
+    },
+    "ecosw": {
+     "median": -0.0,
+     "lo": 0.0,
+     "hi": 0.0
+    },
+    "esinw": {
+     "median": -0.0,
+     "lo": 0.0006,
+     "hi": 0.0006
+    },
+    "incl_deg": {
+     "median": 88.99,
+     "lo": 0.04,
+     "hi": 0.04
+    },
+    "r1": {
+     "median": 0.0216,
+     "lo": 0.0003,
+     "hi": 0.0003
+    },
+    "r2": {
+     "median": 0.012,
+     "lo": 0.0005,
+     "hi": 0.0006
+    },
+    "k": {
+     "median": 0.556,
+     "lo": 0.028,
+     "hi": 0.032
+    },
+    "J": {
+     "median": 0.948,
+     "lo": 0.009,
+     "hi": 0.008
+    },
+    "l3": {
+     "median": 0.051,
+     "lo": 0.033,
+     "hi": 0.044
+    },
+    "l3_p97_5": 0.144,
+    "light_ratio": {
+     "median": 0.293,
+     "lo": 0.029,
+     "hi": 0.036
+    },
+    "converged": false,
+    "flags": [
+     "chain shorter than 20 autocorrelation times (tau=52 steps): uncertainties are indicative"
+    ],
+    "f22_ecosw": 0.0005388952153193075,
+    "e_reliable": true,
+    "l3_constrained": false,
+    "total_mass_msun": 2.69,
+    "total_mass_rel_sigma": 0.31,
+    "total_mass_plausible": true,
+    "total_mass_ms_consistent": false,
+    "total_mass_ms_expected": 1.24
+   },
+   {
+    "tic": 43785616,
+    "status": "OK",
+    "period_days": 17.911121,
+    "e": {
+     "median": 0.2483,
+     "lo": 0.0365,
+     "hi": 0.0659
+    },
+    "omega_deg": {
+     "median": 79.5,
+     "lo": 1.9,
+     "hi": 2.5
+    },
+    "ecosw": {
+     "median": 0.0449,
+     "lo": 0.0015,
+     "hi": 0.0013
+    },
+    "esinw": {
+     "median": 0.244,
+     "lo": 0.0373,
+     "hi": 0.0671
+    },
+    "incl_deg": {
+     "median": 85.19,
+     "lo": 0.17,
+     "hi": 0.16
+    },
+    "r1": {
+     "median": 0.0142,
+     "lo": 0.0013,
+     "hi": 0.0022
+    },
+    "r2": {
+     "median": 0.0947,
+     "lo": 0.0009,
+     "hi": 0.0015
+    },
+    "k": {
+     "median": 6.648,
+     "lo": 0.906,
+     "hi": 0.808
+    },
+    "J": {
+     "median": 0.848,
+     "lo": 0.159,
+     "hi": 0.289
+    },
+    "l3": {
+     "median": 0.067,
+     "lo": 0.047,
+     "hi": 0.06
+    },
+    "l3_p97_5": 0.188,
+    "light_ratio": {
+     "median": 37.993,
+     "lo": 2.058,
+     "hi": 1.824
+    },
+    "converged": false,
+    "flags": [
+     "chain shorter than 20 autocorrelation times (tau=70 steps): uncertainties are indicative"
+    ],
+    "f22_ecosw": null,
+    "e_reliable": false,
+    "l3_constrained": false,
+    "e_note": "secondary eclipse too weak to measure independently"
+   }
+  ],
+  "spectroscopy": {
+   "e_check_vs_gaia": [
+    {
+     "tic": 201317466,
+     "fit_e": 0.0003,
+     "fit_e_err": 0.0011,
+     "gaia_e": 0.1249324030835873,
+     "gaia_e_sigma": 0.061120495,
+     "trusted": true,
+     "difference_sigma": 2.0
+    },
+    {
+     "tic": 370553309,
+     "fit_e": 0.2688,
+     "fit_e_err": 0.0116,
+     "gaia_e": 0.2345696490826019,
+     "gaia_e_sigma": 0.038392127,
+     "trusted": true,
+     "difference_sigma": 0.9
+    },
+    {
+     "tic": 43785616,
+     "fit_e": 0.2483,
+     "fit_e_err": 0.0659,
+     "gaia_e": 0.050997421689606,
+     "gaia_e_sigma": 0.02159532,
+     "trusted": false,
+     "difference_sigma": 2.8
+    }
+   ],
+   "summary": {
+    "with_gaia_orbit": 6,
+    "gaia_outer_orbit": 2,
+    "gaia_orbit_same_period": 4,
+    "with_gaia_rv_range": 93,
+    "gaia_rv_moves": 60,
+    "gaia_rv_static_blend_indicated": 1,
+    "gaia_rv_static_or_twin": 8,
+    "gaia_rv_static_substellar_or_blend": 16,
+    "with_total_mass": 12,
+    "total_mass_implausible": 0,
+    "with_masses_estimate": 3,
+    "with_apogee_orbit": 3
+   },
+   "gaia_orbits": [
+    {
+     "tic": 43785616,
+     "type": "SB1",
+     "gaia_period_days": 17.91291979026343,
+     "period_ratio": 1.0000903402943073,
+     "same_period": true,
+     "outer_orbit": false,
+     "gaia_e": 0.050997421689606,
+     "gaia_e_sigma": 0.02159532,
+     "gaia_ecosw": 0.0015993071261035435,
+     "gaia_k1_kms": 21.21277105789702,
+     "photometric_ecosw": 0.04488239608866906
+    },
+    {
+     "tic": 59458906,
+     "type": "Orbital",
+     "gaia_period_days": 449.6309649722654,
+     "period_ratio": 338.36210609623413,
+     "same_period": false,
+     "outer_orbit": true,
+     "gaia_e": 0.1391868566332479,
+     "gaia_e_sigma": 0.04721941,
+     "gaia_ecosw": null,
+     "gaia_k1_kms": null,
+     "photometric_ecosw": null
+    },
+    {
+     "tic": 201317466,
+     "type": "SB1",
+     "gaia_period_days": 5.625963779149327,
+     "period_ratio": 1.0003090080022652,
+     "same_period": true,
+     "outer_orbit": false,
+     "gaia_e": 0.1249324030835873,
+     "gaia_e_sigma": 0.061120495,
+     "gaia_ecosw": -0.12392417349284375,
+     "gaia_k1_kms": 51.873520995313456,
+     "photometric_ecosw": 3.902403511844855e-05
+    },
+    {
+     "tic": 235512374,
+     "type": "SB1",
+     "gaia_period_days": 3.739698065824506,
+     "period_ratio": 0.9988348770289986,
+     "same_period": true,
+     "outer_orbit": false,
+     "gaia_e": 0.1043822579189635,
+     "gaia_e_sigma": 0.058215063,
+     "gaia_ecosw": -0.04061343104966547,
+     "gaia_k1_kms": 58.07593885302269,
+     "photometric_ecosw": null
+    },
+    {
+     "tic": 251077178,
+     "type": "Orbital",
+     "gaia_period_days": 630.5956396378309,
+     "period_ratio": 921.3813694402304,
+     "same_period": false,
+     "outer_orbit": true,
+     "gaia_e": 0.6065313825506743,
+     "gaia_e_sigma": 0.061717037,
+     "gaia_ecosw": null,
+     "gaia_k1_kms": null,
+     "photometric_ecosw": null
+    },
+    {
+     "tic": 370553309,
+     "type": "SB1",
+     "gaia_period_days": 11.5392602408037,
+     "period_ratio": 0.9999334813002878,
+     "same_period": true,
+     "outer_orbit": false,
+     "gaia_e": 0.2345696490826019,
+     "gaia_e_sigma": 0.038392127,
+     "gaia_ecosw": 0.1827295912942116,
+     "gaia_k1_kms": 38.26303080702412,
+     "photometric_ecosw": 0.20719350695385058
+    }
+   ],
+   "apogee": [
+    {
+     "tic": 43330648,
+     "n": 3,
+     "k1_kms": 0.0,
+     "k1_sigma_kms": 0.5,
+     "chi2": 0.0,
+     "dof": 1,
+     "chi2_constant": 0.0,
+     "flagged_visits": 0,
+     "orbit_from": "circular orbit at the pipeline ephemeris"
+    },
+    {
+     "tic": 318887646,
+     "n": 7,
+     "k1_kms": 51.4,
+     "k1_sigma_kms": 0.3,
+     "chi2": 291.7,
+     "dof": 5,
+     "chi2_constant": 37195.2,
+     "flagged_visits": 0,
+     "orbit_from": "f26 light-curve fit"
+    },
+    {
+     "tic": 468090770,
+     "n": 5,
+     "k1_kms": 69.8,
+     "k1_sigma_kms": 3.3,
+     "chi2": 575.3,
+     "dof": 3,
+     "chi2_constant": 1014.7,
+     "flagged_visits": 5,
+     "orbit_from": "f26 light-curve fit"
+    }
+   ],
+   "static": [
+    {
+     "tic": 96795030,
+     "verdict": "BLEND_INDICATED",
+     "k1_upper_kms": 8.11,
+     "m2_max_msun": 0.06,
+     "eclipse_depth": 0.0475803475920066,
+     "n_transits": 32.0,
+     "m1_source": "assumed 1 Msun (no FLAME mass)"
+    },
+    {
+     "tic": 412057714,
+     "verdict": "SUBSTELLAR_OR_BLEND",
+     "k1_upper_kms": 4.46,
+     "m2_max_msun": 0.035,
+     "eclipse_depth": 0.012105244926118,
+     "n_transits": 19.0,
+     "m1_source": "assumed 1 Msun (no FLAME mass)"
+    },
+    {
+     "tic": 403080487,
+     "verdict": "SUBSTELLAR_OR_BLEND",
+     "k1_upper_kms": 7.19,
+     "m2_max_msun": 0.076,
+     "eclipse_depth": 0.0080761243803104,
+     "n_transits": 25.0,
+     "m1_source": "Gaia FLAME"
+    },
+    {
+     "tic": 365764494,
+     "verdict": "SUBSTELLAR_OR_BLEND",
+     "k1_upper_kms": 1.99,
+     "m2_max_msun": 0.023,
+     "eclipse_depth": 0.0077820837005417,
+     "n_transits": 14.0,
+     "m1_source": "Gaia FLAME"
+    },
+    {
+     "tic": 349116460,
+     "verdict": "SUBSTELLAR_OR_BLEND",
+     "k1_upper_kms": 10.46,
+     "m2_max_msun": 0.056,
+     "eclipse_depth": 0.0068855486955812,
+     "n_transits": 22.0,
+     "m1_source": "assumed 1 Msun (no FLAME mass)"
+    },
+    {
+     "tic": 257817337,
+     "verdict": "SUBSTELLAR_OR_BLEND",
+     "k1_upper_kms": 2.26,
+     "m2_max_msun": 0.062,
+     "eclipse_depth": 0.0016632609919069,
+     "n_transits": 30.0,
+     "m1_source": "Gaia FLAME"
+    },
+    {
+     "tic": 219800831,
+     "verdict": "SUBSTELLAR_OR_BLEND",
+     "k1_upper_kms": 2.49,
+     "m2_max_msun": 0.079,
+     "eclipse_depth": 0.0013820608119938,
+     "n_transits": 10.0,
+     "m1_source": "Gaia FLAME"
+    },
+    {
+     "tic": 313498432,
+     "verdict": "SUBSTELLAR_OR_BLEND",
+     "k1_upper_kms": 1.42,
+     "m2_max_msun": 0.026,
+     "eclipse_depth": 0.0009800829727443,
+     "n_transits": 12.0,
+     "m1_source": "assumed 1 Msun (no FLAME mass)"
+    },
+    {
+     "tic": 79792004,
+     "verdict": "SUBSTELLAR_OR_BLEND",
+     "k1_upper_kms": 3.17,
+     "m2_max_msun": 0.038,
+     "eclipse_depth": 0.0009171866860897,
+     "n_transits": 17.0,
+     "m1_source": "assumed 1 Msun (no FLAME mass)"
+    },
+    {
+     "tic": 355809352,
+     "verdict": "SUBSTELLAR_OR_BLEND",
+     "k1_upper_kms": 1.08,
+     "m2_max_msun": 0.032,
+     "eclipse_depth": 0.0007727900710496,
+     "n_transits": 54.0,
+     "m1_source": "Gaia FLAME"
+    },
+    {
+     "tic": 219752822,
+     "verdict": "SUBSTELLAR_OR_BLEND",
+     "k1_upper_kms": 3.12,
+     "m2_max_msun": 0.048,
+     "eclipse_depth": 0.0004965710911079,
+     "n_transits": 20.0,
+     "m1_source": "assumed 1 Msun (no FLAME mass)"
+    },
+    {
+     "tic": 309656476,
+     "verdict": "SUBSTELLAR_OR_BLEND",
+     "k1_upper_kms": 1.57,
+     "m2_max_msun": 0.023,
+     "eclipse_depth": 0.0004954977074599,
+     "n_transits": 13.0,
+     "m1_source": "assumed 1 Msun (no FLAME mass)"
+    },
+    {
+     "tic": 229401461,
+     "verdict": "SUBSTELLAR_OR_BLEND",
+     "k1_upper_kms": 0.78,
+     "m2_max_msun": 0.017,
+     "eclipse_depth": 0.0004008471713598,
+     "n_transits": 23.0,
+     "m1_source": "Gaia FLAME"
+    },
+    {
+     "tic": 229494833,
+     "verdict": "SUBSTELLAR_OR_BLEND",
+     "k1_upper_kms": 2.46,
+     "m2_max_msun": 0.045,
+     "eclipse_depth": 0.0003716524502771,
+     "n_transits": 14.0,
+     "m1_source": "Gaia FLAME"
+    },
+    {
+     "tic": 376932335,
+     "verdict": "SUBSTELLAR_OR_BLEND",
+     "k1_upper_kms": 1.25,
+     "m2_max_msun": 0.026,
+     "eclipse_depth": 0.0003699609607952,
+     "n_transits": 16.0,
+     "m1_source": "assumed 1 Msun (no FLAME mass)"
+    },
+    {
+     "tic": 43330648,
+     "verdict": "SUBSTELLAR_OR_BLEND",
+     "k1_upper_kms": 1.44,
+     "m2_max_msun": 0.017,
+     "eclipse_depth": 0.0003118545316607,
+     "n_transits": 25.0,
+     "m1_source": "assumed 1 Msun (no FLAME mass)"
+    },
+    {
+     "tic": 41831052,
+     "verdict": "SUBSTELLAR_OR_BLEND",
+     "k1_upper_kms": 2.03,
+     "m2_max_msun": 0.017,
+     "eclipse_depth": 0.0002765946893856,
+     "n_transits": 19.0,
+     "m1_source": "Gaia FLAME"
+    },
+    {
+     "tic": 403017570,
+     "verdict": "STATIC_OR_TWIN",
+     "k1_upper_kms": 1.82,
+     "m2_max_msun": 0.008,
+     "eclipse_depth": 0.0043266315456908,
+     "n_transits": 23.0,
+     "m1_source": "assumed 1 Msun (no FLAME mass)"
+    },
+    {
+     "tic": 44533527,
+     "verdict": "STATIC_OR_TWIN",
+     "k1_upper_kms": 2.85,
+     "m2_max_msun": 0.043,
+     "eclipse_depth": 0.0010129590172977,
+     "n_transits": 21.0,
+     "m1_source": "Gaia FLAME"
+    },
+    {
+     "tic": 355734894,
+     "verdict": "STATIC_OR_TWIN",
+     "k1_upper_kms": 3.91,
+     "m2_max_msun": 0.076,
+     "eclipse_depth": 0.0009886344381681,
+     "n_transits": 17.0,
+     "m1_source": "Gaia FLAME"
+    },
+    {
+     "tic": 224288919,
+     "verdict": "STATIC_OR_TWIN",
+     "k1_upper_kms": 2.24,
+     "m2_max_msun": 0.029,
+     "eclipse_depth": 0.000569756435887,
+     "n_transits": 28.0,
+     "m1_source": "Gaia FLAME"
+    },
+    {
+     "tic": 251663993,
+     "verdict": "STATIC_OR_TWIN",
+     "k1_upper_kms": 1.45,
+     "m2_max_msun": 0.026,
+     "eclipse_depth": 0.0004812461987023,
+     "n_transits": 11.0,
+     "m1_source": "Gaia FLAME"
+    },
+    {
+     "tic": 219765539,
+     "verdict": "STATIC_OR_TWIN",
+     "k1_upper_kms": 3.1,
+     "m2_max_msun": 0.016,
+     "eclipse_depth": 0.0003232400261248,
+     "n_transits": 48.0,
+     "m1_source": "assumed 1 Msun (no FLAME mass)"
+    },
+    {
+     "tic": 229473505,
+     "verdict": "STATIC_OR_TWIN",
+     "k1_upper_kms": 5.51,
+     "m2_max_msun": 0.06,
+     "eclipse_depth": 0.0002845060440909,
+     "n_transits": 33.0,
+     "m1_source": "assumed 1 Msun (no FLAME mass)"
+    },
+    {
+     "tic": 273212554,
+     "verdict": "STATIC_OR_TWIN",
+     "k1_upper_kms": 0.94,
+     "m2_max_msun": 0.01,
+     "eclipse_depth": 0.0002579678712187,
+     "n_transits": 30.0,
+     "m1_source": "assumed 1 Msun (no FLAME mass)"
+    }
+   ]
+  },
+  "mass_check": {
+   "n": 12,
+   "median_ratio": 1.43,
+   "n_consistent": 5
+  }
+ },
  "validation": {
   "n_tested": 50,
   "n_with_measurement": 44,

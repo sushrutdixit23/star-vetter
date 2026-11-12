@@ -889,6 +889,100 @@ export interface LtteResult {
   gaia_dr3_orbit_sensitive_below_years: number;
 }
 
+export interface Quantile {
+  median: number;
+  lo: number;
+  hi: number;
+}
+
+export interface PhysicalFit {
+  tic: number;
+  status: string;
+  period_days?: number;
+  e?: Quantile | null;
+  omega_deg?: Quantile | null;
+  ecosw?: Quantile | null;
+  esinw?: Quantile | null;
+  incl_deg?: Quantile | null;
+  r1?: Quantile | null;
+  r2?: Quantile | null;
+  k?: Quantile | null;
+  J?: Quantile | null;
+  l3?: Quantile | null;
+  l3_p97_5?: number;
+  light_ratio?: Quantile | null;
+  converged?: boolean | null;
+  flags?: string[];
+  f22_ecosw?: number | null;
+  e_reliable?: boolean;
+  e_note?: string;
+  l3_constrained?: boolean;
+  total_mass_msun?: number;
+  total_mass_rel_sigma?: number;
+  total_mass_plausible?: boolean;
+  total_mass_ms_consistent?: boolean | null;
+  total_mass_ms_expected?: number | null;
+}
+
+export interface PhysicalData {
+  validation: {
+    star: string;
+    reference: string;
+    cadence_min: number;
+    passed: boolean;
+    checks: Record<string, boolean>;
+    truth: Record<string, number>;
+    fit: Record<string, number>;
+  }[];
+  fits: PhysicalFit[];
+  mass_check?: { n: number; median_ratio: number | null; n_consistent: number };
+  spectroscopy: {
+    e_check_vs_gaia: {
+      tic: number;
+      fit_e: number;
+      fit_e_err: number;
+      gaia_e: number;
+      gaia_e_sigma: number;
+      trusted: boolean;
+      difference_sigma: number;
+    }[];
+    summary: Record<string, number>;
+    gaia_orbits: {
+      tic: number;
+      type: string;
+      gaia_period_days: number;
+      period_ratio: number;
+      same_period: boolean;
+      outer_orbit: boolean;
+      gaia_e: number | null;
+      gaia_e_sigma: number | null;
+      gaia_ecosw: number | null;
+      gaia_k1_kms: number | null;
+      photometric_ecosw: number | null;
+    }[];
+    apogee: {
+      tic: number;
+      n: number;
+      k1_kms: number;
+      k1_sigma_kms: number;
+      chi2: number;
+      dof: number;
+      chi2_constant: number;
+      flagged_visits: number;
+      orbit_from: string;
+    }[];
+    static: {
+      tic: number;
+      verdict: string;
+      k1_upper_kms: number;
+      m2_max_msun: number;
+      eclipse_depth: number | null;
+      n_transits: number;
+      m1_source: string;
+    }[];
+  } | null;
+}
+
 export interface FindingsData {
   generated_at: string;
   verdict_counts: Record<string, number>;
@@ -920,6 +1014,7 @@ export interface FindingsData {
     eccentric_truth_verdicts: Record<string, number>;
     circular_truth_verdicts: Record<string, number>;
   } | null;
+  physical: PhysicalData | null;
   limits: string[];
 }
 

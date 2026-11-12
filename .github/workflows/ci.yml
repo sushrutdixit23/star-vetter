@@ -27,6 +27,12 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt pytest
+      # ellc (physical eclipse model) compiles Fortran; without it the model tests are skipped, not failed
+      - name: Physics extras
+        continue-on-error: true
+        run: |
+          sudo apt-get install -y gfortran
+          pip install -r requirements-physics.txt
       - name: Tests
         run: python -I -m pytest -q
       - name: Publication readiness (report only)

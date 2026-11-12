@@ -1,0 +1,4182 @@
+{
+ "generated_at": "2026-11-12T08:09:37Z",
+ "n_stars": 307,
+ "stars_with_rows_per_survey": {
+  "apogee_dr17": 7,
+  "galah_dr4": 16,
+  "galah_dr3": 8,
+  "lamost_dr11": 51,
+  "rave_dr6": 6
+ },
+ "gaia_with_rv_amplitude": 93,
+ "gaia_with_nss_orbit": 6,
+ "stars": {
+  "437150434": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 89.9961,
+   "gaia_rv_transits": 27.0,
+   "gaia_nss_types": []
+  },
+  "237115819": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 2,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 24.0,
+   "gaia_nss_types": []
+  },
+  "66732476": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 4,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 19.0,
+   "gaia_nss_types": []
+  },
+  "29495157": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 20.0,
+   "gaia_nss_types": []
+  },
+  "119459681": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "411434067": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 8.0,
+   "gaia_nss_types": []
+  },
+  "330901906": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 72.16547,
+   "gaia_rv_transits": 32.0,
+   "gaia_nss_types": []
+  },
+  "303470667": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "273158289": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 8.0,
+   "gaia_nss_types": []
+  },
+  "111149941": {
+   "surveys_with_rows": [
+    "lamost_dr11",
+    "rave_dr6"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 14,
+    "rave_dr6": 3
+   },
+   "gaia_rv_amplitude_kms": 2.6694927,
+   "gaia_rv_transits": 8.0,
+   "gaia_nss_types": []
+  },
+  "251898081": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 58.337376,
+   "gaia_rv_transits": 21.0,
+   "gaia_nss_types": []
+  },
+  "467214801": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 11.626913,
+   "gaia_rv_transits": 10.0,
+   "gaia_nss_types": []
+  },
+  "399770041": {
+   "surveys_with_rows": [
+    "galah_dr4"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 2,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 98.487335,
+   "gaia_rv_transits": 23.0,
+   "gaia_nss_types": []
+  },
+  "349701853": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 34.0,
+   "gaia_nss_types": []
+  },
+  "233459038": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 13,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 32.0,
+   "gaia_nss_types": []
+  },
+  "281310348": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "318887646": {
+   "surveys_with_rows": [
+    "apogee_dr17",
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 8,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 3,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 93.526436,
+   "gaia_rv_transits": 10.0,
+   "gaia_nss_types": []
+  },
+  "444465823": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 23.0,
+   "gaia_nss_types": []
+  },
+  "380943251": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 7,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "66716482": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 3,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 22.0,
+   "gaia_nss_types": []
+  },
+  "309656476": {
+   "surveys_with_rows": [
+    "apogee_dr17"
+   ],
+   "n_rows": {
+    "apogee_dr17": 2,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 1.1815357,
+   "gaia_rv_transits": 13.0,
+   "gaia_nss_types": []
+  },
+  "229494833": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 1.8597565,
+   "gaia_rv_transits": 14.0,
+   "gaia_nss_types": []
+  },
+  "44533527": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 1,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 1.9538689,
+   "gaia_rv_transits": 21.0,
+   "gaia_nss_types": []
+  },
+  "220423668": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 22.0,
+   "gaia_nss_types": []
+  },
+  "365998904": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 193.46071,
+   "gaia_rv_transits": 20.0,
+   "gaia_nss_types": []
+  },
+  "233452636": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "437171483": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 7.0,
+   "gaia_nss_types": []
+  },
+  "411457490": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 15.0,
+   "gaia_nss_types": []
+  },
+  "295373509": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 36.0,
+   "gaia_nss_types": []
+  },
+  "374158907": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 22.0,
+   "gaia_nss_types": []
+  },
+  "348884775": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "70762350": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "446502638": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 19.046694,
+   "gaia_rv_transits": 12.0,
+   "gaia_nss_types": []
+  },
+  "326225355": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 6.397597,
+   "gaia_rv_transits": 4.0,
+   "gaia_nss_types": []
+  },
+  "250549396": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 1,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 121.945984,
+   "gaia_rv_transits": 13.0,
+   "gaia_nss_types": []
+  },
+  "430314843": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 82,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "370553309": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 74.520905,
+   "gaia_rv_transits": 20.0,
+   "gaia_nss_types": [
+    "SB1"
+   ]
+  },
+  "86956236": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 10,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 60.055294,
+   "gaia_rv_transits": 5.0,
+   "gaia_nss_types": []
+  },
+  "349725115": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 20.0,
+   "gaia_nss_types": []
+  },
+  "235512374": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 113.2713,
+   "gaia_rv_transits": 13.0,
+   "gaia_nss_types": [
+    "SB1"
+   ]
+  },
+  "244999763": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 23.0,
+   "gaia_nss_types": []
+  },
+  "267516382": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "193548084": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 87.36682,
+   "gaia_rv_transits": 23.0,
+   "gaia_nss_types": []
+  },
+  "133688675": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "224215371": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 9,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 11.0,
+   "gaia_nss_types": []
+  },
+  "139805341": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 25.0,
+   "gaia_nss_types": []
+  },
+  "43330648": {
+   "surveys_with_rows": [
+    "apogee_dr17"
+   ],
+   "n_rows": {
+    "apogee_dr17": 4,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 1.0426788,
+   "gaia_rv_transits": 25.0,
+   "gaia_nss_types": []
+  },
+  "446758441": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "373896170": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 97.08879,
+   "gaia_rv_transits": 61.0,
+   "gaia_nss_types": []
+  },
+  "273212554": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 0.8214345,
+   "gaia_rv_transits": 30.0,
+   "gaia_nss_types": []
+  },
+  "78955414": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "318907244": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 11.0,
+   "gaia_nss_types": []
+  },
+  "294976780": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "59603820": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 25.0,
+   "gaia_nss_types": []
+  },
+  "229490432": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 31.0,
+   "gaia_nss_types": []
+  },
+  "313684677": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 17.0,
+   "gaia_nss_types": []
+  },
+  "1007259218": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 19.0,
+   "gaia_nss_types": []
+  },
+  "290129286": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "342586820": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 9.0,
+   "gaia_nss_types": []
+  },
+  "365764494": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 21,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 1.8357439,
+   "gaia_rv_transits": 14.0,
+   "gaia_nss_types": []
+  },
+  "399544063": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 10,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 4.699236,
+   "gaia_rv_transits": 7.0,
+   "gaia_nss_types": []
+  },
+  "229146166": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 28.0,
+   "gaia_nss_types": []
+  },
+  "238618726": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "216935767": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "333145823": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 13.381334,
+   "gaia_rv_transits": 10.0,
+   "gaia_nss_types": []
+  },
+  "459533211": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "306294675": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "43785616": {
+   "surveys_with_rows": [
+    "rave_dr6"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 3
+   },
+   "gaia_rv_amplitude_kms": 54.35703,
+   "gaia_rv_transits": 52.0,
+   "gaia_nss_types": [
+    "SB1"
+   ]
+  },
+  "176348607": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "152676628": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 51.366035,
+   "gaia_rv_transits": 7.0,
+   "gaia_nss_types": []
+  },
+  "434321668": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 7.0,
+   "gaia_nss_types": []
+  },
+  "445266372": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 12.0,
+   "gaia_nss_types": []
+  },
+  "392559026": {
+   "surveys_with_rows": [
+    "galah_dr4"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 2,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 18.0,
+   "gaia_nss_types": []
+  },
+  "258490713": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "152160223": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "65970288": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 22.0,
+   "gaia_nss_types": []
+  },
+  "467962259": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "79792004": {
+   "surveys_with_rows": [
+    "rave_dr6"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 3
+   },
+   "gaia_rv_amplitude_kms": 2.4642982,
+   "gaia_rv_transits": 17.0,
+   "gaia_nss_types": []
+  },
+  "111240209": {
+   "surveys_with_rows": [
+    "galah_dr4"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 3,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 44.61622,
+   "gaia_rv_transits": 10.0,
+   "gaia_nss_types": []
+  },
+  "239661046": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 10,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 203.98972,
+   "gaia_rv_transits": 16.0,
+   "gaia_nss_types": []
+  },
+  "231055671": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 27.0,
+   "gaia_nss_types": []
+  },
+  "273787849": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 22.0,
+   "gaia_nss_types": []
+  },
+  "453692345": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "150230753": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 22.0,
+   "gaia_nss_types": []
+  },
+  "158398880": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 21.0,
+   "gaia_nss_types": []
+  },
+  "86934109": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "307453359": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 15.0,
+   "gaia_nss_types": []
+  },
+  "232261044": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 3,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "72729777": {
+   "surveys_with_rows": [
+    "rave_dr6"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 3
+   },
+   "gaia_rv_amplitude_kms": 71.55274,
+   "gaia_rv_transits": 15.0,
+   "gaia_nss_types": []
+  },
+  "96795030": {
+   "surveys_with_rows": [
+    "galah_dr3",
+    "galah_dr4"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 2,
+    "galah_dr3": 2,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 9.005928,
+   "gaia_rv_transits": 32.0,
+   "gaia_nss_types": []
+  },
+  "365726727": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 120.838776,
+   "gaia_rv_transits": 15.0,
+   "gaia_nss_types": []
+  },
+  "437022904": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 25,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "463349042": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 117.657524,
+   "gaia_rv_transits": 26.0,
+   "gaia_nss_types": []
+  },
+  "401936263": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 32.0,
+   "gaia_nss_types": []
+  },
+  "77210120": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 69.57669,
+   "gaia_rv_transits": 4.0,
+   "gaia_nss_types": []
+  },
+  "942471837": {
+   "surveys_with_rows": [
+    "galah_dr4"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 2,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 14.0,
+   "gaia_nss_types": []
+  },
+  "158864044": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "237226943": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 15.0,
+   "gaia_nss_types": []
+  },
+  "86880482": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 18.0,
+   "gaia_nss_types": []
+  },
+  "411305220": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 9,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 79.50412,
+   "gaia_rv_transits": 25.0,
+   "gaia_nss_types": []
+  },
+  "294860388": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "9586662": {
+   "surveys_with_rows": [
+    "galah_dr3",
+    "galah_dr4"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 2,
+    "galah_dr3": 2,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 12.0,
+   "gaia_nss_types": []
+  },
+  "257747010": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 3,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "229473505": {
+   "surveys_with_rows": [
+    "apogee_dr17"
+   ],
+   "n_rows": {
+    "apogee_dr17": 2,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 5.6890197,
+   "gaia_rv_transits": 33.0,
+   "gaia_nss_types": []
+  },
+  "411978234": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 104.573044,
+   "gaia_rv_transits": 26.0,
+   "gaia_nss_types": []
+  },
+  "394710986": {
+   "surveys_with_rows": [
+    "galah_dr3",
+    "galah_dr4"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 2,
+    "galah_dr3": 2,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 25.0,
+   "gaia_nss_types": []
+  },
+  "1003150980": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 19.0,
+   "gaia_nss_types": []
+  },
+  "342569756": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 25.0,
+   "gaia_nss_types": []
+  },
+  "156780644": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "246650797": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 8.0,
+   "gaia_nss_types": []
+  },
+  "348762141": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 24.0,
+   "gaia_nss_types": []
+  },
+  "334422203": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 16.0,
+   "gaia_nss_types": []
+  },
+  "43791794": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "334414710": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 25.0,
+   "gaia_nss_types": []
+  },
+  "229845475": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 19.0,
+   "gaia_nss_types": []
+  },
+  "313590380": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 2.5166006,
+   "gaia_rv_transits": 21.0,
+   "gaia_nss_types": []
+  },
+  "367193047": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 177.02078,
+   "gaia_rv_transits": 12.0,
+   "gaia_nss_types": []
+  },
+  "378367349": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 10,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 5.9215927,
+   "gaia_rv_transits": 23.0,
+   "gaia_nss_types": []
+  },
+  "295124562": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 31.0,
+   "gaia_nss_types": []
+  },
+  "229832383": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 20.0,
+   "gaia_nss_types": []
+  },
+  "348787043": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 23.0,
+   "gaia_nss_types": []
+  },
+  "348791607": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 19.0,
+   "gaia_nss_types": []
+  },
+  "447009429": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 30.0,
+   "gaia_nss_types": []
+  },
+  "405215869": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 15.0,
+   "gaia_nss_types": []
+  },
+  "120025344": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "412057714": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 5.4376354,
+   "gaia_rv_transits": 19.0,
+   "gaia_nss_types": []
+  },
+  "156776551": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 11.0,
+   "gaia_nss_types": []
+  },
+  "140918728": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 8.0,
+   "gaia_nss_types": []
+  },
+  "258204238": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 105.29716,
+   "gaia_rv_transits": 19.0,
+   "gaia_nss_types": []
+  },
+  "405216391": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "231976099": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 16.0,
+   "gaia_nss_types": []
+  },
+  "313498432": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 1.0992432,
+   "gaia_rv_transits": 12.0,
+   "gaia_nss_types": []
+  },
+  "373792319": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "342600336": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 14.0,
+   "gaia_nss_types": []
+  },
+  "246860059": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 16.0,
+   "gaia_nss_types": []
+  },
+  "367157113": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 35,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 54.816547,
+   "gaia_rv_transits": 7.0,
+   "gaia_nss_types": []
+  },
+  "295035279": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "313485023": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 9,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 20.0,
+   "gaia_nss_types": []
+  },
+  "348837498": {
+   "surveys_with_rows": [
+    "galah_dr3",
+    "galah_dr4"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 3,
+    "galah_dr3": 2,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 27.0,
+   "gaia_nss_types": []
+  },
+  "403017570": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 2.0773926,
+   "gaia_rv_transits": 23.0,
+   "gaia_nss_types": []
+  },
+  "318620649": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 1,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 123.54845,
+   "gaia_rv_transits": 19.0,
+   "gaia_nss_types": []
+  },
+  "230163860": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 25.0,
+   "gaia_nss_types": []
+  },
+  "340965597": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 19.0,
+   "gaia_nss_types": []
+  },
+  "355921200": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 12,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 264.76617,
+   "gaia_rv_transits": 22.0,
+   "gaia_nss_types": []
+  },
+  "355917097": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 166.48363,
+   "gaia_rv_transits": 22.0,
+   "gaia_nss_types": []
+  },
+  "376932335": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 0.94540405,
+   "gaia_rv_transits": 16.0,
+   "gaia_nss_types": []
+  },
+  "219892238": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 1,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 42.13646,
+   "gaia_rv_transits": 72.0,
+   "gaia_nss_types": []
+  },
+  "318566745": {
+   "surveys_with_rows": [
+    "rave_dr6"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 3
+   },
+   "gaia_rv_amplitude_kms": 42.311646,
+   "gaia_rv_transits": 29.0,
+   "gaia_nss_types": []
+  },
+  "42058853": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 253.36246,
+   "gaia_rv_transits": 17.0,
+   "gaia_nss_types": []
+  },
+  "376932771": {
+   "surveys_with_rows": [
+    "galah_dr3",
+    "galah_dr4"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 3,
+    "galah_dr3": 2,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 28.0,
+   "gaia_nss_types": []
+  },
+  "251663993": {
+   "surveys_with_rows": [
+    "galah_dr3",
+    "galah_dr4"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 2,
+    "galah_dr3": 2,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 0.9209385,
+   "gaia_rv_transits": 11.0,
+   "gaia_nss_types": []
+  },
+  "165535747": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 14.0,
+   "gaia_nss_types": []
+  },
+  "378434189": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "394805902": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 148.69373,
+   "gaia_rv_transits": 15.0,
+   "gaia_nss_types": []
+  },
+  "232039858": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 25.0,
+   "gaia_nss_types": []
+  },
+  "388939913": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 63,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 18.0,
+   "gaia_nss_types": []
+  },
+  "403030272": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 15.0,
+   "gaia_nss_types": []
+  },
+  "96818680": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 41.481396,
+   "gaia_rv_transits": 5.0,
+   "gaia_nss_types": []
+  },
+  "295146943": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 23.0,
+   "gaia_nss_types": []
+  },
+  "42011712": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 20.0,
+   "gaia_nss_types": []
+  },
+  "441012538": {
+   "surveys_with_rows": [
+    "galah_dr4"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 3,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 29.0,
+   "gaia_nss_types": []
+  },
+  "313386191": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 20.0,
+   "gaia_nss_types": []
+  },
+  "59490510": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 23,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 11.0,
+   "gaia_nss_types": []
+  },
+  "469606998": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 9,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 149.32361,
+   "gaia_rv_transits": 28.0,
+   "gaia_nss_types": []
+  },
+  "59488906": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "403069594": {
+   "surveys_with_rows": [
+    "galah_dr3",
+    "galah_dr4"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 2,
+    "galah_dr3": 2,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 131.82077,
+   "gaia_rv_transits": 27.0,
+   "gaia_nss_types": []
+  },
+  "224306120": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 29.0,
+   "gaia_nss_types": []
+  },
+  "41996755": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 14.0,
+   "gaia_nss_types": []
+  },
+  "447112476": {
+   "surveys_with_rows": [
+    "galah_dr4"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 2,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "403080487": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 7.795494,
+   "gaia_rv_transits": 25.0,
+   "gaia_nss_types": []
+  },
+  "450616233": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 20.0,
+   "gaia_nss_types": []
+  },
+  "273026743": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 101.180466,
+   "gaia_rv_transits": 13.0,
+   "gaia_nss_types": []
+  },
+  "313352561": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 8.0,
+   "gaia_nss_types": []
+  },
+  "342621731": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "232087808": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "229401461": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 0.5135212,
+   "gaia_rv_transits": 23.0,
+   "gaia_nss_types": []
+  },
+  "447115398": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 124.04939,
+   "gaia_rv_transits": 33.0,
+   "gaia_nss_types": []
+  },
+  "72721266": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "60192021": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "188173846": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "188629001": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 13.0,
+   "gaia_nss_types": []
+  },
+  "40208362": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 95.844864,
+   "gaia_rv_transits": 16.0,
+   "gaia_nss_types": []
+  },
+  "295254637": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 28.0,
+   "gaia_nss_types": []
+  },
+  "468210292": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "258151016": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "341290373": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 17.0,
+   "gaia_nss_types": []
+  },
+  "201868138": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 3,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 54.390648,
+   "gaia_rv_transits": 29.0,
+   "gaia_nss_types": []
+  },
+  "65257021": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 7,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 11.0,
+   "gaia_nss_types": []
+  },
+  "468210255": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "467976427": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 18.0,
+   "gaia_nss_types": []
+  },
+  "59464503": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 4,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "264163792": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 5,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 159.19357,
+   "gaia_rv_transits": 14.0,
+   "gaia_nss_types": []
+  },
+  "97416864": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "59458906": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": [
+    "Orbital"
+   ]
+  },
+  "178331798": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "229205551": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 131.37854,
+   "gaia_rv_transits": 12.0,
+   "gaia_nss_types": []
+  },
+  "237505178": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "468010975": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 16.0,
+   "gaia_nss_types": []
+  },
+  "405392578": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 20.0,
+   "gaia_nss_types": []
+  },
+  "232171820": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 9.0,
+   "gaia_nss_types": []
+  },
+  "320341748": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 19.0,
+   "gaia_nss_types": []
+  },
+  "300146496": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "229181348": {
+   "surveys_with_rows": [
+    "galah_dr4"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 2,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 18.0,
+   "gaia_nss_types": []
+  },
+  "59453672": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 8,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 77.854416,
+   "gaia_rv_transits": 12.0,
+   "gaia_nss_types": []
+  },
+  "355828577": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 148.54253,
+   "gaia_rv_transits": 7.0,
+   "gaia_nss_types": []
+  },
+  "367000921": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "334215307": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 19.0,
+   "gaia_nss_types": []
+  },
+  "40100356": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 25.0,
+   "gaia_nss_types": []
+  },
+  "94125661": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 13.0,
+   "gaia_nss_types": []
+  },
+  "308574817": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "468017028": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "224288919": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 12,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 1.8734856,
+   "gaia_rv_transits": 28.0,
+   "gaia_nss_types": []
+  },
+  "178354956": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 25.0,
+   "gaia_nss_types": []
+  },
+  "308578336": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "219800831": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 1,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 2.1312456,
+   "gaia_rv_transits": 10.0,
+   "gaia_nss_types": []
+  },
+  "229012892": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 45.459373,
+   "gaia_rv_transits": 19.0,
+   "gaia_nss_types": []
+  },
+  "340551910": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 21.0,
+   "gaia_nss_types": []
+  },
+  "232421797": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "119941327": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "355809352": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 0.9776764,
+   "gaia_rv_transits": 54.0,
+   "gaia_nss_types": []
+  },
+  "394942247": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 21.0,
+   "gaia_nss_types": []
+  },
+  "224182619": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 33.60838,
+   "gaia_rv_transits": 7.0,
+   "gaia_nss_types": []
+  },
+  "342641246": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 39.0,
+   "gaia_nss_types": []
+  },
+  "201429480": {
+   "surveys_with_rows": [
+    "galah_dr3",
+    "galah_dr4"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 2,
+    "galah_dr3": 3,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 8.0,
+   "gaia_nss_types": []
+  },
+  "59388389": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "46208125": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "201317466": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 111.32555,
+   "gaia_rv_transits": 16.0,
+   "gaia_nss_types": [
+    "SB1"
+   ]
+  },
+  "318232056": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 18,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 42.0,
+   "gaia_nss_types": []
+  },
+  "59387976": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "260844755": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "389107837": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 22.0,
+   "gaia_nss_types": []
+  },
+  "457675706": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "65085092": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 10.0,
+   "gaia_nss_types": []
+  },
+  "336181565": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "308621446": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "96687087": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 3,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 26.0,
+   "gaia_nss_types": []
+  },
+  "219769838": {
+   "surveys_with_rows": [
+    "rave_dr6"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 4
+   },
+   "gaia_rv_amplitude_kms": 33.747314,
+   "gaia_rv_transits": 11.0,
+   "gaia_nss_types": []
+  },
+  "219765539": {
+   "surveys_with_rows": [
+    "apogee_dr17",
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 2,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 18,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 3.208435,
+   "gaia_rv_transits": 48.0,
+   "gaia_nss_types": []
+  },
+  "114549849": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 27.0,
+   "gaia_nss_types": []
+  },
+  "314239566": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 20.0,
+   "gaia_nss_types": []
+  },
+  "290436243": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "94041900": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 16.0,
+   "gaia_nss_types": []
+  },
+  "97700077": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "349252594": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 10,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 59.685207,
+   "gaia_rv_transits": 24.0,
+   "gaia_nss_types": []
+  },
+  "257927198": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 1,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 98.60029,
+   "gaia_rv_transits": 11.0,
+   "gaia_nss_types": []
+  },
+  "258316486": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "41831052": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 23,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 1.2810097,
+   "gaia_rv_transits": 19.0,
+   "gaia_nss_types": []
+  },
+  "59378274": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 22.0,
+   "gaia_nss_types": []
+  },
+  "65051771": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 29.0,
+   "gaia_nss_types": []
+  },
+  "230067194": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 39,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 11.0,
+   "gaia_nss_types": []
+  },
+  "219752822": {
+   "surveys_with_rows": [
+    "apogee_dr17",
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 2,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 10,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 2.0541592,
+   "gaia_rv_transits": 20.0,
+   "gaia_nss_types": []
+  },
+  "257923571": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 3,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 125.338554,
+   "gaia_rv_transits": 10.0,
+   "gaia_nss_types": []
+  },
+  "78199363": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "96680649": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 63.110703,
+   "gaia_rv_transits": 31.0,
+   "gaia_nss_types": []
+  },
+  "468122704": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 12.0,
+   "gaia_nss_types": []
+  },
+  "257922637": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 2,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 88.255585,
+   "gaia_rv_transits": 12.0,
+   "gaia_nss_types": []
+  },
+  "43712813": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 21.0,
+   "gaia_nss_types": []
+  },
+  "318109813": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 10.0,
+   "gaia_nss_types": []
+  },
+  "182536219": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 341.7171,
+   "gaia_rv_transits": 20.0,
+   "gaia_nss_types": []
+  },
+  "447350975": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 190.90337,
+   "gaia_rv_transits": 28.0,
+   "gaia_nss_types": []
+  },
+  "59363206": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 10,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 60.366196,
+   "gaia_rv_transits": 10.0,
+   "gaia_nss_types": []
+  },
+  "272885856": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "182463007": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 25.0,
+   "gaia_nss_types": []
+  },
+  "178434324": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "319039747": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "264099112": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 101.48091,
+   "gaia_rv_transits": 33.0,
+   "gaia_nss_types": []
+  },
+  "231917790": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "468090770": {
+   "surveys_with_rows": [
+    "apogee_dr17"
+   ],
+   "n_rows": {
+    "apogee_dr17": 6,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "200647864": {
+   "surveys_with_rows": [
+    "galah_dr4"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 2,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 27.0,
+   "gaia_nss_types": []
+  },
+  "469305326": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "165227846": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 17.0,
+   "gaia_nss_types": []
+  },
+  "182343782": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "458507124": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "469306687": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "58485530": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 17.0,
+   "gaia_nss_types": []
+  },
+  "251077178": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 7,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 14.0,
+   "gaia_nss_types": [
+    "Orbital"
+   ]
+  },
+  "78186062": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "419143879": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "446692149": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "80518171": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "440828388": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 16.0,
+   "gaia_nss_types": []
+  },
+  "389751698": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "237657109": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "403329469": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 2.0521393,
+   "gaia_rv_transits": 23.0,
+   "gaia_nss_types": []
+  },
+  "975879954": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "378816777": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "355737250": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 22.0,
+   "gaia_nss_types": []
+  },
+  "468146715": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 20.0,
+   "gaia_nss_types": []
+  },
+  "19569810": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 10.0,
+   "gaia_nss_types": []
+  },
+  "349116460": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 9.960407,
+   "gaia_rv_transits": 22.0,
+   "gaia_nss_types": []
+  },
+  "440817847": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "405529940": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 14,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "468152519": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 21.0,
+   "gaia_nss_types": []
+  },
+  "257817337": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 1,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 1.8423309,
+   "gaia_rv_transits": 30.0,
+   "gaia_nss_types": []
+  },
+  "200247352": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "257806221": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 12,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 29.0,
+   "gaia_nss_types": []
+  },
+  "86498032": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "412805586": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 71.19362,
+   "gaia_rv_transits": 12.0,
+   "gaia_nss_types": []
+  },
+  "349109562": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 1.127388,
+   "gaia_rv_transits": 4.0,
+   "gaia_nss_types": []
+  },
+  "355734894": {
+   "surveys_with_rows": [
+    "lamost_dr11"
+   ],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 4,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 3.471428,
+   "gaia_rv_transits": 17.0,
+   "gaia_nss_types": []
+  },
+  "367430670": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 17.0,
+   "gaia_nss_types": []
+  },
+  "395051777": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 17.0,
+   "gaia_nss_types": []
+  },
+  "355734358": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 3.0,
+   "gaia_nss_types": []
+  },
+  "231908427": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  },
+  "272854495": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": 22.444324,
+   "gaia_rv_transits": 15.0,
+   "gaia_nss_types": []
+  },
+  "447439469": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": 2.0,
+   "gaia_nss_types": []
+  },
+  "188404859": {
+   "surveys_with_rows": [],
+   "n_rows": {
+    "apogee_dr17": 0,
+    "galah_dr4": 0,
+    "galah_dr3": 0,
+    "lamost_dr11": 0,
+    "rave_dr6": 0
+   },
+   "gaia_rv_amplitude_kms": null,
+   "gaia_rv_transits": null,
+   "gaia_nss_types": []
+  }
+ }
+}

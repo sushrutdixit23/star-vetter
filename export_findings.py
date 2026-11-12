@@ -22,6 +22,114 @@ def load(path):
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
+def e_reliable(q, f22):
+    if q["rsum"]["median"] > 0.25:
+        return False
+    if f22.get("verdict") not in ("ECCENTRIC", "CIRCULAR_WITHIN_ERRORS") or f22.get("ecosw") is None:
+        return False
+    tol = max(3.0 * float(f22.get("ecosw_sigma") or 0.0), 0.01)
+    return bool(abs(q["ecosw"]["median"] - float(f22["ecosw"])) <= tol)
+
+
+def e_reason(q, f22):
+    if q["rsum"]["median"] > 0.25:
+        return "close pair: spheres misjudge the durations"
+    if f22.get("verdict") not in ("ECCENTRIC", "CIRCULAR_WITHIN_ERRORS") or f22.get("ecosw") is None:
+        return "secondary eclipse too weak to measure independently"
+    return "e cos w disagrees with the independent measurement"
+
+
+def _q(p, name, nd=4):
+    v = p.get(name) or {}
+    return {"median": round(float(v["median"]), nd), "lo": round(float(v["lo"]), nd), "hi": round(float(v["hi"]), nd)} if v else None
+
+
+def physical(d, ecc, sky):
+    """Light-curve model fits (f26), their validation, and archival spectroscopy (f28)."""
+    fp, vp, sp = d / "f26_ebfit.json", d / "f26_validation.json", d / "f28_physical.json"
+    if not fp.exists() and not sp.exists():
+        return None
+    out = {"validation": [], "fits": [], "spectroscopy": None}
+    if vp.exists():
+        vals = load(vp)
+        for v in (vals if isinstance(vals, list) else [vals]):
+            if "fit" not in v:
+                continue
+            out["validation"].append({"star": v["star"], "reference": v["reference"], "cadence_min": v.get("cadence_min", 2),
+                                      "passed": v["passed"], "checks": v["checks"], "truth": v["truth"],
+                                      "fit": {k: round(v["fit"][k]["median"], 4) for k in ("e", "esinw", "ecosw", "r1", "r2", "incl", "l3")}})
+    spec = load(sp)["stars"] if sp.exists() else {}
+    if fp.exists():
+        for t, r in sorted(load(fp)["stars"].items(), key=lambda kv: float(sky[int(kv[0])]["period_days"])):
+            if r.get("status") != "OK":
+                out["fits"].append({"tic": int(t), "status": r.get("status")})
+                continue
+            q = r["params"]
+            row = {"tic": int(t), "status": "OK", "period_days": round(r["period_days"], 6),
+                   "e": _q(q, "e"), "omega_deg": _q(q, "omega_deg", 1), "ecosw": _q(q, "ecosw"), "esinw": _q(q, "esinw"),
+                   "incl_deg": _q(q, "incl", 2), "r1": _q(q, "r1"), "r2": _q(q, "r2"), "k": _q(q, "k", 3), "J": _q(q, "J", 3),
+                   "l3": _q(q, "l3", 3), "l3_p97_5": round(float(q["l3"]["p97.5"]), 3), "light_ratio": _q(q, "light_ratio", 3),
+                   "converged": r.get("converged"),
+                   "flags": r.get("flags", []), "f22_ecosw": (ecc["stars"].get(t) or {}).get("ecosw"),
+                   # e is trusted only when (1) the pair is not too close for spheres, (2) the secondary was measured
+                   # independently by f22 and (3) both e cos w agree; otherwise e sin w (from the duration ratio) is
+                   # not constrained -- shown on TIC 43785616, where a weak secondary gave e=0.25 against Gaia's 0.05
+                   "e_reliable": e_reliable(q, (ecc["stars"].get(t) or {})),
+                   # third light: is the posterior narrower than the half-normal prior (median 0.067, 84th pct 0.141)?
+                   # constrained by the data when the posterior is much narrower than the half-normal prior (16-84%
+                   # width about 0.13)
+                   "l3_constrained": bool(q["l3"]["lo"] + q["l3"]["hi"] < 0.06)}
+            if not row["e_reliable"]:
+                row["e_note"] = e_reason(q, ecc["stars"].get(t) or {})
+            sc = (spec.get(t) or {}).get("scale")
+            if sc and row["e_reliable"]:
+                row["total_mass_msun"] = round(sc["total_mass_msun"], 2)
+                row["total_mass_rel_sigma"] = round(sc["total_mass_rel_sigma"], 2)
+                row["total_mass_plausible"] = sc["plausible"]
+                row["total_mass_ms_consistent"] = sc.get("ms_consistent")
+                row["total_mass_ms_expected"] = round(sc["ms_expected_total_msun"], 2) if sc.get("ms_expected_total_msun") else None
+            out["fits"].append(row)
+    if sp.exists():
+        sm = load(sp)
+        ratios = [v["scale"]["ms_ratio"] for v in sm["stars"].values() if (v.get("scale") or {}).get("ms_ratio") is not None]
+        out["mass_check"] = {"n": len(ratios), "median_ratio": round(float(np.median(ratios)), 2) if ratios else None,
+                             "n_consistent": sum(1 for v in sm["stars"].values() if (v.get("scale") or {}).get("ms_consistent"))}
+        orbits = []
+        for t, s_ in sm["stars"].items():
+            o = s_.get("gaia_orbit")
+            if o:
+                orbits.append({"tic": int(t), **{k: o.get(k) for k in ("type", "gaia_period_days", "period_ratio", "same_period", "outer_orbit", "gaia_e",
+                                                                       "gaia_e_sigma", "gaia_ecosw", "gaia_k1_kms", "photometric_ecosw")}})
+        apo = []
+        for t, s_ in sm["stars"].items():
+            a = s_.get("apogee")
+            if a:
+                flagged = sum(1 for v in a["visits"] if v.get("flag"))
+                apo.append({"tic": int(t), "n": a["n"], "k1_kms": round(a["k1_kms"], 1), "k1_sigma_kms": round(a["k1_sigma_kms"], 1),
+                            "chi2": round(a["chi2"], 1), "dof": a["dof"], "chi2_constant": round(a["chi2_constant"], 1),
+                            "flagged_visits": flagged, "orbit_from": a["orbit_from"]})
+        static = []
+        for t, s_ in sm["stars"].items():
+            g = s_.get("gaia_rv") or {}
+            if g.get("static_star_verdict") in ("BLEND_INDICATED", "SUBSTELLAR_OR_BLEND", "STATIC_OR_TWIN"):
+                static.append({"tic": int(t), "verdict": g["static_star_verdict"], "k1_upper_kms": round(g["k1_upper_kms"], 2),
+                               "m2_max_msun": round(g["m2_max_msun"], 3), "eclipse_depth": g["eclipse_depth"],
+                               "n_transits": g["n_transits"], "m1_source": g["m1_source"]})
+        static.sort(key=lambda r: ({"BLEND_INDICATED": 0, "SUBSTELLAR_OR_BLEND": 1, "STATIC_OR_TWIN": 2}[r["verdict"]], -(r["eclipse_depth"] or 0)))
+        # independent check of the light-curve e against Gaia spectroscopic orbits (trusted or not)
+        echeck = []
+        fits_by = {r["tic"]: r for r in out["fits"] if r.get("status") == "OK"}
+        for o in orbits:
+            fr = fits_by.get(o["tic"])
+            if fr and o.get("same_period") and o.get("gaia_e") is not None:
+                echeck.append({"tic": o["tic"], "fit_e": fr["e"]["median"], "fit_e_err": max(fr["e"]["lo"], fr["e"]["hi"]),
+                               "gaia_e": o["gaia_e"], "gaia_e_sigma": o["gaia_e_sigma"], "trusted": fr["e_reliable"],
+                               "difference_sigma": round(abs(fr["e"]["median"] - o["gaia_e"]) / max(float(np.hypot(max(fr["e"]["lo"], fr["e"]["hi"]), o["gaia_e_sigma"] or 0.0)), 1e-3), 1)})
+        out["spectroscopy"] = {"e_check_vs_gaia": echeck, "summary": sm["summary"], "gaia_orbits": sorted(orbits, key=lambda r: r["tic"]),
+                               "apogee": sorted(apo, key=lambda r: r["tic"]), "static": static}
+    return out
+
+
 def build(root):
     d = Path(root) / "data" / "processed"
     ecc = load(d / "f22_eccentricity.json")
@@ -96,6 +204,7 @@ def build(root):
                      "fits_as_well_as_parabola", "extra_parameters_vs_parabola", "gaia_dr3_orbit_sensitive_below_years")}}
                     for t, v in load(lp).items()]
         out["timing_drift"] = {"counts": c, "period_change": sig, "floors_min": etv.get("floors_min"), "calibration": cal, "ltte": ltte}
+    out["physical"] = physical(d, ecc, sky)
     vp = d / "f22_validation_prsa_summary.json"
     out["validation"] = None
     if vp.exists():
@@ -166,8 +275,98 @@ def markdown(o):
                           "does not improve on" if not r["fits_as_well_as_parabola"] else "improves on (not significantly, for two extra parameters)",
                           slo, shi, r["max_plausible_m3_msun"], lo, hi, r["amplitude_min_range"][0], r["amplitude_min_range"][1],
                           r["m3_min_msun_range"][0], r["m3_min_msun_range"][1], slo)]
+                fit = next((x for x in (o.get("physical") or {}).get("fits", []) if x["tic"] == r["tic"] and x.get("status") == "OK"), None)
+                if fit and fit.get("l3_p97_5") is not None:
+                    L += ["", "The light-curve model of TIC %d puts the third light below %.2f of the TESS flux (95%%), with the companion in the "
+                          "pair contributing %.2f. A main-sequence third star near the top of the allowed mass range would be about as bright as the "
+                          "pair and is disfavoured; a low-mass (M-dwarf) or compact companion is not. This narrows, but does not settle, the "
+                          "light-travel-time picture." % (r["tic"], fit["l3_p97_5"], fit["light_ratio"]["median"])]
         else:
             L.append("No star passed every rule.")
+    ph = o.get("physical")
+    if ph:
+        L += ["", "## Physical light-curve model", "",
+              "Detached-binary model (ellc, spheres, quadratic limb darkening, third light with a half-normal prior of width 0.10), "
+              "fitted by MCMC to the TESS eclipses after per-eclipse detrending. The two eclipse durations give e sin w, so the true "
+              "eccentricity e is measured, not only the lower limit e cos w. Masses need spectra (see below).",
+              "Limits of the model: e is trusted only when the pair is not too close for spherical stars (r1 + r2 at most 0.25), the secondary "
+              "eclipse was measured independently (f22) and the two values of e cos w agree; otherwise only e cos w is given. "
+              "Third light marked (prior) is not constrained by the data; the value is the prior's. Chains marked 'no' under Converged ran "
+              "for fewer than 20 autocorrelation times, so their uncertainties are indicative."]
+        for v in ph["validation"]:
+            L.append("Validation on %s (%s), %d-min cadence: e %.3f vs %.4f, r1 %.4f vs %.4f, r2 %.4f vs %.4f, i %.2f vs %.2f; %s." % (
+                v["star"], v["reference"], v["cadence_min"], v["fit"]["e"], v["truth"]["e"], v["fit"]["r1"], v["truth"]["r1"],
+                v["fit"]["r2"], v["truth"]["r2"], v["fit"]["incl"], v["truth"]["incl"], "passed every pre-set check" if v["passed"] else
+                "FAILED: " + ", ".join(k for k, ok in v["checks"].items() if not ok)))
+        if ph["fits"]:
+            L += ["", "| TIC | Period (d) | e | omega (deg) | i (deg) | r1 | r2 | l3 | Converged | Total mass estimate (Msun, Gaia radius) |",
+                  "|---|---|---|---|---|---|---|---|---|---|"]
+            for r in ph["fits"]:
+                if r["status"] != "OK":
+                    L.append("| %d | | %s | | | | | | | |" % (r["tic"], r["status"]))
+                    continue
+                f = lambda q, nd=3: ("%.*f +%.*f/-%.*f" % ((4 if q["hi"] < 0.001 else nd), q["median"], (4 if q["hi"] < 0.001 else nd), q["hi"],
+                                                           (4 if q["hi"] < 0.001 else nd), q["lo"])) if q else "n/a"  # noqa: E731
+                if "total_mass_msun" not in r:
+                    tm = "n/a"
+                elif r.get("total_mass_ms_consistent") is False:
+                    tm = "inconsistent (%.1f vs %.1f expected for two dwarfs): radius or light split biased" % (r["total_mass_msun"], r["total_mass_ms_expected"])
+                else:
+                    tm = "%.2f (+-%.0f%%)%s" % (r["total_mass_msun"], 100 * r["total_mass_rel_sigma"], "" if r["total_mass_plausible"] else " IMPLAUSIBLE")
+                ee = f(r["e"]) if r["e_reliable"] else "not trusted (%s); e cos w %+.3f" % (r["e_note"], r["ecosw"]["median"])
+                L.append("| %d | %.4f | %s | %s | %.2f | %.4f | %.4f | %.2f%s | %s | %s |" % (
+                    r["tic"], r["period_days"], ee, "%.0f" % r["omega_deg"]["median"] if r["e_reliable"] else "n/a", r["incl_deg"]["median"],
+                    r["r1"]["median"], r["r2"]["median"], r["l3"]["median"], "" if r["l3_constrained"] else " (prior)",
+                    "yes" if r["converged"] else "no", tm))
+        mc = ph.get("mass_check")
+        if mc and mc["n"]:
+            L += ["", "Total masses from Kepler's law and the Gaia radius came out a median %.1f times what two main-sequence stars of the implied "
+                  "size and light ratio would weigh (%d of %d within a factor 1.6). The likely cause is the Gaia radius of a composite source. "
+                  "These are therefore not usable as masses; real masses need double-lined spectra." % (mc["median_ratio"], mc["n_consistent"], mc["n"])]
+        sp_ = ph.get("spectroscopy")
+        if sp_:
+            sm = sp_["summary"]
+            L += ["", "## Archival spectroscopy", "",
+                  "Gaia DR3 (radial-velocity summaries and spectroscopic orbits), APOGEE DR17 visits, GALAH, LAMOST and RAVE, queried for "
+                  "every survivor. No new telescope time.", "",
+                  "- Gaia orbits: %d; spectroscopic at the TESS period (within 1%%): %d; astrometric outer orbits: %d. A spectroscopic orbit at "
+                  "the eclipse period is independent evidence that the eclipses belong to the bright Gaia star." % (
+                      sm["with_gaia_orbit"], sm["gaia_orbit_same_period"], sm["gaia_outer_orbit"]),
+                  "- Gaia RV range available: %d stars; the bright star clearly moves in %d." % (sm["with_gaia_rv_range"], sm["gaia_rv_moves"]),
+                  "- Bright star static (upper limit on the companion mass below 0.08 Msun): %d BLEND_INDICATED (deep eclipse), %d SUBSTELLAR_OR_BLEND, "
+                  "%d STATIC_OR_TWIN (near-equal eclipses; blended twin lines can look static)." % (
+                      sm["gaia_rv_static_blend_indicated"], sm["gaia_rv_static_substellar_or_blend"], sm["gaia_rv_static_or_twin"]),
+                  "- APOGEE visit orbits fitted at the photometric ephemeris: %d." % sm["with_apogee_orbit"]]
+            inner = [r for r in sp_["gaia_orbits"] if r.get("same_period")]
+            outer = [r for r in sp_["gaia_orbits"] if r.get("outer_orbit")]
+            if inner:
+                L += ["", "Gaia spectroscopic orbits at the eclipse period:", "",
+                      "| TIC | Gaia solution | Gaia period (d) | P(Gaia)/P(TESS) | Gaia e | Gaia e cos w | photometric e cos w | Gaia K1 (km/s) |", "|---|---|---|---|---|---|---|---|"]
+                for r in inner:
+                    L.append("| %d | %s | %.4f | %.4f | %s | %s | %s | %s |" % (
+                        r["tic"], r["type"], r["gaia_period_days"], r["period_ratio"],
+                        "%.3f +- %.3f" % (r["gaia_e"], r["gaia_e_sigma"]) if r.get("gaia_e") is not None else "n/a",
+                        "%+.3f" % r["gaia_ecosw"] if r.get("gaia_ecosw") is not None else "n/a",
+                        "%+.3f" % r["photometric_ecosw"] if r.get("photometric_ecosw") is not None else "n/a",
+                        "%.1f" % r["gaia_k1_kms"] if r.get("gaia_k1_kms") else "n/a"))
+            if sp_.get("e_check_vs_gaia"):
+                L += ["", "Light-curve e against the Gaia spectroscopic e (an independent check of the model): " + "; ".join(
+                    "TIC %d: %.3f vs %.3f +- %.3f (%.1f sigma apart, light-curve e %s)" % (
+                        r["tic"], r["fit_e"], r["gaia_e"], r["gaia_e_sigma"], r["difference_sigma"], "trusted" if r["trusted"] else "not trusted by the rule above")
+                    for r in sp_["e_check_vs_gaia"]) + "."]
+            if outer:
+                L += ["", "Gaia astrometric orbits much longer than the eclipse period (candidate third bodies; Gaia orbit solutions for variable stars "
+                      "can be spurious, so these need checking): " +
+                      ", ".join("TIC %d (P = %.0f d, e = %.2f)" % (r["tic"], r["gaia_period_days"], r["gaia_e"]) for r in outer) + "."]
+            if sp_["apogee"]:
+                L += ["", "| TIC | APOGEE visits | K1 (km/s) | chi2 / dof | chi2 constant | flagged visits | orbit used |", "|---|---|---|---|---|---|---|"]
+                for r in sp_["apogee"]:
+                    L.append("| %d | %d | %.1f +- %.1f | %.1f / %d | %.1f | %d | %s |" % (r["tic"], r["n"], r["k1_kms"], r["k1_sigma_kms"], r["chi2"], r["dof"],
+                                                                                    r["chi2_constant"], r["flagged_visits"], r["orbit_from"]))
+            bl = [r for r in sp_["static"] if r["verdict"] == "BLEND_INDICATED"]
+            if bl:
+                L += ["", "Static bright star with a deep eclipse (eclipses very probably from another star): " + ", ".join(
+                    "TIC %d (depth %.1f%%, K1 < %.1f km/s over %d Gaia transits)" % (r["tic"], 100 * r["eclipse_depth"], r["k1_upper_kms"], r["n_transits"]) for r in bl) + "."]
     v = o.get("validation")
     if v:
         L += ["", "## External check of the eccentricity measurement", "",

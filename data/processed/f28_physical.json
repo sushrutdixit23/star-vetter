@@ -1,0 +1,1827 @@
+{
+ "generated_at": "2026-11-12T13:27:34Z",
+ "summary": {
+  "with_gaia_orbit": 6,
+  "gaia_outer_orbit": 2,
+  "gaia_orbit_same_period": 4,
+  "with_gaia_rv_range": 93,
+  "gaia_rv_moves": 60,
+  "gaia_rv_static_blend_indicated": 1,
+  "gaia_rv_static_or_twin": 8,
+  "gaia_rv_static_substellar_or_blend": 16,
+  "with_total_mass": 12,
+  "total_mass_implausible": 0,
+  "with_masses_estimate": 3,
+  "with_apogee_orbit": 3
+ },
+ "stars": {
+  "111149941": {
+   "period_days": 5.240091764822175,
+   "gaia_rv": {
+    "amplitude_kms": 2.6694927,
+    "n_transits": 8.0,
+    "epoch_sigma_kms_assumed": 1.3691100000000003,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.8300265
+   }
+  },
+  "111240209": {
+   "period_days": 66.49021161482689,
+   "gaia_rv": {
+    "amplitude_kms": 44.61622,
+    "n_transits": 10.0,
+    "epoch_sigma_kms_assumed": 4.008857999999998,
+    "k1_lower_kms": 12.285965000000004,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.012775992370192297
+   }
+  },
+  "152676628": {
+   "period_days": 5.259928596056072,
+   "gaia_rv": {
+    "amplitude_kms": 51.366035,
+    "n_transits": 7.0,
+    "epoch_sigma_kms_assumed": 1.512440999999999,
+    "k1_lower_kms": 21.901915000000002,
+    "moves": true,
+    "chisq_pvalue": 0.40533698,
+    "mass_function_lower_msun": 0.005725787463992947
+   }
+  },
+  "178434324": {
+   "period_days": 2.384440924512456,
+   "scale": {
+    "radius_source": "Gaia DR3 FLAME",
+    "gaia_radius_rsun": 2.3114862,
+    "light_ratio_tess": 1.8021162200260146,
+    "r1_rsun": 1.380855496353747,
+    "r2_rsun": 1.969225144370323,
+    "a_rsun": 13.112961817426308,
+    "total_mass_msun": 5.3211142864374805,
+    "total_mass_rel_sigma": 0.34251746508108816,
+    "plausible": true,
+    "ms_expected_total_msun": 4.770878909801058,
+    "ms_ratio": 1.1153320775981226,
+    "ms_basis": "Gaia FLAME mass",
+    "ms_consistent": true,
+    "caveat": "Gaia radius assumes one star; companion light removed with the TESS-band ratio"
+   }
+  },
+  "182536219": {
+   "period_days": 9.809395804662424,
+   "gaia_rv": {
+    "amplitude_kms": 341.7171,
+    "n_transits": 20.0,
+    "epoch_sigma_kms_assumed": 4.698452999999999,
+    "k1_lower_kms": 159.11241750000002,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 4.0941484779675195
+   }
+  },
+  "193548084": {
+   "period_days": 1.9060865454288745,
+   "gaia_rv": {
+    "amplitude_kms": 87.36682,
+    "n_transits": 23.0,
+    "epoch_sigma_kms_assumed": 4.057401000000002,
+    "k1_lower_kms": 33.5399075,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.007451390172026111
+   }
+  },
+  "201317466": {
+   "period_days": 5.624225848355638,
+   "gaia_orbit": {
+    "type": "SB1",
+    "gaia_period_days": 5.625963779149327,
+    "period_ratio": 1.0003090080022652,
+    "same_period": true,
+    "outer_orbit": false,
+    "gaia_e": 0.1249324030835873,
+    "gaia_e_sigma": 0.061120495,
+    "gaia_omega_deg": 187.28403973967025,
+    "gaia_ecosw": -0.12392417349284375,
+    "gaia_k1_kms": 51.873520995313456,
+    "gaia_k1_sigma_kms": 1.1894796,
+    "photometric_e": 0.0002852632826586198,
+    "photometric_ecosw": 3.902403511844855e-05,
+    "ecosw_difference_sigma": 2.0281772509853235
+   },
+   "gaia_rv": {
+    "amplitude_kms": 111.32555,
+    "n_transits": 16.0,
+    "epoch_sigma_kms_assumed": 5.180831999999999,
+    "k1_lower_kms": 42.71069500000001,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.04540270433463846
+   },
+   "scale": {
+    "radius_source": "Gaia DR3 FLAME",
+    "gaia_radius_rsun": 2.0245502,
+    "light_ratio_tess": 0.06586414660756182,
+    "r1_rsun": 1.9610001323806963,
+    "r2_rsun": 0.8205064984721114,
+    "a_rsun": 18.582240179920372,
+    "total_mass_msun": 2.7220543566727486,
+    "total_mass_rel_sigma": 0.30275046549284945,
+    "plausible": true,
+    "ms_expected_total_msun": 1.6854817401724267,
+    "ms_ratio": 1.6150007987593382,
+    "ms_basis": "Gaia FLAME mass",
+    "ms_consistent": false,
+    "caveat": "Gaia radius assumes one star; companion light removed with the TESS-band ratio"
+   },
+   "masses_estimate": {
+    "k1_kms": 51.873520995313456,
+    "k1_sigma_kms": 1.1894796,
+    "k1_source": "Gaia DR3 SB1 orbit",
+    "m1_msun": 1.8773273487082516,
+    "m2_msun": 0.8447270079644971,
+    "total_msun": 2.7220543566727486,
+    "q": 0.4499625537047311,
+    "plausible": true,
+    "close_pair": false,
+    "e_used": 0.0002852632826586198,
+    "caveat": "depends on the Gaia radius through the total mass; the TESS light ratio is used as if bolometric"
+   }
+  },
+  "201868138": {
+   "period_days": 3.715790233331664,
+   "gaia_rv": {
+    "amplitude_kms": 54.390648,
+    "n_transits": 29.0,
+    "epoch_sigma_kms_assumed": 5.945718000000001,
+    "k1_lower_kms": 12.331028999999997,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.0007218687701274708
+   }
+  },
+  "219752822": {
+   "period_days": 32.31002073817632,
+   "gaia_rv": {
+    "amplitude_kms": 2.0541592,
+    "n_transits": 20.0,
+    "epoch_sigma_kms_assumed": 1.7796825000000007,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.43621004,
+    "k1_upper_kms": 3.1186245555555563,
+    "m1_msun": 1.0,
+    "m1_source": "assumed 1 Msun (no FLAME mass)",
+    "m2_max_msun": 0.04813832137008435,
+    "eclipse_depth": 0.0004965710911079,
+    "secondary_to_primary_depth": 0.2828729837939317,
+    "static_star_verdict": "SUBSTELLAR_OR_BLEND"
+   }
+  },
+  "219765539": {
+   "period_days": 1.38087282279317,
+   "gaia_rv": {
+    "amplitude_kms": 3.208435,
+    "n_transits": 48.0,
+    "epoch_sigma_kms_assumed": 1.1835216,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.22307067,
+    "k1_upper_kms": 3.097487888888889,
+    "m1_msun": 1.0,
+    "m1_source": "assumed 1 Msun (no FLAME mass)",
+    "m2_max_msun": 0.016376977773087137,
+    "eclipse_depth": 0.0003232400261248,
+    "secondary_to_primary_depth": 1.7826391748704002,
+    "static_star_verdict": "STATIC_OR_TWIN"
+   }
+  },
+  "219769838": {
+   "period_days": 0.9021624954798596,
+   "gaia_rv": {
+    "amplitude_kms": 33.747314,
+    "n_transits": 11.0,
+    "epoch_sigma_kms_assumed": 5.488659000000002,
+    "k1_lower_kms": 3.1520094999999966,
+    "moves": true,
+    "chisq_pvalue": 1.459899e-06,
+    "mass_function_lower_msun": 2.9272271818526877e-06
+   }
+  },
+  "219800831": {
+   "period_days": 36.887693263771546,
+   "gaia_rv": {
+    "amplitude_kms": 2.1312456,
+    "n_transits": 10.0,
+    "epoch_sigma_kms_assumed": 1.1754971999999995,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.46353474,
+    "k1_upper_kms": 2.4901333333333326,
+    "m1_msun": 2.8012154,
+    "m1_source": "Gaia FLAME",
+    "m2_max_msun": 0.07881043524795847,
+    "eclipse_depth": 0.0013820608119938,
+    "secondary_to_primary_depth": 0.10698899905799755,
+    "static_star_verdict": "SUBSTELLAR_OR_BLEND"
+   }
+  },
+  "219892238": {
+   "period_days": 68.99879636610933,
+   "gaia_rv": {
+    "amplitude_kms": 42.13646,
+    "n_transits": 72.0,
+    "epoch_sigma_kms_assumed": 4.735502999999998,
+    "k1_lower_kms": 9.229472500000005,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.005620581667364839
+   }
+  },
+  "224182619": {
+   "period_days": 1.1492351902939224,
+   "gaia_rv": {
+    "amplitude_kms": 33.60838,
+    "n_transits": 7.0,
+    "epoch_sigma_kms_assumed": 0.8564281666666667,
+    "k1_lower_kms": 14.663119583333332,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.00037540249304662707
+   }
+  },
+  "224288919": {
+   "period_days": 2.928492539556409,
+   "gaia_rv": {
+    "amplitude_kms": 1.8734856,
+    "n_transits": 28.0,
+    "epoch_sigma_kms_assumed": 1.0768481999999995,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.3427774,
+    "k1_upper_kms": 2.237323333333333,
+    "m1_msun": 2.6011531,
+    "m1_source": "Gaia FLAME",
+    "m2_max_msun": 0.028643622952260438,
+    "eclipse_depth": 0.000569756435887,
+    "secondary_to_primary_depth": 0.8690770004327,
+    "static_star_verdict": "STATIC_OR_TWIN"
+   }
+  },
+  "229012892": {
+   "period_days": 4.136387746922304,
+   "gaia_rv": {
+    "amplitude_kms": 45.459373,
+    "n_transits": 19.0,
+    "epoch_sigma_kms_assumed": 0.6591459000000001,
+    "k1_lower_kms": 21.08182175,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.004015639903745568
+   }
+  },
+  "229205551": {
+   "period_days": 5.835269058878197,
+   "gaia_rv": {
+    "amplitude_kms": 131.37854,
+    "n_transits": 12.0,
+    "epoch_sigma_kms_assumed": 4.953371999999998,
+    "k1_lower_kms": 53.305839999999996,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.09157867744313893
+   }
+  },
+  "229401461": {
+   "period_days": 79.01259177859758,
+   "gaia_rv": {
+    "amplitude_kms": 0.5135212,
+    "n_transits": 23.0,
+    "epoch_sigma_kms_assumed": 0.4450043333333333,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.69230115,
+    "k1_upper_kms": 0.7797388148148148,
+    "m1_msun": 1.0612478,
+    "m1_source": "Gaia FLAME",
+    "m2_max_msun": 0.016519656111820123,
+    "eclipse_depth": 0.0004008471713598,
+    "secondary_to_primary_depth": 0.1371459409892646,
+    "static_star_verdict": "SUBSTELLAR_OR_BLEND"
+   }
+  },
+  "229473505": {
+   "period_days": 11.197015697418236,
+   "gaia_rv": {
+    "amplitude_kms": 5.6890197,
+    "n_transits": 33.0,
+    "epoch_sigma_kms_assumed": 2.110319999999999,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.55800813,
+    "k1_upper_kms": 5.505366499999999,
+    "m1_msun": 1.0,
+    "m1_source": "assumed 1 Msun (no FLAME mass)",
+    "m2_max_msun": 0.060145098502551425,
+    "eclipse_depth": 0.0002845060440909,
+    "secondary_to_primary_depth": 0.6208132824502248,
+    "static_star_verdict": "STATIC_OR_TWIN"
+   }
+  },
+  "229494833": {
+   "period_days": 30.767736129085677,
+   "gaia_rv": {
+    "amplitude_kms": 1.8597565,
+    "n_transits": 14.0,
+    "epoch_sigma_kms_assumed": 1.2864642,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.35706905,
+    "k1_upper_kms": 2.462602722222222,
+    "m1_msun": 1.3342427,
+    "m1_source": "Gaia FLAME",
+    "m2_max_msun": 0.04490588683495336,
+    "eclipse_depth": 0.0003716524502771,
+    "secondary_to_primary_depth": 0.4680429572542985,
+    "static_star_verdict": "SUBSTELLAR_OR_BLEND"
+   }
+  },
+  "235512374": {
+   "period_days": 3.744060356550739,
+   "gaia_orbit": {
+    "type": "SB1",
+    "gaia_period_days": 3.739698065824506,
+    "period_ratio": 0.9988348770289986,
+    "same_period": true,
+    "outer_orbit": false,
+    "gaia_e": 0.1043822579189635,
+    "gaia_e_sigma": 0.058215063,
+    "gaia_omega_deg": 247.1025058788841,
+    "gaia_ecosw": -0.04061343104966547,
+    "gaia_k1_kms": 58.07593885302269,
+    "gaia_k1_sigma_kms": 3.9701521
+   },
+   "gaia_rv": {
+    "amplitude_kms": 113.2713,
+    "n_transits": 13.0,
+    "epoch_sigma_kms_assumed": 5.668611000000002,
+    "k1_lower_kms": 42.464122499999995,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.02970423763469978
+   }
+  },
+  "237115819": {
+   "period_days": 14.79205908513923,
+   "scale": {
+    "radius_source": "Gaia DR3 FLAME",
+    "gaia_radius_rsun": 0.8673379,
+    "light_ratio_tess": 0.29294317059756586,
+    "r1_rsun": 0.7627787854742639,
+    "r2_rsun": 0.42419639273380905,
+    "a_rsun": 35.263425061198795,
+    "total_mass_msun": 2.6888943079746066,
+    "total_mass_rel_sigma": 0.30958190291836907,
+    "plausible": true,
+    "ms_expected_total_msun": 1.2372881084814122,
+    "ms_ratio": 2.173215995161245,
+    "ms_basis": "main-sequence mass from the radius",
+    "ms_consistent": false,
+    "caveat": "Gaia radius assumes one star; companion light removed with the TESS-band ratio"
+   }
+  },
+  "239661046": {
+   "period_days": 1.0539905752346004,
+   "gaia_rv": {
+    "amplitude_kms": 203.98972,
+    "n_transits": 16.0,
+    "epoch_sigma_kms_assumed": 2.8387245000000005,
+    "k1_lower_kms": 94.89804875,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.09332923005024181
+   }
+  },
+  "250549396": {
+   "period_days": 2.1928961891401686,
+   "gaia_rv": {
+    "amplitude_kms": 121.945984,
+    "n_transits": 13.0,
+    "epoch_sigma_kms_assumed": 4.211261999999998,
+    "k1_lower_kms": 50.44483700000001,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.029166032089565874
+   }
+  },
+  "251077178": {
+   "period_days": 0.6844024207054876,
+   "gaia_orbit": {
+    "type": "Orbital",
+    "gaia_period_days": 630.5956396378309,
+    "period_ratio": 921.3813694402304,
+    "same_period": false,
+    "outer_orbit": true,
+    "gaia_e": 0.6065313825506743,
+    "gaia_e_sigma": 0.061717037,
+    "gaia_omega_deg": null,
+    "gaia_ecosw": null,
+    "gaia_k1_kms": null,
+    "gaia_k1_sigma_kms": null
+   }
+  },
+  "251663993": {
+   "period_days": 7.31054486053989,
+   "gaia_rv": {
+    "amplitude_kms": 0.9209385,
+    "n_transits": 11.0,
+    "epoch_sigma_kms_assumed": 0.8434950000000001,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.30292422,
+    "k1_upper_kms": 1.4488491666666667,
+    "m1_msun": 2.7996356,
+    "m1_source": "Gaia FLAME",
+    "m2_max_msun": 0.02639942615707329,
+    "eclipse_depth": 0.0004812461987023,
+    "secondary_to_primary_depth": 0.7012428796401985,
+    "static_star_verdict": "STATIC_OR_TWIN"
+   }
+  },
+  "251898081": {
+   "period_days": 54.617883643367136,
+   "gaia_rv": {
+    "amplitude_kms": 58.337376,
+    "n_transits": 21.0,
+    "epoch_sigma_kms_assumed": 1.6675019999999998,
+    "k1_lower_kms": 24.999933,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.08842203574550281
+   }
+  },
+  "257817337": {
+   "period_days": 10.970674726098698,
+   "gaia_rv": {
+    "amplitude_kms": 1.8423309,
+    "n_transits": 30.0,
+    "epoch_sigma_kms_assumed": 1.1110967999999997,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.32717982,
+    "k1_upper_kms": 2.258069166666666,
+    "m1_msun": 4.200692,
+    "m1_source": "Gaia FLAME",
+    "m2_max_msun": 0.06195422318839723,
+    "eclipse_depth": 0.0016632609919069,
+    "secondary_to_primary_depth": 0.3153420298564053,
+    "static_star_verdict": "SUBSTELLAR_OR_BLEND"
+   }
+  },
+  "257922637": {
+   "period_days": 8.953806500761587,
+   "gaia_rv": {
+    "amplitude_kms": 88.255585,
+    "n_transits": 12.0,
+    "epoch_sigma_kms_assumed": 5.717312999999999,
+    "k1_lower_kms": 29.83451,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.024636189739007094
+   }
+  },
+  "257923571": {
+   "period_days": 1.7704927620767272,
+   "gaia_rv": {
+    "amplitude_kms": 125.338554,
+    "n_transits": 10.0,
+    "epoch_sigma_kms_assumed": 4.709991000000002,
+    "k1_lower_kms": 50.894299499999995,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.02418302843459171
+   }
+  },
+  "257927198": {
+   "period_days": 8.678045389493699,
+   "gaia_rv": {
+    "amplitude_kms": 98.60029,
+    "n_transits": 11.0,
+    "epoch_sigma_kms_assumed": 5.8288379999999975,
+    "k1_lower_kms": 34.72805000000001,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.037659297894638885
+   }
+  },
+  "258204238": {
+   "period_days": 0.6870359878187736,
+   "gaia_rv": {
+    "amplitude_kms": 105.29716,
+    "n_transits": 19.0,
+    "epoch_sigma_kms_assumed": 3.8285265000000024,
+    "k1_lower_kms": 43.07726375,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.005690270626530656
+   }
+  },
+  "264099112": {
+   "period_days": 5.974398591892172,
+   "gaia_rv": {
+    "amplitude_kms": 101.48091,
+    "n_transits": 33.0,
+    "epoch_sigma_kms_assumed": 4.347105000000001,
+    "k1_lower_kms": 39.8726925,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.03675533186980939
+   }
+  },
+  "264163792": {
+   "period_days": 1.293700519079741,
+   "gaia_rv": {
+    "amplitude_kms": 159.19357,
+    "n_transits": 14.0,
+    "epoch_sigma_kms_assumed": 4.620264000000002,
+    "k1_lower_kms": 68.04612499999999,
+    "moves": true,
+    "chisq_pvalue": 4.471703e-06,
+    "mass_function_lower_msun": 0.04223310921953183
+   }
+  },
+  "272854495": {
+   "period_days": 1.7151013267225377,
+   "gaia_rv": {
+    "amplitude_kms": 22.444324,
+    "n_transits": 15.0,
+    "epoch_sigma_kms_assumed": 2.689357499999999,
+    "k1_lower_kms": 4.498768250000003,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 1.6180046094708702e-05
+   }
+  },
+  "273026743": {
+   "period_days": 5.565453436327597,
+   "gaia_rv": {
+    "amplitude_kms": 101.180466,
+    "n_transits": 13.0,
+    "epoch_sigma_kms_assumed": 0.7809063333333333,
+    "k1_lower_kms": 48.63796716666666,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.06634923295924014
+   }
+  },
+  "273212554": {
+   "period_days": 12.529668688607051,
+   "gaia_rv": {
+    "amplitude_kms": 0.8214345,
+    "n_transits": 30.0,
+    "epoch_sigma_kms_assumed": 0.435868,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.064358465,
+    "k1_upper_kms": 0.9406502777777777,
+    "m1_msun": 1.0,
+    "m1_source": "assumed 1 Msun (no FLAME mass)",
+    "m2_max_msun": 0.010332066140176423,
+    "eclipse_depth": 0.0002579678712187,
+    "secondary_to_primary_depth": 0.5924288933218967,
+    "static_star_verdict": "STATIC_OR_TWIN"
+   }
+  },
+  "273787849": {
+   "period_days": 2.1425494093940736,
+   "scale": {
+    "radius_source": "Gaia DR3 FLAME",
+    "gaia_radius_rsun": 1.7205813,
+    "light_ratio_tess": 5.045272485373469,
+    "r1_rsun": 0.6997892359611136,
+    "r2_rsun": 3.4572644194593662,
+    "a_rsun": 12.555131880744309,
+    "total_mass_msun": 5.783736623054807,
+    "total_mass_rel_sigma": 0.49923615697184154,
+    "plausible": true,
+    "ms_expected_total_msun": 2.830291705109857,
+    "ms_ratio": 2.0435125512372982,
+    "ms_basis": "Gaia FLAME mass",
+    "ms_consistent": false,
+    "caveat": "Gaia radius assumes one star; companion light removed with the TESS-band ratio"
+   }
+  },
+  "308578336": {
+   "period_days": 4.276561290898361,
+   "scale": {
+    "radius_source": "Gaia DR3 FLAME",
+    "gaia_radius_rsun": 1.8514341,
+    "light_ratio_tess": 0.5407022688717464,
+    "r1_rsun": 1.4915880568643416,
+    "r2_rsun": 1.237320737990393,
+    "a_rsun": 15.442122266794653,
+    "total_mass_msun": 2.701483697432852,
+    "total_mass_rel_sigma": 0.4343899309002721,
+    "plausible": true,
+    "ms_expected_total_msun": 3.9044094764530373,
+    "ms_ratio": 0.6919058346019117,
+    "ms_basis": "Gaia FLAME mass",
+    "ms_consistent": true,
+    "caveat": "Gaia radius assumes one star; companion light removed with the TESS-band ratio"
+   }
+  },
+  "309656476": {
+   "period_days": 28.920445384241564,
+   "gaia_rv": {
+    "amplitude_kms": 1.1815357,
+    "n_transits": 13.0,
+    "epoch_sigma_kms_assumed": 0.8215056666666666,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.08793828,
+    "k1_upper_kms": 1.5691927962962962,
+    "m1_msun": 1.0,
+    "m1_source": "assumed 1 Msun (no FLAME mass)",
+    "m2_max_msun": 0.022967956333702903,
+    "eclipse_depth": 0.0004954977074599,
+    "secondary_to_primary_depth": 0.3280176704967974,
+    "static_star_verdict": "SUBSTELLAR_OR_BLEND"
+   }
+  },
+  "313498432": {
+   "period_days": 54.88824875170616,
+   "gaia_rv": {
+    "amplitude_kms": 1.0992432,
+    "n_transits": 12.0,
+    "epoch_sigma_kms_assumed": 0.72642595,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.03258037,
+    "k1_upper_kms": 1.417830611111111,
+    "m1_msun": 1.0,
+    "m1_source": "assumed 1 Msun (no FLAME mass)",
+    "m2_max_msun": 0.02574021063347462,
+    "eclipse_depth": 0.0009800829727443,
+    "secondary_to_primary_depth": 0.1379404696452893,
+    "static_star_verdict": "SUBSTELLAR_OR_BLEND"
+   }
+  },
+  "313590380": {
+   "period_days": 12.44089892581929,
+   "gaia_rv": {
+    "amplitude_kms": 2.5166006,
+    "n_transits": 21.0,
+    "epoch_sigma_kms_assumed": 2.380825500000001,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.6114759,
+    "k1_upper_kms": 4.043473111111113,
+    "m1_msun": 3.0025787,
+    "m1_source": "Gaia FLAME",
+    "m2_max_msun": 0.09347903408321481,
+    "eclipse_depth": 0.0007179012952322,
+    "secondary_to_primary_depth": 0.6779346282605377,
+    "static_star_verdict": "CONSISTENT"
+   }
+  },
+  "318566745": {
+   "period_days": 37.4762966542763,
+   "gaia_rv": {
+    "amplitude_kms": 42.311646,
+    "n_transits": 29.0,
+    "epoch_sigma_kms_assumed": 2.6406554999999994,
+    "k1_lower_kms": 14.554184250000002,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.011970971068131362
+   }
+  },
+  "318620649": {
+   "period_days": 27.668693332292857,
+   "gaia_rv": {
+    "amplitude_kms": 123.54845,
+    "n_transits": 19.0,
+    "epoch_sigma_kms_assumed": 5.454618,
+    "k1_lower_kms": 48.13768,
+    "moves": true,
+    "chisq_pvalue": 0.52632385,
+    "mass_function_lower_msun": 0.31978141793278014
+   }
+  },
+  "318887646": {
+   "period_days": 14.281663889625127,
+   "gaia_rv": {
+    "amplitude_kms": 93.526436,
+    "n_transits": 10.0,
+    "epoch_sigma_kms_assumed": 5.936549999999999,
+    "k1_lower_kms": 31.921843000000006,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.046709615938347944
+   },
+   "scale": {
+    "radius_source": "Gaia DR3 FLAME",
+    "gaia_radius_rsun": 1.3373903,
+    "light_ratio_tess": 0.0029553771263610695,
+    "r1_rsun": 1.3354184233038027,
+    "r2_rsun": 0.3945819262921307,
+    "a_rsun": 38.408368651313765,
+    "total_mass_msun": 3.7267424052819855,
+    "total_mass_rel_sigma": 0.43181809634580737,
+    "plausible": true,
+    "ms_expected_total_msun": 1.7702759869125946,
+    "ms_ratio": 2.105175934618826,
+    "ms_basis": "main-sequence mass from the radius",
+    "ms_consistent": false,
+    "caveat": "Gaia radius assumes one star; companion light removed with the TESS-band ratio"
+   },
+   "apogee": {
+    "gamma_kms": 41.210261151158605,
+    "k1_kms": 51.35838717019456,
+    "k1_sigma_kms": 0.2673485538918625,
+    "chi2": 291.7344834862407,
+    "dof": 5,
+    "chi2_constant": 37195.19350929371,
+    "n": 7,
+    "visits": [
+     {
+      "jd": 2458874.6,
+      "v": 68.934,
+      "e": 0.5578812620083238,
+      "snr": 25.110000610351562,
+      "ncomp": 2,
+      "flag": 0,
+      "tel": "apo25m"
+     },
+     {
+      "jd": 2458873.595,
+      "v": 87.551,
+      "e": 0.5281194949062191,
+      "snr": 36.900001525878906,
+      "ncomp": 2,
+      "flag": 0,
+      "tel": "apo25m"
+     },
+     {
+      "jd": 2458875.595,
+      "v": 39.922,
+      "e": 0.5271042804796789,
+      "snr": 36.68000030517578,
+      "ncomp": 1,
+      "flag": 0,
+      "tel": "apo25m"
+     },
+     {
+      "jd": 2458877.578,
+      "v": 0.609,
+      "e": 0.5407963790559253,
+      "snr": 29.639999389648438,
+      "ncomp": 2,
+      "flag": 0,
+      "tel": "apo25m"
+     },
+     {
+      "jd": 2458872.593,
+      "v": 92.132,
+      "e": 0.5195034360810331,
+      "snr": 44.349998474121094,
+      "ncomp": 2,
+      "flag": 0,
+      "tel": "apo25m"
+     },
+     {
+      "jd": 2457309.861,
+      "v": 6.85,
+      "e": 0.5026781399663208,
+      "snr": 96.12000274658203,
+      "ncomp": 3,
+      "flag": 0,
+      "tel": "apo25m"
+     },
+     {
+      "jd": 2458879.599,
+      "v": -5.641,
+      "e": 0.5556335803386977,
+      "snr": 25.229999542236328,
+      "ncomp": 2,
+      "flag": 0,
+      "tel": "apo25m"
+     }
+    ],
+    "orbit_from": "f26 light-curve fit",
+    "note": "APOGEE JD is UTC mid-exposure; the difference from BJD (minutes) is negligible at these periods"
+   }
+  },
+  "326225355": {
+   "period_days": 30.582605223141517,
+   "gaia_rv": {
+    "amplitude_kms": 6.397597,
+    "n_transits": 4.0,
+    "epoch_sigma_kms_assumed": 1.5607635000000002,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.28978515
+   }
+  },
+  "330901906": {
+   "period_days": 3.732068126022025,
+   "gaia_rv": {
+    "amplitude_kms": 72.16547,
+    "n_transits": 32.0,
+    "epoch_sigma_kms_assumed": 5.655858000000002,
+    "k1_lower_kms": 21.943089999999994,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.004085564049001875
+   }
+  },
+  "333145823": {
+   "period_days": 0.8984577927468811,
+   "gaia_rv": {
+    "amplitude_kms": 13.381334,
+    "n_transits": 10.0,
+    "epoch_sigma_kms_assumed": 2.3328134999999994,
+    "k1_lower_kms": 0.8586332500000013,
+    "moves": true,
+    "chisq_pvalue": 0.0003146468,
+    "mass_function_lower_msun": 5.8929111603621046e-08
+   }
+  },
+  "349109562": {
+   "period_days": 2.191281223893351,
+   "gaia_rv": {
+    "amplitude_kms": 1.127388,
+    "n_transits": 4.0,
+    "epoch_sigma_kms_assumed": 1.1006819999999997,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.26541206
+   }
+  },
+  "349116460": {
+   "period_days": 1.2967537171554,
+   "gaia_rv": {
+    "amplitude_kms": 9.960407,
+    "n_transits": 22.0,
+    "epoch_sigma_kms_assumed": 4.435878000000001,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.007668753,
+    "k1_upper_kms": 10.462312777777779,
+    "m1_msun": 1.0,
+    "m1_source": "assumed 1 Msun (no FLAME mass)",
+    "m2_max_msun": 0.05555243638220857,
+    "eclipse_depth": 0.0068855486955812,
+    "secondary_to_primary_depth": 0.13597080645503642,
+    "static_star_verdict": "SUBSTELLAR_OR_BLEND"
+   }
+  },
+  "349252594": {
+   "period_days": 14.866877597572792,
+   "gaia_rv": {
+    "amplitude_kms": 59.685207,
+    "n_transits": 24.0,
+    "epoch_sigma_kms_assumed": 4.121529000000002,
+    "k1_lower_kms": 19.538780999999993,
+    "moves": true,
+    "chisq_pvalue": 0.53695494,
+    "mass_function_lower_msun": 0.011490032801393137
+   }
+  },
+  "355734894": {
+   "period_days": 9.25763476601188,
+   "gaia_rv": {
+    "amplitude_kms": 3.471428,
+    "n_transits": 17.0,
+    "epoch_sigma_kms_assumed": 1.7847240000000006,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.1755847,
+    "k1_upper_kms": 3.911597777777778,
+    "m1_msun": 2.689873,
+    "m1_source": "Gaia FLAME",
+    "m2_max_msun": 0.07601161260148023,
+    "eclipse_depth": 0.0009886344381681,
+    "secondary_to_primary_depth": 0.7202352070768431,
+    "static_star_verdict": "STATIC_OR_TWIN"
+   }
+  },
+  "355809352": {
+   "period_days": 29.43839456830302,
+   "gaia_rv": {
+    "amplitude_kms": 0.9776764,
+    "n_transits": 54.0,
+    "epoch_sigma_kms_assumed": 0.48155361666666663,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.039745398,
+    "k1_upper_kms": 1.0782131296296296,
+    "m1_msun": 2.9043844,
+    "m1_source": "Gaia FLAME",
+    "m2_max_msun": 0.03206471211867362,
+    "eclipse_depth": 0.0007727900710496,
+    "secondary_to_primary_depth": 0.37812804141106116,
+    "static_star_verdict": "SUBSTELLAR_OR_BLEND"
+   }
+  },
+  "355828577": {
+   "period_days": 0.9514758826924228,
+   "gaia_rv": {
+    "amplitude_kms": 148.54253,
+    "n_transits": 7.0,
+    "epoch_sigma_kms_assumed": 3.2714640000000017,
+    "k1_lower_kms": 66.09260499999999,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.028462005671381886
+   }
+  },
+  "355917097": {
+   "period_days": 1.1947206850406455,
+   "gaia_rv": {
+    "amplitude_kms": 166.48363,
+    "n_transits": 22.0,
+    "epoch_sigma_kms_assumed": 2.7555525000000003,
+    "k1_lower_kms": 76.35293375,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.05510013676458919
+   }
+  },
+  "355921200": {
+   "period_days": 2.874048439421244,
+   "gaia_rv": {
+    "amplitude_kms": 264.76617,
+    "n_transits": 22.0,
+    "epoch_sigma_kms_assumed": 5.178159000000001,
+    "k1_lower_kms": 119.4376875,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.5073729963976081
+   }
+  },
+  "365726727": {
+   "period_days": 4.4054868232052735,
+   "gaia_rv": {
+    "amplitude_kms": 120.838776,
+    "n_transits": 15.0,
+    "epoch_sigma_kms_assumed": 3.9787560000000006,
+    "k1_lower_kms": 50.472497999999995,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.05869044634741414
+   }
+  },
+  "365764494": {
+   "period_days": 1.56059459147333,
+   "gaia_rv": {
+    "amplitude_kms": 1.8357439,
+    "n_transits": 14.0,
+    "epoch_sigma_kms_assumed": 0.8694894166666668,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.0020797357,
+    "k1_upper_kms": 1.9859570740740742,
+    "m1_msun": 3.000615,
+    "m1_source": "Gaia FLAME",
+    "m2_max_msun": 0.02262130497484116,
+    "eclipse_depth": 0.0077820837005417,
+    "secondary_to_primary_depth": 0.01041128008215703,
+    "static_star_verdict": "SUBSTELLAR_OR_BLEND"
+   }
+  },
+  "365998904": {
+   "period_days": 1.2493575875979597,
+   "gaia_rv": {
+    "amplitude_kms": 193.46071,
+    "n_transits": 20.0,
+    "epoch_sigma_kms_assumed": 4.3598430000000015,
+    "k1_lower_kms": 85.8307475,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.0818511056799284
+   }
+  },
+  "367157113": {
+   "period_days": 1.4579531270934347,
+   "gaia_rv": {
+    "amplitude_kms": 54.816547,
+    "n_transits": 7.0,
+    "epoch_sigma_kms_assumed": 2.1110429999999987,
+    "k1_lower_kms": 22.130666000000005,
+    "moves": true,
+    "chisq_pvalue": 7.771561e-16,
+    "mass_function_lower_msun": 0.0016373296270418823
+   }
+  },
+  "367193047": {
+   "period_days": 2.191730451281213,
+   "gaia_rv": {
+    "amplitude_kms": 177.02078,
+    "n_transits": 12.0,
+    "epoch_sigma_kms_assumed": 4.955015999999999,
+    "k1_lower_kms": 76.12285,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.10017085206692458
+   }
+  },
+  "370553309": {
+   "period_days": 11.540027868452151,
+   "gaia_orbit": {
+    "type": "SB1",
+    "gaia_period_days": 11.5392602408037,
+    "period_ratio": 0.9999334813002878,
+    "same_period": true,
+    "outer_orbit": false,
+    "gaia_e": 0.2345696490826019,
+    "gaia_e_sigma": 0.038392127,
+    "gaia_omega_deg": 321.16904290528845,
+    "gaia_ecosw": 0.1827295912942116,
+    "gaia_k1_kms": 38.26303080702412,
+    "gaia_k1_sigma_kms": 1.6786969,
+    "photometric_e": 0.2688020879812727,
+    "photometric_ecosw": 0.20719350695385058,
+    "ecosw_difference_sigma": 0.6372117819791278
+   },
+   "gaia_rv": {
+    "amplitude_kms": 74.520905,
+    "n_transits": 20.0,
+    "epoch_sigma_kms_assumed": 4.937382000000001,
+    "k1_lower_kms": 24.916997499999997,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.01652899055946815
+   },
+   "scale": {
+    "radius_source": "Gaia DR3 FLAME",
+    "gaia_radius_rsun": 2.8023062,
+    "light_ratio_tess": 0.007346826350411552,
+    "r1_rsun": 2.7920685477635314,
+    "r2_rsun": 0.4976076885732437,
+    "a_rsun": 27.20421091338108,
+    "total_mass_msun": 2.0281013001544927,
+    "total_mass_rel_sigma": 0.32139112789964747,
+    "plausible": true,
+    "ms_expected_total_msun": 2.1974148381202308,
+    "ms_ratio": 0.9229487600481588,
+    "ms_basis": "Gaia FLAME mass",
+    "ms_consistent": true,
+    "caveat": "Gaia radius assumes one star; companion light removed with the TESS-band ratio"
+   },
+   "masses_estimate": {
+    "k1_kms": 38.26303080702412,
+    "k1_sigma_kms": 1.6786969,
+    "k1_source": "Gaia DR3 SB1 orbit",
+    "m1_msun": 1.4007547914171914,
+    "m2_msun": 0.6273465087373012,
+    "total_msun": 2.0281013001544927,
+    "q": 0.4478631896040801,
+    "plausible": true,
+    "close_pair": false,
+    "e_used": 0.2688020879812727,
+    "caveat": "depends on the Gaia radius through the total mass; the TESS light ratio is used as if bolometric"
+   }
+  },
+  "373896170": {
+   "period_days": 2.038473459614416,
+   "gaia_rv": {
+    "amplitude_kms": 97.08879,
+    "n_transits": 61.0,
+    "epoch_sigma_kms_assumed": 2.8363664999999987,
+    "k1_lower_kms": 41.45347875,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.015045170546927764
+   }
+  },
+  "376932335": {
+   "period_days": 79.1644652703129,
+   "gaia_rv": {
+    "amplitude_kms": 0.94540405,
+    "n_transits": 16.0,
+    "epoch_sigma_kms_assumed": 0.6564032833333334,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.0027774551,
+    "k1_upper_kms": 1.254561453703704,
+    "m1_msun": 1.0,
+    "m1_source": "assumed 1 Msun (no FLAME mass)",
+    "m2_max_msun": 0.02573325319342558,
+    "eclipse_depth": 0.0003699609607952,
+    "secondary_to_primary_depth": 0.16933868508979089,
+    "static_star_verdict": "SUBSTELLAR_OR_BLEND"
+   }
+  },
+  "378367349": {
+   "period_days": 30.207390654368854,
+   "gaia_rv": {
+    "amplitude_kms": 5.9215927,
+    "n_transits": 23.0,
+    "epoch_sigma_kms_assumed": 2.651455500000001,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.36821106,
+    "k1_upper_kms": 6.23583538888889,
+    "m1_msun": 3.5009086,
+    "m1_source": "Gaia FLAME",
+    "m2_max_msun": 0.21898923005788734,
+    "eclipse_depth": 0.020402288960895,
+    "secondary_to_primary_depth": 0.29837200039033057,
+    "static_star_verdict": "CONSISTENT"
+   }
+  },
+  "394805902": {
+   "period_days": 8.130327035420434,
+   "gaia_rv": {
+    "amplitude_kms": 148.69373,
+    "n_transits": 15.0,
+    "epoch_sigma_kms_assumed": 4.2968579999999985,
+    "k1_lower_kms": 63.60472,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.201164165845554
+   },
+   "scale": {
+    "radius_source": "Gaia DR3 FLAME",
+    "gaia_radius_rsun": 1.9771309,
+    "light_ratio_tess": 2.2587696016810543,
+    "r1_rsun": 1.0952382316528484,
+    "r2_rsun": 1.2224467996886539,
+    "a_rsun": 18.074773022748037,
+    "total_mass_msun": 1.1986364310002189,
+    "total_mass_rel_sigma": 0.4018612967689941,
+    "plausible": true,
+    "ms_expected_total_msun": 2.560726502072978,
+    "ms_ratio": 0.46808451821383107,
+    "ms_basis": "Gaia FLAME mass",
+    "ms_consistent": false,
+    "caveat": "Gaia radius assumes one star; companion light removed with the TESS-band ratio"
+   }
+  },
+  "399544063": {
+   "period_days": 0.6929035773293827,
+   "gaia_rv": {
+    "amplitude_kms": 4.699236,
+    "n_transits": 7.0,
+    "epoch_sigma_kms_assumed": 2.027236499999999,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.4116118
+   }
+  },
+  "399770041": {
+   "period_days": 1.5801885652386525,
+   "gaia_rv": {
+    "amplitude_kms": 98.487335,
+    "n_transits": 23.0,
+    "epoch_sigma_kms_assumed": 5.1942720000000016,
+    "k1_lower_kms": 36.2579875,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.007804212869182134
+   }
+  },
+  "40208362": {
+   "period_days": 0.6908158154499998,
+   "gaia_rv": {
+    "amplitude_kms": 95.844864,
+    "n_transits": 16.0,
+    "epoch_sigma_kms_assumed": 2.8811310000000008,
+    "k1_lower_kms": 40.7196045,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.004832613162254663
+   }
+  },
+  "403017570": {
+   "period_days": 0.8289917522315517,
+   "gaia_rv": {
+    "amplitude_kms": 2.0773926,
+    "n_transits": 23.0,
+    "epoch_sigma_kms_assumed": 0.6005388333333334,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.0,
+    "k1_upper_kms": 1.8213723703703706,
+    "m1_msun": 1.0,
+    "m1_source": "assumed 1 Msun (no FLAME mass)",
+    "m2_max_msun": 0.008079448003881558,
+    "eclipse_depth": 0.0043266315456908,
+    "secondary_to_primary_depth": 1.1691057230375235,
+    "static_star_verdict": "STATIC_OR_TWIN"
+   }
+  },
+  "403069594": {
+   "period_days": 1.514538982529493,
+   "gaia_rv": {
+    "amplitude_kms": 131.82077,
+    "n_transits": 27.0,
+    "epoch_sigma_kms_assumed": 4.099496999999998,
+    "k1_lower_kms": 55.66164250000001,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.027061858334898253
+   }
+  },
+  "403080487": {
+   "period_days": 2.290237208174256,
+   "gaia_rv": {
+    "amplitude_kms": 7.795494,
+    "n_transits": 25.0,
+    "epoch_sigma_kms_assumed": 2.5715579999999987,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 2.220446e-16,
+    "k1_upper_kms": 7.188116666666665,
+    "m1_msun": 2.1705418,
+    "m1_source": "Gaia FLAME",
+    "m2_max_msun": 0.0763423328113616,
+    "eclipse_depth": 0.0080761243803104,
+    "secondary_to_primary_depth": 0.07837495822806687,
+    "static_star_verdict": "SUBSTELLAR_OR_BLEND"
+   }
+  },
+  "403329469": {
+   "period_days": 61.878991906149366,
+   "gaia_rv": {
+    "amplitude_kms": 2.0521393,
+    "n_transits": 23.0,
+    "epoch_sigma_kms_assumed": 1.7240565000000005,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.5509807,
+    "k1_upper_kms": 3.055695722222223,
+    "m1_msun": 5.19327,
+    "m1_source": "Gaia FLAME",
+    "m2_max_msun": 0.17401935637399935,
+    "eclipse_depth": 0.000511381462486,
+    "secondary_to_primary_depth": 0.34958481534456126,
+    "static_star_verdict": "CONSISTENT"
+   }
+  },
+  "411305220": {
+   "period_days": 43.18686349188808,
+   "gaia_rv": {
+    "amplitude_kms": 79.50412,
+    "n_transits": 25.0,
+    "epoch_sigma_kms_assumed": 4.792922999999998,
+    "k1_lower_kms": 27.769752500000003,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.09582455221107876
+   }
+  },
+  "411978234": {
+   "period_days": 8.562174876104944,
+   "gaia_rv": {
+    "amplitude_kms": 104.573044,
+    "n_transits": 26.0,
+    "epoch_sigma_kms_assumed": 5.758725,
+    "k1_lower_kms": 37.889709499999995,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.04825663422157169
+   }
+  },
+  "412057714": {
+   "period_days": 4.487569044234845,
+   "gaia_rv": {
+    "amplitude_kms": 5.4376354,
+    "n_transits": 19.0,
+    "epoch_sigma_kms_assumed": 1.2932393999999996,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.00018337561,
+    "k1_upper_kms": 4.457841222222222,
+    "m1_msun": 1.0,
+    "m1_source": "assumed 1 Msun (no FLAME mass)",
+    "m2_max_msun": 0.0353444520609342,
+    "eclipse_depth": 0.012105244926118,
+    "secondary_to_primary_depth": 0.11451039617686855,
+    "static_star_verdict": "SUBSTELLAR_OR_BLEND"
+   }
+  },
+  "412805586": {
+   "period_days": 7.059819506181436,
+   "gaia_rv": {
+    "amplitude_kms": 71.19362,
+    "n_transits": 12.0,
+    "epoch_sigma_kms_assumed": 5.470917,
+    "k1_lower_kms": 21.919517499999998,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.007703634605346948
+   }
+  },
+  "41831052": {
+   "period_days": 0.6826195810745155,
+   "gaia_rv": {
+    "amplitude_kms": 1.2810097,
+    "n_transits": 19.0,
+    "epoch_sigma_kms_assumed": 1.1880714,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.54288465,
+    "k1_upper_kms": 2.031751388888889,
+    "m1_msun": 2.9018254,
+    "m1_source": "Gaia FLAME",
+    "m2_max_msun": 0.01716147491514796,
+    "eclipse_depth": 0.0002765946893856,
+    "secondary_to_primary_depth": null,
+    "static_star_verdict": "SUBSTELLAR_OR_BLEND"
+   }
+  },
+  "42058853": {
+   "period_days": 0.7307785971634085,
+   "gaia_rv": {
+    "amplitude_kms": 253.36246,
+    "n_transits": 17.0,
+    "epoch_sigma_kms_assumed": 3.0991139999999984,
+    "k1_lower_kms": 118.933445,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.12738166548587787
+   }
+  },
+  "43330648": {
+   "period_days": 14.285582291313856,
+   "gaia_rv": {
+    "amplitude_kms": 1.0426788,
+    "n_transits": 25.0,
+    "epoch_sigma_kms_assumed": 0.7754835,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.36517283,
+    "k1_upper_kms": 1.4409143333333334,
+    "m1_msun": 1.0,
+    "m1_source": "assumed 1 Msun (no FLAME mass)",
+    "m2_max_msun": 0.01660254404728872,
+    "eclipse_depth": 0.0003118545316607,
+    "secondary_to_primary_depth": 0.3805996310508563,
+    "static_star_verdict": "SUBSTELLAR_OR_BLEND"
+   },
+   "apogee": {
+    "gamma_kms": -23.802200516167495,
+    "k1_kms": 0.027970231516497412,
+    "k1_sigma_kms": 0.5308541325683327,
+    "chi2": 0.01942996765987321,
+    "dof": 1,
+    "chi2_constant": 0.022206109919195742,
+    "n": 3,
+    "visits": [
+     {
+      "jd": 2456722.97,
+      "v": -23.78,
+      "e": 0.500338813305544,
+      "snr": 511.5400085449219,
+      "ncomp": 1,
+      "flag": 0,
+      "tel": "apo25m"
+     },
+     {
+      "jd": 2456433.768,
+      "v": -23.798,
+      "e": 0.5007049366642993,
+      "snr": 340.3299865722656,
+      "ncomp": 1,
+      "flag": 0,
+      "tel": "apo25m"
+     },
+     {
+      "jd": 2456408.861,
+      "v": -23.879,
+      "e": 0.5004988267718516,
+      "snr": 400.1000061035156,
+      "ncomp": 1,
+      "flag": 0,
+      "tel": "apo25m"
+     }
+    ],
+    "orbit_from": "circular orbit at the pipeline ephemeris",
+    "note": "APOGEE JD is UTC mid-exposure; the difference from BJD (minutes) is negligible at these periods"
+   }
+  },
+  "437150434": {
+   "period_days": 5.285343164440589,
+   "gaia_rv": {
+    "amplitude_kms": 89.9961,
+    "n_transits": 27.0,
+    "epoch_sigma_kms_assumed": 5.0788709999999995,
+    "k1_lower_kms": 32.3008725,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.018455467803274648
+   }
+  },
+  "43785616": {
+   "period_days": 17.911301677998413,
+   "gaia_orbit": {
+    "type": "SB1",
+    "gaia_period_days": 17.91291979026343,
+    "period_ratio": 1.0000903402943073,
+    "same_period": true,
+    "outer_orbit": false,
+    "gaia_e": 0.050997421689606,
+    "gaia_e_sigma": 0.02159532,
+    "gaia_omega_deg": 88.20287826114621,
+    "gaia_ecosw": 0.0015993071261035435,
+    "gaia_k1_kms": 21.21277105789702,
+    "gaia_k1_sigma_kms": 0.37761787,
+    "photometric_e": 0.2482861955675777,
+    "photometric_ecosw": 0.04488239608866906,
+    "ecosw_difference_sigma": 2.004280972107175
+   },
+   "gaia_rv": {
+    "amplitude_kms": 54.35703,
+    "n_transits": 52.0,
+    "epoch_sigma_kms_assumed": 2.814199499999999,
+    "k1_lower_kms": 20.143016250000002,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.013786683495884583
+   },
+   "scale": {
+    "radius_source": "Gaia DR3 FLAME",
+    "gaia_radius_rsun": 2.5290465,
+    "light_ratio_tess": 37.993053399695576,
+    "r1_rsun": 0.4050076181031762,
+    "r2_rsun": 2.692478026647982,
+    "a_rsun": 28.500359355187566,
+    "total_mass_msun": 0.9682236165681521,
+    "total_mass_rel_sigma": 0.49385361565611163,
+    "plausible": true,
+    "ms_expected_total_msun": 4.806532046648665,
+    "ms_ratio": 0.20143912641615322,
+    "ms_basis": "Gaia FLAME mass",
+    "ms_consistent": false,
+    "caveat": "Gaia radius assumes one star; companion light removed with the TESS-band ratio"
+   },
+   "masses_estimate": {
+    "k1_kms": 21.21277105789702,
+    "k1_sigma_kms": 0.37761787,
+    "k1_source": "Gaia DR3 SB1 orbit",
+    "m1_msun": 0.7125284910090279,
+    "m2_msun": 0.2556951255591242,
+    "total_msun": 0.9682236165681521,
+    "q": 0.35885600195022166,
+    "plausible": true,
+    "close_pair": false,
+    "e_used": 0.050997421689606,
+    "caveat": "depends on the Gaia radius through the total mass; the TESS light ratio is used as if bolometric"
+   }
+  },
+  "44533527": {
+   "period_days": 14.5951886483809,
+   "gaia_rv": {
+    "amplitude_kms": 1.9538689,
+    "n_transits": 21.0,
+    "epoch_sigma_kms_assumed": 1.58967,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.5892716,
+    "k1_upper_kms": 2.851782722222222,
+    "m1_msun": 1.4663601,
+    "m1_source": "Gaia FLAME",
+    "m2_max_msun": 0.043072342698303206,
+    "eclipse_depth": 0.0010129590172977,
+    "secondary_to_primary_depth": 1.1340629989628586,
+    "static_star_verdict": "STATIC_OR_TWIN"
+   }
+  },
+  "446502638": {
+   "period_days": 1.1079572971866851,
+   "gaia_rv": {
+    "amplitude_kms": 19.046694,
+    "n_transits": 12.0,
+    "epoch_sigma_kms_assumed": 5.422209000000002,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.061053302,
+    "k1_upper_kms": 16.606173333333334,
+    "m1_msun": 1.0,
+    "m1_source": "assumed 1 Msun (no FLAME mass)",
+    "m2_max_msun": 0.08523047948937604,
+    "eclipse_depth": 0.002309848927742,
+    "secondary_to_primary_depth": 1.3686461928889881,
+    "static_star_verdict": "CONSISTENT"
+   }
+  },
+  "447115398": {
+   "period_days": 46.12592469174398,
+   "gaia_rv": {
+    "amplitude_kms": 124.04939,
+    "n_transits": 33.0,
+    "epoch_sigma_kms_assumed": 2.5744320000000007,
+    "k1_lower_kms": 55.588615,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.8209406366863625
+   }
+  },
+  "447350975": {
+   "period_days": 1.4237394456395442,
+   "gaia_rv": {
+    "amplitude_kms": 190.90337,
+    "n_transits": 28.0,
+    "epoch_sigma_kms_assumed": 5.9222519999999985,
+    "k1_lower_kms": 80.646055,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.07737292369704418
+   }
+  },
+  "463349042": {
+   "period_days": 15.566920003119192,
+   "gaia_rv": {
+    "amplitude_kms": 117.657524,
+    "n_transits": 26.0,
+    "epoch_sigma_kms_assumed": 5.681168999999999,
+    "k1_lower_kms": 44.6258395,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.14334118758977257
+   }
+  },
+  "467214801": {
+   "period_days": 1.5217008591293593,
+   "gaia_rv": {
+    "amplitude_kms": 11.626913,
+    "n_transits": 10.0,
+    "epoch_sigma_kms_assumed": 0.8765641666666666,
+    "k1_lower_kms": 3.6220460833333337,
+    "moves": true,
+    "chisq_pvalue": 0.1158361,
+    "mass_function_lower_msun": 7.492043800891711e-06
+   }
+  },
+  "468010975": {
+   "period_days": 10.126035057660136,
+   "scale": {
+    "radius_source": "Gaia DR3 FLAME",
+    "gaia_radius_rsun": 1.1187314,
+    "light_ratio_tess": 0.8701606377558375,
+    "r1_rsun": 0.8180622867642154,
+    "r2_rsun": 1.3444218013918328,
+    "a_rsun": 27.083106915138952,
+    "total_mass_msun": 2.5992185492728686,
+    "total_mass_rel_sigma": 0.5984150614157789,
+    "plausible": true,
+    "ms_expected_total_msun": 1.5294261596245855,
+    "ms_ratio": 1.6994730559014861,
+    "ms_basis": "main-sequence mass from the radius",
+    "ms_consistent": false,
+    "caveat": "Gaia radius assumes one star; companion light removed with the TESS-band ratio"
+   }
+  },
+  "468090770": {
+   "period_days": 3.104225396576623,
+   "apogee": {
+    "gamma_kms": -30.04672104435479,
+    "k1_kms": 69.79654076603701,
+    "k1_sigma_kms": 3.329438139330256,
+    "chi2": 575.2688267715959,
+    "dof": 3,
+    "chi2_constant": 1014.7354505835283,
+    "n": 5,
+    "visits": [
+     {
+      "jd": 2458147.799,
+      "v": -107.171,
+      "e": 2.76269241590518,
+      "snr": 60.380001068115234,
+      "ncomp": 0,
+      "flag": 1024,
+      "tel": "lco25m"
+     },
+     {
+      "jd": 2458148.771,
+      "v": -10.82,
+      "e": 3.2011298295445627,
+      "snr": 51.38999938964844,
+      "ncomp": 0,
+      "flag": 1024,
+      "tel": "lco25m"
+     },
+     {
+      "jd": 2458148.861,
+      "v": -49.284,
+      "e": 2.6669885807779528,
+      "snr": 62.470001220703125,
+      "ncomp": 0,
+      "flag": 2048,
+      "tel": "lco25m"
+     },
+     {
+      "jd": 2458149.817,
+      "v": -4.838,
+      "e": 4.927712369690423,
+      "snr": 32.97999954223633,
+      "ncomp": 0,
+      "flag": 1024,
+      "tel": "lco25m"
+     },
+     {
+      "jd": 2458146.846,
+      "v": 17.389,
+      "e": 3.4342035047591457,
+      "snr": 47.25,
+      "ncomp": 0,
+      "flag": 2048,
+      "tel": "lco25m"
+     }
+    ],
+    "orbit_from": "f26 light-curve fit",
+    "note": "APOGEE JD is UTC mid-exposure; the difference from BJD (minutes) is negligible at these periods"
+   }
+  },
+  "469606998": {
+   "period_days": 5.428238002616186,
+   "gaia_rv": {
+    "amplitude_kms": 149.32361,
+    "n_transits": 28.0,
+    "epoch_sigma_kms_assumed": 2.3639835,
+    "k1_lower_kms": 68.75184625,
+    "moves": true,
+    "chisq_pvalue": 1.5562451e-05,
+    "mass_function_lower_msun": 0.18277680600458582
+   }
+  },
+  "59363206": {
+   "period_days": 15.249800259820535,
+   "gaia_rv": {
+    "amplitude_kms": 60.366196,
+    "n_transits": 10.0,
+    "epoch_sigma_kms_assumed": 4.250106000000002,
+    "k1_lower_kms": 19.557832999999995,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.011820489540943944
+   }
+  },
+  "59453672": {
+   "period_days": 8.357921995284443,
+   "gaia_rv": {
+    "amplitude_kms": 77.854416,
+    "n_transits": 12.0,
+    "epoch_sigma_kms_assumed": 4.156962000000002,
+    "k1_lower_kms": 28.534802999999997,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.02012018902921156
+   }
+  },
+  "59458906": {
+   "period_days": 1.3288455086172832,
+   "gaia_orbit": {
+    "type": "Orbital",
+    "gaia_period_days": 449.6309649722654,
+    "period_ratio": 338.36210609623413,
+    "same_period": false,
+    "outer_orbit": true,
+    "gaia_e": 0.1391868566332479,
+    "gaia_e_sigma": 0.04721941,
+    "gaia_omega_deg": null,
+    "gaia_ecosw": null,
+    "gaia_k1_kms": null,
+    "gaia_k1_sigma_kms": null
+   }
+  },
+  "59490510": {
+   "period_days": 9.124822000495104,
+   "scale": {
+    "radius_source": "Gaia DR3 FLAME",
+    "gaia_radius_rsun": 1.1085002,
+    "light_ratio_tess": 0.5717361451263341,
+    "r1_rsun": 0.8841907260590014,
+    "r2_rsun": 0.7968257093906836,
+    "a_rsun": 23.89731791926898,
+    "total_mass_msun": 2.199466181050947,
+    "total_mass_rel_sigma": 0.3071610888736356,
+    "plausible": true,
+    "ms_expected_total_msun": 1.6029558229344973,
+    "ms_ratio": 1.3721315020550164,
+    "ms_basis": "main-sequence mass from the radius",
+    "ms_consistent": true,
+    "caveat": "Gaia radius assumes one star; companion light removed with the TESS-band ratio"
+   }
+  },
+  "60192021": {
+   "period_days": 9.874250752073024,
+   "scale": {
+    "radius_source": "Gaia DR3 FLAME",
+    "gaia_radius_rsun": 2.2583363,
+    "light_ratio_tess": 0.05473728309517231,
+    "r1_rsun": 2.1989556303453277,
+    "r2_rsun": 0.7906705065516202,
+    "a_rsun": 28.322151098664996,
+    "total_mass_msun": 3.125738667772793,
+    "total_mass_rel_sigma": 0.3322085885885099,
+    "plausible": true,
+    "ms_expected_total_msun": 2.0925928417222748,
+    "ms_ratio": 1.4937156457059293,
+    "ms_basis": "Gaia FLAME mass",
+    "ms_consistent": true,
+    "caveat": "Gaia radius assumes one star; companion light removed with the TESS-band ratio"
+   }
+  },
+  "72729777": {
+   "period_days": 57.35108725893062,
+   "gaia_rv": {
+    "amplitude_kms": 71.55274,
+    "n_transits": 15.0,
+    "epoch_sigma_kms_assumed": 3.1737540000000024,
+    "k1_lower_kms": 27.841984999999994,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.12824822067644293
+   }
+  },
+  "77210120": {
+   "period_days": 1.5344313502902909,
+   "gaia_rv": {
+    "amplitude_kms": 69.57669,
+    "n_transits": 4.0,
+    "epoch_sigma_kms_assumed": 5.503998000000001,
+    "k1_lower_kms": 21.028349999999996,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.001478332623880423
+   }
+  },
+  "79792004": {
+   "period_days": 15.246228632581948,
+   "gaia_rv": {
+    "amplitude_kms": 2.4642982,
+    "n_transits": 17.0,
+    "epoch_sigma_kms_assumed": 1.6231454999999988,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.3030028,
+    "k1_upper_kms": 3.172549555555554,
+    "m1_msun": 1.0,
+    "m1_source": "assumed 1 Msun (no FLAME mass)",
+    "m2_max_msun": 0.037875862766637305,
+    "eclipse_depth": 0.0009171866860897,
+    "secondary_to_primary_depth": 0.4762107354840996,
+    "static_star_verdict": "SUBSTELLAR_OR_BLEND"
+   }
+  },
+  "86956236": {
+   "period_days": 70.84005399169514,
+   "gaia_rv": {
+    "amplitude_kms": 60.055294,
+    "n_transits": 5.0,
+    "epoch_sigma_kms_assumed": 4.638774,
+    "k1_lower_kms": 18.430712000000003,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.04595304869173195
+   }
+  },
+  "96680649": {
+   "period_days": 8.792364719711292,
+   "gaia_rv": {
+    "amplitude_kms": 63.110703,
+    "n_transits": 31.0,
+    "epoch_sigma_kms_assumed": 1.7513864999999997,
+    "k1_lower_kms": 27.17688525,
+    "moves": true,
+    "chisq_pvalue": 5.7309557e-09,
+    "mass_function_lower_msun": 0.018285794895472905
+   }
+  },
+  "96795030": {
+   "period_days": 3.4190797683388188,
+   "gaia_rv": {
+    "amplitude_kms": 9.005928,
+    "n_transits": 32.0,
+    "epoch_sigma_kms_assumed": 2.792068499999999,
+    "k1_lower_kms": 0.0,
+    "moves": false,
+    "chisq_pvalue": 0.04999265,
+    "k1_upper_kms": 8.105591666666665,
+    "m1_msun": 1.0,
+    "m1_source": "assumed 1 Msun (no FLAME mass)",
+    "m2_max_msun": 0.05961034398120822,
+    "eclipse_depth": 0.0475803475920066,
+    "secondary_to_primary_depth": 0.02499390584233114,
+    "static_star_verdict": "BLEND_INDICATED"
+   }
+  },
+  "96818680": {
+   "period_days": 6.478936178812151,
+   "gaia_rv": {
+    "amplitude_kms": 41.481396,
+    "n_transits": 5.0,
+    "epoch_sigma_kms_assumed": 1.1768064000000003,
+    "k1_lower_kms": 17.798682,
+    "moves": true,
+    "chisq_pvalue": 0.0,
+    "mass_function_lower_msun": 0.003785091134992736
+   }
+  }
+ }
+}

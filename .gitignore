@@ -64,3 +64,4 @@ preregistration/*.zip
 /data/processed/f18_cache/
 data/processed/f13_lc_cache_prsa/
 /data/_shard_unpack/
+data/processed/f13_lc_cache_validation/

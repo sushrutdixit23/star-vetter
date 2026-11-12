@@ -13,6 +13,11 @@ The decision rule is fixed here, before any DR4 data are seen:
                 is absent on the Gaia target points to a blend)
   INCONCLUSIVE  everything else, including too few in-eclipse points. Silence is not evidence.
 
+Epoch radial velocities (new in DR4) are tested for EVERY survivor that has a file <gaia_source_id>_rv.<ext>
+in the same folder: a sinusoid at the TESS period with free phase, decided by a rule also fixed here
+(see run_rv). A bright star that moves at the eclipse period carries the eclipses; one that stays still
+while the eclipse is deep points to a blend.
+
 Usage:  py f25_gaia_dr4_run.py <root> <folder_with_epoch_tables>
 Writes: data/processed/f25_gaia_dr4_results.json
 """
@@ -109,6 +114,104 @@ def decide(res, expected_depth_frac, flux, err):
     return "INCONCLUSIVE", "no clear detection and no strong power to rule one out"
 
 
+# ---------------------------------------------------------------------------------------------
+# Epoch radial velocities (Gaia DR4 publishes them; DR3 gave only summaries). Same rule-first idea:
+# fit a sinusoid AT THE TESS PERIOD with free phase (linear, so no ephemeris has to be carried back
+# to 2014-2020), and decide with thresholds fixed here.
+RV_TIME_COLS = ["rv_obs_time", "obs_time", "time", "transit_time", "rv_time", "epoch"]
+RV_COLS = ["radial_velocity", "rv", "rv_obs", "vrad", "rv_value"]
+RV_ERR_COLS = ["radial_velocity_error", "rv_error", "e_rv", "vrad_error", "rv_value_error"]
+DCHI2_MOVES = 30.0          # constant vs sinusoid, 2 extra parameters: p about 3e-7
+DCHI2_STATIC = 6.0
+SUBSTELLAR_MSUN = 0.08
+DEEP_ECLIPSE = 0.02
+
+
+def rv_epoch_arrays(df):
+    """(t_mjd, rv, rv_err) from an epoch radial-velocity table; same time conventions as the photometry."""
+    t_c, v_c, e_c = _pick(df.columns, RV_TIME_COLS), _pick(df.columns, RV_COLS), _pick(df.columns, RV_ERR_COLS)
+    if not (t_c and v_c and e_c):
+        raise UnknownLayout("could not find time/rv/error columns; found: %s" % ", ".join(map(str, df.columns)))
+    d = pd.DataFrame({"time": df[t_c], "flux": df[v_c], "flux_error": df[e_c]})
+    return epoch_arrays(d)
+
+
+def rv_sinusoid(t_mjd, v, ev, period):
+    """Constant and free-phase sinusoid at `period`, both by weighted linear least squares."""
+    t, v, ev = (np.asarray(x, float) for x in (t_mjd, v, ev))
+    w = 1.0 / ev
+    ph = 2 * np.pi * t / period
+    A = np.vstack([np.ones_like(t), np.cos(ph), np.sin(ph)]).T
+    co, *_ = np.linalg.lstsq(A * w[:, None], v * w, rcond=None)
+    cov = np.linalg.inv((A * w[:, None]).T @ (A * w[:, None]))
+    chi_sin = float(np.sum(((v - A @ co) / ev) ** 2))
+    mean = float(np.average(v, weights=w ** 2))
+    chi_const = float(np.sum(((v - mean) / ev) ** 2))
+    k = float(np.hypot(co[1], co[2]))
+    # propagate to K (delta method); at small K this is approximate, which only matters for the upper limit
+    g = np.array([0.0, co[1] / max(k, 1e-9), co[2] / max(k, 1e-9)])
+    sk = float(np.sqrt(max(g @ cov @ g, 0.0))) if k > 0 else float(np.sqrt(cov[1, 1]))
+    return {"n": int(len(t)), "k_kms": k, "k_sigma_kms": sk, "gamma_kms": float(co[0]),
+            "chi2_sinusoid": chi_sin, "chi2_constant": chi_const, "delta_chi2": chi_const - chi_sin}
+
+
+def rv_decide(fit, period_days, m1_msun, depth, depth_ratio=None):
+    import f28_physical as f28
+    if fit["n"] < 5:
+        return "INCONCLUSIVE", "fewer than 5 epochs"
+    if fit["delta_chi2"] >= DCHI2_MOVES:
+        return "MOVES", "the bright star moves at the TESS period (delta chi2 %.0f, K=%.1f km/s): eclipses on the target" % (fit["delta_chi2"], fit["k_kms"])
+    if fit["delta_chi2"] <= DCHI2_STATIC:
+        k_up = fit["k_kms"] + 3.0 * fit["k_sigma_kms"]
+        m2 = f28.max_companion_mass(k_up, period_days, m1_msun)
+        if m2 < SUBSTELLAR_MSUN:
+            if depth_ratio is not None and depth_ratio >= 0.5:
+                return "STATIC_OR_TWIN", "no motion (K < %.1f km/s), but near-equal eclipses allow blended twin lines" % k_up
+            if depth is not None and depth >= DEEP_ECLIPSE:
+                return "BLEND_INDICATED", "no motion (K < %.1f km/s, companion < %.3f Msun) yet a %.1f%% eclipse" % (k_up, m2, 100 * depth)
+            return "SUBSTELLAR_OR_BLEND", "no motion (K < %.1f km/s, companion < %.3f Msun)" % (k_up, m2)
+    return "INCONCLUSIVE", "neither clear motion nor a tight limit"
+
+
+def run_rv(root, folder):
+    """Epoch-RV test for every survivor with a file named <gaia_source_id>_rv.<ext> in `folder`."""
+    root, folder = Path(root), Path(folder)
+    sky = {int(r["tic"]): r for r in json.loads((root / "site" / "public" / "data" / "dashboard.json").read_text(encoding="utf-8"))["sky"]}
+    g3 = json.loads((root / "site" / "public" / "data" / "gaia_dr3.json").read_text(encoding="utf-8"))["stars"]
+    vet = pd.read_csv(root / "data" / "processed" / "f3i_vetting_results.csv").set_index("TIC")
+    cache = root / "data" / "processed" / "f27_cache"
+    out = {}
+    for tic, r in sorted(sky.items()):
+        sid = (g3.get(str(tic)) or {}).get("source_id")
+        if not sid:
+            continue
+        files = list(folder.glob("%d_rv.*" % int(sid)))
+        if not files:
+            continue
+        try:
+            t, v, ev = rv_epoch_arrays(read_table(files[0]))
+        except UnknownLayout as ex:
+            out[str(tic)] = {"verdict": "UNKNOWN_LAYOUT", "gaia_source_id": int(sid), "detail": str(ex)}
+            continue
+        P = float(r["period_days"])
+        fit = rv_sinusoid(t, v, ev, P)
+        m1 = 1.0
+        cp = cache / ("TIC%d.json" % tic)
+        if cp.exists():
+            ap = (json.loads(cp.read_text(encoding="utf-8")).get("gaia") or {}).get("ap") or {}
+            m1 = float(ap.get("mass_flame") or 1.0)
+        depth = float(vet.loc[tic, "bls_depth"]) if tic in vet.index else None
+        sd = float(vet.loc[tic, "secondary_depth"]) if tic in vet.index and np.isfinite(vet.loc[tic, "secondary_depth"]) else None
+        ratio = sd / depth if (sd is not None and depth) else None
+        verdict, why = rv_decide(fit, P, m1, depth, ratio)
+        out[str(tic)] = {"verdict": verdict, "why": why, "gaia_source_id": int(sid), "period_days": P, **fit}
+    return {"generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "rule": "Sinusoid at the TESS period, free phase. MOVES: delta chi2 >= %.0f. If delta chi2 <= %.0f and the companion mass "
+                    "allowed by K + 3 sigma is below %.2f Msun: BLEND_INDICATED for eclipses >= %.0f%% deep (unless near-equal eclipses: "
+                    "STATIC_OR_TWIN), otherwise SUBSTELLAR_OR_BLEND. Otherwise INCONCLUSIVE." % (DCHI2_MOVES, DCHI2_STATIC, SUBSTELLAR_MSUN, 100 * DEEP_ECLIPSE),
+            "stars": out}
+
+
 def run(root, folder):
     root, folder = Path(root), Path(folder)
     plan = json.loads((root / "site" / "public" / "data" / "gaia_dr4_plan.json").read_text(encoding="utf-8"))
@@ -148,12 +251,15 @@ def main():
         sys.exit(1)
     root = Path(sys.argv[1]).resolve()
     rep = run(root, sys.argv[2])
+    rv = run_rv(root, sys.argv[2])
+    rep["epoch_rv"] = rv
     path = root / "data" / "processed" / "f25_gaia_dr4_results.json"
     path.write_text(json.dumps(rep, indent=1) + "\n", encoding="utf-8", newline="\n")
-    counts = {}
-    for v in rep["stars"].values():
-        counts[v["verdict"]] = counts.get(v["verdict"], 0) + 1
-    print(counts)
+    for name, block in (("photometry", rep["stars"]), ("epoch RV", rv["stars"])):
+        counts = {}
+        for v in block.values():
+            counts[v["verdict"]] = counts.get(v["verdict"], 0) + 1
+        print(name, counts)
     print("Written: %s" % path)
 
 

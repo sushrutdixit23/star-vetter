@@ -1,0 +1,81 @@
+{
+ "tic": 257927198,
+ "ra": 43.97601,
+ "dec": 16.73005,
+ "radius_arcsec": 3.0,
+ "surveys": {
+  "apogee_dr17": {},
+  "galah_dr4": {},
+  "galah_dr3": {},
+  "lamost_dr11": {
+   "V_162_dr11il": [
+    {
+     "ObsID": 302009222,
+     "Obs.Date": "2015-01-22",
+     "PlanID": "EG025311N162900V01",
+     "spID": 9,
+     "FiberID": 222,
+     "unitID": "G3526",
+     "RAJ2000": 43.976006,
+     "DEJ2000": 16.730049,
+     "objType": "Star",
+     "magType": "gri",
+     "mag1": 13.640000343322754,
+     "mag2": 12.850000381469727,
+     "mag3": 12.5,
+     "mag4": null,
+     "mag5": null,
+     "mag6": null,
+     "mag7": null,
+     "tSource": "LEGUE_LCH",
+     "FiberType": "Obj",
+     "tFrom": "LCH000003",
+     "tComment": "17873033072033341",
+     "offsets": 0,
+     "offsetsv": 0.0,
+     "RAOdeg": 43.976006,
+     "DEOdeg": 16.730049,
+     "Epoch": "J2000.0",
+     "TName": "279266141750520"
+    }
+   ]
+  },
+  "rave_dr6": {}
+ },
+ "gaia_source_id": 35114866633755008,
+ "gaia": {
+  "source": {
+   "source_id": 35114866633755008,
+   "ra": 43.97600122093681,
+   "dec": 16.730072035477235,
+   "phot_g_mean_mag": 12.892015,
+   "grvs_mag": 11.942946,
+   "radial_velocity": -17.09057,
+   "radial_velocity_error": 14.365091,
+   "rv_nb_transits": 11.0,
+   "rv_method_used": 1.0,
+   "rv_chisq_pvalue": 0.0,
+   "rv_renormalised_gof": 18.448307,
+   "rv_amplitude_robust": 98.60029,
+   "rv_template_teff": 4750.0,
+   "vbroad": null,
+   "vbroad_error": null,
+   "teff_gspphot": 4896.122,
+   "logg_gspphot": 4.3455,
+   "non_single_star": 0
+  },
+  "ap": {
+   "source_id": 35114866633755008,
+   "teff_gspspec": null,
+   "logg_gspspec": null,
+   "radius_flame": 1.0794369,
+   "radius_flame_lower": 1.0562655,
+   "radius_flame_upper": 1.1018355,
+   "mass_flame": null,
+   "mass_flame_lower": null,
+   "mass_flame_upper": null,
+   "lum_flame": 0.61168927
+  },
+  "nss": []
+ }
+}

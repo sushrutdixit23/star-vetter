@@ -89,6 +89,12 @@ export default function FindingsPage() {
                     a light-time amplitude of {l.amplitude_min_range[0].toFixed(0)} to {l.amplitude_min_range[1].toFixed(0)} min and a minimum companion
                     mass of {l.m3_min_msun_range[0].toFixed(2)} to {l.m3_min_msun_range[1].toFixed(2)} solar masses. Orbits shorter than about{" "}
                     {l.statistically_allowed_p3_years[0].toFixed(1)} yr are ruled out. This does not show a third body exists.
+                    {(() => {
+                      const fit = f.physical?.fits.find((x) => x.tic === l.tic && x.status === "OK");
+                      return fit && fit.l3_p97_5 !== undefined
+                        ? ` The light-curve model puts any third light below ${fit.l3_p97_5.toFixed(2)} of the TESS flux (95%), so a main-sequence third star near the top of the allowed mass range, which would be about as bright as the pair, is disfavoured; a low-mass or compact companion is not.`
+                        : "";
+                    })()}
                   </p>
                 ))}
                 {pc && Object.values(pc.stars).map((s) => (
@@ -180,6 +186,139 @@ export default function FindingsPage() {
               </table>
             </div>
           </section>
+
+          {f.physical ? (
+            <section className="mb-10">
+              <h2 className="font-display text-2xl text-fg">Physical model of the light curves</h2>
+              <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
+                A detached-binary model (ellc: spherical stars, quadratic limb darkening, third light with a weak prior) fitted by MCMC to
+                the TESS eclipses after each eclipse is detrended on its own. The two eclipse durations give e sin(omega), so the full
+                eccentricity is measured here, not only the lower limit from the eclipse spacing. Radii are fractions of the orbit size;
+                absolute sizes and masses need spectra.
+              </p>
+              {f.physical.validation.map((v) => (
+                <p key={v.cadence_min} className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
+                  Validation on {v.star} against {v.reference}, {v.cadence_min}-minute data: e {v.fit.e.toFixed(3)} (published{" "}
+                  {v.truth.e}), r1 {v.fit.r1.toFixed(4)} ({v.truth.r1}), r2 {v.fit.r2.toFixed(4)} ({v.truth.r2}), i {v.fit.incl.toFixed(2)} deg
+                  ({v.truth.incl}). {v.passed ? "Every pre-set tolerance was met." : `Failed: ${Object.entries(v.checks).filter(([, ok]) => !ok).map(([k]) => k).join(", ")}.`}
+                </p>
+              ))}
+              {f.physical.fits.length > 0 ? (
+                <div className="mt-4 overflow-x-auto rounded-xl border border-line">
+                  <table className="w-full min-w-[760px] text-left text-sm">
+                    <thead className="nav-caps font-mono text-[11px] text-muted">
+                      <tr>
+                        <th className="p-3">Star</th>
+                        <th className="p-3">Period (d)</th>
+                        <th className="p-3">e</th>
+                        <th className="p-3">omega (deg)</th>
+                        <th className="p-3">i (deg)</th>
+                        <th className="p-3">r1 / r2</th>
+                        <th className="p-3">Third light</th>
+                        <th className="p-3">Total mass (estimate)*</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {f.physical.fits.map((r) => (
+                        <tr key={r.tic} className="border-t border-line">
+                          <td className="p-3"><Link className="text-fg underline" href={`/candidates/${r.tic}`}>TIC {r.tic}</Link></td>
+                          {r.status !== "OK" || !r.e ? (
+                            <td className="p-3 text-faint" colSpan={7}>{r.status}</td>
+                          ) : (
+                            <>
+                              <td className="p-3">{r.period_days?.toFixed(4)}</td>
+                              <td className="p-3">
+                                {r.e_reliable
+                                  ? <>{r.e.median.toFixed(r.e.hi < 0.001 ? 4 : 3)} <span className="text-faint">+{r.e.hi.toFixed(r.e.hi < 0.001 ? 4 : 3)}/-{r.e.lo.toFixed(r.e.hi < 0.001 ? 4 : 3)}</span>{r.converged ? "" : " (chain short)"}</>
+                                  : <span className="text-faint">{r.e_note}; e cos w = {r.ecosw?.median.toFixed(3)}</span>}
+                              </td>
+                              <td className="p-3">{r.e_reliable ? r.omega_deg?.median.toFixed(0) : "n/a"}</td>
+                              <td className="p-3">{r.incl_deg?.median.toFixed(2)}</td>
+                              <td className="p-3">{r.r1?.median.toFixed(4)} / {r.r2?.median.toFixed(4)}</td>
+                              <td className="p-3">{r.l3?.median.toFixed(2)}{r.l3_constrained ? "" : <span className="text-faint"> (prior)</span>}</td>
+                              <td className="p-3">
+                                {r.total_mass_msun === undefined
+                                  ? "n/a"
+                                  : r.total_mass_ms_consistent === false
+                                    ? <span className="text-faint">inconsistent ({r.total_mass_msun.toFixed(1)} vs {r.total_mass_ms_expected?.toFixed(1)} expected)</span>
+                                    : `${r.total_mass_msun.toFixed(2)} +- ${(r.total_mass_rel_sigma! * 100).toFixed(0)}% Msun`}
+                              </td>
+                            </>
+                          )}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : null}
+              <p className="mt-2 max-w-3xl text-xs text-faint">
+                * From Kepler&apos;s third law with the Gaia DR3 radius of the combined light, corrected for the companion&apos;s light,
+                including a 10% systematic on the fractional radius. Checked against two main-sequence stars of the implied radius and
+                light ratio; when the two differ by more than a factor 1.6 the value is shown as inconsistent rather than used. Third light marked (prior) is not
+                constrained by the data. The full e is shown only when the stars are not too close for spheres (r1 + r2 at most 0.25), the
+                secondary eclipse was measured independently, and both values of e cos w agree; otherwise only e cos w is given. &quot;Chain short&quot;: fewer than 20 autocorrelation times, so uncertainties are indicative.
+                {f.physical.mass_check && f.physical.mass_check.n > 0 && f.physical.mass_check.median_ratio !== null
+                  ? ` Across ${f.physical.mass_check.n} stars the Kepler masses run a median ${f.physical.mass_check.median_ratio.toFixed(1)} times the expectation (${f.physical.mass_check.n_consistent} consistent), most likely because Gaia's radius of a two-star source is too large: these are not usable as masses, which still need double-lined spectra.`
+                  : ""}
+              </p>
+              {f.physical.spectroscopy ? (
+                <>
+                  <h3 className="mt-8 font-display text-xl text-fg">Archival spectroscopy</h3>
+                  <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
+                    No new telescope time: Gaia DR3 radial-velocity summaries and orbits, and APOGEE, GALAH, LAMOST and RAVE spectra already
+                    in public archives, matched to every survivor. A bright star that moves at the eclipse period carries the eclipses; one that
+                    stays still while the eclipse is deep points to light from another star.
+                  </p>
+                  <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-muted">
+                    <li>Gaia spectroscopic orbits at the TESS period: {f.physical.spectroscopy.summary.gaia_orbit_same_period}; astrometric orbits far longer than the eclipses (candidate third bodies, which need checking): {f.physical.spectroscopy.summary.gaia_outer_orbit}.</li>
+                    <li>Gaia velocity range available for {f.physical.spectroscopy.summary.with_gaia_rv_range} stars; the bright star clearly moves in {f.physical.spectroscopy.summary.gaia_rv_moves}.</li>
+                    <li>Bright star static while the companion mass limit is substellar: {f.physical.spectroscopy.summary.gaia_rv_static_blend_indicated} with a deep eclipse (blend indicated), {f.physical.spectroscopy.summary.gaia_rv_static_substellar_or_blend} with a shallow one (blend or substellar companion), {f.physical.spectroscopy.summary.gaia_rv_static_or_twin} with near-equal eclipses (two similar stars can look static).</li>
+                  </ul>
+                  {f.physical.spectroscopy.gaia_orbits.filter((o) => o.same_period).length > 0 ? (
+                    <div className="mt-4 overflow-x-auto rounded-xl border border-line">
+                      <table className="w-full min-w-[640px] text-left text-sm">
+                        <thead className="nav-caps font-mono text-[11px] text-muted">
+                          <tr>
+                            <th className="p-3">Star</th>
+                            <th className="p-3">Gaia period (d)</th>
+                            <th className="p-3">P Gaia / P TESS</th>
+                            <th className="p-3">Gaia e</th>
+                            <th className="p-3">e cos w Gaia / TESS</th>
+                            <th className="p-3">Gaia K1 (km/s)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {f.physical.spectroscopy.gaia_orbits.filter((o) => o.same_period).map((o) => (
+                            <tr key={o.tic} className="border-t border-line">
+                              <td className="p-3">TIC {o.tic}</td>
+                              <td className="p-3">{o.gaia_period_days.toFixed(4)}</td>
+                              <td className="p-3">{o.period_ratio.toFixed(4)}</td>
+                              <td className="p-3">{o.gaia_e !== null ? `${o.gaia_e.toFixed(3)} +- ${(o.gaia_e_sigma ?? 0).toFixed(3)}` : "n/a"}</td>
+                              <td className="p-3">{o.gaia_ecosw !== null ? o.gaia_ecosw.toFixed(3) : "n/a"} / {o.photometric_ecosw !== null ? o.photometric_ecosw.toFixed(3) : "n/a"}</td>
+                              <td className="p-3">{o.gaia_k1_kms !== null ? o.gaia_k1_kms.toFixed(1) : "n/a"}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  ) : null}
+                  {f.physical.spectroscopy.e_check_vs_gaia.length > 0 ? (
+                    <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
+                      Light-curve eccentricity against Gaia&apos;s spectroscopic one, an independent check of the model:{" "}
+                      {f.physical.spectroscopy.e_check_vs_gaia.map((r) => `TIC ${r.tic}: ${r.fit_e.toFixed(3)} vs ${r.gaia_e.toFixed(3)} +- ${r.gaia_e_sigma.toFixed(3)} (${r.difference_sigma.toFixed(1)} sigma apart; light-curve e ${r.trusted ? "trusted" : "not trusted by the rule"})`).join("; ")}.
+                    </p>
+                  ) : null}
+                  {f.physical.spectroscopy.static.filter((r) => r.verdict === "BLEND_INDICATED").map((r) => (
+                    <p key={r.tic} className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">
+                      TIC {r.tic}: a {((r.eclipse_depth ?? 0) * 100).toFixed(1)}% eclipse, yet the bright star moves by less than{" "}
+                      {r.k1_upper_kms.toFixed(1)} km/s over {r.n_transits} Gaia transits (companion below {r.m2_max_msun.toFixed(3)} solar masses).
+                      The eclipses very probably come from another star in the aperture.
+                    </p>
+                  ))}
+                </>
+              ) : null}
+            </section>
+          ) : null}
 
           {f.validation ? (
             <section className="mb-10">
