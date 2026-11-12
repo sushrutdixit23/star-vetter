@@ -31,9 +31,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Fails in about a minute, before any work, if MAST or the CDS services
-      # are down. Without this a run spends hours timing out and then either
-      # commits wrong data or gets cancelled. See upstream.py.
+      # Fails in about a minute, before any work, if MAST or every VizieR server
+      # is down. Without this a run spends hours timing out and then either
+      # commits wrong data or gets cancelled. CDS XMatch is optional: when it is
+      # down the cross-match runs through VizieR (crossmatch.py), and this step
+      # tells the later steps which server to use. See upstream.py and
+      # docs/upstream_outages.md.
       - name: Pre-flight - are the catalog services up?
         run: python3 upstream.py
 

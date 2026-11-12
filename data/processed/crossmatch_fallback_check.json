@@ -1,0 +1,32 @@
+{
+ "generated_at": "2026-11-12T15:51:04Z",
+ "server": "vizier.cfa.harvard.edu",
+ "radius_arcsec": 5.0,
+ "n_stars": 3305,
+ "n_reference_rows": 3305,
+ "reference": "data/processed/f4f_novelty_results.csv (produced through CDS XMatch before the outage)",
+ "catalogs": {
+  "vsx": {
+   "source": "B/vsx/vsx",
+   "matches_reference": 334,
+   "matches_mirror": 334,
+   "n_differences": 0,
+   "differences": []
+  },
+  "gaia_veb": {
+   "source": "I/358/veb",
+   "matches_reference": 0,
+   "matches_mirror": 0,
+   "n_differences": 0,
+   "differences": []
+  },
+  "gaia_class": {
+   "source": "I/358/vclassre",
+   "matches_reference": 244,
+   "matches_mirror": 244,
+   "n_differences": 0,
+   "differences": []
+  }
+ },
+ "total_differences": 0
+}
