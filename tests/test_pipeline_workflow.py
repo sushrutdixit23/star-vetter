@@ -43,3 +43,13 @@ def test_workflow_may_dispatch_other_workflows():
 def test_only_main_commits_and_publishes():
     for name in ("Commit pipeline results", "Deploy to Vercel", "Publish to GitHub Pages"):
         assert "refs/heads/main" in block(name), name
+
+
+def test_derived_site_data_is_refreshed_before_the_commit():
+    """audit.json, ztf_independent.json, neighbours.json and novelty_extra.json are rebuilt on every run."""
+    refresh = block("Refresh derived site data")
+    for script in ("export_independent.py", "export_audit.py", "f15_neighbours.py"):
+        assert script in refresh
+    extra = block("Extra catalog cross-match for new candidates")
+    assert "f14_novelty_extra.py" in extra and "::warning" in extra and "export_novelty_extra.py" in extra
+    assert TEXT.index("Refresh derived site data") < TEXT.index("Extra catalog cross-match for new candidates") < TEXT.index("Commit pipeline results")
