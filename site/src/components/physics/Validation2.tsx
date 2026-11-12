@@ -3,16 +3,16 @@ import type { BenchmarkRow, ConvergenceRow, InjectionMetrics, InjectionPoint, Ma
 const MONO = "var(--font-geist-mono)";
 const rd = (v: number) => Math.round(v * 100) / 100;
 const pct = (v: number | null | undefined, d = 0) => (v == null ? "n/a" : `${(v * 100).toFixed(d)}%`);
-const sgn = (v: number, d: number) => `${v >= 0 ? "+" : "−"}${Math.abs(v).toFixed(d)}`;
+const sgn = (v: number, d: number) => `${v >= 0 ? "+" : "\u2212"}${Math.abs(v).toFixed(d)}`;
 
 // ---------------------------------------------------------------- blind benchmarks
 
 const CHECKS: { key: string; label: string; tol: string; diff: string; kind: "abs" | "rel" }[] = [
   { key: "e", label: "e", tol: "e_abs", diff: "e", kind: "abs" },
-  { key: "abs_esinw", label: "|e sin ω|", tol: "abs_esinw_abs", diff: "abs_esinw", kind: "abs" },
-  { key: "ecosw", label: "e cos ω", tol: "ecosw_abs", diff: "ecosw", kind: "abs" },
-  { key: "r1", label: "r₁", tol: "r_frac", diff: "r1_frac", kind: "rel" },
-  { key: "r2", label: "r₂", tol: "r_frac", diff: "r2_frac", kind: "rel" },
+  { key: "abs_esinw", label: "|e sin \u03c9|", tol: "abs_esinw_abs", diff: "abs_esinw", kind: "abs" },
+  { key: "ecosw", label: "e cos \u03c9", tol: "ecosw_abs", diff: "ecosw", kind: "abs" },
+  { key: "r1", label: "r\u2081", tol: "r_frac", diff: "r1_frac", kind: "rel" },
+  { key: "r2", label: "r\u2082", tol: "r_frac", diff: "r2_frac", kind: "rel" },
   { key: "incl", label: "i", tol: "incl_deg", diff: "incl", kind: "abs" },
 ];
 
@@ -108,12 +108,12 @@ export function BenchmarkTable({ rows }: { rows: BenchmarkRow[] }) {
                   <td className="p-3 text-muted">{r.truth.e.toFixed(3)} / <span className="text-fg">{r.fit.e.median.toFixed(3)}</span> <span className="text-faint">&plusmn;{(0.5 * (r.fit.e.lo + r.fit.e.hi)).toFixed(3)}</span></td>
                   <td className="p-3 text-muted">{pct(r.differences.r1_frac, 1)} / {pct(r.differences.r2_frac, 1)}</td>
                   <td className="p-3 text-muted">{sgn(r.differences.incl, 2)}&deg;</td>
-                  <td className="p-3 text-muted">{r.trusted ? "accepts e" : "e cos ω only"}</td>
+                  <td className="p-3 text-muted">{r.trusted ? "accepts e" : "e cos \u03c9 only"}</td>
                 </>
               ) : (
                 <td colSpan={4} className="p-3 text-muted">no fit: {r.status.toLowerCase().replace(/_/g, " ")}</td>
               )}
-              <td className={`p-3 ${r.passed ? "text-fg" : "text-accent-kill"}`}>{r.passed ? "✓ pass" : "✕ fail"}</td>
+              <td className={`p-3 ${r.passed ? "text-fg" : "text-accent-kill"}`}>{r.passed ? "\u2713 pass" : "\u2715 fail"}</td>
             </tr>
           ))}
         </tbody>
@@ -124,7 +124,7 @@ export function BenchmarkTable({ rows }: { rows: BenchmarkRow[] }) {
 
 // ---------------------------------------------------------------- injection-recovery
 
-const QLABEL: Record<string, string> = { e: "e", ecosw: "e cos ω", r1: "r₁", r2: "r₂", incl: "i" };
+const QLABEL: Record<string, string> = { e: "e", ecosw: "e cos \u03c9", r1: "r\u2081", r2: "r\u2082", incl: "i" };
 
 /** Fraction of injections whose quoted interval contains the truth, against the fraction it should be. */
 export function CoverageBars({ m }: { m: InjectionMetrics }) {
