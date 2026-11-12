@@ -1,0 +1,72 @@
+name: Upstream check
+
+# Runs the pre-flight and the cross-match comparison FROM GITHUB'S NETWORK, which is where the daily pipeline runs
+# and where CDS services have behaved differently from a laptop. Writes nothing to the repository: the result is in
+# the job summary and the uploaded artifact.
+#   * workflow_dispatch: run it by hand (Actions tab -> Upstream check -> Run workflow)
+#   * push to a branch named upstream-check/*: run it on that branch without touching main
+#   * weekly: a canary, so a silent change at CDS shows up here before it stops the daily run
+on:
+  workflow_dispatch:
+  push:
+    branches: ["upstream-check/**"]
+  schedule:
+    - cron: "41 3 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Pre-flight (same step the daily pipeline runs first)
+        id: preflight
+        run: python3 upstream.py
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt pytest
+
+      - name: Unit tests for the cross-match and pre-flight
+        run: python -m pytest tests/test_crossmatch.py tests/test_fail_closed.py -q
+
+      - name: Cross-match comparison against the stored XMatch answers (3,305 stars)
+        run: python validate_crossmatch_fallback.py "$GITHUB_WORKSPACE"
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "### Cross-match comparison"
+            if [ -f data/processed/crossmatch_fallback_check.json ]; then
+              python - <<'PY'
+          import json
+          d = json.load(open("data/processed/crossmatch_fallback_check.json"))
+          print("stars: %d, total differences: %d, server: %s\n" % (d["n_stars"], d["total_differences"], d["server"]))
+          print("| catalog | via XMatch (stored) | via VizieR | differences |\n|---|---|---|---|")
+          for k, v in d["catalogs"].items():
+              print("| %s | %d | %d | %d |" % (v["source"], v["matches_reference"], v["matches_mirror"], v["n_differences"]))
+          PY
+            else
+              echo "No comparison file was written (the step before it failed)."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload the comparison
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: crossmatch-check-${{ github.run_id }}
+          path: data/processed/crossmatch_fallback_check.json
+          if-no-files-found: ignore
