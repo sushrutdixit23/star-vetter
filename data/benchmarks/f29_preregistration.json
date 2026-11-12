@@ -1,0 +1,104 @@
+{
+ "title": "Blind benchmark and injection-recovery test of f26_ebfit.py, registered before any fit was run",
+ "registered_utc": "2026-11-12",
+ "method": {
+  "code": "f26_ebfit.py as of commit 098af75 (the model, priors, detrending and trust rule are not changed for this test)",
+  "allowed_changes": "faster sampling only: a process pool and running the chain in blocks until it is at least 20 autocorrelation times long after burn-in (cap 6000 steps). Neither changes the model or the likelihood.",
+  "inputs_per_system": "TESS SPOC 2-minute light curves of every available sector; the published period and time of primary eclipse (our candidates get these from the pipeline); the eclipse duration and the secondary-eclipse phase are measured from the folded light curve by f29_benchmark.py, not taken from the paper",
+  "cadences": [
+   2,
+   30
+  ],
+  "note_30min": "30-minute runs average the 2-minute data, as for AI Phe, to mimic full-frame-image light curves"
+ },
+ "pass_rule": {
+  "source": "the AI Phe tolerances already in f26_ebfit.py, unchanged",
+  "e_abs": 0.01,
+  "abs_esinw_abs": 0.02,
+  "r_frac": 0.05,
+  "incl_deg": 0.5,
+  "esinw_note": "compared as |e sin omega| because papers using JKTEBOP and ellc can differ in the sign convention for omega; e and e cos omega are compared with sign",
+  "ecosw_abs": 0.005,
+  "a_system_passes": "all six checks pass at that cadence",
+  "reporting": "every system and cadence is published as it comes out, including failures; no system may be dropped or swapped after the fits"
+ },
+ "systems": [
+  {
+   "name": "MU Cas",
+   "tic": 83905462,
+   "period": 9.65295307,
+   "t0_bjd": 2459869.229815,
+   "truth": {
+    "r1": 0.10275,
+    "r2": 0.09119,
+    "incl": 87.11,
+    "ecosw": 0.18728,
+    "esinw": 0.04215,
+    "e": 0.19197,
+    "l3": 0.0334
+   },
+   "reference": "arXiv:2410.23011 (MU Cas, JKTEBOP fits to TESS), Table II, mean of sectors",
+   "why": "B-type pair, P = 9.7 d, e = 0.19: the period and eccentricity range of the candidates"
+  },
+  {
+   "name": "V1022 Cas",
+   "tic": 65628544,
+   "period": 12.1561598,
+   "t0_bjd": 2458777.91391,
+   "truth": {
+    "r1": 0.07875,
+    "r2": 0.07512,
+    "incl": 82.886,
+    "ecosw": 0.256608,
+    "esinw": 0.1766,
+    "e": 0.3115
+   },
+   "reference": "Southworth, Rediscussion of eclipsing binaries Paper III (arXiv:2012.05978), Table II",
+   "why": "partial eclipses at i = 83 deg, e = 0.31: the hardest geometry for separating the two radii"
+  },
+  {
+   "name": "V454 Aur",
+   "tic": 138333980,
+   "period": 27.0198177,
+   "t0_bjd": 2459526.296873,
+   "truth": {
+    "r1": 0.019875,
+    "r2": 0.024582,
+    "incl": 89.2084,
+    "ecosw": 0.246836,
+    "esinw": 0.28965,
+    "e": 0.38056
+   },
+   "reference": "Southworth, Rediscussion of eclipsing binaries Paper XIX (arXiv:2404.19443), Table II",
+   "why": "long period, small stars, e = 0.38; few eclipses per sector"
+  },
+  {
+   "name": "V505 Per",
+   "tic": 348517784,
+   "period": 4.2220216,
+   "t0_bjd": 2458798.51672,
+   "truth": {
+    "r1": 0.08637,
+    "r2": 0.084536,
+    "incl": 87.9166,
+    "ecosw": 0.0,
+    "esinw": 0.0,
+    "e": 0.0
+   },
+   "reference": "Southworth (arXiv:2106.04323), Table II; circular orbit assumed there",
+   "why": "circular control: the method must not invent an eccentricity"
+  }
+ ],
+ "injection_recovery": {
+  "purpose": "measure bias and whether the quoted 68% intervals contain the truth about 68% of the time, on the candidates' own noise and sampling",
+  "hosts": "candidate light curves (data divided by their best-fit model gives real noise, gaps and cadence); hosts chosen to span cadence: one 30-minute, one 10/30-minute, one 2/3-minute",
+  "grid": "16 synthetic systems per run drawn with a fixed seed: rsum 0.08-0.30, k 0.6-1.0, i giving both eclipses, e 0-0.4, omega uniform, J 0.4-1.0, l3 0-0.15; period and ephemeris of the host",
+  "metrics": [
+   "median bias of e, e cos w, r1, r2, i",
+   "fraction of injections whose 68% interval contains the truth",
+   "for injections the trust rule accepts: fraction with |e error| <= 0.03",
+   "for injections it rejects: the same fraction"
+  ],
+  "trust_rule_recalibration": "if accepted injections have |e error| <= 0.03 in fewer than 80% of cases, or rejected ones in more than 80%, the rsum threshold is moved to the value that best separates them and the change is reported; the candidate verdicts are then recomputed with the new threshold"
+ }
+}
