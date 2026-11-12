@@ -34,12 +34,16 @@ def test_typescript_geometry_matches_python():
     ver = subprocess.run([node, "--version"], capture_output=True, text=True).stdout.strip().lstrip("v").split(".")
     if (int(ver[0]), int(ver[1])) < (22, 6):
         pytest.skip("node too old for type stripping")
+    # Node's ESM loader wants a file:// URL for an absolute path. A bare "C:/..." path is read as
+    # a URL with the scheme "c:" and refused, so Path.as_uri() is needed on Windows (and is
+    # harmless on Linux and macOS).
+    module_url = (ROOT / "site" / "src" / "lib" / "orbit.ts").as_uri()
     script = (
-        "import {skyPosition, secondaryPhase} from %r;"
+        "import {skyPosition, secondaryPhase} from %s;"
         "const cases = %s;"
         "console.log(JSON.stringify(cases.map(([ph,e,w,i]) => {const p = skyPosition(ph,e,w*Math.PI/180,i);"
         "return [p.x,p.y,p.z,secondaryPhase(e,w*Math.PI/180)];})));"
-    ) % ((ROOT / "site" / "src" / "lib" / "orbit.ts").as_posix(), json.dumps([list(c) for c in CASES]))
+    ) % (json.dumps(module_url), json.dumps([list(c) for c in CASES]))
     out = subprocess.run([node, "--experimental-strip-types", "--no-warnings", "--input-type=module", "-e", script], capture_output=True, text=True)
     assert out.returncode == 0, out.stderr
     got = json.loads(out.stdout)
