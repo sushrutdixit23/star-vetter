@@ -1,0 +1,140 @@
+{
+ "tic": 43785616,
+ "ra": 77.49528,
+ "dec": -10.28073,
+ "radius_arcsec": 3.0,
+ "surveys": {
+  "apogee_dr17": {},
+  "galah_dr4": {},
+  "galah_dr3": {},
+  "lamost_dr11": {},
+  "rave_dr6": {
+   "III_283_ravedr6": [
+    {
+     "recno": 352208,
+     "Sp": 1,
+     "ObsID": "20091023_0515m12_067",
+     "IRFM": 1,
+     "ID": "J050958.9-101651",
+     "objID": "J050958.8-101650",
+     "HRV": -41.22,
+     "e_HRV": 1.2300000190734863,
+     "R": 50.77000045776367,
+     "cHRV": -0.6100000143051147,
+     "Chi2": 818.7,
+     "S_N": 53.4900016784668,
+     "Simbad": "Simbad",
+     "P": "n",
+     "S": "",
+     "T": "",
+     "w_P": 1.0,
+     "w_S": null,
+     "w_T": null,
+     "RAJ2000": 77.49529167,
+     "DEJ2000": -10.28075,
+     "Obs.date": "2009-10-23",
+     "Obs.st": "16:29:58.0",
+     "Obs.end": "18:08:27.0",
+     "Nrep": 1
+    }
+   ],
+   "III_283_xgaia2": [
+    {
+     "ObsID": "20091023_0515m12_067",
+     "Gaia": 3182410104496905344,
+     "Epoch": 2015.5,
+     "RA_ICRS": 77.49526375277,
+     "DE_ICRS": -10.28080014604,
+     "plx": 1.5260000228881836,
+     "pmRA": -3.1459999084472656,
+     "pmDE": -11.770000457763672,
+     "Nmatch": 36,
+     "Dup": "False",
+     "NG": 281,
+     "FG": 425879.389,
+     "Gmag": 11.614999771118164,
+     "HRV": -19.799999237060547,
+     "Nrv": 14,
+     "Teff": 5500,
+     "logg": 3.0,
+     "__Fe_H_": -0.25,
+     "Var": "NOT_AVAILABLE",
+     "_RA.icrs": 77.495277517558,
+     "_DE.icrs": -10.2807494656852
+    }
+   ],
+   "III_283_xgaiae3": [
+    {
+     "ObsID": "20091023_0515m12_067",
+     "Gaiae3": 3182410104496905344,
+     "Epoch": 2016,
+     "RA_ICRS": 77.49526325953,
+     "DE_ICRS": -10.28080159521,
+     "plx": 1.7100000381469727,
+     "pmRA": -1.1820000410079956,
+     "pmDE": -14.09000015258789,
+     "Dup": "false",
+     "NG": 660,
+     "FG": 420000.223,
+     "Gmag": 11.628999710083008,
+     "_RA.icrs": 77.4952685963569,
+     "_DE.icrs": -10.2807389642145
+    }
+   ]
+  }
+ },
+ "gaia_source_id": 3182410104496905344,
+ "gaia": {
+  "source": {
+   "source_id": 3182410104496905344,
+   "ra": 77.49526325953026,
+   "dec": -10.280801595206242,
+   "phot_g_mean_mag": 11.629243,
+   "grvs_mag": 10.876133,
+   "radial_velocity": -41.97371,
+   "radial_velocity_error": 2.7172112,
+   "rv_nb_transits": 52.0,
+   "rv_method_used": 1.0,
+   "rv_chisq_pvalue": 0.0,
+   "rv_renormalised_gof": 54.247097,
+   "rv_amplitude_robust": 54.35703,
+   "rv_template_teff": 5500.0,
+   "vbroad": 11.164951,
+   "vbroad_error": 5.957413,
+   "teff_gspphot": 5802.5635,
+   "logg_gspphot": 3.5756,
+   "non_single_star": 2
+  },
+  "ap": {
+   "source_id": 3182410104496905344,
+   "teff_gspspec": 6033.0,
+   "logg_gspspec": 3.87,
+   "radius_flame": 2.5290465,
+   "radius_flame_lower": 2.4303339,
+   "radius_flame_upper": 2.6425462,
+   "mass_flame": 1.3801125,
+   "mass_flame_lower": 1.3317924,
+   "mass_flame_upper": 1.4361533,
+   "lum_flame": 6.550045
+  },
+  "nss": [
+   {
+    "source_id": 3182410104496905344,
+    "nss_solution_type": "SB1",
+    "period": 17.91291979026343,
+    "period_error": 0.0059901956,
+    "eccentricity": 0.050997421689606,
+    "eccentricity_error": 0.02159532,
+    "arg_periastron": 88.20287826114621,
+    "semi_amplitude_primary": 21.21277105789702,
+    "semi_amplitude_primary_error": 0.37761787,
+    "semi_amplitude_secondary": null,
+    "semi_amplitude_secondary_error": null,
+    "center_of_mass_velocity": -34.41332053103346,
+    "mass_ratio": null,
+    "t_periastron": -4.576629495529806,
+    "goodness_of_fit": 1.2839894
+   }
+  ]
+ }
+}

@@ -1,0 +1,14 @@
+{
+ "doi": "10.5281/zenodo.24115848",
+ "url": "https://zenodo.org/records/24115848",
+ "deposited_utc": "2026-11-10T17:06:14Z",
+ "frozen_utc": "2026-11-10T16:31:27Z",
+ "bundle_sha256": "a0c1199809c4762359686d043000af3adc03a61e6564abdb6efcd6d9dd9b6ee9",
+ "commit": "d85f40553387480ce434dfc5ced78c0f6d918b04",
+ "branch": "main",
+ "stars": 4,
+ "eclipses": 21,
+ "file": "star-vetter-predictions-20261110.zip",
+ "zenodo_md5": "e7957915379c20a0ce5e419a59fc0222",
+ "repo": "https://github.com/sushrutdixit23/star-vetter"
+}

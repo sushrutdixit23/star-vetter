@@ -21,6 +21,28 @@ N_NEW_TARGETS = int(os.environ.get("STAR_VETTER_BATCH_SIZE", "500"))
 N_BINS = 5
 
 
+def parse_shard(value):
+    """'i/K' (0-based i) -> (i, K); None or '' -> None. Used to split one day's draw across
+    parallel CI jobs: every shard computes the SAME total draw (same table, same history, same
+    seed) and keeps every K-th row, so the shards are disjoint without talking to each other."""
+    if not value:
+        return None
+    i, k = str(value).split("/")
+    i, k = int(i), int(k)
+    if k < 1 or not 0 <= i < k:
+        raise ValueError("STAR_VETTER_SHARD must look like i/K with 0 <= i < K, got %r" % value)
+    return i, k
+
+
+def shard_slice(sample, shard):
+    """This shard's rows of the full draw. The draw is ordered bin by bin with random order inside
+    each bin, so every-K-th keeps each brightness bin in proportion."""
+    if shard is None:
+        return sample
+    i, k = shard
+    return sample.iloc[i::k].reset_index(drop=True)
+
+
 def build_stratified_sample(df: pd.DataFrame, n_total: int, n_bins: int,
                              mag_col: str = "Tmag", seed: int = 42,
                              exclude_ids=None) -> pd.DataFrame:
@@ -115,11 +137,17 @@ def main():
         print(f"Found {len(prior_samples)} prior round(s) in sample_history/: "
               f"{[p.name for p in prior_samples]} ({len(exclude_ids):,} TIC(s) total)")
 
-    sample = build_stratified_sample(df, n_total=N_NEW_TARGETS, n_bins=N_BINS,
+    shard = parse_shard(os.environ.get("STAR_VETTER_SHARD"))
+    n_draw = N_NEW_TARGETS * (shard[1] if shard else 1)
+    sample = build_stratified_sample(df, n_total=n_draw, n_bins=N_BINS,
                                       exclude_ids=exclude_ids)
+    sample = shard_slice(sample, shard)
+    if shard:
+        print(f"Shard {shard[0] + 1} of {shard[1]}: keeping {len(sample)} of the {n_draw} drawn targets.")
 
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-    archive_path = history_dir / f"sample_{N_NEW_TARGETS}_{stamp}.csv"
+    tag = f"_shard{shard[0]}of{shard[1]}" if shard else ""
+    archive_path = history_dir / f"sample_{N_NEW_TARGETS}{tag}_{stamp}.csv"
     sample.to_csv(archive_path, index=False, encoding="utf-8", lineterminator="\n")
 
     # hand-off file f2c_fetch_lightcurves.py and f6_orchestrator.py read.

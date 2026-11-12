@@ -113,3 +113,16 @@ def test_independent_numbers_come_from_the_files_and_the_catalog_caveat_is_state
     nv = ev["summary"]["by_novelty"]
     assert "%d are already known as eclipsing binaries" % nv.get("KNOWN_ECLIPSING", 0) in t
     assert "Gaia DR4" in t and "not excluded" in t       # what has not been done is said, not implied
+
+
+def test_author_fields_and_doi_fill_the_note_without_inventing_anything():
+    pre = {"doi": "10.5281/zenodo.1", "deposited_utc": "2026-11-10T17:06:14Z", "repo": "https://example.org/r",
+           "bundle_sha256": "ab" * 32, "commit": "d85f405" + "0" * 33}
+    fields = {"name": "A B", "affiliation": "Somewhere", "orcid": "0000-0000-0000-0000", "ai_usage_confirmed": False}
+    t = dr.render(*_data(), prereg=pre, fields=fields)
+    assert "doi:10.5281/zenodo.1, deposited 2026-11-10 UTC" in t
+    assert "ORCID 0000-0000-0000-0000" in t
+    left = re.findall(r"\[\[.*?\]\]", t)
+    assert left == ["[[Author to confirm before submission.]]"]      # the AI statement is never confirmed for the author
+    t2 = dr.render(*_data(), prereg=pre, fields=dict(fields, ai_usage_confirmed=True))
+    assert not re.findall(r"\[\[.*?\]\]", t2)

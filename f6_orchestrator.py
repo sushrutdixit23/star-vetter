@@ -355,7 +355,7 @@ def main():
 
         # ---- F1b: draw a new stratified sample, excluding every prior batch ----
         do_stage("F1b sample new targets", "f1b_sample.py")
-        sample = read_csv_safe(proc / "sample_500.csv")
+        sample = read_csv_safe(proc / "sample_batch.csv")  # what f1b just wrote (sample_500.csv is a stale 2026-09 file)
         if sample is None:
             decision("f1b_sample.py did not produce a sample file. Stopping.")
             finalize("failed", log)

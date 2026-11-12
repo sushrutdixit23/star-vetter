@@ -1,0 +1,49 @@
+{
+ "tic": 295146943,
+ "ra": 108.39769,
+ "dec": -16.25592,
+ "radius_arcsec": 3.0,
+ "surveys": {
+  "apogee_dr17": {},
+  "galah_dr4": {},
+  "galah_dr3": {},
+  "lamost_dr11": {},
+  "rave_dr6": {}
+ },
+ "gaia_source_id": 2935141106330234368,
+ "gaia": {
+  "source": {
+   "source_id": 2935141106330234368,
+   "ra": 108.39765285432637,
+   "dec": -16.25587560019013,
+   "phot_g_mean_mag": 14.837702,
+   "grvs_mag": 13.926342,
+   "radial_velocity": 100.11229,
+   "radial_velocity_error": 10.458831,
+   "rv_nb_transits": 23.0,
+   "rv_method_used": 2.0,
+   "rv_chisq_pvalue": null,
+   "rv_renormalised_gof": null,
+   "rv_amplitude_robust": null,
+   "rv_template_teff": 5500.0,
+   "vbroad": null,
+   "vbroad_error": null,
+   "teff_gspphot": 6108.921,
+   "logg_gspphot": 4.1183,
+   "non_single_star": 0
+  },
+  "ap": {
+   "source_id": 2935141106330234368,
+   "teff_gspspec": null,
+   "logg_gspspec": null,
+   "radius_flame": 1.4041137,
+   "radius_flame_lower": 1.3631293,
+   "radius_flame_upper": 1.4471207,
+   "mass_flame": 1.1638182,
+   "mass_flame_lower": 1.1222106,
+   "mass_flame_upper": 1.2057018,
+   "lum_flame": 2.4369946
+  },
+  "nss": []
+ }
+}

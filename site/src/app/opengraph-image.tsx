@@ -9,6 +9,7 @@ import { getPipelineStats } from "@/lib/data";
 export const alt = "Star Vetter - an unattended pipeline that hunts for eclipsing binary stars in NASA TESS data";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+export const dynamic = "force-static";
 
 function rng(seed: number) {
   return () => {

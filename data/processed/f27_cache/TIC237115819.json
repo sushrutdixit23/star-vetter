@@ -1,0 +1,108 @@
+{
+ "tic": 237115819,
+ "ra": 269.85419,
+ "dec": 59.37008,
+ "radius_arcsec": 3.0,
+ "surveys": {
+  "apogee_dr17": {},
+  "galah_dr4": {},
+  "galah_dr3": {},
+  "lamost_dr11": {
+   "V_162_dr11l": [
+    {
+     "sp": "sp",
+     "ObsID": 456611141,
+     "uID": "G14733356560186",
+     "Target": "J175925.00+592212.3",
+     "PlanID": "HD180114N565803V01",
+     "RAJ2000": 269.854179,
+     "DEJ2000": 59.370088,
+     "snru": 1.32,
+     "snrg": 10.12,
+     "snrr": 21.9,
+     "snri": 16.92,
+     "snrz": 14.99,
+     "z": -4.546e-05,
+     "e_z": 6.04e-06,
+     "PanSTARRS": 179242698542144767,
+     "gmag": 14.527,
+     "rmag": 13.9439,
+     "imag": 13.6931,
+     "zmag": 13.5738,
+     "ymag": 13.5027,
+     "GaiaDR3": 1422836667035998208,
+     "Gmag": 13.944073,
+     "nMRS": ""
+    }
+   ],
+   "V_162_dr11il": [
+    {
+     "ObsID": 456611141,
+     "Obs.Date": "2016-04-24",
+     "PlanID": "HD180114N565803V01",
+     "spID": 11,
+     "FiberID": 141,
+     "unitID": "H0308",
+     "RAJ2000": 269.854179,
+     "DEJ2000": 59.370088,
+     "objType": "Star",
+     "magType": "gri",
+     "mag1": 14.579999923706055,
+     "mag2": 13.90999984741211,
+     "mag3": 13.619999885559082,
+     "mag4": null,
+     "mag5": null,
+     "mag6": null,
+     "mag7": null,
+     "tSource": "LEGUE_LCH",
+     "FiberType": "Obj",
+     "tFrom": "LCH000003",
+     "tComment": "15086957117631492",
+     "offsets": 0,
+     "offsetsv": 0.0,
+     "RAOdeg": 269.854179,
+     "DEOdeg": 59.370088,
+     "Epoch": "J2000.0",
+     "TName": "235733704962992"
+    }
+   ]
+  },
+  "rave_dr6": {}
+ },
+ "gaia_source_id": 1422836667035998208,
+ "gaia": {
+  "source": {
+   "source_id": 1422836667035998208,
+   "ra": 269.8542739577188,
+   "dec": 59.37004847420205,
+   "phot_g_mean_mag": 13.944073,
+   "grvs_mag": 13.06892,
+   "radial_velocity": 15.24482,
+   "radial_velocity_error": 4.4976263,
+   "rv_nb_transits": 24.0,
+   "rv_method_used": 2.0,
+   "rv_chisq_pvalue": null,
+   "rv_renormalised_gof": null,
+   "rv_amplitude_robust": null,
+   "rv_template_teff": 4750.0,
+   "vbroad": null,
+   "vbroad_error": null,
+   "teff_gspphot": 5011.9663,
+   "logg_gspphot": 4.4707,
+   "non_single_star": 0
+  },
+  "ap": {
+   "source_id": 1422836667035998208,
+   "teff_gspspec": null,
+   "logg_gspspec": null,
+   "radius_flame": 0.8673379,
+   "radius_flame_lower": 0.84834886,
+   "radius_flame_upper": 0.8860267,
+   "mass_flame": null,
+   "mass_flame_lower": null,
+   "mass_flame_upper": null,
+   "lum_flame": 0.42811522
+  },
+  "nss": []
+ }
+}

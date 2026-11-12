@@ -1,6 +1,6 @@
 # An audit of the unvetted TESS Ten Thousand eclipsing-binary list, with pre-registered eclipse times for TESS Year 9
 
-Sushrut Dixit [[ORCID and affiliation, e.g. Independent researcher, Lucknow, India]]
+Sushrut Dixit, Independent researcher, Lucknow, India (ORCID 0009-0001-5499-056X)
 
 ## Abstract
 
@@ -45,7 +45,7 @@ Table 1. Ephemerides and first predicted primary minimum in TESS Year 9. Sector 
 
 ## 6. Evaluation rule
 
-When Year 9 data are public, each predicted eclipse that TESS observed will be timed with the same code. It counts as recovered if the measured mid-eclipse lies within 3 sigma of the prediction, with sigma combined in quadrature with the measurement error and, for QLP light curves, a 3-minute term for known QLP timing errors (Kostov et al. 2025), SPOC data being preferred; as inconsistent if observed outside that; and as insufficient data if not covered. Every prediction is reported whatever its outcome. The predictions were frozen with SHA-256 hashes and deposited before the data: [[Zenodo DOI and deposit date, to be inserted after the freeze]].
+When Year 9 data are public, each predicted eclipse that TESS observed will be timed with the same code. It counts as recovered if the measured mid-eclipse lies within 3 sigma of the prediction, with sigma combined in quadrature with the measurement error and, for QLP light curves, a 3-minute term for known QLP timing errors (Kostov et al. 2025), SPOC data being preferred; as inconsistent if observed outside that; and as insufficient data if not covered. Every prediction is reported whatever its outcome. The predictions were frozen with SHA-256 hashes and deposited before the data: doi:10.5281/zenodo.24115848, deposited 2026-11-10 UTC.
 
 ## 7. Limits
 
@@ -53,7 +53,7 @@ Of the 307 on-target stars, 14 are already known as eclipsing binaries (a catalo
 
 ## Data and code
 
-Code, data files and the frozen predictions: [[repository URL and Zenodo DOI]].
+Code and data files: https://github.com/sushrutdixit23/star-vetter. Frozen predictions: doi:10.5281/zenodo.24115848 (bundle SHA-256 a0c1199809c47623..., built from commit d85f405).
 
 ## AI-usage disclosure
 

@@ -2,6 +2,7 @@ import { Suspense, createElement } from "react";
 import { getAllCandidates, getDashboard, getGaiaContext, getNoveltyExtraMap, getSiteMeta } from "@/lib/data";
 import { toCardData } from "@/lib/cards";
 import CandidateBrowser from "@/components/CandidateBrowser";
+import { asset } from "@/lib/asset";
 
 export const metadata = {
   title: "Candidates - Star Vetter",
@@ -35,7 +36,7 @@ export default function CandidatesPage() {
             {meta?.combined_dossier && (
               <>
                 {" "}
-                {createElement("a", { href: meta.combined_dossier, className: "text-accent hover:underline", download: true }, "Download all dossiers (PDF)")}
+                {createElement("a", { href: asset(meta.combined_dossier), className: "text-accent hover:underline", download: true }, "Download all dossiers (PDF)")}
                 .
               </>
             )}
