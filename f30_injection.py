@@ -160,6 +160,9 @@ def merge(root, parts_dir):
            "design": "data/benchmarks/f29_preregistration.json, injection_recovery (commit e186551)",
            "e_good_definition": "|fitted e - injected e| <= 0.03",
            "overall": metrics(rows), "by_host": {str(h): metrics([r for r in rows if r["host"] == h]) for h in sorted({r["host"] for r in rows})},
+           # not registered in advance, added when it became clear few injections reach the trust rule's f22 step:
+           "by_true_rsum": {"rsum_le_0.25": metrics([r for r in rows if r["truth"]["rsum"] <= 0.25]),
+                            "rsum_gt_0.25": metrics([r for r in rows if r["truth"]["rsum"] > 0.25])},
            "rows": rows}
     (root / "data" / "processed" / "f30_injection.json").write_text(json.dumps(out, indent=1, default=float) + "\n", encoding="utf-8", newline="\n")
     return out

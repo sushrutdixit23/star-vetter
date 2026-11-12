@@ -9,6 +9,7 @@ import { tempColor, tempRgb } from "@/lib/starColor";
 export const alt = "A TESS eclipsing-binary candidate vetted by Star Vetter";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+export const dynamic = "force-static";
 
 export function generateStaticParams() {
   return getAllTics().map((tic) => ({ tic: String(tic) }));

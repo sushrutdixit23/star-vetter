@@ -73,6 +73,112 @@ export interface PhysicsData {
   ai_phe: AiPheCurve;
   rv_population: RvPoint[];
   mass_check_points: MassPoint[];
+  benchmarks?: Benchmarks;
+  injection?: Injection;
+  convergence?: ConvergenceRow[];
+  mass_calibration?: MassCalibration;
+}
+
+export interface Q3 {
+  median: number;
+  lo: number;
+  hi: number;
+}
+
+export interface BenchmarkRow {
+  name: string;
+  tic: number;
+  cadence_min: number;
+  status: string;
+  passed: boolean;
+  reference: string;
+  truth: Record<string, number>;
+  checks?: Record<string, boolean>;
+  differences?: Record<string, number>;
+  fit?: Record<string, Q3>;
+  trusted?: boolean;
+  converged?: boolean;
+  steps?: number;
+  f22_verdict?: string | null;
+}
+
+export interface Benchmarks {
+  rows: BenchmarkRow[];
+  pass_rule: Record<string, number | string>;
+  summary: { runs: number; passed: number; systems_passing_both_cadences: string[] };
+  preregistration: string;
+}
+
+export interface QuantityMetrics {
+  median_error: number | null;
+  median_abs_error: number | null;
+  median_abs_fractional_error: number | null;
+  coverage_68: number | null;
+  coverage_95: number | null;
+}
+
+export interface InjectionMetrics {
+  n_injected: number;
+  n_fitted: number;
+  by_quantity: Record<string, QuantityMetrics>;
+  trust_rule: {
+    accepted: number;
+    rejected: number;
+    accepted_good_fraction: number | null;
+    rejected_good_fraction: number | null;
+    largest_rsum_threshold_with_80pc_good: { rsum_max: number; n_accepted: number; good_fraction: number } | null;
+  };
+}
+
+export interface InjectionPoint {
+  host: number;
+  i: number;
+  trusted: boolean;
+  converged: boolean;
+  t: Record<string, number>;
+  f: Record<string, Q3>;
+  rsum_fit: number;
+}
+
+export interface Injection {
+  overall: InjectionMetrics;
+  by_host: Record<string, InjectionMetrics>;
+  by_true_rsum?: Record<string, InjectionMetrics>;
+  points: InjectionPoint[];
+  e_good_definition: string;
+  n_rows: number;
+}
+
+export interface ConvergenceRow {
+  tic: number;
+  before: Q3;
+  after: Q3;
+  steps_before: number;
+  steps_after: number;
+  converged_after: boolean;
+  tau_after: number;
+  rsum_after: number;
+}
+
+export interface MassCalibrationRow {
+  name: string;
+  status: string;
+  R1_ratio?: number;
+  mass_ratio?: number;
+  gaia_radius_flame?: number;
+  R1_from_gaia?: number;
+  kepler_mass_from_gaia?: number;
+  published_total_mass?: number;
+  ruwe?: number;
+  non_single_star?: number;
+  ms_ratio_gaia?: number | null;
+  ms_ratio_true?: number | null;
+  published?: Record<string, number>;
+}
+
+export interface MassCalibration {
+  rows: MassCalibrationRow[];
+  summary: { n: number; median_R1_ratio: number | null; median_mass_ratio: number | null };
 }
 
 /** One star as the Orbit Studio needs it: its curves, its fit, and whatever Gaia says about it. */

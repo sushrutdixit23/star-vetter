@@ -263,6 +263,67 @@ def figure_for(t, f, s, period_in, t0_in, res, published_truth=None):
     return out
 
 
+
+def _q3(d, nd=4):
+    return {"median": round(float(d["median"]), nd), "lo": round(float(d["lo"]), nd), "hi": round(float(d["hi"]), nd)}
+
+
+def validation_extras(root):
+    """Blind benchmarks (f29), injection-recovery (f30), chain convergence before/after, and the mass-method
+    calibration (f31), trimmed for the page. Each is skipped if its file is missing."""
+    proc = root / "data" / "processed"
+    out = {}
+    p = proc / "f29_benchmarks.json"
+    if p.exists():
+        b = json.loads(p.read_text(encoding="utf-8"))
+        rows = []
+        for r in b["rows"]:
+            row = {"name": r["name"], "tic": r["tic"], "cadence_min": r["cadence_min"], "status": r.get("status"), "passed": bool(r.get("passed")),
+                   "reference": r.get("reference"), "truth": r["truth"]}
+            if r.get("status") == "OK":
+                row.update({"checks": r["checks"], "differences": {k: round(float(v), 4) for k, v in r["differences"].items()},
+                            "fit": {k: _q3(r["fit"][k]) for k in ("e", "esinw", "ecosw", "r1", "r2", "incl", "l3")},
+                            "trusted": bool(r.get("trusted")), "converged": bool(r["run"]["converged"]), "steps": int(r["run"]["steps"]),
+                            "f22_verdict": (r.get("inputs") or {}).get("f22", {}).get("verdict")})
+            rows.append(row)
+        out["benchmarks"] = {"rows": rows, "pass_rule": b["pass_rule"], "summary": b["summary"], "preregistration": b["preregistration"]}
+    p = proc / "f30_injection.json"
+    if p.exists():
+        d = json.loads(p.read_text(encoding="utf-8"))
+        pts = []
+        for r in d["rows"]:
+            if r.get("status") != "OK":
+                continue
+            pts.append({"host": r["host"], "i": r["index"], "trusted": bool(r.get("trusted")), "converged": bool(r.get("converged")),
+                        "t": {k: round(float(r["truth"][k]), 4) for k in ("e", "ecosw", "r1", "r2", "rsum", "incl")},
+                        "f": {k: _q3(r["fit"][k]) for k in ("e", "ecosw", "r1", "r2", "incl")}, "rsum_fit": round(float(r["fit"]["rsum"]["median"]), 4)})
+        out["injection"] = {"overall": d["overall"], "by_host": d["by_host"], "points": pts, "e_good_definition": d["e_good_definition"],
+                            "n_rows": len(d["rows"])}
+    old_p, new_p = proc / "f26_ebfit_1500steps.json", proc / "f26_ebfit.json"
+    if old_p.exists() and new_p.exists():
+        old = json.loads(old_p.read_text(encoding="utf-8"))["stars"]
+        new = json.loads(new_p.read_text(encoding="utf-8"))["stars"]
+        conv = []
+        for tic, n in new.items():
+            o = old.get(tic)
+            if not o or n.get("status") != "OK" or o.get("status") != "OK":
+                continue
+            conv.append({"tic": int(tic), "before": _q3(o["params"]["e"]), "after": _q3(n["params"]["e"]), "steps_before": int(o["steps"]),
+                         "steps_after": int(n["steps"]), "converged_after": bool(n["converged"]),
+                         "tau_after": round(float(n["autocorr_steps"] or 0), 1),
+                         "rsum_after": round(float(n["params"]["rsum"]["median"]), 4)})
+        out["convergence"] = sorted(conv, key=lambda r: r["tic"])
+    p = proc / "f31_mass_calibration.json"
+    if p.exists():
+        d = json.loads(p.read_text(encoding="utf-8"))
+        out["mass_calibration"] = {"rows": [{k: r.get(k) for k in ("name", "status", "R1_ratio", "mass_ratio", "gaia_radius_flame", "R1_from_gaia",
+                                                                    "kepler_mass_from_gaia", "published_total_mass", "ruwe", "non_single_star")}
+                                            | {"ms_ratio_gaia": (r.get("ms_check_on_gaia_inputs") or {}).get("ms_ratio"),
+                                               "ms_ratio_true": (r.get("ms_check_on_true_mass_and_radius") or {}).get("ms_ratio"),
+                                               "published": r.get("published")}
+                                            for r in d["rows"]], "summary": d["summary"]}
+    return out
+
 def main():
     root = Path(sys.argv[1]).resolve()
     t_start = time.time()
@@ -336,7 +397,8 @@ def main():
         d.pop("_sec_ok", None)
     out = {"generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
            "note": "Display bins and best-fit curves for the physical-model page. Same data, model and priors as f26_ebfit.py; the curves are a bounded least-squares polish started at the posterior medians.",
-           "stars": stars, "ai_phe": ai, "rv_population": sorted(pop, key=lambda r: r["tic"]), "mass_check_points": sorted(mass, key=lambda r: r["tic"])}
+           "stars": stars, "ai_phe": ai, "rv_population": sorted(pop, key=lambda r: r["tic"]), "mass_check_points": sorted(mass, key=lambda r: r["tic"]),
+           **validation_extras(root)}
     dst = root / "site" / "public" / "data" / "physics.json"
     dst.write_text(json.dumps(out, separators=(",", ":")) + "\n", encoding="utf-8", newline="\n")
     print("wrote %s (%.0f kB) in %.0f s" % (dst, dst.stat().st_size / 1024, time.time() - t_start))

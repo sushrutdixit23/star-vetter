@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import type { RvPoint } from "@/lib/physicsTypes";
@@ -101,7 +102,7 @@ export default function PopulationPlot({ points }: { points: RvPoint[] }) {
             <tbody>
               {still.map((p) => (
                 <tr key={p.tic} className="border-t border-line">
-                  <td className="p-3"><a className="text-fg underline" href={`/candidates/${p.tic}`}>TIC {p.tic}</a></td>
+                  <td className="p-3"><Link className="text-fg underline" href={`/candidates/${p.tic}`}>TIC {p.tic}</Link></td>
                   <td className="p-3 font-mono">{p.period_days.toFixed(3)}</td>
                   <td className="p-3 font-mono">{p.depth_pct.toFixed(2)}%</td>
                   <td className="p-3 font-mono">{p.rv_range_kms.toFixed(1)}</td>
