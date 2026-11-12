@@ -1,5 +1,7 @@
 ﻿import sys
 import csv
+import json
+import os
 import time
 import threading
 import warnings
@@ -31,7 +33,8 @@ from f4_novelty import (
     type_tokens, classify_tokens, best_period_ratio_flag,
     MATCH_RADIUS_ARCSEC, GAIA_ECL_CLASS, GAIA_ELL_CLASS, GAIA_EP_CLASS,
 )
-from upstream import EXIT_UPSTREAM_DOWN, UpstreamDown, FailureBreaker, query_tic_chunked
+from upstream import EXIT_UPSTREAM_DOWN, UpstreamDown, FailureBreaker, query_tic_chunked, pick_vizier_server
+import crossmatch as cx
 
 # FAIL CLOSED (added 2026-11-07, see upstream.py for the incident). If a bulk
 # catalog cross-match cannot be completed, or the per-star ASAS-SN service
@@ -42,6 +45,8 @@ XMATCH_RETRIES = 2                 # extra attempts per bulk catalog
 XMATCH_RETRY_DELAY_SEC = 15
 ASASSN_MAX_CONSECUTIVE_FAILURES = 5    # service is down, stop querying
 ASASSN_MAX_UNRESOLVED_FRACTION = 0.02  # more than this unresolved = untrustworthy
+ASASSN_RETRIES = 6                     # the Harvard mirror fails a request about half the time on a bad day
+ASASSN_RETRY_DELAY_SEC = 2
 
 # f4f = f4e pointed at f3i's vetting output (adds the median-depth gate,
 # gap #8), plus one new verdict: CONTAMINATED - a star whose period matches a
@@ -74,6 +79,18 @@ ASASSN_CACHE_COLUMNS = ["TIC", "asassn_queried_ok", "asassn_match", "asassn_name
 # their own timeout= and do not need this wrapper.)
 CATALOG_TIMEOUT_SEC = 120
 XMATCH_TIMEOUT_SEC = 120
+
+# The same three catalogs through VizieR (crossmatch.py) when CDS XMatch is down (added 2026-11-12, see upstream.py).
+CROSSMATCH_SOURCES = {"vsx": "B/vsx/vsx", "gaia_veb": "I/358/veb", "gaia_class": "I/358/vclassre"}
+VIZIER_SERVER = None   # set in main(): CDS if its query endpoint works, else the Harvard-CfA mirror
+
+
+def _vizier(**kwargs):
+    """A Vizier client on the server chosen for this run (CDS's own query endpoint was returning 404)."""
+    v = Vizier(**kwargs)
+    if VIZIER_SERVER:
+        cx.harden(v, VIZIER_SERVER)    # also makes an error reported inside a 200 response raise, not read as "no match"
+    return v
 VIZIER_QUERY_TIMEOUT_SEC = 60
 CACHED_FETCH_TIMEOUT_SEC = 120
 
@@ -109,16 +126,18 @@ def call_with_timeout(fn, args=(), kwargs=None, timeout=60):
     return box["value"]
 
 
-def query_asassn_with_retry(v, coord, tic, retries=2, delay=3):
+def query_asassn_with_retry(v, coord, tic, retries=None, delay=None):
     """Query ASAS-SN (II/366/catv2021) for one star, retrying transient
     failures before giving up. Returns a dict matching ASASSN_CACHE_COLUMNS
     (minus TIC, added by the caller)."""
+    retries = ASASSN_RETRIES if retries is None else retries
+    delay = ASASSN_RETRY_DELAY_SEC if delay is None else delay
     last_err = None
     for attempt in range(retries + 1):
         try:
             r = call_with_timeout(
                 v.query_region, args=(coord,),
-                kwargs={"radius": MATCH_RADIUS_ARCSEC * u.arcsec, "catalog": "II/366/catv2021"},
+                kwargs={"radius": MATCH_RADIUS_ARCSEC * u.arcsec, "catalog": "II/366/catv2021", "cache": False},
                 timeout=VIZIER_QUERY_TIMEOUT_SEC,
             )
             if len(r) > 0 and len(r[0]) > 0:
@@ -180,7 +199,7 @@ def _cached_fetch(label, cache_path, fetch_fn):
 
 def load_tess_eb(processed_dir: Path):
     def fetch():
-        v = Vizier(row_limit=-1, columns=["TIC", "Per", "Morph"])
+        v = _vizier(row_limit=-1, columns=["TIC", "Per", "Morph"])
         t = v.get_catalogs("J/ApJS/258/16/tess-ebs")[0].to_pandas()
         t["TIC"] = t["TIC"].astype(int)
         return t.rename(columns={"Per": "tess_eb_period", "Morph": "tess_eb_morph"})
@@ -273,6 +292,7 @@ def main():
         print("Usage: py f4f_novelty.py <project_root>")
         sys.exit(1)
 
+    global VIZIER_SERVER
     project_root = Path(sys.argv[1]).resolve()
     vet_path = project_root / "data" / "processed" / "f3i_vetting_results.csv"
     out_path = project_root / "data" / "processed" / "f4f_novelty_results.csv"
@@ -314,6 +334,15 @@ def main():
     print(f"Resolved coordinates for {len(merged)} / {len(trustworthy)} stars.")
 
     # --- Step 2: batch cross-match against VSX and the two Gaia tables ---
+    # Path 1: CDS XMatch (what produced every committed result before 2026-10-28).
+    # Path 2: the same catalogs through VizieR (crossmatch.py), used when XMatch is down. All three catalogs go
+    # through ONE path so a run never mixes sources. If neither path answers, nothing is written.
+    VIZIER_SERVER = pick_vizier_server()
+    if VIZIER_SERVER is None:
+        print("\nNo VizieR server answers (CDS and the Harvard-CfA mirror both failed).")
+        print(f"Stopping without writing any results (exit code {EXIT_UPSTREAM_DOWN}).")
+        sys.exit(EXIT_UPSTREAM_DOWN)
+    print(f"\nVizieR server for this run: {VIZIER_SERVER}")
     cat1 = Table.from_pandas(merged[["TIC", "ra", "dec"]])
     xmatch_catalogs = {
         "vsx": "vizier:B/vsx/vsx",
@@ -322,33 +351,54 @@ def main():
     }
     xmatch_results = {}
     xmatch_failed = []
-    for key, cat2 in xmatch_catalogs.items():
-        print(f"\nCross-matching against {cat2} (radius={MATCH_RADIUS_ARCSEC} arcsec)...")
-        last_err = None
-        for attempt in range(XMATCH_RETRIES + 1):
-            try:
-                xm = call_with_timeout(
-                    XMatch.query,
-                    kwargs={"cat1": cat1, "cat2": cat2, "max_distance": MATCH_RADIUS_ARCSEC * u.arcsec,
-                            "colRA1": "ra", "colDec1": "dec"},
-                    timeout=XMATCH_TIMEOUT_SEC,
-                )
-                xm_df = xm.to_pandas()
-                if len(xm_df) > 0:
-                    xm_df = xm_df.sort_values("angDist").drop_duplicates(subset="TIC", keep="first")
+    crossmatch_path = "CDS XMatch"
+    if os.environ.get("STAR_VETTER_SKIP_XMATCH") == "1":
+        print("\nCDS XMatch was reported down by the pre-flight; going straight to VizieR.")
+        xmatch_failed.append("CDS XMatch (down at pre-flight)")
+    else:
+        for key, cat2 in xmatch_catalogs.items():
+            print(f"\nCross-matching against {cat2} (radius={MATCH_RADIUS_ARCSEC} arcsec)...")
+            last_err = None
+            for attempt in range(XMATCH_RETRIES + 1):
+                try:
+                    xm = call_with_timeout(
+                        XMatch.query,
+                        kwargs={"cat1": cat1, "cat2": cat2, "max_distance": MATCH_RADIUS_ARCSEC * u.arcsec,
+                                "colRA1": "ra", "colDec1": "dec"},
+                        timeout=XMATCH_TIMEOUT_SEC,
+                    )
+                    xm_df = xm.to_pandas()
+                    if len(xm_df) > 0:
+                        xm_df = xm_df.sort_values("angDist").drop_duplicates(subset="TIC", keep="first")
+                    xmatch_results[key] = xm_df
+                    print(f"  {len(xm_df)} / {len(merged)} stars matched.")
+                    last_err = None
+                    break
+                except Exception as exc:
+                    last_err = exc
+                    print(f"  attempt {attempt + 1}/{XMATCH_RETRIES + 1} failed: "
+                          f"{str(exc)[:120] or type(exc).__name__}")
+                    if attempt < XMATCH_RETRIES:
+                        time.sleep(XMATCH_RETRY_DELAY_SEC)
+            if last_err is not None:
+                xmatch_failed.append(cat2)
+                break  # one dead catalog is enough; do not burn time on the rest
+
+    if xmatch_failed:
+        print(f"\nCDS XMatch unavailable ({', '.join(xmatch_failed)}). Redoing all three cross-matches through "
+              f"VizieR on {VIZIER_SERVER} (same catalogs, same {MATCH_RADIUS_ARCSEC} arcsec radius).")
+        xmatch_results = {}
+        xmatch_failed = []
+        try:
+            for key, src in CROSSMATCH_SOURCES.items():
+                print(f"\nCross-matching against vizier:{src} (radius={MATCH_RADIUS_ARCSEC} arcsec)...")
+                xm_df = cx.crossmatch(merged[["TIC", "ra", "dec"]], src, MATCH_RADIUS_ARCSEC, server=VIZIER_SERVER)
                 xmatch_results[key] = xm_df
                 print(f"  {len(xm_df)} / {len(merged)} stars matched.")
-                last_err = None
-                break
-            except Exception as exc:
-                last_err = exc
-                print(f"  attempt {attempt + 1}/{XMATCH_RETRIES + 1} failed: "
-                      f"{str(exc)[:120] or type(exc).__name__}")
-                if attempt < XMATCH_RETRIES:
-                    time.sleep(XMATCH_RETRY_DELAY_SEC)
-        if last_err is not None:
-            xmatch_failed.append(cat2)
-            break  # one dead catalog is enough; do not burn time on the rest
+            crossmatch_path = f"VizieR ({VIZIER_SERVER})"
+        except UpstreamDown as exc:
+            print(f"  {exc}")
+            xmatch_failed.append(f"vizier:{src}")
 
     if xmatch_failed:
         print(f"\nCATALOG CROSS-MATCH UNAVAILABLE: {', '.join(xmatch_failed)}")
@@ -356,6 +406,10 @@ def main():
               "wrongly labelled NOVEL.")
         print(f"Stopping with exit code {EXIT_UPSTREAM_DOWN}; the orchestrator will not retry this.")
         sys.exit(EXIT_UPSTREAM_DOWN)
+    print(f"\nCross-match path used: {crossmatch_path}")
+    (project_root / "data" / "processed" / "f4f_crossmatch_path.json").write_text(
+        json.dumps({"path": crossmatch_path, "vizier_server": VIZIER_SERVER, "radius_arcsec": MATCH_RADIUS_ARCSEC,
+                    "n_stars": int(len(merged))}, indent=1) + "\n", encoding="utf-8", newline="\n")
 
     # --- Step 3: ASAS-SN, per star, cached + resumable + retried ---
     print(f"\nCross-matching against ASAS-SN (II/366/catv2021) star by star (cached, resumable)...")
@@ -369,7 +423,7 @@ def main():
               f"({n_ok} succeeded) - successes are reused, failures are retried.")
 
     write_header = not asassn_cache_path.exists()
-    v = Vizier(columns=["*"], row_limit=-1)
+    v = _vizier(columns=["*"], row_limit=-1)
     # a retried star gets a NEW row appended to the cache; on the next load the
     # later row wins (rows are read in file order), so the cache stays valid
     def needs_query(tic):
