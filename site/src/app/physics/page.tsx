@@ -123,9 +123,16 @@ export default function PhysicsPage() {
   const benchRej = benchRows.filter((r) => r.status === "OK" && !r.trusted);
   const benchSystems = Array.from(new Set(benchRows.map((r) => r.name)));
   const failedSystems = benchSystems.filter((n) => benchRows.some((r) => r.name === n && !r.passed));
+  const listJoin = (a: string[]) => (a.length <= 1 ? a.join("") : `${a.slice(0, -1).join(", ")} and ${a[a.length - 1]}`);
+  const failedRunText = failedSystems.map((n) => `${n} (${benchRows.filter((r) => r.name === n && !r.passed).map((r) => r.cadence_min).join(" and ")} min)`);
+  const eDiff = (r: (typeof benchRows)[number]) => Math.abs(r.differences?.e ?? Number.NaN);
+  const accEClose = benchAcc.filter((r) => eDiff(r) <= 0.01);
+  const rejEWrong = benchRej.filter((r) => eDiff(r) > 0.03);
+  const radiusMiss = benchRows.filter((r) => r.status === "OK" && (Math.abs(r.differences?.r1_frac ?? 0) > 0.1 || Math.abs(r.differences?.r2_frac ?? 0) > 0.1));
   const inj = figs.injection;
   const injAll = inj?.overall;
   const injE = injAll?.by_quantity?.e;
+  const injPlanned = inj ? Object.keys(inj.by_host).length * 16 : 0; // registered design: 16 synthetic systems per host
   const conv = figs.convergence ?? [];
   const convMoved = conv.filter((c) => Math.abs(c.after.median - c.before.median) > 0.5 * (c.after.lo + c.after.hi));
   const convBiggest = conv.length ? [...conv].sort((a, b) => Math.abs(b.after.median - b.before.median) - Math.abs(a.after.median - a.before.median))[0] : null;
@@ -234,12 +241,13 @@ export default function PhysicsPage() {
                 </P>
                 <P>
                   <span className="text-fg">{benchPassed.length} of {benchRows.length} runs pass all six checks.</span>{" "}
-                  {failedSystems.length ? `The failures are ${failedSystems.join(" and ")}.` : "No run failed."}
+                  {failedSystems.length ? `The failures are ${listJoin(failedRunText)}.` : "No run failed."}
                   {" "}The trust rule that decides whether an eccentricity is shown on this page accepted {benchAcc.length} runs, and {benchAcc.filter((r) => r.passed).length} of those passed. It rejected {benchRej.length}, and {benchRej.filter((r) => !r.passed).length} of those failed.
                 </P>
                 {benchFailed.some((r) => r.status === "OK" && r.fit) ? (
                   <P>
-                    In the failing runs the secondary eclipse could not be located on its own, so nothing pinned down e cos &omega;, and the fit settled near zero. The quoted error bars did not show it:{" "}
+                    Where the trust rule accepted an eccentricity, it was within 0.01 of the published value in {accEClose.length} of {benchAcc.length} runs. Where it did not, e was wrong by more than 0.03 in {rejEWrong.length} of {benchRej.length}. Radii and inclination are the weak part:
+                    {" "}{radiusMiss.length} of {benchRows.length} runs miss r<sub>1</sub> or r<sub>2</sub> by more than 10%. Nor do the quoted error bars warn of a miss:{" "}
                     {(() => {
                       const miss = benchFailed
                         .filter((r) => r.status === "OK" && r.fit)
@@ -248,9 +256,9 @@ export default function PhysicsPage() {
                           return { r, off: Math.abs(r.fit!.e.median - r.truth.e), sig: Math.max(side, 1e-4) };
                         })
                         .sort((a, b) => b.off / b.sig - a.off / a.sig)[0];
-                      return `${miss.r.name} at ${miss.r.cadence_min} minutes gave e = ${miss.r.fit!.e.median.toFixed(2)}, with an interval of about \u00b1${miss.sig.toFixed(2)}, against a published ${miss.r.truth.e.toFixed(2)}: ${(miss.off / miss.sig).toFixed(0)} interval widths away.`;
+                      return `${miss.r.name} at ${miss.r.cadence_min} minutes gave e = ${miss.r.fit!.e.median.toFixed(2)}, with an interval of about \u00b1${miss.sig.toFixed(2)}, against a published ${miss.r.truth.e.toFixed(2)}: ${(miss.off / miss.sig).toFixed(0)} interval widths away${miss.r.trusted ? "." : " (the trust rule had not accepted that e)."}`;
                     })()}{" "}
-                    Four systems is a small sample, and the failures are reported as they came out. No system was dropped or swapped after the fits.
+                    A sample of {word(benchSystems.length)} systems is small, and the failures are reported as they came out. No system was dropped or swapped after the fits.
                   </P>
                 ) : null}
               </>
@@ -275,7 +283,7 @@ export default function PhysicsPage() {
                 <H2>Do the error bars mean what they say?</H2>
                 <P>
                   A second check needs no published system. Take a candidate&apos;s own light curve, divide out its best-fit model so that only its real noise, gaps and trends remain, multiply in a synthetic eclipsing binary whose sizes, tilt and orbit are known, and run the whole
-                  path on it, including the trust rule. {injAll.n_fitted} of {injAll.n_injected} injections gave a fit, on the noise of three different candidates (2, 10 and 30 minute cadence).
+                  path on it, including the trust rule. {injAll.n_fitted} of {injAll.n_injected} injections gave a fit, on the noise of three different candidates (2, 10 and 30 minute cadence).{injPlanned > injAll.n_injected ? ` The design called for ${injPlanned}; ${injPlanned - injAll.n_injected} are missing because the last batch had not finished when these results were collected.` : ""}
                 </P>
                 <P>
                   <span className="text-fg">The quoted 68% interval for e held the injected value {pc(injE.coverage_68)} of the time</span> and the 95% interval {pc(injE.coverage_95)}.
