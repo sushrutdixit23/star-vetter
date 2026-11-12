@@ -25,11 +25,13 @@ Model choices (all stated in the output):
     sectors and cadence; long-cadence bins are modelled with exposure-time smearing;
   * one noise-scale parameter per cadence group absorbs under-estimated errors.
 
-Usage:  python f26_ebfit.py <root> [--tics T1,T2] [--steps 2000] [--validate]
+Usage:  python f26_ebfit.py <root> [--tics T1,T2] [--steps 2000] [--converge] [--max-steps 6000] [--lc-dir D] [--out F] [--validate]
+        --converge extends each chain until it is 20 autocorrelation times long after burn-in (F26_PROCS=4 uses 4 processes)
         --validate fits AI Phe (TIC 102069549) and compares with Maxted et al. 2020 (MNRAS 498, 332).
 Writes: data/processed/f26_ebfit.json (and f26_validation.json with --validate)
 """
 
+import os
 import sys
 import json
 import time
@@ -350,9 +352,30 @@ def optimise(groups, period, t0_ref, duration, ecosw, depth_ratio):
 FIXED_IN_MCMC = ("dt0", "dP")   # timing nuisances: well determined and nearly independent of the shape
 
 
-def sample(x_best, groups, period, t0_ref, steps=1500, walkers=32, seed=7):
+_LP = {}
+
+
+def _lp_global(z):
+    """Module-level log-probability so a fork-based process pool can call it (closures cannot be pickled)."""
+    th = _LP["base"].copy()
+    th[_LP["free"]] = z
+    return log_prob(th, _LP["groups"], _LP["period"], _LP["t0"])
+
+
+def _tau(sampler, n):
+    try:
+        return float(np.max(sampler.get_autocorr_time(discard=n // 2, quiet=True)))
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def sample(x_best, groups, period, t0_ref, steps=1500, walkers=32, seed=7, until_converged=False, max_steps=6000):
     """emcee with differential-evolution moves over the shape and noise parameters; the eclipse time and
-    period correction stay at the least-squares values."""
+    period correction stay at the least-squares values.
+
+    until_converged: after the first `steps`, keep extending the same chain until the half kept after burn-in
+    is at least 20 autocorrelation times long, or max_steps is reached. F26_PROCS > 1 evaluates walkers in a
+    process pool (Linux/macOS fork); neither option changes the model or the likelihood."""
     import emcee
     fixed_idx = [PARAMS.index(n) for n in FIXED_IN_MCMC]
     free_idx = [i for i in range(len(x_best)) if i not in fixed_idx]
@@ -376,16 +399,31 @@ def sample(x_best, groups, period, t0_ref, steps=1500, walkers=32, seed=7):
         if np.isfinite(lp(trial)):
             p0.append(trial)
     moves = [(emcee.moves.DEMove(), 0.8), (emcee.moves.DESnookerMove(), 0.2)]
-    sampler = emcee.EnsembleSampler(walkers, len(z0), lp, moves=moves)
-    sampler.run_mcmc(np.array(p0), steps, progress=False)
-    flat = sampler.get_chain(discard=steps // 2, thin=5, flat=True)
+    _LP.update(base=base, free=free_idx, groups=groups, period=period, t0=t0_ref)
+    nproc = int(os.environ.get("F26_PROCS", "1") or 1)
+    pool = None
+    if nproc > 1 and sys.platform != "win32":
+        import multiprocessing
+        pool = multiprocessing.get_context("fork").Pool(nproc)
+    try:
+        sampler = emcee.EnsembleSampler(walkers, len(z0), _lp_global, moves=moves, pool=pool)
+        sampler.run_mcmc(np.array(p0), steps, progress=False)
+        n = steps
+        tau = _tau(sampler, n)
+        while until_converged and n < max_steps and (tau is None or n / 2 < 20 * tau):
+            need = int(40 * tau) if tau else n + 1000
+            extra = int(min(max_steps, max(need, n + 500)) - n)
+            sampler.run_mcmc(None, extra, progress=False)
+            n += extra
+            tau = _tau(sampler, n)
+    finally:
+        if pool is not None:
+            pool.close()
+            pool.join()
+    flat = sampler.get_chain(discard=n // 2, thin=5, flat=True)
     chain = np.tile(base, (len(flat), 1))
     chain[:, free_idx] = flat
-    try:
-        tau = float(np.max(sampler.get_autocorr_time(discard=steps // 2, quiet=True)))
-    except Exception:  # noqa: BLE001
-        tau = None
-    return chain, float(np.mean(sampler.acceptance_fraction)), tau
+    return chain, float(np.mean(sampler.acceptance_fraction)), tau, n
 
 
 def derived(chain):
@@ -423,7 +461,7 @@ def model_duration(theta, period):
     return float(out)
 
 
-def fit_star(t, f, sector, period, t0, duration, ecosw, depth_ratio, steps=1500):
+def fit_star(t, f, sector, period, t0, duration, ecosw, depth_ratio, steps=1500, until_converged=False, max_steps=6000):
     """Fit, then re-detrend with the duration the model implies (a short catalogue duration would
     otherwise let the detrending eat the eclipse wings), and fit again before sampling."""
     sec_phase = (0.5 + 2.0 * ecosw / np.pi) % 1.0
@@ -446,7 +484,7 @@ def fit_star(t, f, sector, period, t0, duration, ecosw, depth_ratio, steps=1500)
         if d_model <= 1.1 * dur_used:
             break
         dur_used = 1.15 * d_model
-    chain, acc, tau = sample(best.x, groups, period, t0, steps=steps)
+    chain, acc, tau, steps = sample(best.x, groups, period, t0, steps=steps, until_converged=until_converged, max_steps=max_steps)
     ll, chi = log_like(best.x, groups, period, t0, return_chi=True)
     n_bins = int(sum(len(g["y"]) for g in groups))
     summ = summarise(derived(chain))
@@ -544,6 +582,9 @@ def main():
     args = sys.argv[1:]
     root = Path(args[0]).resolve()
     steps = int(args[args.index("--steps") + 1]) if "--steps" in args else 1500
+    conv = "--converge" in args
+    max_steps = int(args[args.index("--max-steps") + 1]) if "--max-steps" in args else 6000
+    lc_dir = args[args.index("--lc-dir") + 1] if "--lc-dir" in args else None
     if "--validate" in args:
         v = [validate(root, steps, 2), validate(root, steps, 30)]
         (root / "data" / "processed" / "f26_validation.json").write_text(json.dumps(v, indent=1) + "\n", encoding="utf-8", newline="\n")
@@ -564,8 +605,8 @@ def main():
         pd_ = float(v["bls_depth"]) if np.isfinite(v["bls_depth"]) else 0.1
         sd_ = float(s.get("secondary_depth") or 0.3 * pd_)
         try:
-            t, f, sec = load_star(root, tic)
-            r = fit_star(t, f, sec, period, t0, dur, ecosw, sd_ / max(pd_, 1e-4), steps=steps)
+            t, f, sec = load_star(root, tic, lc_dir)
+            r = fit_star(t, f, sec, period, t0, dur, ecosw, sd_ / max(pd_, 1e-4), steps=steps, until_converged=conv, max_steps=max_steps)
         except Exception as e:  # noqa: BLE001 - visible, never silent
             r = {"status": "ERROR", "error": repr(e)}
         res[str(tic)] = r
