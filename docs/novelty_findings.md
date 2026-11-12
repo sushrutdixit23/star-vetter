@@ -50,7 +50,7 @@ The cause is not settled (a distant third body, mass exchange and others all pro
 
 Light-travel-time test for TIC 237115819 (circular third-body orbit, 2 extra parameters over the parabola): best fit P3 = 8.0 yr with chi2 6.9 against 9.8 for the parabola, so it improves on (not significantly, for two extra parameters) the parabola. Orbits with P3 from 5.9 to 400.0 yr are statistically allowed; capping the unseen companion at 1.5 Msun leaves 5.9 to 22.3 yr, light-time amplitude 9 to 55 min, minimum companion mass 0.37 to 1.75 Msun. Orbits shorter than about 5.9 yr are excluded by the data. This does not show a third body exists.
 
-The light-curve model of TIC 237115819 puts the third light below 0.14 of the TESS flux (95%), with the companion in the pair contributing 0.29. A main-sequence third star near the top of the allowed mass range would be about as bright as the pair and is disfavoured; a low-mass (M-dwarf) or compact companion is not. This narrows, but does not settle, the light-travel-time picture.
+The light-curve model of TIC 237115819 puts the third light below 0.16 of the TESS flux (95%), with the companion in the pair contributing 0.29. A main-sequence third star near the top of the allowed mass range would be about as bright as the pair and is disfavoured; a low-mass (M-dwarf) or compact companion is not. This narrows, but does not settle, the light-travel-time picture.
 
 ## Physical light-curve model
 
@@ -61,24 +61,24 @@ Validation on AI Phe (TIC 102069549) (Maxted et al. 2020, MNRAS 498, 332), 30-mi
 
 | TIC | Period (d) | e | omega (deg) | i (deg) | r1 | r2 | l3 | Converged | Total mass estimate (Msun, Gaia radius) |
 |---|---|---|---|---|---|---|---|---|---|
-| 273787849 | 2.1427 | not trusted (close pair: spheres misjudge the durations); e cos w +0.001 | n/a | 73.39 | 0.0557 | 0.2743 | 0.06 (prior) | no | n/a |
-| 178434324 | 2.3844 | not trusted (close pair: spheres misjudge the durations); e cos w +0.161 | n/a | 87.49 | 0.1053 | 0.1502 | 0.01 | yes | n/a |
-| 306294675 | 2.9823 | not trusted (close pair: spheres misjudge the durations); e cos w +0.090 | n/a | 77.76 | 0.1599 | 0.1751 | 0.07 (prior) | no | n/a |
-| 468090770 | 3.1035 | not trusted (close pair: spheres misjudge the durations); e cos w +0.035 | n/a | 72.42 | 0.2562 | 0.2391 | 0.06 (prior) | no | n/a |
+| 273787849 | 2.1427 | not trusted (close pair: spheres misjudge the durations); e cos w +0.001 | n/a | 73.44 | 0.0552 | 0.2741 | 0.06 (prior) | no | n/a |
+| 178434324 | 2.3844 | not trusted (close pair: spheres misjudge the durations); e cos w +0.161 | n/a | 87.59 | 0.1036 | 0.1517 | 0.01 | yes | n/a |
+| 306294675 | 2.9822 | not trusted (close pair: spheres misjudge the durations); e cos w +0.090 | n/a | 77.66 | 0.1689 | 0.1691 | 0.07 (prior) | yes | n/a |
+| 468090770 | 3.1035 | not trusted (close pair: spheres misjudge the durations); e cos w +0.035 | n/a | 72.44 | 0.2577 | 0.2374 | 0.06 (prior) | yes | n/a |
 | 235512374 | | TOO_FEW_ECLIPSES_WITH_BASELINE | | | | | | | |
-| 308578336 | 4.2766 | 0.3111 +0.0004/-0.0003 | 179 | 85.33 | 0.0966 | 0.0800 | 0.14 (prior) | no | 2.70 (+-43%) |
-| 201317466 | 5.6239 | 0.000 +0.001/-0.000 | 167 | 89.38 | 0.1055 | 0.0442 | 0.14 (prior) | no | inconsistent (2.7 vs 1.7 expected for two dwarfs): radius or light split biased |
-| 264099112 | 5.9744 | 0.207 +0.001/-0.001 | 344 | 89.60 | 0.0756 | 0.0704 | 0.64 | no | n/a |
-| 468210255 | 6.7074 | 0.254 +0.015/-0.013 | 32 | 82.68 | 0.0921 | 0.0919 | 0.06 (prior) | no | n/a |
-| 19569810 | 7.0062 | 0.133 +0.029/-0.029 | 81 | 84.75 | 0.0686 | 0.0658 | 0.06 (prior) | no | n/a |
-| 394805902 | 8.1302 | 0.220 +0.009/-0.010 | 128 | 85.21 | 0.0606 | 0.0679 | 0.09 (prior) | no | inconsistent (1.2 vs 2.6 expected for two dwarfs): radius or light split biased |
-| 59490510 | 9.1243 | 0.2636 +0.0004/-0.0003 | 351 | 89.79 | 0.0370 | 0.0334 | 0.04 | no | 2.20 (+-31%) |
-| 60192021 | 9.8753 | 0.070 +0.004/-0.003 | 21 | 87.68 | 0.0776 | 0.0280 | 0.07 (prior) | no | 3.13 (+-33%) |
-| 468010975 | 10.1265 | 0.248 +0.025/-0.017 | 315 | 86.86 | 0.0302 | 0.0493 | 0.06 (prior) | no | inconsistent (2.6 vs 1.5 expected for two dwarfs): radius or light split biased |
-| 370553309 | 11.5410 | 0.269 +0.012/-0.010 | 320 | 87.53 | 0.1026 | 0.0183 | 0.08 (prior) | yes | 2.03 (+-32%) |
-| 318887646 | 14.2827 | not trusted (secondary eclipse too weak to measure independently); e cos w +0.012 | n/a | 87.97 | 0.0348 | 0.0108 | 0.04 (prior) | no | n/a |
-| 237115819 | 14.7923 | 0.000 +0.002/-0.000 | 182 | 88.99 | 0.0216 | 0.0120 | 0.05 (prior) | no | inconsistent (2.7 vs 1.2 expected for two dwarfs): radius or light split biased |
-| 43785616 | 17.9111 | not trusted (secondary eclipse too weak to measure independently); e cos w +0.045 | n/a | 85.19 | 0.0142 | 0.0947 | 0.07 (prior) | no | n/a |
+| 308578336 | 4.2766 | 0.3112 +0.0004/-0.0003 | 179 | 85.37 | 0.0968 | 0.0795 | 0.14 (prior) | yes | 2.70 (+-43%) |
+| 201317466 | 5.6239 | 0.000 +0.001/-0.000 | 111 | 89.30 | 0.1057 | 0.0442 | 0.14 (prior) | yes | inconsistent (2.7 vs 1.7 expected for two dwarfs): radius or light split biased |
+| 264099112 | 5.9743 | 0.208 +0.002/-0.001 | 343 | 89.62 | 0.0759 | 0.0709 | 0.65 | yes | n/a |
+| 468210255 | 6.7074 | 0.249 +0.016/-0.012 | 30 | 82.83 | 0.0843 | 0.0973 | 0.07 (prior) | yes | n/a |
+| 19569810 | 7.0062 | 0.120 +0.029/-0.031 | 80 | 84.78 | 0.0627 | 0.0721 | 0.06 (prior) | no | n/a |
+| 394805902 | 8.1301 | 0.228 +0.008/-0.009 | 127 | 85.12 | 0.0647 | 0.0655 | 0.08 (prior) | yes | inconsistent (1.2 vs 2.6 expected for two dwarfs): radius or light split biased |
+| 59490510 | 9.1243 | 0.2636 +0.0003/-0.0003 | 351 | 89.80 | 0.0370 | 0.0334 | 0.04 | yes | 2.20 (+-31%) |
+| 60192021 | 9.8753 | 0.070 +0.005/-0.003 | 20 | 87.62 | 0.0781 | 0.0281 | 0.07 (prior) | yes | 3.13 (+-33%) |
+| 468010975 | 10.1265 | 0.235 +0.027/-0.020 | 319 | 86.88 | 0.0269 | 0.0516 | 0.06 (prior) | no | inconsistent (2.6 vs 1.5 expected for two dwarfs): radius or light split biased |
+| 370553309 | 11.5410 | 0.271 +0.012/-0.010 | 320 | 87.47 | 0.1029 | 0.0183 | 0.07 (prior) | yes | 2.03 (+-32%) |
+| 318887646 | 14.2827 | not trusted (secondary eclipse too weak to measure independently); e cos w -0.140 | n/a | 88.44 | 0.0255 | 0.0191 | 0.05 (prior) | no | n/a |
+| 237115819 | 14.7923 | 0.000 +0.002/-0.000 | 206 | 88.99 | 0.0216 | 0.0120 | 0.05 (prior) | yes | inconsistent (2.7 vs 1.2 expected for two dwarfs): radius or light split biased |
+| 43785616 | 17.9113 | not trusted (secondary eclipse too weak to measure independently); e cos w +0.039 | n/a | 85.62 | 0.1037 | 0.0160 | 0.07 (prior) | yes | n/a |
 
 Total masses from Kepler's law and the Gaia radius came out a median 1.4 times what two main-sequence stars of the implied size and light ratio would weigh (5 of 12 within a factor 1.6). The likely cause is the Gaia radius of a composite source. These are therefore not usable as masses; real masses need double-lined spectra.
 
@@ -100,7 +100,7 @@ Gaia spectroscopic orbits at the eclipse period:
 | 235512374 | SB1 | 3.7397 | 0.9988 | 0.104 +- 0.058 | -0.041 | n/a | 58.1 |
 | 370553309 | SB1 | 11.5393 | 0.9999 | 0.235 +- 0.038 | +0.183 | +0.207 | 38.3 |
 
-Light-curve e against the Gaia spectroscopic e (an independent check of the model): TIC 201317466: 0.000 vs 0.125 +- 0.061 (2.0 sigma apart, light-curve e trusted); TIC 370553309: 0.269 vs 0.235 +- 0.038 (0.9 sigma apart, light-curve e trusted); TIC 43785616: 0.248 vs 0.051 +- 0.022 (2.8 sigma apart, light-curve e not trusted by the rule above).
+Light-curve e against the Gaia spectroscopic e (an independent check of the model): TIC 201317466: 0.000 vs 0.125 +- 0.061 (2.0 sigma apart, light-curve e trusted); TIC 370553309: 0.271 vs 0.235 +- 0.038 (0.9 sigma apart, light-curve e trusted); TIC 43785616: 0.469 vs 0.051 +- 0.022 (6.2 sigma apart, light-curve e not trusted by the rule above).
 
 Gaia astrometric orbits much longer than the eclipse period (candidate third bodies; Gaia orbit solutions for variable stars can be spurious, so these need checking): TIC 59458906 (P = 450 d, e = 0.14), TIC 251077178 (P = 631 d, e = 0.61).
 

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-12T13:30:44Z",
+ "generated_at": "2026-11-12T17:48:59Z",
  "verdict_counts": {
   "INSUFFICIENT_FOR_HALVES": 66,
   "ECCENTRIC": 13,
@@ -468,65 +468,65 @@
     "status": "OK",
     "period_days": 2.142707,
     "e": {
-     "median": 0.0072,
-     "lo": 0.0031,
-     "hi": 0.0033
+     "median": 0.0064,
+     "lo": 0.0038,
+     "hi": 0.0041
     },
     "omega_deg": {
-     "median": 274.1,
-     "lo": 1.9,
-     "hi": 2.8
+     "median": 275.1,
+     "lo": 2.4,
+     "hi": 6.3
     },
     "ecosw": {
-     "median": 0.0005,
+     "median": 0.0006,
      "lo": 0.0002,
      "hi": 0.0002
     },
     "esinw": {
-     "median": -0.0072,
-     "lo": 0.0033,
-     "hi": 0.0031
+     "median": -0.0064,
+     "lo": 0.0041,
+     "hi": 0.0038
     },
     "incl_deg": {
-     "median": 73.39,
-     "lo": 0.48,
-     "hi": 0.54
+     "median": 73.44,
+     "lo": 0.55,
+     "hi": 0.53
     },
     "r1": {
-     "median": 0.0557,
-     "lo": 0.0065,
-     "hi": 0.0082
+     "median": 0.0552,
+     "lo": 0.0063,
+     "hi": 0.0097
     },
     "r2": {
-     "median": 0.2743,
-     "lo": 0.0051,
+     "median": 0.2741,
+     "lo": 0.0058,
      "hi": 0.0047
     },
     "k": {
-     "median": 4.94,
-     "lo": 0.676,
-     "hi": 0.638
+     "median": 4.978,
+     "lo": 0.793,
+     "hi": 0.655
     },
     "J": {
-     "median": 0.206,
-     "lo": 0.01,
-     "hi": 0.013
+     "median": 0.209,
+     "lo": 0.013,
+     "hi": 0.014
     },
     "l3": {
-     "median": 0.062,
-     "lo": 0.041,
-     "hi": 0.059
+     "median": 0.059,
+     "lo": 0.038,
+     "hi": 0.058
     },
-    "l3_p97_5": 0.184,
+    "l3_p97_5": 0.183,
     "light_ratio": {
-     "median": 5.045,
-     "lo": 1.4,
-     "hi": 1.522
+     "median": 5.167,
+     "lo": 1.584,
+     "hi": 1.538
     },
     "converged": false,
     "flags": [
      "rsum above 0.25: spherical stars are a poor approximation",
-     "chain shorter than 20 autocorrelation times (tau=60 steps): uncertainties are indicative"
+     "chain shorter than 20 autocorrelation times (tau=214 steps): uncertainties are indicative"
     ],
     "f22_ecosw": 0.02100339950437699,
     "e_reliable": false,
@@ -536,62 +536,62 @@
    {
     "tic": 178434324,
     "status": "OK",
-    "period_days": 2.384432,
+    "period_days": 2.384413,
     "e": {
-     "median": 0.1638,
-     "lo": 0.001,
-     "hi": 0.0013
+     "median": 0.1626,
+     "lo": 0.0007,
+     "hi": 0.001
     },
     "omega_deg": {
-     "median": 350.1,
-     "lo": 2.3,
-     "hi": 2.2
+     "median": 352.5,
+     "lo": 2.2,
+     "hi": 2.3
     },
     "ecosw": {
-     "median": 0.1613,
+     "median": 0.1612,
      "lo": 0.0002,
      "hi": 0.0002
     },
     "esinw": {
-     "median": -0.0282,
-     "lo": 0.0069,
-     "hi": 0.0064
+     "median": -0.0212,
+     "lo": 0.0062,
+     "hi": 0.0065
     },
     "incl_deg": {
-     "median": 87.49,
-     "lo": 0.29,
-     "hi": 0.3
+     "median": 87.59,
+     "lo": 0.27,
+     "hi": 0.32
     },
     "r1": {
-     "median": 0.1053,
-     "lo": 0.0015,
-     "hi": 0.0019
+     "median": 0.1036,
+     "lo": 0.0013,
+     "hi": 0.0014
     },
     "r2": {
-     "median": 0.1502,
-     "lo": 0.0013,
-     "hi": 0.0013
+     "median": 0.1517,
+     "lo": 0.0014,
+     "hi": 0.0014
     },
     "k": {
-     "median": 1.426,
-     "lo": 0.025,
-     "hi": 0.022
+     "median": 1.464,
+     "lo": 0.021,
+     "hi": 0.02
     },
     "J": {
-     "median": 0.886,
-     "lo": 0.014,
-     "hi": 0.013
+     "median": 0.855,
+     "lo": 0.013,
+     "hi": 0.012
     },
     "l3": {
-     "median": 0.012,
+     "median": 0.013,
      "lo": 0.009,
      "hi": 0.016
     },
-    "l3_p97_5": 0.048,
+    "l3_p97_5": 0.047,
     "light_ratio": {
-     "median": 1.802,
-     "lo": 0.061,
-     "hi": 0.049
+     "median": 1.836,
+     "lo": 0.047,
+     "hi": 0.04
     },
     "converged": true,
     "flags": [
@@ -605,67 +605,66 @@
    {
     "tic": 306294675,
     "status": "OK",
-    "period_days": 2.982267,
+    "period_days": 2.982165,
     "e": {
-     "median": 0.4829,
-     "lo": 0.0184,
-     "hi": 0.0199
+     "median": 0.4878,
+     "lo": 0.0185,
+     "hi": 0.0161
     },
     "omega_deg": {
-     "median": 79.2,
+     "median": 79.3,
      "lo": 0.6,
-     "hi": 0.6
+     "hi": 0.5
     },
     "ecosw": {
-     "median": 0.0905,
-     "lo": 0.0016,
+     "median": 0.0902,
+     "lo": 0.0014,
      "hi": 0.0015
     },
     "esinw": {
-     "median": 0.4743,
-     "lo": 0.0189,
-     "hi": 0.0206
+     "median": 0.4794,
+     "lo": 0.0191,
+     "hi": 0.0166
     },
     "incl_deg": {
-     "median": 77.76,
-     "lo": 0.3,
-     "hi": 0.31
+     "median": 77.66,
+     "lo": 0.22,
+     "hi": 0.26
     },
     "r1": {
-     "median": 0.1599,
-     "lo": 0.0181,
-     "hi": 0.019
+     "median": 0.1689,
+     "lo": 0.0171,
+     "hi": 0.0146
     },
     "r2": {
-     "median": 0.1751,
-     "lo": 0.0108,
-     "hi": 0.0103
+     "median": 0.1691,
+     "lo": 0.01,
+     "hi": 0.0095
     },
     "k": {
-     "median": 1.095,
-     "lo": 0.171,
-     "hi": 0.21
+     "median": 1.002,
+     "lo": 0.132,
+     "hi": 0.172
     },
     "J": {
-     "median": 14.586,
-     "lo": 2.639,
-     "hi": 3.138
+     "median": 16.119,
+     "lo": 2.718,
+     "hi": 2.498
     },
     "l3": {
      "median": 0.067,
-     "lo": 0.047,
-     "hi": 0.064
+     "lo": 0.045,
+     "hi": 0.073
     },
-    "l3_p97_5": 0.194,
+    "l3_p97_5": 0.226,
     "light_ratio": {
-     "median": 17.586,
-     "lo": 2.958,
-     "hi": 3.095
+     "median": 16.189,
+     "lo": 2.549,
+     "hi": 2.584
     },
-    "converged": false,
+    "converged": true,
     "flags": [
-     "rsum above 0.25: spherical stars are a poor approximation",
-     "chain shorter than 20 autocorrelation times (tau=56 steps): uncertainties are indicative"
+     "rsum above 0.25: spherical stars are a poor approximation"
     ],
     "f22_ecosw": 0.10416288112419092,
     "e_reliable": false,
@@ -675,11 +674,11 @@
    {
     "tic": 468090770,
     "status": "OK",
-    "period_days": 3.103459,
+    "period_days": 3.103463,
     "e": {
-     "median": 0.4401,
-     "lo": 0.0157,
-     "hi": 0.0122
+     "median": 0.4405,
+     "lo": 0.0138,
+     "hi": 0.0123
     },
     "omega_deg": {
      "median": 85.4,
@@ -692,50 +691,49 @@
      "hi": 0.0006
     },
     "esinw": {
-     "median": 0.4387,
-     "lo": 0.0157,
-     "hi": 0.0122
+     "median": 0.439,
+     "lo": 0.0139,
+     "hi": 0.0123
     },
     "incl_deg": {
-     "median": 72.42,
-     "lo": 0.32,
-     "hi": 0.36
+     "median": 72.44,
+     "lo": 0.33,
+     "hi": 0.32
     },
     "r1": {
-     "median": 0.2562,
-     "lo": 0.0159,
-     "hi": 0.0108
+     "median": 0.2577,
+     "lo": 0.0148,
+     "hi": 0.0101
     },
     "r2": {
-     "median": 0.2391,
-     "lo": 0.0085,
-     "hi": 0.0102
+     "median": 0.2374,
+     "lo": 0.0075,
+     "hi": 0.0096
     },
     "k": {
-     "median": 0.933,
-     "lo": 0.068,
-     "hi": 0.103
+     "median": 0.92,
+     "lo": 0.06,
+     "hi": 0.094
     },
     "J": {
-     "median": 15.758,
-     "lo": 1.751,
-     "hi": 1.302
+     "median": 15.892,
+     "lo": 1.708,
+     "hi": 1.367
     },
     "l3": {
-     "median": 0.056,
-     "lo": 0.039,
-     "hi": 0.064
+     "median": 0.055,
+     "lo": 0.037,
+     "hi": 0.062
     },
-    "l3_p97_5": 0.188,
+    "l3_p97_5": 0.195,
     "light_ratio": {
-     "median": 13.803,
-     "lo": 1.418,
-     "hi": 1.551
+     "median": 13.639,
+     "lo": 1.292,
+     "hi": 1.437
     },
-    "converged": false,
+    "converged": true,
     "flags": [
-     "rsum above 0.25: spherical stars are a poor approximation",
-     "chain shorter than 20 autocorrelation times (tau=47 steps): uncertainties are indicative"
+     "rsum above 0.25: spherical stars are a poor approximation"
     ],
     "f22_ecosw": 0.023400293457704086,
     "e_reliable": false,
@@ -749,67 +747,65 @@
    {
     "tic": 308578336,
     "status": "OK",
-    "period_days": 4.276558,
+    "period_days": 4.276555,
     "e": {
-     "median": 0.3111,
+     "median": 0.3112,
      "lo": 0.0003,
      "hi": 0.0004
     },
     "omega_deg": {
-     "median": 178.6,
-     "lo": 1.8,
-     "hi": 1.9
+     "median": 178.8,
+     "lo": 1.9,
+     "hi": 2.0
     },
     "ecosw": {
-     "median": -0.3109,
+     "median": -0.311,
      "lo": 0.0003,
      "hi": 0.0003
     },
     "esinw": {
-     "median": 0.0077,
-     "lo": 0.0104,
-     "hi": 0.0097
+     "median": 0.0067,
+     "lo": 0.0107,
+     "hi": 0.0105
     },
     "incl_deg": {
-     "median": 85.33,
-     "lo": 0.43,
-     "hi": 0.49
+     "median": 85.37,
+     "lo": 0.41,
+     "hi": 0.41
     },
     "r1": {
-     "median": 0.0966,
-     "lo": 0.0074,
-     "hi": 0.0049
+     "median": 0.0968,
+     "lo": 0.0054,
+     "hi": 0.0045
     },
     "r2": {
-     "median": 0.08,
-     "lo": 0.0073,
-     "hi": 0.0086
+     "median": 0.0795,
+     "lo": 0.0064,
+     "hi": 0.0065
     },
     "k": {
-     "median": 0.83,
-     "lo": 0.114,
-     "hi": 0.16
+     "median": 0.821,
+     "lo": 0.096,
+     "hi": 0.119
     },
     "J": {
-     "median": 0.789,
-     "lo": 0.015,
-     "hi": 0.018
+     "median": 0.788,
+     "lo": 0.016,
+     "hi": 0.017
     },
     "l3": {
-     "median": 0.138,
-     "lo": 0.07,
-     "hi": 0.084
+     "median": 0.142,
+     "lo": 0.072,
+     "hi": 0.078
     },
-    "l3_p97_5": 0.309,
+    "l3_p97_5": 0.302,
     "light_ratio": {
-     "median": 0.541,
-     "lo": 0.141,
-     "hi": 0.246
+     "median": 0.53,
+     "lo": 0.121,
+     "hi": 0.177
     },
-    "converged": false,
-    "flags": [
-     "chain shorter than 20 autocorrelation times (tau=50 steps): uncertainties are indicative"
-    ],
+    "converged": true,
+    "flags": [],
     "f22_ecosw": -0.30805516346652617,
     "e_reliable": true,
     "l3_constrained": false,
@@ -825,13 +821,13 @@
     "period_days": 5.623851,
     "e": {
      "median": 0.0003,
-     "lo": 0.0002,
-     "hi": 0.0011
+     "lo": 0.0003,
+     "hi": 0.0013
     },
     "omega_deg": {
-     "median": 167.1,
-     "lo": 91.5,
-     "hi": 119.5
+     "median": 110.9,
+     "lo": 36.9,
+     "hi": 173.4
     },
     "ecosw": {
      "median": 0.0,
@@ -841,48 +837,46 @@
     "esinw": {
      "median": 0.0,
      "lo": 0.0006,
-     "hi": 0.0006
+     "hi": 0.0009
     },
     "incl_deg": {
-     "median": 89.38,
-     "lo": 0.44,
-     "hi": 0.38
+     "median": 89.3,
+     "lo": 0.47,
+     "hi": 0.43
     },
     "r1": {
-     "median": 0.1055,
-     "lo": 0.0005,
-     "hi": 0.001
+     "median": 0.1057,
+     "lo": 0.0007,
+     "hi": 0.0012
     },
     "r2": {
      "median": 0.0442,
-     "lo": 0.0005,
+     "lo": 0.0006,
      "hi": 0.0005
     },
     "k": {
      "median": 0.418,
-     "lo": 0.008,
+     "lo": 0.009,
      "hi": 0.007
     },
     "J": {
      "median": 0.376,
      "lo": 0.003,
-     "hi": 0.002
+     "hi": 0.003
     },
     "l3": {
-     "median": 0.142,
-     "lo": 0.043,
-     "hi": 0.031
+     "median": 0.14,
+     "lo": 0.052,
+     "hi": 0.032
     },
-    "l3_p97_5": 0.203,
+    "l3_p97_5": 0.195,
     "light_ratio": {
      "median": 0.066,
      "lo": 0.003,
      "hi": 0.002
     },
-    "converged": false,
-    "flags": [
-     "chain shorter than 20 autocorrelation times (tau=42 steps): uncertainties are indicative"
-    ],
+    "converged": true,
+    "flags": [],
     "f22_ecosw": -0.006759859429119952,
     "e_reliable": true,
     "l3_constrained": false,
@@ -895,66 +889,65 @@
    {
     "tic": 264099112,
     "status": "OK",
-    "period_days": 5.974384,
+    "period_days": 5.974307,
     "e": {
-     "median": 0.2066,
-     "lo": 0.0013,
-     "hi": 0.0014
+     "median": 0.2077,
+     "lo": 0.0014,
+     "hi": 0.0016
     },
     "omega_deg": {
-     "median": 343.9,
+     "median": 342.9,
      "lo": 1.4,
      "hi": 1.4
     },
     "ecosw": {
-     "median": 0.1984,
+     "median": 0.1985,
      "lo": 0.0001,
      "hi": 0.0001
     },
     "esinw": {
-     "median": -0.0575,
-     "lo": 0.0051,
-     "hi": 0.0052
+     "median": -0.0609,
+     "lo": 0.0055,
+     "hi": 0.0051
     },
     "incl_deg": {
-     "median": 89.6,
-     "lo": 0.21,
-     "hi": 0.22
+     "median": 89.62,
+     "lo": 0.2,
+     "hi": 0.21
     },
     "r1": {
-     "median": 0.0756,
+     "median": 0.0759,
      "lo": 0.0007,
      "hi": 0.0006
     },
     "r2": {
-     "median": 0.0704,
+     "median": 0.0709,
      "lo": 0.0009,
-     "hi": 0.0009
+     "hi": 0.001
     },
     "k": {
-     "median": 0.932,
+     "median": 0.934,
      "lo": 0.016,
-     "hi": 0.017
+     "hi": 0.019
     },
     "J": {
-     "median": 0.996,
-     "lo": 0.015,
-     "hi": 0.016
+     "median": 1.002,
+     "lo": 0.016,
+     "hi": 0.015
     },
     "l3": {
-     "median": 0.644,
-     "lo": 0.027,
-     "hi": 0.023
+     "median": 0.653,
+     "lo": 0.028,
+     "hi": 0.024
     },
-    "l3_p97_5": 0.687,
+    "l3_p97_5": 0.696,
     "light_ratio": {
-     "median": 0.866,
-     "lo": 0.024,
-     "hi": 0.026
+     "median": 0.875,
+     "lo": 0.026,
+     "hi": 0.028
     },
-    "converged": false,
+    "converged": true,
     "flags": [
-     "chain shorter than 20 autocorrelation times (tau=38 steps): uncertainties are indicative",
      "large third light: inclination and radii are degenerate with it"
     ],
     "f22_ecosw": 0.19792994946241205,
@@ -966,65 +959,63 @@
     "status": "OK",
     "period_days": 6.707415,
     "e": {
-     "median": 0.2544,
-     "lo": 0.0131,
-     "hi": 0.0146
+     "median": 0.2491,
+     "lo": 0.0123,
+     "hi": 0.0158
     },
     "omega_deg": {
-     "median": 32.3,
-     "lo": 5.8,
-     "hi": 4.9
+     "median": 30.0,
+     "lo": 6.1,
+     "hi": 5.9
     },
     "ecosw": {
-     "median": 0.2151,
-     "lo": 0.001,
+     "median": 0.2155,
+     "lo": 0.0011,
      "hi": 0.0009
     },
     "esinw": {
-     "median": 0.1359,
-     "lo": 0.0281,
-     "hi": 0.0269
+     "median": 0.1247,
+     "lo": 0.0285,
+     "hi": 0.0306
     },
     "incl_deg": {
-     "median": 82.68,
-     "lo": 0.32,
-     "hi": 0.39
+     "median": 82.83,
+     "lo": 0.36,
+     "hi": 0.45
     },
     "r1": {
-     "median": 0.0921,
-     "lo": 0.0156,
-     "hi": 0.016
+     "median": 0.0843,
+     "lo": 0.0146,
+     "hi": 0.0184
     },
     "r2": {
-     "median": 0.0919,
-     "lo": 0.0133,
-     "hi": 0.0105
+     "median": 0.0973,
+     "lo": 0.0141,
+     "hi": 0.0099
     },
     "k": {
-     "median": 1.0,
-     "lo": 0.271,
-     "hi": 0.338
+     "median": 1.156,
+     "lo": 0.343,
+     "hi": 0.379
     },
     "J": {
-     "median": 1.958,
-     "lo": 0.289,
-     "hi": 0.353
+     "median": 1.826,
+     "lo": 0.28,
+     "hi": 0.384
     },
     "l3": {
-     "median": 0.055,
-     "lo": 0.037,
-     "hi": 0.054
+     "median": 0.067,
+     "lo": 0.044,
+     "hi": 0.061
     },
-    "l3_p97_5": 0.174,
+    "l3_p97_5": 0.191,
     "light_ratio": {
-     "median": 2.018,
-     "lo": 0.867,
-     "hi": 1.211
+     "median": 2.489,
+     "lo": 1.119,
+     "hi": 1.365
     },
-    "converged": false,
-    "flags": [
-     "chain shorter than 20 autocorrelation times (tau=62 steps): uncertainties are indicative"
-    ],
+    "converged": true,
+    "flags": [],
     "f22_ecosw": 0.21687587245080395,
     "e_reliable": true,
     "l3_constrained": false
@@ -1032,66 +1023,66 @@
    {
     "tic": 19569810,
     "status": "OK",
-    "period_days": 7.006172,
+    "period_days": 7.006162,
     "e": {
-     "median": 0.1329,
-     "lo": 0.0295,
-     "hi": 0.029
+     "median": 0.1204,
+     "lo": 0.0313,
+     "hi": 0.0294
     },
     "omega_deg": {
-     "median": 80.7,
-     "lo": 2.7,
-     "hi": 1.7
+     "median": 79.8,
+     "lo": 3.7,
+     "hi": 2.1
     },
     "ecosw": {
-     "median": 0.0214,
+     "median": 0.0213,
      "lo": 0.0002,
      "hi": 0.0002
     },
     "esinw": {
-     "median": 0.1311,
-     "lo": 0.03,
-     "hi": 0.0293
+     "median": 0.1185,
+     "lo": 0.032,
+     "hi": 0.0298
     },
     "incl_deg": {
-     "median": 84.75,
-     "lo": 0.11,
-     "hi": 0.14
+     "median": 84.78,
+     "lo": 0.13,
+     "hi": 0.18
     },
     "r1": {
-     "median": 0.0686,
-     "lo": 0.0094,
-     "hi": 0.0087
+     "median": 0.0627,
+     "lo": 0.0121,
+     "hi": 0.011
     },
     "r2": {
-     "median": 0.0658,
-     "lo": 0.0079,
-     "hi": 0.0092
+     "median": 0.0721,
+     "lo": 0.0121,
+     "hi": 0.0096
     },
     "k": {
-     "median": 0.959,
-     "lo": 0.212,
-     "hi": 0.304
+     "median": 1.149,
+     "lo": 0.337,
+     "hi": 0.464
     },
     "J": {
-     "median": 0.92,
-     "lo": 0.172,
-     "hi": 0.171
+     "median": 0.849,
+     "lo": 0.176,
+     "hi": 0.181
     },
     "l3": {
-     "median": 0.057,
-     "lo": 0.038,
-     "hi": 0.053
+     "median": 0.063,
+     "lo": 0.04,
+     "hi": 0.05
     },
-    "l3_p97_5": 0.185,
+    "l3_p97_5": 0.177,
     "light_ratio": {
-     "median": 0.829,
-     "lo": 0.321,
-     "hi": 0.7
+     "median": 1.176,
+     "lo": 0.679,
+     "hi": 1.061
     },
     "converged": false,
     "flags": [
-     "chain shorter than 20 autocorrelation times (tau=67 steps): uncertainties are indicative"
+     "chain shorter than 20 autocorrelation times (tau=243 steps): uncertainties are indicative"
     ],
     "f22_ecosw": 0.020782271551739985,
     "e_reliable": true,
@@ -1100,67 +1091,65 @@
    {
     "tic": 394805902,
     "status": "OK",
-    "period_days": 8.130189,
+    "period_days": 8.130101,
     "e": {
-     "median": 0.2204,
-     "lo": 0.0102,
-     "hi": 0.0093
+     "median": 0.2276,
+     "lo": 0.0089,
+     "hi": 0.0083
     },
     "omega_deg": {
-     "median": 128.5,
-     "lo": 1.9,
-     "hi": 2.4
+     "median": 127.0,
+     "lo": 1.6,
+     "hi": 1.9
     },
     "ecosw": {
-     "median": -0.1372,
-     "lo": 0.0004,
+     "median": -0.137,
+     "lo": 0.0003,
      "hi": 0.0003
     },
     "esinw": {
-     "median": 0.1725,
-     "lo": 0.0136,
-     "hi": 0.0119
+     "median": 0.1817,
+     "lo": 0.0115,
+     "hi": 0.0106
     },
     "incl_deg": {
-     "median": 85.21,
-     "lo": 0.13,
-     "hi": 0.15
+     "median": 85.12,
+     "lo": 0.1,
+     "hi": 0.12
     },
     "r1": {
-     "median": 0.0606,
-     "lo": 0.0051,
+     "median": 0.0647,
+     "lo": 0.0053,
      "hi": 0.0054
     },
     "r2": {
-     "median": 0.0679,
-     "lo": 0.004,
-     "hi": 0.0037
+     "median": 0.0655,
+     "lo": 0.0048,
+     "hi": 0.004
     },
     "k": {
-     "median": 1.116,
-     "lo": 0.148,
-     "hi": 0.172
+     "median": 1.014,
+     "lo": 0.146,
+     "hi": 0.156
     },
     "J": {
-     "median": 1.802,
-     "lo": 0.183,
-     "hi": 0.181
+     "median": 1.918,
+     "lo": 0.171,
+     "hi": 0.16
     },
     "l3": {
-     "median": 0.085,
-     "lo": 0.047,
-     "hi": 0.06
+     "median": 0.084,
+     "lo": 0.043,
+     "hi": 0.045
     },
-    "l3_p97_5": 0.213,
+    "l3_p97_5": 0.184,
     "light_ratio": {
-     "median": 2.259,
+     "median": 1.99,
      "lo": 0.521,
-     "hi": 0.596
+     "hi": 0.551
     },
-    "converged": false,
-    "flags": [
-     "chain shorter than 20 autocorrelation times (tau=55 steps): uncertainties are indicative"
-    ],
+    "converged": true,
+    "flags": [],
     "f22_ecosw": -0.1406014777256495,
     "e_reliable": true,
     "l3_constrained": false,
@@ -1177,11 +1166,11 @@
     "e": {
      "median": 0.2636,
      "lo": 0.0003,
-     "hi": 0.0004
+     "hi": 0.0003
     },
     "omega_deg": {
-     "median": 351.3,
-     "lo": 0.6,
+     "median": 351.2,
+     "lo": 0.5,
      "hi": 0.5
     },
     "ecosw": {
@@ -1191,13 +1180,13 @@
     },
     "esinw": {
      "median": -0.0401,
-     "lo": 0.0026,
-     "hi": 0.0025
+     "lo": 0.0023,
+     "hi": 0.0023
     },
     "incl_deg": {
-     "median": 89.79,
+     "median": 89.8,
      "lo": 0.03,
-     "hi": 0.04
+     "hi": 0.05
     },
     "r1": {
      "median": 0.037,
@@ -1212,28 +1201,26 @@
     "k": {
      "median": 0.901,
      "lo": 0.006,
-     "hi": 0.007
+     "hi": 0.006
     },
     "J": {
-     "median": 0.703,
+     "median": 0.704,
      "lo": 0.006,
      "hi": 0.006
     },
     "l3": {
-     "median": 0.039,
+     "median": 0.04,
      "lo": 0.009,
-     "hi": 0.01
+     "hi": 0.009
     },
     "l3_p97_5": 0.06,
     "light_ratio": {
      "median": 0.572,
-     "lo": 0.008,
+     "lo": 0.009,
      "hi": 0.008
     },
-    "converged": false,
-    "flags": [
-     "chain shorter than 20 autocorrelation times (tau=39 steps): uncertainties are indicative"
-    ],
+    "converged": true,
+    "flags": [],
     "f22_ecosw": 0.2552360094487356,
     "e_reliable": true,
     "l3_constrained": true,
@@ -1248,65 +1235,63 @@
     "status": "OK",
     "period_days": 9.875251,
     "e": {
-     "median": 0.0705,
+     "median": 0.0704,
      "lo": 0.0031,
-     "hi": 0.0039
+     "hi": 0.0047
     },
     "omega_deg": {
-     "median": 20.6,
+     "median": 20.3,
      "lo": 8.9,
-     "hi": 6.9
+     "hi": 8.1
     },
     "ecosw": {
      "median": 0.066,
      "lo": 0.0002,
-     "hi": 0.0003
+     "hi": 0.0002
     },
     "esinw": {
-     "median": 0.0248,
+     "median": 0.0244,
      "lo": 0.0111,
-     "hi": 0.0096
+     "hi": 0.0113
     },
     "incl_deg": {
-     "median": 87.68,
-     "lo": 0.16,
-     "hi": 0.18
+     "median": 87.62,
+     "lo": 0.15,
+     "hi": 0.15
     },
     "r1": {
-     "median": 0.0776,
+     "median": 0.0781,
      "lo": 0.0015,
-     "hi": 0.0015
+     "hi": 0.0014
     },
     "r2": {
-     "median": 0.028,
+     "median": 0.0281,
      "lo": 0.0006,
-     "hi": 0.0007
+     "hi": 0.0006
     },
     "k": {
-     "median": 0.36,
-     "lo": 0.009,
+     "median": 0.359,
+     "lo": 0.008,
      "hi": 0.011
     },
     "J": {
-     "median": 0.424,
+     "median": 0.425,
      "lo": 0.008,
-     "hi": 0.008
+     "hi": 0.009
     },
     "l3": {
-     "median": 0.073,
-     "lo": 0.049,
-     "hi": 0.071
+     "median": 0.068,
+     "lo": 0.044,
+     "hi": 0.063
     },
-    "l3_p97_5": 0.225,
+    "l3_p97_5": 0.202,
     "light_ratio": {
      "median": 0.055,
      "lo": 0.003,
-     "hi": 0.004
+     "hi": 0.003
     },
-    "converged": false,
-    "flags": [
-     "chain shorter than 20 autocorrelation times (tau=53 steps): uncertainties are indicative"
-    ],
+    "converged": true,
+    "flags": [],
     "f22_ecosw": 0.0644339614504027,
     "e_reliable": true,
     "l3_constrained": false,
@@ -1321,64 +1306,64 @@
     "status": "OK",
     "period_days": 10.126548,
     "e": {
-     "median": 0.2478,
-     "lo": 0.017,
-     "hi": 0.0254
+     "median": 0.2352,
+     "lo": 0.0203,
+     "hi": 0.027
     },
     "omega_deg": {
-     "median": 315.4,
-     "lo": 5.5,
-     "hi": 4.8
+     "median": 318.9,
+     "lo": 6.8,
+     "hi": 7.1
     },
     "ecosw": {
-     "median": 0.1767,
-     "lo": 0.0012,
-     "hi": 0.0008
+     "median": 0.1773,
+     "lo": 0.0013,
+     "hi": 0.0009
     },
     "esinw": {
-     "median": -0.1739,
-     "lo": 0.0357,
-     "hi": 0.0264
+     "median": -0.1545,
+     "lo": 0.0398,
+     "hi": 0.0343
     },
     "incl_deg": {
-     "median": 86.86,
-     "lo": 0.09,
-     "hi": 0.11
+     "median": 86.88,
+     "lo": 0.11,
+     "hi": 0.13
     },
     "r1": {
-     "median": 0.0302,
-     "lo": 0.0046,
-     "hi": 0.0057
+     "median": 0.0269,
+     "lo": 0.0042,
+     "hi": 0.0056
     },
     "r2": {
-     "median": 0.0493,
-     "lo": 0.007,
-     "hi": 0.0048
+     "median": 0.0516,
+     "lo": 0.0049,
+     "hi": 0.0027
     },
     "k": {
-     "median": 1.643,
-     "lo": 0.463,
-     "hi": 0.468
+     "median": 1.932,
+     "lo": 0.485,
+     "hi": 0.438
     },
     "J": {
-     "median": 0.353,
-     "lo": 0.063,
-     "hi": 0.057
+     "median": 0.411,
+     "lo": 0.094,
+     "hi": 0.131
     },
     "l3": {
-     "median": 0.062,
-     "lo": 0.041,
-     "hi": 0.051
+     "median": 0.061,
+     "lo": 0.039,
+     "hi": 0.053
     },
-    "l3_p97_5": 0.16,
+    "l3_p97_5": 0.172,
     "light_ratio": {
-     "median": 0.87,
-     "lo": 0.367,
-     "hi": 0.658
+     "median": 1.463,
+     "lo": 0.732,
+     "hi": 1.331
     },
     "converged": false,
     "flags": [
-     "chain shorter than 20 autocorrelation times (tau=70 steps): uncertainties are indicative"
+     "chain shorter than 20 autocorrelation times (tau=268 steps): uncertainties are indicative"
     ],
     "f22_ecosw": 0.178380530331873,
     "e_reliable": true,
@@ -1394,33 +1379,33 @@
     "status": "OK",
     "period_days": 11.541028,
     "e": {
-     "median": 0.2688,
-     "lo": 0.0099,
-     "hi": 0.0116
+     "median": 0.2708,
+     "lo": 0.0103,
+     "hi": 0.0119
     },
     "omega_deg": {
-     "median": 320.4,
+     "median": 319.9,
      "lo": 3.0,
      "hi": 3.0
     },
     "ecosw": {
-     "median": 0.2072,
-     "lo": 0.0008,
-     "hi": 0.0008
+     "median": 0.207,
+     "lo": 0.0009,
+     "hi": 0.0009
     },
     "esinw": {
-     "median": -0.1712,
-     "lo": 0.0186,
-     "hi": 0.0167
+     "median": -0.1746,
+     "lo": 0.0187,
+     "hi": 0.0174
     },
     "incl_deg": {
-     "median": 87.53,
-     "lo": 0.41,
-     "hi": 0.53
+     "median": 87.47,
+     "lo": 0.39,
+     "hi": 0.54
     },
     "r1": {
-     "median": 0.1026,
-     "lo": 0.0033,
+     "median": 0.1029,
+     "lo": 0.0034,
      "hi": 0.0031
     },
     "r2": {
@@ -1431,7 +1416,7 @@
     "k": {
      "median": 0.178,
      "lo": 0.004,
-     "hi": 0.006
+     "hi": 0.005
     },
     "J": {
      "median": 0.231,
@@ -1439,11 +1424,11 @@
      "hi": 0.011
     },
     "l3": {
-     "median": 0.084,
-     "lo": 0.052,
-     "hi": 0.068
+     "median": 0.074,
+     "lo": 0.048,
+     "hi": 0.071
     },
-    "l3_p97_5": 0.238,
+    "l3_p97_5": 0.215,
     "light_ratio": {
      "median": 0.007,
      "lo": 0.0,
@@ -1465,64 +1450,64 @@
     "status": "OK",
     "period_days": 14.282664,
     "e": {
-     "median": 0.1408,
-     "lo": 0.0862,
-     "hi": 0.0838
+     "median": 0.1859,
+     "lo": 0.0994,
+     "hi": 0.1395
     },
     "omega_deg": {
-     "median": 97.7,
-     "lo": 60.4,
-     "hi": 104.2
+     "median": 161.6,
+     "lo": 40.3,
+     "hi": 44.6
     },
     "ecosw": {
-     "median": 0.0119,
-     "lo": 0.0845,
-     "hi": 0.1175
+     "median": -0.1401,
+     "lo": 0.126,
+     "hi": 0.0922
     },
     "esinw": {
-     "median": 0.0536,
-     "lo": 0.0718,
-     "hi": 0.1243
+     "median": 0.0311,
+     "lo": 0.126,
+     "hi": 0.1332
     },
     "incl_deg": {
-     "median": 87.97,
-     "lo": 0.49,
-     "hi": 0.26
+     "median": 88.44,
+     "lo": 0.87,
+     "hi": 0.64
     },
     "r1": {
-     "median": 0.0348,
-     "lo": 0.0036,
-     "hi": 0.0034
+     "median": 0.0255,
+     "lo": 0.0083,
+     "hi": 0.0069
     },
     "r2": {
-     "median": 0.0108,
-     "lo": 0.0012,
-     "hi": 0.0132
+     "median": 0.0191,
+     "lo": 0.0043,
+     "hi": 0.0048
     },
     "k": {
-     "median": 0.295,
-     "lo": 0.038,
-     "hi": 0.465
+     "median": 0.745,
+     "lo": 0.264,
+     "hi": 0.568
     },
     "J": {
-     "median": 0.024,
-     "lo": 0.016,
-     "hi": 0.033
+     "median": 3.816,
+     "lo": 3.18,
+     "hi": 2.206
     },
     "l3": {
-     "median": 0.036,
-     "lo": 0.024,
-     "hi": 0.04
+     "median": 0.051,
+     "lo": 0.034,
+     "hi": 0.056
     },
-    "l3_p97_5": 0.13,
+    "l3_p97_5": 0.178,
     "light_ratio": {
-     "median": 0.003,
-     "lo": 0.002,
-     "hi": 0.011
+     "median": 2.148,
+     "lo": 2.029,
+     "hi": 5.43
     },
     "converged": false,
     "flags": [
-     "chain shorter than 20 autocorrelation times (tau=79 steps): uncertainties are indicative"
+     "chain shorter than 20 autocorrelation times (tau=433 steps): uncertainties are indicative"
     ],
     "f22_ecosw": null,
     "e_reliable": false,
@@ -1536,12 +1521,12 @@
     "e": {
      "median": 0.0002,
      "lo": 0.0002,
-     "hi": 0.0019
+     "hi": 0.0017
     },
     "omega_deg": {
-     "median": 181.5,
-     "lo": 91.7,
-     "hi": 88.8
+     "median": 205.9,
+     "lo": 116.1,
+     "hi": 64.4
     },
     "ecosw": {
      "median": -0.0,
@@ -1550,13 +1535,13 @@
     },
     "esinw": {
      "median": -0.0,
-     "lo": 0.0006,
-     "hi": 0.0006
+     "lo": 0.0007,
+     "hi": 0.0005
     },
     "incl_deg": {
      "median": 88.99,
      "lo": 0.04,
-     "hi": 0.04
+     "hi": 0.05
     },
     "r1": {
      "median": 0.0216,
@@ -1565,34 +1550,32 @@
     },
     "r2": {
      "median": 0.012,
-     "lo": 0.0005,
+     "lo": 0.0006,
      "hi": 0.0006
     },
     "k": {
-     "median": 0.556,
-     "lo": 0.028,
-     "hi": 0.032
+     "median": 0.554,
+     "lo": 0.029,
+     "hi": 0.037
     },
     "J": {
-     "median": 0.948,
+     "median": 0.95,
      "lo": 0.009,
      "hi": 0.008
     },
     "l3": {
-     "median": 0.051,
-     "lo": 0.033,
-     "hi": 0.044
+     "median": 0.053,
+     "lo": 0.036,
+     "hi": 0.05
     },
-    "l3_p97_5": 0.144,
+    "l3_p97_5": 0.158,
     "light_ratio": {
-     "median": 0.293,
-     "lo": 0.029,
-     "hi": 0.036
+     "median": 0.291,
+     "lo": 0.03,
+     "hi": 0.041
     },
-    "converged": false,
-    "flags": [
-     "chain shorter than 20 autocorrelation times (tau=52 steps): uncertainties are indicative"
-    ],
+    "converged": true,
+    "flags": [],
     "f22_ecosw": 0.0005388952153193075,
     "e_reliable": true,
     "l3_constrained": false,
@@ -1605,67 +1588,65 @@
    {
     "tic": 43785616,
     "status": "OK",
-    "period_days": 17.911121,
+    "period_days": 17.911317,
     "e": {
-     "median": 0.2483,
-     "lo": 0.0365,
-     "hi": 0.0659
+     "median": 0.4688,
+     "lo": 0.0539,
+     "hi": 0.0637
     },
     "omega_deg": {
-     "median": 79.5,
-     "lo": 1.9,
-     "hi": 2.5
+     "median": 85.2,
+     "lo": 0.8,
+     "hi": 0.8
     },
     "ecosw": {
-     "median": 0.0449,
-     "lo": 0.0015,
-     "hi": 0.0013
+     "median": 0.0392,
+     "lo": 0.0018,
+     "hi": 0.0016
     },
     "esinw": {
-     "median": 0.244,
-     "lo": 0.0373,
-     "hi": 0.0671
+     "median": 0.4672,
+     "lo": 0.0543,
+     "hi": 0.064
     },
     "incl_deg": {
-     "median": 85.19,
-     "lo": 0.17,
-     "hi": 0.16
+     "median": 85.62,
+     "lo": 0.16,
+     "hi": 0.15
     },
     "r1": {
-     "median": 0.0142,
-     "lo": 0.0013,
-     "hi": 0.0022
+     "median": 0.1037,
+     "lo": 0.0045,
+     "hi": 0.0067
     },
     "r2": {
-     "median": 0.0947,
-     "lo": 0.0009,
-     "hi": 0.0015
+     "median": 0.016,
+     "lo": 0.0008,
+     "hi": 0.0011
     },
     "k": {
-     "median": 6.648,
-     "lo": 0.906,
-     "hi": 0.808
+     "median": 0.154,
+     "lo": 0.003,
+     "hi": 0.005
     },
     "J": {
-     "median": 0.848,
-     "lo": 0.159,
-     "hi": 0.289
+     "median": 0.356,
+     "lo": 0.143,
+     "hi": 0.243
     },
     "l3": {
-     "median": 0.067,
-     "lo": 0.047,
-     "hi": 0.06
+     "median": 0.072,
+     "lo": 0.046,
+     "hi": 0.064
     },
-    "l3_p97_5": 0.188,
+    "l3_p97_5": 0.204,
     "light_ratio": {
-     "median": 37.993,
-     "lo": 2.058,
-     "hi": 1.824
+     "median": 0.008,
+     "lo": 0.003,
+     "hi": 0.006
     },
-    "converged": false,
-    "flags": [
-     "chain shorter than 20 autocorrelation times (tau=70 steps): uncertainties are indicative"
-    ],
+    "converged": true,
+    "flags": [],
     "f22_ecosw": null,
     "e_reliable": false,
     "l3_constrained": false,
@@ -1677,7 +1658,7 @@
     {
      "tic": 201317466,
      "fit_e": 0.0003,
-     "fit_e_err": 0.0011,
+     "fit_e_err": 0.0013,
      "gaia_e": 0.1249324030835873,
      "gaia_e_sigma": 0.061120495,
      "trusted": true,
@@ -1685,8 +1666,8 @@
     },
     {
      "tic": 370553309,
-     "fit_e": 0.2688,
-     "fit_e_err": 0.0116,
+     "fit_e": 0.2708,
+     "fit_e_err": 0.0119,
      "gaia_e": 0.2345696490826019,
      "gaia_e_sigma": 0.038392127,
      "trusted": true,
@@ -1694,12 +1675,12 @@
     },
     {
      "tic": 43785616,
-     "fit_e": 0.2483,
-     "fit_e_err": 0.0659,
+     "fit_e": 0.4688,
+     "fit_e_err": 0.0637,
      "gaia_e": 0.050997421689606,
      "gaia_e_sigma": 0.02159532,
      "trusted": false,
-     "difference_sigma": 2.8
+     "difference_sigma": 6.2
     }
    ],
    "summary": {
