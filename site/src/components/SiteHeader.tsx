@@ -1,7 +1,7 @@
 import Link from "next/link";
 import HeaderSearch from "./HeaderSearch";
 
-// Seven sections, numbered like the journal itself. Standouts and Glossary
+// Eight sections, numbered like the journal itself. Standouts and Glossary
 // live in the footer.
 const NAV = [
   { href: "/", num: "I", label: "Journal" },
@@ -11,6 +11,7 @@ const NAV = [
   { href: "/about", num: "V", label: "Instrument" },
   { href: "/audit", num: "VI", label: "Audit" },
   { href: "/findings", num: "VII", label: "Findings" },
+  { href: "/physics", num: "VIII", label: "Physics" },
 ];
 
 function StarMark({ className }: { className?: string }) {
@@ -29,7 +30,7 @@ export default function SiteHeader({ tics, run }: { tics: number[]; run?: { samp
           <StarMark className="h-6 w-6" />
           <span className="display-caps text-base">Star Vetter</span>
         </Link>
-        <nav className="order-last -mx-1 flex w-full justify-between overflow-x-auto px-1 pb-0.5 text-[10px] text-muted sm:mx-0 sm:px-0 sm:pb-0 sm:text-[11px] sm:order-none sm:w-auto sm:min-w-0 sm:flex-1 sm:justify-center sm:gap-5 2xl:gap-8">
+        <nav className="order-last -mx-1 flex w-full justify-between gap-4 overflow-x-auto px-1 pb-0.5 text-[10px] text-muted sm:mx-0 sm:px-0 sm:pb-0 sm:text-[11px] sm:order-none sm:w-auto sm:min-w-0 sm:flex-1 sm:justify-center sm:gap-5 2xl:gap-8">
           {NAV.map((n) => (
             <Link key={n.href} href={n.href} className="sv-link nav-caps shrink-0 font-mono transition-colors hover:text-fg"><span className="hidden text-faint 2xl:inline">{n.num}. </span>{n.label}</Link>
           ))}

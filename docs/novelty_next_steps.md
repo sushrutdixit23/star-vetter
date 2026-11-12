@@ -21,7 +21,7 @@ Numbers here come from `docs/novelty_findings.md` (generated). This file lists t
 | No dedicated spectroscopy | Archival spectra now give: Gaia orbits at the eclipse period (4 stars, two of which check the light-curve e), Gaia velocity ranges (93; 60 move, 25 static), APOGEE visit orbits (3). Masses are NOT recovered: Kepler masses from the Gaia radius run about 1.5 times too high | Double-lined radial velocities: a collaborator or TFOP request for the best few; Gaia DR4 epoch velocities (2 December 2026, `f25_gaia_dr4_run.py`) for motion tests |
 | Cause of the period change unknown | A light-travel-time orbit with P3 of 6 to 22 yr fits as well as the parabola but does not beat it; mass exchange and others also fit | More timing over years; a spectrum for a third set of lines |
 | Eccentric stars are mostly TESS-only | Two are re-measured in ZTF; the rest rely on two halves of TESS data | ATLAS or ASAS-SN photometry (needs your account) |
-| Physical light-curve model is photometry-only | `f26_ebfit.py` (ellc + MCMC) now gives e, omega, i, r1, r2 and light ratio, validated on AI Phe; limb darkening and third light are the main systematics | Spectroscopic temperatures for limb darkening; double-lined velocities for masses |
+| Physical light-curve model is photometry-only | `f26_ebfit.py` (ellc + MCMC) now gives e, omega, i, r1, r2 and light ratio, validated on AI Phe; limb darkening and third light are the main systematics. Results are shown on the site's Physics page; `export_physics.py` regenerates its figure data and `tests/test_physics_page.py` checks the orbit geometry against ellc | Spectroscopic temperatures for limb darkening; double-lined velocities for masses |
 
 ## Actions for you, in order
 
