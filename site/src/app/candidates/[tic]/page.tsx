@@ -35,7 +35,10 @@ function noveltyLine(n: NoveltyExtra | null): string {
   if (n.verdict === "ALREADY_KNOWN") return `${base} It is already listed in ${catList(n.matched_catalogs)} at the same period, so it is not a new find.`;
   if (n.verdict === "KNOWN_VARIABLE_PERIOD_DIFFERS") return `${base} It is listed as a variable star in ${catList(n.known_other_period)} with a different period, so novelty is unclear.`;
   if (n.verdict === "NEARBY_PERIOD_MATCH" || n.verdict === "NEARBY_VARIABLE") return `${base} A variable star is listed very close by in ${catList(n.nearby_catalogs)}, which could be a neighbour or the same star.`;
-  return `${base} No match in the catalogs searched, which is weak evidence of novelty.`;
+  // Only an explicit NO_MATCH may say "no match". INCOMPLETE (a query failed) and any verdict this page does not
+  // know are "not checked": a missing answer must never read as a clean result.
+  if (n.verdict === "NO_MATCH") return `${base} No match in the catalogs searched, which is weak evidence of novelty.`;
+  return `${base} The check against the extra catalogs was incomplete for this star (a query failed), so it is not checked yet.`;
 }
 
 const TIER_LABEL: Record<string, string> = {

@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write
+  actions: write   # to start the Pages workflow after the data commit (see 'Publish to GitHub Pages')
 
 concurrency:
   group: star-vetter-pipeline
@@ -60,6 +61,27 @@ jobs:
           python export_extras.py "$GITHUB_WORKSPACE"
           python export_site_data.py "$GITHUB_WORKSPACE"
 
+      # Published files that are derived from the pipeline's CSVs and that CI checks cover every candidate and
+      # match the pipeline counts (tests/test_export_audit.py, test_export_novelty_extra.py,
+      # test_f15_neighbours.py). The first complete run after the 28 Oct outage added 150 targets and 3
+      # candidates and left these three stale, so CI went red on main. All offline: they cannot fail on a
+      # catalog outage.
+      - name: Refresh derived site data
+        run: |
+          python export_independent.py "$GITHUB_WORKSPACE"
+          python export_audit.py "$GITHUB_WORKSPACE"
+          python f15_neighbours.py "$GITHUB_WORKSPACE"
+
+      # Six-catalog cross-match for candidates that have none yet (cached for the rest). It asks the VizieR
+      # mirror and fails closed (a failed query is QUERY_FAILED, never "no match"). If the mirror is down the
+      # run still commits: the new candidates then say "Not checked against the extra catalogs" on their pages,
+      # which is true, and the CI test that every candidate is covered stays red until a later run fills them.
+      - name: Extra catalog cross-match for new candidates
+        run: |
+          python f14_novelty_extra.py "$GITHUB_WORKSPACE" \
+            || echo "::warning title=Extra catalog cross-match did not run::The VizieR mirror was not answering. New candidates are published as not checked against the extra catalogs."
+          python export_novelty_extra.py "$GITHUB_WORKSPACE"
+
       - name: Generate AI content (write-ups, about page, discoveries)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -86,6 +108,7 @@ jobs:
       # Commit and deploy only from main, so a test run started on another
       # branch (workflow_dispatch) can never push data or publish the site.
       - name: Commit pipeline results
+        id: commit
         if: github.ref == 'refs/heads/main'
         run: |
           git config user.name "star-vetter-bot"
@@ -113,9 +136,26 @@ jobs:
             fi
 
             git push
+            echo "committed=true" >> "$GITHUB_OUTPUT"
           fi
 
+      # A push made with the workflow's own token does not start the Pages workflow, so without this step the
+      # GitHub Pages copy would only update when a person pushes to main. workflow_dispatch is the one event
+      # GITHUB_TOKEN is allowed to trigger.
+      - name: Publish to GitHub Pages
+        if: github.ref == 'refs/heads/main' && steps.commit.outputs.committed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main
+
+      # Vercel is the second host. On 2026-11-12 its deploy failed with "Your team has an overdue balance" after
+      # the data had already been committed, which turned every run red and hid a successful pipeline run behind a
+      # billing problem. The deploy is therefore allowed to fail without failing the run, but never silently: the
+      # next step writes a warning annotation and a line in the job summary. Remove continue-on-error once Vercel
+      # is the only host again.
       - name: Deploy to Vercel
+        id: vercel
+        continue-on-error: true
         if: github.ref == 'refs/heads/main'
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -125,6 +165,13 @@ jobs:
           npx vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
           npx vercel build --prod --token="$VERCEL_TOKEN"
           npx vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"
+
+      - name: Say so when the Vercel deploy failed
+        if: steps.vercel.outcome == 'failure'
+        run: |
+          echo "::warning title=Vercel deploy failed::The data was committed and the site is published on GitHub Pages. Check the Vercel account (billing) before relying on Vercel."
+          echo "### Vercel deploy failed" >> "$GITHUB_STEP_SUMMARY"
+          echo "The pipeline run itself succeeded and its data is committed. GitHub Pages is the live copy. See the 'Deploy to Vercel' step for the reason." >> "$GITHUB_STEP_SUMMARY"
 
       # Keep the orchestrator log and run record when anything fails: they are
       # not committed (data/logs is git-ignored) and vanish with the runner.
