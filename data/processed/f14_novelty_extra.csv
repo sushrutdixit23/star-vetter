@@ -278,7 +278,7 @@ tic,tier,verdict,matched_catalogs,known_other_period,nearby_catalogs,failed_cata
 446502638,THIN MARGIN,NO_MATCH,,,,,"ztf,crts,wise,atlas,asas",
 446692149,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
 446758441,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
-447009429,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+447009429,PERIOD ALIAS,INCOMPLETE,,,,atlas,"crts,wise,asas",ztf
 447112476,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
 447115398,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
 447350975,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
@@ -288,7 +288,7 @@ tic,tier,verdict,matched_catalogs,known_other_period,nearby_catalogs,failed_cata
 453692345,CLEAN,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
 457675706,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
 458507124,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
-459533211,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+459533211,CLEAN,INCOMPLETE,,,,kelt,"crts,wise,atlas,asas",ztf
 463349042,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
 467214801,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
 467962259,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
@@ -300,7 +300,7 @@ tic,tier,verdict,matched_catalogs,known_other_period,nearby_catalogs,failed_cata
 468146715,CLEAN,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
 468152519,CLEAN,NO_MATCH,,,,,"wise,atlas,asas","ztf,crts"
 468210255,THIN MARGIN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
-468210292,PERIOD ALIAS,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+468210292,PERIOD ALIAS,INCOMPLETE,,,,asas,"crts,wise,atlas",ztf
 469305326,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
 469306687,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
 469606998,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas

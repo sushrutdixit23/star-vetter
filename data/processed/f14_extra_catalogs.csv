@@ -1676,7 +1676,7 @@ tic,catalog,status,covered,n_rows,nearest_sep_arcsec,nearest_class,nearest_perio
 447009429,ztf,NOT_COVERED,False,0,,,,,,,
 447009429,crts,NO_MATCH,True,0,,,,,,,
 447009429,wise,NO_MATCH,True,0,,,,,,,
-447009429,atlas,NO_MATCH,True,0,,,,,,,
+447009429,atlas,QUERY_FAILED,True,0,,,,,,,"VizieR returned an error: value="" ""/> <INFO"
 447009429,asas,NO_MATCH,True,0,,,,,,,
 447009429,kelt,NO_MATCH,,0,,,,,,,
 447112476,ztf,NOT_COVERED,False,0,,,,,,,
@@ -1738,7 +1738,7 @@ tic,catalog,status,covered,n_rows,nearest_sep_arcsec,nearest_class,nearest_perio
 459533211,wise,NO_MATCH,True,0,,,,,,,
 459533211,atlas,NO_MATCH,True,0,,,,,,,
 459533211,asas,NO_MATCH,True,0,,,,,,,
-459533211,kelt,NO_MATCH,,0,,,,,,,
+459533211,kelt,QUERY_FAILED,,0,,,,,,,"VizieR returned an error: value="" ""/> <INFO"
 463349042,ztf,NOT_COVERED,False,0,,,,,,,
 463349042,crts,NO_MATCH,True,0,,,,,,,
 463349042,wise,NO_MATCH,True,0,,,,,,,
@@ -1809,7 +1809,7 @@ tic,catalog,status,covered,n_rows,nearest_sep_arcsec,nearest_class,nearest_perio
 468210292,crts,NO_MATCH,True,0,,,,,,,
 468210292,wise,NO_MATCH,True,0,,,,,,,
 468210292,atlas,NO_MATCH,True,0,,,,,,,
-468210292,asas,NO_MATCH,True,0,,,,,,,
+468210292,asas,QUERY_FAILED,True,0,,,,,,,"VizieR returned an error: value=""The database is not currently reachable.""/> <INFO"
 468210292,kelt,NO_MATCH,,0,,,,,,,
 469305326,ztf,NOT_COVERED,False,0,,,,,,,
 469305326,crts,NO_MATCH,True,0,,,,,,,
