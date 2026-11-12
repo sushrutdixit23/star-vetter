@@ -1,0 +1,6 @@
+{
+ "path": "VizieR (vizier.cfa.harvard.edu)",
+ "vizier_server": "vizier.cfa.harvard.edu",
+ "radius_arcsec": 5.0,
+ "n_stars": 3323
+}
