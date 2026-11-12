@@ -1,0 +1,12 @@
+{
+ "trials": 141,
+ "flagged": 0,
+ "rate": 0.0,
+ "verdicts": {
+  "NOT_TESTABLE": 66,
+  "CONSTANT": 70,
+  "IMPLAUSIBLE_AMPLITUDE": 4,
+  "DRIFT_TOO_FEW_TIMES": 1
+ },
+ "stars_flagged": []
+}

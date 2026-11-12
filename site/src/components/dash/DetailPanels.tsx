@@ -10,6 +10,7 @@ import { percentile } from "@/lib/colormap";
 import { fmtDec, fmtRA } from "@/lib/sky";
 import TierBadge from "../TierBadge";
 import ExtLink from "../ExtLink";
+import { asset } from "@/lib/asset";
 import Term from "../Term";
 import Heatmap from "./Heatmap";
 import { OCChart, PhaseScatter } from "./charts";
@@ -128,11 +129,11 @@ export function DetailHeader({
         <button type="button" className={btn} onClick={() => copy("cite", cite)}>
           <IconQuote className="h-3.5 w-3.5" /> {copied === "cite" ? "Copied" : "Cite"}
         </button>
-        <ExtLink className={btn} href={d ? `/data/detail/TIC${s.tic}.json` : `/data/candidates/TIC${s.tic}.json`} download>
+        <ExtLink className={btn} href={asset(d ? `/data/detail/TIC${s.tic}.json` : `/data/candidates/TIC${s.tic}.json`)} download>
           <IconDownload className="h-3.5 w-3.5" /> Data (JSON)
         </ExtLink>
         {hasDossier && (
-          <ExtLink className={btn} href={`/dossiers/TIC${s.tic}_dossier.pdf`} newTab>
+          <ExtLink className={btn} href={asset(`/dossiers/TIC${s.tic}_dossier.pdf`)} newTab>
             <IconDownload className="h-3.5 w-3.5" /> Dossier (PDF)
           </ExtLink>
         )}
@@ -463,11 +464,11 @@ export function QuickActions({ s, d, hasDossier }: { s: Summary; d: Detail | nul
   return (
     <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 xl:grid-cols-1 2xl:grid-cols-2">
       {hasDossier && (
-        <ExtLink className={b} href={`/dossiers/TIC${s.tic}_dossier.pdf`} newTab>
+        <ExtLink className={b} href={asset(`/dossiers/TIC${s.tic}_dossier.pdf`)} newTab>
           Full dossier (PDF) <IconDownload className="h-3.5 w-3.5 text-muted" />
         </ExtLink>
       )}
-      <ExtLink className={b} href={d ? `/data/detail/TIC${s.tic}.json` : `/data/candidates/TIC${s.tic}.json`} download>
+      <ExtLink className={b} href={asset(d ? `/data/detail/TIC${s.tic}.json` : `/data/candidates/TIC${s.tic}.json`)} download>
         Download data (JSON) <IconDownload className="h-3.5 w-3.5 text-muted" />
       </ExtLink>
       <ExtLink className={b} href={`https://exofop.ipac.caltech.edu/tess/target.php?id=${s.tic}`} newTab>

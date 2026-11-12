@@ -1,0 +1,137 @@
+name: Physics
+
+# Reruns the physical light-curve model on Linux, where ellc compiles without trouble, so nobody needs
+# ellc on Windows. Three kinds of job run in parallel:
+#   converge   - every candidate fit, with each chain extended until it is 20 autocorrelation times long
+#   benchmark  - the pre-registered blind test on published systems (data/benchmarks/f29_preregistration.json)
+#   injection  - synthetic binaries injected into candidate noise, to measure bias and error-bar coverage
+# A final job merges everything into one artifact, "physics-results". Nothing is committed by the workflow.
+#
+# Start it from the Actions tab (Run workflow), or push any branch named physics-run/<anything>.
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_steps:
+        description: "Longest chain allowed per fit"
+        default: "8000"
+  push:
+    branches: ["physics-run/**"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: physics-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  MAX_STEPS: ${{ github.event.inputs.max_steps || '8000' }}
+  F26_PROCS: "4"
+  PYTHONUNBUFFERED: "1"
+
+jobs:
+  converge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    strategy:
+      fail-fast: false
+      matrix:
+        tic: [19569810, 43785616, 59490510, 60192021, 178434324, 201317466, 237115819, 264099112, 273787849,
+              306294675, 308578336, 318887646, 370553309, 394805902, 468010975, 468090770, 468210255]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - name: Install (ellc needs gfortran)
+        run: |
+          sudo apt-get install -y gfortran
+          pip install -r requirements.txt -r requirements-physics.txt
+      - name: Fit to convergence
+        run: |
+          mkdir -p out
+          python f26_ebfit.py . --tics ${{ matrix.tic }} --converge --max-steps "$MAX_STEPS" --lc-dir data/physics_inputs --out out/f26_${{ matrix.tic }}.json
+      - uses: actions/upload-artifact@v4
+        with: { name: "f26-${{ matrix.tic }}", path: out/ }
+
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    strategy:
+      fail-fast: false
+      matrix:
+        system: ["MU Cas", "V1022 Cas", "V454 Aur", "V505 Per"]
+        cadence: [2, 30]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - name: Install (ellc needs gfortran)
+        run: |
+          sudo apt-get install -y gfortran
+          pip install -r requirements.txt -r requirements-physics.txt
+      - name: Fetch TESS light curves (MAST, with retries)
+        run: |
+          python - <<'EOF'
+          import json, time
+          import f13_ephemeris as f13
+          pre = json.load(open("data/benchmarks/f29_preregistration.json"))
+          tic = [s["tic"] for s in pre["systems"] if s["name"] == "${{ matrix.system }}"][0]
+          for attempt in range(5):
+              try:
+                  lcs = f13.load_or_fetch_lightcurves(tic, "SPOC", print, lc_dir="data/benchmarks/lc")
+                  if lcs:
+                      print("sectors", [s for s, _ in lcs]); break
+              except Exception as e:
+                  print("attempt", attempt, repr(e))
+              time.sleep(30 * (attempt + 1))
+          EOF
+      - name: Blind fit
+        run: |
+          mkdir -p out
+          slug=$(echo "${{ matrix.system }}" | tr ' ' '_')
+          python f29_benchmark.py . --only "${{ matrix.system }}" --cadence ${{ matrix.cadence }} --max-steps "$MAX_STEPS" --out "out/f29_${slug}_${{ matrix.cadence }}.json"
+      - uses: actions/upload-artifact@v4
+        with: { name: "f29-${{ strategy.job-index }}", path: out/ }
+
+  injection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    strategy:
+      fail-fast: false
+      matrix:
+        host: [370553309, 318887646, 43785616]
+        start: [0, 2, 4, 6, 8, 10, 12, 14]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - name: Install (ellc needs gfortran)
+        run: |
+          sudo apt-get install -y gfortran
+          pip install -r requirements.txt -r requirements-physics.txt
+      - name: Inject and recover
+        run: |
+          mkdir -p out
+          python f30_injection.py . --host ${{ matrix.host }} --seed 29 --n 2 --start ${{ matrix.start }} --max-steps 5000 --lc-dir data/physics_inputs --out out/f30_${{ matrix.host }}_${{ matrix.start }}.json
+      - uses: actions/upload-artifact@v4
+        with: { name: "f30-${{ matrix.host }}-${{ matrix.start }}", path: out/ }
+
+  merge:
+    if: always()
+    needs: [converge, benchmark, injection]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with: { path: parts }
+      - name: Merge
+        run: |
+          python merge_physics_runs.py . parts
+          mkdir -p results
+          cp data/processed/f26_ebfit.json data/processed/f29_benchmarks.json data/processed/f30_injection.json results/ 2>/dev/null || true
+      - uses: actions/upload-artifact@v4
+        with: { name: physics-results, path: results/ }

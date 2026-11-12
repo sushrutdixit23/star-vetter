@@ -1,0 +1,6 @@
+# Optional: physical light-curve modelling (f26_ebfit.py).
+# ellc needs a Fortran compiler (gfortran). On Windows use WSL or conda (conda install -c conda-forge ellc);
+# the fitted results are committed, so the site and the note do not need these packages.
+emcee
+ellc
+scipy

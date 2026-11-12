@@ -1,0 +1,262 @@
+name: Daily scaled screening
+
+# Screens many more stars per day than the single-job pipeline by splitting one day's draw across
+# parallel shard jobs. Every shard computes the SAME draw (same table, same history, same seed) and
+# keeps every K-th star, so shards never overlap. Results are merged by TIC, tested, and either
+# opened as a pull request (default, so numbers that appear in the published note never change
+# without a person looking) or committed straight to main.
+#
+#   schedule          once a day
+#   workflow_dispatch shards x batch_per_shard stars, publish = pr | main
+#
+# Throughput: 8 shards x 150 = 1,200 stars/day by default (the single-job pipeline manages about
+# 150 per 6 h). Up to 20 shards run at once on a public repository. A private repository pays for
+# the runner minutes: roughly 8 x 60 min per day.
+
+on:
+  schedule:
+    - cron: "17 20 * * *"          # 01:47 IST
+  workflow_dispatch:
+    inputs:
+      shards:
+        description: "Parallel shard jobs (1-20)"
+        required: false
+        default: "8"
+      batch_per_shard:
+        description: "New stars per shard"
+        required: false
+        default: "150"
+      publish:
+        description: "pr = open or update a pull request (default); main = commit to main"
+        required: false
+        default: "pr"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+# Same group as the single-job pipeline: the two never write results at the same time.
+concurrency:
+  group: star-vetter-pipeline
+  cancel-in-progress: false
+
+env:
+  PYTHONUNBUFFERED: "1"
+  STATE_BRANCH: bot/daily-scale
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
+      shards: ${{ steps.plan.outputs.shards }}
+      batch: ${{ steps.plan.outputs.batch }}
+      base_ref: ${{ steps.plan.outputs.base_ref }}
+      publish: ${{ steps.plan.outputs.publish }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # Stops in about a minute, before any work, if MAST or the CDS services are down.
+      - name: Pre-flight - are the catalog services up?
+        run: python3 upstream.py
+      - name: Plan the shards
+        id: plan
+        env:
+          IN_SHARDS: ${{ github.event.inputs.shards || '8' }}
+          IN_BATCH: ${{ github.event.inputs.batch_per_shard || '150' }}
+          IN_PUBLISH: ${{ github.event.inputs.publish || 'pr' }}
+        run: |
+          python3 - <<'PY'
+          import json, os, subprocess
+          k = max(1, min(20, int(os.environ["IN_SHARDS"])))
+          b = max(1, min(400, int(os.environ["IN_BATCH"])))
+          pub = os.environ["IN_PUBLISH"] if os.environ["IN_PUBLISH"] in ("pr", "main") else "pr"
+          # build on top of yesterday's unmerged results so nothing is drawn twice
+          r = subprocess.run(["git", "ls-remote", "--exit-code", "--heads", "origin", os.environ["STATE_BRANCH"]], capture_output=True)
+          base = os.environ["STATE_BRANCH"] if (r.returncode == 0 and pub == "pr") else "main"
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write("matrix=%s\n" % json.dumps(list(range(k))))
+              f.write("shards=%d\nbatch=%d\nbase_ref=%s\npublish=%s\n" % (k, b, base, pub))
+          print("shards", k, "batch", b, "base", base, "publish", pub)
+          PY
+
+  shard:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: ${{ fromJson(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.plan.outputs.base_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Screen this shard
+        id: orch
+        env:
+          STAR_VETTER_BATCH_SIZE: ${{ needs.plan.outputs.batch }}
+          STAR_VETTER_SHARD: ${{ matrix.shard }}/${{ needs.plan.outputs.shards }}
+        run: python f6_orchestrator.py "$GITHUB_WORKSPACE"
+      # Only a shard that finished cleanly hands results back (the orchestrator fails closed, and a
+      # half-finished slice must never reach the merge).
+      - name: Pack results
+        if: steps.orch.outcome == 'success'
+        run: |
+          tar czf "shard-${{ matrix.shard }}.tgz" \
+            $(ls data/processed/f2c_manifest.csv data/processed/f3i_vetting_results.csv data/processed/f4f_novelty_results.csv \
+                 data/processed/diag_blend_results.csv data/processed/diag_blend_neighbours.csv \
+                 data/processed/diag_pixel_results_v2.csv data/processed/f4b_asassn_cache.csv 2>/dev/null) \
+            data/processed/sample_history data/runs
+      - uses: actions/upload-artifact@v4
+        if: steps.orch.outcome == 'success'
+        with:
+          name: shard-${{ matrix.shard }}
+          path: shard-${{ matrix.shard }}.tgz
+          retention-days: 3
+          if-no-files-found: error
+      - name: Upload logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: logs-shard-${{ matrix.shard }}
+          path: |
+            data/logs/
+            data/runs/
+          retention-days: 7
+          if-no-files-found: ignore
+
+  merge:
+    needs: [plan, shard]
+    if: ${{ !cancelled() && needs.plan.result == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.plan.outputs.base_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt pytest
+
+      - name: Bring in main first (conflicts in result tables are unioned by TIC)
+        run: |
+          git config user.name "star-vetter-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git fetch origin main
+          if git merge origin/main --no-edit; then
+            echo "Merged cleanly with origin/main."
+          else
+            python resolve_merge_conflicts.py "$GITHUB_WORKSPACE"
+            git commit --no-edit
+          fi
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: shard-*
+          path: shard-results
+      - name: Merge shard results by TIC
+        run: python merge_shards.py "$GITHUB_WORKSPACE" shard-results --summary merge-summary.md
+
+      - name: Export site data
+        run: |
+          python export_dashboard.py "$GITHUB_WORKSPACE"
+          python export_pipeline_stats.py "$GITHUB_WORKSPACE"
+          python export_extras.py "$GITHUB_WORKSPACE"
+          python export_site_data.py "$GITHUB_WORKSPACE"
+
+      # Independent evidence for the new survivors. Each step resumes (skips stars already done) and a
+      # failing source never blocks the merge: the readiness gate reports what is missing.
+      - name: ZTF test for new survivors
+        continue-on-error: true
+        run: python f17_ztf_independent.py "$GITHUB_WORKSPACE"
+      - name: Gaia, prior art and evidence tiers
+        continue-on-error: true
+        run: |
+          python f18_gaia_dr3.py "$GITHUB_WORKSPACE"
+          python f19_prior_art.py "$GITHUB_WORKSPACE"
+          python f20_evidence.py "$GITHUB_WORKSPACE"
+          python export_independent.py "$GITHUB_WORKSPACE"
+          python export_audit.py "$GITHUB_WORKSPACE"
+      - name: Eccentricity of new survivors
+        continue-on-error: true
+        run: |
+          python fetch_survivor_lightcurves.py "$GITHUB_WORKSPACE"
+          python f22_eccentricity.py "$GITHUB_WORKSPACE"
+          python export_findings.py "$GITHUB_WORKSPACE"
+
+      - name: Tests
+        id: tests
+        continue-on-error: true
+        run: |
+          python -I -m pytest -q 2>&1 | tee pytest.log
+          echo "line=$(tail -n 1 pytest.log)" >> "$GITHUB_OUTPUT"
+      - name: Publication readiness (report only)
+        continue-on-error: true
+        run: python check_publication_readiness.py "$GITHUB_WORKSPACE" | tee readiness.log
+
+      - name: Commit
+        id: commit
+        run: |
+          git add data/processed data/runs site/public docs
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Nothing new to commit."
+          else
+            git commit -m "Daily scaled screening: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publish to main
+        if: steps.commit.outputs.changed == 'true' && needs.plan.outputs.publish == 'main'
+        run: |
+          git fetch origin main
+          git merge origin/main --no-edit || { python resolve_merge_conflicts.py "$GITHUB_WORKSPACE"; git commit --no-edit; }
+          git push origin HEAD:main
+
+      - name: Publish as a pull request
+        if: steps.commit.outputs.changed == 'true' && needs.plan.outputs.publish == 'pr'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TEST_LINE: ${{ steps.tests.outputs.line }}
+        run: |
+          git push --force-with-lease origin HEAD:"$STATE_BRANCH"
+          {
+            cat merge-summary.md
+            echo
+            echo "Tests: ${TEST_LINE:-not run}"
+            echo
+            echo '```'
+            tail -n 14 readiness.log 2>/dev/null || true
+            echo '```'
+          } > pr-body.md
+          N=$(gh pr list --head "$STATE_BRANCH" --state open --json number --jq '.[0].number // empty')
+          if [ -z "$N" ]; then
+            gh pr create --base main --head "$STATE_BRANCH" --title "Daily scaled screening (rolling)" --body-file pr-body.md \
+              || echo "::warning::Could not open the pull request. Enable Settings > Actions > General > 'Allow GitHub Actions to create and approve pull requests'. The branch $STATE_BRANCH was pushed."
+          else
+            gh pr comment "$N" --body-file pr-body.md
+          fi
+
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: merge-logs
+          path: |
+            merge-summary.md
+            pytest.log
+            readiness.log
+          retention-days: 14
+          if-no-files-found: ignore

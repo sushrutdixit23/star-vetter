@@ -6,6 +6,7 @@ import type {
   Dashboard,
   Detail,
   DiscoveriesData,
+  Preregistration,
   ModelMetrics,
   PipelineStats,
   SiteIndex,
@@ -31,6 +32,8 @@ import type {
   PriorArtData,
   GaiaDr4Plan,
   NeighbourStar,
+  FindingsData,
+  PeriodChangePredictions,
 } from "./types";
 import type { Summary } from "@/components/dash/DetailPanels";
 
@@ -171,6 +174,21 @@ export function getPredictions(): PredictionsData | null {
   const p = path.join(DATA_DIR, "predictions.json");
   PREDICTIONS = fs.existsSync(p) ? (JSON.parse(fs.readFileSync(p, "utf-8")) as PredictionsData) : null;
   return PREDICTIONS;
+}
+
+export function getPreregistration(): Preregistration | null {
+  const p = path.join(DATA_DIR, "preregistration.json");
+  return fs.existsSync(p) ? (JSON.parse(fs.readFileSync(p, "utf-8")) as Preregistration) : null;
+}
+
+export function getFindings(): FindingsData | null {
+  const p = path.join(DATA_DIR, "eccentric.json");
+  return fs.existsSync(p) ? (JSON.parse(fs.readFileSync(p, "utf-8")) as FindingsData) : null;
+}
+
+export function getPeriodChangePredictions(): PeriodChangePredictions | null {
+  const p = path.join(DATA_DIR, "period_change_predictions.json");
+  return fs.existsSync(p) ? (JSON.parse(fs.readFileSync(p, "utf-8")) as PeriodChangePredictions) : null;
 }
 
 export function getSurfaceEvidenceFor(tic: number): SurfaceStar | null {

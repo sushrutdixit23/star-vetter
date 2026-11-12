@@ -1,0 +1,63 @@
+{
+ "MU Cas": {
+  "source_id": 429158427924463872,
+  "phot_g_mean_mag": 10.742443,
+  "ruwe": 0.899012,
+  "non_single_star": 0,
+  "radius_flame": 6.147291,
+  "radius_flame_lower": 5.91344,
+  "radius_flame_upper": 6.3877287,
+  "radius_gspphot": 5.3651,
+  "teff_gspphot": 12161.581,
+  "mass_flame": 4.461057
+ },
+ "V1022 Cas": {
+  "source_id": 1994714276926012416,
+  "phot_g_mean_mag": 5.4493103,
+  "ruwe": 0.9190562,
+  "non_single_star": 2,
+  "radius_flame": null,
+  "radius_flame_lower": null,
+  "radius_flame_upper": null,
+  "radius_gspphot": null,
+  "teff_gspphot": null,
+  "mass_flame": null
+ },
+ "V454 Aur": {
+  "source_id": 3440630513359154688,
+  "phot_g_mean_mag": 7.517847,
+  "ruwe": 1.0699373,
+  "non_single_star": 0,
+  "radius_flame": 1.6205767,
+  "radius_flame_lower": 1.5880646,
+  "radius_flame_upper": 1.6530856,
+  "radius_gspphot": 1.6229,
+  "teff_gspphot": 6002.4614,
+  "mass_flame": 1.1402181
+ },
+ "V505 Per": {
+  "source_id": 455772347387763840,
+  "phot_g_mean_mag": 6.758204,
+  "ruwe": 0.96763366,
+  "non_single_star": 4,
+  "radius_flame": 1.881874,
+  "radius_flame_lower": 1.8440956,
+  "radius_flame_upper": 1.9197211,
+  "radius_gspphot": 1.8917,
+  "teff_gspphot": 6480.3403,
+  "mass_flame": 1.4203439
+ },
+ "AI Phe": {
+  "source_id": 4933562966514402176,
+  "phot_g_mean_mag": 8.430471,
+  "ruwe": 1.149,
+  "non_single_star": 2,
+  "radius_flame": 3.1861,
+  "radius_flame_lower": 3.1205,
+  "radius_flame_upper": 3.2584,
+  "radius_gspphot": 3.2087,
+  "teff_gspphot": 6013.207,
+  "mass_flame": 1.6440000534057617,
+  "via": "VizieR I/355 (Harvard-CfA mirror)"
+ }
+}

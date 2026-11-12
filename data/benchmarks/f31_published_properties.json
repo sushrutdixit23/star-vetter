@@ -1,0 +1,75 @@
+{
+ "note": "Published masses, radii and TESS-band light ratios (star 1 = the star eclipsed at primary eclipse). Values copied from the papers' tables; AI Phe's light ratio is not in the abstract and is taken from this pipeline's own validation fit (k^2 J), which is marked.",
+ "systems": [
+  {
+   "name": "AI Phe",
+   "ra": 17.3925,
+   "dec": -46.2656,
+   "period": 24.5924,
+   "r1": 0.037686,
+   "R1": 1.805,
+   "R2": 2.9332,
+   "M1": 1.1938,
+   "M2": 1.2438,
+   "light_ratio": 1.16,
+   "light_ratio_source": "this pipeline's validation fit (k^2 J); not published",
+   "source": "Maxted et al. 2020, MNRAS 498, 332 (arXiv:2003.09295), abstract"
+  },
+  {
+   "name": "MU Cas",
+   "ra": 3.9648347763899996,
+   "dec": 60.43156745513,
+   "period": 9.65295307,
+   "r1": 0.10275,
+   "R1": 4.117,
+   "R2": 3.653,
+   "M1": 4.674,
+   "M2": 4.586,
+   "light_ratio": 0.804,
+   "light_ratio_source": "published",
+   "source": "arXiv:2410.23011, Tables II and III"
+  },
+  {
+   "name": "V1022 Cas",
+   "ra": 359.28530025274,
+   "dec": 55.70570537345,
+   "period": 12.1561598,
+   "r1": 0.07875,
+   "R1": 2.591,
+   "R2": 2.472,
+   "M1": 1.6263,
+   "M2": 1.6086,
+   "light_ratio": 0.946,
+   "light_ratio_source": "published",
+   "source": "Southworth, Rediscussion Paper III (arXiv:2012.05978), Tables II and physical properties"
+  },
+  {
+   "name": "V454 Aur",
+   "ra": 95.51273661037,
+   "dec": 34.59735119107,
+   "period": 27.0198177,
+   "r1": 0.019875,
+   "R1": 0.9787,
+   "R2": 1.2105,
+   "M1": 1.0336,
+   "M2": 1.1612,
+   "light_ratio": 1.8448,
+   "light_ratio_source": "published",
+   "source": "Southworth, Rediscussion Paper XIX (arXiv:2404.19443), Table II and physical properties"
+  },
+  {
+   "name": "V505 Per",
+   "ra": 35.3040133543,
+   "dec": 54.51007825701,
+   "period": 4.2220216,
+   "r1": 0.08637,
+   "R1": 1.2941,
+   "R2": 1.2637,
+   "M1": 1.2745,
+   "M2": 1.2577,
+   "light_ratio": 0.9367,
+   "light_ratio_source": "published",
+   "source": "Southworth (arXiv:2106.04323), Tables II and V"
+  }
+ ]
+}

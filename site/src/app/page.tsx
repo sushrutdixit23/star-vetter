@@ -13,6 +13,7 @@ import NeighbourTest from "@/components/journal/NeighbourTest";
 import SurvivorClocks from "@/components/journal/SurvivorClocks";
 import ForecastBand, { type ForecastItem } from "@/components/journal/ForecastBand";
 import TicRedirect from "@/components/journal/TicRedirect";
+import { getPhysicsFigures } from "@/lib/physics";
 
 // The journal: eight sections in the order of the story - the machine,
 // its gauntlet, what an eclipse is, the impostor test, the survivors,
@@ -34,6 +35,7 @@ export default function Home() {
   const stats = getPipelineStats();
   const meta = getSiteMeta();
   const dash = getDashboard();
+  const nPhysics = Object.keys(getPhysicsFigures()?.stars ?? {}).length;
   const candidates = getAllCandidates().sort((a, b) => b.ephemeris.bls_snr - a.ephemeris.bls_snr);
   const featured = candidates[0];
   const featuredDetail = getDetail(featured.tic);
@@ -103,6 +105,16 @@ export default function Home() {
 
       {pred && pred.stars.length > 0 && (
         <ForecastBand year9StartUtc="2026-11-26T00:00:00Z" items={forecast} nStars={pred.stars.length} nEclipses={pred.stars.reduce((n, s) => n + s.predictions.length, 0)} nValidated={pred.counts.listed_validated} />
+      )}
+
+      {nPhysics > 0 && (
+      <Link href="/physics" className="group flex flex-col gap-2 border-t border-line py-8 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8">
+        <span className="font-display text-2xl text-fg sm:text-3xl">From a dip to an orbit: watch the eclipses happen</span>
+        <span className="max-w-xl text-sm leading-relaxed text-muted">
+          A physical model fitted to {nPhysics} candidates, checked against a published system and against Gaia, with an interactive orbit for each star.
+          <span className="nav-caps ml-2 font-mono text-[11px] text-fg underline-offset-4 group-hover:underline">Open the Physics page &rarr;</span>
+        </span>
+      </Link>
       )}
 
       <div className="grid gap-12 border-t border-line py-10 2xl:grid-cols-2 2xl:gap-0">

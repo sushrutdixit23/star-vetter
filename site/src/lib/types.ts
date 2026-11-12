@@ -826,3 +826,204 @@ export interface GaiaDr4Plan {
   stars_with_precise_ephemeris: number;
   testable: number;
 }
+
+// preregistration.json: where the frozen predictions were deposited. Written by
+// hand from the freeze manifest and the Zenodo record (see docs/publication_readiness.md).
+export interface Preregistration {
+  doi: string;
+  url: string;
+  deposited_utc: string;
+  frozen_utc: string;
+  bundle_sha256: string;
+  commit: string;
+  branch: string;
+  stars: number;
+  eclipses: number;
+  file: string;
+  repo: string;
+}
+
+
+export interface EccentricCandidate {
+  tic: number;
+  period_days: number;
+  ecosw: number;
+  ecosw_sigma: number;
+  secondary_phase: number;
+  secondary_depth: number;
+  secondary_snr: number;
+  marginal: boolean;
+  ztf_coverage: string | null;
+  ztf_confirmed: boolean | null;
+  ztf_p_value: number | null;
+  evidence_tier: string | null;
+  novelty: string | null;
+}
+
+export interface PeriodChangeStar {
+  tic: number;
+  period_days: number;
+  n_tess: number;
+  n_ztf: number;
+  chi2_line: number;
+  dof_line: number;
+  chi2_parabola: number;
+  dof_parabola: number;
+  dP_dt_seconds_per_year: number;
+  dP_dt_sigma_seconds_per_year: number;
+}
+
+export interface LtteResult {
+  tic: number;
+  period_days: number;
+  chi2_parabola: number;
+  best_chi2: number;
+  best_p3_years: number;
+  allowed_p3_years: [number, number];
+  statistically_allowed_p3_years: [number, number];
+  max_plausible_m3_msun: number;
+  amplitude_min_range: [number, number];
+  m3_min_msun_range: [number, number];
+  fits_as_well_as_parabola: boolean;
+  extra_parameters_vs_parabola: number;
+  gaia_dr3_orbit_sensitive_below_years: number;
+}
+
+export interface Quantile {
+  median: number;
+  lo: number;
+  hi: number;
+}
+
+export interface PhysicalFit {
+  tic: number;
+  status: string;
+  period_days?: number;
+  e?: Quantile | null;
+  omega_deg?: Quantile | null;
+  ecosw?: Quantile | null;
+  esinw?: Quantile | null;
+  incl_deg?: Quantile | null;
+  r1?: Quantile | null;
+  r2?: Quantile | null;
+  k?: Quantile | null;
+  J?: Quantile | null;
+  l3?: Quantile | null;
+  l3_p97_5?: number;
+  light_ratio?: Quantile | null;
+  converged?: boolean | null;
+  flags?: string[];
+  f22_ecosw?: number | null;
+  e_reliable?: boolean;
+  e_note?: string;
+  l3_constrained?: boolean;
+  total_mass_msun?: number;
+  total_mass_rel_sigma?: number;
+  total_mass_plausible?: boolean;
+  total_mass_ms_consistent?: boolean | null;
+  total_mass_ms_expected?: number | null;
+}
+
+export interface PhysicalData {
+  validation: {
+    star: string;
+    reference: string;
+    cadence_min: number;
+    passed: boolean;
+    checks: Record<string, boolean>;
+    truth: Record<string, number>;
+    fit: Record<string, number>;
+  }[];
+  fits: PhysicalFit[];
+  mass_check?: { n: number; median_ratio: number | null; n_consistent: number };
+  spectroscopy: {
+    e_check_vs_gaia: {
+      tic: number;
+      fit_e: number;
+      fit_e_err: number;
+      gaia_e: number;
+      gaia_e_sigma: number;
+      trusted: boolean;
+      difference_sigma: number;
+    }[];
+    summary: Record<string, number>;
+    gaia_orbits: {
+      tic: number;
+      type: string;
+      gaia_period_days: number;
+      period_ratio: number;
+      same_period: boolean;
+      outer_orbit: boolean;
+      gaia_e: number | null;
+      gaia_e_sigma: number | null;
+      gaia_ecosw: number | null;
+      gaia_k1_kms: number | null;
+      photometric_ecosw: number | null;
+    }[];
+    apogee: {
+      tic: number;
+      n: number;
+      k1_kms: number;
+      k1_sigma_kms: number;
+      chi2: number;
+      dof: number;
+      chi2_constant: number;
+      flagged_visits: number;
+      orbit_from: string;
+    }[];
+    static: {
+      tic: number;
+      verdict: string;
+      k1_upper_kms: number;
+      m2_max_msun: number;
+      eclipse_depth: number | null;
+      n_transits: number;
+      m1_source: string;
+    }[];
+  } | null;
+}
+
+export interface FindingsData {
+  generated_at: string;
+  verdict_counts: Record<string, number>;
+  candidates: EccentricCandidate[];
+  period_bins: { p_min: number; p_max: number; n_measured: number; n_offset: number }[];
+  circularisation: {
+    threshold_ecosw: number;
+    n_short: number;
+    k_short: number;
+    n_longer: number;
+    k_longer: number;
+    chance_of_none_if_same_rate_as_longer: number | null;
+  };
+  timing_drift: {
+    counts: Record<string, number>;
+    period_change: PeriodChangeStar[];
+    calibration: { trials: number; flagged: number } | null;
+    ltte: LtteResult[] | null;
+  } | null;
+  validation: {
+    n_tested: number;
+    n_with_measurement: number;
+    median_abs_phase_error: number | null;
+    "fraction_within_0.01": number | null;
+    circular_truth: number;
+    false_positive_eccentric: number;
+    eccentric_truth: number;
+    recovered_eccentric: number;
+    eccentric_truth_verdicts: Record<string, number>;
+    circular_truth_verdicts: Record<string, number>;
+  } | null;
+  physical: PhysicalData | null;
+  limits: string[];
+}
+
+export interface PeriodChangePredictions {
+  rule: string;
+  time_system: string;
+  stars: Record<string, {
+    tic: number;
+    period_days: number;
+    predictions: { epoch: number; bjd_tdb_parabola: number; sigma_min: number }[];
+  }>;
+}

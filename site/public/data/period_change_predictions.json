@@ -1,0 +1,197 @@
+{
+ "rule": "Consistent: within 3 sigma of the parabola. Refuted: more than 5 sigma away. Else inconclusive.",
+ "stars": {
+  "237115819": {
+   "chi2_parabola": 9.765808326710514,
+   "coefficients_min": [
+    -28.18129858698307,
+    0.4727031761959955,
+    0.0031887696819985416
+   ],
+   "dof": 28,
+   "error_scale": 1.0,
+   "n_times": 31,
+   "period_change": {
+    "dP_dt_seconds_per_year": 9.448808424918505,
+    "dP_dt_sigma_seconds_per_year": 0.8810293301734109,
+    "gain_over_line_chi2": 115.01999758472314,
+    "quad_coeff_min_per_cycle2": 0.0031887696819985416,
+    "quad_sigma": 0.000297328455681192
+   },
+   "period_days": 14.791682599195202,
+   "predictions": [
+    {
+     "bjd_tdb_parabola": 2461375.638846267,
+     "epoch": 182,
+     "parabola_minus_line_min": 27.83573598298051,
+     "sigma_min": 5.869189633199706
+    },
+    {
+     "bjd_tdb_parabola": 2461390.4316653972,
+     "epoch": 183,
+     "parabola_minus_line_min": 28.467785808839153,
+     "sigma_min": 6.038177716703505
+    },
+    {
+     "bjd_tdb_parabola": 2461405.224488956,
+     "epoch": 184,
+     "parabola_minus_line_min": 29.106213174061793,
+     "sigma_min": 6.210184021409702
+    },
+    {
+     "bjd_tdb_parabola": 2461420.0173169435,
+     "epoch": 185,
+     "parabola_minus_line_min": 29.75101807864843,
+     "sigma_min": 6.385231473383505
+    },
+    {
+     "bjd_tdb_parabola": 2461434.8101493595,
+     "epoch": 186,
+     "parabola_minus_line_min": 30.40220052259906,
+     "sigma_min": 6.563343076007105
+    },
+    {
+     "bjd_tdb_parabola": 2461449.602986205,
+     "epoch": 187,
+     "parabola_minus_line_min": 31.059760505913715,
+     "sigma_min": 6.744541904907809
+    },
+    {
+     "bjd_tdb_parabola": 2461464.3958274787,
+     "epoch": 188,
+     "parabola_minus_line_min": 31.723698028592338,
+     "sigma_min": 6.928851103279238
+    },
+    {
+     "bjd_tdb_parabola": 2461479.188673182,
+     "epoch": 189,
+     "parabola_minus_line_min": 32.39401309063496,
+     "sigma_min": 7.116293877561799
+    },
+    {
+     "bjd_tdb_parabola": 2461493.9815233136,
+     "epoch": 190,
+     "parabola_minus_line_min": 33.0707056920416,
+     "sigma_min": 7.30689349345063
+    },
+    {
+     "bjd_tdb_parabola": 2461508.774377874,
+     "epoch": 191,
+     "parabola_minus_line_min": 33.75377583281221,
+     "sigma_min": 7.500673272203111
+    },
+    {
+     "bjd_tdb_parabola": 2461523.5672368635,
+     "epoch": 192,
+     "parabola_minus_line_min": 34.443223512946844,
+     "sigma_min": 7.69765658722108
+    },
+    {
+     "bjd_tdb_parabola": 2461538.360100282,
+     "epoch": 193,
+     "parabola_minus_line_min": 35.139048732445474,
+     "sigma_min": 7.897866860883338
+    },
+    {
+     "bjd_tdb_parabola": 2461553.152968129,
+     "epoch": 194,
+     "parabola_minus_line_min": 35.8412514913081,
+     "sigma_min": 8.101327561609015
+    },
+    {
+     "bjd_tdb_parabola": 2461567.9458404053,
+     "epoch": 195,
+     "parabola_minus_line_min": 36.54983178953469,
+     "sigma_min": 8.308062201131479
+    },
+    {
+     "bjd_tdb_parabola": 2461582.73871711,
+     "epoch": 196,
+     "parabola_minus_line_min": 37.26478962712531,
+     "sigma_min": 8.518094331966582
+    },
+    {
+     "bjd_tdb_parabola": 2461597.5315982434,
+     "epoch": 197,
+     "parabola_minus_line_min": 37.98612500407992,
+     "sigma_min": 8.731447545058497
+    },
+    {
+     "bjd_tdb_parabola": 2461612.3244838063,
+     "epoch": 198,
+     "parabola_minus_line_min": 38.71383792039853,
+     "sigma_min": 8.948145467589619
+    },
+    {
+     "bjd_tdb_parabola": 2461627.117373797,
+     "epoch": 199,
+     "parabola_minus_line_min": 39.44792837608111,
+     "sigma_min": 9.168211760941288
+    },
+    {
+     "bjd_tdb_parabola": 2461641.910268218,
+     "epoch": 200,
+     "parabola_minus_line_min": 40.18839637112771,
+     "sigma_min": 9.391670118793325
+    },
+    {
+     "bjd_tdb_parabola": 2461656.703167067,
+     "epoch": 201,
+     "parabola_minus_line_min": 40.935241905538305,
+     "sigma_min": 9.61854426535136
+    },
+    {
+     "bjd_tdb_parabola": 2461671.496070345,
+     "epoch": 202,
+     "parabola_minus_line_min": 41.6884649793129,
+     "sigma_min": 9.84885795369268
+    },
+    {
+     "bjd_tdb_parabola": 2461686.2889780514,
+     "epoch": 203,
+     "parabola_minus_line_min": 42.448065592451485,
+     "sigma_min": 10.08263496422106
+    },
+    {
+     "bjd_tdb_parabola": 2461701.0818901868,
+     "epoch": 204,
+     "parabola_minus_line_min": 43.21404374495407,
+     "sigma_min": 10.319899103222125
+    },
+    {
+     "bjd_tdb_parabola": 2461715.8748067515,
+     "epoch": 205,
+     "parabola_minus_line_min": 43.986399436820676,
+     "sigma_min": 10.56067420151233
+    },
+    {
+     "bjd_tdb_parabola": 2461730.667727745,
+     "epoch": 206,
+     "parabola_minus_line_min": 44.76513266805128,
+     "sigma_min": 10.804984113174072
+    },
+    {
+     "bjd_tdb_parabola": 2461745.460653167,
+     "epoch": 207,
+     "parabola_minus_line_min": 45.55024343864585,
+     "sigma_min": 11.052852714370587
+    },
+    {
+     "bjd_tdb_parabola": 2461760.253583018,
+     "epoch": 208,
+     "parabola_minus_line_min": 46.34173174860442,
+     "sigma_min": 11.30430390223522
+    },
+    {
+     "bjd_tdb_parabola": 2461775.0465172976,
+     "epoch": 209,
+     "parabola_minus_line_min": 47.13959759792698,
+     "sigma_min": 11.55936159382926
+    }
+   ],
+   "reference_epoch_bjd": 2458683.4390885704,
+   "tic": 237115819
+  }
+ },
+ "time_system": "BJD_TDB"
+}
