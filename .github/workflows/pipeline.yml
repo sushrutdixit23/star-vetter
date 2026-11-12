@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write
+  actions: write   # to start the Pages workflow after the data commit (see 'Publish to GitHub Pages')
 
 concurrency:
   group: star-vetter-pipeline
@@ -86,6 +87,7 @@ jobs:
       # Commit and deploy only from main, so a test run started on another
       # branch (workflow_dispatch) can never push data or publish the site.
       - name: Commit pipeline results
+        id: commit
         if: github.ref == 'refs/heads/main'
         run: |
           git config user.name "star-vetter-bot"
@@ -113,9 +115,26 @@ jobs:
             fi
 
             git push
+            echo "committed=true" >> "$GITHUB_OUTPUT"
           fi
 
+      # A push made with the workflow's own token does not start the Pages workflow, so without this step the
+      # GitHub Pages copy would only update when a person pushes to main. workflow_dispatch is the one event
+      # GITHUB_TOKEN is allowed to trigger.
+      - name: Publish to GitHub Pages
+        if: github.ref == 'refs/heads/main' && steps.commit.outputs.committed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main
+
+      # Vercel is the second host. On 2026-11-12 its deploy failed with "Your team has an overdue balance" after
+      # the data had already been committed, which turned every run red and hid a successful pipeline run behind a
+      # billing problem. The deploy is therefore allowed to fail without failing the run, but never silently: the
+      # next step writes a warning annotation and a line in the job summary. Remove continue-on-error once Vercel
+      # is the only host again.
       - name: Deploy to Vercel
+        id: vercel
+        continue-on-error: true
         if: github.ref == 'refs/heads/main'
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -125,6 +144,13 @@ jobs:
           npx vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
           npx vercel build --prod --token="$VERCEL_TOKEN"
           npx vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"
+
+      - name: Say so when the Vercel deploy failed
+        if: steps.vercel.outcome == 'failure'
+        run: |
+          echo "::warning title=Vercel deploy failed::The data was committed and the site is published on GitHub Pages. Check the Vercel account (billing) before relying on Vercel."
+          echo "### Vercel deploy failed" >> "$GITHUB_STEP_SUMMARY"
+          echo "The pipeline run itself succeeded and its data is committed. GitHub Pages is the live copy. See the 'Deploy to Vercel' step for the reason." >> "$GITHUB_STEP_SUMMARY"
 
       # Keep the orchestrator log and run record when anything fails: they are
       # not committed (data/logs is git-ignored) and vanish with the runner.
