@@ -77,7 +77,7 @@ def truth_summary(p):
             "omega_deg": float(np.degrees(w) % 360)}
 
 
-def run(root, host, seed, n, start=0, max_steps=6000, lc_dir=None, noise=None):
+def run(root, host, seed, n, start=0, max_steps=6000, lc_dir=None, noise_model=None):
     fits = json.loads((root / "data" / "processed" / "f26_ebfit.json").read_text(encoding="utf-8"))["stars"]
     res = fits[str(host)]
     period, t0 = res["period_days"], res["t0_btjd"]
@@ -99,7 +99,7 @@ def run(root, host, seed, n, start=0, max_steps=6000, lc_dir=None, noise=None):
                 row["status"] = "NO_PRIMARY_MEASURED"
             else:
                 r = f26.fit_star(t, finj, s, period, t0, inp["duration_days"], inp["ecosw_input"], inp["depth_ratio"],
-                                 steps=1500, until_converged=True, max_steps=max_steps, noise=noise)
+                                 steps=1500, until_converged=True, max_steps=max_steps, noise=noise_model)
                 row["status"] = r["status"]
                 row["inputs"] = inp
                 if r["status"] == "OK":
