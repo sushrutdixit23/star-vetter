@@ -50,7 +50,7 @@
     "bugs_found_and_fixed_before_registration": [
       "scipy's default finite-difference step (1.5e-8) is below ellc's numerical noise; the least-squares step then stopped far from the minimum (cost 53000 against 760 at the truth). v2 uses a step of 1e-4; v1 is unchanged.",
       "a 5-point running-median clip deleted ingress and egress points of deep eclipses and biased the scatter estimate 20% low; replaced by the slope-blind spike test described above. v1 uses a different clip (phase-neighbourhood median) and is not affected.",
-      "emcee refuses fewer than 2 x ndim walkers; v2 has one noise scale per sector, so the walker count is raised to 2 x ndim + 2 when that exceeds 32 (never the case for v1), and consecutive sectors share a scale beyond 8 sectors (one benchmark-class star has 42 sectors)."
+      "emcee refuses fewer than 2 x ndim walkers; v2 has one noise scale per sector, so the walker count is raised to 2 x ndim + 2 when that exceeds 32 (never the case for v1), and consecutive sectors share a scale beyond 8 sectors (one candidate, TIC 237115819, has 42 sectors)."
     ],
     "real_data_checks_before_registration": [
       "AI Phe (TIC 102069549, Maxted et al. 2020), a published system that is not in the registered set, was fitted once with v2 at 2-minute cadence (1500 steps, not converged) as a check that real TESS data are handled: e 0.1894 (+0.0137/-0.0045) against 0.1875, e sin w 0.1778 against 0.1758, r1 0.0377 against 0.0377, r2 0.0614 against 0.0612, i 88.31 (+0.06/-0.20) against 88.36, all five published values inside the quoted intervals. No constant was changed afterwards; only how the 'poor fit' flag is computed (v2 now judges the posterior white-noise scales, not the white-noise-only starting point).",
