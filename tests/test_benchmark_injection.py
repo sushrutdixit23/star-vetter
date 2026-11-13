@@ -106,3 +106,19 @@ def test_v2_benchmark_results_merge_into_their_own_file(tmp_path):
     assert out["noise_model"] == "v2" and out["summary"]["runs"] == 1
     assert (root / "data" / "processed" / "f29_benchmarks_v2.json").exists()
     assert not (root / "data" / "processed" / "f29_benchmarks.json").exists()
+
+
+def test_injection_run_passes_the_noise_model_name_not_the_host_noise_array(monkeypatch):
+    """Regression: `run` once overwrote its noise-model argument with the host's noise array, so every v2 injection
+    failed with 'truth value of an array is ambiguous' before any fit ran (Physics v2, first run)."""
+    seen = []
+
+    def fake_fit(t, f, s, period, t0, duration, ecosw, depth_ratio, **kw):
+        seen.append(kw.get("noise"))
+        return {"status": "TOO_FEW_ECLIPSES_WITH_BASELINE"}
+
+    monkeypatch.setattr(fi.f26, "fit_star", fake_fit)
+    monkeypatch.setattr(fb, "prepare", lambda t, f, s, period, t0: {"duration_days": 0.2, "ecosw_input": 0.0, "depth_ratio": 0.5, "f22": {}})
+    rows = fi.run(ROOT, 43785616, 29, 2, 0, 50, str(ROOT / "data" / "physics_inputs"), "v2")
+    assert seen == ["v2", "v2"]
+    assert [r["status"] for r in rows] == ["TOO_FEW_ECLIPSES_WITH_BASELINE"] * 2
