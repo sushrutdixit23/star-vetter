@@ -22,6 +22,9 @@ on:
       injection_max_steps:
         description: "Longest chain allowed per injection fit"
         default: "5000"
+      run_benchmarks:
+        description: "Run the 8 benchmark fits (set false to rerun only the injections)"
+        default: "true"
   push:
     branches: ["physics-run-v2/**"]
 
@@ -40,6 +43,8 @@ env:
 
 jobs:
   benchmark:
+    # skipped on a manual run with run_benchmarks=false, and on a pushed branch whose name contains "injections"
+    if: github.event.inputs.run_benchmarks != 'false' && !contains(github.ref_name, 'injections')
     runs-on: ubuntu-latest
     timeout-minutes: 340
     strategy:
