@@ -38,6 +38,7 @@ function noveltyLine(n: NoveltyExtra | null): string {
   // Only an explicit NO_MATCH may say "no match". INCOMPLETE (a query failed) and any verdict this page does not
   // know are "not checked": a missing answer must never read as a clean result.
   if (n.verdict === "NO_MATCH") return `${base} No match in the catalogs searched, which is weak evidence of novelty.`;
+  if (n.verdict === "NOT_CHECKED") return `${base} Not checked against the extra catalogs yet (the catalog service was not answering when this star was added).`;
   return `${base} The check against the extra catalogs was incomplete for this star (a query failed), so it is not checked yet.`;
 }
 

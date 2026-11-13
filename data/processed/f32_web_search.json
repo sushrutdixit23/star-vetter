@@ -1,0 +1,18 @@
+{
+ "kind": "MANUAL_RECORD",
+ "searched_on": "2026-11-13",
+ "engine": "the web-search tool available to the assistant, standard mode (a general web search engine, not ADS)",
+ "how_to_read": "Written by hand after the searches, not produced by a script, and not reproducible by one. The engine does not match identifiers exactly and does not index the contents of large tables, so 'no page mentions the star' is weak evidence. It is recorded so the search is not repeated and so nobody mistakes it for an ADS full-text search, which has not been done.",
+ "query_template": "\"TIC <tic>\" OR \"Gaia DR3 <gaia_id>\" eclipsing binary",
+ "stars": {
+  "308578336": {"gaia_id": "3352736515911590912", "outcome": "no result mentions this star", "unrelated_hits": "contact-binary papers (BSN series), var.astro.cz entries for other Gaia DR3 sources, WUMaDOG entries for other TICs"},
+  "264099112": {"gaia_id": "4494788312985842816", "outcome": "no result mentions this star", "unrelated_hits": "var.astro.cz entries and WUMaDOG entries for other stars; an EL CVn paper (other TICs)"},
+  "468210255": {"gaia_id": "5336954575674153984", "outcome": "no result mentions this star", "unrelated_hits": "a Gaia NSS paper on K2 planet candidates (other stars), var.astro.cz entries for other sources"},
+  "19569810": {"gaia_id": "5728207404620279424", "outcome": "no result mentions this star", "unrelated_hits": "contact-binary papers, var.astro.cz and WUMaDOG entries for other stars"},
+  "394805902": {"gaia_id": "5839407092913434112", "outcome": "no result mentions this star", "unrelated_hits": "var.astro.cz and WUMaDOG entries for other stars"},
+  "59490510": {"gaia_id": "3363204175843137536", "outcome": "no result mentions this star", "unrelated_hits": "an OEJV note on an eccentric binary with apsidal motion, Gaia DR3 2059297390930630400 (a different star: RA 19h58m, this one is at 07h16m), ASAS-SN value-added catalog tables of other sources"},
+  "60192021": {"gaia_id": "5510347043958260608", "outcome": "no result mentions this star", "unrelated_hits": "var.astro.cz entries and WUMaDOG entries for other stars"},
+  "468010975": {"gaia_id": "5337352873776385280", "outcome": "no result mentions this star", "unrelated_hits": "a post-common-envelope binary paper (TIC 460388167, a different star), var.astro.cz entries for other sources"},
+  "370553309": {"gaia_id": "5243406094839663232", "outcome": "no result mentions this star", "unrelated_hits": "contact-binary papers, var.astro.cz and WUMaDOG entries for other stars. This star's published orbit is the Gaia DR3 SB1 solution, which SIMBAD records (see f32_literature.json) and which the web search did not surface."}
+ }
+}

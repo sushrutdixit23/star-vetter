@@ -61,21 +61,10 @@ jobs:
           python export_extras.py "$GITHUB_WORKSPACE"
           python export_site_data.py "$GITHUB_WORKSPACE"
 
-      # Published files that are derived from the pipeline's CSVs and that CI checks cover every candidate and
-      # match the pipeline counts (tests/test_export_audit.py, test_export_novelty_extra.py,
-      # test_f15_neighbours.py). The first complete run after the 28 Oct outage added 150 targets and 3
-      # candidates and left these three stale, so CI went red on main. All offline: they cannot fail on a
-      # catalog outage.
-      - name: Refresh derived site data
-        run: |
-          python export_independent.py "$GITHUB_WORKSPACE"
-          python export_audit.py "$GITHUB_WORKSPACE"
-          python f15_neighbours.py "$GITHUB_WORKSPACE"
-
       # Six-catalog cross-match for candidates that have none yet (cached for the rest). It asks the VizieR
       # mirror and fails closed (a failed query is QUERY_FAILED, never "no match"). If the mirror is down the
-      # run still commits: the new candidates then say "Not checked against the extra catalogs" on their pages,
-      # which is true, and the CI test that every candidate is covered stays red until a later run fills them.
+      # run still commits: export_novelty_extra.py then publishes NOT_CHECKED for the candidates with no row, their
+      # pages say "Not checked against the extra catalogs yet", which is true, and a later run fills them in.
       - name: Extra catalog cross-match for new candidates
         run: |
           python f14_novelty_extra.py "$GITHUB_WORKSPACE" \
@@ -91,6 +80,18 @@ jobs:
           python export_dashboard.py "$GITHUB_WORKSPACE"
           python check_about_content_drift.py "$GITHUB_WORKSPACE" --auto-fix
           python f10_generate_discoveries.py "$GITHUB_WORKSPACE"
+
+      # Published files that are derived from the pipeline's CSVs and that CI checks cover every candidate and
+      # match the pipeline counts (tests/test_export_audit.py, test_f14b_atlas_alias.py, test_f15_neighbours.py).
+      # This step runs AFTER the cross-match and AFTER the last export_dashboard.py, because f15 reads the dashboard's
+      # star list and f14b reads the cross-match table; run earlier, each left one star or one ATLAS match out and
+      # CI went red on main (2026-11-13). All offline: none of them can fail on a catalog outage.
+      - name: Refresh derived site data
+        run: |
+          python export_independent.py "$GITHUB_WORKSPACE"
+          python export_audit.py "$GITHUB_WORKSPACE"
+          python f14b_atlas_alias.py "$GITHUB_WORKSPACE"
+          python f15_neighbours.py "$GITHUB_WORKSPACE"
 
       - name: Set up Node
         uses: actions/setup-node@v4

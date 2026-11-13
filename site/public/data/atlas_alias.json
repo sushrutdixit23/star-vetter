@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-07T21:27:04Z",
+  "generated_at": "2026-11-13T10:47:55Z",
   "method": {
     "relation": "1/P_TESS = |1/(f*P_ATLAS) + s*j/0.99727|",
     "multipliers": [
@@ -24,22 +24,22 @@
     "tolerance_basis": "1 / 620-day ATLAS DR1 median baseline (Heinze et al. 2018)",
     "chance_rate_basis": "ATLAS period of each star against the TESS period of every other candidate"
   },
-  "tested": 37,
+  "tested": 39,
   "atlas_class_of_tested": {
-    "dubious": 35,
+    "dubious": 37,
     "CBF": 1,
     "IRR": 1
   },
   "explained": {
     "k": 8,
-    "n": 37,
+    "n": 39,
     "harmonic_only": 2,
     "with_sidereal": 6
   },
   "chance": {
-    "pair_rate": 0.08275922981805335,
-    "expected_explained": 3.062091503267974,
-    "p_value_at_least_observed": 0.009603911649536962
+    "pair_rate": 0.08218070047723045,
+    "expected_explained": 3.2050473186119874,
+    "p_value_at_least_observed": 0.01269633402421865
   },
   "already_matching_ratio_1_half_2": 9,
   "stars": [
@@ -239,6 +239,15 @@
       }
     },
     {
+      "tic": 237742152,
+      "atlas_class": "dubious",
+      "atlas_period": 3.978059,
+      "tess_period": 3.4225565399572004,
+      "ratio_atlas_over_tess": 1.1623062916733427,
+      "explained": false,
+      "explanation": null
+    },
+    {
       "tic": 239661046,
       "atlas_class": "dubious",
       "atlas_period": 18.88999,
@@ -286,6 +295,15 @@
       "atlas_period": 4.331842,
       "tess_period": 0.6870359878187736,
       "ratio_atlas_over_tess": 6.305116583125269,
+      "explained": false,
+      "explanation": null
+    },
+    {
+      "tic": 272851823,
+      "atlas_class": "dubious",
+      "atlas_period": 0.823561,
+      "tess_period": 1.1659192644336502,
+      "ratio_atlas_over_tess": 0.7063619455675157,
       "explained": false,
       "explanation": null
     },

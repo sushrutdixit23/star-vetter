@@ -45,11 +45,18 @@ def test_only_main_commits_and_publishes():
         assert "refs/heads/main" in block(name), name
 
 
-def test_derived_site_data_is_refreshed_before_the_commit():
-    """audit.json, ztf_independent.json, neighbours.json and novelty_extra.json are rebuilt on every run."""
+def test_derived_site_data_is_refreshed_after_everything_it_depends_on_and_before_the_commit():
+    """audit, ztf_independent, atlas_alias, neighbours and novelty_extra are rebuilt on every run.
+
+    f15 reads dashboard.json (rewritten by the AI-content step) and f14b reads the cross-match table, so the
+    refresh must come after both, or CI goes red on main with one candidate or one ATLAS match missing."""
     refresh = block("Refresh derived site data")
-    for script in ("export_independent.py", "export_audit.py", "f15_neighbours.py"):
+    for script in ("export_independent.py", "export_audit.py", "f14b_atlas_alias.py", "f15_neighbours.py"):
         assert script in refresh
     extra = block("Extra catalog cross-match for new candidates")
     assert "f14_novelty_extra.py" in extra and "::warning" in extra and "export_novelty_extra.py" in extra
-    assert TEXT.index("Refresh derived site data") < TEXT.index("Extra catalog cross-match for new candidates") < TEXT.index("Commit pipeline results")
+    # the explanation of what a candidate with no row shows sits in the comment above the step
+    assert "export_novelty_extra.py then publishes NOT_CHECKED" in TEXT
+    order = [TEXT.index(n) for n in ("Export site data", "Extra catalog cross-match for new candidates", "Generate AI content",
+                                    "Refresh derived site data", "Build site (sanity check", "Commit pipeline results")]
+    assert order == sorted(order)

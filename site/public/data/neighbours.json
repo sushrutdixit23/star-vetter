@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-13T07:11:07Z",
+ "generated_at": "2026-11-13T10:47:29Z",
  "method": {
   "psf_sigma_arcsec": 16.8,
   "aperture_radius_arcsec": 31.5,
@@ -13,21 +13,21 @@
   "assumptions": "Gaussian PSF and circular aperture are approximate; the centroid floor is an assumption, so results are shown for several floors.",
   "not_covered": "sources not in the TIC; neighbours beyond 63 arcsec; the target's own companions"
  },
- "stars_assessed": 317,
+ "stars_assessed": 318,
  "summary_by_floor": {
   "3": {
-   "NO_VIABLE_NEIGHBOUR": 264,
+   "NO_VIABLE_NEIGHBOUR": 265,
    "VIABLE_NEIGHBOUR_AT_OFFSET": 30,
    "UNSEPARABLE_NEIGHBOUR": 23
   },
   "6": {
-   "NO_VIABLE_NEIGHBOUR": 243,
+   "NO_VIABLE_NEIGHBOUR": 244,
    "VIABLE_NEIGHBOUR_AT_OFFSET": 30,
    "UNSEPARABLE_NEIGHBOUR": 44
   },
   "10": {
    "NO_VIABLE_NEIGHBOUR": 214,
-   "VIABLE_NEIGHBOUR_AT_OFFSET": 35,
+   "VIABLE_NEIGHBOUR_AT_OFFSET": 36,
    "UNSEPARABLE_NEIGHBOUR": 68
   }
  },
@@ -1376,7 +1376,7 @@
       "tic": 78202970,
       "sep_arcsec": 4.540536619324716,
       "delta_tmag": 0.6524000000000001,
-      "required_depth": 0.48766317229248396
+      "required_depth": 0.4876631722924839
      },
      "unseparable": 0,
      "status": "VIABLE_NEIGHBOUR_AT_OFFSET"
@@ -1388,7 +1388,7 @@
       "tic": 78202970,
       "sep_arcsec": 4.540536619324716,
       "delta_tmag": 0.6524000000000001,
-      "required_depth": 0.48766317229248396
+      "required_depth": 0.4876631722924839
      },
      "unseparable": 1,
      "status": "UNSEPARABLE_NEIGHBOUR"
@@ -1400,7 +1400,7 @@
       "tic": 78202970,
       "sep_arcsec": 4.540536619324716,
       "delta_tmag": 0.6524000000000001,
-      "required_depth": 0.48766317229248396
+      "required_depth": 0.4876631722924839
      },
      "unseparable": 2,
      "status": "UNSEPARABLE_NEIGHBOUR"
@@ -1412,7 +1412,7 @@
     "tic": 78202970,
     "sep_arcsec": 4.540536619324716,
     "delta_tmag": 0.6524000000000001,
-    "required_depth": 0.48766317229248396
+    "required_depth": 0.4876631722924839
    }
   },
   "78955414": {
@@ -3238,7 +3238,7 @@
       "tic": 201868134,
       "sep_arcsec": 9.739786375333187,
       "delta_tmag": 1.9512,
-      "required_depth": 0.45644698429612324
+      "required_depth": 0.4564469842961231
      },
      "unseparable": 1,
      "status": "UNSEPARABLE_NEIGHBOUR"
@@ -8081,7 +8081,7 @@
       "tic": 1100920305,
       "sep_arcsec": 0.942328292818009,
       "delta_tmag": 2.4924999999999997,
-      "required_depth": 0.837995209293663
+      "required_depth": 0.8379952092936629
      },
      "unseparable": 1,
      "status": "UNSEPARABLE_NEIGHBOUR"
@@ -8093,7 +8093,7 @@
       "tic": 1100920305,
       "sep_arcsec": 0.942328292818009,
       "delta_tmag": 2.4924999999999997,
-      "required_depth": 0.837995209293663
+      "required_depth": 0.8379952092936629
      },
      "unseparable": 1,
      "status": "UNSEPARABLE_NEIGHBOUR"
@@ -8105,7 +8105,7 @@
     "tic": 1100920305,
     "sep_arcsec": 0.942328292818009,
     "delta_tmag": 2.4924999999999997,
-    "required_depth": 0.837995209293663
+    "required_depth": 0.8379952092936629
    }
   },
   "355734894": {
@@ -9171,6 +9171,43 @@
      "closest_viable": null,
      "unseparable": 0,
      "status": "NO_VIABLE_NEIGHBOUR"
+    }
+   },
+   "status": "NO_VIABLE_NEIGHBOUR",
+   "viable": 0,
+   "closest_viable": null
+  },
+  "395085556": {
+   "offset_arcsec": 4.484996163977685,
+   "diff_snr": 7.563886576032252,
+   "depth": 0.002804873947106,
+   "n_neighbours": 141,
+   "by_floor": {
+    "3": {
+     "bright_enough": 4,
+     "viable": 0,
+     "closest_viable": null,
+     "unseparable": 0,
+     "status": "NO_VIABLE_NEIGHBOUR"
+    },
+    "6": {
+     "bright_enough": 4,
+     "viable": 0,
+     "closest_viable": null,
+     "unseparable": 0,
+     "status": "NO_VIABLE_NEIGHBOUR"
+    },
+    "10": {
+     "bright_enough": 4,
+     "viable": 2,
+     "closest_viable": {
+      "tic": 395085569,
+      "sep_arcsec": 11.266031503329303,
+      "delta_tmag": 4.275600000000001,
+      "required_depth": 0.1892611914031054
+     },
+     "unseparable": 0,
+     "status": "VIABLE_NEIGHBOUR_AT_OFFSET"
     }
    },
    "status": "NO_VIABLE_NEIGHBOUR",

@@ -1,0 +1,164 @@
+{
+ "generated_at": "2026-11-13T10:41:26Z",
+ "source": "SIMBAD TAP, https://simbad.cfa.harvard.edu/simbad/sim-tap/sync",
+ "cone_arcsec": 6.0,
+ "survey_nobjects": 200,
+ "control": "control AI Phe: by TIC IN_SIMBAD_WITH_STUDIES, by position only IN_SIMBAD_WITH_STUDIES",
+ "n_unchecked": 0,
+ "stars": [
+  {
+   "tic": 308578336,
+   "gaia_id": "3352736515911590912",
+   "ra": 100.02066,
+   "dec": 13.12712,
+   "tmag": 14.611,
+   "period_days": 4.276555,
+   "e": 0.3112,
+   "omega_deg": 178.8,
+   "status": "CHECKED",
+   "objects": [],
+   "verdict": "NOT_IN_SIMBAD"
+  },
+  {
+   "tic": 264099112,
+   "gaia_id": "4494788312985842816",
+   "ra": 271.0036,
+   "dec": 10.77245,
+   "tmag": 11.742,
+   "period_days": 5.974307,
+   "e": 0.2077,
+   "omega_deg": 342.9,
+   "status": "CHECKED",
+   "objects": [],
+   "verdict": "NOT_IN_SIMBAD"
+  },
+  {
+   "tic": 468210255,
+   "gaia_id": "5336954575674153984",
+   "ra": 170.29531,
+   "dec": -61.87284,
+   "tmag": 14.614,
+   "period_days": 6.707415,
+   "e": 0.2491,
+   "omega_deg": 30.0,
+   "status": "CHECKED",
+   "objects": [],
+   "verdict": "NOT_IN_SIMBAD"
+  },
+  {
+   "tic": 19569810,
+   "gaia_id": "5728207404620279424",
+   "ra": 124.9701,
+   "dec": -10.77071,
+   "tmag": 14.154,
+   "period_days": 7.006162,
+   "e": 0.1204,
+   "omega_deg": 79.8,
+   "status": "CHECKED",
+   "objects": [],
+   "verdict": "NOT_IN_SIMBAD"
+  },
+  {
+   "tic": 394805902,
+   "gaia_id": "5839407092913434112",
+   "ra": 202.44777,
+   "dec": -72.89647,
+   "tmag": 11.691,
+   "period_days": 8.130101,
+   "e": 0.2276,
+   "omega_deg": 127.0,
+   "status": "CHECKED",
+   "objects": [],
+   "verdict": "NOT_IN_SIMBAD"
+  },
+  {
+   "tic": 59490510,
+   "gaia_id": "3363204175843137536",
+   "ra": 108.98664,
+   "dec": 18.88833,
+   "tmag": 12.964,
+   "period_days": 9.124314,
+   "e": 0.2636,
+   "omega_deg": 351.2,
+   "status": "CHECKED",
+   "objects": [],
+   "verdict": "NOT_IN_SIMBAD"
+  },
+  {
+   "tic": 60192021,
+   "gaia_id": "5510347043958260608",
+   "ra": 111.52363,
+   "dec": -46.44888,
+   "tmag": 14.442,
+   "period_days": 9.875251,
+   "e": 0.0704,
+   "omega_deg": 20.3,
+   "status": "CHECKED",
+   "objects": [],
+   "verdict": "NOT_IN_SIMBAD"
+  },
+  {
+   "tic": 468010975,
+   "gaia_id": "5337352873776385280",
+   "ra": 169.78132,
+   "dec": -61.52858,
+   "tmag": 13.836,
+   "period_days": 10.126548,
+   "e": 0.2352,
+   "omega_deg": 318.9,
+   "status": "CHECKED",
+   "objects": [],
+   "verdict": "NOT_IN_SIMBAD"
+  },
+  {
+   "tic": 370553309,
+   "gaia_id": "5243406094839663232",
+   "ra": 143.97717,
+   "dec": -70.23937,
+   "tmag": 11.904,
+   "period_days": 11.541028,
+   "e": 0.2708,
+   "omega_deg": 319.9,
+   "status": "CHECKED",
+   "objects": [
+    {
+     "oid": 7671827,
+     "main_id": "TYC 9200-557-1",
+     "otype": "SB*",
+     "nbref": 2,
+     "ra": 143.97717335435,
+     "dec": -70.2393729002,
+     "via": [
+      "identifier Gaia DR3 5243406094839663232",
+      "identifier TIC 370553309",
+      "position within 6 arcsec"
+     ],
+     "sep_arcsec": 0.01,
+     "references": [
+      {
+       "bibcode": "2023A&A...674A..34G",
+       "year": 2023,
+       "journal": "A&A",
+       "title": "{\\em Gaia} Data Release 3 Stellar multiplicity, a teaser for the hidden treasure.",
+       "nbobject": 307214,
+       "kind": "survey",
+       "mentions_binary_topics": false,
+       "doi": "10.1051/0004-6361/202243782"
+      },
+      {
+       "bibcode": "2018A&A...615A..49C",
+       "year": 2018,
+       "journal": "A&A",
+       "title": "Characterising open clusters in the solar neighbourhood with the Tycho-Gaia Astrometric Solution.",
+       "nbobject": 224763,
+       "kind": "survey",
+       "mentions_binary_topics": false,
+       "doi": "10.1051/0004-6361/201731251"
+      }
+     ]
+    }
+   ],
+   "verdict": "IN_SIMBAD_SURVEY_PAPERS_ONLY"
+  }
+ ]
+}

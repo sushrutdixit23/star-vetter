@@ -34,11 +34,15 @@ Numbers here come from `docs/novelty_findings.md` (generated). This file lists t
 3. **Find one professional co-author or mentor** in eclipsing-binary timing or TESS follow-up
    (for example through the TESS Eclipsing Binary Working Group or the AAVSO). A second pair of
    eyes is the cheapest way to raise credibility, and they can request spectra.
-4. **Ask for spectra** of the best targets: TIC 264099112 and 308578336 (independently supported,
-   no prior literature found), TIC 394805902 (large offset, no prior found) and TIC 237115819. Even two velocities per star separate
+4. **Ask for spectra** of the best targets: TIC 264099112 and 308578336 (independently supported;
+   no SIMBAD record and no catalog match), TIC 394805902 (large offset; same) and TIC 237115819. Even two velocities per star separate
    a real eccentric binary from a blend. Check LAMOST and Gaia archives first (free).
-5. **Search ADS and SIMBAD** for each listed TIC number before any claim of novelty (the sandbox
-   cannot reach ADS).
+5. **Run the ADS full-text searches.** SIMBAD is done: `py f32_literature_check.py .` (results in `docs/literature_check.md` and
+   `data/processed/f32_literature.json`). Of the nine stars whose eccentricity passes the trust rule, eight have no SIMBAD record at all and
+   one (TIC 370553309) is a known spectroscopic binary with a Gaia DR3 orbit; TIC 59490510, one of the eight, is an ATLAS variable at another period.
+   ADS full-text search needs a login the sandbox does not have: paste the nine ready-made queries from the end of
+   `docs/literature_check.md` into https://ui.adsabs.harvard.edu/ and write the hit counts into that table. Until then, say
+   "no record found in SIMBAD and the catalogs searched", never "new".
 6. **Second research note** (RNAAS, 1,500 words, one table) on the period-change candidate only
    after steps 1 and 2. The note must say: candidate, cause unknown, predictions deposited.
 
