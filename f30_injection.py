@@ -9,7 +9,8 @@ contain the truth about 68% of the time, and whether the trust rule separates go
 
 Usage:
   python f30_injection.py <root> --host TIC --seed S --n N [--start K] [--max-steps 6000] [--lc-dir D] [--out FILE]
-  python f30_injection.py <root> --merge DIR     -> data/processed/f30_injection.json
+  python f30_injection.py <root> --merge DIR [--tag v2]  -> data/processed/f30_injection[_v2].json
+  (add --noise v2 to a run to use the v2 noise model of f26_ebfit.py; name its --out file f30v2_*.json)
 """
 import json
 import sys
@@ -76,7 +77,7 @@ def truth_summary(p):
             "omega_deg": float(np.degrees(w) % 360)}
 
 
-def run(root, host, seed, n, start=0, max_steps=6000, lc_dir=None):
+def run(root, host, seed, n, start=0, max_steps=6000, lc_dir=None, noise=None):
     fits = json.loads((root / "data" / "processed" / "f26_ebfit.json").read_text(encoding="utf-8"))["stars"]
     res = fits[str(host)]
     period, t0 = res["period_days"], res["t0_btjd"]
@@ -98,7 +99,7 @@ def run(root, host, seed, n, start=0, max_steps=6000, lc_dir=None):
                 row["status"] = "NO_PRIMARY_MEASURED"
             else:
                 r = f26.fit_star(t, finj, s, period, t0, inp["duration_days"], inp["ecosw_input"], inp["depth_ratio"],
-                                 steps=1500, until_converged=True, max_steps=max_steps)
+                                 steps=1500, until_converged=True, max_steps=max_steps, noise=noise)
                 row["status"] = r["status"]
                 row["inputs"] = inp
                 if r["status"] == "OK":
@@ -108,6 +109,7 @@ def run(root, host, seed, n, start=0, max_steps=6000, lc_dir=None):
                     row["converged"] = r["converged"]
                     row["steps"] = r["steps"]
                     row["flags"] = r["flags"]
+                    row["noise_model"] = r.get("noise_model", "v1")
         except Exception as e:  # noqa: BLE001 - visible, never silent
             row["status"] = "ERROR"
             row["error"] = repr(e)
@@ -160,20 +162,24 @@ def metrics(rows):
     return out
 
 
-def merge(root, parts_dir):
+def merge(root, parts_dir, tag=""):
+    """tag "" merges f30_*.json into f30_injection.json (noise model v1); tag "v2" merges f30v2_*.json into
+    f30_injection_v2.json, so a new noise model never overwrites the numbers the site is built on."""
     rows = []
-    for p in sorted(Path(parts_dir).rglob("f30_*.json")):
+    for p in sorted(Path(parts_dir).rglob("f30%s_*.json" % tag)):
         rows.extend(json.loads(p.read_text(encoding="utf-8"))["rows"])
     rows.sort(key=lambda r: (r["host"], r["index"]))
     out = {"generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
            "design": "data/benchmarks/f29_preregistration.json, injection_recovery (commit e186551)",
+           "noise_model": tag or "v1",
            "e_good_definition": "|fitted e - injected e| <= 0.03",
            "overall": metrics(rows), "by_host": {str(h): metrics([r for r in rows if r["host"] == h]) for h in sorted({r["host"] for r in rows})},
+           "by_seed": {str(sd): metrics([r for r in rows if r["seed"] == sd]) for sd in sorted({r["seed"] for r in rows})},
            # not registered in advance, added when it became clear few injections reach the trust rule's f22 step:
            "by_true_rsum": {"rsum_le_0.25": metrics([r for r in rows if r["truth"]["rsum"] <= 0.25]),
                             "rsum_gt_0.25": metrics([r for r in rows if r["truth"]["rsum"] > 0.25])},
            "rows": rows}
-    (root / "data" / "processed" / "f30_injection.json").write_text(json.dumps(out, indent=1, default=float) + "\n", encoding="utf-8", newline="\n")
+    (root / "data" / "processed" / ("f30_injection%s.json" % (("_" + tag) if tag else ""))).write_text(json.dumps(out, indent=1, default=float) + "\n", encoding="utf-8", newline="\n")
     return out
 
 
@@ -181,7 +187,7 @@ def main():
     args = sys.argv[1:]
     root = Path(args[0]).resolve()
     if "--merge" in args:
-        out = merge(root, args[args.index("--merge") + 1])
+        out = merge(root, args[args.index("--merge") + 1], args[args.index("--tag") + 1] if "--tag" in args else "")
         print(json.dumps(out["overall"], indent=1))
         return
     host = int(args[args.index("--host") + 1])
@@ -190,7 +196,8 @@ def main():
     start = int(args[args.index("--start") + 1]) if "--start" in args else 0
     max_steps = int(args[args.index("--max-steps") + 1]) if "--max-steps" in args else 6000
     lc_dir = args[args.index("--lc-dir") + 1] if "--lc-dir" in args else None
-    rows = run(root, host, seed, n, start, max_steps, lc_dir)
+    noise = args[args.index("--noise") + 1] if "--noise" in args else None
+    rows = run(root, host, seed, n, start, max_steps, lc_dir, noise)
     out_p = Path(args[args.index("--out") + 1]) if "--out" in args else root / "data" / "processed" / ("f30_%d_%d.json" % (host, start))
     out_p.parent.mkdir(parents=True, exist_ok=True)
     out_p.write_text(json.dumps({"rows": rows}, indent=1, default=float) + "\n", encoding="utf-8", newline="\n")

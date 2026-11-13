@@ -1,0 +1,85 @@
+{
+  "title": "Noise model v2 of the eclipse fitter: registered before any run on the benchmark systems or the injection hosts",
+  "registered_utc": "2026-11-13",
+  "code_frozen_at": "commit 9514bcf (f26_ebfit.py with --noise v2; f29_benchmark.py and f30_injection.py with --noise/--tag). Nothing in f26_ebfit.py may change between this registration and the reading of the results; tests/test_f33_preregistration.py compares the constants below, and the SHA-256 of the file, with the code.",
+  "question": "The injection test of noise model v1 (data/processed/f30_injection.json, 48 injections, all fitted) found errors that are unbiased but 2.8 to 5 times wider than the quoted intervals (coverage of the quoted 68% interval: e 0.40, e cos w 0.27, r1 0.27, r2 0.21, i 0.38). Does a likelihood that keeps every eclipse event separate, integrates each event's baseline out, gives each sector its own white-noise scale and adds correlated (Matern-3/2) noise, give intervals that contain the truth about 68% of the time, without making the four published benchmark comparisons worse?",
+  "v1_baseline": {
+    "source": "data/processed/f30_injection.json and f29_benchmarks.json as merged on 2026-11-13",
+    "coverage_68": {
+      "e": 0.4,
+      "ecosw": 0.27,
+      "r1": 0.27,
+      "r2": 0.21,
+      "incl": 0.38
+    },
+    "injections_fitted": 48,
+    "injections_converged": 25,
+    "benchmark_runs_passed": 3,
+    "benchmark_runs": 8,
+    "benchmark_systems_passing_both_cadences": [
+      "V505 Per"
+    ]
+  },
+  "what_v2_is": {
+    "events": "every primary and secondary eclipse is its own piece, cut at 1.6 eclipse durations either side of its centre, normalised only by its own out-of-eclipse median; events without 5 points on each side outside 0.6 durations are dropped (the v1 rule); single-point spikes are removed against the straight line between their neighbours (5 x the larger of the global and the 15-point local robust scatter)",
+    "baseline": "quadratic (linear when fewer than 20 out-of-eclipse points) per event, integrated out analytically with a flat prior, including the log-determinant term, so baseline uncertainty reaches depth, duration and inclination",
+    "white_noise": "one scale per sector (consecutive sectors share a scale when there are more than 8, MAX_NOISE_BLOCKS), multiplying the point-to-point scatter measured from consecutive out-of-eclipse points; ln scale uniform in (-3, 3)",
+    "red_noise": "Matern-3/2 Gaussian process within each event, amplitude and timescale shared by the star; ln amplitude uniform in (-12, -2), ln timescale uniform in (ln 0.01 d, ln 3 d)",
+    "model": "ellc evaluated once per likelihood on a 2-minute grid over the occupied part of the orbit and integrated over each point's exposure or bin width; events with more than 120 points are binned in time to 2 x 1.6 x duration / 120",
+    "unchanged": "the physical model (spheres, quadratic limb darkening with the v1 priors, third light with the v1 half-normal prior), the parameter bounds, the sampler (emcee, differential-evolution moves, 32 walkers or twice the dimension plus 2 if that is more, chains extended to 20 autocorrelation times, cap = max_steps), the trust rule export_findings.e_reliable. No light-ratio prior is used: without spectra it would put an assumption back in as a result.",
+    "optimiser": "global search with the v1 machinery on folded data, refined under the v2 likelihood (least squares with a finite-difference step of 1e-4, because ellc's own numerical noise defeats the default step)"
+  },
+  "frozen_constants": {
+    "EVENT_MAX_POINTS": 120,
+    "EVENT_WINDOW": 1.6,
+    "MAX_NOISE_BLOCKS": 8,
+    "TEMPLATE_STEP_DAYS": 0.001388888888888889,
+    "GP_LNA_BOUNDS": [
+      -12.0,
+      -2.0
+    ],
+    "GP_LNRHO_BOUNDS_DAYS": [
+      0.01,
+      3.0
+    ],
+    "CLIP_MAD": 5.0,
+    "lsq_diff_step": 0.0001
+  },
+  "development_record": {
+    "data_used_while_building_v2": "synthetic light curves made by the author in a scratch script (an eccentric binary, P = 8.3 d, three sectors of 2-minute data, white noise 6e-4, optional Matern-3/2 noise) and unit tests. No benchmark system (MU Cas, V1022 Cas, V454 Aur, V505 Per) and no injection host (TIC 370553309, 318887646, 43785616) was fitted with v2 before this registration.",
+    "bugs_found_and_fixed_before_registration": [
+      "scipy's default finite-difference step (1.5e-8) is below ellc's numerical noise; the least-squares step then stopped far from the minimum (cost 53000 against 760 at the truth). v2 uses a step of 1e-4; v1 is unchanged.",
+      "a 5-point running-median clip deleted ingress and egress points of deep eclipses and biased the scatter estimate 20% low; replaced by the slope-blind spike test described above. v1 uses a different clip (phase-neighbourhood median) and is not affected.",
+      "emcee refuses fewer than 2 x ndim walkers; v2 has one noise scale per sector, so the walker count is raised to 2 x ndim + 2 when that exceeds 32 (never the case for v1), and consecutive sectors share a scale beyond 8 sectors (one candidate, TIC 237115819, has 42 sectors)."
+    ],
+    "real_data_checks_before_registration": [
+      "AI Phe (TIC 102069549, Maxted et al. 2020), a published system that is not in the registered set, was fitted once with v2 at 2-minute cadence (1500 steps, not converged) as a check that real TESS data are handled: e 0.1894 (+0.0137/-0.0045) against 0.1875, e sin w 0.1778 against 0.1758, r1 0.0377 against 0.0377, r2 0.0614 against 0.0612, i 88.31 (+0.06/-0.20) against 88.36, all five published values inside the quoted intervals. No constant was changed afterwards; only how the 'poor fit' flag is computed (v2 now judges the posterior white-noise scales, not the white-noise-only starting point).",
+      "One synthetic data set with correlated noise (amplitude 4e-4, timescale 0.3 d) was fitted with both versions: v1 gave i = 88.45 (+0.065/-0.054) against a true 88.854, six quoted sigma off; v2 gave 88.8525 (+0.0054/-0.0051) and recovered the red noise (amplitude 3.6e-4, timescale 0.28 d). One data set is an illustration, not a test; the registered injections are the test."
+    ]
+  },
+  "runs": {
+    "injection_paired": "the 48 injections of data/processed/f30_injection.json (hosts 370553309, 318887646, 43785616; seed 29; indices 0-15 per host): the same injected systems in the same host noise, fitted with v2",
+    "injection_fresh": "48 new injections (same hosts, seed 33, indices 0-15 per host), never fitted by any version of the code before this registration. These are the out-of-sample test: nothing was tuned on them.",
+    "benchmark": "the four systems of f29_preregistration.json at 2 and 30 minute cadence (8 runs), same inputs and pass rule as before",
+    "chains": "max_steps 8000 for benchmarks, 5000 for injections (as for v1); every row is reported with its converged flag; converged and not-converged are also reported separately",
+    "outputs": "data/processed/f30_injection_v2.json, f29_benchmarks_v2.json (the files the site reads are not touched)"
+  },
+  "criteria": {
+    "binomial_band": "with 48 injections, a true 68% coverage is measured between 0.55 and 0.81 in 95% of repetitions",
+    "calibrated": "on the FRESH injections, coverage_68 lies in [0.55, 0.81] for each of e, r1, r2 and incl",
+    "improved": "on BOTH the paired and the fresh injections, coverage_68 is higher than the v1 value for each of e, r1, r2 and incl (v1: 0.40, 0.27, 0.21, 0.38)",
+    "bias_not_worse": "median error of e within 0.01 and of incl within 0.3 degrees on the fresh injections; no quantity's median absolute error more than 25% above its v1 value",
+    "benchmark_not_worse": "at least as many of the 8 benchmark runs pass the f29 rule as under v1 (3 of 8), and V505 Per still passes at both cadences",
+    "adoption": "v2 becomes the default (a separate pull request) only if calibrated AND bias_not_worse AND benchmark_not_worse. If it is improved but not calibrated, the site keeps v1 intervals and states the new, smaller inflation factor. If it is not improved, v1 stays and the failure is published. Nothing in this file is edited after the results are read.",
+    "also_reported_whatever_happens": [
+      "error_inflation_68 per quantity and per host",
+      "trust-rule precision and recall on the injections",
+      "number of converged chains",
+      "fitted red-noise amplitude and timescale per injection (does it track the host's real noise?)",
+      "the eight benchmark differences in units of the quoted sigma"
+    ]
+  },
+  "what_would_show_the_result_is_right": "Not the author and not the pipeline: the injected truths (known by construction, never seen by the fitter), the published values of the four benchmark systems (Torres et al. and the other references in f29_preregistration.json), and the number of the fresh injections whose truth falls inside the quoted interval, which is a count that cannot be tuned after the fact because the fresh injections are fitted once.",
+  "known_limits_not_addressed_by_v2": "spherical stars (rsum above 0.25 stays flagged), no spectroscopy so no masses, and the limb-darkening and third-light priors. Model mismatch is tested by the benchmark systems, not by the injections, which are made with the same model.",
+  "f26_ebfit_sha256": "39a455602a163f0e09f3d5a20eb22ed03e4b46580cf59cfd38a94b98b76c6bbf"
+}

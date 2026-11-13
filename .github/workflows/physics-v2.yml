@@ -1,0 +1,123 @@
+name: Physics v2
+
+# The registered test of noise model v2 of the eclipse fitter (data/benchmarks/f33_preregistration.json).
+# It does NOT replace anything the site reads: results go to artifacts and, when merged by hand, to
+# f29_benchmarks_v2.json and f30_injection_v2.json.
+#
+#   benchmark  - the four published systems at 2 and 30 minute cadence, as in Physics (8 jobs)
+#   injection  - the 48 injections of the v1 study (seed 29, paired) and 48 fresh ones (seed 33, never fitted by
+#                any version of the code), each in its host's own noise (3 hosts x 8 blocks x 2 seeds = 48 jobs)
+#   merge      - one artifact, "physics-v2-results"
+#
+# Start it from the Actions tab (Run workflow), or push any branch named physics-run-v2/<anything>.
+# Do not edit f26_ebfit.py between registration and reading the results: tests/test_f33_preregistration.py
+# compares it with the hash in the registration file.
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_steps:
+        description: "Longest chain allowed per benchmark fit"
+        default: "8000"
+      injection_max_steps:
+        description: "Longest chain allowed per injection fit"
+        default: "5000"
+  push:
+    branches: ["physics-run-v2/**"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: physics-v2-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  MAX_STEPS: ${{ github.event.inputs.max_steps || '8000' }}
+  INJ_MAX_STEPS: ${{ github.event.inputs.injection_max_steps || '5000' }}
+  F26_PROCS: "4"
+  PYTHONUNBUFFERED: "1"
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    strategy:
+      fail-fast: false
+      matrix:
+        system: ["MU Cas", "V1022 Cas", "V454 Aur", "V505 Per"]
+        cadence: [2, 30]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - name: Install (ellc needs gfortran)
+        run: |
+          sudo apt-get install -y gfortran
+          pip install -r requirements.txt -r requirements-physics.txt
+      - name: Fetch TESS light curves (MAST, with retries)
+        run: |
+          python - <<'EOF'
+          import json, time
+          import f13_ephemeris as f13
+          pre = json.load(open("data/benchmarks/f29_preregistration.json"))
+          tic = [s["tic"] for s in pre["systems"] if s["name"] == "${{ matrix.system }}"][0]
+          for attempt in range(5):
+              try:
+                  lcs = f13.load_or_fetch_lightcurves(tic, "SPOC", print, lc_dir="data/benchmarks/lc")
+                  if lcs:
+                      print("sectors", [s for s, _ in lcs]); break
+              except Exception as e:
+                  print("attempt", attempt, repr(e))
+              time.sleep(30 * (attempt + 1))
+          EOF
+      - name: Blind fit, noise model v2
+        run: |
+          mkdir -p out
+          slug=$(echo "${{ matrix.system }}" | tr ' ' '_')
+          python f29_benchmark.py . --only "${{ matrix.system }}" --cadence ${{ matrix.cadence }} --max-steps "$MAX_STEPS" --noise v2 --out "out/f29v2_${slug}_${{ matrix.cadence }}.json"
+      - uses: actions/upload-artifact@v4
+        with: { name: "f29v2-${{ strategy.job-index }}", path: out/ }
+
+  injection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    strategy:
+      fail-fast: false
+      matrix:
+        host: [370553309, 318887646, 43785616]
+        seed: [29, 33]
+        start: [0, 2, 4, 6, 8, 10, 12, 14]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - name: Install (ellc needs gfortran)
+        run: |
+          sudo apt-get install -y gfortran
+          pip install -r requirements.txt -r requirements-physics.txt
+      - name: Inject and recover, noise model v2
+        run: |
+          mkdir -p out
+          python f30_injection.py . --host ${{ matrix.host }} --seed ${{ matrix.seed }} --n 2 --start ${{ matrix.start }} --max-steps "$INJ_MAX_STEPS" --noise v2 --lc-dir data/physics_inputs --out out/f30v2_${{ matrix.host }}_${{ matrix.seed }}_${{ matrix.start }}.json
+      - uses: actions/upload-artifact@v4
+        with: { name: "f30v2-${{ matrix.host }}-${{ matrix.seed }}-${{ matrix.start }}", path: out/ }
+
+  merge:
+    if: always()
+    needs: [benchmark, injection]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - run: pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with: { path: parts }
+      - name: Merge
+        run: |
+          python merge_physics_runs.py . parts
+          mkdir -p results
+          cp data/processed/f29_benchmarks_v2.json data/processed/f30_injection_v2.json results/ 2>/dev/null || true
+      - uses: actions/upload-artifact@v4
+        with: { name: physics-v2-results, path: results/ }
