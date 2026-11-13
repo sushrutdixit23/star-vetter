@@ -10,7 +10,8 @@ from the light curve here, with the same f22 code the candidates went through, s
 
 Usage:
   python f29_benchmark.py <root> [--only "MU Cas"] [--cadence 2|30] [--max-steps 6000] [--out FILE]
-  python f29_benchmark.py <root> --merge DIR      combine per-job files into data/processed/f29_benchmarks.json
+  python f29_benchmark.py <root> --merge DIR [--tag v2]   combine per-job files into data/processed/f29_benchmarks[_v2].json
+  (add --noise v2 to a run to use the v2 noise model of f26_ebfit.py; name its --out file f29v2_*.json)
 Light curves: data/benchmarks/lc/TIC<n>.npz (fetched with f13_ephemeris.load_or_fetch_lightcurves).
 """
 import json
@@ -106,7 +107,7 @@ def prepare(t, f, s, period, t0):
             "ecosw_input": ecosw_in, "f22": f22_short}
 
 
-def run_one(root, system, cadence, max_steps=6000, lc_dir=None):
+def run_one(root, system, cadence, max_steps=6000, lc_dir=None, noise=None):
     lc_dir = Path(lc_dir) if lc_dir else root / "data" / "benchmarks" / "lc"
     t, f, s = f26.load_star(root, system["tic"], lc_dir)
     t, f, s = degrade(t, f, s, cadence)
@@ -120,7 +121,7 @@ def run_one(root, system, cadence, max_steps=6000, lc_dir=None):
     out["inputs"] = inp
     t1 = time.time()
     res = f26.fit_star(t, f, s, period, t0, inp["duration_days"], inp["ecosw_input"], inp["depth_ratio"],
-                       steps=1500, until_converged=True, max_steps=max_steps)
+                       steps=1500, until_converged=True, max_steps=max_steps, noise=noise)
     out["status"] = res["status"]
     if res["status"] != "OK":
         return out
@@ -129,6 +130,7 @@ def run_one(root, system, cadence, max_steps=6000, lc_dir=None):
     out["run"] = {k: res[k] for k in ("chi2_best", "acceptance", "autocorr_steps", "steps", "converged", "flags", "n_bins")}
     out["run"]["seconds"] = round(time.time() - t1, 1)
     out["trusted"] = bool(e_reliable(p, inp["f22"]))
+    out["noise_model"] = res.get("noise_model", "v1")
     return out
 
 
@@ -159,10 +161,12 @@ def judge(row, rule):
     return row
 
 
-def merge(root, parts_dir):
+def merge(root, parts_dir, tag=""):
+    """tag "" merges f29_*.json into f29_benchmarks.json (noise model v1); tag "v2" merges f29v2_*.json into
+    f29_benchmarks_v2.json, so a new noise model never overwrites the numbers the site is built on."""
     pre = json.loads((root / "data" / "benchmarks" / "f29_preregistration.json").read_text(encoding="utf-8"))
     rows = []
-    for p in sorted(Path(parts_dir).rglob("f29_*.json")):
+    for p in sorted(Path(parts_dir).rglob("f29%s_*.json" % tag)):
         d = json.loads(p.read_text(encoding="utf-8"))
         rows.extend(d["rows"] if "rows" in d else [d])
     rows = [judge(r, pre["pass_rule"]) for r in rows]
@@ -170,10 +174,10 @@ def merge(root, parts_dir):
     rows.sort(key=lambda r: (order.get(r["name"], 99), r["cadence_min"]))
     out = {"generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
            "preregistration": "data/benchmarks/f29_preregistration.json (commit e186551)",
-           "pass_rule": pre["pass_rule"], "rows": rows,
+           "noise_model": tag or "v1", "pass_rule": pre["pass_rule"], "rows": rows,
            "summary": {"runs": len(rows), "passed": sum(r.get("passed", False) for r in rows),
                        "systems_passing_both_cadences": sorted({r["name"] for r in rows if all(x.get("passed") for x in rows if x["name"] == r["name"])})}}
-    dest = root / "data" / "processed" / "f29_benchmarks.json"
+    dest = root / "data" / "processed" / ("f29_benchmarks%s.json" % (("_" + tag) if tag else ""))
     dest.write_text(json.dumps(out, indent=1) + "\n", encoding="utf-8", newline="\n")
     return out
 
@@ -182,7 +186,7 @@ def main():
     args = sys.argv[1:]
     root = Path(args[0]).resolve()
     if "--merge" in args:
-        out = merge(root, args[args.index("--merge") + 1])
+        out = merge(root, args[args.index("--merge") + 1], args[args.index("--tag") + 1] if "--tag" in args else "")
         print(json.dumps(out["summary"], indent=1))
         return
     pre = json.loads((root / "data" / "benchmarks" / "f29_preregistration.json").read_text(encoding="utf-8"))
@@ -190,13 +194,14 @@ def main():
     cads = [int(args[args.index("--cadence") + 1])] if "--cadence" in args else pre["method"]["cadences"]
     max_steps = int(args[args.index("--max-steps") + 1]) if "--max-steps" in args else 6000
     lc_dir = args[args.index("--lc-dir") + 1] if "--lc-dir" in args else None
+    noise = args[args.index("--noise") + 1] if "--noise" in args else None
     rows = []
     for sys_ in pre["systems"]:
         if only and sys_["name"] != only:
             continue
         for c in cads:
             try:
-                r = run_one(root, sys_, c, max_steps, lc_dir)
+                r = run_one(root, sys_, c, max_steps, lc_dir, noise)
             except Exception as e:  # noqa: BLE001 - visible, never silent
                 r = {"name": sys_["name"], "tic": sys_["tic"], "cadence_min": c, "status": "ERROR", "error": repr(e),
                      "truth": sys_["truth"], "reference": sys_["reference"]}

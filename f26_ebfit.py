@@ -25,6 +25,19 @@ Model choices (all stated in the output):
     sectors and cadence; long-cadence bins are modelled with exposure-time smearing;
   * one noise-scale parameter per cadence group absorbs under-estimated errors.
 
+Noise model v2 (--noise v2, or F26_NOISE=v2): the likelihood of "event-wise" data. The v1 chain above divides each
+eclipse by a baseline fitted to its own wings and then treats the result as exact, white and folded; the injection
+test (data/processed/f30_injection.json) showed that quoted 68% intervals contain the truth about 40% of the time
+on data the model can represent exactly, so the noise treatment, not the physics, was over-confident. v2:
+  * keeps every eclipse event separate and undivided (flux normalised only by its own out-of-eclipse median);
+  * gives each event a quadratic baseline that is INTEGRATED OUT of the likelihood analytically (flat prior,
+    including the log-determinant term that makes the depth, duration and baseline uncertainties couple);
+  * one white-noise scale per sector instead of per cadence;
+  * a Matern-3/2 Gaussian process inside each event (amplitude and timescale shared by the star) for correlated
+    noise, solved densely (events are binned to at most EVENT_MAX_POINTS points);
+  * no light-ratio prior: without spectra it would feed an assumption back as a result.
+v1 stays the default so every published number is unchanged until v2 is validated.
+
 Usage:  python f26_ebfit.py <root> [--tics T1,T2] [--steps 2000] [--converge] [--max-steps 6000] [--lc-dir D] [--out F] [--validate]
         --converge extends each chain until it is 20 autocorrelation times long after burn-in (F26_PROCS=4 uses 4 processes)
         --validate fits AI Phe (TIC 102069549) and compares with Maxted et al. 2020 (MNRAS 498, 332).
@@ -48,6 +61,13 @@ FINE_BINS_PER_DURATION = 40
 MAX_UNBINNED = 1500             # groups with at most this many points are fitted point by point
 COARSE_BIN_PHASE = 0.01
 PARAMS = ["dt0", "rsum", "k", "cosi", "J", "fc", "fs", "l3", "u1", "u1b", "dP"]
+NOISE_DEFAULT = os.environ.get("F26_NOISE", "v1")      # "v1": folded, white; "v2": event-wise, baselines integrated out, GP
+EVENT_MAX_POINTS = 120          # v2: an event with more points is binned in time (bins stay far shorter than ingress)
+EVENT_WINDOW = 1.6              # half-width of an event window, in eclipse durations
+MAX_NOISE_BLOCKS = 8            # v2: white-noise scales per star; consecutive sectors share one when there are more sectors than this
+TEMPLATE_STEP_DAYS = 2.0 / 1440.0   # v2: spacing of the exact model grid that is integrated over each point's exposure
+GP_LNA_BOUNDS = (-12.0, -2.0)   # v2: ln of the red-noise amplitude (normalised flux)
+GP_LNRHO_BOUNDS = (float(np.log(0.01)), float(np.log(3.0)))   # v2: ln of the red-noise timescale (days)
 L3_PRIOR_SIGMA = 0.10            # half-normal: SPOC/QLP fluxes are already corrected for known neighbours
 
 # Maxted et al. 2020, MNRAS 498, 332, Table 2 / 3 adopted means (TESS sector 2 and 29)
@@ -213,6 +233,284 @@ def bin_groups(t, f, sector, period, t0, duration, sec_phase, max_blocks=8):
     return groups
 
 
+# ---------------------------------------------------------------------------------------------------------
+# Noise model v2: event-wise data, baselines integrated out, per-sector white noise, Matern-3/2 red noise
+# ---------------------------------------------------------------------------------------------------------
+
+def _sector_sigma(events):
+    """Point-to-point scatter of the normalised flux, from consecutive pairs of out-of-eclipse points only (eclipse slopes
+    would inflate it): 1.4826 * median |difference - median| / sqrt(2). Insensitive to slow trends."""
+    d = []
+    for ev in events:
+        ok = ev["ooe"][1:] & ev["ooe"][:-1]
+        d.append(np.diff(ev["y"])[ok])
+    d = np.concatenate(d) if d else np.array([])
+    if len(d) < 10:
+        return 1e-3
+    s = 1.4826 * float(np.median(np.abs(d - np.median(d)))) / np.sqrt(2.0)
+    return s if s > 0 else 1e-3
+
+
+def _bin_event_in_time(t, y, width):
+    idx = np.floor((t - t[0]) / width).astype(np.int64)
+    ts, ys, ns = [], [], []
+    for b in np.unique(idx):
+        m = idx == b
+        ts.append(float(t[m].mean()))
+        ys.append(float(y[m].mean()))
+        ns.append(int(m.sum()))
+    return np.array(ts), np.array(ys), np.array(ns)
+
+
+def _spike_free(y):
+    """Boolean mask of points that are not single-point spikes (cosmic rays, bad cadences).
+
+    A point is compared with the straight line between its two neighbours, which is blind to the steep but smooth ingress and
+    egress slopes (a running median lags on a slope and, with a threshold set by the quiet baseline, deletes exactly the
+    points that fix the eclipse shape: seen on injected data, where it also biased the scatter estimate low by 20%).
+    The threshold is CLIP_MAD times the larger of the global and the local (15-point) robust scatter of that residual."""
+    n = len(y)
+    if n < 7:
+        return np.ones(n, bool)
+    r = np.zeros(n)
+    r[1:-1] = y[1:-1] - 0.5 * (y[:-2] + y[2:])
+    a = np.abs(r[1:-1])
+    glob = 1.4826 * float(np.median(a))
+    loc = 1.4826 * pd.Series(a).rolling(15, center=True, min_periods=5).median().to_numpy()
+    thr = CLIP_MAD * np.maximum(np.where(np.isfinite(loc), loc, glob), max(glob, 1e-6))
+    keep = np.ones(n, bool)
+    keep[1:-1] = a <= thr
+    return keep
+
+
+def cut_events(t, f, sector, period, t0, duration, sec_phase, min_side=5):
+    """Every primary and secondary eclipse event as its own undivided piece: the points within EVENT_WINDOW durations of the
+    centre, normalised by the event's own out-of-eclipse median (so the baseline constant is near 1), with the same
+    selection rule as detrend_local (events without >= min_side points on each side outside 0.6 durations are dropped,
+    because a one-sided baseline biases the depth). Outliers are removed against a 5-point running median.
+    Returns a list of dicts with t, y, n (points per binned point), sector, tc, deg, kind."""
+    events = []
+    for kind, centre_phase in (("primary", 0.0), ("secondary", sec_phase)):
+        cyc = np.floor((t - t0) / period - centre_phase + 0.5)
+        for c in np.unique(cyc):
+            tc = t0 + (c + centre_phase) * period
+            m = np.abs(t - tc) < EVENT_WINDOW * duration
+            if m.sum() < 2 * min_side:
+                continue
+            tt, ff, ss = t[m], f[m], sector[m]
+            dtm = tt - tc
+            ooe = np.abs(dtm) > 0.6 * duration
+            if (dtm[ooe] < 0).sum() < min_side or (dtm[ooe] > 0).sum() < min_side:
+                continue
+            o = np.argsort(tt)
+            tt, ff, ss, ooe = tt[o], ff[o], ss[o], ooe[o]
+            yy = ff / np.median(ff[ooe])
+            keep = _spike_free(yy)
+            tt, yy, ss, ooe = tt[keep], yy[keep], ss[keep], ooe[keep]
+            if len(tt) < 2 * min_side:
+                continue
+            events.append({"t": tt, "y": yy, "ooe": ooe, "n": np.ones(len(tt), int), "sector": int(np.bincount(ss.astype(int)).argmax()), "tc": float(tc),
+                           "deg": 2 if int(ooe.sum()) >= 4 * min_side else 1, "kind": kind, "cadence_days": float(np.median(np.diff(tt))) if len(tt) > 2 else 0.0014})
+    return events
+
+
+def event_groups(events, duration, gp=True):
+    """One group per sector (so one white-noise scale per sector). A group carries its events concatenated (t, y, e), so the
+    model is evaluated in one ellc call, plus the per-event slices, polynomial design matrices and time-difference
+    matrices. When a sector's cadence is finer than the common bin width (2 * EVENT_WINDOW * duration / EVENT_MAX_POINTS),
+    all of its events are binned to that width and the model is integrated over it; otherwise they stay unbinned."""
+    secs = sorted({ev["sector"] for ev in events})
+    width = 2.0 * EVENT_WINDOW * duration / EVENT_MAX_POINTS
+    groups = []
+    for gi, sc in enumerate(secs):
+        evs = [ev for ev in events if ev["sector"] == sc]
+        sigma = _sector_sigma(evs)
+        cad = float(np.median([ev["cadence_days"] for ev in evs]))
+        binned = cad < 0.9 * width
+        texp_days = width if binned else cad
+        ts, ys, es, sl, polys, dts, kinds = [], [], [], [], [], [], []
+        i0 = 0
+        for ev in evs:
+            t_, y_, n_ = ev["t"], ev["y"], ev["n"]
+            if binned:
+                t_, y_, n_ = _bin_event_in_time(t_, y_, width)
+            if len(t_) < 6:
+                continue
+            x = (t_ - ev["tc"]) / (EVENT_WINDOW * duration)
+            ts.append(t_); ys.append(y_); es.append(sigma / np.sqrt(n_)); sl.append(slice(i0, i0 + len(t_)))
+            polys.append(np.vander(x, ev["deg"] + 1, increasing=True))
+            dts.append(np.abs(t_[:, None] - t_[None, :]) if gp else None)
+            kinds.append(ev["kind"])
+            i0 += len(t_)
+        if not ts:
+            continue
+        groups.append({"cadence_min": int(round(cad * 1440.0)), "noise_idx": 0, "n_white": 0, "gp": bool(gp),
+                       "sectors": [int(sc)], "t": np.concatenate(ts), "y": np.concatenate(ys), "e": np.concatenate(es),
+                       "events": [{"sl": a_, "V": b_, "dtm": c_, "kind": k_} for a_, b_, c_, k_ in zip(sl, polys, dts, kinds)],
+                       "sigma_point": float(sigma), "w": 0.0 if texp_days * 1440.0 <= 3.0 else float(texp_days)})
+    n_blocks = min(MAX_NOISE_BLOCKS, len(groups))            # a star seen in 42 sectors must not get 42 noise parameters
+    for i, g in enumerate(groups):
+        g["noise_idx"] = i * n_blocks // len(groups)
+        g["n_white"] = n_blocks
+    return groups
+
+
+def _event_models(p, period_eff, groups):
+    """Model flux at every point of every group, as a list of arrays (one per group).
+
+    ellc is evaluated ONCE on a regular grid (TEMPLATE_STEP_DAYS) that covers just the occupied parts of the orbit, and each
+    point's value is the exact integral of that piecewise-linear template over the point's own exposure or bin width
+    (g["w"] days, 0 = a point sample), found from a cumulative sum. The cost is then set by how much of the orbit is
+    covered, not by the number of events, and binned and long-cadence points are integrated properly."""
+    t = np.concatenate([g["t"] for g in groups])
+    w = np.concatenate([np.full(len(g["t"]), g["w"]) for g in groups])
+    ph = (((t - p["t0"]) / period_eff) + 0.25) % 1.0 - 0.25
+    step = TEMPLATE_STEP_DAYS / period_eff
+    hw = 0.5 * w / period_eff
+    lo = np.floor((ph - hw) / step).astype(np.int64)
+    hi = np.floor((ph + hw) / step).astype(np.int64) + 1
+    span = int((hi - lo).max()) + 1
+    cells = lo[:, None] + np.arange(span)[None, :]
+    cells = np.unique(cells[cells <= hi[:, None]])
+    grid = cells * step
+    F = ellc_lc(p["t0"] + grid * period_eff, p, period_eff)
+    if not np.all(np.isfinite(F)):
+        return None
+    cum = np.concatenate([[0.0], np.cumsum(0.5 * (F[1:] + F[:-1]) * step)])    # trapezoid; only differences inside a run are used
+
+    def integral(x):
+        k = np.clip(np.searchsorted(cells, np.floor(x / step).astype(np.int64)), 0, len(cells) - 2)
+        dx = x - grid[k]
+        slope = np.where(cells[k + 1] - cells[k] == 1, (F[np.minimum(k + 1, len(F) - 1)] - F[k]) / step, 0.0)
+        return cum[k] + F[k] * dx + 0.5 * slope * dx * dx
+
+    box = w > 0
+    m = np.empty(len(t))
+    if (~box).any():
+        x = ph[~box]
+        k = np.clip(np.searchsorted(cells, np.floor(x / step).astype(np.int64)), 0, len(cells) - 2)
+        f_ = (x - grid[k]) / step
+        m[~box] = F[k] * (1.0 - f_) + F[np.minimum(k + 1, len(F) - 1)] * f_
+    if box.any():
+        m[box] = (integral(ph[box] + hw[box]) - integral(ph[box] - hw[box])) / (w[box] / period_eff)
+    out, i0 = [], 0
+    for g in groups:
+        out.append(m[i0:i0 + len(g["t"])])
+        i0 += len(g["t"])
+    return out
+
+
+def _event_loglike(m, y, e, V, dtm, scale, lna, lnrho):
+    """Log-likelihood of one event with its polynomial baseline integrated out (flat prior on the coefficients).
+
+    y = (V c) * m + noise, noise ~ N(0, C), C = diag((scale e)^2) + Matern-3/2(amplitude, rho). With A = diag(m) V,
+        ln L = -1/2 [ y^T C^-1 y - b^T M^-1 b + ln|C| + ln|M| + n ln 2 pi ],   M = A^T C^-1 A,  b = A^T C^-1 y.
+    The ln|M| term is the Occam factor: it is what lets the baseline uncertainty reach the depth, duration and
+    inclination. Returns (log-likelihood, chi-square at the best baseline), or (-inf, inf) if C is not positive definite."""
+    from scipy.linalg import cho_factor, cho_solve, solve_triangular
+    n = len(y)
+    A = m[:, None] * V
+    s2 = (e * scale) ** 2
+    if dtm is None or lna is None:
+        w = 1.0 / s2
+        Aw = A * w[:, None]
+        M = A.T @ Aw
+        b = Aw.T @ y
+        yCy = float(np.sum(y * y * w))
+        logdetC = float(np.sum(np.log(s2)))
+    else:
+        a = np.sqrt(3.0) * dtm / np.exp(lnrho)
+        C = np.exp(2.0 * lna) * (1.0 + a) * np.exp(-a)
+        C[np.diag_indices(n)] += s2
+        try:
+            L = np.linalg.cholesky(C)
+        except np.linalg.LinAlgError:
+            return -np.inf, np.inf
+        Ly = solve_triangular(L, y, lower=True)
+        LA = solve_triangular(L, A, lower=True)
+        M = LA.T @ LA
+        b = LA.T @ Ly
+        yCy = float(Ly @ Ly)
+        logdetC = 2.0 * float(np.sum(np.log(np.diag(L))))
+    try:
+        cf = cho_factor(M)
+    except np.linalg.LinAlgError:
+        return -np.inf, np.inf
+    chi2 = yCy - float(b @ cho_solve(cf, b))
+    logdetM = 2.0 * float(np.sum(np.log(np.diag(cf[0]))))
+    return -0.5 * (chi2 + logdetC + logdetM + n * np.log(2.0 * np.pi)), chi2
+
+
+def _log_like_events(theta, groups, period, t0_ref, return_chi=False):
+    p = unpack(theta[:len(PARAMS)], t0_ref)
+    nw = groups[0]["n_white"]
+    gp = groups[0]["gp"]
+    lna = theta[len(PARAMS) + nw] if gp else None
+    lnrho = theta[len(PARAMS) + nw + 1] if gp else None
+    bad = (-np.inf, np.inf) if return_chi else -np.inf
+    try:
+        models = _event_models(p, period + p["dP"], groups)
+    except Exception:  # noqa: BLE001 - ellc refuses some geometries; treat as impossible
+        return bad
+    if models is None:
+        return bad
+    ll, chi = 0.0, 0.0
+    for g, m in zip(groups, models):
+        scale = float(np.exp(theta[len(PARAMS) + g["noise_idx"]]))
+        for ev in g["events"]:
+            sl = ev["sl"]
+            l1, c1 = _event_loglike(m[sl], g["y"][sl], g["e"][sl], ev["V"], ev["dtm"], scale, lna, lnrho)
+            if not np.isfinite(l1):
+                return bad
+            ll += l1
+            chi += c1
+    return (ll, chi) if return_chi else ll
+
+
+def _profiled_residuals(m, g):
+    """Per-event residuals with the polynomial baseline solved by weighted least squares (white noise only)."""
+    out = []
+    for ev in g["events"]:
+        sl = ev["sl"]
+        A = m[sl][:, None] * ev["V"]
+        w = 1.0 / g["e"][sl]
+        c, *_ = np.linalg.lstsq(A * w[:, None], g["y"][sl] * w, rcond=None)
+        out.append((g["y"][sl] - A @ c) * w)
+    return out
+
+
+def _residuals_events(x, groups, period, t0_ref):
+    """Whitened residuals for the least-squares start: white noise only, baselines profiled (solved per event)."""
+    p = unpack(x, t0_ref)
+    n_all = sum(len(g["y"]) for g in groups) + 3
+    if p["fc"] ** 2 + p["fs"] ** 2 >= 0.9 or p["cosi"] >= 1.5 * p["rsum"]:
+        return np.full(n_all, 1e3)
+    try:
+        models = _event_models(p, period + p["dP"], groups)
+    except Exception:  # noqa: BLE001
+        return np.full(n_all, 1e3)
+    if models is None:
+        return np.full(n_all, 1e3)
+    out = []
+    for g, m in zip(groups, models):
+        out.extend(_profiled_residuals(m, g))
+    out.append(np.array([(p["u1"] - U1_PRIOR[0]) / U1_PRIOR[1], (p["u1b"] - U1_PRIOR[0]) / U1_PRIOR[1], p["l3"] / L3_PRIOR_SIGMA]))
+    return np.concatenate(out)
+
+
+def _white_scales_events(x, groups, period, t0_ref):
+    """ln of the per-block error scale that makes the profiled chi-square per point 1 (start values for the sampler)."""
+    p = unpack(x, t0_ref)
+    models = _event_models(p, period + p["dP"], groups)
+    chi = np.zeros(groups[0]["n_white"])
+    n = np.zeros(groups[0]["n_white"])
+    for g, m in zip(groups, models):
+        r = _profiled_residuals(m, g)
+        chi[g["noise_idx"]] += float(sum(np.sum(x_ ** 2) for x_ in r))
+        n[g["noise_idx"]] += sum(len(x_) - ev["V"].shape[1] for x_, ev in zip(r, g["events"]))
+    return [float(np.clip(0.5 * np.log(max(c / max(k, 1), 1e-6)), -2.9, 2.9)) for c, k in zip(chi, n)]
+
+
 def n_noise(groups):
     return 1 + max(g["noise_idx"] for g in groups)
 
@@ -266,6 +564,30 @@ def log_prob(theta, groups, period, t0_ref):
     return lp + ll if np.isfinite(ll) else -np.inf
 
 
+def log_prior_events(theta, n_white, gp):
+    """Same physical prior as v1; per-sector ln noise scales in (-3, 3); ln red-noise amplitude and timescale uniform
+    inside GP_LNA_BOUNDS / GP_LNRHO_BOUNDS (i.e. log-uniform amplitude and timescale)."""
+    lp = log_prior(theta[:len(PARAMS)])
+    if not np.isfinite(lp):
+        return -np.inf
+    for s_ in theta[len(PARAMS):len(PARAMS) + n_white]:
+        if not -3.0 < s_ < 3.0:
+            return -np.inf
+    if gp:
+        lna, lnrho = theta[len(PARAMS) + n_white], theta[len(PARAMS) + n_white + 1]
+        if not (GP_LNA_BOUNDS[0] < lna < GP_LNA_BOUNDS[1] and GP_LNRHO_BOUNDS[0] < lnrho < GP_LNRHO_BOUNDS[1]):
+            return -np.inf
+    return lp
+
+
+def log_prob_events(theta, groups, period, t0_ref):
+    lp = log_prior_events(theta, groups[0]["n_white"], groups[0]["gp"])
+    if not np.isfinite(lp):
+        return -np.inf
+    ll = _log_like_events(theta, groups, period, t0_ref)
+    return lp + ll if np.isfinite(ll) else -np.inf
+
+
 LOWER = np.array([-0.05, 0.003, 0.1, 0.0, 0.0005, -0.95, -0.95, 0.0, 0.0, 0.0, -1e-3])
 UPPER = np.array([0.05, 0.6, 10.0, 0.9, 20.0, 0.95, 0.95, 0.95, 1.0, 1.0, 1e-3])
 
@@ -304,29 +626,47 @@ def residuals(x, groups, period, t0_ref):
     return np.concatenate(out)
 
 
-def optimise(groups, period, t0_ref, duration, ecosw, depth_ratio):
+def optimise(groups, period, t0_ref, duration, ecosw, depth_ratio, noise="v1", x_init=None):
     """Bounded least squares: short runs from 18 starting points, the best three refined (Nelder-Mead was
     shown to stop in a third-light local minimum on AI Phe); then noise scales set from the residuals."""
     from scipy.optimize import least_squares
+    v2 = noise == "v2"
+    residuals_fn = _residuals_events if v2 else residuals
     xs = np.array([1e-3, 1e-2, 0.1, 1e-2, 0.1, 0.05, 0.05, 0.05, 0.1, 0.1, 1e-5])
     screened = []
-    for s0 in starts(duration, period, ecosw, depth_ratio):          # short runs from every start ...
+    # v2 is several times dearer per evaluation, so its global search is done with the v1 machinery on folded data and
+    # passed in as x_init; here those solutions are only refined under the v2 likelihood
+    first = [np.asarray(x, float)[:len(PARAMS)] for x in x_init] if x_init is not None else starts(duration, period, ecosw, depth_ratio)
+    # ellc's own numerical noise (about 1e-7 in flux) swamps a finite-difference step of 1.5e-8, scipy's default, and the
+    # optimiser then stops far from the minimum (seen on injected data: cost 53000 against 760 at the truth); v1 keeps the default
+    lsq_kw = {"diff_step": 1e-4} if v2 else {}
+    for s0 in first:                                                  # short runs from every start ...
         x0 = np.clip(np.array(s0), LOWER + 1e-9, UPPER - 1e-9)
         try:
-            r = least_squares(residuals, x0, bounds=(LOWER, UPPER), args=(groups, period, t0_ref), x_scale=xs, max_nfev=60)
+            r = least_squares(residuals_fn, x0, bounds=(LOWER, UPPER), args=(groups, period, t0_ref), x_scale=xs, max_nfev=60, **lsq_kw)
         except Exception:  # noqa: BLE001
             continue
         screened.append(r)
     best = None
     for r0 in sorted(screened, key=lambda r: r.cost)[:3]:              # ... then the best three refined
         try:
-            r = least_squares(residuals, r0.x, bounds=(LOWER, UPPER), args=(groups, period, t0_ref), x_scale=xs, max_nfev=400)
+            r = least_squares(residuals_fn, r0.x, bounds=(LOWER, UPPER), args=(groups, period, t0_ref), x_scale=xs, max_nfev=400, **lsq_kw)
         except Exception:  # noqa: BLE001
             r = r0
         if best is None or r.cost < best.cost:
             best = r
     if best is None:
         return None
+    if v2:
+        class R2:
+            pass
+        out2 = R2()
+        lns2 = _white_scales_events(best.x, groups, period, t0_ref)
+        sig = float(np.median([g["sigma_point"] for g in groups]))
+        extra = [float(np.log(0.3 * sig)), float(np.log(0.1))] if groups[0]["gp"] else []
+        out2.x = np.concatenate([best.x, lns2, extra])
+        out2.fun = -log_prob_events(out2.x, groups, period, t0_ref)
+        return out2
     lns = []
     for i in range(n_noise(groups)):
         chi, n = 0.0, 0
@@ -359,7 +699,7 @@ def _lp_global(z):
     """Module-level log-probability so a fork-based process pool can call it (closures cannot be pickled)."""
     th = _LP["base"].copy()
     th[_LP["free"]] = z
-    return log_prob(th, _LP["groups"], _LP["period"], _LP["t0"])
+    return _LP["fn"](th, _LP["groups"], _LP["period"], _LP["t0"])
 
 
 def _tau(sampler, n):
@@ -369,7 +709,7 @@ def _tau(sampler, n):
         return None
 
 
-def sample(x_best, groups, period, t0_ref, steps=1500, walkers=32, seed=7, until_converged=False, max_steps=6000):
+def sample(x_best, groups, period, t0_ref, steps=1500, walkers=32, seed=7, until_converged=False, max_steps=6000, noise="v1"):
     """emcee with differential-evolution moves over the shape and noise parameters; the eclipse time and
     period correction stay at the least-squares values.
 
@@ -380,16 +720,18 @@ def sample(x_best, groups, period, t0_ref, steps=1500, walkers=32, seed=7, until
     fixed_idx = [PARAMS.index(n) for n in FIXED_IN_MCMC]
     free_idx = [i for i in range(len(x_best)) if i not in fixed_idx]
     base = np.array(x_best, float)
+    prob_fn = log_prob_events if noise == "v2" else log_prob
 
     def lp(z):
         th = base.copy()
         th[free_idx] = z
-        return log_prob(th, groups, period, t0_ref)
+        return prob_fn(th, groups, period, t0_ref)
 
     full_scale = np.array([1e-4, 1e-3, 1e-2, 1e-3, 1e-2, 1e-3, 1e-3, 1e-3, 1e-2, 1e-2, 1e-6] + [1e-2] * (len(x_best) - len(PARAMS)))
     scale = full_scale[free_idx]
     rng = np.random.default_rng(seed)
     z0 = base[free_idx]
+    walkers = max(walkers, 2 * len(z0) + 2)       # emcee needs at least twice as many walkers as dimensions (v2 has one noise scale per sector)
     p0, tries = [], 0
     while len(p0) < walkers:
         tries += 1
@@ -399,7 +741,7 @@ def sample(x_best, groups, period, t0_ref, steps=1500, walkers=32, seed=7, until
         if np.isfinite(lp(trial)):
             p0.append(trial)
     moves = [(emcee.moves.DEMove(), 0.8), (emcee.moves.DESnookerMove(), 0.2)]
-    _LP.update(base=base, free=free_idx, groups=groups, period=period, t0=t0_ref)
+    _LP.update(base=base, free=free_idx, groups=groups, period=period, t0=t0_ref, fn=prob_fn)
     nproc = int(os.environ.get("F26_PROCS", "1") or 1)
     pool = None
     if nproc > 1 and sys.platform != "win32":
@@ -461,20 +803,49 @@ def model_duration(theta, period):
     return float(out)
 
 
-def fit_star(t, f, sector, period, t0, duration, ecosw, depth_ratio, steps=1500, until_converged=False, max_steps=6000):
+def fit_star(t, f, sector, period, t0, duration, ecosw, depth_ratio, steps=1500, until_converged=False, max_steps=6000, noise=None, gp=True):
     """Fit, then re-detrend with the duration the model implies (a short catalogue duration would
-    otherwise let the detrending eat the eclipse wings), and fit again before sampling."""
+    otherwise let the detrending eat the eclipse wings), and fit again before sampling.
+
+    noise "v1" (default): eclipses divided by their own baseline, folded in phase, white noise per cadence.
+    noise "v2": events kept separate, baselines integrated out, white noise per sector plus Matern-3/2 red noise
+    (gp=False drops the red-noise term, for tests)."""
+    noise = noise or NOISE_DEFAULT
+    if noise not in ("v1", "v2"):
+        raise ValueError("noise must be 'v1' or 'v2', got %r" % (noise,))
+    v2 = noise == "v2"
     sec_phase = (0.5 + 2.0 * ecosw / np.pi) % 1.0
     t1 = time.time()
     best, groups, dur_used = None, None, duration
+    x_prev = None
     for _ in range(3):
-        td, fd, sd = detrend_local(t, f, period, t0, dur_used, sec_phase, sector)
-        if len(td) < 50:
-            return {"status": "TOO_FEW_ECLIPSES_WITH_BASELINE"}
-        groups = bin_groups(td, fd, sd, period, t0, dur_used, sec_phase)
-        if not groups:
-            return {"status": "NO_DATA"}
-        best = optimise(groups, period, t0, dur_used, ecosw, depth_ratio)
+        if v2:
+            events = cut_events(t, f, sector, period, t0, dur_used, sec_phase)
+            if len(events) < 4:
+                return {"status": "TOO_FEW_ECLIPSES_WITH_BASELINE"}
+            groups = event_groups(events, dur_used, gp=gp)
+            if not groups or sum(len(g["y"]) for g in groups) < 50:
+                return {"status": "NO_DATA"}
+        else:
+            td, fd, sd = detrend_local(t, f, period, t0, dur_used, sec_phase, sector)
+            if len(td) < 50:
+                return {"status": "TOO_FEW_ECLIPSES_WITH_BASELINE"}
+            groups = bin_groups(td, fd, sd, period, t0, dur_used, sec_phase)
+            if not groups:
+                return {"status": "NO_DATA"}
+        if v2:
+            if x_prev is None:                                     # global search on the cheap folded data first
+                td, fd, sd = detrend_local(t, f, period, t0, dur_used, sec_phase, sector)
+                g1 = bin_groups(td, fd, sd, period, t0, dur_used, sec_phase) if len(td) >= 50 else []
+                b1 = optimise(g1, period, t0, dur_used, ecosw, depth_ratio, noise="v1") if g1 else None
+                if b1 is None or not np.isfinite(b1.fun):
+                    return {"status": "OPTIMISER_FAILED"}
+                x_prev = b1.x[:len(PARAMS)]
+            best = optimise(groups, period, t0, dur_used, ecosw, depth_ratio, noise="v2", x_init=[x_prev])
+            if best is not None:
+                x_prev = best.x[:len(PARAMS)]
+        else:
+            best = optimise(groups, period, t0, dur_used, ecosw, depth_ratio, noise=noise)
         if best is None or not np.isfinite(best.fun):
             return {"status": "OPTIMISER_FAILED"}
         p = dict(zip(PARAMS, best.x[:len(PARAMS)]))
@@ -484,14 +855,22 @@ def fit_star(t, f, sector, period, t0, duration, ecosw, depth_ratio, steps=1500,
         if d_model <= 1.1 * dur_used:
             break
         dur_used = 1.15 * d_model
-    chain, acc, tau, steps = sample(best.x, groups, period, t0, steps=steps, until_converged=until_converged, max_steps=max_steps)
-    ll, chi = log_like(best.x, groups, period, t0, return_chi=True)
+    chain, acc, tau, steps = sample(best.x, groups, period, t0, steps=steps, until_converged=until_converged, max_steps=max_steps, noise=noise)
+    if v2:
+        ll, chi = _log_like_events(best.x, groups, period, t0, return_chi=True)
+    else:
+        ll, chi = log_like(best.x, groups, period, t0, return_chi=True)
     n_bins = int(sum(len(g["y"]) for g in groups))
     summ = summarise(derived(chain))
+    n_scale = groups[0]["n_white"] if v2 else len(best.x) - len(PARAMS)
     flags = []
     if summ["rsum"]["median"] > ROCHE_WARN_RSUM:
         flags.append("rsum above %.2f: spherical stars are a poor approximation" % ROCHE_WARN_RSUM)
-    if max(np.exp(best.x[len(PARAMS):])) > 5.0:
+    # v1: the scales at the least-squares optimum. v2: the posterior medians, because the least-squares start is white-noise
+    # only and the red-noise term is meant to absorb what that start cannot
+    scales = (np.exp(np.median(chain[:, len(PARAMS):len(PARAMS) + n_scale], axis=0)) if v2
+              else np.exp(best.x[len(PARAMS):len(PARAMS) + n_scale]))
+    if max(scales) > 5.0:
         flags.append("poor fit: residuals need more than 5 times the measured noise")
     converged = bool(tau is not None and steps / 2 >= 20 * tau)
     if not converged:
@@ -499,18 +878,26 @@ def fit_star(t, f, sector, period, t0, duration, ecosw, depth_ratio, steps=1500,
     if summ["l3"]["median"] > 0.3:
         flags.append("large third light: inclination and radii are degenerate with it")
     best_p = dict(zip(PARAMS, best.x[:len(PARAMS)]))
-    return {"status": "OK", "period_input_days": float(period), "period_days": float(period + best_p["dP"]),
-            "t0_btjd": float(t0 + best_p["dt0"]),
-            "duration_input_days": float(duration), "duration_used_days": float(dur_used),
-            "n_bins": n_bins, "groups": [{"cadence_min": g["cadence_min"], "n_bins": int(len(g["y"]))} for g in groups],
-            "chi2_best": float(chi), "noise_scale": [float(np.exp(s)) for s in best.x[len(PARAMS):]],
-            "acceptance": acc, "autocorr_steps": tau, "steps": steps, "converged": converged, "seconds": round(time.time() - t1, 1),
-            "params": summ, "flags": flags,
-            "model": {"limb_darkening": "quadratic, u1 fitted per star with prior %.2f+-%.2f, u2=%.2f" % (U1_PRIOR[0], U1_PRIOR[1], U2_FIXED),
-                      "detrending": "quadratic per eclipse, fitted outside the eclipse",
-                      "outliers": "points beyond %.0f MAD of their phase neighbourhood dropped" % CLIP_MAD,
-                      "shapes": "sphere", "period": "pipeline value plus a fitted correction",
-                      "third_light": "half-normal prior, width %.2f" % L3_PRIOR_SIGMA}}
+    out = {"status": "OK", "noise_model": noise, "period_input_days": float(period), "period_days": float(period + best_p["dP"]),
+           "t0_btjd": float(t0 + best_p["dt0"]),
+           "duration_input_days": float(duration), "duration_used_days": float(dur_used),
+           "n_bins": n_bins, "groups": [{"cadence_min": g["cadence_min"], "n_bins": int(len(g["y"]))} for g in groups],
+           "chi2_best": float(chi), "noise_scale": [float(x_) for x_ in scales],
+           "acceptance": acc, "autocorr_steps": tau, "steps": steps, "converged": converged, "seconds": round(time.time() - t1, 1),
+           "params": summ, "flags": flags,
+           "model": {"limb_darkening": "quadratic, u1 fitted per star with prior %.2f+-%.2f, u2=%.2f" % (U1_PRIOR[0], U1_PRIOR[1], U2_FIXED),
+                     "detrending": ("quadratic per eclipse event, integrated out of the likelihood (flat prior)" if v2 else "quadratic per eclipse, fitted outside the eclipse"),
+                     "outliers": "points beyond %.0f MAD of their phase neighbourhood dropped" % CLIP_MAD,
+                     "shapes": "sphere", "period": "pipeline value plus a fitted correction",
+                     "third_light": "half-normal prior, width %.2f" % L3_PRIOR_SIGMA}}
+    if v2:
+        out["model"]["noise"] = ("per-sector white-noise scale%s" % (" plus Matern-3/2 red noise per event" if gp else ""))
+        if gp:
+            lna = chain[:, len(PARAMS) + n_scale]
+            lnrho = chain[:, len(PARAMS) + n_scale + 1]
+            out["red_noise"] = {"amplitude_median": float(np.exp(np.median(lna))), "amplitude_p84": float(np.exp(np.percentile(lna, 84))),
+                                "timescale_days_median": float(np.exp(np.median(lnrho))), "events": int(sum(len(g["events"]) for g in groups))}
+    return out
 
 
 def load_star(root, tic, cache_dir=None):
@@ -521,7 +908,7 @@ def load_star(root, tic, cache_dir=None):
     return t[ok], f[ok], s[ok]
 
 
-def validate(root, steps, cadence_min=2):
+def validate(root, steps, cadence_min=2, noise=None):
     import f13_ephemeris as f13
     cache = root / "data" / "processed" / "f13_lc_cache_validation"
     cache.mkdir(parents=True, exist_ok=True)
@@ -539,7 +926,7 @@ def validate(root, steps, cadence_min=2):
         # regular grid times so the cadence detector sees the long cadence
         t, f, s = df["t"].to_numpy(), df["f"].to_numpy(), df["s"].to_numpy()
     res = fit_star(t, f, s, AI_PHE["period"], AI_PHE["t0_btjd"], AI_PHE["duration"],
-                   AI_PHE["truth"]["ecosw"], 1.0, steps=steps)
+                   AI_PHE["truth"]["ecosw"], 1.0, steps=steps, noise=noise)
     truth, tol = AI_PHE["truth"], AI_PHE["pass"]
     if res["status"] != "OK":
         return {"star": "AI Phe", "status": res["status"]}
@@ -551,7 +938,7 @@ def validate(root, steps, cadence_min=2):
         "r2": abs(p["r2"]["median"] / truth["r2"] - 1) <= tol["r_frac"],
         "incl": abs(p["incl"]["median"] - truth["incl"]) <= tol["incl"],
     }
-    return {"star": "AI Phe (TIC 102069549)", "reference": "Maxted et al. 2020, MNRAS 498, 332",
+    return {"star": "AI Phe (TIC 102069549)", "reference": "Maxted et al. 2020, MNRAS 498, 332", "noise_model": res.get("noise_model", "v1"),
             "cadence_min": cadence_min, "sectors": sorted(int(x) for x in np.unique(s)), "truth": truth, "tolerance": tol,
             "fit": {k: p[k] for k in ("e", "esinw", "ecosw", "r1", "r2", "incl", "l3", "J")},
             "checks": checks, "passed": bool(all(checks.values())), "run": {k: res[k] for k in ("chi2_best", "acceptance", "autocorr_steps", "seconds", "flags")}}
@@ -585,9 +972,10 @@ def main():
     conv = "--converge" in args
     max_steps = int(args[args.index("--max-steps") + 1]) if "--max-steps" in args else 6000
     lc_dir = args[args.index("--lc-dir") + 1] if "--lc-dir" in args else None
+    noise = args[args.index("--noise") + 1] if "--noise" in args else None
     if "--validate" in args:
-        v = [validate(root, steps, 2), validate(root, steps, 30)]
-        (root / "data" / "processed" / "f26_validation.json").write_text(json.dumps(v, indent=1) + "\n", encoding="utf-8", newline="\n")
+        v = [validate(root, steps, 2, noise), validate(root, steps, 30, noise)]
+        (root / "data" / "processed" / ("f26_validation%s.json" % ("_" + noise if noise and noise != "v1" else ""))).write_text(json.dumps(v, indent=1) + "\n", encoding="utf-8", newline="\n")
         print(json.dumps(v, indent=1))
         return
     vet = pd.read_csv(root / "data" / "processed" / "f3i_vetting_results.csv").set_index("TIC")
@@ -606,7 +994,7 @@ def main():
         sd_ = float(s.get("secondary_depth") or 0.3 * pd_)
         try:
             t, f, sec = load_star(root, tic, lc_dir)
-            r = fit_star(t, f, sec, period, t0, dur, ecosw, sd_ / max(pd_, 1e-4), steps=steps, until_converged=conv, max_steps=max_steps)
+            r = fit_star(t, f, sec, period, t0, dur, ecosw, sd_ / max(pd_, 1e-4), steps=steps, until_converged=conv, max_steps=max_steps, noise=noise)
         except Exception as e:  # noqa: BLE001 - visible, never silent
             r = {"status": "ERROR", "error": repr(e)}
         res[str(tic)] = r

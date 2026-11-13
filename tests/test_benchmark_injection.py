@@ -66,3 +66,43 @@ def test_coverage_metrics():
     m = fi.metrics(rows)
     assert m["by_quantity"]["e"]["coverage_68"] == 0.75
     assert m["trust_rule"]["accepted"] == 4 and m["trust_rule"]["accepted_good_fraction"] == 1.0
+
+
+def _injection_row(host, seed, index, noise=None):
+    q = {"median": 0.2, "lo": 0.01, "hi": 0.01, "p2.5": 0.18, "p97.5": 0.22}
+    fit = {k: dict(q) for k in fi.QUANTITIES}
+    fit["rsum"] = {"median": 0.1}
+    return {"status": "OK", "host": host, "seed": seed, "index": index, "trusted": True, "fit": fit, "converged": True,
+            "truth": dict({k: 0.2 for k in fi.QUANTITIES}, rsum=0.1), "inputs": {"f22": {"verdict": "ECCENTRIC"}}}
+
+
+def test_v2_injection_results_merge_into_their_own_file_and_by_seed(tmp_path):
+    root, parts = tmp_path / "root", tmp_path / "parts"
+    (root / "data" / "processed").mkdir(parents=True)
+    parts.mkdir()
+    site_file = root / "data" / "processed" / "f30_injection.json"
+    site_file.write_text('{"untouched": true}\n', encoding="utf-8")
+    for name, rows in (("f30v2_1_29_0.json", [_injection_row(1, 29, 0)]), ("f30v2_1_33_0.json", [_injection_row(1, 33, 0), _injection_row(1, 33, 1)]),
+                       ("f30_1_0.json", [_injection_row(1, 29, 7)])):          # a v1 part file in the same directory is ignored by the v2 merge
+        (parts / name).write_text(json.dumps({"rows": rows}), encoding="utf-8")
+    out = fi.merge(root, parts, "v2")
+    assert site_file.read_text(encoding="utf-8") == '{"untouched": true}\n'
+    saved = json.loads((root / "data" / "processed" / "f30_injection_v2.json").read_text(encoding="utf-8"))
+    assert saved["noise_model"] == "v2" and out["overall"]["n_injected"] == 3
+    assert saved["by_seed"]["29"]["n_injected"] == 1 and saved["by_seed"]["33"]["n_injected"] == 2
+
+
+def test_v2_benchmark_results_merge_into_their_own_file(tmp_path):
+    root, parts = tmp_path / "root", tmp_path / "parts"
+    (root / "data" / "processed").mkdir(parents=True)
+    (root / "data" / "benchmarks").mkdir(parents=True)
+    parts.mkdir()
+    (root / "data" / "benchmarks" / "f29_preregistration.json").write_text((ROOT / "data" / "benchmarks" / "f29_preregistration.json").read_text(encoding="utf-8"), encoding="utf-8")
+    pre = json.loads((root / "data" / "benchmarks" / "f29_preregistration.json").read_text(encoding="utf-8"))
+    s0 = pre["systems"][0]
+    row = {"name": s0["name"], "tic": s0["tic"], "cadence_min": 2, "status": "ERROR", "truth": s0["truth"], "reference": s0["reference"]}
+    (parts / "f29v2_a.json").write_text(json.dumps({"rows": [row]}), encoding="utf-8")
+    out = fb.merge(root, parts, "v2")
+    assert out["noise_model"] == "v2" and out["summary"]["runs"] == 1
+    assert (root / "data" / "processed" / "f29_benchmarks_v2.json").exists()
+    assert not (root / "data" / "processed" / "f29_benchmarks.json").exists()
