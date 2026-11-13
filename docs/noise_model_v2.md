@@ -1,7 +1,8 @@
 # Noise model v2 of the eclipse fitter
 
-Status: built and unit-tested; NOT yet run on any benchmark system or injection host. The design of the test and the
-criteria for adopting it are fixed in `data/benchmarks/f33_preregistration.json` before the first such run.
+Status: tested as registered; NOT adopted. v2 improves the eccentricity intervals where it runs but not the radii or the
+inclination, and it produced a fit for only 43 of 96 injections. v1 remains the version the site uses. The full account
+is in `data/benchmarks/f33_run_log.md`; the criteria are in `data/benchmarks/f33_preregistration.json`.
 
 ## Why
 
