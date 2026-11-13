@@ -652,7 +652,8 @@ export interface SurfaceVariabilityStar {
 }
 
 // novelty_extra.json (export_novelty_extra.py): the six-catalog cross-match
-// verdict for every candidate. ALREADY_KNOWN = same star, same period.
+// verdict for every candidate. ALREADY_KNOWN = same star, same period. NOT_CHECKED = the cross-match did not run
+// for this star yet; INCOMPLETE = it ran but a query failed. Neither may be read as a clean result.
 export interface NoveltyExtra {
   verdict: string;
   matched_catalogs: string[];

@@ -26,3 +26,12 @@ def test_published_file_covers_every_candidate():
     d = json.loads((root / "site/public/data/novelty_extra.json").read_text(encoding="utf-8"))["stars"]
     tics = {p.stem[3:] for p in (root / "site/public/data/detail").glob("TIC*.json")}
     assert tics <= set(d)
+
+
+def test_a_candidate_without_a_row_is_published_as_not_checked(tmp_path):
+    p = tmp_path / "x.csv"
+    pd.DataFrame([{"tic": 1, "tier": "CLEAN", "verdict": "NO_MATCH", "matched_catalogs": None, "known_other_period": None, "nearby_catalogs": None}]).to_csv(p, index=False)
+    out = en.build(p, candidate_tics=[1, 2])
+    assert out["1"]["verdict"] == "NO_MATCH"
+    assert out["2"] == {"verdict": "NOT_CHECKED", "matched_catalogs": [], "known_other_period": [], "nearby_catalogs": []}
+    assert out["2"] is not en.NOT_CHECKED, "each star must get its own copy"

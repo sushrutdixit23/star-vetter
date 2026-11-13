@@ -22,7 +22,12 @@ def _split(v):
     return [x.strip() for x in str(v).split(",") if x.strip()]
 
 
-def build(csv_path):
+NOT_CHECKED = {"verdict": "NOT_CHECKED", "matched_catalogs": [], "known_other_period": [], "nearby_catalogs": []}
+
+
+def build(csv_path, candidate_tics=None):
+    """Verdict per star. A candidate with no row in the CSV (the cross-match did not run, e.g. the VizieR mirror was
+    down) gets an explicit NOT_CHECKED entry: a missing answer is stated, never left out and never read as "no match"."""
     df = pd.read_csv(csv_path)
     out = {}
     for r in df.itertuples(index=False):
@@ -32,12 +37,15 @@ def build(csv_path):
             "known_other_period": _split(r.known_other_period),
             "nearby_catalogs": _split(r.nearby_catalogs),
         }
+    for tic in candidate_tics or ():
+        out.setdefault(str(int(tic)), dict(NOT_CHECKED))
     return out
 
 
 def main(root):
     root = Path(root)
-    stars = build(root / "data/processed/f14_novelty_extra.csv")
+    tics = [int(p.stem[3:]) for p in (root / "site/public/data/detail").glob("TIC*.json")]
+    stars = build(root / "data/processed/f14_novelty_extra.csv", tics)
     counts = {}
     for v in stars.values():
         counts[v["verdict"]] = counts.get(v["verdict"], 0) + 1
