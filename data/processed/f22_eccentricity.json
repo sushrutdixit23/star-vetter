@@ -1,12 +1,12 @@
 {
- "generated_at": "2026-11-11T06:27:30Z",
+ "generated_at": "2026-11-13T02:37:37Z",
  "counts": {
-  "INSUFFICIENT_FOR_HALVES": 66,
-  "ECCENTRIC": 13,
-  "NO_SECONDARY": 104,
-  "NOT_TESTABLE": 13,
-  "CIRCULAR_WITHIN_ERRORS": 93,
-  "SECONDARY_NOT_REPRODUCED": 15,
+  "INSUFFICIENT_FOR_HALVES": 67,
+  "ECCENTRIC": 14,
+  "NO_SECONDARY": 108,
+  "NOT_TESTABLE": 14,
+  "CIRCULAR_WITHIN_ERRORS": 95,
+  "SECONDARY_NOT_REPRODUCED": 16,
   "PERIOD_MULTIPLE_SUSPECTED": 3
  },
  "method": "Box scan for the secondary eclipse at the pipeline period (the half-period case is read from odd/even eclipse times); e cos(omega) = (pi/2)(phase - 0.5); accepted only when two independent halves of the data each show the dip at the same phase; ECCENTRIC stars are re-measured in ZTF with calibrated random-phase controls.",
@@ -84,19 +84,8 @@
     "amplitude_over_secondary_depth": 0.05772306075294879
    },
    "alternation": null,
-   "ztf": {
-    "period_used_days": 7.00816065138544,
-    "n_points": 536,
-    "primary_shift_phase": 0.010999999999999996,
-    "scan_phase": 0.6755143267140719,
-    "scan_snr": 3.2228540579524387,
-    "snr_at_tess_phase": 2.8189882564385513,
-    "n_in_at_tess_phase": 6,
-    "p_value": 0.03482587064676617,
-    "scan_agrees_with_tess": false,
-    "confirmed": false
-   },
-   "ztf_coverage": "measured",
+   "ztf": null,
+   "ztf_coverage": "no_file",
    "n_points": 1072,
    "n_sectors": 1
   },
@@ -583,9 +572,9 @@
    },
    "fast_signal": {
     "period_days": 0.13130297880834582,
-    "amplitude": 0.023867931116378603,
+    "amplitude": 0.023867931116378634,
     "fap": 0.0,
-    "amplitude_over_secondary_depth": 0.6404815355278721
+    "amplitude_over_secondary_depth": 0.6404815355278729
    },
    "alternation": {
     "odd_even_time_offset_min": -0.28200000000000003,
@@ -808,9 +797,9 @@
    },
    "fast_signal": {
     "period_days": 0.2278105773385165,
-    "amplitude": 0.010297142242939558,
+    "amplitude": 0.010297142242939551,
     "fap": 1.0,
-    "amplitude_over_secondary_depth": 0.04254748472434742
+    "amplitude_over_secondary_depth": 0.04254748472434739
    },
    "alternation": {
     "odd_even_time_offset_min": -0.167,
@@ -823,19 +812,8 @@
     "n_even": 7,
     "n_odd": 5
    },
-   "ztf": {
-    "period_used_days": 9.125136490687446,
-    "n_points": 328,
-    "primary_shift_phase": -0.0050000000000000044,
-    "scan_phase": 0.6740892370073235,
-    "scan_snr": 8.202590381283557,
-    "snr_at_tess_phase": null,
-    "n_in_at_tess_phase": 2,
-    "p_value": null,
-    "scan_agrees_with_tess": true,
-    "confirmed": false
-   },
-   "ztf_coverage": "measured",
+   "ztf": null,
+   "ztf_coverage": "no_file",
    "n_points": 30441,
    "n_sectors": 5
   },
@@ -903,7 +881,7 @@
    },
    "alternation": null,
    "ztf": null,
-   "ztf_coverage": "insufficient_points",
+   "ztf_coverage": "no_file",
    "n_points": 1934,
    "n_sectors": 2
   },
@@ -2426,12 +2404,12 @@
    "ecosw_sigma": 0.003501784631951035,
    "alternation": {
     "odd_even_time_offset_min": -3.941,
-    "offset_sigma_min": 2.186511628621366,
-    "z": -1.8024143793302712,
+    "offset_sigma_min": 2.1865116286213655,
+    "z": -1.8024143793302716,
     "true_period_days": 3.6410352921459865,
     "delta_phase": -0.0007516558714657533,
     "ecosw": 0.001180698281912218,
-    "ecosw_sigma": 0.0006550648371718706,
+    "ecosw_sigma": 0.0006550648371718705,
     "n_even": 6,
     "n_odd": 6
    },
@@ -2536,19 +2514,8 @@
     "n_even": 5,
     "n_odd": 4
    },
-   "ztf": {
-    "period_used_days": 2.3838549191027028,
-    "n_points": 1005,
-    "primary_shift_phase": 0.012999999999999998,
-    "scan_phase": 0.60202216922466,
-    "scan_snr": 23.382202873223694,
-    "snr_at_tess_phase": 7.764258964132368,
-    "n_in_at_tess_phase": 174,
-    "p_value": 0.004975124378109453,
-    "scan_agrees_with_tess": true,
-    "confirmed": true
-   },
-   "ztf_coverage": "measured",
+   "ztf": null,
+   "ztf_coverage": "no_file",
    "n_points": 1072,
    "n_sectors": 1
   },
@@ -2580,12 +2547,12 @@
    ],
    "alternation": {
     "odd_even_time_offset_min": 3.4630000000000005,
-    "offset_sigma_min": 5.9357954215689945,
-    "z": 0.5834095945113678,
+    "offset_sigma_min": 5.935795421568994,
+    "z": 0.5834095945113679,
     "true_period_days": 2.729002723949002,
     "delta_phase": 0.0008812234190925095,
     "ecosw": 0.0013842225097960908,
-    "ecosw_sigma": 0.0023726426901763647,
+    "ecosw_sigma": 0.0023726426901763643,
     "n_even": 4,
     "n_odd": 6
    },
@@ -3004,10 +2971,10 @@
     "n_in": 638
    },
    "half_a": {
-    "phase": 0.2565250293665251,
-    "depth": 0.0007459042847665076,
-    "snr": 7.080232855053561,
-    "n_in": 291
+    "phase": 0.2574606156726969,
+    "depth": 0.0006135219912724033,
+    "snr": 6.413095237589741,
+    "n_in": 348
    },
    "half_b": {
     "phase": 0.37885530469685624,
@@ -3017,8 +2984,8 @@
    },
    "halves": "alternating sectors",
    "alternation": null,
-   "n_points": 151710,
-   "n_sectors": 16
+   "n_points": 158703,
+   "n_sectors": 17
   },
   "219765539": {
    "verdict": "SECONDARY_NOT_REPRODUCED",
@@ -3083,12 +3050,12 @@
    "ecosw_sigma": 0.0043631678584495045,
    "alternation": {
     "odd_even_time_offset_min": -3.0175,
-    "offset_sigma_min": 5.901516172617477,
+    "offset_sigma_min": 5.901516172617476,
     "z": -0.5113092825197936,
     "true_period_days": 1.8043249909597192,
     "delta_phase": -0.00116136844615588,
     "ecosw": 0.0018242732892771623,
-    "ecosw_sigma": 0.0035678469991526755,
+    "ecosw_sigma": 0.003567846999152675,
     "n_even": 26,
     "n_odd": 24
    },
@@ -3489,17 +3456,17 @@
     2
    ],
    "alternation": null,
-   "n_points": 164312,
-   "n_sectors": 17
+   "n_points": 173312,
+   "n_sectors": 18
   },
   "229473505": {
    "verdict": "NO_SECONDARY",
    "ecosw": null,
    "secondary": {
-    "phase": 0.7270757162444769,
-    "depth": 0.00021707276862681368,
-    "snr": 5.005348039497509,
-    "n_in": 2058
+    "phase": 0.7270316474046882,
+    "depth": 0.00018969992833717253,
+    "snr": 4.5199503919200055,
+    "n_in": 2197
    },
    "half_a": {
     "phase": 0.2903642340233792,
@@ -3508,15 +3475,15 @@
     "n_in": 1109
    },
    "half_b": {
-    "phase": 0.2674732938068803,
-    "depth": 0.0003362789974503677,
-    "snr": 5.777785887440681,
-    "n_in": 1074
+    "phase": 0.40431476078244016,
+    "depth": 0.0003059679276258276,
+    "snr": 5.535518641015459,
+    "n_in": 1095
    },
    "halves": "alternating sectors",
    "alternation": null,
-   "n_points": 137960,
-   "n_sectors": 15
+   "n_points": 146326,
+   "n_sectors": 16
   },
   "229490432": {
    "verdict": "CIRCULAR_WITHIN_ERRORS",
@@ -3551,8 +3518,8 @@
    "ecosw_sigma": 0.00011437905194618905,
    "alternation": {
     "odd_even_time_offset_min": -0.958,
-    "offset_sigma_min": 1.2892618859701659,
-    "z": -0.7430608245113115,
+    "offset_sigma_min": 1.2892618859701657,
+    "z": -0.7430608245113116,
     "true_period_days": 4.6574078308220095,
     "delta_phase": -0.0001428429293597764,
     "ecosw": 0.0002243771487468902,
@@ -4022,12 +3989,12 @@
    "halves": "alternating orbits",
    "alternation": {
     "odd_even_time_offset_min": -160.789,
-    "offset_sigma_min": 26.943426358649717,
-    "z": -5.967652289642126,
+    "offset_sigma_min": 26.94342635864972,
+    "z": -5.967652289642125,
     "true_period_days": 3.812642209285805,
     "delta_phase": -0.029286521432781928,
     "ecosw": 0.046003160291213784,
-    "ecosw_sigma": 0.007708753469276379,
+    "ecosw_sigma": 0.00770875346927638,
     "n_even": 7,
     "n_odd": 5
    },
@@ -4163,12 +4130,12 @@
    "halves": "alternating sectors",
    "alternation": {
     "odd_even_time_offset_min": -2.166,
-    "offset_sigma_min": 2.1459576116980217,
+    "offset_sigma_min": 2.145957611698022,
     "z": -1.009339601207742,
     "true_period_days": 3.996680857205511,
     "delta_phase": -0.00037635395980012865,
     "ecosw": 0.0005911754176288365,
-    "ecosw_sigma": 0.0005857051649626898,
+    "ecosw_sigma": 0.0005857051649626899,
     "n_even": 90,
     "n_odd": 91
    },
@@ -4231,6 +4198,32 @@
    "n_points": 904,
    "n_sectors": 1
   },
+  "237742152": {
+   "verdict": "NO_SECONDARY",
+   "ecosw": null,
+   "secondary": {
+    "phase": 0.1670957141267353,
+    "depth": 0.002851520310504174,
+    "snr": 2.90057051287217,
+    "n_in": 37
+   },
+   "half_a": {
+    "phase": 0.43478381633094804,
+    "depth": 0.004436317860082806,
+    "snr": 4.937846628970332,
+    "n_in": 17
+   },
+   "half_b": {
+    "phase": 0.7528036499519459,
+    "depth": 0.0026794975519973674,
+    "snr": 2.647250592154322,
+    "n_in": 17
+   },
+   "halves": "alternating orbits",
+   "alternation": null,
+   "n_points": 904,
+   "n_sectors": 1
+  },
   "238618726": {
    "verdict": "NO_SECONDARY",
    "ecosw": null,
@@ -4271,16 +4264,16 @@
    "verdict": "SECONDARY_NOT_REPRODUCED",
    "ecosw": null,
    "secondary": {
-    "phase": 0.4976991612939229,
-    "depth": 0.0663635447432398,
-    "snr": 52.32472760439281,
-    "n_in": 554
+    "phase": 0.49735817664423365,
+    "depth": 0.052811389364031514,
+    "snr": 16.651871739345495,
+    "n_in": 903
    },
    "half_a": {
-    "phase": 0.5353649193086029,
-    "depth": 0.08799592935248679,
-    "snr": 23.236065540806397,
-    "n_in": 59
+    "phase": 0.3052854739199458,
+    "depth": 0.07952267977387917,
+    "snr": 35.87368597543414,
+    "n_in": 397
    },
    "half_b": {
     "phase": 0.4965150437029341,
@@ -4290,7 +4283,7 @@
    },
    "halves": "alternating sectors",
    "secondary_events": [
-    17,
+    14,
     20
    ],
    "alternation": {
@@ -4304,8 +4297,8 @@
     "n_even": 10,
     "n_odd": 10
    },
-   "n_points": 10271,
-   "n_sectors": 2
+   "n_points": 16253,
+   "n_sectors": 3
   },
   "244999763": {
    "verdict": "CIRCULAR_WITHIN_ERRORS",
@@ -4417,12 +4410,12 @@
    "halves": "alternating orbits",
    "alternation": {
     "odd_even_time_offset_min": -2.093,
-    "offset_sigma_min": 4.585708248280677,
-    "z": -0.45641804639113925,
+    "offset_sigma_min": 4.585708248280678,
+    "z": -0.45641804639113914,
     "true_period_days": 4.385792378280337,
     "delta_phase": -0.0003314047033827275,
     "ecosw": 0.0005205692907562169,
-    "ecosw_sigma": 0.0011405536982427404,
+    "ecosw_sigma": 0.0011405536982427408,
     "n_even": 4,
     "n_odd": 5
    },
@@ -4578,6 +4571,41 @@
    },
    "n_points": 14297,
    "n_sectors": 2
+  },
+  "257773097": {
+   "verdict": "CIRCULAR_WITHIN_ERRORS",
+   "ecosw": 0.00034545265415187384,
+   "secondary": {
+    "phase": 0.5002199219900499,
+    "depth": 0.17677873125478505,
+    "snr": 86.49559429240686,
+    "n_in": 115
+   },
+   "half_a": {
+    "phase": 0.49995507454474736,
+    "depth": 0.17706592153299883,
+    "snr": 55.51257459552998,
+    "n_in": 47
+   },
+   "half_b": {
+    "phase": 0.5003969724956634,
+    "depth": 0.17680333246515945,
+    "snr": 65.60262492373921,
+    "n_in": 68
+   },
+   "halves": "alternating sectors",
+   "secondary_events": [
+    2,
+    3
+   ],
+   "secondary_phase": 0.5002199219900499,
+   "secondary_phase_sigma": 0.0002209489754580185,
+   "secondary_depth": 0.17677873125478505,
+   "secondary_snr": 86.49559429240686,
+   "ecosw_sigma": 0.00034706583905855123,
+   "alternation": null,
+   "n_points": 9079,
+   "n_sectors": 4
   },
   "257806221": {
    "verdict": "INSUFFICIENT_FOR_HALVES",
@@ -4788,12 +4816,12 @@
    "halves": "alternating orbits",
    "alternation": {
     "odd_even_time_offset_min": 2.9,
-    "offset_sigma_min": 2.9059219926385547,
-    "z": 0.9979620951100695,
+    "offset_sigma_min": 2.905921992638555,
+    "z": 0.9979620951100693,
     "true_period_days": 1.7880941610308447,
     "delta_phase": 0.0011262767547587497,
     "ecosw": 0.0017691513893295008,
-    "ecosw_sigma": 0.0017727641139861057,
+    "ecosw_sigma": 0.0017727641139861062,
     "n_even": 9,
     "n_odd": 9
    },
@@ -4957,7 +4985,7 @@
    },
    "alternation": null,
    "ztf": null,
-   "ztf_coverage": "insufficient_points",
+   "ztf_coverage": "no_file",
    "n_points": 10799,
    "n_sectors": 1
   },
@@ -5022,6 +5050,36 @@
    },
    "n_points": 2160,
    "n_sectors": 2
+  },
+  "272851823": {
+   "verdict": "SECONDARY_NOT_REPRODUCED",
+   "ecosw": null,
+   "secondary": {
+    "phase": 0.5026726186947643,
+    "depth": 0.03486613385954085,
+    "snr": 39.65833894356993,
+    "n_in": 140
+   },
+   "half_a": {
+    "phase": 0.7490175624097949,
+    "depth": 0.023650140354484872,
+    "snr": 27.405619087084816,
+    "n_in": 87
+   },
+   "half_b": {
+    "phase": 0.5022879430064041,
+    "depth": 0.03356552993990847,
+    "snr": 33.16758968229149,
+    "n_in": 71
+   },
+   "halves": "alternating orbits",
+   "secondary_events": [
+    8,
+    8
+   ],
+   "alternation": null,
+   "n_points": 1355,
+   "n_sectors": 1
   },
   "272854495": {
    "verdict": "NO_SECONDARY",
@@ -5212,7 +5270,7 @@
     "n_odd": 17
    },
    "ztf": null,
-   "ztf_coverage": "insufficient_points",
+   "ztf_coverage": "no_file",
    "n_points": 12286,
    "n_sectors": 5
   },
@@ -5676,7 +5734,7 @@
     "n_odd": 7
    },
    "ztf": null,
-   "ztf_coverage": "insufficient_points",
+   "ztf_coverage": "no_file",
    "n_points": 2188,
    "n_sectors": 2
   },
@@ -5784,19 +5842,8 @@
     "amplitude_over_secondary_depth": 0.047789205350304655
    },
    "alternation": null,
-   "ztf": {
-    "period_used_days": 4.273340364175486,
-    "n_points": 1414,
-    "primary_shift_phase": -0.0050000000000000044,
-    "scan_phase": 0.31325424275140135,
-    "scan_snr": 17.118355370523606,
-    "snr_at_tess_phase": 5.976336995216491,
-    "n_in_at_tess_phase": 41,
-    "p_value": 0.004975124378109453,
-    "scan_agrees_with_tess": true,
-    "confirmed": true
-   },
-   "ztf_coverage": "measured",
+   "ztf": null,
+   "ztf_coverage": "no_file",
    "n_points": 904,
    "n_sectors": 1
   },
@@ -6456,12 +6503,12 @@
    ],
    "alternation": {
     "odd_even_time_offset_min": -0.17099999999999999,
-    "offset_sigma_min": 0.42715345320714865,
-    "z": -0.4003245173744933,
+    "offset_sigma_min": 0.4271534532071487,
+    "z": -0.40032451737449326,
     "true_period_days": 1.7969155854937622,
     "delta_phase": -6.608546386855979e-05,
     "ecosw": 0.00010380680389925234,
-    "ecosw_sigma": 0.00025930663597643704,
+    "ecosw_sigma": 0.0002593066359764371,
     "n_even": 14,
     "n_odd": 14
    },
@@ -7677,7 +7724,7 @@
    },
    "alternation": null,
    "ztf": null,
-   "ztf_coverage": "insufficient_points",
+   "ztf_coverage": "no_file",
    "n_points": 2188,
    "n_sectors": 2
   },
@@ -7958,6 +8005,13 @@
    "n_points": 28598,
    "n_sectors": 3
   },
+  "378839425": {
+   "verdict": "NOT_TESTABLE",
+   "ecosw": null,
+   "alternation": null,
+   "n_points": 2188,
+   "n_sectors": 2
+  },
   "380943251": {
    "verdict": "NO_SECONDARY",
    "ecosw": null,
@@ -8190,17 +8244,17 @@
    },
    "alternation": {
     "odd_even_time_offset_min": 0.04099999999999998,
-    "offset_sigma_min": 0.27315117270274075,
-    "z": 0.1501000328657516,
+    "offset_sigma_min": 0.2731511727027408,
+    "z": 0.15010003286575158,
     "true_period_days": 16.260654070840868,
     "delta_phase": 1.7509887424073255e-06,
     "ecosw": 2.750446684889995e-06,
-    "ecosw_sigma": 1.8324091156546395e-05,
+    "ecosw_sigma": 1.8324091156546398e-05,
     "n_even": 3,
     "n_odd": 3
    },
    "ztf": null,
-   "ztf_coverage": "insufficient_points",
+   "ztf_coverage": "no_file",
    "n_points": 2167,
    "n_sectors": 2
   },
@@ -8513,8 +8567,34 @@
     5
    ],
    "alternation": null,
-   "n_points": 131020,
-   "n_sectors": 14
+   "n_points": 139536,
+   "n_sectors": 15
+  },
+  "403364360": {
+   "verdict": "NO_SECONDARY",
+   "ecosw": null,
+   "secondary": {
+    "phase": 0.19430797744888098,
+    "depth": 0.0003271771179673699,
+    "snr": 3.957250870165205,
+    "n_in": 339
+   },
+   "half_a": {
+    "phase": 0.17571567437606572,
+    "depth": 0.0003896148322354298,
+    "snr": 4.177241043349926,
+    "n_in": 258
+   },
+   "half_b": {
+    "phase": 0.22181032781727836,
+    "depth": 0.001020338178803426,
+    "snr": 4.351951164881921,
+    "n_in": 13
+   },
+   "halves": "alternating sectors",
+   "alternation": null,
+   "n_points": 61756,
+   "n_sectors": 4
   },
   "405215869": {
    "verdict": "INSUFFICIENT_FOR_HALVES",
@@ -8640,12 +8720,12 @@
    "ecosw_sigma": 0.014554884277194704,
    "alternation": {
     "odd_even_time_offset_min": -3.624999999999999,
-    "offset_sigma_min": 4.722708594583114,
-    "z": -0.7675680020058463,
+    "offset_sigma_min": 4.722708594583115,
+    "z": -0.7675680020058461,
     "true_period_days": 2.0531910119926327,
     "delta_phase": -0.0012260725360705715,
     "ecosw": 0.0019259102360437135,
-    "ecosw_sigma": 0.0025091069859750205,
+    "ecosw_sigma": 0.002509106985975021,
     "n_even": 25,
     "n_odd": 25
    },
@@ -8856,6 +8936,41 @@
    "halves": "alternating orbits",
    "alternation": null,
    "n_points": 1081,
+   "n_sectors": 1
+  },
+  "412843260": {
+   "verdict": "CIRCULAR_WITHIN_ERRORS",
+   "ecosw": -0.0008349712446129579,
+   "secondary": {
+    "phase": 0.499468440796321,
+    "depth": 0.02166549753010827,
+    "snr": 11.21689876191343,
+    "n_in": 50
+   },
+   "half_a": {
+    "phase": 0.4992367983111295,
+    "depth": 0.02319759812875355,
+    "snr": 7.969077869241141,
+    "n_in": 25
+   },
+   "half_b": {
+    "phase": 0.4996853407501741,
+    "depth": 0.021276837693558037,
+    "snr": 7.56497057335551,
+    "n_in": 25
+   },
+   "halves": "alternating orbits",
+   "secondary_events": [
+    6,
+    6
+   ],
+   "secondary_phase": 0.499468440796321,
+   "secondary_phase_sigma": 0.0009062542051321701,
+   "secondary_depth": 0.02166549753010827,
+   "secondary_snr": 11.21689876191343,
+   "ecosw_sigma": 0.0014235407765640416,
+   "alternation": null,
+   "n_points": 1072,
    "n_sectors": 1
   },
   "419143879": {
@@ -9461,6 +9576,62 @@
    "n_points": 2211,
    "n_sectors": 2
   },
+  "447456051": {
+   "verdict": "INSUFFICIENT_FOR_HALVES",
+   "ecosw": null,
+   "secondary": {
+    "phase": 0.4995235778156547,
+    "depth": 0.0031389303749799202,
+    "snr": 14.893582260615082,
+    "n_in": 25
+   },
+   "half_a": {
+    "phase": 0.5023052371736544,
+    "depth": 0.0027793337759588477,
+    "snr": 5.4190906797690355,
+    "n_in": 13
+   },
+   "half_b": {
+    "phase": 0.4969784873333399,
+    "depth": 0.0037338599952198015,
+    "snr": 17.391320962490486,
+    "n_in": 12
+   },
+   "halves": "alternating orbits",
+   "secondary_events": [
+    0,
+    0
+   ],
+   "alternation": null,
+   "n_points": 1086,
+   "n_sectors": 1
+  },
+  "447458374": {
+   "verdict": "NO_SECONDARY",
+   "ecosw": null,
+   "secondary": {
+    "phase": 0.5004955942548193,
+    "depth": 0.0012882771226441214,
+    "snr": 5.613572939478891,
+    "n_in": 28
+   },
+   "half_a": {
+    "phase": 0.4994849772175725,
+    "depth": 0.0015149430179896006,
+    "snr": 2.969423015868102,
+    "n_in": 11
+   },
+   "half_b": {
+    "phase": 0.5012710612244818,
+    "depth": 0.0011839993691368234,
+    "snr": 6.074671202383492,
+    "n_in": 17
+   },
+   "halves": "alternating orbits",
+   "alternation": null,
+   "n_points": 1004,
+   "n_sectors": 1
+  },
   "450616233": {
    "verdict": "NO_SECONDARY",
    "ecosw": null,
@@ -9678,12 +9849,12 @@
    ],
    "alternation": {
     "odd_even_time_offset_min": 2.3465,
-    "offset_sigma_min": 5.162439424385088,
-    "z": 0.4545331784264951,
+    "offset_sigma_min": 5.162439424385089,
+    "z": 0.454533178426495,
     "true_period_days": 3.0434017182587185,
     "delta_phase": 0.0005354251721396854,
     "ecosw": 0.0008410438936705183,
-    "ecosw_sigma": 0.001850346539238505,
+    "ecosw_sigma": 0.0018503465392385053,
     "n_even": 68,
     "n_odd": 72
    },
@@ -9805,7 +9976,7 @@
    },
    "alternation": null,
    "ztf": null,
-   "ztf_coverage": "insufficient_points",
+   "ztf_coverage": "no_file",
    "n_points": 2188,
    "n_sectors": 2
   },
@@ -9908,7 +10079,7 @@
     "n_odd": 7
    },
    "ztf": null,
-   "ztf_coverage": "insufficient_points",
+   "ztf_coverage": "no_file",
    "n_points": 2188,
    "n_sectors": 2
   },
@@ -10057,7 +10228,7 @@
     "n_odd": 3
    },
    "ztf": null,
-   "ztf_coverage": "insufficient_points",
+   "ztf_coverage": "no_file",
    "n_points": 2188,
    "n_sectors": 2
   },
@@ -10234,6 +10405,32 @@
    "n_points": 65221,
    "n_sectors": 8
   },
+  "469789979": {
+   "verdict": "NO_SECONDARY",
+   "ecosw": null,
+   "secondary": {
+    "phase": 0.5954641969636676,
+    "depth": 0.0028777653863906183,
+    "snr": 2.82182168663923,
+    "n_in": 47
+   },
+   "half_a": {
+    "phase": 0.7119320138645234,
+    "depth": 0.002923563806314422,
+    "snr": 2.8672521661400547,
+    "n_in": 18
+   },
+   "half_b": {
+    "phase": 0.6725880565873432,
+    "depth": 0.002368609052953996,
+    "snr": 2.2142515731803765,
+    "n_in": 25
+   },
+   "halves": "alternating orbits",
+   "alternation": null,
+   "n_points": 1177,
+   "n_sectors": 1
+  },
   "942471837": {
    "verdict": "NO_SECONDARY",
    "ecosw": null,
@@ -10248,6 +10445,54 @@
    "halves": "alternating orbits",
    "alternation": null,
    "n_points": 1101,
+   "n_sectors": 1
+  },
+  "973170627": {
+   "verdict": "ECCENTRIC",
+   "ecosw": -0.13158828689774132,
+   "secondary": {
+    "phase": 0.4162282947489199,
+    "depth": 0.02751747932261428,
+    "snr": 12.557238646002135,
+    "n_in": 28
+   },
+   "half_a": {
+    "phase": 0.416541780799886,
+    "depth": 0.028028532198774325,
+    "snr": 12.918543395748118,
+    "n_in": 17
+   },
+   "half_b": {
+    "phase": 0.41810646276717706,
+    "depth": 0.02817588223365275,
+    "snr": 9.189461376888646,
+    "n_in": 11
+   },
+   "halves": "alternating orbits",
+   "secondary_events": [
+    3,
+    2
+   ],
+   "secondary_phase": 0.4162282947489199,
+   "secondary_phase_sigma": 0.0007823409836455186,
+   "secondary_depth": 0.02751747932261428,
+   "secondary_snr": 12.557238646002135,
+   "ecosw_sigma": 0.001228898343411487,
+   "other_dip": {
+    "phase": 0.29583781862891145,
+    "depth": 0.0008748541791785414,
+    "snr": 3.491610011715653
+   },
+   "fast_signal": {
+    "period_days": 1.4879329230746208,
+    "amplitude": 42767373394.39711,
+    "fap": 1.0,
+    "amplitude_over_secondary_depth": 1554189353355.8591
+   },
+   "alternation": null,
+   "ztf": null,
+   "ztf_coverage": "insufficient_points",
+   "n_points": 1081,
    "n_sectors": 1
   },
   "975879954": {

@@ -1,27 +1,27 @@
 {
- "generated_at": "2026-11-13T00:24:47Z",
+ "generated_at": "2026-11-13T02:12:17Z",
  "summary": {
-  "stars": 307,
+  "stars": 317,
   "by_status": {
-   "NO_DATA": 188,
+   "NO_DATA": 196,
    "CONFIRMED": 57,
-   "NOT_SEEN": 17,
+   "NOT_SEEN": 19,
    "INCONCLUSIVE": 45
   },
   "by_tier": {
    "THIN MARGIN": {
-    "n": 30,
+    "n": 31,
     "CONFIRMED": 1,
     "NOT_SEEN": 1,
     "INCONCLUSIVE": 7,
-    "NO_DATA": 21
+    "NO_DATA": 22
    },
    "CLEAN": {
-    "n": 169,
+    "n": 176,
     "CONFIRMED": 41,
-    "NOT_SEEN": 11,
+    "NOT_SEEN": 13,
     "INCONCLUSIVE": 20,
-    "NO_DATA": 97
+    "NO_DATA": 102
    },
    "AMBIGUOUS PHOTOMETRY": {
     "n": 1,
@@ -31,11 +31,11 @@
     "NO_DATA": 1
    },
    "PERIOD ALIAS": {
-    "n": 106,
+    "n": 108,
     "CONFIRMED": 15,
     "NOT_SEEN": 5,
     "INCONCLUSIVE": 18,
-    "NO_DATA": 68
+    "NO_DATA": 70
    },
    "MARGINAL": {
     "n": 1,
@@ -45,20 +45,20 @@
     "NO_DATA": 1
    }
   },
-  "testable": 74,
+  "testable": 76,
   "confirmed_among_testable": {
    "k": 57,
-   "n": 74,
-   "rate": 0.7702702702702703,
-   "lo": 0.6625368542964842,
-   "hi": 0.8513281294135184
+   "n": 76,
+   "rate": 0.75,
+   "lo": 0.6422324806394772,
+   "hi": 0.8337107264667001
   },
   "confirmed_among_with_data": {
    "k": 57,
-   "n": 119,
-   "rate": 0.4789915966386555,
-   "lo": 0.3913052008697615,
-   "hi": 0.5679919285722489
+   "n": 121,
+   "rate": 0.47107438016528924,
+   "lo": 0.3843989163232052,
+   "hi": 0.5595299670563467
   }
  },
  "method": {
@@ -1289,6 +1289,22 @@
    "secondary_z": 0.7725109411058747,
    "span_days": 2764.309884299997
   },
+  "237742152": {
+   "status": "NOT_SEEN",
+   "n_points": 1004,
+   "tier": "CLEAN",
+   "tess_period": 3.4225565399572004,
+   "refined_period": 3.420215183195661,
+   "epochs": 18,
+   "snr": 225.92461505939235,
+   "p_value": 0.0033222591362126247,
+   "power": 1.0,
+   "depth_ratio": 3.1549334938245712,
+   "depth_ratio_err": 0.013964540751768832,
+   "odd_even_z": 8.325668248443387,
+   "secondary_z": 0.21266847558908894,
+   "span_days": 2762.329814900004
+  },
   "238618726": {
    "status": "NO_DATA",
    "n_points": 0,
@@ -1448,6 +1464,22 @@
    "odd_even_z": 3.1476187024750297,
    "secondary_z": -1.3678699808743522,
    "span_days": 2740.683842599996
+  },
+  "257773097": {
+   "status": "NO_DATA",
+   "n_points": 0,
+   "tier": "PERIOD ALIAS",
+   "tess_period": 4.945229377267876,
+   "refined_period": null,
+   "epochs": null,
+   "snr": null,
+   "p_value": null,
+   "power": null,
+   "depth_ratio": null,
+   "depth_ratio_err": null,
+   "odd_even_z": null,
+   "secondary_z": null,
+   "span_days": null
   },
   "257806221": {
    "status": "INCONCLUSIVE",
@@ -1656,6 +1688,22 @@
    "odd_even_z": null,
    "secondary_z": null,
    "span_days": null
+  },
+  "272851823": {
+   "status": "NOT_SEEN",
+   "n_points": 1666,
+   "tier": "CLEAN",
+   "tess_period": 1.1659192644336502,
+   "refined_period": 1.1659038217943862,
+   "epochs": 106,
+   "snr": 28.037317255083202,
+   "p_value": 0.013289036544850499,
+   "power": 0.9583333333333334,
+   "depth_ratio": 0.9205773523552161,
+   "depth_ratio_err": 0.03283400276780455,
+   "odd_even_z": -0.7395320766811908,
+   "secondary_z": 29.367664555497363,
+   "span_days": 2724.772963000003
   },
   "272854495": {
    "status": "NO_DATA",
@@ -3065,6 +3113,22 @@
    "secondary_z": null,
    "span_days": null
   },
+  "378839425": {
+   "status": "NO_DATA",
+   "n_points": 0,
+   "tier": "CLEAN",
+   "tess_period": 0.7573608190646315,
+   "refined_period": null,
+   "epochs": null,
+   "snr": null,
+   "p_value": null,
+   "power": null,
+   "depth_ratio": null,
+   "depth_ratio_err": null,
+   "odd_even_z": null,
+   "secondary_z": null,
+   "span_days": null
+  },
   "380943251": {
    "status": "CONFIRMED",
    "n_points": 1812,
@@ -3369,6 +3433,22 @@
    "secondary_z": -0.6719646209934861,
    "span_days": 2761.830405099994
   },
+  "403364360": {
+   "status": "NO_DATA",
+   "n_points": 0,
+   "tier": "CLEAN",
+   "tess_period": 19.67584805734213,
+   "refined_period": null,
+   "epochs": null,
+   "snr": null,
+   "p_value": null,
+   "power": null,
+   "depth_ratio": null,
+   "depth_ratio_err": null,
+   "odd_even_z": null,
+   "secondary_z": null,
+   "span_days": null
+  },
   "405215869": {
    "status": "NOT_SEEN",
    "n_points": 761,
@@ -3518,6 +3598,22 @@
    "n_points": 0,
    "tier": "PERIOD ALIAS",
    "tess_period": 3.529909753090718,
+   "refined_period": null,
+   "epochs": null,
+   "snr": null,
+   "p_value": null,
+   "power": null,
+   "depth_ratio": null,
+   "depth_ratio_err": null,
+   "odd_even_z": null,
+   "secondary_z": null,
+   "span_days": null
+  },
+  "412843260": {
+   "status": "NO_DATA",
+   "n_points": 18,
+   "tier": "PERIOD ALIAS",
+   "tess_period": 2.0904322626831098,
    "refined_period": null,
    "epochs": null,
    "snr": null,
@@ -3977,6 +4073,38 @@
    "secondary_z": null,
    "span_days": null
   },
+  "447456051": {
+   "status": "NO_DATA",
+   "n_points": 0,
+   "tier": "CLEAN",
+   "tess_period": 4.077717851352933,
+   "refined_period": null,
+   "epochs": null,
+   "snr": null,
+   "p_value": null,
+   "power": null,
+   "depth_ratio": null,
+   "depth_ratio_err": null,
+   "odd_even_z": null,
+   "secondary_z": null,
+   "span_days": null
+  },
+  "447458374": {
+   "status": "NO_DATA",
+   "n_points": 0,
+   "tier": "CLEAN",
+   "tess_period": 2.736782443705161,
+   "refined_period": null,
+   "epochs": null,
+   "snr": null,
+   "p_value": null,
+   "power": null,
+   "depth_ratio": null,
+   "depth_ratio_err": null,
+   "odd_even_z": null,
+   "secondary_z": null,
+   "span_days": null
+  },
   "450616233": {
    "status": "NO_DATA",
    "n_points": 0,
@@ -4302,6 +4430,22 @@
    "n_points": 0,
    "tier": "PERIOD ALIAS",
    "tess_period": 2.714119001308093,
+   "refined_period": null,
+   "epochs": null,
+   "snr": null,
+   "p_value": null,
+   "power": null,
+   "depth_ratio": null,
+   "depth_ratio_err": null,
+   "odd_even_z": null,
+   "secondary_z": null,
+   "span_days": null
+  },
+  "469789979": {
+   "status": "NO_DATA",
+   "n_points": 0,
+   "tier": "CLEAN",
+   "tess_period": 2.1213866687725518,
    "refined_period": null,
    "epochs": null,
    "snr": null,
@@ -4926,6 +5070,22 @@
    "n_points": 0,
    "tier": "PERIOD ALIAS",
    "tess_period": 3.2394680894060754,
+   "refined_period": null,
+   "epochs": null,
+   "snr": null,
+   "p_value": null,
+   "power": null,
+   "depth_ratio": null,
+   "depth_ratio_err": null,
+   "odd_even_z": null,
+   "secondary_z": null,
+   "span_days": null
+  },
+  "973170627": {
+   "status": "NO_DATA",
+   "n_points": 0,
+   "tier": "THIN MARGIN",
+   "tess_period": 4.514030419709037,
    "refined_period": null,
    "epochs": null,
    "snr": null,

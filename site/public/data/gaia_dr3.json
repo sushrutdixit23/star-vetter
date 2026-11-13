@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-10T12:59:54Z",
+ "generated_at": "2026-11-13T02:12:06Z",
  "data_release": "Gaia DR3",
  "method": {
   "match": "nearest Gaia DR3 source within 6 arcsec scored by separation and |G - (Tmag + 0.3)|",
@@ -169,7 +169,7 @@
     "n_neighbours": 36
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 18.132921608529,
+    "sep_arcsec": 18.132921608529003,
     "delta_g": 5.382270999999999
    },
    "gaia_variability": null,
@@ -203,7 +203,7 @@
     "n_neighbours": 9
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 6.036571406167686,
+    "sep_arcsec": 6.0365714061676865,
     "delta_g": 6.778885999999998
    },
    "gaia_variability": null,
@@ -234,16 +234,16 @@
     "viable": 1,
     "closest_viable": {
      "tic": 1973346123141382144,
-     "sep_arcsec": 2.6079402385231196,
+     "sep_arcsec": 2.607940238523119,
      "delta_tmag": 4.279192500000001,
-     "required_depth": 0.31138325212733314
+     "required_depth": 0.3113832521273332
     },
     "unseparable": 1,
     "status": "UNSEPARABLE_NEIGHBOUR",
     "n_neighbours": 49
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 2.6079402385231196,
+    "sep_arcsec": 2.607940238523119,
     "delta_g": 4.279192500000001
    },
    "gaia_variability": null,
@@ -628,7 +628,7 @@
     "n_neighbours": 10
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 29.760663266732077,
+    "sep_arcsec": 29.76066326673207,
     "delta_g": 5.135222000000001
    },
    "gaia_variability": null,
@@ -725,7 +725,7 @@
     "viable": 1,
     "closest_viable": {
      "tic": 4664081703167730304,
-     "sep_arcsec": 19.513751794304977,
+     "sep_arcsec": 19.513751794304973,
      "delta_tmag": 6.107706499999999,
      "required_depth": 0.2166199883411397
     },
@@ -1093,7 +1093,7 @@
     "n_neighbours": 9
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 13.859591188825666,
+    "sep_arcsec": 13.859591188825668,
     "delta_g": 3.018184999999999
    },
    "gaia_variability": null,
@@ -1125,7 +1125,7 @@
     "n_neighbours": 3
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 34.95943567159097,
+    "sep_arcsec": 34.959435671590974,
     "delta_g": 3.670255000000001
    },
    "gaia_variability": null,
@@ -1474,7 +1474,7 @@
     "viable": 5,
     "closest_viable": {
      "tic": 5335633336340980480,
-     "sep_arcsec": 6.359552007538331,
+     "sep_arcsec": 6.35955200753833,
      "delta_tmag": 2.673886999999999,
      "required_depth": 0.27793183129501864
     },
@@ -1614,7 +1614,7 @@
     "viable": 1,
     "closest_viable": {
      "tic": 6562274518605452288,
-     "sep_arcsec": 5.218483908341188,
+     "sep_arcsec": 5.218483908341187,
      "delta_tmag": 4.543029999999998,
      "required_depth": 0.874831125965452
     },
@@ -1623,7 +1623,7 @@
     "n_neighbours": 9
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 5.218483908341188,
+    "sep_arcsec": 5.218483908341187,
     "delta_g": 4.543029999999998
    },
    "gaia_variability": null,
@@ -2662,7 +2662,7 @@
     "n_neighbours": 84
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 7.536825511422228,
+    "sep_arcsec": 7.536825511422229,
     "delta_g": 6.401728999999998
    },
    "gaia_variability": null,
@@ -3316,7 +3316,7 @@
     "n_neighbours": 48
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 7.6679007622063375,
+    "sep_arcsec": 7.667900762206339,
     "delta_g": 5.205353999999998
    },
    "gaia_variability": null,
@@ -3350,7 +3350,7 @@
     "n_neighbours": 12
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 1.6279932997467843,
+    "sep_arcsec": 1.627993299746784,
     "delta_g": -0.6441189999999999
    },
    "gaia_variability": null,
@@ -3673,7 +3673,7 @@
     "n_neighbours": 17
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 8.157145365961835,
+    "sep_arcsec": 8.157145365961837,
     "delta_g": 7.566641000000001
    },
    "gaia_variability": null,
@@ -4024,7 +4024,7 @@
     "n_neighbours": 14
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 4.232124926407763,
+    "sep_arcsec": 4.232124926407764,
     "delta_g": 3.5551689999999994
    },
    "gaia_variability": null,
@@ -4094,7 +4094,7 @@
     "n_neighbours": 11
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 19.90059547943866,
+    "sep_arcsec": 19.900595479438664,
     "delta_g": 7.791817999999999
    },
    "gaia_variability": null,
@@ -4231,7 +4231,7 @@
     "n_neighbours": 12
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 23.732236607971647,
+    "sep_arcsec": 23.73223660797165,
     "delta_g": 6.753686
    },
    "gaia_variability": null,
@@ -4396,9 +4396,9 @@
     "viable": 1,
     "closest_viable": {
      "tic": 3394546270186958464,
-     "sep_arcsec": 20.916235332648235,
+     "sep_arcsec": 20.91623533264823,
      "delta_tmag": 4.202519000000001,
-     "required_depth": 0.9549620840425204
+     "required_depth": 0.9549620840425203
     },
     "unseparable": 0,
     "status": "VIABLE_NEIGHBOUR_AT_OFFSET",
@@ -4719,7 +4719,7 @@
     "n_neighbours": 3
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 41.01450860652,
+    "sep_arcsec": 41.014508606519996,
     "delta_g": 6.931937999999999
    },
    "gaia_variability": null,
@@ -4820,7 +4820,7 @@
     "n_neighbours": 3
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 54.19006213821974,
+    "sep_arcsec": 54.190062138219744,
     "delta_g": 3.7112820000000006
    },
    "gaia_variability": null,
@@ -5379,7 +5379,7 @@
     "n_neighbours": 55
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 2.439813469269403,
+    "sep_arcsec": 2.4398134692694025,
     "delta_g": 4.398228999999999
    },
    "gaia_variability": null,
@@ -5447,7 +5447,7 @@
     "n_neighbours": 3
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 12.193034826103476,
+    "sep_arcsec": 12.193034826103478,
     "delta_g": 6.676153000000001
    },
    "gaia_variability": null,
@@ -5521,7 +5521,7 @@
     "n_neighbours": 28
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 10.222543166762595,
+    "sep_arcsec": 10.222543166762597,
     "delta_g": 6.525338
    },
    "gaia_variability": null,
@@ -5594,7 +5594,7 @@
     "n_neighbours": 241
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 4.042165429479746,
+    "sep_arcsec": 4.042165429479747,
     "delta_g": 6.776704000000002
    },
    "gaia_variability": null,
@@ -5628,7 +5628,7 @@
     "n_neighbours": 15
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 23.621501431615595,
+    "sep_arcsec": 23.62150143161559,
     "delta_g": 2.6608300000000007
    },
    "gaia_variability": null,
@@ -5727,7 +5727,7 @@
     "viable": 1,
     "closest_viable": {
      "tic": 2199219213448492800,
-     "sep_arcsec": 9.658965395141953,
+     "sep_arcsec": 9.658965395141955,
      "delta_tmag": 2.6960300000000004,
      "required_depth": 0.5442463611026906
     },
@@ -5899,7 +5899,7 @@
     "viable": 2,
     "closest_viable": {
      "tic": 5819608122625677952,
-     "sep_arcsec": 0.5902738174903392,
+     "sep_arcsec": 0.5902738174903394,
      "delta_tmag": 0.37850949999999983,
      "required_depth": 0.014049274740588535
     },
@@ -5908,7 +5908,7 @@
     "n_neighbours": 50
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 0.5902738174903392,
+    "sep_arcsec": 0.5902738174903394,
     "delta_g": 0.37850949999999983
    },
    "gaia_variability": null,
@@ -6074,9 +6074,9 @@
     "viable": 1,
     "closest_viable": {
      "tic": 2173856572572221696,
-     "sep_arcsec": 6.336417413320314,
+     "sep_arcsec": 6.336417413320313,
      "delta_tmag": 1.3459389999999996,
-     "required_depth": 0.06267496230886256
+     "required_depth": 0.06267496230886259
     },
     "unseparable": 0,
     "status": "VIABLE_NEIGHBOUR_AT_OFFSET",
@@ -7079,7 +7079,7 @@
     "n_neighbours": 13
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 17.001230219356454,
+    "sep_arcsec": 17.00123021935645,
     "delta_g": 4.804387999999999
    },
    "gaia_variability": null,
@@ -7879,7 +7879,7 @@
     "n_neighbours": 114
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 1.1494230229780924,
+    "sep_arcsec": 1.1494230229780926,
     "delta_g": 4.091745000000001
    },
    "gaia_variability": null,
@@ -8437,7 +8437,7 @@
     "n_neighbours": 51
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 7.99073673550282,
+    "sep_arcsec": 7.990736735502821,
     "delta_g": 7.179244000000002
    },
    "gaia_variability": null,
@@ -8606,7 +8606,7 @@
     "n_neighbours": 1
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 62.953488796477565,
+    "sep_arcsec": 62.95348879647758,
     "delta_g": 6.882887
    },
    "gaia_variability": null,
@@ -8743,7 +8743,7 @@
     "n_neighbours": 1
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 61.60719586731162,
+    "sep_arcsec": 61.60719586731163,
     "delta_g": 5.4909680000000005
    },
    "gaia_variability": null,
@@ -8815,7 +8815,7 @@
     "n_neighbours": 104
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 4.553216867506275,
+    "sep_arcsec": 4.553216867506276,
     "delta_g": 1.607883000000001
    },
    "gaia_variability": null,
@@ -8884,7 +8884,7 @@
     "n_neighbours": 84
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 5.087445341891334,
+    "sep_arcsec": 5.087445341891335,
     "delta_g": 5.350280999999999
    },
    "gaia_variability": "RS",
@@ -9232,7 +9232,7 @@
     "n_neighbours": 74
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 11.241357496792212,
+    "sep_arcsec": 11.24135749679221,
     "delta_g": 4.658949000000002
    },
    "gaia_variability": null,
@@ -9299,7 +9299,7 @@
     "n_neighbours": 7
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 9.642152329582945,
+    "sep_arcsec": 9.642152329582943,
     "delta_g": 2.2775110000000005
    },
    "gaia_variability": null,
@@ -9683,7 +9683,7 @@
     "viable": 1,
     "closest_viable": {
      "tic": 5545963730283346944,
-     "sep_arcsec": 0.6839707746085099,
+     "sep_arcsec": 0.68397077460851,
      "delta_tmag": 0.8948189999999983,
      "required_depth": 0.06589226209450251
     },
@@ -9692,7 +9692,7 @@
     "n_neighbours": 125
    },
    "closest_gaia_neighbour": {
-    "sep_arcsec": 0.6839707746085099,
+    "sep_arcsec": 0.68397077460851,
     "delta_g": 0.8948189999999983
    },
    "gaia_variability": null,
@@ -10707,24 +10707,377 @@
    "gaia_variability": null,
    "gaia_eb": null,
    "gaia_nss": null
+  },
+  "469789979": {
+   "match": "MATCHED",
+   "source_id": 6737438304439220608,
+   "g_mag": 13.340438,
+   "bp_rp": 0.8968115,
+   "parallax_mas": 1.2837126385859483,
+   "parallax_over_error": 73.55554134076093,
+   "ruwe": 0.96683955,
+   "ruwe_elevated": false,
+   "phot_variable_flag": "NOT_AVAILABLE",
+   "non_single_star": 0,
+   "rv": {
+    "has_rv": true,
+    "variable": null,
+    "rv": -9.877442,
+    "n_transits": 12,
+    "note": "RV from combined spectra only; no variability statistic at this brightness"
+   },
+   "contamination": {
+    "bright_enough": 0,
+    "viable": 0,
+    "closest_viable": null,
+    "unseparable": 0,
+    "status": "NO_VIABLE_NEIGHBOUR",
+    "n_neighbours": 30
+   },
+   "closest_gaia_neighbour": {
+    "sep_arcsec": 3.1772337054804596,
+    "delta_g": 7.374561999999999
+   },
+   "gaia_variability": null,
+   "gaia_eb": null,
+   "gaia_nss": null
+  },
+  "447456051": {
+   "match": "MATCHED",
+   "source_id": 5818396117210896256,
+   "g_mag": 12.293747,
+   "bp_rp": 0.7007656,
+   "parallax_mas": 0.950254660685766,
+   "parallax_over_error": 31.704191111218226,
+   "ruwe": 2.2326095,
+   "ruwe_elevated": true,
+   "phot_variable_flag": "NOT_AVAILABLE",
+   "non_single_star": 0,
+   "rv": {
+    "has_rv": true,
+    "variable": true,
+    "rv": 11.564119,
+    "rv_chisq_pvalue": 0.0,
+    "n_transits": 23,
+    "note": "chi-square p<0.01 means the epoch RVs scatter more than their errors"
+   },
+   "contamination": {
+    "bright_enough": 3,
+    "viable": 0,
+    "closest_viable": null,
+    "unseparable": 0,
+    "status": "NO_VIABLE_NEIGHBOUR",
+    "n_neighbours": 89
+   },
+   "closest_gaia_neighbour": {
+    "sep_arcsec": 1.8712845964425078,
+    "delta_g": 5.939138
+   },
+   "gaia_variability": null,
+   "gaia_eb": null,
+   "gaia_nss": null
+  },
+  "403364360": {
+   "match": "MATCHED",
+   "source_id": 5795438417500798848,
+   "g_mag": 9.989143,
+   "bp_rp": 0.1269083,
+   "parallax_mas": 1.5787154140331412,
+   "parallax_over_error": 97.39425645594731,
+   "ruwe": 0.9312111,
+   "ruwe_elevated": false,
+   "phot_variable_flag": "NOT_AVAILABLE",
+   "non_single_star": 0,
+   "rv": {
+    "has_rv": false,
+    "variable": null,
+    "note": "no Gaia RV"
+   },
+   "contamination": {
+    "bright_enough": 1,
+    "viable": 1,
+    "closest_viable": {
+     "tic": 5795438417500799360,
+     "sep_arcsec": 12.30165745413442,
+     "delta_tmag": 4.8839369999999995,
+     "required_depth": 0.4319695089039129
+    },
+    "unseparable": 0,
+    "status": "VIABLE_NEIGHBOUR_AT_OFFSET",
+    "n_neighbours": 19
+   },
+   "closest_gaia_neighbour": {
+    "sep_arcsec": 12.30165745413442,
+    "delta_g": 4.8839369999999995
+   },
+   "gaia_variability": null,
+   "gaia_eb": null,
+   "gaia_nss": null
+  },
+  "257773097": {
+   "match": "MATCHED",
+   "source_id": 4613765126197369216,
+   "g_mag": 12.610941,
+   "bp_rp": 0.797348,
+   "parallax_mas": 2.142833399017682,
+   "parallax_over_error": 217.0002700833194,
+   "ruwe": 1.056555,
+   "ruwe_elevated": false,
+   "phot_variable_flag": "NOT_AVAILABLE",
+   "non_single_star": 2,
+   "rv": {
+    "has_rv": true,
+    "variable": true,
+    "rv": 1.572474,
+    "rv_chisq_pvalue": 0.0,
+    "n_transits": 30,
+    "note": "chi-square p<0.01 means the epoch RVs scatter more than their errors"
+   },
+   "contamination": {
+    "bright_enough": 0,
+    "viable": 0,
+    "closest_viable": null,
+    "unseparable": 0,
+    "status": "NO_VIABLE_NEIGHBOUR",
+    "n_neighbours": 6
+   },
+   "closest_gaia_neighbour": {
+    "sep_arcsec": 16.196539257816575,
+    "delta_g": 5.907053000000001
+   },
+   "gaia_variability": null,
+   "gaia_eb": null,
+   "gaia_nss": {
+    "solution_type": "SB1",
+    "period_days": 4.945234533120657
+   }
+  },
+  "378839425": {
+   "match": "MATCHED",
+   "source_id": 5254690936770771712,
+   "g_mag": 11.785389,
+   "bp_rp": 0.2144804,
+   "parallax_mas": 0.241020941018901,
+   "parallax_over_error": 15.629465546533469,
+   "ruwe": 0.88202333,
+   "ruwe_elevated": false,
+   "phot_variable_flag": "NOT_AVAILABLE",
+   "non_single_star": 0,
+   "rv": {
+    "has_rv": true,
+    "variable": false,
+    "rv": 4.8434625,
+    "rv_chisq_pvalue": 0.079781875,
+    "n_transits": 18,
+    "note": "chi-square p<0.01 means the epoch RVs scatter more than their errors"
+   },
+   "contamination": {
+    "bright_enough": 15,
+    "viable": 0,
+    "closest_viable": null,
+    "unseparable": 0,
+    "status": "NO_VIABLE_NEIGHBOUR",
+    "n_neighbours": 250
+   },
+   "closest_gaia_neighbour": {
+    "sep_arcsec": 3.8057906799779206,
+    "delta_g": 8.074837
+   },
+   "gaia_variability": null,
+   "gaia_eb": null,
+   "gaia_nss": null
+  },
+  "412843260": {
+   "match": "MATCHED",
+   "source_id": 5619487763594576384,
+   "g_mag": 13.021213,
+   "bp_rp": 1.6769495,
+   "parallax_mas": 0.30234609701604,
+   "parallax_over_error": 18.987456374353194,
+   "ruwe": 1.2620003,
+   "ruwe_elevated": false,
+   "phot_variable_flag": "NOT_AVAILABLE",
+   "non_single_star": 0,
+   "rv": {
+    "has_rv": true,
+    "variable": true,
+    "rv": 45.543064,
+    "rv_chisq_pvalue": 0.0,
+    "n_transits": 24,
+    "note": "chi-square p<0.01 means the epoch RVs scatter more than their errors"
+   },
+   "contamination": {
+    "bright_enough": 2,
+    "viable": 0,
+    "closest_viable": null,
+    "unseparable": 0,
+    "status": "NO_VIABLE_NEIGHBOUR",
+    "n_neighbours": 52
+   },
+   "closest_gaia_neighbour": {
+    "sep_arcsec": 2.3386547565402154,
+    "delta_g": 4.421647
+   },
+   "gaia_variability": null,
+   "gaia_eb": null,
+   "gaia_nss": null
+  },
+  "447458374": {
+   "match": "MATCHED",
+   "source_id": 5818438310971133056,
+   "g_mag": 11.563959,
+   "bp_rp": 0.79024124,
+   "parallax_mas": 1.607181620653371,
+   "parallax_over_error": 33.28938169161602,
+   "ruwe": 2.683405,
+   "ruwe_elevated": true,
+   "phot_variable_flag": "NOT_AVAILABLE",
+   "non_single_star": 1,
+   "rv": {
+    "has_rv": true,
+    "variable": true,
+    "rv": 7.559828,
+    "rv_chisq_pvalue": 0.0,
+    "n_transits": 22,
+    "note": "chi-square p<0.01 means the epoch RVs scatter more than their errors"
+   },
+   "contamination": {
+    "bright_enough": 2,
+    "viable": 0,
+    "closest_viable": null,
+    "unseparable": 0,
+    "status": "NO_VIABLE_NEIGHBOUR",
+    "n_neighbours": 42
+   },
+   "closest_gaia_neighbour": {
+    "sep_arcsec": 8.177650631809431,
+    "delta_g": 6.961924
+   },
+   "gaia_variability": null,
+   "gaia_eb": null,
+   "gaia_nss": {
+    "solution_type": "Orbital",
+    "period_days": 604.9462344331556
+   }
+  },
+  "973170627": {
+   "match": "MATCHED",
+   "source_id": 5863305326066450432,
+   "g_mag": 14.370565,
+   "bp_rp": 0.74558926,
+   "parallax_mas": 0.4105953617830603,
+   "parallax_over_error": 17.962497843603597,
+   "ruwe": 1.1809276,
+   "ruwe_elevated": false,
+   "phot_variable_flag": "NOT_AVAILABLE",
+   "non_single_star": 0,
+   "rv": {
+    "has_rv": false,
+    "variable": null,
+    "note": "no Gaia RV"
+   },
+   "contamination": {
+    "bright_enough": 11,
+    "viable": 1,
+    "closest_viable": {
+     "tic": 5863305321740544768,
+     "sep_arcsec": 2.093760895491317,
+     "delta_tmag": -1.3865569999999998,
+     "required_depth": 0.01511413191489191
+    },
+    "unseparable": 1,
+    "status": "UNSEPARABLE_NEIGHBOUR",
+    "n_neighbours": 217
+   },
+   "closest_gaia_neighbour": {
+    "sep_arcsec": 1.2556642484401688,
+    "delta_g": 5.033719000000001
+   },
+   "gaia_variability": null,
+   "gaia_eb": null,
+   "gaia_nss": null
+  },
+  "237742152": {
+   "match": "MATCHED",
+   "source_id": 3114119123763944832,
+   "g_mag": 15.208599,
+   "bp_rp": 1.0103731,
+   "parallax_mas": 0.5238346476846678,
+   "parallax_over_error": 13.116559860694917,
+   "ruwe": 0.9783447,
+   "ruwe_elevated": false,
+   "phot_variable_flag": "NOT_AVAILABLE",
+   "non_single_star": 0,
+   "rv": {
+    "has_rv": false,
+    "variable": null,
+    "note": "no Gaia RV"
+   },
+   "contamination": {
+    "bright_enough": 4,
+    "viable": 0,
+    "closest_viable": null,
+    "unseparable": 0,
+    "status": "NO_VIABLE_NEIGHBOUR",
+    "n_neighbours": 55
+   },
+   "closest_gaia_neighbour": {
+    "sep_arcsec": 8.694900848204547,
+    "delta_g": 4.3738209999999995
+   },
+   "gaia_variability": null,
+   "gaia_eb": null,
+   "gaia_nss": null
+  },
+  "272851823": {
+   "match": "MATCHED",
+   "source_id": 4411216122082993536,
+   "g_mag": 13.187032,
+   "bp_rp": 0.59960556,
+   "parallax_mas": 0.7004426325067228,
+   "parallax_over_error": 24.589204055354177,
+   "ruwe": 1.9507589,
+   "ruwe_elevated": true,
+   "phot_variable_flag": "NOT_AVAILABLE",
+   "non_single_star": 1,
+   "rv": {
+    "has_rv": false,
+    "variable": null,
+    "note": "no Gaia RV"
+   },
+   "contamination": {
+    "bright_enough": 0,
+    "viable": 0,
+    "closest_viable": null,
+    "unseparable": 0,
+    "status": "NO_VIABLE_NEIGHBOUR",
+    "n_neighbours": 8
+   },
+   "closest_gaia_neighbour": {
+    "sep_arcsec": 11.924255946023255,
+    "delta_g": 6.264569
+   },
+   "gaia_variability": null,
+   "gaia_eb": null,
+   "gaia_nss": null
   }
  },
  "summary": {
-  "stars": 307,
-  "matched": 306,
+  "stars": 317,
+  "matched": 316,
   "ambiguous": 1,
   "none": 0,
-  "ruwe_elevated": 88,
+  "ruwe_elevated": 91,
   "contamination_status_gaia": {
-   "NO_VIABLE_NEIGHBOUR": 238,
-   "UNSEPARABLE_NEIGHBOUR": 42,
-   "VIABLE_NEIGHBOUR_AT_OFFSET": 27
+   "NO_VIABLE_NEIGHBOUR": 246,
+   "UNSEPARABLE_NEIGHBOUR": 43,
+   "VIABLE_NEIGHBOUR_AT_OFFSET": 28
   },
   "in_gaia_eb_table": 0,
   "gaia_eb_period_relation": {},
-  "in_gaia_nss_orbit": 6,
-  "with_gaia_rv": 215,
-  "rv_variable": 62,
+  "in_gaia_nss_orbit": 8,
+  "with_gaia_rv": 221,
+  "rv_variable": 66,
   "gaia_variability_classes": {
    "RS": 1,
    "DSCT|GDOR|SXPHE": 1

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-10T13:02:24Z",
+ "generated_at": "2026-11-13T02:12:15Z",
  "sources": [
   {
    "name": "Kostov+ 2026 eclipsing quadruple candidates (AJ 171, 29)",
@@ -28,7 +28,7 @@
    "id": "cat_toi_exofop.csv",
    "what": "TESS Objects of Interest",
    "status": "CHECKED",
-   "rows": 8151,
+   "rows": 8175,
    "matches": 0
   },
   {
@@ -36,17 +36,17 @@
    "id": "simbad",
    "what": "SIMBAD main object type",
    "status": "CHECKED",
-   "matches": 92
+   "matches": 98
   }
  ],
  "summary": {
-  "stars": 307,
+  "stars": 317,
   "in_any_new_catalog": 1,
   "on_toi_list": 0,
-  "simbad_identified": 92,
+  "simbad_identified": 98,
   "simbad_groups": {
-   "other_variable_or_peculiar": 12,
-   "plain_star": 75,
+   "other_variable_or_peculiar": 13,
+   "plain_star": 80,
    "other": 2,
    "eclipsing_binary": 3
   }
@@ -105,7 +105,7 @@
     "main_id": "BD-02  3876",
     "otype": "PM*",
     "otype_txt": "PM*",
-    "sep_arcsec": 0.010930243549732918,
+    "sep_arcsec": 0.01093024354973292,
     "group": "other_variable_or_peculiar"
    }
   },
@@ -201,7 +201,7 @@
     "main_id": "TYC 4231-615-1",
     "otype": "*",
     "otype_txt": "*",
-    "sep_arcsec": 0.011788233829231639,
+    "sep_arcsec": 0.01178823382923164,
     "group": "plain_star"
    }
   },
@@ -638,7 +638,7 @@
     "main_id": "UCAC4 318-002620",
     "otype": "*",
     "otype_txt": "*",
-    "sep_arcsec": 0.014400613563313342,
+    "sep_arcsec": 0.014400613563313345,
     "group": "plain_star"
    }
   },
@@ -827,7 +827,7 @@
     "main_id": "TYC 4551-2326-1",
     "otype": "*",
     "otype_txt": "*",
-    "sep_arcsec": 0.0071462405145413625,
+    "sep_arcsec": 0.007146240514541362,
     "group": "plain_star"
    }
   },
@@ -1026,7 +1026,7 @@
     "main_id": "TYC 4164-567-1",
     "otype": "*",
     "otype_txt": "*",
-    "sep_arcsec": 0.16372414722092843,
+    "sep_arcsec": 0.16372414722092846,
     "group": "plain_star"
    }
   },
@@ -1229,7 +1229,7 @@
     "main_id": "TYC 9270-126-1",
     "otype": "*",
     "otype_txt": "*",
-    "sep_arcsec": 0.19497909956761056,
+    "sep_arcsec": 0.1949790995676106,
     "group": "plain_star"
    }
   },
@@ -1271,7 +1271,7 @@
     "main_id": "HD 184168",
     "otype": "PM*",
     "otype_txt": "PM*",
-    "sep_arcsec": 0.00875423742270385,
+    "sep_arcsec": 0.008754237422703847,
     "group": "other_variable_or_peculiar"
    }
   },
@@ -1590,7 +1590,7 @@
     "main_id": "BD-00  3767",
     "otype": "RB?",
     "otype_txt": "RB?",
-    "sep_arcsec": 0.019096673980601053,
+    "sep_arcsec": 0.019096673980601057,
     "group": "other"
    }
   },
@@ -1617,7 +1617,7 @@
     "main_id": "Hen 3-1781",
     "otype": "Em*",
     "otype_txt": "Em*",
-    "sep_arcsec": 0.003438869515540641,
+    "sep_arcsec": 0.0034388695155406403,
     "group": "plain_star"
    }
   },
@@ -1751,7 +1751,7 @@
     "main_id": "BD+37  2659",
     "otype": "*",
     "otype_txt": "*",
-    "sep_arcsec": 0.015387155069633375,
+    "sep_arcsec": 0.015387155069633379,
     "group": "plain_star"
    }
   },
@@ -1777,7 +1777,7 @@
     "main_id": "TYC 4202-1424-1",
     "otype": "*",
     "otype_txt": "*",
-    "sep_arcsec": 0.005679422793686781,
+    "sep_arcsec": 0.00567942279368678,
     "group": "plain_star"
    }
   },
@@ -1924,7 +1924,7 @@
     "main_id": "HD 174025",
     "otype": "*",
     "otype_txt": "*",
-    "sep_arcsec": 0.01735391505057182,
+    "sep_arcsec": 0.017353915050571822,
     "group": "plain_star"
    }
   },
@@ -2144,6 +2144,92 @@
    "in_new_catalogs": [],
    "toi": null,
    "simbad": null
+  },
+  "469789979": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "447456051": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 9042-381-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.007712547268070529,
+    "group": "plain_star"
+   }
+  },
+  "403364360": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "HD 134866",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.016624161296788426,
+    "group": "plain_star"
+   }
+  },
+  "257773097": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "EVR J023605.38-852430.6",
+    "otype": "SB*",
+    "otype_txt": "SB*",
+    "sep_arcsec": 0.0038896361926059986,
+    "group": "other_variable_or_peculiar"
+   }
+  },
+  "378839425": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "WRAY 15-559",
+    "otype": "Em*",
+    "otype_txt": "Em*",
+    "sep_arcsec": 0.00290947548120063,
+    "group": "plain_star"
+   }
+  },
+  "412843260": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "447458374": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "TYC 9038-960-1",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.025074594589510044,
+    "group": "plain_star"
+   }
+  },
+  "973170627": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "237742152": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": null
+  },
+  "272851823": {
+   "in_new_catalogs": [],
+   "toi": null,
+   "simbad": {
+    "main_id": "LAMOST J155534.94+014511.8",
+    "otype": "*",
+    "otype_txt": "*",
+    "sep_arcsec": 0.0410284298436829,
+    "group": "plain_star"
+   }
   }
  }
 }
