@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-11-14T07:22:10Z",
+  "generated_at": "2026-11-14T14:08:39Z",
   "frame": {
     "list": "Kostov et al. 2025 TESS Ten Thousand Catalog, unvetted list (VizieR J/ApJS/279/50 table 2)",
     "population": 872720,
-    "sampled": 22269,
-    "sampled_fraction": 0.025516775139792832,
+    "sampled": 22419,
+    "sampled_fraction": 0.025688651572096433,
     "design": "Seeded random sample stratified by Tmag; near-equal allocation per fifth of the list, so population figures are re-weighted by stratum share.",
     "strata_inner_edges": [
       13.03,
@@ -18,37 +18,37 @@
     {
       "key": "sampled",
       "label": "Sampled",
-      "count": 22269
+      "count": 22419
     },
     {
       "key": "usable",
       "label": "Usable light curve",
-      "count": 14330
+      "count": 14425
     },
     {
       "key": "reliable",
       "label": "Reliable data (not flagged unreliable)",
-      "count": 13653
+      "count": 13744
     },
     {
       "key": "passed",
       "label": "Passed statistical gates",
-      "count": 3431
+      "count": 3458
     },
     {
       "key": "novel",
       "label": "No catalog match",
-      "count": 3018
+      "count": 3042
     },
     {
       "key": "pixel_checked",
       "label": "Pixel-checked",
-      "count": 3253
+      "count": 3277
     },
     {
       "key": "on_target",
       "label": "Confirmed on-target",
-      "count": 321
+      "count": 323
     }
   ],
   "strata": [
@@ -57,33 +57,33 @@
       "label": "Tmag <= 13.03",
       "population": 175678,
       "weight": 0.20129938582821524,
-      "sampled": 4638,
-      "usable": 4618,
-      "reliable": 4616,
-      "passed_gates": 1097,
-      "novel": 903,
-      "pixel_checked": 990,
-      "on_target": 171,
+      "sampled": 4668,
+      "usable": 4648,
+      "reliable": 4646,
+      "passed_gates": 1103,
+      "novel": 908,
+      "pixel_checked": 995,
+      "on_target": 172,
       "usable_rate": {
-        "k": 4618,
-        "n": 4638,
-        "rate": 0.9956877964639931,
-        "lo": 0.9933484472934562,
-        "hi": 0.9972067107683484
+        "k": 4648,
+        "n": 4668,
+        "rate": 0.9957155098543273,
+        "lo": 0.9933911344644433,
+        "hi": 0.9972246731850325
       },
       "passed_per_usable": {
-        "k": 1097,
-        "n": 4618,
-        "rate": 0.2375487223906453,
-        "lo": 0.2254955306984622,
-        "hi": 0.25003818858520993
+        "k": 1103,
+        "n": 4648,
+        "rate": 0.23730636833046473,
+        "lo": 0.22529590912668374,
+        "hi": 0.2497506887452765
       },
       "on_target_per_usable": {
-        "k": 171,
-        "n": 4618,
-        "rate": 0.037029016890428756,
-        "lo": 0.03195623240153471,
-        "hi": 0.0428714011203226
+        "k": 172,
+        "n": 4648,
+        "rate": 0.03700516351118761,
+        "lo": 0.031949306283762885,
+        "hi": 0.042825696681395575
       }
     },
     {
@@ -91,33 +91,33 @@
       "label": "Tmag 13.03-13.88",
       "population": 176366,
       "weight": 0.20208772573104775,
-      "sampled": 4497,
-      "usable": 3249,
-      "reliable": 3109,
-      "passed_gates": 712,
-      "novel": 627,
-      "pixel_checked": 676,
-      "on_target": 70,
+      "sampled": 4527,
+      "usable": 3271,
+      "reliable": 3130,
+      "passed_gates": 719,
+      "novel": 632,
+      "pixel_checked": 681,
+      "on_target": 71,
       "usable_rate": {
-        "k": 3249,
-        "n": 4497,
-        "rate": 0.7224816544362909,
-        "lo": 0.7092087997871181,
-        "hi": 0.7353747338211414
+        "k": 3271,
+        "n": 4527,
+        "rate": 0.722553567483985,
+        "lo": 0.7093263428515978,
+        "hi": 0.735403409510455
       },
       "passed_per_usable": {
-        "k": 712,
-        "n": 3249,
-        "rate": 0.21914435210834102,
-        "lo": 0.20525649664393866,
-        "hi": 0.23369556324906135
+        "k": 719,
+        "n": 3271,
+        "rate": 0.21981045551819015,
+        "lo": 0.20595201945401667,
+        "hi": 0.23432622820620344
       },
       "on_target_per_usable": {
-        "k": 70,
-        "n": 3249,
-        "rate": 0.02154509079716836,
-        "lo": 0.017088685020547653,
-        "hi": 0.02713156386018488
+        "k": 71,
+        "n": 3271,
+        "rate": 0.021705900336288598,
+        "lo": 0.01724463970829236,
+        "hi": 0.02728925932543865
       }
     },
     {
@@ -125,33 +125,33 @@
       "label": "Tmag 13.88-14.36",
       "population": 171708,
       "weight": 0.1967503895865799,
-      "sampled": 4327,
-      "usable": 2031,
-      "reliable": 1854,
-      "passed_gates": 516,
-      "novel": 462,
-      "pixel_checked": 502,
+      "sampled": 4357,
+      "usable": 2044,
+      "reliable": 1867,
+      "passed_gates": 523,
+      "novel": 469,
+      "pixel_checked": 509,
       "on_target": 40,
       "usable_rate": {
-        "k": 2031,
-        "n": 4327,
-        "rate": 0.46937832216316155,
-        "lo": 0.4545421342749659,
-        "hi": 0.4842688329432956
+        "k": 2044,
+        "n": 4357,
+        "rate": 0.4691301354142759,
+        "lo": 0.4543456466253945,
+        "hi": 0.4839690106405435
       },
       "passed_per_usable": {
-        "k": 516,
-        "n": 2031,
-        "rate": 0.25406203840472674,
-        "lo": 0.23560573290656697,
-        "hi": 0.2734469278598277
+        "k": 523,
+        "n": 2044,
+        "rate": 0.25587084148727984,
+        "lo": 0.23742443403515087,
+        "hi": 0.27523315199438875
       },
       "on_target_per_usable": {
         "k": 40,
-        "n": 2031,
-        "rate": 0.019694731659281144,
-        "lo": 0.014496518633212722,
-        "hi": 0.026706425466122615
+        "n": 2044,
+        "rate": 0.019569471624266144,
+        "lo": 0.01440411430992436,
+        "hi": 0.026537267415542458
       }
     },
     {
@@ -159,33 +159,33 @@
       "label": "Tmag 14.36-14.72",
       "population": 177561,
       "weight": 0.20345700797506647,
-      "sampled": 4406,
-      "usable": 2241,
-      "reliable": 2054,
-      "passed_gates": 521,
-      "novel": 483,
-      "pixel_checked": 509,
+      "sampled": 4436,
+      "usable": 2253,
+      "reliable": 2066,
+      "passed_gates": 525,
+      "novel": 487,
+      "pixel_checked": 513,
       "on_target": 30,
       "usable_rate": {
-        "k": 2241,
-        "n": 4406,
-        "rate": 0.5086246028143441,
-        "lo": 0.4938619935268684,
-        "hi": 0.5233721861389193
+        "k": 2253,
+        "n": 4436,
+        "rate": 0.5078899909828675,
+        "lo": 0.4931776460571822,
+        "hi": 0.5225886826841233
       },
       "passed_per_usable": {
-        "k": 521,
-        "n": 2241,
-        "rate": 0.23248549754573852,
-        "lo": 0.21546311612600863,
-        "hi": 0.2504234411378105
+        "k": 525,
+        "n": 2253,
+        "rate": 0.23302263648468707,
+        "lo": 0.21602948692361562,
+        "hi": 0.25092465145156273
       },
       "on_target_per_usable": {
         "k": 30,
-        "n": 2241,
-        "rate": 0.013386880856760375,
-        "lo": 0.009393114565919087,
-        "hi": 0.019046069247583283
+        "n": 2253,
+        "rate": 0.013315579227696404,
+        "lo": 0.009343001798802503,
+        "hi": 0.018944966161934036
       }
     },
     {
@@ -193,61 +193,61 @@
       "label": "Tmag > 14.72",
       "population": 171407,
       "weight": 0.19640549087909065,
-      "sampled": 4401,
-      "usable": 2191,
-      "reliable": 2020,
-      "passed_gates": 585,
-      "novel": 543,
-      "pixel_checked": 576,
+      "sampled": 4431,
+      "usable": 2209,
+      "reliable": 2035,
+      "passed_gates": 588,
+      "novel": 546,
+      "pixel_checked": 579,
       "on_target": 10,
       "usable_rate": {
-        "k": 2191,
-        "n": 4401,
-        "rate": 0.4978413996818905,
-        "lo": 0.4830777564841829,
-        "hi": 0.5126088079069846
+        "k": 2209,
+        "n": 4431,
+        "rate": 0.4985330625141052,
+        "lo": 0.4838187600269354,
+        "hi": 0.5132499063232525
       },
       "passed_per_usable": {
-        "k": 585,
-        "n": 2191,
-        "rate": 0.26700136923779094,
-        "lo": 0.24889687438672287,
-        "hi": 0.2859214625511985
+        "k": 588,
+        "n": 2209,
+        "rate": 0.2661837935717519,
+        "lo": 0.24817082926069006,
+        "hi": 0.28500856058939245
       },
       "on_target_per_usable": {
         "k": 10,
-        "n": 2191,
-        "rate": 0.004564125969876769,
-        "lo": 0.0024810495524600715,
-        "hi": 0.008381447501631443
+        "n": 2209,
+        "rate": 0.004526935264825713,
+        "lo": 0.0024608180041200372,
+        "hi": 0.008313319829210809
       }
     }
   ],
   "rates": {
     "usable_per_sampled": {
-      "median": 0.6400815590687909,
-      "lo": 0.6342642522974282,
-      "hi": 0.6457355073891324
+      "median": 0.6400402815397743,
+      "lo": 0.634241688760333,
+      "hi": 0.645672616549136
     },
     "passed_gates_per_sampled": {
-      "median": 0.15330398243776716,
-      "lo": 0.1486754085261865,
-      "hi": 0.1580393479181846
+      "median": 0.15348874843190016,
+      "lo": 0.14887606474410098,
+      "hi": 0.15821319112039217
     },
     "on_target_per_sampled": {
-      "median": 0.014309389777524335,
-      "lo": 0.012795679602786027,
-      "hi": 0.015916569153153298
+      "median": 0.01430302975570287,
+      "lo": 0.012793352255719077,
+      "hi": 0.015905368575776103
     },
     "passed_gates_per_usable": {
-      "median": 0.23952981634994133,
-      "lo": 0.23206208105297987,
-      "hi": 0.24730959000324004
+      "median": 0.2398330950287294,
+      "lo": 0.23238299483942862,
+      "hi": 0.24759445517935394
     },
     "on_target_per_usable": {
-      "median": 0.02235694649734795,
-      "lo": 0.019986093564590374,
-      "hi": 0.0248688515084708
+      "median": 0.02234906697119296,
+      "lo": 0.0199860150287484,
+      "hi": 0.024852566555037505
     }
   },
   "recall": {
@@ -316,9 +316,9 @@
   "provisional_correction": {
     "label": "Provisional recall-corrected on-target rate per usable star",
     "value": {
-      "median": 0.10422962608567864,
-      "lo": 0.06383720795334158,
-      "hi": 0.19782484176292264
+      "median": 0.10419095226841488,
+      "lo": 0.06383720331059783,
+      "hi": 0.1977400924228999
     },
     "assumption": "The unvetted stars are as easy for this pipeline to recover as the vetted benchmark stars. Probably optimistic (unvetted signals are weaker), so this is likely a LOWER bound on the true eclipsing-binary fraction. Injected-binary recovery (recovery.json) is a second, independent estimate of recall.",
     "with_injection_recall": {
@@ -330,9 +330,9 @@
         "hi": 0.33728612564195265
       },
       "value": {
-        "median": 0.07853875962666854,
-        "lo": 0.06428499240028857,
-        "hi": 0.0971544143741427
+        "median": 0.07850533119830772,
+        "lo": 0.06427267175592234,
+        "hi": 0.09710125595797295
       },
       "consistent_with_benchmark": true,
       "note": "Recall of injected binaries the search range can reach, in host stars that fail the gates unaided (noisier than typical, which pushes recall down) and with eclipses added after flattening (which pushes it up), so its direction of bias is unknown; the benchmark recall uses real eclipses but only 47 stars."
@@ -346,9 +346,9 @@
         "hi": 0.5787214292809472
       },
       "value": {
-        "median": 0.042861785729022994,
-        "lo": 0.036733620050173096,
-        "hi": 0.0500959192052832
+        "median": 0.04284823688121591,
+        "lo": 0.03672507578548677,
+        "hi": 0.0500704100602803
       },
       "note": "Same injections into host stars whose own best BLS signal is weak (the quietest quarter of the stars that fail the gates). This is the most favourable host mix, so it bounds the recall, and the corrected rate, from the other side."
     }
@@ -356,82 +356,82 @@
   "periods": [
     {
       "bin": "<1 d",
-      "passed": 578,
-      "on_target": 40,
+      "passed": 585,
+      "on_target": 41,
       "share_of_passed": {
-        "k": 578,
-        "n": 3431,
-        "rate": 0.16846400466336345,
-        "lo": 0.1563126263994938,
-        "hi": 0.1813569495520694
+        "k": 585,
+        "n": 3458,
+        "rate": 0.16917293233082706,
+        "lo": 0.15704599936784394,
+        "hi": 0.1820340748712075
       }
     },
     {
       "bin": "1-2 d",
-      "passed": 839,
+      "passed": 847,
       "on_target": 71,
       "share_of_passed": {
-        "k": 839,
-        "n": 3431,
-        "rate": 0.2445351209559895,
-        "lo": 0.2304441585291103,
-        "hi": 0.2591974971381822
+        "k": 847,
+        "n": 3458,
+        "rate": 0.24493927125506074,
+        "lo": 0.23089384507648908,
+        "hi": 0.2595507576148076
       }
     },
     {
       "bin": "2-5 d",
-      "passed": 1017,
+      "passed": 1024,
       "on_target": 104,
       "share_of_passed": {
-        "k": 1017,
-        "n": 3431,
-        "rate": 0.2964150393471291,
-        "lo": 0.28136877365370416,
-        "hi": 0.3119166758427062
+        "k": 1024,
+        "n": 3458,
+        "rate": 0.29612492770387505,
+        "lo": 0.28114120774841284,
+        "hi": 0.3115611107293242
       }
     },
     {
       "bin": "5-10 d",
-      "passed": 518,
-      "on_target": 58,
+      "passed": 521,
+      "on_target": 59,
       "share_of_passed": {
-        "k": 518,
-        "n": 3431,
-        "rate": 0.15097639172252988,
-        "lo": 0.1393872016639852,
-        "hi": 0.16334626400810007
+        "k": 521,
+        "n": 3458,
+        "rate": 0.15066512434933488,
+        "lo": 0.13913019254478828,
+        "hi": 0.1629753403929514
       }
     },
     {
       "bin": "10-20 d",
-      "passed": 320,
+      "passed": 321,
       "on_target": 29,
       "share_of_passed": {
-        "k": 320,
-        "n": 3431,
-        "rate": 0.09326726901777907,
-        "lo": 0.08398630770156049,
-        "hi": 0.1034579940482474
+        "k": 321,
+        "n": 3458,
+        "rate": 0.09282822440717177,
+        "lo": 0.0836027689778083,
+        "hi": 0.10295732239333194
       }
     },
     {
       "bin": ">20 d",
-      "passed": 159,
+      "passed": 160,
       "on_target": 19,
       "share_of_passed": {
-        "k": 159,
-        "n": 3431,
-        "rate": 0.04634217429320898,
-        "lo": 0.03980086553597155,
-        "hi": 0.05389820696390375
+        "k": 160,
+        "n": 3458,
+        "rate": 0.04626951995373048,
+        "lo": 0.039757223699328444,
+        "hi": 0.053788787210699275
       }
     }
   ],
   "notes": [
-    "Sampling frame is the 22269 stars in f2c_manifest.csv; rates are conditional on the pipeline, not on truth.",
-    "Stars with no usable light curve (7939 of 22269 sampled) are counted in 'usable_per_sampled' and excluded from the per-usable rates.",
+    "Sampling frame is the 22419 stars in f2c_manifest.csv; rates are conditional on the pipeline, not on truth.",
+    "Stars with no usable light curve (7994 of 22419 sampled) are counted in 'usable_per_sampled' and excluded from the per-usable rates.",
     "12 star(s) in the novelty file are not in the sampling frame (earlier hand-run batches) and are excluded here.",
     "Pixel checking was run only on stars with no catalog match, so 'on_target' cannot be computed for catalogued stars; the on-target rate is a lower bound for that reason too.",
-    "All 321 on-target stars are entries in the Kostov et al. 2025 unvetted list: this is an independent vetting of that list, not a discovery of new detections."
+    "All 323 on-target stars are entries in the Kostov et al. 2025 unvetted list: this is an independent vetting of that list, not a discovery of new detections."
   ]
 }

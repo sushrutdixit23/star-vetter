@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-14T07:22:12Z",
+ "generated_at": "2026-11-14T14:08:41Z",
  "method": {
   "psf_sigma_arcsec": 16.8,
   "aperture_radius_arcsec": 31.5,
@@ -13,22 +13,22 @@
   "assumptions": "Gaussian PSF and circular aperture are approximate; the centroid floor is an assumption, so results are shown for several floors.",
   "not_covered": "sources not in the TIC; neighbours beyond 63 arcsec; the target's own companions"
  },
- "stars_assessed": 321,
+ "stars_assessed": 323,
  "summary_by_floor": {
   "3": {
-   "NO_VIABLE_NEIGHBOUR": 268,
+   "NO_VIABLE_NEIGHBOUR": 269,
    "VIABLE_NEIGHBOUR_AT_OFFSET": 30,
-   "UNSEPARABLE_NEIGHBOUR": 23
+   "UNSEPARABLE_NEIGHBOUR": 24
   },
   "6": {
-   "NO_VIABLE_NEIGHBOUR": 246,
+   "NO_VIABLE_NEIGHBOUR": 247,
    "VIABLE_NEIGHBOUR_AT_OFFSET": 31,
-   "UNSEPARABLE_NEIGHBOUR": 44
+   "UNSEPARABLE_NEIGHBOUR": 45
   },
   "10": {
-   "NO_VIABLE_NEIGHBOUR": 216,
+   "NO_VIABLE_NEIGHBOUR": 217,
    "VIABLE_NEIGHBOUR_AT_OFFSET": 36,
-   "UNSEPARABLE_NEIGHBOUR": 69
+   "UNSEPARABLE_NEIGHBOUR": 70
   }
  },
  "statuses": {
@@ -7301,6 +7301,58 @@
    "viable": 0,
    "closest_viable": null
   },
+  "333952894": {
+   "offset_arcsec": 1.0427593285390224,
+   "diff_snr": 85.77805432330358,
+   "depth": 0.0870267417692593,
+   "n_neighbours": 85,
+   "by_floor": {
+    "3": {
+     "bright_enough": 2,
+     "viable": 1,
+     "closest_viable": {
+      "tic": 518050889,
+      "sep_arcsec": 0.4393237686065278,
+      "delta_tmag": 1.1780000000000008,
+      "required_depth": 0.3112418403512382
+     },
+     "unseparable": 1,
+     "status": "UNSEPARABLE_NEIGHBOUR"
+    },
+    "6": {
+     "bright_enough": 2,
+     "viable": 1,
+     "closest_viable": {
+      "tic": 518050889,
+      "sep_arcsec": 0.4393237686065278,
+      "delta_tmag": 1.1780000000000008,
+      "required_depth": 0.3112418403512382
+     },
+     "unseparable": 1,
+     "status": "UNSEPARABLE_NEIGHBOUR"
+    },
+    "10": {
+     "bright_enough": 2,
+     "viable": 1,
+     "closest_viable": {
+      "tic": 518050889,
+      "sep_arcsec": 0.4393237686065278,
+      "delta_tmag": 1.1780000000000008,
+      "required_depth": 0.3112418403512382
+     },
+     "unseparable": 1,
+     "status": "UNSEPARABLE_NEIGHBOUR"
+    }
+   },
+   "status": "UNSEPARABLE_NEIGHBOUR",
+   "viable": 1,
+   "closest_viable": {
+    "tic": 518050889,
+    "sep_arcsec": 0.4393237686065278,
+    "delta_tmag": 1.1780000000000008,
+    "required_depth": 0.3112418403512382
+   }
+  },
   "334215307": {
    "offset_arcsec": 2.8728117266309208,
    "diff_snr": 38.103746225098575,
@@ -8962,6 +9014,38 @@
     "delta_tmag": 4.4275,
     "required_depth": 0.6123543789588327
    }
+  },
+  "378858431": {
+   "offset_arcsec": 11.25823331926815,
+   "diff_snr": 8.086164217160642,
+   "depth": 0.0085698662007697,
+   "n_neighbours": 33,
+   "by_floor": {
+    "3": {
+     "bright_enough": 0,
+     "viable": 0,
+     "closest_viable": null,
+     "unseparable": 0,
+     "status": "NO_VIABLE_NEIGHBOUR"
+    },
+    "6": {
+     "bright_enough": 0,
+     "viable": 0,
+     "closest_viable": null,
+     "unseparable": 0,
+     "status": "NO_VIABLE_NEIGHBOUR"
+    },
+    "10": {
+     "bright_enough": 0,
+     "viable": 0,
+     "closest_viable": null,
+     "unseparable": 0,
+     "status": "NO_VIABLE_NEIGHBOUR"
+    }
+   },
+   "status": "NO_VIABLE_NEIGHBOUR",
+   "viable": 0,
+   "closest_viable": null
   },
   "380943251": {
    "offset_arcsec": 2.706063198936234,

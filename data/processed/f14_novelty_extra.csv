@@ -314,6 +314,7 @@ tic,tier,verdict,matched_catalogs,known_other_period,nearby_catalogs,failed_cata
 469306687,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
 469606998,PERIOD ALIAS,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
 469789979,CLEAN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
+469802417,CLEAN,NO_MATCH,,,,,"ztf,crts,wise,atlas",asas
 942471837,THIN MARGIN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
 973170627,THIN MARGIN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
 975879954,THIN MARGIN,NO_MATCH,,,,,"crts,wise,atlas,asas",ztf
