@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-13T20:41:27Z",
+  "generated_at": "2026-11-14T07:22:11Z",
   "method": {
     "relation": "1/P_TESS = |1/(f*P_ATLAS) + s*j/0.99727|",
     "multipliers": [
@@ -37,9 +37,9 @@
     "with_sidereal": 6
   },
   "chance": {
-    "pair_rate": 0.08206735792942689,
-    "expected_explained": 3.2006269592476486,
-    "p_value_at_least_observed": 0.012597678395945708
+    "pair_rate": 0.08181089743589744,
+    "expected_explained": 3.190625,
+    "p_value_at_least_observed": 0.012376567413440991
   },
   "already_matching_ratio_1_half_2": 9,
   "stars": [
